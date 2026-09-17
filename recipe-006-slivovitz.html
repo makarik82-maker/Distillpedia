@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slivovitz (Balkan Plum Brandy) | Community Recipes | Home Brewing & Distilling Wiki</title>
+    <meta name="description" content="Classic Balkan Slivovitz recipe: wild-fermented plum wash without sugar, double fractional distillation, optional oak aging. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Slivovitz</p>
+
+        <article class="recipe">
+            <h1>🍑 Slivovitz <span style="font-size:16px;color:#97bc62;">(Balkan Plum Brandy)</span></h1>
+            <p>Slivovitz is a traditional Balkan plum brandy produced in Serbia, Bulgaria, Croatia, Montenegro, North Macedonia, Bosnia and Herzegovina, Czech Republic, Slovakia, and Hungary. In 2007, Serbia secured protected status for "Serbian Slivovitz Rakia." Unlike simple plum moonshine, Slivovitz is made without added sugar and often aged in oak barrels for up to 5 years.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–65%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">15–45 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~20 L mash</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>20 kg ripe plums</strong> — any variety, pitted weight</li>
+                    <li><strong>20 L water</strong> — chlorine-free, non-boiled</li>
+                    <li><strong>Wine yeast or wild fermentation starter</strong> — for 40 L of wash</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>No sugar is added. The natural fructose in the plums is fermented. This is what distinguishes true Slivovitz from simple plum moonshine.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Safety reminder:</strong> Unripe plums contain high pectin levels, which yeast converts to methanol. Use only ripe fruit, and always discard the "heads" fraction during distillation. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Sort and prepare the plums.</strong> Remove any blackened, rotten, or mouldy fruit. If plums are underripe, spread them in a single layer in a sunny spot for 2–4 days to reduce pectin and increase sugar content. For wild fermentation, do not wash the plums (wipe dirty ones with a dry cloth). Remove pits to avoid bitter almond flavours.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Mash the plums.</strong> Crush the pitted plums (flesh and skin) into a smooth paste. Do not crush the pits — this releases amygdalin, which gives a bitter almond taste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Prepare the wash.</strong> Transfer the plum paste to a wide-mouth fermentation vessel. Add water and stir until the mixture is liquid enough to stir freely. Fill the vessel no more than 75% full — plum wash can foam heavily.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add yeast or rely on wild fermentation.</strong> If using wine yeast, activate according to package instructions and add. For wild fermentation, skip this step. Cover the vessel opening with cheesecloth and leave in a dark place at 18–26 °C for 3 days. Stir every 8–12 hours, pushing floating pulp back into the liquid.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> After 3 days, pour the wash (without filtering) into a fermentation vessel. Fill no more than 75% full. Fit an airlock and leave in a dark place at 20–28 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Monitor early fermentation.</strong> For the first 3 days, check that floating pulp does not block the airlock. Open and stir if needed. Short air contact is fine. Eventually most of the pulp will settle at the bottom.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> This takes 15–45 days depending on plum sugar content, yeast, and temperature. Signs: airlock stops bubbling (fewer than 5 bubbles/min), foam disappears, sediment forms at the bottom, wash clarifies, smells like alcohol, and tastes dry (not sweet).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>First distillation.</strong> Siphon the wash off the sediment. Squeeze the pulp gently and filter through several layers of cheesecloth or a fine sieve to remove any solid particles that could burn. Fill the still 30–70% full. Assemble in simple pot-still mode (no packing, no dephlegmator). Distill at maximum speed. Stop when the ABV in the stream drops below 20%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Measure the ABV at 20 °C and calculate the total pure alcohol (ABV% × volume in litres ÷ 100). Dilute with water to 17–20% ABV. Do not clean with charcoal — this strips the fruit aroma.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> Heat slowly so the distillate drips and stays cool. Collect the first 12% of pure alcohol volume as "heads" — <strong>discard this fraction, never consume it.</strong> Increase heat slightly and collect the "hearts" until the ABV in the stream drops below 43%. Optionally collect "tails" separately for future redistillation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> If not aging in oak, dilute the Slivovitz with softened water to 40–45% ABV. Bottle in glass, seal tightly, and rest for at least 3 days in a cool place to stabilize the flavor. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> For barrel-aged Slivovitz, rest the distillate in an oak barrel for 3–18 months, or infuse on toasted oak chips for 15–100 days, tasting every 5–7 days to avoid over-extraction. Traditional Balkan Slivovitz is aged in oak, not mulberry wood.
+            </div>
+
+            <h2>Choosing the Right Plums</h2>
+            <ul>
+                <li><strong>Color:</strong> Blue and red plums give dried-fruit, jam, and spice notes. Yellow plums give soft fruit and caramel tones.</li>
+                <li><strong>Variety:</strong> Do not mix different varieties in one batch — the flavor profile becomes "blurred." Blend finished distillates instead.</li>
+                <li><strong>Ripeness:</strong> Use only ripe or overripe plums. Underripe fruit is high in pectin, which increases methanol production.</li>
+            </ul>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Home Brewing & Distilling Wiki</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 HomeBrewWiki. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

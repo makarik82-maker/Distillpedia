@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl Barley Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Pearl barley moonshine recipe: hot saccharification with malt, fermentation, double fractional distillation, and whiskey aging. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe h3 { color: #2c5f2d; font-size: 20px; margin: 22px 0 10px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Pearl Barley Moonshine</p>
+
+        <article class="recipe">
+            <h1>🌾 Pearl Barley Moonshine <span style="font-size:16px;color:#97bc62;">(Perlovka, Malt Saccharification)</span></h1>
+            <p>Pearl barley is produced from barley by polishing the grains, sometimes up to 6 times. Thanks to polishing, the grain cooks faster and better. Mostly used for porridge and soups, but it is also excellent raw material for strong distillates. In taste and aroma, properly made pearl barley moonshine is not inferior to barley moonshine. The finished drink can be poured into barrels or infused on oak pegs (chips) to obtain homemade whiskey.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Grain</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–12 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~5 kg barley + 1 kg malt</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Theory</h2>
+            <p>Spirit yeast can only process simple sugars, so before fermentation the starch in pearl barley must be broken down into simple sugars using enzymes found in sprouted grain (malt). This process is called saccharification. It is desirable to use rye or barley malt, necessarily non-fermented, which can be bought in specialized stores or sprouted at home. For normal saccharification, 1 kg of malt is required per 4–5 kg of pearl barley.</p>
+            <p>Theoretically, from 1 kg of barley raw material (grits and malt) you can get slightly more than 800 ml of 40% moonshine, but in practice the yield will be 5–20% lower, since the grain does not always contain the maximum possible amount of starch, and part of the distillate is lost during distillation. To increase the yield, you can add sugar — 1 kg increases the drink by 1.1–1.2 L (40%), but the quality of the moonshine deteriorates, so adding sugar to grain distillates is not recommended; it is advisable only when there is very little grits.</p>
+
+            <div class="safety-box">
+                <strong>🛑 Thermometer Required:</strong> A thermometer to measure wort temperature is a mandatory condition for preparing the wash. To perform saccharification, a maximum deviation of 2–3 °C from the values specified in the recipe is allowed.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Pearl barley</strong> — 5 kg</li>
+                    <li><strong>Malt</strong> (non-fermented green or white) — 1 kg</li>
+                    <li><strong>Water</strong> — 27–30 L</li>
+                    <li><strong>Sugar</strong> — 1 kg (optional)</li>
+                    <li><strong>Yeast</strong> — 100 g pressed or 20 g dry</li>
+                </ul>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the grain.</strong> Pour the grits into a voluminous cooking vessel — an enameled pot or bucket.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Heat the water.</strong> In a separate vessel, heat 20 L of water to 50 °C (4 L of water per 1 kg of pearl barley).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Mix.</strong> Pour the hot water into the grits in a thin stream, stirring constantly so that lumps do not form.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Step cooking.</strong> Heat the mixture to 55–60 °C, cook for 15 minutes, then raise the temperature to 62–64 °C and cook for another 15 minutes.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Boil the porridge.</strong> Bring the porridge to a boil and cook over medium heat for 90 minutes, stirring periodically so the pearl barley does not scorch near the bottom. The mixture ready for malt addition should have a homogeneous consistency.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Cool.</strong> Cool the pearl barley to 65 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Make malt milk.</strong> While the porridge is cooling, grind the malt (if not pre-ground) and pour it in a separate vessel with 3 L of water at 26–28 °C (ratio — 3 L per 1 kg of malt). Mix until homogeneous.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Add malt milk.</strong> Pour the resulting malt milk in a thin stream into the pearl barley cooled to 65 °C, stirring constantly.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Saccharification.</strong> Cover the vessel with a lid, heat to 63 °C. Maintain the temperature in the range of 55–65 °C for the next 2 hours, stirring the porridge every 20 minutes. At the end of cooking, the pearl barley should be sweet — this means saccharification was successful: the starch has been broken down into simple sugars that yeast can process.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Add sugar and water.</strong> Heat the finished wort to 70 °C, add beet sugar (optional) and 3 L of water (7 L if sugar was added). Mix.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Cool quickly.</strong> To prevent infection by pathogenic microorganisms, cool the wort to 28–29 °C as quickly as possible. The simplest option is to lower the vessel into a bath with cold water or ice.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Pitch the yeast.</strong> Pour the cooled wort into the fermentation vessel, leaving 25% of the volume free for foam and carbon dioxide. Add yeast previously diluted according to the package instructions. Mix.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Seal.</strong> Install a water lock on the neck of the fermentation vessel; a medical glove with a hole in one finger (punctured with a needle) works too.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Ferment.</strong> Transfer the pearl barley wash to a dark room (or cover with dense fabric) with a stable temperature of 18–27 °C. Depending on yeast and temperature, fermentation lasts 4–12 days. Then the airlock stops bubbling (the glove deflates), the wash becomes bitterish to taste without sweetness and lighter, and a layer of sediment appears at the bottom. With these signs, you can proceed to distillation.</div>
+            </div>
+
+            <h2>Distillation</h2>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Filter.</strong> Filter the fermented wash through several layers of cheesecloth so that grits residues do not scorch when heated and spoil the moonshine taste with bitterness. Steam generator owners can skip this step.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill the wash the first time without fractionation. End the collection when the strength in the stream drops below 25%. The distillate may be cloudy, this is normal.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">17</div>
+                <div class="step-text"><strong>Calculate.</strong> Measure the overall strength of the output. Determine the amount of absolute alcohol: volume in liters multiplied by strength in percent, divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">18</div>
+                <div class="step-text"><strong>Dilute and clean.</strong> Dilute the first-distillation moonshine with water to 18–20%. Optionally clean with charcoal or any other method.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">19</div>
+                <div class="step-text"><strong>Second distillation — heads.</strong> Make the second distillation with fraction separation. Collect the first 8–14% of output from the amount of pure alcohol (while the unpleasant smell persists) separately — this is the "head", a harmful fraction that must not be drunk.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">20</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Collect the main product ("body") until the output strength in the stream drops below 45%. After that, end the distillation or collect "tails" in another vessel.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">21</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the resulting pearl barley moonshine (middle fraction) with water to the desired strength, pour into glass vessels for storage and seal tightly. Leave for at least 2–3 days in the cold to stabilize the taste after mixing with water.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">22</div>
+                <div class="step-text"><strong>Age (optional).</strong> To obtain whiskey from pearl barley, pour the distillate into barrels or age for several months on oak pegs (chips).</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Pearl barley moonshine is one of the best bases for homemade whiskey. The polished grain cooks faster than whole barley, making the whole process quicker while preserving the full barley organoleptic profile.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🌾 Malt Moonshine</h3><p>The classic base technique for whiskey-style spirits.</p><a href="recipe-010-malt-moonshine.html">View recipe →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

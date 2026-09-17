@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Bourbon | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Homemade bourbon recipe: corn mash with barley malt saccharification, double distillation, and oak barrel or chip aging. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe h3 { color: #2c5f2d; font-size: 20px; margin: 22px 0 10px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Homemade Bourbon</p>
+
+        <article class="recipe">
+            <h1>🥃 Homemade Bourbon <span style="font-size:16px;color:#97bc62;">(Corn Mash, Distillation & Aging)</span></h1>
+            <p>Setting aside all formalities, bourbon is a double-distilled corn moonshine made by the classic malt saccharification method, then aged for some time in charred oak barrels. This means every amateur distiller can make bourbon at home: correctly set a corn wash with barley malt, distill it twice, and then pour the resulting moonshine into a barrel or infuse it on prepared oak pegs (chips) imitating barrel aging.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Grain</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">3–12 days</div></div>
+                <div class="info-item"><div class="label">Aging</div><div class="value">3–18 months</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Ingredients</h2>
+            <h3>Corn</h3>
+            <p>Whole grain, grits, or flour are required. There is no fundamental difference, but coarse grits are easiest to work with: whole grain still needs crushing to break the hull and release starch, and flour wash turns out viscous. From 1 kg of corn you can theoretically get up to 1.1 L of 40% moonshine (depending on starch content and saccharification efficiency); in practice 15–20% is lost during double fractional distillation.</p>
+            <h3>Malt</h3>
+            <p>Corn saccharifies itself poorly, so even industrial bourbon production does not sprout corn but uses barley malt. Only non-fermented "white" (base) malt works. The "red" fermented rye malt sold in grocery stores has deactivated enzymes and is merely an aromatic additive — it cannot saccharify starch. Barley malt also increases yield: about 0.8 L of 40% distillate extra per 1 kg.</p>
+            <p><strong>Note:</strong> Koji yeast or enzymes (cold saccharification) simplify the technology greatly, but the resulting moonshine can no longer be considered true bourbon, though the difference is sometimes hard to catch.</p>
+            <p><strong>Grain bill experiments:</strong> famous bourbon recipes (Jim Beam, Wild Turkey, Maker's Mark) include wheat and/or rye — 8–20% of total grain. Wheat adds softness and light iris tones; rye adds spiciness, bread and spice notes. This recipe uses none, but it is an interesting field for experiments. True bourbon contains at least 51% corn (US legal limit) and usually 10–14% barley malt.</p>
+            <h3>Yeast & Water</h3>
+            <p>Any spirit yeast works — "turbo" is unnecessary since the malt wort is nutritious enough. Dry or pressed baker's yeast is acceptable: it ferments longer and releases more impurities, but competent fractional distillation solves the problem. Corn wash can be set on any drinking water; chlorinated tap water should be settled for 1–2 days in an open pot or bucket.</p>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Corn</strong> (grain, grits, or flour) — 4 kg</li>
+                    <li><strong>Barley malt</strong> (non-fermented) — 1 kg</li>
+                    <li><strong>Water</strong> — 20 L</li>
+                    <li><strong>Yeast</strong> — 100 g dry or 500 g pressed baker's yeast; spirit yeast per manufacturer's instructions for 25 L of wort</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Mash proportions: 250 g malt per 1 kg of corn raw material. Theoretically 5:1 is possible, but there is no guarantee the enzymes will cover all the corn (depends on diastatic power). Per 1 kg of grain (corn + malt): 4 L water and 20 g dry baker's yeast or 100 g pressed.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Saccharification Temperature Rule:</strong> During saccharification it is critical not to exceed 61–72 °C. Above this range enzymes are irreversibly destroyed and the process stops; too low a temperature reduces efficiency many times over. A thermometer with a long probe is mandatory.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Grind the grain.</strong> Crush whole corn grain and malt to coarse grits. Do not grind the malt into flour, otherwise the high viscosity makes work difficult.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Heat the water.</strong> Heat 75% of the water in a pot to 50–55 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Add the corn.</strong> Add the corn grain (grits, flour) to the hot water in small batches, stirring constantly. You must get a homogeneous mass without lumps. It is very important that the raw material does not scorch near the bottom and walls. Fill the vessel to a maximum of 60% of volume, leaving room for malt and water.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Cook the porridge.</strong> Bring to a boil, reduce heat to below medium, and cook for 60–120 minutes until a well-cooked "porridge". Cooking time depends on grind size: the coarser, the longer. Stir periodically.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Add remaining water.</strong> Cool the pot contents to 75 °C, pour in the remaining water (25%), and stir.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Add the malt.</strong> Gradually add the malt, stirring thoroughly for even distribution throughout the wort volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Set saccharification temperature.</strong> Raise the temperature to 65 °C, then turn off the heat and cover the pot with a lid.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Maintain saccharification.</strong> For 120 minutes, keep the temperature inside the pot within 62–70 °C by periodic heating. Stir and check the temperature every 15 minutes. After saccharification the wort must become sweet — this means the enzymes have broken the starch down into simple sugars. Check for remaining starch with an iodine test: pour half a teaspoon of filtered liquid wort onto a white-bottomed plate, add two drops of iodine with a pipette, mix with a cotton swab, and wait 30 seconds. If the color changed, part of the starch remains un-saccharified (the darker, the more); however, if the wort is sweet you can proceed — the yield will simply be lower than the maximum.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Destroy enzymes.</strong> Heat the pot contents to 75 °C to destroy the enzymes that could worsen the taste of the homemade bourbon.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Cool quickly.</strong> Cover the pot and cool the wort as fast as possible to the yeast pitching temperature — 25–30 °C. If there is no special cooling device, place the pot in a bath with water or ice. Fast cooling reduces the risk of infection by pathogenic microorganisms.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Spirit yeast: per package instructions. Dry baker's yeast: sprinkle in an even layer over sugar syrup (10 ml water and 4 g sugar per 1 g yeast) at 24–30 °C, cover, and leave for 10–40 minutes until foam appears. Pressed baker's yeast: add straight from the fridge, kneaded by hand.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Pitch the yeast.</strong> When the wort has cooled to the proper temperature, pour it into the fermentation vessel, add the yeast, and stir.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Ferment.</strong> Install an airlock of any design. Move the wash to a dark place (or cover with dense fabric) at a stable 20–28 °C. Depending on temperature and yeast, corn wash ferments for 3–12 days. Signs of completion: the water seal stops releasing gas (glove deflates); the wort becomes lighter; foam disappears from the surface (only small "islands" possible); the wash is not sweet (all sugar converted to alcohol) and slightly bitter.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Filter.</strong> Drain the fermented corn wash off the sediment (preferably through a tube like siphoning gasoline), then strain through cheesecloth or a kitchen sieve to remove solid particles that could scorch and spoil the moonshine taste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Fill the still.</strong> Fill the still pot with the wash to 30–75% of volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>First distillation.</strong> Run the first distillation at maximum speed. The distillate may flow warm but without steam. End the distillation when the strength in the stream drops below 20% on regular apparatus with column height up to 50 cm, and at 5% on columns. You may distill to near-zero strength, but the extra alcohol does not always justify the time and energy costs.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">17</div>
+                <div class="step-text"><strong>Calculate pure alcohol.</strong> Determine the amount of pure alcohol in the obtained distillate: volume in liters multiplied by strength in percent (measured at 20 °C), divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">18</div>
+                <div class="step-text"><strong>Dilute and redistill.</strong> Dilute the moonshine with water to 18–20% strength and distill again.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">19</div>
+                <div class="step-text"><strong>Set the collection speed.</strong> When the pot contents begin to boil, adjust the collection speed so the moonshine flows in small drops and is cold.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">20</div>
+                <div class="step-text"><strong>Collect the heads.</strong> Separately collect 8% of the amount of pure alcohol. This is the "head" — a harmful fraction that must not be drunk.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">21</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Raise the heating power: the distillate may flow in a thin stream but must remain cold. Collect the drinking part ("body") until the strength in the stream drops below 42% for regular corn moonshine, and to 39% strength if you plan to make homemade bourbon — aged on chips or poured into a barrel.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">22</div>
+                <div class="step-text"><strong>Finish.</strong> End the distillation (turn off the heat), or collect "tails" separately to add them to a new wash.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">23</div>
+                <div class="step-text"><strong>Rest or age.</strong> Dilute the finished corn moonshine with water to drinking strength 40–45%, pour into glass bottles, seal tightly, and leave for 3–5 days in a cool place to improve the taste. For bourbon, proceed to aging instead.</div>
+            </div>
+
+            <h2>Aging: Turning Moonshine into Bourbon</h2>
+            <ul>
+                <li><strong>Oak barrel:</strong> charred inside. Aging lasts 3–18 months depending on barrel volume, room temperature, and desired intensity of tannin tones.</li>
+                <li><strong>Oak chips / pegs:</strong> a simpler home method. Soak and roast the wood yourself or buy prepared chips. Infusion takes 15–100 days; taste every 5–7 days so as not to over-extract.</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> If you pass the moonshine through a charcoal column before barrel or chip aging, you get a homemade "Jack Daniel's" style whiskey — it differs from classic bourbon only by charcoal filtering (the original uses maple charcoal, not birch). All other cleaning methods (milk, vegetable oil, soda, etc.) are inappropriate and may worsen the drink.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3> Malt Moonshine</h3><p>The base technique for whiskey-style spirits.</p><a href="recipe-010-malt-moonshine.html">View recipe →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

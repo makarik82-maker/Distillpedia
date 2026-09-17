@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Moonshine | Community Recipes | Home Brewing & Distilling Wiki</title>
+    <meta name="description" content="Classic potato moonshine recipe: hot saccharification with malt, fermentation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Potato Moonshine</p>
+
+        <article class="recipe">
+            <h1>🥔 Potato Moonshine <span style="font-size:16px;color:#97bc62;">(Classic Wash Recipe)</span></h1>
+            <p>Due to high protein and pectin content, potato moonshine has a specific character — with notes of fresh tubers in the aroma and taste. Moreover, if prepared incorrectly, it causes a severe hangover. It is advisable to make this drink if you have a lot of unwanted potatoes that cannot be processed in other ways. For distillation, it is better to use a rectification or mash column to obtain the purest spirit. If you only have a regular moonshine apparatus, potato moonshine can become the alcohol base for spicy male tinctures, e.g., Pertsovka (pepper vodka) or Khrenovukha (horseradish vodka).</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Grain</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">5–12 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~10 kg potatoes</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>10 kg potatoes</strong> — preferably high-starch varieties</li>
+                    <li><strong>Non-fermented malt:</strong> 1.5 kg (15% of potato weight)</li>
+                    <li><strong>Water:</strong> 25 L (2.5 L per 1 kg potatoes)</li>
+                    <li><strong>Baker's yeast:</strong> 100 g dry or 500 g pressed</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Spirit yeast should be added per manufacturer's instructions depending on wash volume.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> The selected malt must be non-fermented. Fermented rye malt sold in culinary departments is a food additive and cannot convert starch to sugar. A thermometer is mandatory for saccharification. The temperature must stay within 61–72 °C — outside this range, enzymes are destroyed or saccharification efficiency drops dramatically. Always discard the "heads" fraction — 15% in this recipe (higher than usual due to high pectin). See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the potatoes.</strong> Sort potatoes: cut away rotten, mouldy, and greenish parts (contain harmful solanine). The skin can be left — it adds pronounced potato tones to the moonshine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Cut the tubers.</strong> Cut into 5–6 cm cubes or grate.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Cook the potatoes.</strong> Place potatoes in a cooking pot, add water. Bring to a boil and cook on medium heat for 45–60 minutes until you get a porridge-like mass. Stir periodically to prevent potatoes from burning near the bottom and walls.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add malt.</strong> Cool the pot contents to 65 °C. Slowly add the crushed malt, stirring constantly for even distribution throughout the potato wash volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Maintain saccharification.</strong> Maintain temperature 62–70 °C for 90 minutes. The easiest way: cover with a lid, then stir and check temperature every 15 minutes; when the value approaches the lower limit of the range, turn on low heat. Toward the end of saccharification, the wash will clarify, and the solid part will settle at the bottom. The main sign of successful starch breakdown to simple sugars — sweetness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Cool the wash.</strong> Cool the wash to 25–28 °C. To reduce the risk of contamination by pathogenic microflora, do this as quickly as possible. For example, place the pot in cold water or surround with ice.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Activate spirit yeast according to package instructions. Dry baker's yeast: sprinkle evenly over the surface of water at 28–30 °C (10 ml per 1 g), stir after 15 minutes and leave for another 5 minutes. Foam indicates successful activation. Pressed baker's yeast can be added directly from the refrigerator, crumbled with clean hands.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the cooled wash into the fermentation vessel, add yeast. Fill max 70% of volume, as potato wash can foam heavily. If the process gets out of control, add any foam suppressant.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Ferment.</strong> Close with an airlock, leave the container in a dark room (cover with dense fabric) at 18–28 °C. Depending on the yeast, temperature, and success of saccharification, potato wash ferments for 5–12 days. When the airlock stops releasing gas (fewer than 5 bubbles per minute) or the glove deflates, and there are no sweet tones in the wash taste (yeast converted all sugars), you can proceed to the next stage.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the wash off sediment through a tube, then filter through cheesecloth or a fine sieve to remove solid particles that could burn. Thick washes can only be distilled with a steam generator; in all other cases, filtration is mandatory, otherwise the moonshine will be bitter.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Assemble distillation equipment in pot still mode: column height up to 60 cm, disable dephlegmator and all additional units, leave only a direct-flow cooler and one thump keg (if included in the design).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>First distillation.</strong> Pour the potato wash into the still. Fill 30–70% of volume. Distill at maximum speed (maximum cooler utilization): the moonshine may come out cloudy and warm, but there should be no steam. When the ABV in the stream drops below 25%, turn off the heat. It is permissible to distill almost "to water" if additional energy and time costs seem justified by a slight increase in quantity.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Measure the ABV of the resulting low wines at 20 °C, or adjust the value for actual temperature using an online calculator. Determine the amount of pure (absolute) alcohol: ABV% × volume in litres ÷ 100. Dilute the distillate with water to 18–20%. To reduce harmful impurities and slightly improve taste, it is desirable to clean with wood activated charcoal.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> Distill the potato moonshine a second time. After the liquid in the still boils, reduce the power; the distillate should drip slowly and be cold, almost like water in the system. Collect the first 15% of the pure alcohol volume separately. This is the "heads" — the initial fraction with high content of harmful impurities.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Increase the apparatus power, achieving fast drops or a stream, but the drink must remain cold. Collect the drinking portion ("body") until the ABV in the stream drops below 45%, then turn off the equipment or collect "tails" separately to rectify them later on a column.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the finished potato moonshine ("body") with softened water to drinking strength — 40–45%. You can clean once more with wood or coconut activated charcoal to bring the organoleptics closer to potato vodka. Pour into glass bottles or jars, seal tightly, and leave for at least 5 days in a cool place to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> For potato moonshine, base barley malt is best. If using homemade malt, increase the proportion to 20% of total potato weight to ensure enough enzymes. The malt must be non-fermented — fermented "red" malt sold in culinary departments is only a flavor additive and cannot saccharify starch.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Home Brewing & Distilling Wiki</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 HomeBrewWiki. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

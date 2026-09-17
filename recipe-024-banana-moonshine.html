@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Moonshine | Community Recipes | Home Brewing & Distilling Wiki</title>
+    <meta name="description" content="Banana moonshine recipe: wash preparation with foam control, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Banana Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍌 Banana Moonshine <span style="font-size:16px;color:#97bc62;">(Proper Wash Recipe and Distillation)</span></h1>
+            <p>Banana moonshine has a pronounced fruit aroma, and the taste is memorable for slightly sweet creamy-banana tones. However, wash preparation has some features that need to be considered before adding yeast to the wash.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">5–45 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~15 kg bananas</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Bananas</strong> — 15 kg pulp</li>
+                    <li><strong>Water</strong> — 15 L, plus 4 L per 1 kg sugar</li>
+                    <li><strong>Sugar (optional)</strong> — up to 100 g per 1 kg bananas</li>
+                    <li><strong>Yeast</strong> — per instructions depending on volume</li>
+                    <li><strong>Cookies (crackers) or other foam suppressant</strong></li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast: 20 g dry or 100 g pressed per 1 kg sugar (in bananas and added). Calculations can be approximate since exceeding the specified amount won't affect the wash.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Banana wash foams very heavily, so before adding yeast, prepare a natural foam suppressant: cookies or crackers without fillings and glaze (10 g), refined vegetable oil (1 teaspoon), or kefir (2 tablespoons). Dosages are indicated per 10 L of wash. Always discard the "heads" fraction during distillation. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the bananas.</strong> Peel bananas from the skin (contains preservatives that slow fermentation and adds grassy-bitter aftertaste to the moonshine). Cut away rotten and mouldy areas. If possible, leave the pulp in the freezer for at least 12 hours (better 2–3 days) so that negative temperature destroys cell membranes, converting starch to sugar and releasing aromatic substances.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Grind the pulp.</strong> Grind banana pulp with a blender or meat grinder. Thaw frozen ones beforehand. Separately dissolve sugar in water. Pour the resulting syrup (or just water) into the pulp, stirring until homogeneous consistency. If the wash remained thick (hard to stir by hand), dilute more with water.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Check for spoilage.</strong> If during work even a slight smell of rot or mouldy mustiness appeared, you should boil the pulp together with sugar and 75% of water (watch that the wash doesn't burn), boil for a few minutes, then pour in the remaining 25% of water and cool to yeast addition temperature — below 30 °C. Boiling will destroy pathogenic microflora, minimizing the risk of contamination and souring.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Optional: enzyme treatment.</strong> To convert inulin and starch to sugar, you can heat the wash to 55–58 °C, sequentially add both enzymes (A and G) according to manufacturer's instructions, then maintain the specified temperature for an hour. If the temperature rises above 60 °C, inulin won't convert to fructose. In turn, starch enzymes are destroyed at 72 °C and above. Enzymes are also allowed to be added to room temperature wash (so-called "cold start") — without heating at all.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Activate yeast according to package instructions or dilute using the universal method.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the wash into the fermentation vessel, filling no more than 60% of volume due to abundant foam release. Add yeast or starter (temperature must not exceed 30 °C). Distribute the selected foam suppressant on the surface. Close the vessel with an airlock (mandatory, otherwise the wash will sour).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Ferment.</strong> Leave banana wash in a dark place (cover with dense fabric) with stable temperature 18–27 °C. For the first 4 days, check the condition every 8–10 hours to prevent the floating pulp residues and foam from clogging the airlock outlet tube. If necessary, open and stir slightly (increases foam), sinking the dense "cap" of pulp into the liquid, then add foam suppressant again (if needed).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> Depending on yeast, sugar amount, and temperature, banana wash ferments for 5–45 days. The process is finished when: the surface cleared — almost no foam remains; carbon dioxide stopped coming out of the airlock (glove deflated); a layer of loose sediment appeared at the bottom (visible if you shine a flashlight); the wash itself smells like alcohol and is not sweet to taste (yeast converted all sugar).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the fermented wash off sediment through a tube. Pulp residues can be squeezed with cheesecloth or dense fabric. Strain banana wash again through a fine sieve or cheesecloth, reliably getting rid of solid particles that could burn.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Assemble equipment in simple distillation mode: column height up to 60 cm with no packing inside, disable dephlegmator and auxiliary units, leaving only the cooler (shell-and-tube or coil) and one thump keg (if provided in the design). In factory stills, the appropriate operating mode is usually called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>First distillation.</strong> Pour banana wash into the distillation pot. Fill 35–70% of volume, leaving sufficient steam zone. Make the first distillation at maximum speed: distillate may flow warm and cloudy, but necessarily without steam. Turn off the still when the ABV in the stream drops below 20%. You can distill even "to water" if energy and time costs seem justified by a slight increase in quantity.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Determine the overall ABV of the first distillation moonshine at 20 °C, or correct for another temperature using a moonshine calculator. Calculate the amount of absolute (pure) alcohol: ABV percentage multiplied by volume in litres divided by 100. Dilute the distillate with water to 18–20%. Do not clean with activated charcoal or other methods, preserving the unique organoleptic properties of the drink.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Second distillation.</strong> Distill banana moonshine again. When the liquid boils, reduce power so the distillate flows in small drops or a thin stream, but remains cold. Collect separately the first 15% of output from the amount of pure alcohol (calculated at the previous step). This is the "heads" — the initial fraction with high content of harmful substances, so it's used only for technical purposes.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Collect the drinking part of the moonshine ("body") until the ABV in the stream drops below 43%. After that, turn off the heat or collect "tails" separately for future processing on a rectification column.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute banana moonshine ("body") with softened water to 40–45% ABV. Pour into glass bottles or jars, seal tightly, and leave for at least 3 days in a cool place to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> The darker the bananas, the better, since green fruits contain a lot of starch (20–25%) that yeast cannot process and little sugar (2–4%). Freezing for 12 hours to 3 days converts starch to fermentable sugars. Wine yeast gives the best flavor but takes up to 45 days; spirit yeast is faster (4–8 days) but less aromatic.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Home Brewing & Distilling Wiki</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 HomeBrewWiki. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

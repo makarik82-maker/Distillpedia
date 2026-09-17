@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flour Moonshine | Community Recipes | Home Brewing & Distilling Wiki</title>
+    <meta name="description" content="Flour moonshine recipe with hot and cold saccharification: wheat, rye, corn, and other flour types. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Flour Moonshine</p>
+
+        <article class="recipe">
+            <h1>🌾 Flour Moonshine <span style="font-size:16px;color:#97bc62;">(Wheat, Rye, Corn, etc.)</span></h1>
+            <p>The aroma and taste of flour moonshine is many times better than sugar moonshine. However, beginner distillers avoid this raw material due to the complexity of preparing flour wash: you cannot simply add water and yeast — preliminary preparation is needed. This recipe covers two base technologies: with malt (traditional) and with enzymes (easier to implement).</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Grain</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–50%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–30 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~4 kg flour</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Flour Yield by Type</h2>
+            <ul>
+                <li><strong>Wheat (65–70% starch):</strong> 0.9–1.1 L of 40% moonshine per 1 kg</li>
+                <li><strong>Rye (60–65%):</strong> 0.85–1.0 L</li>
+                <li><strong>Corn (65–72%):</strong> 0.9–1.2 L</li>
+                <li><strong>Barley (55–60%):</strong> 0.75–0.9 L</li>
+                <li><strong>Rice (75–80%):</strong> 1.1–1.3 L</li>
+                <li><strong>Buckwheat (60–65%):</strong> 0.8–1.0 L</li>
+                <li><strong>Oat (45–50%):</strong> 0.6–0.8 L</li>
+            </ul>
+
+            <h2>Recipe 1: Flour Wash with Malt (Hot Saccharification)</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>4 kg flour</strong> — wheat, rye, corn, or any type</li>
+                    <li><strong>1 kg malt</strong> — non-fermented, preferably barley</li>
+                    <li><strong>20 L water</strong> — 4 L per 1 kg flour and malt</li>
+                    <li><strong>Baker's yeast:</strong> 50 g dry or 250 g pressed</li>
+                </ul>
+            </div>
+
+            <h3>Step-by-Step (Hot Saccharification)</h3>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Mix flour with cold water.</strong> Dilute flour in the same amount of cold water (1 L per 1 kg): pour in a thin stream, stir, and be sure to break up lumps. If you immediately dissolve flour in boiling water, it will be much harder to achieve homogeneous consistency due to "dough" sticking. <strong>Warning:</strong> Starch in flour lumps is not saccharified, which reduces quantity and worsens moonshine quality. Moreover, a suitable environment for pathogenic microflora development forms inside.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Heat remaining water.</strong> Separately heat the second part of water (3 L per 1 kg flour) to 75–80 °C. While stirring constantly, slowly add the flour mixture.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Cook the wash.</strong> Bring to a boil, then cook on low heat for 90 minutes, stirring periodically so solid particles don't burn near the bottom and walls. In parallel, grind the malt, then pour the same amount of water into it (1:1 ratio), obtaining so-called malt milk, which is easier to dissolve in the wash.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add malt milk.</strong> Cool the pot contents to 65 °C, then pour in the malt milk in a thin stream, stirring intensively until homogeneous.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Maintain saccharification.</strong> Heat the wash to 63 °C, turn off the heat, and cover with a lid. For the next 120 minutes, maintain the 61–68 °C range: stir and measure temperature inside the pot every 15–20 minutes, then turn on low heat as needed. <strong>Important:</strong> Temperature must not exceed 72 °C, otherwise enzymes will be irreversibly destroyed, stopping saccharification. Falling below 60 °C noticeably reduces enzyme activity. Also, the wash should become sweet toward the end of the process — the main sign of effective saccharification.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Boil and add cold water.</strong> Boil the wash to destroy unused enzymes (which could worsen the moonshine), and destroy pathogenic microorganisms. Turn off the heat, add cold unboiled water (3 L per 1 kg malt), stir, and cover tightly. "Raw" water contains oxygen needed for yeast reproduction in the initial stage.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Cool quickly.</strong> Cool the wash as quickly as possible to 28 °C, e.g., place the pot in an ice or cold water bath, minimizing the probability of contamination by vinegar bacteria and mould. In parallel, dilute spirit or dry baker's yeast.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the cooled wash into the fermentation vessel. Fill max 75% of volume; the remaining space is needed for foam. Add pre-activated yeast and close the container with an airlock.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Ferment.</strong> Move the flour wash to a dark room (or cover with dense fabric) at 20–28 °C. Leave until fermentation ends — usually 4–12 days. Signs of readiness: gas release from airlock stopped (fewer than 5 bubbles per minute) or glove deflated, wash partially clarified, wash smells like alcohol and tastes dry (sugar converted by yeast to alcohol).</div>
+            </div>
+
+            <h2>Recipe 2: Flour Wash with Enzymes A and G (Cold Saccharification)</h2>
+            <p>This method is much simpler, but fermentation takes up to a month and a specific smell appears. The main thing is to prevent the wash from souring; for this purpose, some distillers add antibiotics to the wash, which is safe since high temperature will destroy the preparation during distillation.</p>
+
+            <div class="ingredients">
+                <ul>
+                    <li><strong>4 kg flour</strong></li>
+                    <li><strong>16 L water</strong> — 4 L per 1 kg flour</li>
+                    <li><strong>Alpha-amylase:</strong> 1–2 g/kg</li>
+                    <li><strong>Glucoamylase:</strong> 1.5–2 g/kg</li>
+                    <li><strong>Baker's yeast:</strong> 40 g dry or 200 g pressed</li>
+                    <li><strong>Antibiotic (optional)</strong></li>
+                </ul>
+            </div>
+
+            <h3>Step-by-Step (Cold Saccharification)</h3>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare enzymes.</strong> Prepare enzymes A and G according to manufacturer's instructions. It is desirable to disinfect the fermentation vessel with iodine solution (1 tablespoon per 20 L water) or 6% hydrogen peroxide: pour the agent to the brim, leave for 30 minutes, then drain and let the residue dry naturally.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Dissolve flour.</strong> Dissolve flour in cold water (4 L per 1 kg) until homogeneous consistency — be sure to have no lumps. It is permissible to stir with a drill with a concrete attachment. To destroy pathogenic microflora and accelerate fermentation by two times, you can do a so-called "hot" start: boil the wash (3–4 L water per 1 kg flour), wait for cooling to 75 °C, add enzyme A and stir thoroughly. When temperature drops below 60 °C, use enzyme G, then add 1 L unboiled water per 1 kg flour, stir again, cover with a lid, and cool to 30 °C (comfortable temperature for yeast). The "hot" start is especially useful if the flour has a musty or slightly sour smell — a clear sign of mouldy or bacterial contamination.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Dilute spirit or dry baker's yeast approximately 40 minutes before use.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the wash into the fermentation vessel. Fill max 70% of volume due to possible heavy foam. Add enzymes (in case of "cold" start), as well as yeast and antibiotic (optional).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Ferment.</strong> Close the container with an airlock and move to a dark place at 20–28 °C. If volume allows, shake the wash for the first 4–5 days to improve enzyme action, but remove the airlock only in extreme cases — with heavy foam, otherwise the risk of contamination increases significantly. Flour wash with enzymes ferments for 5–12 days in case of "hot" start, and up to 30 days with "cold" start. Signs of readiness are the same as in Recipe 1.</div>
+            </div>
+
+            <h2>Distillation</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the fermented wash off sediment (which can occupy up to a third of total volume). Thick washes can only be distilled with a steam generator; otherwise, burned particles will spoil the moonshine with pronounced bitterness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Assemble equipment in simple distillation mode: column height up to 65 cm with no packing, leave only a shell-and-tube or coil cooler, and one thump keg if included in the design. In factory apparatuses, the required mode is usually called "pot still."</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>First distillation.</strong> Pour the wash into the still, filling 30–70% of volume. Make the first distillation at maximum speed: the distillate may come out warm and cloudy, but must be without steam. Finish the process when the ABV in the stream drops below 15%. It is permissible to distill "to water" if additional energy costs seem justified by a slight increase in quantity.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Measure the ABV of the resulting low wines at 20 °C, or adjust the value for another temperature using an online calculator. Determine the amount of absolute (pure) alcohol: ABV% × volume in litres ÷ 100. Dilute the distillate with water to 18–20%. To remove fusel oil tones, you can additionally clean with activated charcoal, especially for enzyme-based moonshine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> Distill a second time. Reduce heating power after boiling: the liquid should drip slowly into the receiving container and be cold, similar to water in the system. Collect the first 12–15% of output from the pure alcohol volume (while unpleasant smell persists) separately. This is the "heads" — a fraction containing many harmful substances, unsuitable for consumption.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Smoothly increase the apparatus power, achieving fast drops or a thin stream, but the moonshine must remain cold. Collect the "body" (drinking portion) until the ABV drops below 40% — the drink stops burning in a spoon. Then turn off the apparatus or collect "tails" separately to rectify them on a column when enough accumulates.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the flour moonshine ("body") with softened water to drinking strength — 40–50%. Transfer to glass bottles or jars, seal tightly, and leave for at least 5 days in a cool place to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Wheat flour gives a soft grain taste, rye — slight sharpness with bread crust tones, barley — neutral, and corn adds characteristic aroma and sweet aftertaste. Different types can be mixed in one wash to get a drink with unique blend. The most problematic for processing is premium wheat flour — due to high gluten concentration, it remains thick even with strong water dilution. Also, any flour wash foams heavily (rye more abundantly than others), so it's better to stock up on a foam suppressant: cookies, crackers, vegetable or butter.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Home Brewing & Distilling Wiki</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 HomeBrewWiki. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

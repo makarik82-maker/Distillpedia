@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grape Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Grape moonshine recipe: universal wash with or without sugar for red, white, and pink grapes, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe h3 { color: #2c5f2d; font-size: 20px; margin: 22px 0 10px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Grape Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍇 Grape Moonshine <span style="font-size:16px;color:#97bc62;">(with or without sugar)</span></h1>
+            <p>Unlike classic chacha, grape moonshine has better expressed fruit tones because all the fructose ferments, not just what remains in the pomace. However, these organoleptic properties must be revealed correctly. The recipe below is universal: applicable to red (dark), white, and pink grapes. If the raw material is of good quality, you can do without yeast and sugar.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">5–45 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~10 kg grapes</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Right Grapes</h2>
+            <ul>
+                <li>Ripe grapes of any condition are suitable: ordinary, frost-bitten, crushed, long-stored, windfall (collected from the ground), and non-marketable (e.g., too small).</li>
+                <li>Avoid unripe berries: they contain much pectin, which becomes methanol during fermentation. Proper distillation removes almost all harmful impurities, but experienced distillers minimize methanol at the wash stage.</li>
+                <li><strong>Red grapes:</strong> rich berry character, slightly astringent, with raisin, currant, and cherry tones in the aftertaste (due to tannins).</li>
+                <li><strong>White grapes:</strong> floral-honey aroma and soft fruit taste with apple, pear, and citrus tones.</li>
+                <li>Do not mix red and white varieties in one wash — their organoleptic profiles are too different.</li>
+                <li>Stems and leaves add astringent tartness; crushed seeds add a bitter almond aftertaste.</li>
+            </ul>
+            <p><strong>Yield:</strong> grapes contain 12–32% sugar (in Russia rarely above 14–15%), so 1 kg of quality raw material gives about 140 ml of 40% grape moonshine without added sugar. Up to 20% more alcohol is lost during the two distillations.</p>
+
+            <h2>Sugar, Yeast, and Water</h2>
+            <ul>
+                <li><strong>Sugar (optional):</strong> needed for sour grapes, especially if they did not fully ripen before frost. 1 kg gives up to 1.2 L of 40% moonshine but worsens berry organoleptics with molasses and kvass tones. Maximum: 1 kg sugar per 5 kg berries. Preferably replace with fructose or dextrose in the same amount.</li>
+                <li><strong>Yeast (optional):</strong> wild yeast work if berries are untreated and collected at least a day after rain in calm weather (do not wash them). For guaranteed stable fermentation, use cultured wine yeast (strain matched to juice color). Spirit yeast finishes in 4–7 days (wine needs up to 45) but loses part of the organoleptics. Fruit-wash yeast (with pectinase) is a compromise for poorly ripened grapes. Baker's yeast is not recommended.</li>
+                <li><strong>Water:</strong> needed for low-juice grapes and mandatory when adding sugar (total sugar content must not exceed 20%). Any non-chlorinated drinking water. Dilute the finished moonshine only with softened water.</li>
+            </ul>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Grape berries</strong> — 10 kg (weight with stems)</li>
+                    <li><strong>Sugar (optional)</strong> — up to 2 kg</li>
+                    <li><strong>Water</strong> — up to 0.5 L per 1 kg berries, plus 3 L per 1 kg sugar</li>
+                    <li><strong>Wine or spirit yeast (optional)</strong> — per package instructions</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Starter requires 3% of wash volume; baker's yeast (if used at all): 20 g dry or 100 g pressed per 1 kg of total sugar (in berries + added). Approximate calculations are sufficient.</em></p>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the berries.</strong> Remove berries from stems (ridges), discard unripe, rotten, and moldy ones. If fermentation will run on wild yeast, do not wash the grapes.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Crush the berries.</strong> Mash the berries by hand or by other means so that most seeds remain intact. Place the resulting mass into the fermentation vessel. Damaged seeds and stems would make the drink more chacha-like instead of a soft brandy style.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Dilute yeast per package instructions (if used).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Make the syrup.</strong> Mix water and sugar into a homogeneous syrup.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Combine.</strong> Pour the sugar syrup or clean water into the crushed grapes. Add yeast or starter. Stir until homogeneous. The amount of water depends on grape juiciness: the wort must be liquid and easy to mix, otherwise fermentation will be weak and filtration difficult. Fill the fermentation vessel to 80% of volume, leaving room for CO₂ and foam.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Seal.</strong> Close the wash with any airlock. If the neck diameter allows, a medical glove with a needle puncture in one finger works too.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Start fermentation.</strong> Move the wash to a dark room at 18–28 °C. Within 36 hours foam should appear and gas should escape from the airlock (glove inflates) — fermentation has started successfully.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Monitor the cap.</strong> Watch the wash for the first 3–4 days. If the floating pomace (pulp and skins) accumulates in a dense layer blocking the airlock, open and stir every 8–10 hours, pressing the pomace into the liquid. After a few days the solids settle and stop floating.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Confirm completion.</strong> Depending on yeast and sugar content, grape wash ferments for 5–45 days. Signs of completion: airlock releases less than 5 bubbles per minute or the glove deflates; no foam remains (sometimes small "islands"); a loose sediment layer at the bottom and the wort is lighter than at the start; the wash smells of alcohol and is not sweet.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Filter.</strong> Pour the grape wash into another vessel without touching the sediment (best through a tube, like siphoning gasoline). Filter through cheesecloth or a kitchen sieve to remove small particles that could scorch and spoil the berry organoleptics.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Set up the column or still in simple distillation mode: minimum column height (up to 60 cm) with no packing inside, dephlegmator off, leaving only a shell-and-tube or coil condenser and one bubble trap (if provided). In factory columns this mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>First distillation.</strong> Fill the pot 30–75% of volume. Run the first distillation at maximum equipment power: moonshine may flow warm and cloudy, but necessarily without steam. End when the strength in the stream drops below 20%, or run to near-zero strength if the extra time, energy, and water costs seem justified.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Determine the strength of the obtained moonshine. Calculate the amount of absolute (anhydrous) alcohol: volume in liters multiplied by strength in percent, divided by 100. Dilute with water to 18–20%. Do NOT clean with wood activated carbon or other methods, otherwise almost no aroma and taste will remain.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Second distillation — heads.</strong> Run the second distillation. After the pot liquid boils, adjust the power so the moonshine drips slowly and is cold, approximately like the water in the system. Collect the first 12% of liquid from the amount of pure alcohol separately. This technical fraction is the "head" — it contains a high concentration of harmful substances and is not suitable for drinking.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Smoothly raise the power: the distillate may drip fast or flow in a thin stream, but must remain cold. Collect the "body" (drinkable grape moonshine) until the strength in the stream drops below 43%. Then stop, or accumulate "tails" separately for future rectification on a column.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the finished grape moonshine with softened water to the desired strength — usually 40–45%. Pour into glass bottles or jars, seal tightly, and leave for at least 5 days in a cool place to stabilize the taste.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> To preserve the grape organoleptics, reassemble the column in pot still mode for the second run, disable the bubble trap, and add one section of copper packing (SPN or RPN) to remove sulfur compounds efficiently. Stainless packing is useless here and only slows the distillation.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">View checklist →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

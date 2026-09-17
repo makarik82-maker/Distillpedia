@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beet Moonshine (Kosorylovka) | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Beet moonshine recipe: proper wash preparation with boiling, double fractional distillation, and methanol control. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe h3 { color: #2c5f2d; font-size: 20px; margin: 22px 0 10px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Beet Moonshine</p>
+
+        <article class="recipe">
+            <h1> Beet Moonshine <span style="font-size:16px;color:#97bc62;">("Kosorylovka")</span></h1>
+            <p>In villages, beet moonshine is nicknamed "Kosorylovka" because its signature earthy-boiled aftertaste often makes tasters grimace. The intoxication is also reinforced by methanol and other impurities due to the high pectin content in beet pulp. However, if you know a few nuances of wash preparation and the correct distillation technology, the drink becomes indistinguishable from simple sugar moonshine. For a tincture base, it is even better to run the second distillation on a rectification or at least a brewing column.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Sugar</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">3–12 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~10 kg beets</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Right Beets</h2>
+            <ul>
+                <li><strong>Sugar beets</strong> (0.5–1.5 kg roots) are optimal: 16–20% (sometimes up to 25%) simple sugars. Theoretical yield: 192–300 ml of 40% moonshine per 1 kg, minus 15–20% practical losses.</li>
+                <li><strong>Table beets</strong> contain 3–8% sugar, <strong>feed beets</strong> 6–9%. Acceptable, but the effort is not always justified by the yield.</li>
+                <li>Too-small roots give pronounced skin tones; oversized ones are often watery.</li>
+                <li>The riper the beet, the less pectin it contains — the moonshine is safer even with a rough recipe error, though the hangover will be stronger.</li>
+                <li>Best processing time: late autumn or early winter. By spring, the sugar content of wilted pulp drops.</li>
+            </ul>
+
+            <div class="safety-box">
+                <strong>🛑 Foaming Warning:</strong> Due to the high concentration of proteins and fiber, beet wash foams heavily. Immediately after pitching the yeast, keep a foam suppressant at hand: plain cookies, vegetable oil, or butter. Do NOT ferment with pulp ("red scheme") — methanol and other harmful impurities increase significantly.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Beets</strong> (sugar, feed, or table) — 10 kg</li>
+                    <li><strong>Water</strong> — 10 L</li>
+                    <li><strong>Citric acid (optional)</strong> — 30 g (3 g per 1 L of water)</li>
+                    <li><strong>Yeast</strong> — 40 g dry or 200 g pressed baker's yeast, or spirit yeast per wash volume</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Spirit yeast is added according to wash volume; baker's yeast requires 10 g dry or 50 g pressed per 1 kg of calculated sugar in the beets. Approximate calculations are fine: exceeding the dose won't harm, but won't speed up fermentation either.</em></p>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the beets.</strong> Wash the beets, peel them (the skin increases foaming and adds an earthy taste), then remove blackened and rotten parts. Grate the pulp or mince it.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Mix with water.</strong> Place the beet mass in an enamel or stainless steel cooking pot. Pour in 75% of the recipe water and stir until homogeneous.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Boil.</strong> Bring to a boil and simmer on low heat for 60 minutes, stirring periodically so the wort does not scorch near the bottom and walls. Heat treatment extracts sugar from the cells (increasing yield), kills all pathogenic microflora, and partially breaks down protein, reducing foam.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Steep and strain.</strong> Turn off the heat, cover, and leave for 4 hours. Then strain through cheesecloth or any other method. Squeeze the pomace dry (it is no longer needed). Do NOT ferment with pulp — methanol and harmful impurities would increase.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Spirit yeast: per package instructions. Pressed baker's yeast: add straight from the fridge, kneaded with clean hands. Dry baker's yeast: sprinkle over sugar syrup (10 ml water and 1 g sugar per 1 g yeast) at 28–30 °C, wait 5 minutes, stir, then leave open in a dark place at room temperature for 10–15 minutes until stable foam appears.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Prepare the wash.</strong> Pour the filtered wort into the fermentation vessel, add citric acid (optional). Add the remaining 25% of non-boiled water (it contains oxygen needed for yeast reproduction) and stir. Fill the vessel to a maximum of 70% of volume, remembering the risk of heavy foam. Optionally, the wort can be reduced in the pot to a slightly thickened state and then diluted with raw water. Sugar content must not exceed 20% (check with a hydrometer, refractometer, or household wine meter).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Ferment.</strong> Pitch the activated yeast, seal with an airlock, and leave in a dark room at 18–26 °C. Check for foam 2–3 times a day. Fermentation lasts 3–12 days depending on yeast and temperature. Signs of readiness: the airlock bubbles less than 5 times per minute or the glove deflates; almost no foam remains on the surface; the wort has partially clarified with a loose sediment layer at the bottom; the wash smells of alcohol and is not sweet.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Fill the still.</strong> Drain the fermented wash off the sediment into the distillation pot, filling 30–70% of volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Set up the apparatus in simple distiller mode: column height up to 65 cm with no packing, leaving only one bubble trap (if provided by design) and a coil or direct-flow condenser. In columns, this mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill the beet wash at maximum equipment speed: the moonshine may flow warm and cloudy, but necessarily without steam. End the process when the strength in the stream drops below 20%. Running "to water" is acceptable if the small quantity gain justifies the extra energy and time.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Measure and calculate.</strong> Determine the distillate strength at 20 °C (or correct for another temperature in a moonshine calculator). Calculate the pure alcohol concentration: strength in percent multiplied by volume in liters, divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Dilute and clean.</strong> Dilute the raw spirit with water to 20%. It is desirable to clean with wood activated carbon, removing almost all fusel tones.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Second distillation.</strong> Run the second distillation: after boiling, reduce the power so the distillate drips into the receiving vessel in small drops and is cold, almost like the water in the apparatus.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Collect the heads.</strong> Separately collect the first 15% of output from the amount of absolute alcohol (calculated at step 11). This is the "head" — the initial fraction with a high content of harmful impurities, including methanol. It is not suitable for drinking.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Increase the heating power to achieve a thin stream or fast drops. Collect the "body" (drinking part) until the strength in the stream drops below 50%, then stop — accumulating tails in this case is not advisable.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the beet moonshine ("body") with softened water to drinking strength — 40–45%. Pour into glass bottles or jars, seal tightly, and leave for 5 days in a cool dark place to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> If you want the cleanest possible base for tinctures, run the second distillation on a rectification or brewing column instead of a pot still. The result will be a near-neutral spirit with minimum impurities.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">View checklist →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

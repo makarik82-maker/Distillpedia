@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pear Moonshine | Community Recipes | Home Brewing & Distilling Wiki</title>
+    <meta name="description" content="Pear moonshine recipe with and without sugar: wash preparation, double fractional distillation. One of the most aromatic distillates. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Pear Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍐 Pear Moonshine <span style="font-size:16px;color:#97bc62;">(with and without sugar)</span></h1>
+            <p>Pear moonshine is one of the most aromatic distillates, with notes of baked pear and honey-floral shades in the soft fruit taste. Below we consider a universal pear wash recipe: with or without sugar, and with different types of yeast. We will separately discuss the features of distillation.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–50 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~20 kg pears</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Right Pears</h2>
+            <p>Ripe pears of any variety and condition are suitable: non-marketable, bruised, windfall (collected from the ground), overripe, and long-stored. The strongest aroma of pear moonshine comes from Duchess, Williams, Clapp's Favorite, Bere Russian, Just Maria, Chizhovskaya, and other varieties with thick skin, as well as wild forest ones. Pear moonshine has no unified name. In Russian villages it is usually "Grushevka," sometimes with variety clarification: "Duchessovka," "Williamovka," etc. If you age the distillate in barrels, you get pear brandy.</p>
+            <p>You should limit unripe pears in the wash, as they contain pectin, which yeast converts to methanol. Although it is impossible to poison yourself with methanol from moonshine even with a gross error in distillation technology, it is more correct to minimize this harmful impurity already at the raw material preparation stage, since methanol not only worsens organoleptic properties but also intensifies hangover.</p>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Pears</strong> — 20 kg (weight of whole fruits)</li>
+                    <li><strong>Sugar (optional)</strong> — up to 250 g per 1 kg pears</li>
+                    <li><strong>Water</strong> — 0.5–1 L per 1 kg pears, plus 4 L per 1 kg sugar</li>
+                    <li><strong>Yeast (optional)</strong> — per label instructions</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast: 20 g dry or 100 g pressed per 1 kg of total sugar (natural + added). Approximate calculations are sufficient, as increased dosage won't harm but won't help fermentation either.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Pears contain 8–15% sugar depending on variety and ripeness. This means theoretically 96–180 ml of 40% pear moonshine per 1 kg of raw material, but in practice up to 20% of ethanol will be lost after double fractional distillation. Sugar increases the amount of distillate (1 kg per 1.2 L at 40%), but simultaneously reduces quality with kvas and molasses tones. If you have enough sweet fruit (from 20 kg), it is better to make pear moonshine without sugar, preserving rich organoleptics. Always discard the "heads" fraction — 15% in this recipe. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the pears.</strong> Remove leaves, "tails" and "tops," as well as darkened, mouldy, and rotten pulp parts. For fermentation on "wild" yeast, do not wash the fruit. Windfall must be rinsed under running water, otherwise unpleasant earthy aftertaste is possible.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Cut and clean.</strong> Cut each fruit in half, remove core and seeds (they give pronounced bitterness). Grate or otherwise crush the cleaned pears to a puree state.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Place in fermentation vessel.</strong> Put the pear mass in a wide-necked fermentation vessel.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add sugar and water.</strong> Dissolve sugar in water. Pour the resulting syrup (or just water) into the pears. Stir until homogeneous consistency. If the wash turned out thick, add more water. The must before fermentation should become liquid — easily stirrable by hand. Fill the fermentation vessel max 75% of volume, leaving room for foam and carbon dioxide.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Add yeast.</strong> Activate yeast per label instructions, then add them (or starter) to the must.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Start fermentation.</strong> Install any airlock on the neck. Leave pear wash in a dark room (or cover) at 18–28 °C. Fermentation should start within 36 hours — foam will appear, and the airlock will start bubbling (glove will at least slightly inflate). If this didn't happen, find the cause of fermentation absence and urgently fix the situation. Usually the problem is related to "wild" yeast or unsuitable temperature. Under the influence of oxygen, crushed pear pulp quickly darkens (oxidizes), which slightly worsens moonshine quality, so it is desirable to put the wash under airlock as early as possible.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Monitor early fermentation.</strong> Watch the vessel for the first 3–4 days so that floating pomace (pulp and skin particles) doesn't prevent gas exit from the airlock. If necessary, open and stir the wash, sinking pomace into the liquid. Short contact with air at the initial fermentation stage won't harm. When most pulp settles at the bottom, leave the wash alone (don't open).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> Depending on the yeast used, temperature, and sugar amount, pear wash ferments for 4–50 days. Signs of completion: no bubbles from airlock (less than 5 per minute) or deflated glove; minimal foam on surface (only small "islands" up to 3 cm in diameter remain); must clarification and layer of loose sediment; wash is not sweet and slightly bitter (yeast fermented all sugar).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the finished wash off sediment through a tube, then strain through cheesecloth to reliably remove pulp residues that could burn from high temperature.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Transfer to the still.</strong> Pour the wash into the still. Fill 30–75% of volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Assemble the apparatus or column in simple distiller mode: column height up to 60 cm with no packing inside, disable dephlegmator so only shell-and-tube cooler or coil remains in the system, it is advisable to leave one thump keg for splash protection. In store-bought columns this mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill the wash at maximum speed: distillate may come out warm and slightly cloudy, just no steam. Finish the process when the ABV in the stream drops below 25%. It is permissible to distill the wash "to water" if time and energy costs seem justified by a slight increase in quantity.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Measure and calculate.</strong> Measure the ABV of the resulting low wines at 20 °C, or make a correction for actual temperature in a moonshine calculator. Determine the amount of absolute (anhydrous) alcohol: ABV percentage multiplied by volume in litres divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Dilute.</strong> Dilute the low wines with water to 18–20%. Do not clean with wood charcoal or other methods, preserving rich organoleptics.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> Distill pear moonshine the second time. After the liquid in the still boils, adjust power so the distillate flows in small drops and is cold, approximately like the supplied water. Collect separately the first 15% of output from the amount of absolute alcohol (determined in step 13). This is the "heads" — the initial fraction with high concentration of harmful impurities.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Smoothly add heating power: moonshine may drip quickly or flow in a thin stream, but must remain cold. Collect the drinking fraction ("body") until the ABV in the stream drops below 43%. Then finish distillation or collect "tails" separately to rectify them on a column in the future.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">17</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute pear moonshine ("body") with softened water to desired drinking strength — 40–45%. Pour into glass containers, close tightly, and leave for at least 3 days to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> To preserve pear aroma and taste, it is recommended to assemble the column in simple distiller mode again for the second distillation. You can add one section of copper packing (RPN or SPN) to the column for more effective removal of sulfur impurities. Stainless steel packing will be useless and only slow down distillation.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Home Brewing & Distilling Wiki</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 HomeBrewWiki. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
