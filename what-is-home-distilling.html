@@ -1,185 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What is Home Distilling? | Essential Guides | Distillpedia Club</title>
-    <meta name="description" content="Introduction to home distilling: distillation first, brewing second. Terminology, still types, fractions and the beginner path.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #fff;
-            background-color: #234d23;
-            background-image: linear-gradient(rgba(15,35,15,0.72), rgba(15,35,15,0.84)), url('Pictures/What_is_Home_Distilling.png');
-            background-size: cover; background-position: center;
-            background-attachment: fixed; background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
-        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
-        .logo span { color: #97bc62; }
-        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
-        nav a:hover { background: rgba(255,255,255,0.15); }
-        .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
-        .breadcrumb a { color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
-        .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
-        .page-header h1 { color: #ffffff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
-        .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 800px; }
-        .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
-        .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
-        .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
-        .article p { margin-bottom: 14px; }
-        .article ul, .article ol { margin: 0 0 16px 24px; }
-        .article li { margin-bottom: 8px; }
-        .article a { color: #2c5f2d; font-weight: bold; }
-        .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
-        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
-        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
-        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
-        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
-        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
-        .next-card a { color: #2c5f2d; font-weight: bold; }
-        footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
-        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
-        footer h3 { color: #97bc62; margin-bottom: 15px; font-size: 18px; }
-        footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
-        footer a { color: #97bc62; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        .footer-links { display: flex; flex-direction: column; gap: 8px; }
-        @media (max-width: 768px) {
-            body { background-attachment: scroll; }
-            .logo { font-size: 24px; }
-            nav { margin-top: 15px; width: 100%; text-align: center; }
-            nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; }
-            .page-header h1 { font-size: 28px; }
-            .article { padding: 22px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Home Distilling? | Essential Guides | Distillpedia Club</title>
+<meta name="description" content="Introduction to home distilling: distillation first, brewing second. Still types, fractions, terminology and the beginner path.">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:95px; }
+body { font-family:'Segoe UI',Arial,sans-serif; line-height:1.6; color:#333; background-color:#234d23; background-image:linear-gradient(rgba(15,35,15,0.72),rgba(15,35,15,0.84)),url('Pictures/What_is_Home_Distilling.png'); background-size:cover; background-position:center; background-attachment:fixed; background-repeat:no-repeat; min-height:100vh; }
+.container { max-width:1600px; margin:0 auto; padding:20px 24px; }
+header { background:#2c5f2d; color:#fff; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,.2); position:sticky; top:0; z-index:100; }
+header .container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+.logo { font-size:32px; font-weight:bold; color:#fff; text-decoration:none; letter-spacing:.5px; }
+.logo span { color:#97bc62; }
+nav a { color:#fff; text-decoration:none; margin-left:15px; padding:8px 14px; border-radius:4px; transition:background .3s; font-weight:500; }
+nav a:hover { background:rgba(255,255,255,.15); }
+.breadcrumb { margin:20px 0 0; font-size:14px; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.6); }
+.breadcrumb a { color:#fff; }
+.page-header { padding:30px 0 20px; border-bottom:5px solid #97bc62; margin-bottom:30px; }
+.page-header h1 { color:#fff; font-size:36px; text-shadow:0 2px 10px rgba(0,0,0,.7); margin-bottom:8px; }
+.page-header p { color:#e9e9e9; text-shadow:0 1px 6px rgba(0,0,0,.7); max-width:900px; }
+.article { background:rgba(255,255,255,.95); border-radius:8px; padding:35px; box-shadow:0 4px 20px rgba(0,0,0,.25); color:#333; margin-bottom:40px; }
+.article h2 { color:#2c5f2d; font-size:26px; margin:28px 0 12px; border-bottom:2px solid #97bc62; padding-bottom:6px; }
+.article h3 { color:#2c5f2d; font-size:20px; margin:20px 0 10px; }
+.article p { margin-bottom:14px; }
+.article ul,.article ol { margin:0 0 16px 24px; }
+.article li { margin-bottom:8px; }
+.article a { color:#2c5f2d; font-weight:bold; }
+.legal-box { background:#fff3cd; border:1px solid #ffc107; color:#664d03; padding:16px 18px; border-radius:8px; margin:18px 0; }
+.safety-box { background:#fdecea; border-left:4px solid #c0392b; padding:16px 18px; border-radius:4px; margin:18px 0; }
+.tip-box { background:#e8f5e9; border-left:4px solid #2c5f2d; padding:14px 18px; border-radius:4px; margin:18px 0; }
+.next-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; margin-top:25px; }
+.next-card { background:#f4f9f0; border:1px solid #97bc62; border-radius:8px; padding:20px; }
+.next-card h3 { color:#2c5f2d; margin-bottom:8px; font-size:17px; }
+.next-card a { color:#2c5f2d; font-weight:bold; }
+footer { background:#2c3e2d; color:#e0e8d5; padding:40px 0; margin-top:60px; }
+footer .container { display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; }
+footer h3 { color:#97bc62; margin-bottom:12px; font-size:18px; }
+footer p { font-size:14px; line-height:1.6; max-width:400px; }
+footer a { color:#97bc62; text-decoration:none; }
+footer a:hover { text-decoration:underline; }
+.footer-links { display:flex; flex-direction:column; gap:8px; }
+@media (max-width:999px) {
+  html { scroll-padding-top:80px; }
+  header { padding:8px 0; }
+  header .container { padding:6px 10px; flex-direction:column; gap:4px; }
+  .logo { font-size:20px; line-height:1.2; }
+  nav { margin:0; width:100%; display:flex; justify-content:flex-start; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  nav::-webkit-scrollbar { display:none; }
+  nav a { margin:0 2px; padding:4px 10px; font-size:13px; line-height:1.2; white-space:nowrap; }
+  .container { padding:12px; }
+  .page-header h1 { font-size:26px; }
+  .article { padding:22px; }
+}
+</style>
 </head>
 <body>
+<header>
+  <div class="container">
+    <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+    <nav>
+      <a href="index.html#guides">Guides</a>
+      <a href="index.html#equipment">Equipment</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#distilling">Distilling</a>
+      <a href="index.html#tools">Tools</a>
+    </nav>
+  </div>
+</header>
 
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
-            <nav>
-                <a href="index.html#guides">Guides</a>
-                <a href="index.html#equipment">Equipment</a>
-                <a href="index.html#recipes">Recipes</a>
-                <a href="index.html#distilling">Distilling</a>
-                <a href="index.html#tools">Tools</a>
-            </nav>
-        </div>
-    </header>
+<div class="container">
+  <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#guides">Essential Guides</a> → What is Home Distilling?</p>
 
-    <div class="container">
+  <div class="page-header">
+    <h1>📖 What is Home Distilling?</h1>
+    <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
+  </div>
 
-        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#guides">Essential Guides</a> → What is Home Distilling?</p>
+  <article class="article">
+    <p><strong>Home distilling</strong> is the art and science of producing spirits — moonshine, brandy, whiskey, vodka — by fermenting sugar-rich raw materials and then separating alcohol through controlled evaporation and condensation. On this wiki distillation comes first: it is the skill that turns a simple fermented wash into a refined drink. Brewing (making the wash) is the essential second step that feeds your still.</p>
 
-        <div class="page-header">
-            <h1>📖 What is Home Distilling?</h1>
-            <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
-        </div>
+    <div class="legal-box">⚠️ <strong>Educational Purposes Only:</strong> distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws before starting.</div>
 
-        <article class="article">
-            <p><strong>Home distilling</strong> is the art and science of producing spirits — moonshine, brandy, whiskey, vodka — by fermenting sugar-rich raw materials and then separating alcohol through controlled evaporation and condensation. On this wiki, distillation comes first: it is the skill that turns a simple fermented wash into a refined drink. Brewing (making the wash) is the essential second step that feeds your still.</p>
+    <h2>Part 1: Distillation — the heart of moonshine</h2>
+    <h3>What is distillation?</h3>
+    <p>Distillation is a physical separation process based on different boiling points: ethanol boils at 78.3 °C, water at 100 °C. Heating the fermented wash vaporizes alcohol first; the vapor is then cooled and condensed back into liquid — this is your distillate.</p>
 
-            <div class="legal-box">
-                ⚠️ <strong>Educational Purposes Only:</strong> distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws before starting.
-            </div>
+    <h3>Types of stills</h3>
+    <ul>
+      <li><strong>Pot still (alembic):</strong> simple vessel + direct-flow condenser. Keeps maximum flavor and aroma — the right choice for fruit and grain distillates.</li>
+      <li><strong>Reflux / rectification column:</strong> vertical column with packing. Produces clean, high-proof neutral spirit — the right choice for vodka and tincture bases.</li>
+      <li><strong>Hybrid systems:</strong> pot still base with an adjustable column; flexibility for different spirit styles.</li>
+    </ul>
 
-            <h2>Part 1: Distillation — the heart of moonshine</h2>
-            <h3>What is distillation?</h3>
-            <p>Distillation is a physical separation process based on different boiling points: ethanol boils at 78.3 °C, water at 100 °C. Heating the fermented wash vaporizes alcohol first; the vapor is then cooled and condensed back into liquid — this is your distillate.</p>
+    <h3>The three fractions of every run</h3>
+    <ol>
+      <li><strong>Heads (foreshots):</strong> first 8–15% of pure alcohol. Contains methanol, acetone and other harmful volatiles. <strong>Never drink.</strong></li>
+      <li><strong>Hearts (body):</strong> the middle, drinkable fraction — your moonshine.</li>
+      <li><strong>Tails (feints):</strong> last fraction with fusel oils and water; redistil or discard.</li>
+    </ol>
+    <div class="safety-box">🛑 Double fractional distillation (two runs with proper cuts) is the single most important safety practice. It removes almost all harmful impurities even if other steps were imperfect.</div>
 
-            <h3>Types of stills</h3>
-            <ul>
-                <li><strong>Pot still (alembic):</strong> simple vessel + direct-flow condenser. Keeps maximum flavor and aroma — the right choice for fruit and grain distillates.</li>
-                <li><strong>Reflux / rectification column:</strong> vertical column with packing. Produces clean, high-proof neutral spirit — the right choice for vodka and tincture bases.</li>
-                <li><strong>Hybrid systems:</strong> pot still base with an adjustable column; flexibility for different styles.</li>
-            </ul>
+    <h2>Part 2: Brewing — making the wash</h2>
+    <p>Brewing is the biological stage: yeast converts sugars into ethanol and CO₂. The resulting liquid — the <strong>wash</strong> (or <strong>mash</strong> for grains) — is the raw material for your still. A poorly fermented wash produces a harsh distillate no matter how good your still is.</p>
+    <ul>
+      <li><strong>Sugar wash:</strong> sugar + water + yeast. Neutral base, beginner-friendly.</li>
+      <li><strong>Fruit / berry wash:</strong> natural fructose; aromatic brandy-style distillates.</li>
+      <li><strong>Grain wash:</strong> starch must first be converted to sugar (saccharification) with malt or enzymes.</li>
+      <li><strong>Honey, juice, jam washes:</strong> specialty bases with their own nuances.</li>
+    </ul>
+    <p>For the deep dive into yeast, temperature, pH and hydromodule see the <a href="fermentation-science.html">Fermentation Science</a> guide.</p>
 
-            <h3>The three fractions of every run</h3>
-            <ol>
-                <li><strong>Heads (foreshots):</strong> first 8–15% of pure alcohol. Contains methanol, acetone and other harmful volatiles. <strong>Never drink.</strong></li>
-                <li><strong>Hearts (body):</strong> the middle, drinkable fraction — your moonshine.</li>
-                <li><strong>Tails (feints):</strong> last fraction with fusel oils and water; redistil or discard.</li>
-            </ol>
-            <div class="safety-box">
-                🛑 Double fractional distillation (two runs with proper cuts) is the single most important safety practice. It removes almost all harmful impurities even if other steps were imperfect.
-            </div>
+    <h2>Essential terminology</h2>
+    <h3>Distillation terms</h3>
+    <ul>
+      <li><strong>ABV</strong> — alcohol by volume, %.</li>
+      <li><strong>Absolute (pure) alcohol</strong> — volume in litres × ABV% ÷ 100.</li>
+      <li><strong>Pot still mode</strong> — column assembled without packing and with the dephlegmator off.</li>
+      <li><strong>Thump keg (bubble trap)</strong> — splash protector; can also hold aromatics.</li>
+      <li><strong>Copper packing (SPN/RPN)</strong> — removes sulfur compounds; stainless packing does not.</li>
+    </ul>
+    <h3>Brewing terms</h3>
+    <ul>
+      <li><strong>Wash / mash</strong> — fermented liquid ready for distillation.</li>
+      <li><strong>Wort</strong> — sweet liquid before yeast is pitched.</li>
+      <li><strong>Hydromodule</strong> — sugar-to-water ratio (typically 1:4).</li>
+      <li><strong>Saccharification</strong> — converting starch to fermentable sugars (malt or enzymes).</li>
+      <li><strong>Airlock</strong> — lets CO₂ out, keeps oxygen and bacteria out.</li>
+    </ul>
 
-            <h2>Part 2: Brewing — making the wash</h2>
-            <p>Brewing is the biological stage: yeast converts sugars into ethanol and CO₂. The resulting liquid — the <strong>wash</strong> (or <strong>mash</strong> for grains) — is the raw material for your still. A poorly fermented wash produces a harsh distillate no matter how good your still is.</p>
-            <ul>
-                <li><strong>Sugar wash:</strong> sugar + water + yeast. Neutral base, beginner-friendly.</li>
-                <li><strong>Fruit / berry wash:</strong> natural fructose; aromatic brandy-style distillates.</li>
-                <li><strong>Grain wash:</strong> starch must first be converted to sugar (saccharification) with malt or enzymes.</li>
-                <li><strong>Honey, juice, jam washes:</strong> specialty bases with their own nuances.</li>
-            </ul>
-            <p>For the deep dive into yeast, temperature, pH and hydromodule, see the <a href="fermentation-science.html">Fermentation Science</a> guide.</p>
+    <h2>Getting started: the beginner path</h2>
+    <ol>
+      <li>Learn the safety rules — <a href="distillation-safety.html">Distillation Safety Guide</a>.</li>
+      <li>Assemble your kit — <a href="equipment-checklist.html">Equipment Checklist</a>.</li>
+      <li>Make your first sugar wash and distil it twice with proper cuts.</li>
+      <li>Move to fruit washes, then grain washes with saccharification.</li>
+      <li>Experiment: oak aging, vapor infusion, zero-proof distillates.</li>
+    </ol>
+    <div class="tip-box">💡 Do not chase speed. A calm, controlled fermentation plus two careful runs beats any “turbo” shortcut.</div>
 
-            <h2>Essential terminology</h2>
-            <h3>Distillation terms</h3>
-            <ul>
-                <li><strong>ABV</strong> — alcohol by volume, %.</li>
-                <li><strong>Absolute (pure) alcohol</strong> — volume in litres × ABV% ÷ 100.</li>
-                <li><strong>Pot still mode</strong> — column assembled without packing and with the dephlegmator off.</li>
-                <li><strong>Bryzgunos (thump keg / bubble trap)</strong> — splash protector; can also hold aromatics.</li>
-                <li><strong>Copper packing (SPN/RPN)</strong> — removes sulfur compounds; stainless packing does not.</li>
-            </ul>
-            <h3>Brewing terms</h3>
-            <ul>
-                <li><strong>Wash / mash</strong> — fermented liquid ready for distillation.</li>
-                <li><strong>Wort</strong> — sweet liquid before yeast is pitched.</li>
-                <li><strong>Hydromodule</strong> — sugar-to-water ratio (typically 1:4).</li>
-                <li><strong>Saccharification</strong> — converting starch to fermentable sugars (malt or enzymes).</li>
-                <li><strong>Airlock</strong> — lets CO₂ out, keeps oxygen and bacteria out.</li>
-            </ul>
-
-            <h2>Getting started: the beginner path</h2>
-            <ol>
-                <li>Learn the safety rules — <a href="distillation-safety.html">Distillation Safety Guide</a>.</li>
-                <li>Assemble your kit — <a href="equipment-checklist.html">Equipment Checklist</a>.</li>
-                <li>Make your first sugar wash and distil it twice with proper cuts.</li>
-                <li>Move to fruit washes, then grain washes with saccharification.</li>
-                <li>Experiment: oak aging, vapor infusion, zero-proof distillates.</li>
-            </ol>
-            <div class="tip-box">
-                💡 Do not chase speed. A fast wash accumulates more impurities; a calm, controlled fermentation plus two careful runs beats any "turbo" shortcut.
-            </div>
-
-            <div class="next-cards">
-                <div class="next-card"><h3>🛠️ Equipment Checklist</h3><p>Stills, fermenters, measuring tools, safety gear.</p><a href="equipment-checklist.html">View checklist →</a></div>
-                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, pressure, materials.</p><a href="distillation-safety.html">Read safety guide →</a></div>
-                <div class="next-card"><h3>🧫 Fermentation Science</h3><p>Yeast, temperature, pH, hydromodule, troubleshooting.</p><a href="fermentation-science.html">Learn the science →</a></div>
-                <div class="next-card"><h3>🍺 All Recipes</h3><p>50+ community recipes by category.</p><a href="index.html#recipes">Browse recipes →</a></div>
-            </div>
-        </article>
-
+    <div class="next-cards">
+      <div class="next-card"><h3>🛠️ Equipment Checklist</h3><p>Stills, fermenters, measuring tools, safety gear.</p><a href="equipment-checklist.html">View checklist →</a></div>
+      <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, pressure, materials.</p><a href="distillation-safety.html">Read safety guide →</a></div>
+      <div class="next-card"><h3>🧫 Fermentation Science</h3><p>Yeast, temperature, pH, hydromodule.</p><a href="fermentation-science.html">Learn the science →</a></div>
+      <div class="next-card"><h3>🍺 All Recipes</h3><p>53 community recipes by category.</p><a href="index.html#recipes">Browse recipes →</a></div>
     </div>
+  </article>
+</div>
 
-    <footer>
-        <div class="container">
-            <div>
-                <h3>Distillpedia Club</h3>
-                <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
-            </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <a href="index.html#guides">Essential Guides</a>
-                <a href="index.html#recipes">All Recipes</a>
-                <a href="distillation-safety.html">Safety Rules</a>
-                <a href="equipment-checklist.html">Equipment</a>
-            </div>
-            <div>
-                <h3>Contact</h3>
-                <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
-                <p style="margin-top: 15px; font-size: 12px; color: #8a9a8b;">© 2026 Distillpedia Club. All rights reserved.<br>Content is for educational purposes only.</p>
-            </div>
-        </div>
-    </footer>
-
+<footer>
+  <div class="container">
+    <div>
+      <h3>Distillpedia Club</h3>
+      <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="index.html#guides">Essential Guides</a>
+      <a href="index.html#recipes">All Recipes</a>
+      <a href="distillation-safety.html">Safety Rules</a>
+      <a href="equipment-checklist.html">Equipment</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+      <p style="margin-top:12px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved.<br>Content is for educational purposes only.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
