@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oat Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Oat moonshine recipe (grain, groats, flour or hercules flakes): hot malt saccharification, fermentation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Oat Moonshine</p>
+
+        <article class="recipe">
+            <h1>🌾 Oat Moonshine <span style="font-size:16px;color:#97bc62;">(Grain, Groats, Flour or Hercules Flakes)</span></h1>
+            <p>Oat moonshine is remembered for its soft taste and barely perceptible grain aroma. The technology is standard, but the yield is lower than from barley and wheat. Regardless of condition (grain, groats, flour, flakes), oats contain starch, which must be broken down into sugar before fermentation, otherwise the wash will not ferment — yeast can only convert simple sugars into alcohol.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Grain</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">3–10 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~4 kg oats + 1 kg malt</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Theory</h2>
+            <p>There are two ways to break down starch: with malt (classic hot saccharification) and with enzymes (cold saccharification). Each method has advantages and disadvantages. This recipe uses the classic method — saccharifying starch with malt (sprouted grain).</p>
+            <p>The theoretical yield from 1 kg of oats is 0.672 liters of 40° moonshine. The distillate obtained from malt must also be taken into account — 1 kg of barley malt additionally increases yield by 0.84 liters (40% ABV). Adding sugar to the wash allows increasing the quantity of the drink even more — 1 kg gives 1.2 liters of 40° distillate, but sugar makes the aroma and taste of oat moonshine less bright, so it is better to get by with only grain (flour, flakes) and malt. Due to losses during distillation, the real yield of oat moonshine will be 10–15% below theoretical values.</p>
+            <p>The choice of malt is not принципиально important: store-bought or homemade, green or dried will do; besides barley, rye or wheat can be used, or even part of the oats can be sprouted at home. Optimal proportion — 4:1 (1 part malt per 4 parts non-sprouted grain, groats or flour). In total, 5 liters of water should come per 1 kg of grain raw material.</p>
+
+            <div class="safety-box">
+                <strong>🛑 Temperature Control:</strong> It is very important to adhere to the temperature values specified in the recipe, otherwise the oats will not saccharify. An electronic thermometer is desirable for control. During saccharification the temperature must not exceed 72 °C even for a short time, otherwise enzymes are irreversibly destroyed; too low a temperature reduces saccharification efficiency many times over.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Oats</strong> (whole, groats, flour, hercules flakes) — 4 kg</li>
+                    <li><strong>Malt</strong> (preferably barley) — 1 kg</li>
+                    <li><strong>Sugar</strong> — 0.5–1 kg (optional)</li>
+                    <li><strong>Water</strong> — 25 liters (plus 4 liters per 1 kg of sugar)</li>
+                    <li><strong>Yeast</strong> — 20 g dry or 100 g pressed</li>
+                </ul>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Grind.</strong> Grind oats and malt to coarse groats.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Heat water and add grain.</strong> In a cooking vessel, heat water (4 liters per 1 kg of raw material and malt) to +50–55 °C. Slowly add the groats (flour), without using malt yet. Stir so the mass does not form lumps. The cooking vessel can be filled to a maximum of 70%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Cook the porridge.</strong> Heat the mixture to +60 °C, cook for 15 minutes, stirring periodically, then bring to a boil and cook for 50–90 minutes until a homogeneous porridge-like mass is obtained. Groats take the longest to cook; flour and hercules flakes take less.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add malt.</strong> Cool the finished porridge to +63–68 °C. Gradually add the malt, constantly stirring. It is very important that no lumps appear.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Saccharification.</strong> Heat the porridge to +63–68 °C, cover the pot with a lid. Maintain the specified temperature for 2 hours, periodically heating the vessel. During the first hour, stir twice at 30-minute intervals. After successful saccharification the porridge must become sweet.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Add sugar and water.</strong> Add sugar (optional) and the remaining water (1 liter per 1 kg of grain raw material and 4 liters per 1 kg of sugar) to the finished wort. Stir. It is desirable that the water be very cold.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Cool quickly.</strong> Cool the wort to +25–28 °C as quickly as possible, for example by immersing the pot in a bath with cold water or ice.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Pitch yeast and ferment.</strong> Pour the wort into the fermentation vessel. Add yeast activated per the label instructions. Install any water lock design on the vessel neck (a glove with a hole in one finger is also possible). Place the wash in a dark place at room temperature.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Confirm completion.</strong> Depending on yeast and temperature, oat (hercules) wash ferments 3–10 days, then becomes bitter to taste without sweet notes, the water lock stops releasing gas (glove deflates), and a sediment layer appears at the bottom. This means you can proceed to distillation.</div>
+            </div>
+
+            <h2>Distillation</h2>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Filter.</strong> Drain the fermented oat wash off the sediment, otherwise the solid part may scorch during heating, spoiling the taste. Filtering can be skipped only during steam distillation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill the wash at maximum speed without separating into fractions. End collection when the strength in the stream drops below 20%. The drink may come out cloudy — this is normal.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Calculate.</strong> Determine the amount of pure alcohol — strength in percent multiplied by volume in liters, divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Second distillation — heads.</strong> Dilute the oat moonshine with water to 18–20% strength and distill again. Collect the first 10–12% of output from the amount of pure alcohol separately. This harmful fraction ("heads") can only be used for technical needs.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Collect the main product ("body") until the strength in the stream drops below 45%, then end collection or collect "tails" separately.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the obtained oat moonshine ("body") to drinking strength — 40–45%, pour into glass vessels and seal tightly. Before tasting, leave in the refrigerator for 2–3 days to stabilize the taste after mixing with water.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Oat moonshine has a lower yield than barley or wheat, but its soft taste and delicate grain aroma make it worth the effort. Do not add sugar if you want to preserve the pure oat profile.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🌾 Malt Moonshine</h3><p>The classic base technique for whiskey-style spirits.</p><a href="Recipes/recipe-010-malt-moonshine.html">View recipe →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

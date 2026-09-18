@@ -1,1 +1,74 @@
-(recipe-001-apricot-schnapps.html, recipe-002-mulberry-tutovka.html, recipe-003-barley-green-malt.html, recipe-004-sugar-moonshine.html, recipe-005-plum-moonshine.html, recipe-006-slivovitz.html, recipe-007-pomace-moonshine.html, recipe-008-fructose-dextrose-moonshine.html, recipe-009-dried-fruit-moonshine.html, recipe-010-malt-moonshine.html, recipe-011-apple-moonshine.html, recipe-012-sweet-cherry-moonshine.html, recipe-013-candy-moonshine.html, recipe-014-beer-moonshine.html, recipe-015-tomato-moonshine.html, recipe-016-currant-moonshine.html, recipe-017-rowan-moonshine.html, recipe-018-compote-moonshine.html, recipe-019-honey-moonshine.html, recipe-020-potato-moonshine.html, recipe-023-watermelon-moonshine.html, recipe-024-banana-moonshine.html, recipe-025-isabella-grape-moonshine.html, recipe-026-pear-moonshine.html, recipe-027-jam-moonshine.html, recipe-028-bread-moonshine.html, recipe-029-wheat-moonshine.html, recipe-030-cherry-plum-moonshine.html, recipe-031-apricot-moonshine.html, recipe-032-pesakhovka.html, recipe-033-bread-vodka.html, recipe-034-kirschwasser.html, recipe-035-rice-moonshine.html, what-is-home-brewing.html)
+```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
+# Dependencies
+.venv/
+venv/
+node_modules/
+dist/
+build/
+target/
+.gradle/
+.mypy_cache/
+.pytest_cache/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+```

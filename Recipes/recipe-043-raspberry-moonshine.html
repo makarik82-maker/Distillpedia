@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Moonshine (Framboise) | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Raspberry moonshine recipe (French Framboise): with yeast or wild, double fractional distillation preserving berry organoleptics. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe h3 { color: #2c5f2d; font-size: 20px; margin: 22px 0 10px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Raspberry Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍇 Raspberry Moonshine <span style="font-size:16px;color:#97bc62;">(Framboise, with or without yeast)</span></h1>
+            <p>Raspberry moonshine has a fragrant aroma and a soft berry taste with a barely noticeable astringency in the aftertaste. In France, raspberry distillate is called Framboise; it is not aged in barrels and is considered elite alcohol, since the limited amount of raw material does not allow wide industrial production. The wash preparation recipe has some features, and during distillation it is important to separate fractions competently, otherwise the valuable organoleptic properties of the berries will be lost.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–50 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~5 kg raspberries</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Ingredients</h2>
+            <h3>Raspberries</h3>
+            <p>Often substandard raspberries are processed into moonshine: overripe, bruised, slightly fermented (without vinegar smell), and even excess frozen ones. Different varieties can be mixed in one wash, for example red and yellow. If fermentation will be on "wild" or wine yeast, it is important that as few moldy and rotten berries as possible remain; it is desirable to reject all spoiled ones. From high-quality raw material, for example collected in the forest or at the country house, it is better to make raspberry wine.</p>
+            <p><strong>Yield:</strong> depending on variety and ripeness, raspberry berries contain on average 4–8% natural sugars, therefore to prepare 1 L of 40° raspberry moonshine 11–21 kg of berries are required, and this without accounting for 14–20% alcohol losses during double fractional distillation. Such an amount of raw material is available only to some country gardeners; most home distillers increase moonshine yield by adding sugar: 1 kg gives an additional 1.2 L of 40% strength, but it is important not to overdo it, otherwise the thin raspberry organoleptics will not be preserved.</p>
+            <h3>Sugar</h3>
+            <p>Beet sugar worsens the distillate with a kvass taste, and cane sugar with molasses tones, so instead of sugar it is desirable to use neutral fructose or dextrose in the same amount. These substances without their own smell and taste only "blur" the raspberry notes of the moonshine with pure alcohol. Practically established: up to 200 g of sugar (fructose, dextrose) per 1 kg of berries almost does not affect quality; 250–600 g acceptably worsens it; but after 650–700 g berry tones in the drink are almost absent.</p>
+            <h3>Yeast</h3>
+            <p>The highest quality raspberry wash is obtained on "wild" or "cultured" wine yeast: during long fermentation these types form complex esters that soften the moonshine taste. If the berries were not treated with preservatives and collected at least 36 hours after rain, you can try to start fermentation on "wild" yeast living on the raspberry surface, but to guarantee the result it is better to use "cultured" wine yeast for red juice. Another acceptable option is berry starter. Raspberry wash on spirit yeast finishes in 4–7 days (wine needs up to 50), but the aroma and taste of the moonshine will not be as rich. A compromise solution between wine and spirit is fruit-wash yeast — their enzymes break down pectin, releasing less methanol, and fermentation lasts 6–10 days. The most unsuitable — baker's yeast: they worsen the moonshine with inappropriate bread and kvass tones, giving no advantages.</p>
+            <h3>Water</h3>
+            <p>Any drinking water is suitable for preparing the wash, preferably non-chlorinated, because chlorine suppresses yeast, significantly slowing fermentation. Chlorinated tap water should be settled for 2–3 days in an open pot or bucket so that chlorine partially evaporates. Raspberry moonshine must be diluted after double fractional distillation with softened bottled water — with low content of heavy metal salts. The taste depends on water quality by about 40%. Distilled and boiled water does not contain microelements, so it is rarely used in moonshine making.</p>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Raspberries</strong> — 5 kg</li>
+                    <li><strong>Sugar</strong> — 1–3 kg (up to 600 g per 1 kg of berries)</li>
+                    <li><strong>Water</strong> — 14 L (1 L per 2.5 kg of berries, plus 4 L per 1 kg of sugar)</li>
+                    <li><strong>Wine yeast or starter (optional)</strong> — for 20 L of wort</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast amount: 10 g dry or 50 g pressed per 1 kg of sugar (sum of natural + added).</em></p>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Crush gently.</strong> Mash the berries by hand or by any other method that does not damage the seeds, otherwise a bitter taste with almond tones may appear in the finished moonshine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Make syrup.</strong> Dilute sugar in water to obtain a homogeneous syrup.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Activate yeast.</strong> Activate yeast per manufacturer's instructions.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Combine.</strong> Mix raspberries, sugar syrup, and yeast in the fermentation vessel. Fill to a maximum of 75% of volume, leaving space for carbon dioxide and foam.</div>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Mold Rescue:</strong> If mold is visible on raspberries but the berries have lost their shape and spoiled ones can no longer be rejected, after combining with water and sugar it is desirable to heat the raspberry wort to 70 °C and cook for 15 minutes, stirring periodically, to destroy the mold fungus. After cooling to 28–30 °C, add yeast, otherwise the wort will not ferment. Boiling is undesirable, since high temperature worsens berry organoleptics with jam tones.
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Seal and ferment.</strong> Install an airlock of any design on the neck (see photo). Transfer the vessel to a dark room or cover with dense fabric, leave at 18–28 °C. Within 8–20 hours signs of fermentation should appear: hissing, foam, and gas release from the water lock (glove starts inflating). This means the process is going normally.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Monitor the cap.</strong> For the first 5 days, carefully monitor the wash so that the dense "cap" of pulp does not impede carbon dioxide release. If necessary, open the vessel and stir the wort, destroying the layer on the surface. Short contact with oxygen will not harm.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Confirm completion.</strong> Depending on yeast type and temperature, raspberry wash ferments for 4–50 days. The process is complete when: gas release from the airlock has stopped (glove deflated); the wort became lighter, and a layer of loose sediment accumulated at the bottom; foam disappeared from the surface; the opened wash smells of alcohol and is not sweet (yeast converted all the sugar).</div>
+            </div>
+
+            <h2>Distillation</h2>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Filter.</strong> Drain the fermented wash from the sediment. Preferably through a tube like gasoline from a tank. Strain through a kitchen sieve or cheesecloth, removing berry pulp residues that could scorch during distillation, spoiling the moonshine with bitterness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Assemble equipment.</strong> Assemble the moonshine apparatus in simple distiller mode: minimal column height with no packing inside, direct-flow condenser (shell-and-tube or coil), dephlegmator and other units off, leave only one bubble trap or barboter (if available). In factory columns the suitable mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>First distillation.</strong> Pour the filtered raspberry wash into the distillation pot, filling 30–70% of volume so that a sufficient steam zone forms. Distill the wash the first time at maximum speed: distillate may flow warm but without steam. End the process when the strength in the stream drops below 25%. If it seems advisable in terms of time and energy costs, you can collect raw spirit almost to water.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Calculate.</strong> Measure the strength of the resulting drink at 20 °C. Calculate the amount of anhydrous (absolute) alcohol: strength in percent multiplied by volume in liters, then divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Reassemble.</strong> Assemble the apparatus again in distiller mode: column height up to 60 cm with only a direct-flow condenser (no dephlegmator). You can add one section of copper SPN or RPN packing to the column for better removal of sulfur impurities. Stainless packing is useless and only reduces distillation speed.</div>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 No Full Columns:</strong> Distillation on a fully assembled brewing column is undesirable because it levels the organoleptics of raspberry moonshine, leaving only an alcohol taste. The further instructions are designed for conventional moonshine apparatuses and columns in pot still mode. The drink also must not be cleaned with wood activated charcoal or other methods.
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Dilute and redistill.</strong> Dilute the moonshine with water to 18–20% strength and make the second fractional distillation: after the liquid in the pot boils, adjust the power so that moonshine flows in small drops and is cold.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Collect the heads.</strong> Collect the first 14–15% of pure alcohol (result of calculation at step 11) in a separate vessel. This technical fraction with an unpleasant smell is called the "head"; it contains a high concentration of harmful impurities, so it is not suitable for drinking.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Gradually increase the power so that moonshine starts dripping more intensively or flows in a thin stream but remains cold like the water supplied to the apparatus. Collect the "body" (drinkable part) until the strength in the stream drops below 45%. Then turn off the equipment or collect "tails" separately.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the finished raspberry moonshine ("body") with soft water to drinking strength — 40–45% vol., pour into glass bottles (jars) and close tightly. Leave for at least 3 days (better a week) in a cool dark place to stabilize — completion of all chemical reactions. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Framboise is never aged in barrels — its value lies in the pure, fragrant berry profile. Preserve it by avoiding full columns, charcoal cleaning, and excessive sugar.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🍓 Strawberry Moonshine</h3><p>A similar delicate-berry technique.</p><a href="Recipes/recipe-042-strawberry-moonshine.html">View recipe →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

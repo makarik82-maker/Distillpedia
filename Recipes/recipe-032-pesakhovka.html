@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesakhovka (Jewish Raisin Vodka) | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Pesakhovka recipe: traditional Jewish raisin vodka with caramel aroma, soft fruit taste, and dried fruit notes. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Pesakhovka</p>
+
+        <article class="recipe">
+            <h1>🍇 Pesakhovka <span style="font-size:16px;color:#97bc62;">(Jewish Raisin Vodka)</span></h1>
+            <p>Pesakhovka is an alcoholic beverage with 38-45 degrees ABV, featuring a subtle caramel aroma, soft fruit taste, and dried fruit notes in the aftertaste. Pesakhovka is considered vodka due to its transparent color and high strength, but in fact it is raisin moonshine, since the technology involves distillation rather than rectification. Making homemade Pesakhovka has several features of working with raisins, without knowledge of which the wash is unlikely to ferment.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">25–50 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~2 kg raisins</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Historical Background</h2>
+            <p>Pesakhovka was invented by European Jews (Ashkenazi) around the 18th century. The Torah forbids righteous Jews from drinking any alcohol on Pesach (Christian Easter) except grape-based. However, Pesach is celebrated in spring, when there are no fresh grapes in Europe, and imported ones are too expensive.</p>
+            <p>Even on the holiday, poor Jews could not afford cognac — the permitted strong alcohol — and to not violate religious dogmas, they started making moonshine from raisins — dried grapes available year-round, brought from the Middle East.</p>
+            <p>Pesakhovka differs from grape brandy with caramel and candied dried fruit tones, so it is considered a separate alcoholic beverage. It is important not to confuse Pesakhovka with Karazyum — a raisin tincture on strong alcohol. Pesakhovka is transparent, while Karazyum has a dark cognac color due to roasted raisins (the tincture itself is not aged in barrels).</p>
+
+            <h2>Choosing the Right Raisins</h2>
+            <p>For Pesakhovka, dry raisins are required (berries don't stick together) with wrinkled skin, necessarily without white mold spots, mustiness, or smoky smell. Shiny and oily berries are too heavily treated with preservatives that inhibit yeast and slow fermentation.</p>
+            <p>Pesakhovka taste depends on raisin type: dark-based gives better caramel tones, light berries optimally reveal fruit notes, and raisins with seeds give a light almond aftertaste. Different raisin types can be combined to create a beverage with unique organoleptic properties.</p>
+            <p><strong>Yield:</strong> Raisins contain approximately 60% sugar, meaning theoretical yield from 1 kg of raw material is about 720 ml of 40-degree moonshine. In practice, losses will be up to 15% during fermentation and distillation.</p>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Raisins</strong> — 2 kg</li>
+                    <li><strong>Water (for wash)</strong> — 10 L</li>
+                    <li><strong>Sugar (for yeast starter)</strong> — 100 g</li>
+                    <li><strong>Wine yeast</strong> — per manufacturer's instructions for 12 L of wash</li>
+                </ul>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Classic Pesakhovka is made on "wild" yeast living on raisin surface. However, nowadays it is almost impossible to buy untreated berries with active yeast, so store-bought raisins should preferably be fermented on cultural wine yeast (with spirit or especially baker's yeast you'll get a completely different beverage). With homemade raisins you can follow traditional technology: prepare a starter according to the first step of the recipe. Always discard the "heads" fraction during distillation — 10% in this recipe. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare yeast starter (3 days before working with main raw material).</strong> Place 200 g unwashed raisins, 100 g sugar, and 500 ml warm water (25-30 °C) in a liter jar. Stir until sugar completely dissolves in liquid. Close with lid and leave for 2 hours at room temperature. Remove raisins from jar (don't pour out liquid), grind berries through meat grinder or blender. Return resulting mass to jar, add 5 unwashed raisins and stir. Tie jar neck with cheesecloth, leave vessel for 3 days in a dark place at room temperature. When fermentation signs appear (stable foam, hissing, and light sour smell), proceed to next stage. <strong>Warning:</strong> Starter is appropriate for homemade raisins untreated with preservatives. Wild yeast on store-bought berries won't activate in 80% of cases, so it's preferable to use wine yeast, skipping starter preparation. The replacement of wild yeast with wine doesn't affect finished Pesakhovka taste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Soak the raisins.</strong> Pour all raisins with room temperature water and leave for 3 hours in an open container. Stir every 30 minutes. Filter soaked berries, then rinse in running water. Soaking removes sulfur dioxide (preservative E220) used to treat dried fruits for long-term storage. If this preservative remains on raisins in significant quantity, finished Pesakhovka will have a sharp hydrogen sulfide smell. Homemade raisins are enough to leave in water for 60 minutes so softened berries are easier to grind. Sometimes during soaking an oily film of preservatives and glycerin appears on water surface. In this case, change water every 60 minutes until film disappears, then rinse berries well in running water.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Grind and prepare wash.</strong> Grind moist raisins through meat grinder or blender, then place in fermentation vessel. Add water (5 L per 1 kg raisins), add starter or wine yeast (per package instructions), stir. Fill vessel maximum 75% of volume, leaving room for foam and carbon dioxide.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Seal and ferment.</strong> Install airlock of any design on fermentation vessel neck (medical glove with a hole in one finger works). Move wash to a dark place with stable temperature 18-27 °C. For the first few days, a cap of pulp and skin may accumulate on the surface. This dense mass should be stirred 1-2 times per day so it doesn't block the airlock tube. Actively fermenting wash won't sour with brief oxygen access. At least once every couple of days, carefully inspect wash for mold. Raisin wash ferments on red scheme (without filtering solid raw material residues), so it's susceptible to pathogenic microorganism contamination.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> Depending on degree of berry treatment with preservatives, yeast, and temperature, raisin wash ferments for 25-50 days. Signs of completed fermentation: airlock stopped releasing gas (glove deflated), wash became lighter, and wash is not sweet to taste (yeast converted all sugar in raisins to alcohol).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon fermented wash off sediment, then filter through cheesecloth to remove residues that may burn during distillation, spoiling homemade Pesakhovka with bitter aftertaste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>First distillation.</strong> Filtered wash should be distilled first time at maximum speed. Moonshine may come out warm, but necessarily without steam. Finish collection when ABV in stream drops below 25 degrees. Output will be slightly cloudy, this is normal. Do not clean the resulting distillate with charcoal or other methods, otherwise aroma and taste will disappear.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Measure and calculate.</strong> Measure ABV of raisin moonshine. Calculate amount of pure alcohol: ABV percentage multiplied by volume in litres, divided by 100. Calculations of pure alcohol and water for dilution, as well as hydrometer temperature corrections, can be done in the moonshine calculator.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Dilute and second distillation.</strong> Dilute first distillation moonshine with water to 18-20% and distill again. Distillate should come out in a thin stream or drops, being cold or room temperature, but not warm.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Collect the heads.</strong> Collect separately the first 10% of output from the amount of pure alcohol. This is the "heads" — harmful fraction that can only be used for technical purposes. Finish collecting "body" when ABV in stream drops below 42 degrees (inaccurate folk method check — moonshine stopped burning in a spoon). Then turn off heat or collect "tails" in a separate container to add them to a new batch of wash before distillation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute finished homemade Pesakhovka with water to drinking strength — 40-45%, pour into glass containers and seal tightly. Before tasting, leave for 2-3 days in a cool place for taste stabilization.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> The described distillation methodology is designed for a moonshine apparatus with minimal strengthening (thump keg height), so it doesn't always suit columns. In the case of a column, you can twice distill the wash in pot still mode according to this recipe, or clarify distillation nuances with the equipment manufacturer.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Distillpedia Club</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

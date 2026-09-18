@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dried Fruit Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Dried fruit moonshine recipe: raisins, apricots, prunes, dates. Wash preparation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Dried Fruit Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍇 Dried Fruit Moonshine <span style="font-size:16px;color:#97bc62;">(Raisins, Apricots, Prunes, Dates)</span></h1>
+            <p>Dried fruit moonshine has a pleasant aroma with compote tones and a soft fruit flavor. The organoleptic profile depends on the dried fruits used or their blend. This recipe covers the key nuances of working with dried fruit wash.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–45 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~3 kg dried fruit</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Dried Fruit Flavor Profiles</h2>
+            <ul>
+                <li><strong>Raisins:</strong> grape and fruit-cognac tones</li>
+                <li><strong>Dried apricots:</strong> apricot-honey aftertaste, slight acidity</li>
+                <li><strong>Prunes:</strong> smoky, woody, and smoked notes</li>
+                <li><strong>Dried apples:</strong> compote flavor</li>
+                <li><strong>Dried pears:</strong> floral profile and duchess pear notes (some varieties only)</li>
+                <li><strong>Dates:</strong> caramel-honey background, subtle oiliness</li>
+                <li><strong>Pits:</strong> roasted almond tones</li>
+            </ul>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>3 kg dried fruit</strong> — any type or blend (raisins, apricots, prunes, dates, apples, pears)</li>
+                    <li><strong>Water:</strong> 6 L per 1 kg dried fruit, plus 4 L per 1 kg sugar</li>
+                    <li><strong>Sugar (optional):</strong> up to 0.5 kg per 1 kg dried fruit</li>
+                    <li><strong>Citric acid (optional):</strong> 3 g per 1 L water</li>
+                    <li><strong>Yeast:</strong> wine yeast recommended, per package instructions</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Sugar content varies: raisins 60–70%, apricots 45–60%, prunes 35–45%, dates 65–75%. Theoretical yield: 420–900 ml of 40% moonshine per 1 kg dried fruit.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Safety reminder:</strong> Store-bought dried fruit is often treated with sulfur dioxide (E220) and other preservatives that inhibit fermentation. Always soak and rinse thoroughly. Discard the "heads" fraction during distillation. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Soak and rinse.</strong> Soak store-bought dried fruit in room-temperature water for 3 hours, stirring every 30 minutes. Drain the liquid and rinse thoroughly under cold running water to remove sulfur dioxide (E220) and other oily preservatives that inhibit fermentation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Grind the fruit.</strong> Blend pitted dried fruit in a blender, meat grinder, or food processor. The finer the grind, the easier it is for yeast to convert sugar to alcohol. For fruit with pits (if they cannot be removed), cut into pieces without damaging the hard pit shell — otherwise the moonshine will be bitter with pronounced almond tones.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Cook the wash.</strong> Place the dried fruit in a large pot. Add sugar and citric acid, then add 4 L water per 1 kg total weight. Stir to combine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Boil and simmer.</strong> Bring to a boil, then simmer on low heat for 20 minutes, stirring occasionally to prevent the pulp from burning on the bottom and sides. Thermal treatment kills pathogens, breaks down cell structure to release sugar, and enhances extraction of dry matter for better aroma and flavor.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Cool the wash.</strong> Turn off the heat, cover, and cool to a temperature comfortable for yeast — below 30 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Prepare yeast according to manufacturer's instructions.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the cooled wash into the fermentation vessel. Add 2 L of unboiled water per 1 kg dried fruit and stir until homogeneous. Fill the vessel no more than 75% of volume. The "raw" water provides oxygen and micronutrients that yeast needs for initial reproduction.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Pitch the yeast and seal.</strong> Add the yeast or starter. Seal with an airlock and move to a dark place with stable temperature 18–28 °C. Signs of fermentation should appear within 24 hours: hissing, foam, and bubbles from the airlock.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Monitor early fermentation.</strong> For the first 3–4 days, check at least every 12 hours to ensure floating pulp doesn't block the airlock. Open and stir if needed, breaking up the dense pomace layer. After some time, most pulp will settle at the bottom — then leave the vessel alone.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> On spirit or baker's yeast: 4–12 days. On wine yeast (including starter): 30–45 days. Signs: airlock bubbles fewer than 5 times per minute, sediment forms at bottom, foam disappears, wash smells like alcohol with minimal sweetness (yeast cannot ferment caramelized sugar).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the wash off sediment (the porous pomace can be lightly squeezed), then strain through cheesecloth or a fine sieve to remove small pulp particles that could burn and spoil the moonshine with bitterness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>First distillation.</strong> Assemble equipment in simple pot-still mode (column height up to 60 cm, no packing, one direct-flow cooler, optional thump keg). Fill the still 30–75% full. Distill at maximum power. Stop when the ABV in the stream drops below 25%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Measure the ABV at 20 °C and calculate the total pure alcohol. Dilute with water to 18–20% ABV. Do not clean with activated charcoal or other methods — this strips the fruit profile.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> After boiling, reduce heat so the distillate drips slowly and stays cool. Collect the first 14% of pure alcohol volume as "heads" — <strong>discard this fraction, never consume it.</strong> Increase heat slightly and collect the "hearts" until the ABV in the stream drops below 43%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the moonshine with softened water to 40–45% ABV. Bottle in glass, seal tightly, and rest in a cool place for at least 7 days to stabilize. Shelf life is unlimited. Optional: age in a barrel or infuse on wood chips for a brandy-like result.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Different dried fruits can be blended in one wash for unique organoleptic properties. However, prunes pair poorly with apples and pears — avoid this combination.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Distillpedia Club</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

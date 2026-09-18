@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currant Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Currant moonshine recipe: black, red, or white currants. Wash preparation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Currant Moonshine</p>
+
+        <article class="recipe">
+            <h1>🫐 Currant Moonshine <span style="font-size:16px;color:#97bc62;">(Black, Red, or White)</span></h1>
+            <p>Currant moonshine has a subtle aroma and soft berry taste, with the aftertaste depending on the berries used. The richest is black currant moonshine — with woody-tannic tones. However, currants have a high pectin concentration, which imposes certain limitations on wash preparation and requires proper fractional distillation.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">4–50 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~5 kg currants</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Currant Sugar Content</h2>
+            <ul>
+                <li><strong>Black currant:</strong> 8–13%</li>
+                <li><strong>Red currant:</strong> 4–11%</li>
+                <li><strong>White currant:</strong> 5–10%</li>
+            </ul>
+            <p style="font-size:14px;color:#666;"><em>This means that to produce 1 L of 40% currant moonshine, you need 6–18 kg of berries. In practice, another 14–20% of alcohol will be lost during double fractional distillation.</em></p>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>5 kg currants</strong> — any type (black, red, white)</li>
+                    <li><strong>Sugar:</strong> up to 2 kg (max 1 kg per 2.5 kg berries)</li>
+                    <li><strong>Water:</strong> 11 L (1 L per 1 kg berries, plus 3 L per 1 kg sugar)</li>
+                    <li><strong>Yeast:</strong> wine, for fruit washes, or spirit yeast per package instructions</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast: 10 g dry or 50 g pressed per 1 kg sugar (added + natural in berries). More yeast won't harm but won't speed up fermentation either.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Currants contain high pectin, which yeast converts to methanol during fermentation. This recipe uses the "combined" fermentation scheme (filter after 3 days) instead of the standard "red" scheme to minimize methanol. Always discard the "heads" fraction — 16% in this recipe (higher than usual due to methanol). See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Sort the berries.</strong> Remove unripe, rotten, and mouldy berries, as well as stems and leaves. If using wild yeast, do not wash the raw material.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Crush the currants.</strong> Mash by hand or with a wooden pestle. Place the resulting berry mass in an enameled, stainless, or plastic container with a wide neck: bucket or pot. <strong>Warning:</strong> If you grind the berries with a blender or other mechanical method that damages seeds, the wash will be almost impossible to filter, and the finished moonshine will have a slight bitterness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Add water and sugar.</strong> Mix sugar and water in a separate container. Add the resulting syrup (or just water) to the berry mass. Stir until homogeneous. If the wash is thick (hard to stir), add more water — this won't affect the quality of the finished moonshine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add yeast.</strong> Prepare yeast according to manufacturer's instructions, then add to the wash.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Initial fermentation (combined scheme).</strong> Tie the container neck with cheesecloth for insect protection. Move the currant wash to a dark place with room temperature. Leave for 3 days. Stir every 8–12 hours, breaking up the dense layer of skin and pulp. Fermentation signs should appear within 24 hours: specific smell, hissing, and foam on the surface.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Strain the wash through cheesecloth or a kitchen sieve, squeezing the berry residues dry (no longer needed). This "combined" scheme extracts aromatic and flavor substances from the currants without oversaturating the moonshine with tannins that give too harsh an astringent taste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Continue fermentation.</strong> Pour the liquid part into the fermentation vessel, filling max 75% of volume. Install an airlock. Move to a dark room (or cover with dense fabric) with temperature 18–28 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> This takes 4–50 days depending on yeast, temperature, and sugar content. Signs: airlock bubbles fewer than 5 times per minute, foam almost gone, sediment at bottom, smells like alcohol and tastes dry (not sweet).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Transfer to the still.</strong> Siphon the finished wash off sediment (preferably through a thin tube) into the still, filling 30–70% of volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Set up in pot still mode: minimal column height, no packing, disable dephlegmator, leave only direct-flow cooler and optional thump keg.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill at maximum speed: distillate may come out warm and cloudy, but must be without steam. Stop when ABV drops below 25%, or distill almost to zero if energy costs seem justified.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Measure and calculate.</strong> Determine ABV at 20 °C and calculate total pure alcohol (ABV% × volume in litres ÷ 100).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Dilute.</strong> Dilute the moonshine with water to 18–20%. Do not clean with charcoal or other methods — otherwise the subtle berry taste will disappear.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> After boiling, reduce heat so the distillate drips slowly and stays cool. Collect the first 16% of pure alcohol volume as "heads" — <strong>discard this fraction, never consume it.</strong> The increased heads percentage (usually 13–15% for fruit) is justified by the need to remove methanol, which currants contain in excess.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Gradually increase heating power so the moonshine drips quickly or flows in a thin stream, but remains cool. Collect the "hearts" until ABV drops below 42%. Then stop or collect "tails" separately.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the currant moonshine with softened water to drinking strength — 40–45%, then transfer to glass jars or bottles, seal tightly, and leave for at least 3 days to improve the taste. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Black currant gives the richest moonshine with woody-tannic tones. Red currant is lighter and more acidic. White currant is the mildest. Do not mix different colors in one wash — blend finished distillates instead.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Distillpedia Club</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

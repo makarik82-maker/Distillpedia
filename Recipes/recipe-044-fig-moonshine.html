@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fig Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Fig moonshine recipe: slightly oily texture with fig leaf, melon and banana aromas. Wash preparation and double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; font-size: 16px; }
+        .recipe ul, .recipe ol { margin: 0 0 18px 28px; }
+        .recipe li { margin-bottom: 10px; font-size: 16px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #2c3e2d; color: #e0e8d5; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer h3 { color: #97bc62; margin-bottom: 10px; }
+        footer a { color: #97bc62; text-decoration: none; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; width: 100%; text-align: center; } nav a { margin: 5px; display: inline-block; font-size: 14px; padding: 6px 10px; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Fig Moonshine</p>
+
+        <article class="recipe">
+            <h1>🌿 Fig Moonshine <span style="font-size:16px;color:#97bc62;">(Smokva, Wine Berry)</span></h1>
+            <p>Fig moonshine is remembered for its slightly oily texture, light aroma of fig leaf, freshly cut grass, melon and banana, while the taste reveals tones of fig pulp, dried apricot, raisin and Duchesse pear. This recipe covers fresh fruit only; for dried or candied figs use the dried fruit wash recipe.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">38–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">3–45 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~3 kg figs</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a proper licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Choosing the Ingredients</h2>
+            <h3>Figs</h3>
+            <p>Ripe or overripe figs are required; non-standard fruit is acceptable: damaged, long-stored, crushed, irregular shape, small — but always without rot and mold (small problem spots can be cut off). Unripe fruit contains a high concentration of pectin, which yeast converts into methanol, and the milky sap of unripe pulp gives a bitter aftertaste. Remember: picked figs stop ripening — their sugar and pectin concentrations stay stable.</p>
+            <p><strong>Yield:</strong> fresh figs contain 12–25% sugar. Theoretically 1 kg of raw material gives 72–150 ml of 40° moonshine, but in practice up to 20% of ethanol is lost during double fractional distillation.</p>
+            <h3>Sugar, Water, Acid, Yeast</h3>
+            <ul>
+                <li><strong>Sugar (optional):</strong> 1 kg adds 1.2 L of 40° distillate but worsens organoleptics with kvass (beet) or molasses (cane) tones. Empirically, up to 150 g of sugar per 1 kg of figs is acceptable; the higher the natural sugar, the less should be added. Total sugar content must not exceed 27%. Fructose or dextrose in the same amount is preferable.</li>
+                <li><strong>Water:</strong> pectin, fiber and plant mucilage prevent extracting clean juice from figs; thick wort ferments slowly and is hard to distill (scorching risk), so dilution is mandatory. Non-chlorinated water only.</li>
+                <li><strong>Citric acid (optional):</strong> figs contain few organic acids (2–4 g/L versus the 5–16 g/L fermentation norm); low-acid wort ferments slowly and is prone to infection, so concentrated citric acid is desirable.</li>
+                <li><strong>Yeast (optional):</strong> wild yeast can be tried if fruit was collected at least a day after rain in calm weather and untreated, but they activate slowly and ferment unstably; best are wine yeast (universal or for fortified wines) or a berry/raisin starter made 4–5 days ahead. Spirit yeast finishes in 3–7 days but aroma and taste will be poorer. Fruit-wash yeast is justified for unripe pulp. Baker's yeast is a last resort.</li>
+            </ul>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Figs (fresh)</strong> — 3 kg</li>
+                    <li><strong>Sugar (optional)</strong> — max 450 g (up to 150 g per 1 kg of fruit)</li>
+                    <li><strong>Water</strong> — about 4 L (1 L per 1 kg of figs, plus 4 L per 1 kg of sugar)</li>
+                    <li><strong>Citric acid (optional)</strong> — 24 g (6 g per 1 L of water)</li>
+                    <li><strong>Yeast (optional)</strong> — for 8 L of wort</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast dosage: 20 g dry or 100 g pressed per 1 kg of sugar (in fruit + added). Since exact pulp sugar content is usually unknown, assume the minimum — 120 g of sugar per 1 kg of figs. Exceeding the yeast dose will not harm the wash or speed up fermentation.</em></p>
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the fruit.</strong> Sort the figs, removing unripe, rotten and moldy ones; wash the rest under running water (only if fermentation will run on cultured yeast). Cut off the stems, then mince the fruit with a meat grinder, blender or construction mixer to a puree and place it in the fermentation vessel.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Make the wash.</strong> Dissolve citric acid and sugar (if used) in water, pour into the figs and mix. The consistency must become liquid — freely stirrable by hand; add more water if necessary. Fill the vessel to a maximum of 75% of volume, leaving space for foam and carbon dioxide.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Pitch the yeast.</strong> Dilute yeast per the package instructions and add to the wort. Close the wash with any airlock design and move it to a dark place (or cover with dense fabric) at a stable 18–28 °C.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Monitor the cap.</strong> Check the wash at least every 8–12 hours during the first 3–4 days so that pulp floating to the surface does not clog the airlock outlet tube. Open and stir if required; over time all pomace will settle at the bottom.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Confirm completion.</strong> Depending on sugar and temperature, fig wash on wild or wine yeast ferments 30–45 days; on spirit or baker's yeast — 3–10 days. Signs of readiness: the airlock bubbles fewer than 5 times per minute or the glove deflates; almost no foam remains; the wort has partially clarified with a layer of loose sediment at the bottom; the wash smells of alcohol and is not sweet (yeast converted all sugar).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Filter.</strong> Drain the fermented fig wash off the sediment, then strain through cheesecloth to remove small pulp particles that could scorch and spoil the taste. Clarifying the wash with bentonite is also desirable.</div>
+            </div>
+
+            <h2>Distillation</h2>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Assemble equipment.</strong> Set up the equipment in simple distiller mode: column height up to 60 cm with no packing inside, all additional units off, leaving only a direct-flow condenser (coil or shell-and-tube) plus one bubble trap if provided by design. In factory columns this mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>First distillation.</strong> Pour the fig wash into the boiler, filling 30–75% of volume. Run the first distillation at maximum speed: the distillate may flow warm and cloudy, but necessarily without steam. Finish when the strength in the stream drops below 25%, or run almost "to water" if the slight quantity gain justifies the extra time and energy.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Calculate.</strong> Measure the strength of the resulting raw spirit at 20 °C, or correct the reading for another temperature in a moonshine calculator. Calculate the concentration of absolute (pure) alcohol: strength in percent multiplied by volume in liters, divided by 100. Dilute the distillate with water to 15–20%. Do not clean with wood activated charcoal or other methods, preserving the fig aroma and taste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Second distillation — heads.</strong> Distill a second time. When the liquid boils, reduce the heat so the moonshine drips slowly and is cold, almost like the water fed into the system. Collect separately the first 12–15% of output (while the unpleasant smell persists) from the amount of absolute alcohol calculated at step 9. This is the "head" — a fraction with a high concentration of harmful impurities, unsuitable for drinking.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Raise the heating power: the moonshine may drip fast or flow in a thin stream, but must remain cold. Collect the "body" (drinking part) until the strength in the stream drops below 43%, then switch off the equipment or accumulate "tails" separately for future rectification on a column.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the finished fig moonshine ("body") with softened water to drinking strength — usually 38–45%. Pour into glass containers and close tightly. Leave in a cool room for at least 5 days to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> To preserve the fig organoleptics, reassemble the column in pot still mode for the second run and follow this recipe. The column can be filled with any copper packing for more efficient removal of sulfur compounds; stainless packing gives no result and only slows the distillation.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🍇 Dried Fruit Moonshine</h3><p>For dried or candied figs.</p><a href="Recipes/recipe-009-dried-fruit-moonshine.html">View recipe →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h3>Distillpedia Club</h3>
+                <p>An open educational resource dedicated to the science, history, and safe practices of home fermentation and distillation.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <p><a href="index.html#guides">Guides</a> | <a href="index.html#recipes">Recipes</a> | <a href="distillation-safety.html">Safety</a></p>
+                <p style="margin-top:10px; font-size:12px; color:#8a9a8b;">© 2026 Distillpedia Club. Content is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermelon Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Watermelon moonshine recipe: wash preparation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Watermelon Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍉 Watermelon Moonshine <span style="font-size:16px;color:#97bc62;">(Proper Wash Recipe and Distillation)</span></h1>
+            <p>Watermelon moonshine retains almost none of the original organoleptic properties, but it is excellent as an alcohol base for fruit tinctures and strong liqueurs. Therefore, if you have many watermelons, processing them into distillate is justified.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">5–50 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~30 kg watermelon</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>Watermelon pulp (peeled)</strong> — 30 kg</li>
+                    <li><strong>Sugar</strong> — up to 3 kg (1 kg per 10 kg pulp)</li>
+                    <li><strong>Yeast or wine starter</strong> — for 30 L of wash</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Baker's yeast: 20 g dry or 100 g pressed per 1 kg sugar (natural in watermelons and added). Excess yeast won't harm, but won't speed up fermentation either.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Watermelon wash foams heavily. Monitor the process at least twice a day to prevent the floating pulp from blocking the airlock. Green parts contain no sugar and add unwanted grassy tones to the moonshine. Always discard the "heads" fraction during distillation. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the watermelons.</strong> Cut watermelons in half. Scoop out the red pulp with a spoon into a pot or bucket, minimizing juice splashing. Green parts contain no sugar and add unwanted grassy tones to the moonshine.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Remove the seeds.</strong> Rub the pulp through a sieve with cells up to 0.5 cm, or remove the seeds (including unripe white ones) by any other method, and crush the pulp itself by hand. It is important not to damage the seeds, otherwise the moonshine will have a bitter aftertaste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the watermelon mash into a fermentation vessel with a wide neck. Add sugar (optional) and stir until completely dissolved in the juice. Fill the vessel no more than 75% of volume to leave room for foam and carbon dioxide.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Add the yeast.</strong> Dilute yeast according to manufacturer's instructions, then add to the wash.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Ferment.</strong> Close the vessel with an airlock. Move the watermelon wash to a dark room with temperature 18–28 °C. Within 36 hours, signs of fermentation should appear: foam and gas release from the airlock. If this doesn't happen, figure out why the wash isn't fermenting and urgently fix the situation.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Monitor fermentation.</strong> Control fermentation at least twice a day to prevent the floating pulp from blocking the airlock. When a dense layer forms, open and stir the wash, sinking the pomace into the liquid. After a few days, all pulp will sink to the bottom and won't rise anymore — then leave the wash alone (don't open).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> Depending on sugar content and temperature, watermelon wash on spirit or baker's yeast ferments for 5–12 days, on wine yeast or starter — up to 50 days. Signs of completion: gas release from airlock stopped (fewer than 5 bubbles per minute); foam disappeared from surface (sometimes small zones up to 3 cm in diameter remain); a layer of loose sediment accumulated at the bottom, and the wash noticeably clarified; wash smells like alcohol and is not sweet (all sugar converted to ethanol).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon the fermented wash off sediment through a tube (like gasoline from a tank), then strain through cheesecloth or a fine sieve to filter out solid residues that could burn from high temperature.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Transfer to the still.</strong> Pour the wash into the distillation pot. Fill 30–75% of volume.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Assemble equipment in simple distillation mode: column height up to 60 cm with no packing, disable dephlegmator, leave only a shell-and-tube or coil cooler, and one thump keg if provided in the design. In factory stills and columns, the required mode is called pot still.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>First distillation.</strong> Distill watermelon wash the first time at maximum speed: distillate may flow warm and cloudy, just no steam. Stop the process when the ABV in the stream drops below 25%. It's permissible to distill "to zero" if a small increase in quantity seems justified considering additional energy and water costs.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Measure and calculate.</strong> Measure the ABV of the resulting low wines at 20 °C, or use a moonshine calculator to correct for another temperature. Determine the concentration of pure (absolute) alcohol: volume in litres multiplied by ABV percentage divided by 100.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Dilute.</strong> Dilute watermelon moonshine of the first distillation with water to 18–20% ABV. Do not clean with activated charcoal or other methods, preserving the soft taste and light fruit shade.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">14</div>
+                <div class="step-text"><strong>Second distillation.</strong> After the liquid in the pot boils, reduce the supplied power so the moonshine flows in small drops and is necessarily cold — almost like water in the system. Collect separately 14% of liquid from the amount of absolute alcohol (calculated at step 12). This is the "heads" — a harmful fraction that is unsuitable for consumption due to high concentration of harmful substances.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">15</div>
+                <div class="step-text"><strong>Collect the hearts.</strong> Gradually add heating power. The moonshine should drip quickly or flow in a thin stream, but remain cold. Collect the drinking part ("body") until the ABV in the stream drops below 44%. Then turn off the still, or collect "tails" separately for future rectification on a column.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">16</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute watermelon moonshine ("body") to drinking strength — 40–45%. Preferably use bottled softened water — with minimal concentration of heavy metal salts, but not boiled. Almost half of the taste depends on water quality.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">17</div>
+                <div class="step-text"><strong>Bottle and stabilize.</strong> Pour the moonshine into glass bottles or jars. Seal tightly and leave in a dark cool place for 2–3 days to stabilize the taste. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Watermelon moonshine is best used as a base for fruit tinctures rather than drinking neat, since it retains almost none of the original watermelon flavor. If you have 30+ kg of watermelons, processing them into distillate makes sense.
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Distillpedia Club</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

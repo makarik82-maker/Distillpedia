@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Moonshine | Community Recipes | Distillpedia Club</title>
+    <meta name="description" content="Moonshine from tomatoes or tomato paste: wash preparation, double fractional distillation. Educational content only.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('background.png');
+            background-size: cover, cover; background-position: center, center;
+            background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #2c5f2d; color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 24px; font-weight: bold; color: white; text-decoration: none; }
+        .logo span { color: #97bc62; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 4px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        .breadcrumb { margin: 20px 0 0; font-size: 14px; }
+        .breadcrumb a { color: #2c5f2d; font-weight: bold; }
+        .recipe { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0 40px; }
+        .recipe h1 { color: #2c5f2d; font-size: 34px; margin-bottom: 15px; }
+        .recipe h2 { color: #2c5f2d; font-size: 24px; margin: 30px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+        .recipe p { margin-bottom: 14px; }
+        .recipe ul, .recipe ol { margin: 0 0 16px 24px; }
+        .recipe li { margin-bottom: 8px; }
+        .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+        .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+        .legal-box { background: #fff3cd; border: 1px solid #ffc107; padding: 18px; border-radius: 8px; margin: 20px 0; }
+        .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+        .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+        .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+        .step { display: flex; gap: 14px; margin-bottom: 18px; }
+        .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+        .step-text { flex: 1; }
+        .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+        .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+        .next-card a { color: #2c5f2d; font-weight: bold; }
+        footer { background: #333; color: white; padding: 30px 0; margin-top: 60px; }
+        footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        @media (max-width: 768px) { .recipe { padding: 25px; } .recipe h1 { font-size: 26px; } nav { margin-top: 15px; } nav a { margin: 5px; display: inline-block; } body { background-attachment: scroll, scroll; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🍺 Home<span>Brew</span>Wiki</a>
+            <nav>
+                <a href="index.html#guides">Guides</a>
+                <a href="index.html#equipment">Equipment</a>
+                <a href="index.html#recipes">Recipes</a>
+                <a href="index.html#distilling">Distilling</a>
+                <a href="index.html#tools">Tools</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → Tomato Moonshine</p>
+
+        <article class="recipe">
+            <h1>🍅 Tomato Moonshine <span style="font-size:16px;color:#97bc62;">(Fresh Tomatoes or Tomato Paste)</span></h1>
+            <p>Tomato moonshine has a subtle aroma of fresh greens and surprisingly soft taste. Both fresh tomatoes and paste work equally well. Another advantage — amino acids and minerals in the pulp accelerate fermentation by 2–3 days. However, due to low initial sugar content, the result will be essentially refined sugar moonshine — without intrusive yeast, kvas, and bread notes.</p>
+
+            <div class="recipe-info">
+                <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+                <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+                <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+                <div class="info-item"><div class="label">Fermentation</div><div class="value">3–10 days</div></div>
+                <div class="info-item"><div class="label">Yield</div><div class="value">~10 kg tomatoes</div></div>
+            </div>
+
+            <div class="legal-box">
+                <strong>⚠️ Legal & Safety Disclaimer:</strong> This recipe is provided for educational purposes only. Distilling alcohol at home is illegal in many countries without a licence. Always check your local laws. Read our <a href="distillation-safety.html" style="color:#2c5f2d;font-weight:bold;">Distillation Safety Guide</a> before attempting any distillation.
+            </div>
+
+            <h2>Ingredients</h2>
+            <div class="ingredients">
+                <ul>
+                    <li><strong>10 kg tomatoes</strong> OR <strong>2 kg tomato paste</strong></li>
+                    <li><strong>Sugar:</strong> 2 kg (1 kg per 5 kg fresh tomatoes or 1 kg paste)</li>
+                    <li><strong>Water:</strong> 4 L for tomatoes (0.4 L/kg) or 10 L for paste (5 L/kg)</li>
+                    <li><strong>Yeast:</strong> depending on wash volume</li>
+                </ul>
+                <p style="margin-top:12px;font-size:14px;color:#666;"><em>Natural sugar content: tomatoes 2.5–4%, tomato paste 12–18% (factory GOST). Theoretical yield: 30–48 ml of 40% moonshine per 1 kg fresh tomatoes, 144–216 ml per 1 kg paste. Practical yield is 15–20% lower.</em></p>
+            </div>
+
+            <div class="safety-box">
+                <strong>🛑 Important:</strong> Any tomato wash foams heavily due to high protein and pectin concentration in the pulp. Keep a homemade foam suppressant ready during fermentation: cookies, vegetable oil, or butter. Always discard the "heads" fraction. See <a href="distillation-safety.html" style="color:#c0392b;">Distillation Safety Guide</a>.
+            </div>
+
+            <h2>Step-by-Step Process</h2>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text"><strong>Prepare the tomatoes.</strong> Sort fresh tomatoes: discard unripe ones, then remove stems, mouldy and rotten parts (they give bitterness). Grind the fruit with a meat grinder or other method to a puree state.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text"><strong>Make the sugar syrup.</strong> Mix all sugar and 75% of water in a pot. Bring to a boil, simmer on medium heat for 2–3 minutes, skimming foam.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text"><strong>Cook the tomato base.</strong> Pour the boiling sugar syrup over fresh tomato pulp or tomato paste, stir until homogeneous, cover, and leave for 60 minutes. Thermal treatment improves extraction of dry matter from the pulp, gives the required wash consistency, and reliably destroys all pathogenic microflora on fresh raw material or breaks down preservatives in store-bought paste.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text"><strong>Activate the yeast.</strong> Spirit yeast per package instructions. Dry baker's yeast: sprinkle evenly on the surface of sugar syrup (10 ml water and 1 g sugar per 1 g yeast) at 27–29 °C, leave for 5 minutes, then stir and keep open in a dark place at room temperature for another 10–15 minutes until stable foam appears. Pressed baker's yeast: add directly from the fridge, crumbled with clean hands.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-text"><strong>Transfer to fermentation vessel.</strong> Pour the tomato wash into the fermentation vessel, add the remaining 25% cold "raw" water and stir. Fill max 70% of volume — free space is needed for CO₂ and active foam. Add yeast (temperature must be below 30 °C).</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-text"><strong>Ferment.</strong> Seal with an airlock, leave in a dark place (or cover with dense fabric) with stable temperature 18–27 °C. Monitor foam at least once every 6–8 hours for the first 3–4 days.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-text"><strong>Confirm fermentation is complete.</strong> This takes 3–10 days depending on temperature and yeast. Signs: airlock bubbles fewer than 5 times per minute, foam almost gone, wash clarified with sediment at bottom, sharp alcohol smell and no sweetness.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-text"><strong>Filter the wash.</strong> Siphon off sediment (preferably through a tube), then filter through cheesecloth or a fine sieve, reliably removing solid particles that could burn during heating.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-text"><strong>Assemble the equipment.</strong> Set up in pot still mode: column height up to 60 cm, no packing, only direct-flow cooler, optional thump keg.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-text"><strong>First distillation.</strong> Fill the still 30–70% full. Distill at maximum speed: the distillate may come out warm and slightly cloudy, but must be without steam. Stop when ABV drops below 20%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">11</div>
+                <div class="step-text"><strong>Measure and dilute.</strong> Determine ABV at 20 °C and calculate total pure alcohol. Dilute to 16–20% ABV. Do not clean with activated charcoal or other methods — preserve the tomato profile.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">12</div>
+                <div class="step-text"><strong>Second distillation with cuts.</strong> After boiling, reduce heat to achieve slow dripping with cold distillate. Collect the first 12% of pure alcohol volume as "heads" — <strong>discard this fraction, never consume it.</strong> Increase heat slightly and collect the "hearts" until ABV drops below 44%.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">13</div>
+                <div class="step-text"><strong>Dilute and rest.</strong> Dilute the tomato moonshine with softened water to 40–45% ABV, transfer to glass containers, seal tightly, and leave for at least 5 days in a cool place to stabilize. Shelf life is unlimited.</div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Editor's tip:</strong> Some home distillers believe that if you remove the molasses and kvas tones formed by sugar (using fructose or dextrose instead), tomato moonshine develops slight tequila-like notes. Worth experimenting with!
+            </div>
+
+            <h2>Related Guides</h2>
+            <div class="next-cards">
+                <div class="next-card"><h3>⚗️ Distillation Safety</h3><p>Methanol, cuts, and safe practices.</p><a href="distillation-safety.html">Read the guide →</a></div>
+                <div class="next-card"><h3>🛒 Equipment Checklist</h3><p>Everything you need to get started.</p><a href="equipment-checklist.html">Read the guide →</a></div>
+                <div class="next-card"><h3>📖 All Recipes</h3><p>Browse more community recipes.</p><a href="index.html#recipes">Back to recipes →</a></div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div><h3>Distillpedia Club</h3><p>Educational content for brewing enthusiasts.</p></div>
+            <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
