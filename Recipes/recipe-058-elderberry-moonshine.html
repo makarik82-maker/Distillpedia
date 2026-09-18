@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elderberry Moonshine | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Elderberry moonshine from black elderberry only: musky earthy aroma, blackberry and pepper notes; sambunigrin safety, double fractional distillation. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 999px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+        body { background-attachment: scroll, scroll; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-fruit.html">Fruit Spirits</a> → Elderberry</p>
+
+    <div class="page-header">
+        <h1>🫐 Elderberry Moonshine</h1>
+        <p>A musky, slightly earthy aroma unlike any other berry, with notes of blackberry, dried fruit and black pepper plus a light astringency in the taste. It is almost impossible to guess the raw material at first sip. Only black elderberry is used — all red varieties are poisonous.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">38–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">3–45 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">60–132 ml/kg (40%)</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
+
+        <div class="safety-box">🛑 <strong>Black elderberry only.</strong> The clusters ("twigs"), leaves and seeds of black berries contain sambunigrin, which breaks down into hydrocyanic acid in the body. Heating above 80 °C completely destroys sambunigrin, so elderberry moonshine is safe — but do not taste the wash when checking readiness. Use only ripe berries: even colour, easily picked from clusters, purple juice when crushed. Unripe fruit is rich in pectin (more methanol, heavier hangover).</div>
+
+        <h2>Choosing the Ingredients</h2>
+        <h3>Sugar, water, yeast</h3>
+        <p>Natural sugar content of elderberry is 5–11%, so theoretically 1 kg of berries gives 60–132 ml of 40% spirit, minus 15–20% losses in two runs. Up to 200 g of sugar per 1 kg of black elderberry is acceptable (the sweeter the fruit, the less sugar); dextrose or fructose in the same amount affect the spirit least.</p>
+        <p>Water: 1 l per 5 kg of fruit (2 l for 10 kg), non-chlorinated; chlorinated tap water should stand 3 days in an open pot or bucket. If the harvest was picked at least 24 h after rain in calm weather, wild yeast from the skin can start the wash; otherwise use a raisin or berry starter set 4–5 days ahead, or cultured wine yeast (red-juice or universal). Spirit yeast finishes in at most 10 days but the taste is poorer; baker's yeast adds bread and molasses tones and is a last resort.</p>
+
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            <ul>
+                <li>Black elderberry berries — 10 kg (weight after removing clusters)</li>
+                <li>Water — 2 l (1 l per 5 kg of fruit)</li>
+                <li>Sugar — up to 2 kg (max 200 g per 1 kg of berries)</li>
+                <li>Yeast or starter (optional) — per wort volume; baker's: 100 g pressed or 20 g dry per 1 kg of total sugar</li>
+            </ul>
+        </div>
+
+        <h2>Wash Preparation</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Pick the berries off the clusters (a fork works well). Remove unripe, undersized, rotten and mouldy berries plus all twigs and leaves (they give strong bitterness). If the wash will run on cultured yeast, wash the elderberry thoroughly with running water.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Put the berries into a fermentation vessel and crush them by hand or with a wooden pestle, making sure not to crush the seeds (pits), otherwise the moonshine will be very astringent.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Activate the yeast (if used) per the package. Wine yeast can be started by the universal method; pressed baker's yeast can go in straight from the fridge, kneaded with clean hands.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Dissolve the sugar in water and pour the syrup (or plain water) into the berry mass. Stir until homogeneous; the wort must mix freely by hand — add more water if needed. Fill the vessel to max 75%, leaving room for CO₂ and foam. Pitch the yeast or starter.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Fit an airlock and move the wash to a dark place (or cover with dense fabric) at 18–28 °C. For the first 3–4 days check every 8–12 hours so the floating cap of skins and pulp does not block the airlock tube; open and stir, submerging the cap. Stable fermentation signs (foam, bubbling, glove inflating) must appear within the first 36 hours.</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Fermentation lasts 30–45 days on wild or any wine yeast (including starter), and 3–12 days on spirit or baker's yeast. Readiness signs: the airlock releases gas fewer than 5 times per minute; no foam on the surface (small patches up to 3 cm may remain); the wort lightens with a loose sediment layer; the wash smells of alcohol.</div></div>
+        <div class="safety-box">🛑 Do not taste the elderberry wash because of sambunigrin (it fully breaks down during distillation).</div>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Decant the finished wash from the sediment (a thin tube works best), then strain through gauze or a fine sieve to remove all solids that could scorch at high temperature.</div></div>
+
+        <h2>Distillation</h2>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Assemble the equipment as a simple pot still: column up to 65 cm with no packing, all auxiliary units off, only a direct-flow condenser (coil or shell-and-tube) and one bubble trap if the design has one. Fill the still to 30–75%.</div></div>
+        <div class="step"><div class="step-number">9</div><div class="step-text">First run at maximum speed: the distillate may run warm and cloudy but never steamy. Stop when the stream strength falls below 25%; running almost to zero is acceptable if the extra energy and time seem worth the small gain.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Measure the strength at 20 °C (correct for temperature in a calculator if needed) and compute the absolute alcohol: strength (%) × volume (l) ÷ 100. Dilute to 18–20%. Do not clean with carbon or any other method, preserving the elderberry organoleptics.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text">Second run: after boiling, reduce power so the spirit drips in small drops and stays cold, almost like the inlet water. Collect the first 15% of the absolute-alcohol amount separately as "heads" — a technical fraction with an unpleasant smell, used only for technical purposes.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Raise the power: the spirit may drip fast or run in a thin stream but must stay cold. Collect the "body" until the stream strength falls below 44%.</div></div>
+        <div class="step"><div class="step-number">13</div><div class="step-text">Switch off the apparatus, or collect "tails" separately to squeeze the remaining ethanol out of them later on a rectification column.</div></div>
+        <div class="step"><div class="step-number">14</div><div class="step-text">Dilute the finished elderberry moonshine ("body") with softened water to 38–45%, bottle in glass, seal tightly and rest in a cool place for at least 5 days. Shelf life is unlimited.</div></div>
+
+        <div class="tip-box">💡 To keep the elderberry tones, run the second distillation in pot-still mode and put a few sections of any copper packing (SPN/RPN) in the column; any stainless packing only slows the run without result.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🍒 Bird Cherry Moonshine</h3><p>Dried-cherry and spice notes with almond tones.</p><a href="recipe-054-bird-cherry-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🌹 Rosehip Moonshine</h3><p>Berry-herbal aroma with a tea shade.</p><a href="recipe-056-rosehip-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🫐 Currant Moonshine</h3><p>Black/red/white; combined scheme for methanol.</p><a href="recipe-016-currant-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html#guides">Essential Guides</a>
+            <a href="index.html#recipes">All Recipes</a>
+            <a href="distillation-safety.html">Safety Rules</a>
+            <a href="recipes-fruit.html">Fruit Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

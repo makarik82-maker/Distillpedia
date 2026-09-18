@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviceberry Moonshine | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Serviceberry (juneberry) moonshine: delicate dried-fruit aroma, oily berry taste with blueberry and almond notes; white-scheme fermentation controls bitterness. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 768px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-fruit.html">Fruit Spirits</a> → Serviceberry</p>
+
+    <div class="page-header">
+        <h1>🫐 Serviceberry Moonshine</h1>
+        <p>A delicate dried-fruit aroma and a slightly oily berry taste with blueberry notes and a bitter almond finish. The wash recipe uses a "white" fermentation scheme to keep the almond note under control while preserving the berry profile.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">5–45 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">120–192 ml/kg (40%)</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
+
+        <h2>Choosing the Ingredients</h2>
+        <h3>Serviceberry (juneberry)</h3>
+        <p>Any ripe serviceberry works (uniform dark-blue colour) without rot, mould or vinegar smell: surplus, small, non-standard, crushed, long-stored or frozen. Unripe berries contain much pectin, from which yeast produces methanol — the spirit stays safe even with a rough error, but the hangover will be stronger.</p>
+        <p>The seeds contain amygdalin, which adds a barely perceptible almond note. Removing the tiny seeds is too laborious, so they stay — but crush the berries gently by hand or with a press so the seed coats stay intact, otherwise the distillate gains a pronounced almond bitterness. High distillation temperature destroys the enzymes that convert amygdalin into harmful hydrocyanic acid, so the spirit is guaranteed safe.</p>
+        <h3>Yield</h3>
+        <p>Serviceberry contains 10–16% sugar, so theoretically 1 kg of berries gives 120–192 ml of 40° spirit; the real amount is 15–20% lower after two fractional distillations.</p>
+        <h3>Water, sugar, acid</h3>
+        <ul>
+            <li><strong>Water:</strong> serviceberry gives up juice poorly and a thick wash ferments slowly and is prone to infection, so water is mandatory — non-chlorinated (reverse osmosis, well, spring, street dispenser; or stand tap water 3 days). Dilute the finished spirit only with softened water.</li>
+            <li><strong>Sugar (undesirable):</strong> 1 kg adds 1.2 L of 40% distillate but beet sugar adds kvass tones and cane sugar adds molasses notes. Empirically, up to 100 g per 1 kg of berries is acceptable; with at least 10 kg of fruit it is better not to raise the sugar at all. Fructose or dextrose in the same amount are preferable.</li>
+            <li><strong>Citric acid (optional):</strong> juice acidity is 4–8 g/l versus the recommended 6–12 g/l; a deficiency slows fermentation and raises infection risk, so add citric acid or fresh lemon juice (5–7 g per medium fruit).</li>
+        </ul>
+        <h3>Yeast or starter (optional)</h3>
+        <p>If the berries were picked in calm weather at least 24 h after rain and not sprayed with chemicals, wild yeast from the skin (a thin white bloom) can start fermentation — but do not wash the berries in that case, and note that wild strains activate poorly, especially after freezing. The optimal choice is cultured wine yeast for red juice or universal strains; a raisin or berry starter set 4–5 days ahead is a free alternative. Spirit yeast finishes in at most 10 days but the spirit loses aroma and taste; fruit-wash yeast is justified for unripe berries; baker's yeast is the worst choice.</p>
+
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            <ul>
+                <li>Serviceberry — 10 kg</li>
+                <li>Sugar (optional) — up to 1 kg (max 100 g per 1 kg of berries)</li>
+                <li>Water — 5 L (0.5 L per 1 kg of berries), plus 4 L per 1 kg of sugar</li>
+                <li>Citric acid (optional) — 4 g per 1 L of water</li>
+                <li>Yeast or starter (optional) — for 15 L of wort (baker's: 20 g dry or 100 g pressed per 1 kg of total sugar)</li>
+            </ul>
+        </div>
+
+        <h2>Wash Preparation</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Discard mouldy, rotten and unripe berries. Wash the remaining serviceberry in running water (unless using wild yeast), then crush with a wooden rolling pin, by hand or with a press, splashing as little juice as possible. A meat grinder or blender grinds the seeds and gives the spirit a strong almond bitterness.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Place the berry mass into a plastic, enamel or stainless vessel with a wide neck. Add the sugar (optional), citric acid and water; stir until homogeneous. The wort must be liquid — freely stirrable by hand; add more water if needed. Pitch the starter or the yeast diluted per the package.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Leave for 3 days in a dark place at 18–28 °C, stirring every 8–12 hours and breaking the dense cap of pulp and skins, otherwise the wash will sour. Fermentation signs (foam, hissing, characteristic smell) must appear within the first 36 hours; if not, check the temperature and pitch other yeast.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Strain the wort through cheesecloth or a fine sieve, pressing the pomace dry (it is no longer needed), then pour the filtered wash into the fermentation vessel filled to max 80% and fit any airlock. The white fermentation scheme keeps the almond note under control; leaving the pomace for the whole period makes the spirit excessively bitter with a dominant nutty rather than berry profile.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Fermentation lasts 5–45 days depending on yeast, sugar and temperature. Readiness signs: the airlock releases fewer than 5 bubbles per minute (or the glove deflates); a loose sediment layer forms; almost all foam disappears; the wash smells of alcohol and has a sourish taste without sweetness.</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Rack the finished wash off the sediment (preferably through a thin tube), then filter through several layers of cheesecloth to remove particles that could scorch during distillation.</div></div>
+
+        <h2>Distillation</h2>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Fill the boiler to 30–75% and assemble the equipment as a simple pot still: column up to 60 cm with no packing, leaving only one coil or shell-and-tube condenser and a bubble trap if the design has one. Factory columns: pot still mode.</div></div>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Run the first distillation at maximum speed: the distillate may run warm and cloudy but never steamy. Stop when the stream strength falls below 25%; running almost "to water" is acceptable if the small gain justifies the extra energy and time.</div></div>
+        <div class="step"><div class="step-number">9</div><div class="step-text">Measure the raw spirit strength at 20 °C (or correct in a calculator) and calculate the pure alcohol: volume in litres × strength % ÷ 100. Dilute to 18–20%. Do not clean with activated carbon or other methods, or almost all organoleptics will be lost.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Second run: after boiling, reduce power so the spirit drips slowly and stays cold. Collect the first 12% of the pure-alcohol amount separately as "heads" — a harmful fraction unfit for drinking.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text">Raise power gradually so the spirit drips fast or runs in a thin stream but stays cold. Collect the "body" until the stream strength falls to 43%, then stop or collect "tails" separately for future rectification.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Dilute the serviceberry moonshine with soft water to the desired strength — usually 40–45%. Bottle in glass, seal tightly and rest for at least 5 days in a cool place for all reactions to finish and the taste to stabilize. Shelf life is unlimited.</div></div>
+
+        <div class="tip-box">💡 If you have enough high-quality berries, make serviceberry wine first — the distillate is a good plan B if the wine does not appeal.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🫐 Blackberry Moonshine</h3><p>Blackcurrant, raspberry and spice notes.</p><a href="recipe-054-blackberry-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🫐 Currant Moonshine</h3><p>Black/red/white; combined scheme for methanol.</p><a href="recipe-016-currant-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🍒 Rowan Moonshine</h3><p>Woody-astringent tones; red or black rowan.</p><a href="recipe-017-rowan-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Other Categories</h3>
+            <a href="recipes-grain.html">Grain Spirits</a>
+            <a href="recipes-sugar.html">Sugar & Sweet Spirits</a>
+            <a href="recipes-beer.html">Beer Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

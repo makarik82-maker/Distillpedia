@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bean Moonshine (Malt or Koji) | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Bean moonshine with two saccharification methods: hot with malt (protein pause) or cold with Koji yeast. Double fractional distillation. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 999px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+        body { background-attachment: scroll, scroll; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-grain.html">Grain & Starch Spirits</a> → Bean</p>
+
+    <div class="page-header">
+        <h1>🫘 Bean Moonshine</h1>
+        <p>Barely perceptible pea notes in aroma and taste. Suitable neat or as a base for strong "male" tinctures (not fruit-based). A good way to process surplus beans, even substandard ones.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Grain / Starch</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">4–28 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">up to 210 ml/kg (40%)</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first. Never taste a Koji-based wash.</div>
+
+        <h2>Theory</h2>
+        <p>Any bean variety works: white, red, etc. Slightly spoiled or even mouldy raw material is acceptable. Beans contain about 15% starch, so 1 kg theoretically yields up to 210 ml of 40° spirit; the practical yield is 10–15% lower.</p>
+        <p>Yeast cannot ferment pure starch, so the starch must first be split into simple sugars. Two methods exist: <strong>hot saccharification</strong> with malt (classic) and <strong>cold saccharification</strong> with Koji yeast. For beans the choice is not critical — this raw material has no unique notes worth preserving. Cold saccharification is simpler but needs Koji and a longer fermentation; hot saccharification needs malt and strict temperature control but is considered more natural, ferments faster, and the malt adds up to 800 ml of 40% spirit per 1 kg.</p>
+        <p><strong>The protein factor.</strong> Beans contain about 8% protein. If not broken down, the wash foams heavily and can scorch during distillation. In cold saccharification the enzymes digest almost all protein themselves; in the hot method an extra step — the <strong>protein pause</strong> — destroys the protein compounds.</p>
+        <p>Adding sugar to increase yield is not recommended given the relative complexity of the wash. Any spirit or baker's yeast works for fermentation.</p>
+
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            <ul>
+                <li>Beans — 5 kg</li>
+                <li>Water — 20–30 L</li>
+                <li>Koji yeast — 45 g (cold saccharification only)</li>
+                <li>Baker's or spirit yeast — for 25 L of wort (hot saccharification only)</li>
+                <li>Barley malt — 1.5 kg (hot saccharification only)</li>
+            </ul>
+        </div>
+
+        <h2>Method A: Koji Wash (Cold Saccharification)</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Disinfect the fermentation vessel with steam, iodine (10 ml per 25 L of cold water, fill to the edges, leave 60 minutes) or any other method. Slow fermentation risks infection, so disinfection is mandatory; some distillers also add antibiotics to Koji washes.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Grind the beans into grits, or better into flour. Whole beans cannot be fermented — the starch will not split.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Boil 20 L of water and pour it over the bean grits/flour. This disinfects the raw material.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Wait until the wort cools to 30–32 °C, then pitch the Koji per the package instructions. At higher temperatures the yeast dies.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Transfer the wort to the fermentation vessel and fit an airlock (mandatory, otherwise the wash sours).</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Move the wash to a dark place at a stable 20–28 °C (25–26 °C recommended). Stir once every 4–5 days so enzymes distribute evenly. Fermentation usually lasts 20–28 days; first signs appear 6–20 hours after pitching. The finished Koji wash lightens, shows a sediment layer and the airlock stops. <strong>Never taste this wash.</strong></div></div>
+
+        <h2>Method B: Malt Wash (Hot Saccharification)</h2>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Grind the beans into grits or flour for faster cooking. Whole beans work but need 3–4 hours of boiling (versus 1–1.5 h for grits/flour).</div></div>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Heat 25 L of water to 50–55 °C. Pour the beans into the cooking vessel, adding the water slowly while stirring to avoid lumps. Fill the vessel to max 75%.</div></div>
+        <div class="step"><div class="step-number">9</div><div class="step-text">Raise the temperature to 60 °C and hold for 15 minutes, stirring occasionally so the wort does not scorch at the bottom.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Bring to a boil and cook for 1–4 hours on medium heat until a homogeneous mash forms. Stir near the bottom.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text"><strong>Protein pause:</strong> cool the mash to 44–59 °C and hold in that range for 15 minutes. This destroys proteins so the wash foams less, is less viscous and does not scorch during distillation.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Raise the temperature to 63–68 °C (never above 71 °C) and add the ground malt gradually while stirring.</div></div>
+        <div class="step"><div class="step-number">13</div><div class="step-text">Even out the temperature to 61–65 °C and cover the vessel. Hold for 60–90 minutes with slow heating (wrap in warm clothes or use a hot-water bath). If the wort tastes sweet, saccharification succeeded.</div></div>
+        <div class="step"><div class="step-number">14</div><div class="step-text">To avoid infection, cool the wort to 25–29 °C as fast as possible, adding 5 L of cold water. An ice bath works too.</div></div>
+        <div class="step"><div class="step-number">15</div><div class="step-text">Transfer the wort to the fermentation vessel and pitch spirit yeast (per package) or baker's yeast (50 g dry or 250 g pressed). Stir and fit an airlock.</div></div>
+        <div class="step"><div class="step-number">16</div><div class="step-text">Move the bean wash to a dark place at a stable 20–28 °C. Fermentation usually lasts 4–8 days. The finished wash is not sweet, lightens, shows a sediment layer and the airlock stops (glove deflates).</div></div>
+
+        <h2>Distillation (both methods)</h2>
+        <div class="step"><div class="step-number">17</div><div class="step-text">Strain the finished wash through 2–3 layers of cheesecloth, removing solid parts that could scorch during distillation.</div></div>
+        <div class="step"><div class="step-number">18</div><div class="step-text">First run without fraction separation. Collect until the stream strength falls below 20%.</div></div>
+        <div class="step"><div class="step-number">19</div><div class="step-text">Measure the strength of the first-run bean spirit and calculate the pure alcohol (strength % × volume L ÷ 100). Charcoal cleaning is optional.</div></div>
+        <div class="step"><div class="step-number">20</div><div class="step-text">Second run: collect the first 10% of the pure-alcohol amount separately as "heads" — a harmful fraction unfit for drinking.</div></div>
+        <div class="step"><div class="step-number">21</div><div class="step-text">Collect the "body" until the stream strength falls below 45%, then stop or collect "tails" separately to add to a new wash batch.</div></div>
+        <div class="step"><div class="step-number">22</div><div class="step-text">Dilute the bean moonshine ("body") with water to 40–45%, bottle in glass and rest in a dark cool place for 3–4 days for taste stabilisation.</div></div>
+
+        <div class="tip-box">💡 Beans have no unique aroma worth preserving, so the choice between Koji and malt is purely practical: Koji is simpler but slower; malt is faster and adds volume.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🌾 Starch Moonshine</h3><p>Neutral spirit from any starch source.</p><a href="recipe-021-starch-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🌾 Malt Moonshine</h3><p>Hot saccharification, whiskey base.</p><a href="recipe-010-malt-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3> Jerusalem Artichoke</h3><p>Inulin hydrolysis, baked-apple notes.</p><a href="recipe-055-jerusalem-artichoke-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Other Categories</h3>
+            <a href="recipes-fruit.html">Fruit Spirits</a>
+            <a href="recipes-sugar.html">Sugar & Sweet Spirits</a>
+            <a href="recipes-beer.html">Beer Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

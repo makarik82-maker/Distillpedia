@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pineapple Moonshine | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Pineapple moonshine: light fruit aroma and soft taste; freeze treatment, sugar maceration, double distillation with optional vapor aromatization. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 768px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-fruit.html">Fruit Spirits</a> → Pineapple</p>
+
+    <div class="page-header">
+        <h1>🍍 Pineapple Moonshine</h1>
+        <p>A light fruit aroma and a soft taste; with bottle aging the aroma shifts toward light vanilla tones. A good way to process non-standard fruit that would otherwise spoil. The technology below extracts maximum aroma while keeping the taste soft.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Fruit</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">4–50 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">up to 165 ml/kg (40%)</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
+
+        <h2>Theory & Ingredients</h2>
+        <p>Ripe pineapples contain up to 15% sugar, so 1 kg of pulp gives at most 165 ml of 40° spirit. Given the price of the raw material, the yield is usually raised with sugar (1 kg adds 1.1–1.2 L of 40%), but the more sugar, the weaker the aroma — stick to the recipe proportions.</p>
+        <p>Baker's or spirit yeast finishes the wash in 4–7 days but worsens the aroma; wine yeast or a raisin starter takes 25–50 days but keeps the aroma fully. If you have time, use wine yeast or a starter.</p>
+        <div class="ingredients">
+            <ul>
+                <li>Pineapples — 2 kg</li>
+                <li>Sugar — 0.5–1 kg (optional)</li>
+                <li>Water — 5 L, plus 4 L per 1 kg of sugar</li>
+                <li>Yeast — 20 g dry (100 g pressed) or a raisin/berry starter</li>
+            </ul>
+        </div>
+
+        <h2>Wash Preparation</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Keep the fruit in the freezer for 3–4 days to break down acids that hinder fermentation.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Thaw the pineapples. Cut off the top and bottom (they make the spirit bitter), peel the skin down to smooth pulp and cut out rotten parts.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Slice the pulp and mince it with a meat grinder or mixer. If your still has a bubble trap, freeze 100–150 g of pulp now to aromatize the distillate during the second run.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Place the pulp into the fermentation vessel. Add the sugar and stir; leave for 45–60 minutes (no longer, or it will sour) for better juice release. Skip this step if making the wash without sugar.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Add the water and the yeast (or starter). Stir, fit an airlock (or a medical glove with a pinhole) and leave at least 25% headspace for foam.</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Move the vessel to a dark place at 18–28 °C. Fermentation lasts 4–50 days depending on yeast, sugar and temperature. It is finished when gas release stops, the wash lightens, a sediment layer forms and the taste shows no sweetness, only light bitterness.</div></div>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Filter the finished wash through cheesecloth or dense cloth to remove pulp particles that could scorch; press the pomace well.</div></div>
+
+        <h2>Distillation</h2>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Pour the wash into the boiler and run the first distillation without fraction separation. Stop when the stream strength falls below 25%.</div></div>
+        <div class="step"><div class="step-number">9</div><div class="step-text">Measure the distillate strength and calculate the pure alcohol: volume in litres × strength % ÷ 100. Dilute to 18–20%; do not clean with carbon or other methods, or the aroma will disappear.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Second run: collect the first 12–15% of the pure-alcohol amount separately as "heads" — a harmful fraction. If your still has a bubble trap, place the frozen pineapple pulp from step 3 inside it (it may go in unfrozen) to aromatize the distillate.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text">Collect the "body" until the stream strength falls below 40%, then stop or collect "tails" separately.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Dilute the pineapple moonshine to the desired drinking strength, bottle in glass, seal tightly and rest for 2–3 days in a dark cool place before tasting.</div></div>
+
+        <div class="tip-box">💡 Pineapple pulp is fibrous and gives no clean juice, so the wash is always thick; filter it well before distillation to avoid scorching and bitterness.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🍊 Orange Moonshine</h3><p>Persistent citrus aroma, candied-fruit aftertaste.</p><a href="recipe-057-orange-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🍌 Banana Moonshine</h3><p>Creamy banana tones; foam control.</p><a href="recipe-024-banana-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🍈 Melon Moonshine</h3><p>Ripe flesh and herbal-honey notes.</p><a href="recipe-045-melon-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Other Categories</h3>
+            <a href="recipes-grain.html">Grain Spirits</a>
+            <a href="recipes-sugar.html">Sugar & Sweet Spirits</a>
+            <a href="recipes-beer.html">Beer Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

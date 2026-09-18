@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jerusalem Artichoke Moonshine | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Jerusalem artichoke (earth pear) moonshine: inulin hydrolysis by freezing and acid boiling, wash recipe, double fractional distillation. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 999px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+        body { background-attachment: scroll, scroll; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-grain.html">Grain & Starch Spirits</a> → Jerusalem Artichoke</p>
+
+    <div class="page-header">
+        <h1>🌱 Jerusalem Artichoke Moonshine</h1>
+        <p>A barely perceptible profile of baked apples with celery notes, and a decent yield even without added sugar — an excellent way to process a surplus harvest of earth pears.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Grain / Tuber</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Advanced</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">3–12 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">~1 L (40%) per 10 kg</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
+
+        <h2>Theory: Why Inulin Matters</h2>
+        <p>Jerusalem artichoke stores carbohydrates as <strong>inulin</strong>, a polysaccharide that yeast cannot ferment directly. It must first be split into simple sugars — fructose (95%) and glucose (5%). At home this is done by freezing and/or boiling with citric acid; industry uses the enzyme inulinase, which is hard to buy in small packs.</p>
+        <p>Contrary to some sources, the tubers contain at most 0.4% starch, so malt is pointless here.</p>
+
+        <h2>Choosing the Ingredients</h2>
+        <ul>
+            <li><strong>Tubers:</strong> harvest after the first frosts (October–November) or in early spring before young shoots appear; spring tubers are sweeter because part of the inulin splits naturally. Size and shape do not matter; remove rotten and mouldy parts.</li>
+            <li><strong>Yield:</strong> 14–22% inulin; 1 kg of inulin converts into 1.05–1.1 kg of fermentable sugars. Theoretically 1 kg of tubers gives 176–290 ml of 40° spirit; 15–25% is lost to incomplete hydrolysis and distillation. A practical benchmark: ~1 L of 40% distillate per 10 kg of tubers.</li>
+            <li><strong>Sugar (optional):</strong> 1 kg adds 1.2 L of 40% but dulls the profile with kvass/molasses tones. Up to 200 g per 1 kg of tubers is acceptable; with 10 kg+ of tubers, skip it. Dextrose or fructose in the same amount affect the organoleptics less.</li>
+            <li><strong>Water:</strong> the non-boiled part must be non-chlorinated (reverse osmosis, well, spring, or tap stood 3 days). Boiled water is the worst choice for both wash and dilution.</li>
+            <li><strong>Citric acid:</strong> needed for inulin hydrolysis under heat and to stabilise wort acidity; can be replaced with fresh lemon juice (5–7 g per medium lemon). Added in two stages because part is destroyed by heat.</li>
+            <li><strong>Yeast:</strong> ordinary spirit yeast is best — the wort is naturally rich in nitrogen, phosphorus, iron, zinc and vitamins; "turbo" strains are also acceptable. Baker's yeast works (7–12 days instead of 3–6, more foam) and its aftertaste is removed by proper fractional distillation. Wine yeast or berry starters are pointless: waiting up to 45 days does not improve quality.</li>
+        </ul>
+
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            <ul>
+                <li>Jerusalem artichoke tubers — 10 kg</li>
+                <li>Sugar (optional) — 2 kg (up to 1 kg per 5 kg of tubers)</li>
+                <li>Water — 6 L per 1 kg of tubers, plus 4 L per 1 kg of sugar</li>
+                <li>Citric acid — 8 g per 1 L of water (6 g/L at boiling + 2 g/L later)</li>
+                <li>Spirit or baker's yeast — per instructions; baker's: 20 g dry or 100 g pressed per 1 kg of total sugar (assume 200 g sugar per 1 kg of tubers if you cannot measure sugar content)</li>
+            </ul>
+        </div>
+
+        <h2>Wash Preparation</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Wash the tubers free of soil, put them in a plastic bag and freeze for 48 hours so the cold partially converts inulin and ruptures cell membranes, making the tubers softer and cutting boiling time. Spring tubers may skip freezing; for autumn tubers it is strongly recommended.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Thaw at room temperature, then grate finely (or use a similar method) and place the mass into a cooking pot.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Add 4 L of water per 1 kg of tubers and citric acid at 6 g per 1 L of water. Stir to a homogeneous consistency, bring to a boil and simmer on low heat for 40–90 minutes until a homogeneous mash with a baked-apple smell and sweet taste forms. Stir and crush lumps periodically so the pulp does not scorch. Pre-frozen tubers cook about twice as fast.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Cool the "mash" to 30–35 °C and transfer it to the fermentation vessel. Dissolve the sugar and the remaining citric acid (2 g/L) in cold non-boiled water (2 L per 1 kg of tubers plus 4 L per 1 kg of sugar), add to the wort and stir until homogeneous and freely stirrable; add more water if needed. Non-boiled water supplies the oxygen yeast need at the start.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Activate spirit yeast per the label. Pressed baker's yeast can go in straight from the fridge, kneaded with clean hands; dry baker's: scatter over the surface of a sugar syrup (10 ml water and 1 g sugar per 1 g yeast) at 27–30 °C, stir after 5 minutes and leave 10–15 minutes in a dark place until stable foam forms.</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Pitch the activated yeast (the wort must be below 30 °C). Fit any airlock and keep the vessel in a dark place at a stable 18–27 °C. For the first 3–4 days check every 10–12 hours so floating pulp and foam do not block the airlock tube; open and stir, breaking the dense surface layer, as needed. Over time the pulp settles.</div></div>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Fermentation lasts 3–12 days depending on yeast, temperature and sugar content. It is finished when: the airlock bubbles fewer than 5 times per minute or the glove deflates; foam has disappeared (patches up to 3 cm may float); a loose sediment layer forms; the wash tastes slightly bitter without sweetness.</div></div>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Rack the wash off the sediment (a thin tube works best), then strain through cheesecloth or a fine sieve to remove solids that could scorch during heating.</div></div>
+
+        <h2>Distillation</h2>
+        <div class="step"><div class="step-number">9</div><div class="step-text">Assemble the equipment as a simple pot still: column up to 65 cm with no packing, all auxiliary units off, only a direct-flow condenser (coil or shell-and-tube) and one bubble trap if the design has one. Factory columns: pot still mode.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Fill the boiler to 30–70% and run the first distillation at maximum speed: the raw spirit may run warm and cloudy but never steamy, otherwise losses are extreme. Stop when the stream strength falls below 20%. Running almost "to water" is acceptable if the small gain justifies the extra heating energy.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text">Measure the raw spirit strength at 20 °C (or correct for temperature in a calculator) and calculate the pure alcohol: volume (L) × strength (%) ÷ 100. Dilute to 16–20%. Charcoal cleaning is optional — understand that much of the aroma and taste will be lost.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Second run: after boiling, reduce power so the spirit flows in small drops and stays cold, almost like the cooling water. Collect the first 15% of the pure-alcohol amount separately as "heads" — a foul-smelling fraction with many harmful impurities, unfit for drinking.</div></div>
+        <div class="step"><div class="step-number">13</div><div class="step-text">Raise power smoothly so the spirit drips fast or runs in a thin stream but stays cold. Collect the "body" until the stream strength falls below 44%, then stop or collect "tails" separately to recycle them into a new wash batch or rectify them on a column.</div></div>
+        <div class="step"><div class="step-number">14</div><div class="step-text">Dilute the finished Jerusalem artichoke moonshine ("body") with softened water to the desired strength — usually 40–45%. Bottle in glass, seal tightly and rest for at least 5 days in a cool place. Shelf life is unlimited.</div></div>
+
+        <div class="tip-box">💡 To keep the characteristic baked-apple organoleptics rather than pure ethanol, run the second distillation in pot-still mode and fill the column with copper packing (SPN/RPN) to cut sulfur compounds; stainless packing gives no result and only slows the run.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🥔 Potato Moonshine</h3><p>Classic malt saccharification of a starchy tuber.</p><a href="recipe-020-potato-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🎃 Pumpkin Moonshine</h3><p>Banana, melon and honey-nut tones.</p><a href="recipe-058-pumpkin-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🫘 Bean Moonshine</h3><p>Hot saccharification with malt or cold with Koji.</p><a href="recipe-057-bean-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Other Categories</h3>
+            <a href="recipes-fruit.html">Fruit Spirits</a>
+            <a href="recipes-sugar.html">Sugar & Sweet Spirits</a>
+            <a href="recipes-beer.html">Beer Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

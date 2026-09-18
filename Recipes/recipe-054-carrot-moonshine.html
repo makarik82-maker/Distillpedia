@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrot Moonshine | Community Recipes | Distillpedia Club</title>
+<meta name="description" content="Carrot moonshine: white-pepper and nutmeg aroma, baked-apple notes; boiled-syrup wash technology and double fractional distillation. Educational content only.">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('background.png'); background-size: cover, cover; background-position: center, center; background-attachment: fixed, fixed; background-repeat: no-repeat, no-repeat; min-height: 100vh; }
+    .container { max-width: 1600px; margin: 0 auto; padding: 20px 24px; }
+    header { background: #2c5f2d; color: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
+    .logo span { color: #97bc62; }
+    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
+    nav a:hover { background: rgba(255,255,255,0.15); }
+    .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .breadcrumb a { color: #fff; }
+    .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
+    .page-header h1 { color: #fff; font-size: 36px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin-bottom: 8px; }
+    .page-header p { color: #e9e9e9; text-shadow: 0 1px 6px rgba(0,0,0,0.7); max-width: 900px; }
+    .article { background: rgba(255,255,255,0.95); border-radius: 8px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); color: #333; margin-bottom: 40px; }
+    .article h2 { color: #2c5f2d; font-size: 26px; margin: 28px 0 12px; border-bottom: 2px solid #97bc62; padding-bottom: 6px; }
+    .article h3 { color: #2c5f2d; font-size: 20px; margin: 20px 0 10px; }
+    .article p { margin-bottom: 14px; }
+    .article ul, .article ol { margin: 0 0 16px 24px; }
+    .article li { margin-bottom: 8px; }
+    .article a { color: #2c5f2d; font-weight: bold; }
+    .recipe-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+    .info-item { background: #f4f9f0; padding: 14px; border-radius: 8px; text-align: center; border: 1px solid #e0e8d5; }
+    .info-item .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+    .info-item .value { font-size: 17px; font-weight: bold; color: #2c5f2d; margin-top: 4px; }
+    .legal-box { background: #fff3cd; border: 1px solid #ffc107; color: #664d03; padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+    .safety-box { background: #fdecea; border-left: 4px solid #c0392b; padding: 16px 18px; border-radius: 4px; margin: 18px 0; }
+    .tip-box { background: #e8f5e9; border-left: 4px solid #2c5f2d; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
+    .ingredients { background: #f4f9f0; padding: 20px; border-radius: 8px; border: 1px solid #e0e8d5; margin: 16px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-number { flex-shrink: 0; width: 36px; height: 36px; background: #2c5f2d; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 15px; }
+    .step-text { flex: 1; }
+    .next-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
+    .next-card { background: #f4f9f0; border: 1px solid #97bc62; border-radius: 8px; padding: 20px; }
+    .next-card h3 { color: #2c5f2d; margin-bottom: 8px; font-size: 17px; }
+    .next-card a { color: #2c5f2d; font-weight: bold; }
+    footer { background: #2c3e2d; color: #e0e8d5; padding: 40px 0; margin-top: 60px; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+    footer h3 { color: #97bc62; margin-bottom: 12px; font-size: 18px; }
+    footer p { font-size: 14px; line-height: 1.6; max-width: 400px; }
+    footer a { color: #97bc62; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 999px) {
+        html { scroll-padding-top: 80px; }
+        header { padding: 8px 0; }
+        header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
+        .logo { font-size: 20px; line-height: 1.2; }
+        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
+        .container { padding: 12px; }
+        .page-header h1 { font-size: 26px; }
+        .article { padding: 22px; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+        <nav>
+            <a href="index.html#guides">Guides</a>
+            <a href="index.html#equipment">Equipment</a>
+            <a href="index.html#recipes">Recipes</a>
+            <a href="index.html#distilling">Distilling</a>
+            <a href="index.html#tools">Tools</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <p class="breadcrumb"><a href="index.html">Home</a> → <a href="index.html#recipes">Community Recipes</a> → <a href="recipes-fruit.html">Fruit & Vegetable Spirits</a> → Carrot</p>
+
+    <div class="page-header">
+        <h1>🥕 Carrot Moonshine</h1>
+        <p>A barely perceptible aroma of white pepper with nutmeg tones, and a taste with notes of baked apple and spices. Without the boiled-syrup step the finished drink shows a pronounced vegetable component.</p>
+    </div>
+
+    <article class="article">
+        <div class="recipe-info">
+            <div class="info-item"><div class="label">Category</div><div class="value">Fruit / Veg</div></div>
+            <div class="info-item"><div class="label">ABV</div><div class="value">40–45%</div></div>
+            <div class="info-item"><div class="label">Difficulty</div><div class="value">Medium</div></div>
+            <div class="info-item"><div class="label">Fermentation</div><div class="value">3–12 days</div></div>
+            <div class="info-item"><div class="label">Yield</div><div class="value">48–108 ml/kg (40%)</div></div>
+        </div>
+
+        <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
+
+        <h2>Choosing the Ingredients</h2>
+        <h3>Carrots</h3>
+        <p>Any ripe carrots work: undersized, long-stored, bruised, unsuitable for storage due to damage, etc. Unripe roots contain much pectin, from which yeast produces methanol — the spirit stays safe but the hangover gets heavier. If you have plenty of quality roots, you can also make <a href="#">carrot wine</a> and distil it later if you do not like it.</p>
+        <h3>Yield</h3>
+        <p>Natural sugar content of carrots is 4–9%. Theoretically 1 kg gives 48–108 ml of 40° spirit; the practical amount is 15–20% lower due to losses in two distillations.</p>
+        <h3>Sugar</h3>
+        <p>1 kg of beet or cane sugar adds 1.2 L of 40% distillate but dulls the profile, so a balance is needed. Empirically, up to 150 g of sugar per 1 kg of carrots is acceptable; beyond that aroma and taste noticeably "sag". Dextrose (powdered glucose) or fructose in the same amount affect the organoleptics less.</p>
+        <h3>Water</h3>
+        <p>Water helps separate the juice and controls wash sugar content when sugar is added. The non-boiled part must be non-chlorinated (chlorine suppresses yeast): reverse-osmosis, well, street dispenser, or tap water stood for 3 days in an open vessel. Dilute the finished spirit only with softened water — about 40% of the taste depends on it; boiled water is the worst option.</p>
+        <h3>Citric acid</h3>
+        <p>Carrot juice contains only 2–5 g/l of acids (before water and sugar) versus the 6–10 g/l norm. A low-acidity wash ferments slower and is prone to infection. The simplest fix is concentrated citric acid; fresh lemon juice also works (one medium lemon holds 5–7 g of acid).</p>
+        <h3>Yeast</h3>
+        <p>The roots are washed and peeled and the pulp is scalded, so wild yeast are guaranteed dead. Spirit yeast (regular or "turbo") is recommended; dry or pressed baker's yeast also works — it foams more and adds kvass tones, but competent fractional distillation removes them. Wine yeast and berry/raisin starters are pointless here: they do not improve the spirit enough to justify waiting 30–40 days instead of 3–12.</p>
+
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            <ul>
+                <li>Carrots — 10 kg</li>
+                <li>Sugar — 1.5 kg (up to 150 g per 1 kg of carrots)</li>
+                <li>Water — 1 l per 1 kg of carrots, plus 4 l per 1 kg of sugar</li>
+                <li>Citric acid — 5 g per 1 l of wash</li>
+                <li>Yeast — per wash volume (spirit yeast per package; baker's: 20 g dry or 100 g pressed per 1 kg of total sugar)</li>
+            </ul>
+        </div>
+
+        <h2>Wash Preparation</h2>
+        <div class="step"><div class="step-number">1</div><div class="step-text">Peel the carrots: remove the skin, greened, mouldy and rotten parts (they add a plant-vegetable background). Wash the pulp in running water so no soil particles remain, then grate or mince it and place it into a metal pot or bucket.</div></div>
+        <div class="step"><div class="step-number">2</div><div class="step-text">Boil 75% of the total water, add all the sugar, boil for 3–5 minutes on low heat skimming the foam, then pour the hot syrup into the carrot mass, stir to a homogeneous consistency, cover and leave for 12 hours. The heat treatment extracts the juice, neutralises the vegetable profile and kills pathogenic microflora.</div></div>
+        <div class="step"><div class="step-number">3</div><div class="step-text">Strain the wort through several layers of cheesecloth or a fine sieve; press the pomace dry (it is no longer needed). Add the remaining 25% of non-boiled water and the citric acid to the liquid part and stir. The "raw" water supplies oxygen and microelements yeast need at the start. Fill the fermentation vessel to max 75%.</div></div>
+        <div class="step"><div class="step-number">4</div><div class="step-text">Activate the yeast: spirit yeast per the package; pressed baker's straight from the fridge, kneaded with clean hands; dry baker's scattered over a sugar syrup surface (10 ml water and 1 g sugar per 1 g yeast) at 27–29 °C, stirred after 5 minutes and left open 10–15 minutes until stable foam appears.</div></div>
+        <div class="step"><div class="step-number">5</div><div class="step-text">Pitch the yeast into the carrot wort, fit an airlock and keep the wash in a dark place (or covered) at a stable 18–28 °C.</div></div>
+        <div class="step"><div class="step-number">6</div><div class="step-text">Fermentation lasts 3–12 days depending on yeast, sugar and temperature. It is finished when: the airlock bubbles 5 times per minute or less (or the glove deflates); foam has disappeared from the surface (patches up to 3 cm may float); the wort has lightened with a loose sediment layer at the bottom; the wash smells of alcohol and has no sweetness.</div></div>
+        <div class="step"><div class="step-number">7</div><div class="step-text">Rack the finished wash off the sediment, preferably through a thin tube (like siphoning petrol from a tank).</div></div>
+
+        <h2>Distillation</h2>
+        <div class="step"><div class="step-number">8</div><div class="step-text">Assemble the equipment as a simple pot still: column (tsarga) up to 65 cm with no packing, all auxiliary units off, leaving only a direct-flow condenser (coil or shell-and-tube) and one thump keg / bubble trap if the design has one. Factory columns: pot still mode.</div></div>
+        <div class="step"><div class="step-number">9</div><div class="step-text">Fill the boiler to 30–70% and run the first distillation at maximum speed: the raw spirit may run warm and cloudy but never steamy. Stop when the stream strength falls below 20%. Running almost "to water" is acceptable if the small gain justifies the extra energy.</div></div>
+        <div class="step"><div class="step-number">10</div><div class="step-text">Measure the raw spirit strength at 20 °C (or correct for temperature in a calculator) and compute the pure alcohol: volume in litres × strength % ÷ 100.</div></div>
+        <div class="step"><div class="step-number">11</div><div class="step-text">Dilute to 16–20%. Do not clean with activated carbon or other methods if you want to keep the carrot profile.</div></div>
+        <div class="step"><div class="step-number">12</div><div class="step-text">Second run: after boiling, reduce power so the spirit drips slowly and stays cold, almost like the cooling water. Collect the first 12–15% of the pure-alcohol amount separately as "heads" — a harmful technical fraction.</div></div>
+        <div class="step"><div class="step-number">13</div><div class="step-text">Raise power smoothly to fast drops or a thin stream, keeping the spirit cold. Collect the "body" until the stream strength falls below 42%, then stop or collect "tails" separately for future rectification.</div></div>
+        <div class="step"><div class="step-number">14</div><div class="step-text">Dilute the carrot moonshine ("body") with softened water to 40–45%, bottle in glass, seal tightly and rest for at least 5 days in a cool place. Shelf life is unlimited.</div></div>
+
+        <div class="tip-box">💡 The boiled-syrup step is what removes the vegetable component and kills wild microflora. Skipping it gives a slower, infection-prone wash and a distinctly "carroty" distillate.</div>
+
+        <h2>Related Recipes</h2>
+        <div class="next-cards">
+            <div class="next-card"><h3>🍅 Tomato Moonshine</h3><p>Fresh tomatoes or paste; green notes.</p><a href="recipe-015-tomato-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🎃 Pumpkin Moonshine</h3><p>Banana, melon and honey-nut tones.</p><a href="recipe-047-pumpkin-moonshine.html">View recipe →</a></div>
+            <div class="next-card"><h3>🥔 Potato Moonshine</h3><p>Classic malt saccharification of a starchy tuber.</p><a href="recipe-020-potato-moonshine.html">View recipe →</a></div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>Distillpedia Club</h3>
+            <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Other Categories</h3>
+            <a href="recipes-fruit.html">Fruit Spirits</a>
+            <a href="recipes-grain.html">Grain Spirits</a>
+            <a href="recipes-sugar.html">Sugar & Sweet Spirits</a>
+            <a href="recipes-beer.html">Beer Spirits</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+            <p style="margin-top:12px;font-size:12px;color:#8a9a8b;">© 2026 Distillpedia Club. All rights reserved. Content is for educational purposes only.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
