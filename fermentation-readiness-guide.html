@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fermentation Times: How to Know When Your Mash Is Ready | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c9a227; /* Hourglass Gold */
+            --accent-dark: #9a7d0a;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #fdf5e6;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            --success-bg: #eafaf1;
+            --success-text: #196f3d;
+            --gold: #c9a227;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a3b00 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        header .tagline { margin-top: 0.5rem; font-size: 0.95rem; opacity: 0.85; font-style: italic; }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1; text-decoration: none; margin: 0 15px; font-weight: 600;
+            font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-color); }
+        main {
+            max-width: 920px; margin: 2.5rem auto; background: white;
+            padding: 3rem 4rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.3rem; color: var(--primary-color); margin-top: 0;
+            border-bottom: 3px solid var(--accent-color); padding-bottom: 0.8rem; line-height: 1.2;
+        }
+        .subtitle { font-size: 1.15rem; color: #666; font-style: italic; margin-bottom: 2.5rem; }
+        .toc {
+            background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px;
+            padding: 1.5rem 2rem; margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0; color: var(--primary-color); font-size: 1.1rem; text-transform: uppercase;
+            letter-spacing: 0.5px; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem;
+        }
+        .toc ol { margin-bottom: 0; padding-left: 20px; columns: 2; column-gap: 2rem; }
+        .toc li { margin-bottom: 0.4rem; break-inside: avoid; }
+        .toc a { color: var(--accent-dark); text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color); border-left: 5px solid var(--accent-color);
+            padding-left: 15px; margin-top: 3rem; font-size: 1.6rem; scroll-margin-top: 70px;
+        }
+        h3 { color: var(--accent-dark); margin-top: 2rem; font-size: 1.25rem; }
+        h4 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.05rem; }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg); border-left: 4px solid var(--accent-color);
+            padding: 15px 20px; margin: 2rem 0; font-weight: 500; border-radius: 4px; font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg); border: 1px solid var(--note-border);
+            color: var(--note-text); padding: 15px 20px; border-radius: 4px; margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #665322; }
+        .warning-note {
+            background-color: var(--warning-bg); border-left: 4px solid #dc3545;
+            padding: 15px 20px; border-radius: 4px; margin: 1.5rem 0; color: var(--warning-text);
+        }
+        .warning-note strong { color: #5a1a20; }
+        table {
+            width: 100%; border-collapse: collapse; margin: 2rem 0;
+            font-size: 0.93rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td { border: 1px solid var(--light-gray); padding: 11px 14px; text-align: left; vertical-align: top; }
+        th {
+            background-color: var(--primary-color); color: white; font-weight: 600;
+            text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #f9fbfb; }
+        .table-scroll { overflow-x: auto; border-radius: 6px; }
+
+        /* Factor Cards */
+        .factors-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px; margin: 1.5rem 0;
+        }
+        .factor-card {
+            background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px;
+            padding: 1.2rem; border-top: 4px solid var(--accent-color);
+        }
+        .factor-card h4 { margin-top: 0; display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
+        .factor-card p { margin-bottom: 0; font-size: 0.92rem; }
+
+        /* Method Verdict Cards */
+        .method-card {
+            border-radius: 10px; margin: 1.5rem 0; overflow: hidden;
+            border: 1px solid #e0e0e0; box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .method-header {
+            padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .method-header h4 { margin: 0; color: white; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+        .method-body { padding: 1.2rem 1.5rem; }
+        .method-body p:last-child { margin-bottom: 0; }
+        .verdict-badge {
+            padding: 4px 12px; border-radius: 20px; font-size: 0.75rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: white;
+        }
+        .method-bad .method-header { background: linear-gradient(135deg, #c0392b, #922b21); }
+        .method-bad .verdict-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); }
+        .method-ok .method-header { background: linear-gradient(135deg, #f39c12, #d68910); }
+        .method-ok .verdict-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); }
+        .method-good .method-header { background: linear-gradient(135deg, #27ae60, #1e8449); }
+        .method-good .verdict-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); }
+        .method-useless .method-header { background: linear-gradient(135deg, #7f8c8d, #515a5a); }
+        .method-useless .verdict-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); }
+
+        /* Scenario Boxes */
+        .scenario-box {
+            background: #fdf5e6; border: 1px dashed var(--accent-color);
+            border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+        }
+        .scenario-box h4 { margin-top: 0; color: var(--accent-dark); }
+
+        /* Risk Comparison */
+        .risk-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 1.5rem 0;
+        }
+        .risk-card { border-radius: 8px; padding: 1.2rem; border: 1px solid; }
+        .risk-card h4 { margin-top: 0; display: flex; align-items: center; gap: 8px; }
+        .risk-card ul { margin-bottom: 0; padding-left: 18px; font-size: 0.92rem; }
+        .risk-early { background: #fff5f5; border-color: #feb2b2; }
+        .risk-early h4 { color: #c0392b; }
+        .risk-late { background: #f0f4f8; border-color: #a0aec0; }
+        .risk-late h4 { color: #2c5282; }
+        .risk-optimal {
+            grid-column: 1 / -1; background: var(--success-bg); border: 2px solid #27ae60;
+            text-align: center; padding: 1rem; border-radius: 8px;
+        }
+        .risk-optimal h4 { color: var(--success-text); justify-content: center; margin: 0; font-size: 1.1rem; }
+
+        /* Algorithm Steps */
+        .algo-step {
+            display: flex; gap: 16px; margin: 1.2rem 0; background: #f8f9fa;
+            border-radius: 8px; padding: 1rem 1.3rem; border: 1px solid #e9ecef;
+        }
+        .algo-step .step-badge {
+            background: var(--accent-color); color: white; min-width: 40px; height: 40px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.05rem;
+        }
+        .algo-step .step-content { flex: 1; }
+        .algo-step h4 { margin-top: 0; margin-bottom: 0.4rem; color: var(--primary-color); font-size: 1rem; }
+        .algo-step p, .algo-step ul { margin-bottom: 0; font-size: 0.93rem; }
+
+        /* FAQ */
+        .faq-item { border: 1px solid #e0e0e0; border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+        .faq-question {
+            background: #f8f9fa; padding: 0.9rem 1.3rem; font-weight: 600;
+            color: var(--primary-color); display: flex; align-items: center; gap: 10px;
+        }
+        .faq-question .q-mark { color: var(--accent-color); font-size: 1.3rem; font-weight: 700; }
+        .faq-answer { padding: 0.9rem 1.3rem 1rem; font-size: 0.95rem; }
+
+        /* Final principles */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a3b00 100%);
+            color: white; border-radius: 10px; padding: 2rem; margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white; margin-top: 0; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1); border-radius: 6px; padding: 1rem 1.2rem;
+            margin: 1rem 0; border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700; display: block; margin-bottom: 4px; font-size: 1.05rem;
+        }
+        footer {
+            text-align: center; padding: 2rem; color: #777; font-size: 0.9rem;
+            border-top: 1px solid #eee; margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 7px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.8rem; }
+            .toc ol { columns: 1; }
+            .risk-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Measurement</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Fermentation Times: From 5 Days to a Month</h1>
+        <p class="subtitle">How to know when your mash is ready: a comprehensive guide to determining the end of fermentation using visual cues, density measurements, and other control methods.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Question Every Distiller Asks</a></li>
+                <li><a href="#factors">Chapter 1. Factors Determining Fermentation Time</a></li>
+                <li><a href="#times">Chapter 2. Typical Timelines for Different Mash Types</a></li>
+                <li><a href="#methods">Chapter 3. Methods for Determining Readiness</a></li>
+                <li><a href="#summary">Chapter 4. Summary Table of Methods</a></li>
+                <li><a href="#specifics">Chapter 5. Specifics for Different Mash Types</a></li>
+                <li><a href="#scenarios">Chapter 6. What to Do If Fermentation Drags On</a></li>
+                <li><a href="#maturation">Chapter 7. The Maturation Stage: Why Wait?</a></li>
+                <li><a href="#risks">Chapter 8. Risks of Errors: Too Early vs. Too Late</a></li>
+                <li><a href="#algorithm">Chapter 9. Practical Readiness Algorithm</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#tools">Chapter 11. Tools and Their Costs</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Question Every Distiller Asks</h2>
+        <p>"How many days should mash ferment?" This question is asked on forums and in distilling groups more than any other. And every time, it receives the same unsatisfying answer: <em>"Until it's done."</em> To a beginner, this sounds like a mockery. To an experienced distiller, it is a statement of fact.</p>
+        <p>The reality is that fermentation times vary from 3 days to 4 weeks depending on a dozen factors, and none of them can provide an exact forecast in days. Two absolutely identical mashes, started on the same day from the same raw materials, can finish fermenting with a 3–5 day difference simply because the temperature in one vessel was 2 °C higher, or the yeast came from different batches.</p>
+        <p>But the question of readiness is not academic. Distilling too early means losing sugar, reducing alcohol yield, and getting a "raw" distillate with elevated acetaldehyde. Distilling too late means letting the mash sour, developing an infection, and getting a vinegar or moldy smell in your product. <strong>The window of optimal readiness is only 24–72 hours</strong>, and missing it means ruining several kilograms of raw material and a week of waiting.</p>
+        <p>This article is a practical guide to determining the exact moment your mash is truly ready for distillation. We will cover all methods, explaining why the airlock — which beginners rely on — is the worst indicator of all.</p>
+
+        <h2 id="factors">Chapter 1. Factors Determining Fermentation Time</h2>
+        <p>Before talking about signs of readiness, we need to understand why timelines vary so wildly. Six main factors influence fermentation speed:</p>
+
+        <div class="factors-grid">
+            <div class="factor-card">
+                <h4>🌡️ 1. Temperature</h4>
+                <p>The main factor. At 28–30 °C, a sugar mash on turbo yeast ferments in 3–5 days. At 20 °C, the same recipe takes 10–14 days. <em>Rule of thumb: a 10 °C increase doubles the speed.</em></p>
+            </div>
+            <div class="factor-card">
+                <h4>🦠 2. Yeast Type</h4>
+                <p>Turbo: 3–5 days. Alcohol: 5–8 days. Wine: 10–25 days. Baker's: 5–10 days. Wild: 2–4 weeks (unpredictable).</p>
+            </div>
+            <div class="factor-card">
+                <h4>🍬 3. Sugar Concentration</h4>
+                <p>15% sugar ferments fast (4–7 days). 20% takes longer (7–12 days). 25% causes osmotic stress and can stretch to 2–3 weeks.</p>
+            </div>
+            <div class="factor-card">
+                <h4>🌾 4. Raw Material Type</h4>
+                <p>Sugar is fastest. Grain is medium (amino acids speed it up). Fruit is slow to medium. Potato requires careful prep.</p>
+            </div>
+            <div class="factor-card">
+                <h4>🛢️ 5. Vessel Volume</h4>
+                <p>Paradoxically, large volumes (50–200 L) ferment slower than small ones (5–20 L) due to poorer heat dissipation and thermal stress on yeast.</p>
+            </div>
+            <div class="factor-card">
+                <h4>🧪 6. Nutrients</h4>
+                <p>Mash with nutrients ferments faster and more completely. Sugar mash without nutrients can stall or stretch to 14 days.</p>
+            </div>
+        </div>
+
+        <h2 id="times">Chapter 2. Typical Timelines for Different Mash Types</h2>
+        <p>Below are approximate ranges. These are statistics, not guarantees. Your mash may fall outside these bounds, and that is normal.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mash Type</th>
+                    <th>Yeast</th>
+                    <th>Temperature</th>
+                    <th>Time Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Sugar (15–18%)</td><td>Turbo</td><td>28–30 °C</td><td>3–5 days</td></tr>
+                <tr><td>Sugar (18–20%)</td><td>Alcohol</td><td>26–28 °C</td><td>5–8 days</td></tr>
+                <tr><td>Sugar (20%)</td><td>Wine</td><td>20–22 °C</td><td>12–18 days</td></tr>
+                <tr><td>Grain (wheat, rye)</td><td>Alcohol</td><td>26–28 °C</td><td>5–8 days</td></tr>
+                <tr><td>Fruit (apples, grapes)</td><td>Wine</td><td>18–22 °C</td><td>10–20 days</td></tr>
+                <tr><td>Berry (cherry, raspberry)</td><td>Wine</td><td>16–20 °C</td><td>12–25 days</td></tr>
+                <tr><td>Potato</td><td>Alcohol</td><td>26–28 °C</td><td>7–12 days</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Important:</strong> These times include only <em>active fermentation</em>. After the active phase ends, the mash needs 1–3 days for clarification and yeast settling. This is a "maturation" stage, which is highly recommended not to skip.
+        </div>
+
+        <h2 id="methods">Chapter 3. Methods for Determining Readiness</h2>
+        
+        <div class="method-card method-bad">
+            <div class="method-header">
+                <h4>💨 3.1. The Airlock (Bubbles)</h4>
+                <span class="verdict-badge">Worst Indicator</span>
+            </div>
+            <div class="method-body">
+                <p><strong>What you see:</strong> Bubbles in the airlock have stopped.</p>
+                <p><strong>Why it's unreliable:</strong> CO₂ might be escaping through a leaky lid seal. The fermentation might just be slowing down due to a temperature drop. CO₂ might be dissolving into the liquid under pressure. The airlock might be clogged with foam.</p>
+                <p><strong>Verdict:</strong> Useful for observing the process, but <strong>never</strong> use it as your sole criterion for readiness.</p>
+            </div>
+        </div>
+
+        <div class="method-card method-ok">
+            <div class="method-header">
+                <h4>👁️ 3.2. Visual Signs</h4>
+                <span class="verdict-badge">Useful Supplement</span>
+            </div>
+            <div class="method-body">
+                <p><strong>What you see:</strong> The foam (cap) has dropped. The liquid has clarified (top layers become translucent). A dense layer of yeast sediment forms at the bottom.</p>
+                <p><strong>Why it's unreliable:</strong> Clarification can start if the temperature drops below 18 °C and the yeast simply "falls asleep" before finishing the sugar. Some mashes (potato, rye) remain cloudy even after full fermentation due to proteins and pectins.</p>
+            </div>
+        </div>
+
+        <div class="method-card method-ok">
+            <div class="method-header">
+                <h4>👅 3.3. Taste</h4>
+                <span class="verdict-badge">Fast but Subjective</span>
+            </div>
+            <div class="method-body">
+                <p><strong>What you do:</strong> Take a clean spoon and taste the mash.</p>
+                <p><strong>What you feel:</strong> Sweet = not finished. Bitter/dry/neutral = ready. Sour = infection (distill immediately).</p>
+                <p><strong>Why it's subjective:</strong> Sensitivity to sweetness varies. High alcohol burn (14–18%) can mask residual sugar. The natural acidity of fruit mashes masks residual sugar.</p>
+            </div>
+        </div>
+
+        <div class="method-card method-good">
+            <div class="method-header">
+                <h4>📏 3.4. Hydrometer (Saccharometer)</h4>
+                <span class="verdict-badge">Gold Standard</span>
+            </div>
+            <div class="method-body">
+                <p><strong>Principle:</strong> Measures liquid density, which directly depends on dissolved sugars. As sugar turns into ethanol (lighter than water) and CO₂ (escapes), density drops.</p>
+                <p><strong>Target values for readiness:</strong></p>
+                <ul>
+                    <li><strong>°Plato (°P):</strong> 0–2 °P (sugar is practically gone)</li>
+                    <li><strong>Specific Gravity (SG):</strong> 0.998–1.008 (density close to water)</li>
+                </ul>
+                <p><strong>Double check:</strong> Measure twice with a 24-hour interval. If both readings are identical (within 0.5 °P), fermentation is truly complete.</p>
+            </div>
+        </div>
+
+        <div class="method-card method-useless">
+            <div class="method-header">
+                <h4>🍷 3.5. Alcoholmeter in the Mash</h4>
+                <span class="verdict-badge">Useless</span>
+            </div>
+            <div class="method-body">
+                <p>Many beginners try to measure mash strength with an alcoholmeter. This is pointless. Alcoholmeters are calibrated for pure water-ethanol mixtures. Sugars, acids, proteins, and CO₂ in the mash distort the readings by 3–8% ABV.</p>
+            </div>
+        </div>
+
+        <div class="method-card method-bad">
+            <div class="method-header">
+                <h4>🔥 3.6. Lighting It on Fire</h4>
+                <span class="verdict-badge">Do Not Use</span>
+            </div>
+            <div class="method-body">
+                <p>Some try to light a spoonful of mash on fire. This is highly unreliable: ignition depends on liquid temperature, not just ABV. Residual sugar and CO₂ prevent burning. It yields false results.</p>
+            </div>
+        </div>
+
+        <h2 id="summary">Chapter 4. Summary Table of Methods</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Method</th><th>Reliability</th><th>What It Shows</th><th>When to Use</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Airlock (bubbles)</td><td>Low</td><td>CO₂ emission</td><td>Observation only</td></tr>
+                <tr><td>Visual signs</td><td>Medium</td><td>Mash state</td><td>Supplement to other methods</td></tr>
+                <tr><td>Taste (sweetness)</td><td>Medium</td><td>Presence of sugar</td><td>Quick check</td></tr>
+                <tr><td>Smell</td><td>Medium</td><td>Quality, infections</td><td>Condition assessment</td></tr>
+                <tr><td><strong>Hydrometer</strong></td><td><strong>High</strong></td><td><strong>Residual sugar</strong></td><td><strong>Primary method, mandatory</strong></td></tr>
+                <tr><td>Alcoholmeter in mash</td><td>Zero</td><td>Nothing accurate</td><td>Do not use</td></tr>
+                <tr><td>Lighting on fire</td><td>Low</td><td>Temp + alcohol</td><td>Do not use</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="specifics">Chapter 5. Specifics for Different Mash Types</h2>
+        <ul>
+            <li><strong>🍬 Sugar Mash:</strong> Clears quickly and fully. Target: 0–2 °P. If density is >3 °P after 10 days, look for a stalled fermentation cause.</li>
+            <li><strong>🌾 Grain Mash:</strong> Rarely drops below 1–2 °P due to unfermentable dextrins. Rarely clears completely. Do not wait for crystal clarity; rely on density and taste.</li>
+            <li><strong>🍎 Fruit Mash:</strong> Ferments longer due to lower temps and natural inhibitors. Target: 0–2 °P. Acidity is normal.</li>
+            <li><strong>🍒 Berry Mash:</strong> The slowest. Low temps and pectins slow down clarification. Give it time.</li>
+            <li><strong>🥔 Potato Mash:</strong> Stays cloudy and thick even after full fermentation. Do not try to clear it; just distill.</li>
+        </ul>
+
+        <h2 id="scenarios">Chapter 6. What to Do If Fermentation Drags On</h2>
+        
+        <div class="scenario-box">
+            <h4>Scenario 1: It's taking longer than expected</h4>
+            <p><em>You started a sugar mash 10 days ago at 28 °C. The producer promised 5 days. No bubbles, but you aren't sure.</em></p>
+            <p><strong>Action:</strong> Measure temperature (if <24 °C, gently heat to 28 °C). Measure density. If >3 °P, fermentation isn't done. Check for nutrient deficiency or weak yeast.</p>
+        </div>
+
+        <div class="scenario-box">
+            <h4>Scenario 2: Fermentation is too fast</h4>
+            <p><em>Turbo yeast fermented 20% sugar in 3 days. Is this normal?</em></p>
+            <p><strong>Action:</strong> Yes, some turbo strains work in 48–72 hours at 30 °C. Measure density: if 0–2 °P, it's ready.</p>
+        </div>
+
+        <div class="scenario-box">
+            <h4>Scenario 3: Finished, but not clear</h4>
+            <p><em>10 days passed, density is 1 °P, taste is dry, but mash is cloudy. Can I distill?</em></p>
+            <p><strong>Action:</strong> Yes. Cloudiness doesn't affect distillation quality. If you want clarity for aesthetics, cold-crash (5–10 °C for 24h) or add bentonite (1–2 g / 10 L).</p>
+        </div>
+
+        <h2 id="maturation">Chapter 7. The Maturation Stage: Why Wait?</h2>
+        <p>When the hydrometer shows 0–2 °P and the taste is dry, the mash is technically ready. But experienced distillers recommend waiting another <strong>24–72 hours</strong> before distilling. Why?</p>
+        <ol>
+            <li><strong>Clarification &amp; Yeast Settling:</strong> Suspended yeast gives a "boiled" smell when heated in the still and can scorch on the heating element.</li>
+            <li><strong>CO₂ Reduction:</strong> Excess CO₂ causes foaming and puking into the condenser during distillation. 1–3 days allows it to off-gas.</li>
+            <li><strong>Flavor Stabilization:</strong> Volatile byproducts (acetaldehyde, diacetyl) react or evaporate, softening the distillate profile.</li>
+        </ol>
+        <div class="practical-note">
+            <strong>How to mature:</strong> Keep the airlock on, maintain 18–22 °C, and do not open the vessel. After 24–72 hours, carefully rack (decant) the clear mash off the sediment and distill.
+        </div>
+
+        <h2 id="risks">Chapter 8. Risks of Errors: Too Early vs. Too Late</h2>
+        
+        <div class="risk-grid">
+            <div class="risk-card risk-early">
+                <h4>⏱️ Distilling Too Early</h4>
+                <ul>
+                    <li><strong>Loss of yield:</strong> Unfermented sugar stays in the boiler (10–30% loss).</li>
+                    <li><strong>High acetaldehyde:</strong> Gives a harsh, "green apple" smell.</li>
+                    <li><strong>Foaming:</strong> CO₂ release during heating causes puking.</li>
+                    <li><strong>Scorching:</strong> Sugar caramelizes on the heating element.</li>
+                </ul>
+            </div>
+            <div class="risk-card risk-late">
+                <h4>⏳ Distilling Too Late</h4>
+                <ul>
+                    <li><strong>Acetic souring:</strong> Bacteria turn ethanol into vinegar. Yield drops.</li>
+                    <li><strong>Butyric acid:</strong> Smells like vomit or rancid cheese.</li>
+                    <li><strong>Yeast autolysis:</strong> Dead cells release sulfur and ammonia.</li>
+                    <li><strong>Mold:</strong> Produces mycotoxins. Pour it out.</li>
+                </ul>
+            </div>
+            <div class="risk-card risk-optimal">
+                <h4>🎯 The Optimal Window: 24–72 Hours After Active Fermentation Ends</h4>
+            </div>
+        </div>
+
+        <h2 id="algorithm">Chapter 9. Practical Readiness Algorithm</h2>
+        
+        <div class="algo-step">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+                <h4>Note the Estimated Time</h4>
+                <p>Based on mash type, yeast, and temperature, define your expected range (e.g., 5–8 days).</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+                <h4>Observe the Airlock (Passively)</h4>
+                <p>Note when bubbles slow down. This signals the end of the active phase, but do not draw conclusions yet.</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+                <h4>Visual Inspection</h4>
+                <p>Check if foam has dropped and if the liquid is clearing. If yes, move to step 4.</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+                <h4>Measure Density (Mandatory)</h4>
+                <p>Use a hydrometer. 0–2 °P = finished. >5 °P = stalled (troubleshoot). 3–5 °P = check again in 24h.</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">5</div>
+            <div class="step-content">
+                <h4>Taste Test (Confirmation)</h4>
+                <p>Dry/bitter confirms readiness. Sweet contradicts the hydrometer (check temp correction).</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">6</div>
+            <div class="step-content">
+                <h4>Maturation (Recommended)</h4>
+                <p>Leave for 24–72 hours at 18–22 °C for clearing and CO₂ off-gassing.</p>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">7</div>
+            <div class="step-content">
+                <h4>Rack and Distill</h4>
+                <p>Carefully siphon the clear mash off the sediment into the boiler. Distill.</p>
+            </div>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> My mash has been fermenting for 2 weeks and there are still bubbles. Is this normal?</div>
+            <div class="faq-answer">For fruit/berry mash on wine yeast at 18–20 °C, yes. Measure density. If it's dropping, it's still working. If it's stable at 0–2 °P, the bubbles are just dissolved CO₂ off-gassing, not active fermentation.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The airlock is silent, but the mash is sweet. What do I do?</div>
+            <div class="faq-answer">Your airlock seal is leaking, and gas is escaping elsewhere. Measure density. If it's high, fermentation stalled prematurely. Troubleshoot (temperature, nutrients, yeast).</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I distill if it's still slightly sweet (3–4 °P)?</div>
+            <div class="faq-answer">You can, but you will lose some yield. If you have time, try to restart it: heat to 28 °C, add fresh yeast and nutrients, and wait 2–3 days.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I really need a hydrometer, or can I just use taste and the airlock?</div>
+            <div class="faq-answer">A hydrometer is mandatory for anyone wanting consistent results. A basic one costs €5–15 and pays for itself on the very first run by saving your raw material from spoiling. Without it, you are flying blind.</div>
+        </div>
+
+        <h2 id="tools">Chapter 11. Tools and Their Costs</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Tool</th><th>Purpose</th><th>Cost (EU)</th><th>Necessity</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Hydrometer (0–25 %)</td><td>Measuring mash density</td><td>€5–15</td><td><strong>Mandatory</strong></td></tr>
+                <tr><td>Test Jar (250 ml)</td><td>Sampling for measurement</td><td>€3–8</td><td><strong>Mandatory</strong></td></tr>
+                <tr><td>Thermometer</td><td>Monitoring mash temp</td><td>€3–10</td><td><strong>Mandatory</strong></td></tr>
+                <tr><td>Alcoholmeter (0–100 %)</td><td>Measuring distillate ABV (not mash!)</td><td>€5–15</td><td><strong>Mandatory</strong></td></tr>
+                <tr><td>pH Meter</td><td>Acidity control</td><td>€15–50</td><td>Recommended</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><em>The minimum beginner kit (hydrometer, test jar, thermometer, alcoholmeter) costs €16–48. This is an investment that saves hundreds of euros in raw materials.</em></p>
+
+        <h2>Conclusion: Readiness Is a State, Not a Day</h2>
+        <p>The question "how many days does mash ferment?" has no single answer because readiness is determined not by time, but by <em>state</em>. Mash is ready when:</p>
+        <ul>
+            <li>Density is stable at 0–2 °P for 24–48 hours.</li>
+            <li>Taste is dry, without sweetness.</li>
+            <li>Yeast has settled, and the mash has cleared (or remains cloudy by nature, but without active gas emission).</li>
+            <li>There are no signs of infection.</li>
+        </ul>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>📏 The Hydrometer Is Your Primary Tool</strong>
+                Without it, you don't know what's happening inside the fermenter. Measure density at the start, and obligatorily at the end.
+            </div>
+            <div class="principle-item">
+                <strong>💨 The Airlock Lies</strong>
+                Bubbles can stop due to a leaky seal, not finished fermentation. Conversely, rare bubbles might just be dissolved CO₂ off-gassing. Never rely on it alone.
+            </div>
+            <div class="principle-item">
+                <strong>⏱️ Don't Rush and Don't Delay</strong>
+                The optimal window is 24–72 hours after active fermentation ends. Distilling too early = lost yield and harsh distillate. Distilling too late = risk of infection and ruined product.
+            </div>
+        </div>
+
+        <p>Fermentation is a biological process, and it does not obey the calendar. It obeys biochemistry. Understand the biochemistry — and you will always know exactly when your mash is ready.</p>
+        <p><em>Happy fermenting and precise measurements.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

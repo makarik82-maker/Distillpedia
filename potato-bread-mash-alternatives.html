@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato and Bread Mash: Alternative Methods of Sugar Production | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            /* Ingredient palette */
+            --potato: #8d6e63;
+            --potato-dark: #5d4037;
+            --bread: #d4a017;
+            --bread-dark: #a67c00;
+            --sugar: #16a085;
+            --sugar-dark: #0e6655;
+            --wheat: #b0771f;
+            --wheat-dark: #8a5d17;
+            --money: #27ae60;
+            --gold: #c9a227;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #5d4037 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #d4a017;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        .table-note {
+            font-size: 0.88rem;
+            color: #666;
+            font-style: italic;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+        /* ===== Ingredient section cards ===== */
+        .ingredient-card {
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .ingredient-header {
+            padding: 1.2rem 1.8rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .ingredient-header .ingredient-icon {
+            font-size: 2rem;
+        }
+        .ingredient-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .ingredient-header .ingredient-tagline {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .ingredient-body {
+            padding: 1.5rem 1.8rem;
+        }
+        .ingredient-body h3 {
+            margin-top: 2rem;
+        }
+        .ingredient-body h3:first-child {
+            margin-top: 0;
+        }
+        .theme-potato .ingredient-header { background: linear-gradient(135deg, var(--potato) 0%, var(--potato-dark) 100%); }
+        .theme-potato { border-top: 4px solid var(--potato); }
+        .theme-bread .ingredient-header { background: linear-gradient(135deg, var(--bread) 0%, var(--bread-dark) 100%); }
+        .theme-bread { border-top: 4px solid var(--bread); }
+        /* ===== Spec strip ===== */
+        .spec-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 1.2rem 0;
+        }
+        .spec-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        .spec-item .spec-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .spec-item .spec-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        /* ===== Suitable / Not suitable boxes ===== */
+        .suitable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.2rem 0;
+        }
+        .suitable-box {
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            border: 1px solid;
+        }
+        .suitable-box h5 {
+            margin: 0 0 0.6rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .suitable-box ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.9rem;
+        }
+        .suitable-box li {
+            margin-bottom: 0.4rem;
+        }
+        .suitable-yes {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+        }
+        .suitable-yes h5 { color: #27ae60; }
+        .suitable-no {
+            background: #fff5f5;
+            border-color: #feb2b2;
+        }
+        .suitable-no h5 { color: #c0392b; }
+        /* ===== Process steps ===== */
+        .process-step {
+            display: flex;
+            gap: 16px;
+            margin: 1rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #e9ecef;
+        }
+        .process-step .step-num {
+            background: var(--accent-color);
+            color: white;
+            min-width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .process-step .step-content { flex: 1; }
+        .process-step .step-content p {
+            margin-bottom: 0;
+            font-size: 0.93rem;
+        }
+        /* ===== Saccharification options A/B ===== */
+        .option-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.2rem 0;
+        }
+        .option-card {
+            border-radius: 8px;
+            padding: 1.2rem;
+            border: 1px solid;
+        }
+        .option-card h5 {
+            margin: 0 0 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        .option-card ul, .option-card ol {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.9rem;
+        }
+        .option-card li { margin-bottom: 0.4rem; }
+        .option-a {
+            background: #fdf6ec;
+            border-color: #f0d9b5;
+        }
+        .option-a h5 { color: var(--bread-dark); }
+        .option-b {
+            background: #eaf4fc;
+            border-color: #a9cce3;
+        }
+        .option-b h5 { color: var(--accent-color); }
+        /* ===== Methanol safety banner ===== */
+        .methanol-banner {
+            background: linear-gradient(135deg, #922b21 0%, #641e16 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.5rem 0;
+        }
+        .methanol-banner h4 {
+            color: white;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        .methanol-banner ul {
+            margin-bottom: 0;
+        }
+        .methanol-banner strong {
+            color: #ffd700;
+        }
+        /* ===== Economy highlight ===== */
+        .economy-highlight {
+            background: #f0fff4;
+            border: 2px dashed var(--money);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .economy-highlight h4 {
+            margin-top: 0;
+            color: var(--money);
+        }
+        td.best-value {
+            background: #d5f5e3;
+            font-weight: 700;
+            color: #196f3d;
+        }
+        /* ===== Final principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #5d4037 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 7px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.8rem; }
+            .toc ol { columns: 1; }
+            .suitable-grid, .option-duo { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Economics</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Potato and Bread Mash: Alternative Methods of Sugar Production</h1>
+        <p class="subtitle">Technologies for producing wash from secondary starchy raw materials via hydrolysis. Economic viability and practical solutions.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Raw Materials Already at Hand</a></li>
+                <li><a href="#potato">Chapter 1. Potato: A Raw Material with History and Character</a></li>
+                <li><a href="#bread">Chapter 2. Bread: A Secondary Material with Ready Sugars</a></li>
+                <li><a href="#economy">Chapter 3. Economic Analysis: Potato and Bread vs. Sugar</a></li>
+                <li><a href="#compare">Chapter 4. Comparison Table: Potato, Bread, Grain, Sugar</a></li>
+                <li><a href="#mistakes">Chapter 5. Typical Mistakes and Solutions</a></li>
+                <li><a href="#legal">Chapter 6. Legal Context</a></li>
+                <li><a href="#conclusion">Conclusion: Secondary Raw Materials Are a Craft</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Raw Materials Already at Hand</h2>
+        <p>In the cost structure of home-made moonshine, sugar accounts for 40 to 60% of all expenses. At current sugar prices in EU countries (on average €1.2–1.8 per kg at retail, €0.8–1.2 in 25 kg wholesale bags), producing even 10 liters of distillate costs a noticeable amount of money. Meanwhile, starch-containing raw materials that can replace sugar often cost several times less — or are outright waste.</p>
+        <p><strong>Potato</strong> is an agricultural crop that historically served as the main raw material for alcohol production in Germany, Poland, Russia, Scandinavia, and the Baltic states. Until the mid-20th century, a significant share of industrial alcohol in Europe was produced precisely from potatoes. <strong>Stale bread</strong>, rusks, and leftovers from baking and confectionery production are a secondary resource that is often simply thrown away at home, yet contains up to 50% starch and up to 5–8% ready-made sugars.</p>
+        <p>Both types of raw material share one thing in common: the starch they contain cannot be fermented directly by yeast. As with grain, preliminary hydrolysis — saccharification — is required. But unlike wheat, rye, or corn, potato and bread have their own peculiarities: potato is rich in pectin, while bread has already undergone heat treatment and contains dextrins.</p>
+        <p>This article is a detailed guide to turning potato and stale bread into a full-fledged wash, with an analysis of the technology, economics, and practical nuances.</p>
+
+        <h2 id="potato">Chapter 1. Potato: A Raw Material with History and Character</h2>
+
+        <div class="ingredient-card theme-potato">
+            <div class="ingredient-header">
+                <span class="ingredient-icon">🥔</span>
+                <h3>The Potato <span class="ingredient-tagline">The historic workhorse of Northern European distilling</span></h3>
+            </div>
+            <div class="ingredient-body">
+
+                <h3>1.1. Historical Context</h3>
+                <p>Potato as a raw material for alcohol production has a deep history in Europe. In Germany, potato schnaps (<em>Kartoffelschnaps</em>) has been produced since the late 18th century. In Poland, potato spirit (<em>okowita</em>) formed the basis for many regional vodkas. In Russia, until the reforms of the 1860s, potato competed with grain for the status of primary raw material for state distilleries. In Scandinavia, potato aquavit (<em>aquavit</em>) is still produced from potato spirit and is protected by geographical indication in a number of regions.</p>
+                <p>With the advent of cheap sugar and beet molasses, potato lost its industrial significance, but in home distilling it remains an accessible and economically advantageous alternative.</p>
+
+                <h3>1.2. Potato Composition</h3>
+                <p>Average composition of raw potato:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Water</td><td>75–80%</td></tr>
+                        <tr><td>Starch</td><td>15–20% (up to 25% in late varieties)</td></tr>
+                        <tr><td>Proteins and amino acids</td><td>1.5–2.5%</td></tr>
+                        <tr><td>Pectic substances</td><td>0.5–1.5%</td></tr>
+                        <tr><td>Fiber</td><td>0.8–1.2%</td></tr>
+                        <tr><td>Sugars (glucose, fructose, sucrose)</td><td>0.5–1.5%</td></tr>
+                        <tr><td>Mineral substances</td><td>0.8–1.2%</td></tr>
+                    </tbody>
+                </table>
+                <p>The key component is <strong>starch</strong>. On a dry-matter basis, potato contains 65–75% starch — comparable to wheat and second only to corn.</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Theoretical Yield</span>
+                        <span class="spec-value">90–110 ml/kg</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">From 10 kg Potato</span>
+                        <span class="spec-value">≈ 1 L abs. alcohol</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Cost of 10 kg (EU)</span>
+                        <span class="spec-value">€2–4</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Gelatinization</span>
+                        <span class="spec-value">58–65 °C</span>
+                    </div>
+                </div>
+                <p>This is significantly less than from 1 kg of sugar (510 ml), but the cost of 10 kg of potatoes in Europe is €2–4, whereas 1 kg of sugar is €1–1.5. The economic benefit is obvious.</p>
+
+                <h3>1.3. The Pectin and Methanol Problem</h3>
+                <p>Potato contains a significant amount of pectic substances (0.5–1.5%). Pectin is a polysaccharide containing methylated galacturonic acid residues. During heating and fermentation, pectin hydrolyzes with the release of methyl alcohol (methanol).</p>
+                <div class="methanol-banner">
+                    <h4>☠️ Methanol Is Toxic</h4>
+                    <ul>
+                        <li>10 ml of pure methanol causes blindness; 30 ml is lethal.</li>
+                        <li>During distillation, methanol concentrates in the heads fraction.</li>
+                        <li>This is the main reason potato wash must never be distilled without fractional distillation, and why potato spirit requires more thorough purification than sugar or grain spirit.</li>
+                    </ul>
+                </div>
+                <p><strong>Measures to reduce methanol:</strong></p>
+                <ul>
+                    <li>Treat the potato material with <strong>pectinase</strong> (a pectolytic enzyme) before fermentation. This destroys pectin before fermentation and reduces methanol formation 2–3 fold.</li>
+                    <li>Carefully select the heads fraction during the second distillation: <strong>no less than 10–15%</strong> of the absolute alcohol.</li>
+                    <li>Do not use potatoes with high pectin content for the wash (small, unripe, or those with green patches).</li>
+                </ul>
+
+                <h3>1.4. Selecting and Preparing Potato</h3>
+                <p><strong>Varieties.</strong> High-starch varieties (18–25%) are preferred for the wash: late table and technical varieties. In Europe these include Sineglazka, Lorkh, Adretta; in Germany — Sieglinde, Linda; in Poland — Irga, Bryza. Early varieties contain less starch (12–15%) and more water, which reduces the yield.</p>
+                <p><strong>Preparation:</strong></p>
+                <ul>
+                    <li>Sort the tubers. Remove rotten, sprouted, and those with green patches (solanine is toxic and gives the wash bitterness).</li>
+                    <li>Wash thoroughly. Soil on the skin contains microorganisms that can contaminate the wash.</li>
+                    <li>The skin can be left on if the potatoes are well washed. The skin contains mineral substances beneficial to yeast. However, if there is a high risk of pesticide contamination, it is better to peel them.</li>
+                    <li>Grate or crush the potatoes. Options:
+                        <ul>
+                            <li>Grater or meat grinder — for small volumes.</li>
+                            <li>Root-crop crusher — for volumes from 10 kg.</li>
+                            <li>Cutting into small cubes (1–1.5 cm) — acceptable, but increases cooking time.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>1.5. Cooking the Potato</h3>
+                <p>The goal of cooking is complete gelatinization of the starch. The gelatinization temperature of potato starch is 58–65 °C — lower than that of grains. However, to fully break down the cell walls and release the starch, heating to 90–100 °C is required.</p>
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content"><p>Place the crushed potato in a cooking vessel.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content"><p>Add water at 2–3 liters per 1 kg of potato. The water should cover the raw material.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content"><p>Heat to 90–100 °C and cook with periodic stirring for 40–60 minutes. The potato must become completely soft and "porridge-like." If cut coarsely, extend cooking time to 90 minutes.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content"><p>Mash the cooked potato into a uniform mass (with a potato masher, low-speed blender, or simply by stirring).</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">5</div>
+                    <div class="step-content"><p>Cool the mass to 60–63 °C before adding malt or enzymes.</p></div>
+                </div>
+                <div class="warning-note">
+                    <strong>⚠ Important:</strong> Potato mass is very thick and prone to scorching. Use a vessel with a thick bottom or a steam-water jacket. Stirring during cooking is mandatory.
+                </div>
+
+                <h3>1.6. Saccharifying the Potato Mash</h3>
+                <p>The same methods used for grain are used to hydrolyze potato starch: malt or industrial enzymes.</p>
+                <div class="option-duo">
+                    <div class="option-card option-a">
+                        <h5>🌾 Option A: Malt Saccharification</h5>
+                        <ol>
+                            <li><strong>Ratio:</strong> 150–200 g of barley malt per 1 kg of raw potato (or 20–25% of the dry starch mass).</li>
+                            <li>Crush the malt immediately before adding it.</li>
+                            <li>Add the crushed malt to the potato mass cooled to 60–63 °C.</li>
+                            <li>Stir thoroughly and wrap the vessel in thermal insulation.</li>
+                            <li>Hold for 60–90 minutes at 60–65 °C, stirring every 15–20 minutes.</li>
+                            <li>Check with the iodine test: a drop of iodine on a white plate with a drop of mash. A yellow-brown color (the color of iodine) means the starch is fully hydrolyzed. Blue/purple — continue holding.</li>
+                        </ol>
+                    </div>
+                    <div class="option-card option-b">
+                        <h5>🧪 Option B: Enzyme Saccharification</h5>
+                        <ol>
+                            <li><strong>Liquefaction:</strong> cool the cooked potato to 85–90 °C, add α-amylase (Termamyl, Amilosubtilin) at 0.1–0.3 ml per 1 kg of potato. Hold 30–40 minutes. The mass will become noticeably thinner.</li>
+                            <li><strong>Saccharification:</strong> cool to 60–63 °C, add glucoamylase (SAN Super, Glucavamorin) at 0.3–0.5 ml per 1 kg of potato. Hold 60–90 minutes.</li>
+                            <li>Check with the iodine test.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3>1.7. Fermenting Potato Wash</h3>
+                <ul>
+                    <li>Cool the saccharified mash to 25–28 °C.</li>
+                    <li>If necessary, add water to reach the consistency of a liquid porridge. Hydro-module: 3–4 liters of water per 1 kg of potato (including cooking water).</li>
+                    <li>Treat with pectinase (if you have not done so already): 1–2 ml of pectolytic enzyme per 10 liters of mash. Stir and hold 1–2 hours.</li>
+                    <li>Measure the density with a saccharometer. Potato wash density is usually 10–14 °Plato.</li>
+                    <li>Pitch the yeast. Distiller's yeast is recommended for potato wash (not baker's, to minimize fusel oils). Dosage: 2–3 g of dry yeast per 10 liters.</li>
+                    <li>Install the airlock. Fermentation at 26–30 °C lasts 5–10 days.</li>
+                    <li>Potato wash is prone to foaming. Do not fill the vessel more than 70%.</li>
+                </ul>
+
+                <h3>1.8. Distilling Potato Wash</h3>
+                <p>Potato wash requires mandatory double distillation.</p>
+                <ul>
+                    <li><strong>First distillation:</strong> down to 20–25% in the boiler. No fraction selection.</li>
+                    <li><strong>Second distillation:</strong> fractional, with an increased heads cut — <strong>12–15% of the absolute alcohol</strong> (instead of the standard 5–10%). This is critical for removing methanol.</li>
+                    <li>Collect the hearts until the stream drops to 55–60%.</li>
+                    <li>Cut the tails at 40% in the stream.</li>
+                </ul>
+                <p>Potato distillate has a characteristic earthy, slightly oily profile. After double distillation and dilution to 40–45%, it becomes acceptable for consumption. Rectification to 96% completely eliminates the potato tones and methanol.</p>
+
+            </div>
+        </div>
+
+        <h2 id="bread">Chapter 2. Bread: A Secondary Material with Ready Sugars</h2>
+
+        <div class="ingredient-card theme-bread">
+            <div class="ingredient-header">
+                <span class="ingredient-icon">🍞</span>
+                <h3>Stale Bread <span class="ingredient-tagline">Nearly free raw material with built-in sugars</span></h3>
+            </div>
+            <div class="ingredient-body">
+
+                <h3>2.1. Bread Composition and Its Peculiarities</h3>
+                <p>Bread is a unique type of starchy raw material. Unlike potato or grain, bread has already undergone heat treatment during baking (180–250 °C). This means:</p>
+                <ul>
+                    <li><strong>The starch is partially gelatinized.</strong> During baking the starch gelatinizes, but not completely: in the center of the crumb the temperature does not exceed 95–98 °C, so some starch granules retain their structure.</li>
+                    <li><strong>Part of the starch is hydrolyzed.</strong> Yeast and malt enzymes (if the bread is malt- or sourdough-based) partially broke the starch down into dextrins and sugars during mixing and baking.</li>
+                    <li><strong>It contains ready-made sugars.</strong> Bread contains 3–8% sugars (glucose, fructose, maltose, sucrose) added to the dough or formed during fermentation.</li>
+                </ul>
+                <p>Average composition of wheat bread (dry matter):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Starch</td><td>45–55%</td></tr>
+                        <tr><td>Dextrins and sugars</td><td>5–10%</td></tr>
+                        <tr><td>Proteins (gluten)</td><td>8–12%</td></tr>
+                        <tr><td>Fiber</td><td>1–3%</td></tr>
+                        <tr><td>Fats</td><td>1–3%</td></tr>
+                        <tr><td>Mineral substances</td><td>1–2%</td></tr>
+                    </tbody>
+                </table>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">From 1 kg Dry Bread</span>
+                        <span class="spec-value">230–270 ml</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">From 1 kg Fresh Bread</span>
+                        <span class="spec-value">140–160 ml</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Gelatinization</span>
+                        <span class="spec-value">Partial</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Cooking Time</span>
+                        <span class="spec-value">20–30 min</span>
+                    </div>
+                </div>
+
+                <h3>2.2. What Bread to Use</h3>
+                <div class="suitable-grid">
+                    <div class="suitable-box suitable-yes">
+                        <h5>✅ Suitable</h5>
+                        <ul>
+                            <li>Stale white wheat bread (loaf, baguette, toast bread).</li>
+                            <li>Rusks, breadcrumbs.</li>
+                            <li>Baking leftovers: rolls, unfilled pies, plain biscuits.</li>
+                            <li>Crispbreads, crunchy breads (without flavorings).</li>
+                        </ul>
+                    </div>
+                    <div class="suitable-box suitable-no">
+                        <h5>❌ Not Suitable / Use with Caution</h5>
+                        <ul>
+                            <li><strong>Rye bread</strong> — many pentosans, gives a viscous mash and sour profile. Can be used mixed with wheat (up to 30%).</li>
+                            <li><strong>Bread with additives:</strong> seeds, nuts, dried fruit, spices, garlic, onion — can give unpredictable taste and smell.</li>
+                            <li><strong>Rich baked goods high in fat</strong> (butter, margarine). Fat coats starch granules, hinders hydrolysis, and can turn rancid.</li>
+                            <li><strong>Moldy bread.</strong> Mold can contain heat-resistant mycotoxins. Such bread must not be used.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>2.3. Preparing the Bread</h3>
+                <ul>
+                    <li>Cut the bread into small pieces (1–2 cm) or break it by hand. The smaller, the faster it soaks.</li>
+                    <li>Dry it (if the bread is fresh). Spread the pieces on a baking sheet and dry in the oven at 100–120 °C for 20–30 minutes. This removes excess moisture and prevents souring.</li>
+                    <li>Crush it (optional). Rusks can be passed through a meat grinder or crushed into coarse crumbs with a blender. Do not grind to flour — the mash will be too thick.</li>
+                </ul>
+
+                <h3>2.4. Soaking and Cooking</h3>
+                <p>Unlike potato, bread does not require prolonged boiling. The starch is already partially gelatinized. Soaking and heating are sufficient.</p>
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content"><p>Place the crushed bread in a vessel.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content"><p>Pour in hot water (60–70 °C) at 3–4 liters per 1 kg of dry bread.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content"><p>Stir to a uniform gruel. Let it stand 30–60 minutes with periodic stirring. The bread must soak completely.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content"><p>Heat the mass to 80–85 °C and hold 20–30 minutes. This completes the gelatinization of the remaining starch.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">5</div>
+                    <div class="step-content"><p>Cool to 60–63 °C before saccharification.</p></div>
+                </div>
+                <div class="practical-note">
+                    <strong>Tip:</strong> Bread mass is very thick. To make stirring easier, use a drill with a mixer attachment (food-grade) or a sturdy spoon. Do not use a high-speed blender — you will get a paste that cannot be saccharified.
+                </div>
+
+                <h3>2.5. Saccharifying the Bread Mash</h3>
+                <div class="option-duo">
+                    <div class="option-card option-a">
+                        <h5>🌾 Option A: With Malt</h5>
+                        <ol>
+                            <li><strong>Ratio:</strong> 150–200 g of barley malt per 1 kg of dry bread.</li>
+                            <li>Add the crushed malt to the bread mass at 60–63 °C.</li>
+                            <li>Stir, wrap, and hold 60–90 minutes.</li>
+                            <li>Iodine test: if starch remains, extend the holding time.</li>
+                        </ol>
+                    </div>
+                    <div class="option-card option-b">
+                        <h5>🧪 Option B: With Enzymes</h5>
+                        <ol>
+                            <li><strong>Liquefaction:</strong> α-amylase (0.1–0.3 ml per 1 kg of dry bread) at 85 °C for 30 minutes.</li>
+                            <li><strong>Saccharification:</strong> glucoamylase (0.3–0.5 ml per 1 kg) at 60–63 °C for 60 minutes.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="practical-note">
+                    <strong>Bread peculiarity:</strong> since bread already contains 5–10% sugars and dextrins, the iodine test may show incomplete hydrolysis even after sufficient holding time. Dextrins (non-fermentable) give a weak reaction with iodine. Rely on taste: a saccharified mash should taste noticeably sweet.
+                </div>
+
+                <h3>2.6. Fermenting Bread Wash</h3>
+                <ul>
+                    <li>Cool the saccharified mash to 25–28 °C.</li>
+                    <li>Measure the density. Bread wash density is usually 12–16 °Plato.</li>
+                    <li>Pitch the yeast: distiller's or universal. Baker's yeast is acceptable but gives a coarser profile.</li>
+                    <li>Ferment at 26–30 °C for 5–8 days.</li>
+                    <li>Bread wash is prone to foaming due to gluten proteins. Do not fill the vessel more than 70%.</li>
+                </ul>
+
+                <h3>2.7. Distilling Bread Wash</h3>
+                <p>Bread wash is distilled twice, similar to grain wash.</p>
+                <ul>
+                    <li><strong>First distillation:</strong> down to 20–25% in the boiler.</li>
+                    <li><strong>Second distillation:</strong> fractional. Heads cut 8–10% of the absolute alcohol. Hearts up to 60–65% in the stream.</li>
+                </ul>
+                <p>Bread distillate has a pronounced bready, yeasty profile. After the second distillation and dilution, it is soft, with tones of fresh bread.</p>
+
+            </div>
+        </div>
+
+        <h2 id="economy">Chapter 3. Economic Analysis: Potato and Bread vs. Sugar</h2>
+
+        <h3>3.1. Alcohol Yield</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Raw Material</th>
+                    <th>Starch/Sugar, %</th>
+                    <th>Abs. Alcohol per 1 kg</th>
+                    <th>Cost per 1 kg (EU avg.)</th>
+                    <th>Alcohol per €1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sugar</td>
+                    <td>99.9% sucrose</td>
+                    <td>510 ml</td>
+                    <td>€1.20</td>
+                    <td>425 ml/€</td>
+                </tr>
+                <tr>
+                    <td>Potato</td>
+                    <td>15–20% starch</td>
+                    <td>90–110 ml</td>
+                    <td>€0.40</td>
+                    <td>225–275 ml/€</td>
+                </tr>
+                <tr>
+                    <td>Dry bread</td>
+                    <td>50–55% starch + sugars</td>
+                    <td>230–270 ml</td>
+                    <td>€0.50–0.80*</td>
+                    <td class="best-value">290–540 ml/€</td>
+                </tr>
+                <tr>
+                    <td>Wheat</td>
+                    <td>60–70% starch</td>
+                    <td>340–380 ml</td>
+                    <td>€0.60</td>
+                    <td class="best-value">565–630 ml/€</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="table-note">*Bread is often obtained for free (stale, leftovers) or at €0.2–0.5 per kg from wholesale bakeries.</p>
+
+        <h3>3.2. Additional Costs</h3>
+        <p>Potato and bread require additional resources compared to sugar:</p>
+        <ul>
+            <li><strong>Energy for cooking:</strong> potato requires 40–60 minutes of boiling, bread — 20–30 minutes of heating. This consumes gas or electricity.</li>
+            <li><strong>Malt or enzymes:</strong> 150–200 g of malt per 1 kg of raw material. Malt cost in the EU: €1.5–3 per kg. Enzymes: €0.5–1 per 10 kg of raw material.</li>
+            <li><strong>Time:</strong> preparation, cooking, and saccharification add 2–4 hours of work.</li>
+            <li><strong>Equipment:</strong> cooking vessel, crusher (for potato), mixer for stirring.</li>
+        </ul>
+
+        <h3>3.3. When It Pays Off</h3>
+        <div class="economy-highlight">
+            <h4>💰 Economic Rule of Thumb</h4>
+            <ul style="margin-bottom:0;">
+                <li><strong>Potato</strong> is economically justified if you have access to cheap or home-grown potatoes (below €0.30 per kg). At a supermarket retail price of €1–1.5 per kg, the benefit disappears.</li>
+                <li><strong>Bread</strong> is most profitable when you can obtain stale bread or rusks for free (an arrangement with a bakery, shop, or canteen) or at a token price.</li>
+                <li>In any case, potato and bread give a more interesting "bready" or "earthy" distillate profile than sugar wash. This is not just saving money — it is a different product.</li>
+            </ul>
+        </div>
+
+        <h2 id="compare">Chapter 4. Comparison Table: Potato, Bread, Grain, Sugar</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>🥔 Potato</th>
+                    <th>🍞 Bread</th>
+                    <th>🌾 Wheat</th>
+                    <th>🍬 Sugar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Starch/Sugar, %</td>
+                    <td>15–20</td>
+                    <td>50–55 (+ sugars)</td>
+                    <td>60–70</td>
+                    <td>99.9</td>
+                </tr>
+                <tr>
+                    <td>Gelatinization</td>
+                    <td>58–65 °C</td>
+                    <td>Partial</td>
+                    <td>52–62 °C</td>
+                    <td>Not required</td>
+                </tr>
+                <tr>
+                    <td>Cooking</td>
+                    <td>40–60 min</td>
+                    <td>20–30 min</td>
+                    <td>30–60 min</td>
+                    <td>Not required</td>
+                </tr>
+                <tr>
+                    <td>Saccharification</td>
+                    <td>Malt / enzymes</td>
+                    <td>Malt / enzymes</td>
+                    <td>Malt / enzymes</td>
+                    <td>Not required</td>
+                </tr>
+                <tr>
+                    <td>Pectin / Methanol</td>
+                    <td>High risk</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>Alcohol yield, ml/kg</td>
+                    <td>90–110</td>
+                    <td>230–270</td>
+                    <td>340–380</td>
+                    <td>510</td>
+                </tr>
+                <tr>
+                    <td>Distillate profile</td>
+                    <td>Earthy, oily</td>
+                    <td>Bready, soft</td>
+                    <td>Bready, malty</td>
+                    <td>Neutral</td>
+                </tr>
+                <tr>
+                    <td>Process difficulty</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Low</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="mistakes">Chapter 5. Typical Mistakes and Solutions</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Using potatoes with green patches</td>
+                    <td>Solanine in the wash, bitterness, toxicity</td>
+                    <td>Sort carefully, remove green tubers</td>
+                </tr>
+                <tr>
+                    <td>Insufficient cooking of potato</td>
+                    <td>Incomplete gelatinization, low yield</td>
+                    <td>Cook until fully soft, 40–60 min</td>
+                </tr>
+                <tr>
+                    <td>Adding malt to hot mash (&gt; 70 °C)</td>
+                    <td>β-amylase inactivation, incomplete saccharification</td>
+                    <td>Cool to 60–63 °C before adding malt</td>
+                </tr>
+                <tr>
+                    <td>Using moldy bread</td>
+                    <td>Mycotoxins, unpleasant smell</td>
+                    <td>Discard moldy bread</td>
+                </tr>
+                <tr>
+                    <td>Bread with fatty fillings or additives</td>
+                    <td>Rancidity, foreign odors</td>
+                    <td>Use only plain bread without additives</td>
+                </tr>
+                <tr>
+                    <td>No pectinase for potato</td>
+                    <td>Elevated methanol in the distillate</td>
+                    <td>Treat with a pectolytic enzyme</td>
+                </tr>
+                <tr>
+                    <td>Distilling potato wash without a heads cut</td>
+                    <td>Methanol in the product</td>
+                    <td>Cut 12–15% heads of the absolute alcohol</td>
+                </tr>
+                <tr>
+                    <td>Grinding bread too finely</td>
+                    <td>Paste, impossible to stir</td>
+                    <td>Crush to 0.5–1 cm crumbs, not flour</td>
+                </tr>
+                <tr>
+                    <td>Fermenting above 32 °C</td>
+                    <td>Elevated fusel oils</td>
+                    <td>Maintain 26–30 °C</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="legal">Chapter 6. Legal Context</h2>
+        <p>The use of potato, bread, and other starchy raw materials for preparing wash is not regulated separately in most EU countries. However, the very act of distilling wash into alcohol is subject to national legislation:</p>
+        <ul>
+            <li>In <strong>Germany, Austria, and France</strong>, home distillation requires registration and excise duty payment.</li>
+            <li>In <strong>Italy, Spain, and Portugal</strong>, limited volumes for personal consumption are permitted, subject to notification.</li>
+            <li>In <strong>Poland, the Czech Republic, and Hungary</strong>, historical traditions exist, but quotas and licenses apply.</li>
+            <li>In <strong>Scandinavian countries</strong>, home distillation is generally prohibited.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>⚠ Check the current regulations of your country before starting the process.</strong>
+        </div>
+
+        <h2 id="conclusion">Conclusion: Secondary Raw Materials Are Not a Compromise — They Are a Craft</h2>
+        <p>Potato and bread are not "sugar substitutes for the poor." They are full-fledged raw materials with their own history, technology, and distillate character. Potato schnaps and bread brandy are drinks that have been produced in Europe for centuries and continue to be valued for their unique profile.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🔓 Free and Split the Starch</strong>
+                Cooking to full gelatinization and saccharification with malt or enzymes are mandatory stages for both types of raw material.
+            </div>
+            <div class="principle-item">
+                <strong>☠️ Potato = Pectin = Methanol</strong>
+                Treatment with pectinase and an increased heads cut during distillation are not recommendations — they are safety requirements.
+            </div>
+            <div class="principle-item">
+                <strong>🍞 Bread Is a Gift</strong>
+                If you have access to stale bread or rusks, you have virtually free raw material with high alcohol yield and a soft taste. Do not throw away what could become the foundation of an excellent distillate.
+            </div>
+        </div>
+
+        <p>Working with secondary raw materials requires more time and attention than a sugar wash. But it is precisely this complexity that constitutes the craft. Understanding the processes of hydrolysis, gelatinization, and fermentation transforms simple "moonshine boiling" into the deliberate creation of a drink with character.</p>
+        <p><em>Happy mashing and clean distillations.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

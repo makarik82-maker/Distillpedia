@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honey in Distilling: Ancient Sugar with Modern Character | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #3e2723;
+            --accent-color: #d68910;
+            --accent-dark: #9c640c;
+            --bg-color: #fcf9f2;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #fef5e7;
+            --note-border: #f8c471;
+            --note-text: #9c640c;
+            --takeaway-bg: #eafaf1;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --gold: #f1c40f;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #3e2723 0%, #9c640c 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #3e2723;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--gold);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #fefaf3;
+            border: 1px solid #f8c471;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.7rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #27ae60;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #7e5109;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e74c3c;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #641e16;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #fefaf3;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+        
+        /* Composition Cards */
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 2rem 0;
+        }
+        .comp-card {
+            background: white;
+            border: 1px solid #f0e2c8;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.3rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+        }
+        .comp-card h4 { margin-top: 0; display: flex; align-items: center; gap: 8px; }
+        .comp-card ul { font-size: 0.9rem; margin-bottom: 0; }
+
+        /* Shield Grid (Antimicrobial) */
+        .shield-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        .shield-item {
+            background: #fff;
+            border: 1px dashed var(--accent-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .shield-item .s-icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+        .shield-item h5 { margin: 0 0 0.3rem; font-size: 0.95rem; color: var(--accent-dark); }
+        .shield-item p { margin: 0; font-size: 0.85rem; }
+
+        /* History Timeline */
+        .history-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 2rem 0;
+            border-left: 3px solid var(--accent-color);
+        }
+        .history-era {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .history-era::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        .history-era h4 { margin: 0 0 0.3rem; color: var(--primary-color); }
+        .history-era p { margin: 0; font-size: 0.95rem; }
+
+        /* Pros & Cons */
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        .pros-box {
+            background: #eafaf1;
+            border: 1px solid #a9dfbf;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .pros-box h3 { color: #1e8449; margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+        .pros-box ul { font-size: 0.92rem; margin-bottom: 0; }
+        .cons-box {
+            background: #fef5e7;
+            border: 1px solid #f8c471;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .cons-box h3 { color: #b9770e; margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+        .cons-box ul { font-size: 0.92rem; margin-bottom: 0; }
+
+        /* Varietal Cards */
+        .varietal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 2rem 0;
+        }
+        .varietal-card {
+            background: white;
+            border: 1px solid #f0e2c8;
+            border-top: 5px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .varietal-card:hover { transform: translateY(-3px); }
+        .varietal-card .v-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .varietal-card h4 { margin: 0 0 0.5rem; color: var(--primary-color); font-size: 1.1rem; }
+        .varietal-card .v-notes { font-size: 0.85rem; color: var(--accent-dark); font-weight: 600; margin-bottom: 0.5rem; font-style: italic; }
+        .varietal-card p { font-size: 0.9rem; margin: 0; }
+
+        /* Process Steps */
+        .process-step {
+            display: flex;
+            gap: 16px;
+            margin: 1.2rem 0;
+            background: #fefaf3;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #f0e2c8;
+        }
+        .process-step .step-num {
+            background: var(--accent-color);
+            color: white;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .process-step .step-content { flex: 1; }
+        .process-step h4 { margin-top: 0; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .process-step ul, .process-step p { margin-bottom: 0; font-size: 0.93rem; }
+
+        /* Economics Table Highlights */
+        td.cost-sugar { background: #eafaf1; font-weight: 700; color: #1e8449; }
+        td.cost-honey { background: #fdedec; font-weight: 700; color: #922b21; }
+
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #f0e2c8;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fefcf8;
+        }
+        .faq-question {
+            background: #fef5e7;
+            padding: 1rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f0e2c8;
+        }
+        .faq-question .q-mark {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .faq-answer {
+            padding: 1rem 1.3rem;
+            font-size: 0.95rem;
+        }
+        .faq-answer p { margin-bottom: 0.5rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+
+        /* Final Principles */
+        .principles {
+            background: linear-gradient(135deg, #3e2723 0%, #9c640c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #fff59d;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.8rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .pros-cons-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Ingredients</a>
+    <a href="#">Recipes</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Honey in Distilling: Ancient Sugar with Modern Character</h1>
+        <p class="subtitle">An analysis of using honey as a sugar source for wash: advantages, disadvantages, impact on organoleptics, and the economics of the process.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Sugar That Remembers History</a></li>
+                <li><a href="#composition">Chapter 1. Composition: What Makes It Unique</a></li>
+                <li><a href="#history">Chapter 2. Historical Context: Mead in Europe</a></li>
+                <li><a href="#pros-cons">Chapter 3 &amp; 4. Advantages and Challenges</a></li>
+                <li><a href="#varietals">Chapter 5. Honey Varietals and Their Impact</a></li>
+                <li><a href="#tech">Chapter 6. Practical Technology: Making Honey Wash</a></li>
+                <li><a href="#distill">Chapter 7. Distilling Honey Wash</a></li>
+                <li><a href="#economy">Chapter 8. Economics: Is It Worth It?</a></li>
+                <li><a href="#mistakes">Chapter 9. Typical Mistakes</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Sugar That Remembers History</h2>
+        <p>When a distiller decides to use honey instead of regular sugar, they are making a choice that is over eight thousand years old. Long before cane and beet sugar, long before the domestication of cereals, humanity used honey as the only available concentrated source of sugars. Archaeological finds in Georgia indicate the production of honey wine as early as 6000 BC. Vikings drank <em>mjöð</em>, Slavs drank <em>medovukha</em>, Greeks drank <em>melikraton</em>, Romans drank <em>mulsum</em>.</p>
+        <p>Today, honey in distilling is not a return to archaic ways, but a conscious choice in favor of complexity and character. Honey wash yields a distillate that cannot be obtained from sugar syrup: with floral, spicy, waxy tones, an oily texture, and a long finish. But you have to pay for this complexity — literally: honey is 5–10 times more expensive than sugar, and working with it requires an understanding of its specific biochemical properties.</p>
+
+        <h2 id="composition">Chapter 1. Composition: What Makes It Unique</h2>
+        
+        <h3>1.1. Main Components</h3>
+        <p>Honey is not just "natural sugar." It is a complex mixture of over 300 compounds. The key difference from sugar is that honey contains ready-made monosaccharides (fructose and glucose), which yeast can absorb directly without prior hydrolysis by invertase.</p>
+        
+        <div class="comp-grid">
+            <div class="comp-card">
+                <h4>🍯 Sugars (~80%)</h4>
+                <ul>
+                    <li><strong>Fructose:</strong> 38.0–38.5%</li>
+                    <li><strong>Glucose:</strong> 30.0–31.0%</li>
+                    <li><strong>Sucrose &amp; Maltose:</strong> 1.0–7.0%</li>
+                </ul>
+            </div>
+            <div class="comp-card">
+                <h4>💧 Water &amp; Minerals</h4>
+                <ul>
+                    <li><strong>Water:</strong> 17.0–18.0%</li>
+                    <li><strong>Minerals:</strong> 0.1–1.0% (K, Ca, Mg, P)</li>
+                    <li><strong>Organic Acids:</strong> 0.3–0.5% (Forms pH)</li>
+                </ul>
+            </div>
+            <div class="comp-card">
+                <h4>🧬 Proteins &amp; Enzymes</h4>
+                <ul>
+                    <li><strong>Amino Acids:</strong> 0.3–0.5% (Nitrogen source)</li>
+                    <li><strong>Enzymes:</strong> Invertase, diastase, catalase</li>
+                    <li><strong>Aromatics:</strong> Trace (Forms the bouquet)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>1.2. Antimicrobial Properties</h3>
+        <p>Honey is a natural antiseptic. For a distiller, this means honey is naturally protected from infection, but these same properties inhibit yeast at the start of fermentation. Honey wash often starts slowly, with a lag phase of 24–72 hours.</p>
+        
+        <div class="shield-grid">
+            <div class="shield-item">
+                <span class="s-icon">🧲</span>
+                <h5>Osmotic Pressure</h5>
+                <p>80% sugar concentration pulls water out of microbial cells.</p>
+            </div>
+            <div class="shield-item">
+                <span class="s-icon">🍋</span>
+                <h5>Low pH</h5>
+                <p>pH 3.2–4.5 suppresses the growth of many bacteria.</p>
+            </div>
+            <div class="shield-item">
+                <span class="s-icon">💧</span>
+                <h5>Hydrogen Peroxide</h5>
+                <p>Glucose oxidase produces H₂O₂, a natural antiseptic.</p>
+            </div>
+            <div class="shield-item">
+                <span class="s-icon">🛡️</span>
+                <h5>Defensins</h5>
+                <p>Antimicrobial peptides (especially in Manuka honey).</p>
+            </div>
+        </div>
+
+        <h2 id="history">Chapter 2. Historical Context: Mead in Europe</h2>
+        <div class="history-timeline">
+            <div class="history-era">
+                <h4>Antiquity &amp; Middle Ages</h4>
+                <p>Greeks considered <em>melikraton</em> the drink of the gods. Vikings brewed <em>mjöð</em>. Slavic <em>medovukha</em> was the main alcoholic beverage before vodka and wine.</p>
+            </div>
+            <div class="history-era">
+                <h4>Decline (18th–19th Century)</h4>
+                <p>With the spread of grape wine and grain beer, honey drinks lost popularity — honey was too expensive compared to grapes and grain.</p>
+            </div>
+            <div class="history-era">
+                <h4>Modern Revival</h4>
+                <p>Craft mead and honey distillates (Polish <em>okowita miodowa</em>, Lithuanian <em>midus</em>, Austrian <em>Honigbrand</em>) have become part of the traditional drink revival movement.</p>
+            </div>
+        </div>
+
+        <h2 id="pros-cons">Chapter 3 &amp; 4. Advantages and Challenges</h2>
+        
+        <div class="pros-cons-grid">
+            <div class="pros-box">
+                <h3>✅ Advantages</h3>
+                <ul>
+                    <li><strong>Organoleptic complexity:</strong> Floral, waxy, spicy, and fruity tones impossible to get from sugar.</li>
+                    <li><strong>Oily texture:</strong> Enveloping mouthfeel from higher alcohols, esters, and trace waxes.</li>
+                    <li><strong>Natural nutrients:</strong> Contains amino acids, minerals, and vitamins, reducing the need for heavy supplementation.</li>
+                    <li><strong>Low infection risk:</strong> Natural antimicrobial properties protect the wash in the early days.</li>
+                    <li><strong>Uniqueness:</strong> Creates new chemical compounds (esters, lactones) during fermentation.</li>
+                </ul>
+            </div>
+            <div class="cons-box">
+                <h3>⚠️ Challenges</h3>
+                <ul>
+                    <li><strong>Cost:</strong> 5 to 10 times more expensive than sugar per kg of fermentables.</li>
+                    <li><strong>Slow start:</strong> Lag phase can be 24–72 hours due to osmotic stress and H₂O₂.</li>
+                    <li><strong>Stuck fermentation risk:</strong> Deficiency of Free Amino Nitrogen (FAN) and toxic antimicrobial compounds.</li>
+                    <li><strong>Long fermentation:</strong> 2–6 weeks instead of 5–8 days.</li>
+                    <li><strong>Dosing complexity:</strong> Variable density and water content (15–20%) require hydrometer readings, not just weight.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="varietals">Chapter 5. Honey Varietals and Their Impact</h2>
+        <p>Different nectar sources yield drastically different distillate profiles:</p>
+        
+        <div class="varietal-grid">
+            <div class="varietal-card">
+                <div class="v-icon">🌸</div>
+                <h4>Linden</h4>
+                <div class="v-notes">Floral, menthol, fresh</div>
+                <p>Light, aromatic distillates.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌾</div>
+                <h4>Buckwheat</h4>
+                <div class="v-notes">Spicy, dark, tannic</div>
+                <p>Rich, strong distillates, excellent for barrel aging.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌼</div>
+                <h4>Acacia</h4>
+                <div class="v-notes">Delicate, floral, light</div>
+                <p>Delicate distillates and traditional meads.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌰</div>
+                <h4>Chestnut</h4>
+                <div class="v-notes">Bitter, tannic, spicy</div>
+                <p>Complex distillates with strong character.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌿</div>
+                <h4>Heather</h4>
+                <div class="v-notes">Resinous, spicy, intense</div>
+                <p>Highly characterful, bold distillates.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌺</div>
+                <h4>Wildflower</h4>
+                <div class="v-notes">Balanced, soft</div>
+                <p>Universal choice, well-rounded profile.</p>
+            </div>
+            <div class="varietal-card">
+                <div class="v-icon">🌿</div>
+                <h4>Manuka</h4>
+                <div class="v-notes">Spicy, earthy, medicinal</div>
+                <p>Premium distillates (very expensive).</p>
+            </div>
+        </div>
+
+        <div class="practical-note">
+            <strong>Raw vs. Pasteurized:</strong> Always prefer raw, unpasteurized honey for distilling. It contains active enzymes and more aromatic compounds. Pasteurization destroys the delicate bouquet.
+        </div>
+
+        <h2 id="tech">Chapter 6. Practical Technology: Making Honey Wash</h2>
+        
+        <h3>6.1. Calculations &amp; Yeast Selection</h3>
+        <p>Honey contains ~80% sugars. 1 kg of honey yields ~400 ml of absolute alcohol. For a 20L wash at 12% ABV, you need ~6 kg of honey (Hydromodulus 1:3.3).</p>
+        <p><strong>Yeast:</strong> Never use baker's or turbo yeasts — their harsh profile will overpower the honey. Use wine yeasts (Lalvin D-47, EC-1118, 71B, K1-V1116) or specialized mead yeasts.</p>
+
+        <h3>6.2. Step-by-Step Process</h3>
+        
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Prepare the Must</h4>
+                <p>Heat water to 40–45 °C (no higher, to preserve enzymes). Add honey and mix thoroughly until dissolved. Top up to the target volume. Target gravity: 20–25 °P (1.080–1.100 SG).</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Nutrients &amp; Aeration</h4>
+                <p>Cool to 20–25 °C. Add DAP (1–2 g/L) and Thiamine, or specialized mead nutrient (Fermaid O/K). Aerate vigorously for 5–15 minutes. Check pH (target 3.8–4.5).</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Pitch Yeast &amp; Ferment</h4>
+                <p>Rehydrate yeast and pitch. Install airlock. Ferment at 18–22 °C. <em>Do not panic if nothing happens for 48–72 hours — this lag phase is normal for honey.</em> Total time: 3–6 weeks.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Step-Feeding (For High ABV)</h4>
+                <p>If targeting >15% ABV, start with 3–4 kg honey. When gravity drops to 6–8 °P, add 1–2 kg more as a warm syrup. Repeat 1–2 times.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h4>Clearing</h4>
+                <p>Honey wash clears slowly. Cold crash (5–10 °C for 48h) or use Bentonite (1–2 g/10L) before racking off the lees.</p>
+            </div>
+        </div>
+
+        <h2 id="distill">Chapter 7. Distilling Honey Wash</h2>
+        <ul>
+            <li><strong>First Run:</strong> Strip without cuts down to 20–30% ABV in the boiler. <em>Warning: Honey wash foams heavily due to proteins and waxes. Do not fill the boiler past 2/3.</em></li>
+            <li><strong>Second Run (Fractional):</strong> 
+                <ul>
+                    <li><strong>Heads:</strong> 5–8% of absolute alcohol (honey produces more methanol and acetaldehyde than sugar).</li>
+                    <li><strong>Hearts:</strong> Collect down to 60–65% ABV in the stream. Honey distillate retains aroma at higher proofs than fruit washes.</li>
+                    <li><strong>Tails:</strong> Cut below 40% ABV.</li>
+                </ul>
+            </li>
+            <li><strong>Aging:</strong> Rest in glass for 1–3 months, or age in oak barrels/chips for 6–24 months to enhance the waxy, vanilla, and dried fruit notes.</li>
+        </ul>
+
+        <h2 id="economy">Chapter 8. Economics: Is It Worth It?</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Sugar Wash (12%)</th>
+                    <th>Honey Wash (12%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Raw Material (for 20L)</td>
+                    <td class="cost-sugar">4 kg × €1.20 = €4.80</td>
+                    <td class="cost-honey">6 kg × €7.00 = €42.00</td>
+                </tr>
+                <tr>
+                    <td>Yeast &amp; Nutrients</td>
+                    <td>€4.50</td>
+                    <td>€8.00</td>
+                </tr>
+                <tr>
+                    <td>Total Cost</td>
+                    <td class="cost-sugar">€9.30</td>
+                    <td class="cost-honey">€50.00</td>
+                </tr>
+                <tr>
+                    <td>Absolute Alcohol Yield</td>
+                    <td>~2.4 L</td>
+                    <td>~2.4 L</td>
+                </tr>
+                <tr>
+                    <td>Cost per 1L Abs. Alcohol</td>
+                    <td class="cost-sugar">€3.88</td>
+                    <td class="cost-honey">€20.83</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="warning-note">
+            <strong>When is it justified?</strong> Honey wash is 5–6 times more expensive. It is only justified when the goal is a unique, craft product, when you have access to cheap honey (your own apiary), or for gifts and special occasions. It is not a way to save money.
+        </div>
+
+        <h2 id="mistakes">Chapter 9. Typical Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Using baker's yeast</td>
+                    <td>Harsh profile, loss of honey aroma</td>
+                    <td>Use wine or mead-specific yeasts</td>
+                </tr>
+                <tr>
+                    <td>Skipping nutrients</td>
+                    <td>Stuck fermentation, H₂S (rotten eggs)</td>
+                    <td>Add DAP + vitamins or Fermaid</td>
+                </tr>
+                <tr>
+                    <td>Heating honey above 60 °C</td>
+                    <td>Destroys enzymes and delicate aromas</td>
+                    <td>Dissolve in water at 40–45 °C</td>
+                </tr>
+                <tr>
+                    <td>Panicking at slow start</td>
+                    <td>Premature intervention / pitching more yeast</td>
+                    <td>Wait 48–72 hours — lag phase is normal</td>
+                </tr>
+                <tr>
+                    <td>Too high gravity (> 28 °P)</td>
+                    <td>Osmotic shock, stuck ferment</td>
+                    <td>Use step-feeding for high ABV</td>
+                </tr>
+                <tr>
+                    <td>Skipping aeration</td>
+                    <td>Sluggish fermentation</td>
+                    <td>Vigorous stirring or O₂ at pitch</td>
+                </tr>
+                <tr>
+                    <td>No heads cut</td>
+                    <td>Methanol and acetaldehyde in product</td>
+                    <td>Strict heads cut (5–8%)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use old, crystallized honey?</div>
+            <div class="faq-answer"><p>Yes. Crystallization is a natural process that does not affect quality. Dissolve it in warm water (40–45 °C) and use as usual.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use artificial honey or invert syrup?</div>
+            <div class="faq-answer"><p>No. Artificial syrup lacks the aromatics, minerals, and enzymes of natural honey. You will just get a sugar wash without the honey character.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Why hasn't my honey wash started fermenting after 5 days?</div>
+            <div class="faq-answer"><p>This is abnormal. Check temperature (20–25 °C), yeast viability (make a starter), gravity (is it too high?), and nutrients. If all are fine, pitch a fresh starter.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I mix honey with sugar?</div>
+            <div class="faq-answer"><p>Yes. A 50/50 mix reduces costs while retaining a noticeable honey character. This is a popular technique for economy.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to boil honey to sterilize it?</div>
+            <div class="faq-answer"><p>No. Boiling destroys aromas and enzymes. Honey's natural antimicrobial properties and the resulting alcohol ensure safety. If you fear infection, use pasteurized honey, but raw is better for flavor.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Should I use carbon filtration on the distillate?</div>
+            <div class="faq-answer"><p>Never. Carbon will strip out the delicate floral and waxy esters that make honey distillate special.</p></div>
+        </div>
+
+        <h2>Conclusion: Honey as a Choice of Character</h2>
+        <p>Using honey in distilling is not a way to get more alcohol for less money. It is exactly the opposite: a way to obtain a unique, complex, characterful distillate at the cost of higher expenses and a more demanding process.</p>
+        <p>Honey wash forgives fewer mistakes than sugar wash. It requires an understanding of biochemistry, patience (a 24–72 hour lag phase is normal), and the right yeast. But the reward is a distillate with floral, waxy, and spicy tones that cannot be obtained any other way.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🍯 Honey Is a Different Raw Material, Not a Sugar Substitute</strong>
+                It is more expensive and harder to work with, but yields a unique profile. Use it consciously when the character of the product matters more than economy.
+            </div>
+            <div class="principle-item">
+                <strong>🧪 Nutrients and Aeration Are Mandatory</strong>
+                Honey wash is poor in free nitrogen and requires help at the start. Without nutrients, fermentation will stall or produce hydrogen sulfide.
+            </div>
+            <div class="principle-item">
+                <strong>⏳ Do Not Panic at a Slow Start</strong>
+                A 24–72 hour lag phase is the norm, not a problem. The antimicrobial properties of honey inhibit the yeast temporarily, but do not kill it.
+            </div>
+        </div>
+
+        <p>For most distillers, honey will remain a niche raw material — for special occasions, experiments, and gifts. But for those who seek not just alcohol in distilling, but craft and a connection to tradition, honey wash opens up a whole world of flavors rooted deep in the millennia.</p>
+        <p><em>Happy fermentation and aromatic distillates.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

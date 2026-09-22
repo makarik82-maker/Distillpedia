@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incremental Sugar Addition: Stepwise Strengthening of the Wash | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #d68910;
+            --accent-dark: #9c640c;
+            --bg-color: #f7f5f0;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #fef5e7;
+            --note-border: #f8c471;
+            --note-text: #9c640c;
+            --takeaway-bg: #eafaf1;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --gold: #fbc02d;
+            /* Osmotic gauge colors */
+            --g-safe: #27ae60;
+            --g-moderate: #f1c40f;
+            --g-high: #e67e22;
+            --g-extreme: #c0392b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1a252f 0%, #9c640c 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(90deg, transparent 0 40px, rgba(255,255,255,0.03) 40px 80px);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #1a252f;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f8c471;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #fefaf3;
+            border: 1px solid #f8c471;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.7rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #27ae60;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #7e5109;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e74c3c;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #641e16;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #fefaf3;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fef5e7;
+            padding: 12px 18px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 10px 0;
+            border: 1px solid #f8c471;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+        }
+        /* ===== Vicious Circle ===== */
+        .circle-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .circle-node {
+            background: #fef5e7;
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 1rem 1.3rem;
+            text-align: center;
+            min-width: 170px;
+            max-width: 200px;
+        }
+        .circle-node .c-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .circle-node .c-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .circle-arrow {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .circle-break {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            margin: 1.5rem auto 0;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(39,174,96,0.3);
+        }
+        .circle-break .b-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .circle-break .b-sub {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+        /* ===== Osmotic Gauge ===== */
+        .osmo-gauge {
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .osmo-band {
+            display: grid;
+            grid-template-columns: 160px 140px 1fr;
+            gap: 15px;
+            padding: 1rem 1.3rem;
+            color: white;
+            align-items: center;
+        }
+        .osmo-band .ob-conc {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .osmo-band .ob-pressure {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+        .osmo-band .ob-effect {
+            font-size: 0.92rem;
+            line-height: 1.4;
+        }
+        .ob-safe { background: linear-gradient(135deg, var(--g-safe), #1e8449); }
+        .ob-moderate { background: linear-gradient(135deg, var(--g-moderate), #b7950b); }
+        .ob-high { background: linear-gradient(135deg, var(--g-high), #ca6f1e); }
+        .ob-extreme { background: linear-gradient(135deg, var(--g-extreme), #922b21); }
+        /* ===== Step Schedule Staircase ===== */
+        .staircase {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 12px;
+            margin: 2.5rem 0 3.5rem;
+            min-height: 340px;
+        }
+        .stair-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .stair-bar {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            color: white;
+            padding: 12px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+        .stair-bar .sb-abv {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        .stair-bar .sb-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+        .stair-info {
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: #546e7a;
+            line-height: 1.4;
+        }
+        .stair-info .si-day {
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        .stair-info .si-sugar {
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+        .st-0 .stair-bar { height: 40px; background: linear-gradient(135deg, #90a4ae, #607d8b); }
+        .st-1 .stair-bar { height: 110px; background: linear-gradient(135deg, #f8c471, #d68910); }
+        .st-2 .stair-bar { height: 180px; background: linear-gradient(135deg, #eb984e, #ca6f1e); }
+        .st-3 .stair-bar { height: 250px; background: linear-gradient(135deg, #dc7633, #a04000); }
+        .st-4 .stair-bar { height: 310px; background: linear-gradient(135deg, #d68910, #7e5109); box-shadow: 0 4px 14px rgba(214,137,16,0.4); }
+        /* ===== Process Steps ===== */
+        .process-step {
+            display: flex;
+            gap: 16px;
+            margin: 1rem 0;
+            background: #fefaf3;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #f0e2c8;
+        }
+        .process-step .step-num {
+            background: var(--accent-color);
+            color: white;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .process-step .step-content { flex: 1; }
+        .process-step h4 {
+            margin-top: 0;
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+            font-size: 1.02rem;
+        }
+        .process-step ul, .process-step p { margin-bottom: 0; font-size: 0.93rem; }
+        /* ===== Critical Parameters ===== */
+        .crit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .crit-card {
+            background: white;
+            border: 1px solid #f0e2c8;
+            border-top: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.3rem 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+        }
+        .crit-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.08rem;
+        }
+        .crit-card p, .crit-card ul {
+            font-size: 0.92rem;
+            margin-bottom: 0.5rem;
+        }
+        .crit-card ul { padding-left: 18px; }
+        .crit-card .crit-rule {
+            background: var(--note-bg);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+        }
+        .crit-card .crit-rule strong { color: var(--accent-dark); }
+        /* ===== Yeast Compatibility ===== */
+        .yeast-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .yeast-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .yeast-card .yc-header {
+            padding: 0.9rem 1.3rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .yeast-card .yc-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.05rem;
+        }
+        .yeast-card .yc-abv {
+            background: rgba(255,255,255,0.25);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .yeast-card .yc-body {
+            padding: 1rem 1.3rem;
+            font-size: 0.92rem;
+        }
+        .yeast-card .yc-body p { margin-bottom: 0.6rem; }
+        .yeast-card .yc-rec {
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.88rem;
+            margin: 0;
+        }
+        .yc-turbo .yc-header { background: linear-gradient(135deg, #27ae60, #1e8449); }
+        .yc-turbo .yc-rec { background: #eafaf1; color: #1b5e20; }
+        .yc-alco .yc-header { background: linear-gradient(135deg, #2980b9, #1a5276); }
+        .yc-alco .yc-rec { background: #eaf4fc; color: #1a5276; }
+        .yc-wine .yc-header { background: linear-gradient(135deg, #8e44ad, #5b2c6f); }
+        .yc-wine .yc-rec { background: #f4ecf7; color: #5b2c6f; }
+        .yc-baker .yc-header { background: linear-gradient(135deg, #7f8c8d, #515a5a); }
+        .yc-baker .yc-rec { background: #f2f3f4; color: #515a5a; }
+        /* ===== Alternatives ===== */
+        .alt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .alt-card {
+            background: white;
+            border: 1px solid #f0e2c8;
+            border-radius: 10px;
+            padding: 1.4rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+        }
+        .alt-card .alt-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        .alt-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+        }
+        .alt-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        /* ===== FAQ ===== */
+        .faq-item {
+            border: 1px solid #f0e2c8;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fefcf8;
+        }
+        .faq-question {
+            background: #fef5e7;
+            padding: 1rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f0e2c8;
+        }
+        .faq-question .q-mark {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .faq-answer {
+            padding: 1rem 1.3rem;
+            font-size: 0.95rem;
+        }
+        .faq-answer p { margin-bottom: 0; }
+        /* ===== Final Principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #1a252f 0%, #9c640c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(90deg, transparent 0 40px, rgba(255,255,255,0.03) 40px 80px);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #fff59d;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.8rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .crit-grid, .yeast-grid { grid-template-columns: 1fr; }
+            .alt-grid { grid-template-columns: 1fr; }
+            .osmo-band { grid-template-columns: 1fr; gap: 6px; }
+            .staircase { flex-direction: column; align-items: stretch; min-height: auto; }
+            .stair-step { flex-direction: row; align-items: center; gap: 12px; }
+            .stair-bar { height: 60px !important; width: 60px; min-width: 60px; border-radius: 8px; }
+            .stair-info { margin-top: 0; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Fermentation</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Incremental Sugar Addition: Stepwise Strengthening of the Wash</h1>
+        <p class="subtitle">How to overcome the osmotic barrier and the alcohol tolerance of yeast by adding substrate in portions.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Why You Can't Just Add More Sugar</a></li>
+                <li><a href="#terms">Chapter 1. Terminology Clarification</a></li>
+                <li><a href="#biology">Chapter 2. Biology: Why Yeast Stop</a></li>
+                <li><a href="#principle">Chapter 3. The Principle of Stepwise Addition</a></li>
+                <li><a href="#tech">Chapter 4. Practical Technology: Step-by-Step Scheme</a></li>
+                <li><a href="#params">Chapter 5. Critical Parameters and Control</a></li>
+                <li><a href="#yeast">Chapter 6. Specifics for Different Yeast Types</a></li>
+                <li><a href="#risks">Chapter 7. Risks and Limitations</a></li>
+                <li><a href="#alternatives">Chapter 8. Alternatives to Stepwise Addition</a></li>
+                <li><a href="#mistakes">Chapter 9. Typical Mistakes</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Why You Can't Just Add More Sugar</h2>
+        <p>The beginner's logic is simple: <em>want more alcohol — add more sugar.</em> But in practice, trying to add 30–35% sugar by volume to a wash does not result in 18–20% ABV — instead, fermentation stops on the third day. The yeast refuses to work, the gravity freezes, and what remains in the still is a sweet, half-fermented liquid.</p>
+        <p>The cause is not lazy yeast and not a poor-quality strain. The cause is <strong>osmotic pressure</strong> and <strong>alcohol toxicity</strong> — two fundamental limitations that cannot be overcome by a single addition of sugar, but can be overcome by stepwise (incremental) addition.</p>
+        <p>This article describes the technology of adding sugar in portions during fermentation to reach a wash strength of 20–23% ABV — beyond the limit achievable with a single addition. We examine the biological mechanism, the practical scheme, the risks, and the economic viability of the method.</p>
+
+        <div class="circle-wrap">
+            <div class="circle-node">
+                <span class="c-icon">🎯</span>
+                <span class="c-text">Want high strength → need a lot of sugar</span>
+            </div>
+            <span class="circle-arrow">→</span>
+            <div class="circle-node">
+                <span class="c-icon">🍬</span>
+                <span class="c-text">A lot of sugar → osmotic shock</span>
+            </div>
+            <span class="circle-arrow">→</span>
+            <div class="circle-node">
+                <span class="c-icon">💀</span>
+                <span class="c-text">Osmotic shock → yeast dies before making alcohol</span>
+            </div>
+        </div>
+        <div class="circle-break">
+            <div class="b-title">Step Feeding Breaks the Vicious Circle</div>
+            <div class="b-sub">By adding sugar in portions, you keep osmotic pressure below the lethal threshold while letting the yeast adapt to the rising alcohol concentration.</div>
+        </div>
+
+        <h2 id="terms">Chapter 1. Terminology Clarification: What Is What</h2>
+
+        <h3>1.1. "Alcohol Washing" — A Non-Existent Term</h3>
+        <p>Russian-language forums sometimes use the expression «спиртовое мытьё» (alcohol washing) as the name for the incremental sugar addition method. This term is established neither in scientific literature nor in professional distillation practice. In the English-language tradition, the method is called <strong>step feeding</strong> or <strong>incremental sugar addition</strong>. In winemaking, adding sugar to must before fermentation is called <em>chaptalization</em> (after Jean-Antoine Chaptal), but that is a different process.</p>
+        <p>In this article we use the term <strong>stepwise (incremental) sugar addition</strong>.</p>
+
+        <h3>1.2. Sugar Does Not Maintain Titratable Acidity</h3>
+        <p>The request for this article mentions "maintaining titratable acidity" by adding sugar. This is incorrect. Titratable acidity is the total content of organic acids (malic, citric, acetic, lactic) in a solution. Sugar (sucrose) is not an acid and does not affect titratable acidity.</p>
+        <p>The acidity of a wash is regulated by:</p>
+        <ul>
+            <li><strong>Acidification</strong> (citric, lactic, phosphoric acid) — to lower the pH.</li>
+            <li><strong>Alkalization</strong> (calcium carbonate, potassium carbonate) — to raise the pH.</li>
+            <li><strong>The natural metabolism of the yeast</strong> (release of organic acids during fermentation).</li>
+        </ul>
+        <p>Adding sugar affects osmotic pressure and substrate concentration, but not acidity.</p>
+
+        <h3>1.3. What Actually Inhibits the Yeast</h3>
+        <p>Incremental sugar addition involves two inhibiting factors, and it is important to distinguish between them:</p>
+        <ul>
+            <li><strong>At the sugar addition stage:</strong> high sugar concentration (<em>osmotic stress</em>) inhibits. The yeast loses water, the membranes dehydrate, and the cells cannot divide.</li>
+            <li><strong>At the alcohol accumulation stage:</strong> high ethanol concentration inhibits. Ethanol embeds itself in the membranes, disrupts their permeability, and denatures proteins.</li>
+        </ul>
+        <div class="key-takeaway">
+            Incremental sugar addition solves <strong>both</strong> problems: it reduces osmotic stress at the start and allows the yeast to adapt to the rising alcohol concentration.
+        </div>
+
+        <h2 id="biology">Chapter 2. Biology: Why the Yeast Stop</h2>
+
+        <h3>2.1. Osmotic Stress from Sugar</h3>
+        <p>Sucrose at high concentration creates a hypertonic environment around the yeast cell. Water tends to leave the cell (where the solute concentration is lower) into the surrounding environment (where the concentration is higher). The cell dehydrates (<em>plasmolysis</em>), the membrane shrinks, and transport of substances stops.</p>
+        <p><strong>Critical thresholds:</strong></p>
+        <div class="osmo-gauge">
+            <div class="osmo-band ob-safe">
+                <span class="ob-conc">Up to 15%</span>
+                <span class="ob-pressure">Moderate</span>
+                <span class="ob-effect">Normal fermentation.</span>
+            </div>
+            <div class="osmo-band ob-moderate">
+                <span class="ob-conc">15–20%</span>
+                <span class="ob-pressure">Elevated</span>
+                <span class="ob-effect">Slowing, adaptation.</span>
+            </div>
+            <div class="osmo-band ob-high">
+                <span class="ob-conc">20–25%</span>
+                <span class="ob-pressure">High</span>
+                <span class="ob-effect">Severe stress, part of the population stops.</span>
+            </div>
+            <div class="osmo-band ob-extreme">
+                <span class="ob-conc">Above 25%</span>
+                <span class="ob-pressure">Extreme</span>
+                <span class="ob-effect">Mass death, fermentation does not start.</span>
+            </div>
+        </div>
+
+        <h3>2.2. Ethanol Toxicity</h3>
+        <p>Ethanol is both a product of fermentation and a poison to the yeast. The mechanism of toxicity:</p>
+        <ol>
+            <li>Ethanol embeds itself in the phospholipid bilayer of the membrane, increasing its fluidity and permeability.</li>
+            <li>Ions (K⁺, Mg²⁺, H⁺) begin to leak uncontrollably through the membrane.</li>
+            <li>The cell spends energy restoring gradients instead of fermenting.</li>
+            <li>At a critical concentration, the membrane breaks down and the cell dies.</li>
+        </ol>
+        <p><strong>Tolerance limits by yeast type:</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Yeast Type</th>
+                    <th>Maximum Strength</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Baker's</td>
+                    <td>8–12% ABV</td>
+                </tr>
+                <tr>
+                    <td>Wine (standard)</td>
+                    <td>12–15% ABV</td>
+                </tr>
+                <tr>
+                    <td>Alcohol</td>
+                    <td>14–18% ABV</td>
+                </tr>
+                <tr>
+                    <td>Turbo</td>
+                    <td>18–23% ABV</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.3. Why a Single Addition Does Not Work Above 18%</h3>
+        <p>To get a 20% ABV wash, you need to ferment approximately <strong>340 g of sugar per liter</strong> (theoretically, 170 g of sugar gives 1% ABV of alcohol). But a 34% sugar solution creates an osmotic pressure at which the yeast either does not start or stops at 10–12% ABV.</p>
+        <div class="warning-note">
+            <strong>This is a vicious circle:</strong> to get high strength you need a lot of sugar; but a lot of sugar kills the yeast before it can produce the alcohol. Step feeding breaks this circle.
+        </div>
+
+        <h2 id="principle">Chapter 3. The Principle of Stepwise Addition</h2>
+
+        <h3>3.1. The Essence of the Method</h3>
+        <p>Instead of adding all the sugar at once, you add it in portions over several days, allowing the yeast to ferment each portion before adding the next.</p>
+        <p><strong>The logic:</strong></p>
+        <ol>
+            <li>The <strong>first portion</strong> (15–18% sugar) creates moderate osmotic pressure. The yeast starts, multiplies, and begins fermenting.</li>
+            <li>As fermentation proceeds, sugar is consumed and strength rises. Osmotic pressure falls (less sugar), but alcohol toxicity rises.</li>
+            <li>When the gravity drops to a certain level (usually <strong>4–6 °P</strong>), you add the next portion of sugar.</li>
+            <li>Osmotic pressure briefly rises, but the yeast is already adapted to the alcohol and has a sufficient population. It copes with the new portion.</li>
+            <li>The process is repeated <strong>2–4 times</strong> until the target strength is reached.</li>
+        </ol>
+
+        <h3>3.2. Why It Works</h3>
+        <ul>
+            <li><strong>Adaptation to ethanol.</strong> Yeast grown in a medium with rising ethanol concentration synthesizes more ergosterol and unsaturated fatty acids, strengthening the membranes. Cells that have passed through 12% ABV are significantly more resistant to 16% ABV than cells pitched directly into a 16% environment.</li>
+            <li><strong>Reduction of peak osmotic pressure.</strong> Instead of 30% sugar at the start (lethal to yeast), you have 15% at the start and 8–10% at each addition. The peak osmotic pressure never exceeds the critical threshold.</li>
+            <li><strong>Maintaining an active population.</strong> Each sugar addition gives the yeast fresh substrate, stimulating metabolism and preventing transition into the stationary phase.</li>
+        </ul>
+
+        <h2 id="tech">Chapter 4. Practical Technology: Step-by-Step Scheme</h2>
+
+        <h3>4.1. Initial Data</h3>
+        <p><strong>Target:</strong> a wash of 20–22% ABV from sugar raw material.</p>
+        <p><strong>Equipment:</strong></p>
+        <ul>
+            <li>Fermentation vessel with an airlock (volume with a 30% reserve).</li>
+            <li>Saccharometer (hydrometer) with a range of 0–30 °P.</li>
+            <li>Thermometer.</li>
+            <li>Scales for sugar.</li>
+            <li>A vessel for preparing sugar syrup.</li>
+        </ul>
+        <p><strong>Yeast:</strong> turbo yeast with a stated tolerance of 20–23% ABV (e.g., Alcotec 48, Bragman Turbo, Still Spirits Turbo Pure, Pathos Turbo).</p>
+
+        <h3>4.2. Calculating the Amount of Sugar</h3>
+        <p>To produce 20% ABV alcohol, you need to ferment:</p>
+        <div class="formula">20 × 17 = 340 g of sugar per liter of wash</div>
+        <p>For 25 liters of wash: <span class="formula">340 × 25 = 8,500 g (8.5 kg) of sugar</span></p>
+        <p>This amount is divided into 3–4 portions.</p>
+
+        <h3>4.3. Stepwise Addition Scheme (Example for 25 Liters)</h3>
+
+        <div class="staircase">
+            <div class="stair-step st-0">
+                <div class="stair-bar">
+                    <span class="sb-abv">0%</span>
+                    <span class="sb-label">Start</span>
+                </div>
+                <div class="stair-info">
+                    <span class="si-day">Day 0</span>
+                    <span class="si-sugar">3.5 kg (14%)</span><br>
+                    ~18 °P
+                </div>
+            </div>
+            <div class="stair-step st-1">
+                <div class="stair-bar">
+                    <span class="sb-abv">8–10%</span>
+                    <span class="sb-label">Add 1</span>
+                </div>
+                <div class="stair-info">
+                    <span class="si-day">Day 3–4</span>
+                    <span class="si-sugar">2.0 kg (8%)</span><br>
+                    ~14 °P
+                </div>
+            </div>
+            <div class="stair-step st-2">
+                <div class="stair-bar">
+                    <span class="sb-abv">14–16%</span>
+                    <span class="sb-label">Add 2</span>
+                </div>
+                <div class="stair-info">
+                    <span class="si-day">Day 5–7</span>
+                    <span class="si-sugar">2.0 kg (8%)</span><br>
+                    ~14 °P
+                </div>
+            </div>
+            <div class="stair-step st-3">
+                <div class="stair-bar">
+                    <span class="sb-abv">18–20%</span>
+                    <span class="sb-label">Add 3</span>
+                </div>
+                <div class="stair-info">
+                    <span class="si-day">Day 8–10</span>
+                    <span class="si-sugar">1.0 kg (4%)</span><br>
+                    ~12 °P
+                </div>
+            </div>
+            <div class="stair-step st-4">
+                <div class="stair-bar">
+                    <span class="sb-abv">20–22%</span>
+                    <span class="sb-label">Finish</span>
+                </div>
+                <div class="stair-info">
+                    <span class="si-day">Day 12–15</span>
+                    <span class="si-sugar">—</span><br>
+                    0–2 °P
+                </div>
+            </div>
+        </div>
+
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Day</th>
+                    <th>Action</th>
+                    <th>Sugar</th>
+                    <th>Gravity After</th>
+                    <th>Strength (Calc.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Start</td>
+                    <td>0</td>
+                    <td>Add 1st portion + yeast</td>
+                    <td>3.5 kg (14%)</td>
+                    <td>~18 °P</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>Addition 1</td>
+                    <td>3–4</td>
+                    <td>When gravity dropped to 4–6 °P</td>
+                    <td>2.0 kg (8%)</td>
+                    <td>~14 °P</td>
+                    <td>~8–10%</td>
+                </tr>
+                <tr>
+                    <td>Addition 2</td>
+                    <td>5–7</td>
+                    <td>When gravity dropped to 4–6 °P</td>
+                    <td>2.0 kg (8%)</td>
+                    <td>~14 °P</td>
+                    <td>~14–16%</td>
+                </tr>
+                <tr>
+                    <td>Addition 3</td>
+                    <td>8–10</td>
+                    <td>When gravity dropped to 4–6 °P</td>
+                    <td>1.0 kg (4%)</td>
+                    <td>~12 °P</td>
+                    <td>~18–20%</td>
+                </tr>
+                <tr>
+                    <td>Finish</td>
+                    <td>12–15</td>
+                    <td>Fermentation complete</td>
+                    <td>—</td>
+                    <td>0–2 °P</td>
+                    <td>20–22%</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>4.4. Step-by-Step Instructions</h3>
+
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Preparing the Starter Wash (Day 0)</h4>
+                <ul>
+                    <li>Dissolve 3.5 kg of sugar in 5–6 liters of warm water (30–40 °C). Stir until completely dissolved.</li>
+                    <li>Add water up to a total volume of 25 liters. Wort temperature: 28–30 °C.</li>
+                    <li>Measure the gravity: should be ~18 °P.</li>
+                    <li>Add yeast nutrient (DAP 1–2 g/L, thiamine, or a complex mix).</li>
+                    <li>Aerate (stir 3–5 minutes, or compressor for 10 minutes).</li>
+                    <li>Pitch rehydrated turbo yeast (per manufacturer's instructions).</li>
+                    <li>Install the airlock. Fermentation temperature: 28–30 °C.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Monitoring the First Phase (Days 1–3)</h4>
+                <ul>
+                    <li>Active fermentation: bubbles in the airlock, foam, cloudiness.</li>
+                    <li>Wash temperature: 28–32 °C (accounting for self-heating).</li>
+                    <li>By days 2–3, the gravity begins to fall.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>First Addition (Days 3–4)</h4>
+                <ul>
+                    <li>Measure the gravity. When it drops to 4–6 °P, it is time to add sugar.</li>
+                    <li>Prepare sugar syrup: dissolve 2.0 kg of sugar in 2–3 liters of warm water (30–40 °C). Stir until completely dissolved. <strong>Do not add dry sugar</strong> — it creates local zones of extreme concentration.</li>
+                    <li>Cool the syrup to 28–30 °C.</li>
+                    <li>Carefully pour the syrup into the wash, trying not to create strong foaming.</li>
+                    <li>Stir with a clean paddle for even distribution.</li>
+                    <li>Install the airlock. Fermentation will resume (bubbles intensify).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Second Addition (Days 5–7)</h4>
+                <p>Repeat the procedure when the gravity again drops to 4–6 °P. Add 2.0 kg of sugar as syrup.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h4>Third Addition (Days 8–10)</h4>
+                <p>Final portion: 1.0 kg of sugar. At this point the wash strength is ~16–18% ABV. The yeast works more slowly, and fermentation may stretch over 3–5 days.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <h4>Finish (Days 12–15)</h4>
+                <p>When the gravity stabilizes at 0–2 °P, fermentation is complete. Wash strength: 20–22% ABV. Give the wash 24–48 hours to clarify and decant before the first distillation.</p>
+            </div>
+        </div>
+
+        <h2 id="params">Chapter 5. Critical Parameters and Control</h2>
+
+        <div class="crit-grid">
+            <div class="crit-card">
+                <h4>📏 5.1. Add by Gravity, Not by Calendar</h4>
+                <p>Do not add sugar by the calendar. Add by gravity. Fermentation speed depends on temperature, yeast, and volume, and may vary by 1–3 days from the calculated value.</p>
+                <p class="crit-rule"><strong>Rule:</strong> add the next portion when the gravity has dropped to <strong>4–6 °P</strong> (SG 1.015–1.025). This means the yeast has processed most of the sugar and is ready for a new portion.</p>
+            </div>
+            <div class="crit-card">
+                <h4>🌡️ 5.2. Temperature at Addition</h4>
+                <p>The syrup should be <strong>28–30 °C</strong> — within the yeast's working temperature range.</p>
+                <p class="crit-rule">Cold syrup (below 20 °C) causes temperature shock. Hot syrup (above 40 °C) kills yeast in the contact zone.</p>
+            </div>
+            <div class="crit-card">
+                <h4>🍯 5.3. Form of Addition: Syrup Only</h4>
+                <p><strong>Never add dry sugar to the wash.</strong> Reasons:</p>
+                <ul>
+                    <li>Dry sugar sinks and creates a zone at the bottom with a concentration of 60–70%, where yeast dies from osmotic shock.</li>
+                    <li>Dissolving dry sugar in a cold wash is slow and uneven.</li>
+                    <li>Sugar dust when pouring contaminates the wash surface.</li>
+                </ul>
+                <p class="crit-rule"><strong>Correctly:</strong> dissolve the sugar in warm water (1:1 or 1:1.5 by weight), cool to 28–30 °C, and pour in a thin stream while stirring.</p>
+            </div>
+            <div class="crit-card">
+                <h4>🧪 5.4. Nutrient Feeding at Each Addition</h4>
+                <p>Each new portion of sugar dilutes the nutrient concentration in the wash. When adding sugar, simultaneously add nutrient:</p>
+                <ul>
+                    <li><strong>DAP</strong> (diammonium phosphate): 0.5–1 g per liter of added syrup.</li>
+                    <li><strong>Thiamine</strong> (vitamin B₁): 0.5 tablet per 10 liters.</li>
+                    <li>Or a complex nutrient per instructions.</li>
+                </ul>
+                <p class="crit-rule">Without nutrient, the yeast at the 3rd–4th addition will develop nitrogen and vitamin deficiency, leading to a hydrogen sulfide smell and fermentation stoppage.</p>
+            </div>
+            <div class="crit-card">
+                <h4>💨 5.5. Aeration at Addition</h4>
+                <p>At each syrup addition, stir the wash lightly for even sugar distribution. This introduces a small amount of oxygen, which is still acceptable at this stage (the yeast is active and consumes O₂).</p>
+                <p class="crit-rule"><strong>Do not aerate intensively</strong> — after 12 hours of fermentation the main reproduction phase is past, and excess oxygen oxidizes ethanol.</p>
+            </div>
+            <div class="crit-card">
+                <h4>🔒 Airlock Between Additions</h4>
+                <p>After each addition, reinstall the airlock. It protects the wash from oxygen and infection between additions.</p>
+                <p class="crit-rule">Keep the vessel sealed except during the brief moments of adding syrup and measuring gravity.</p>
+            </div>
+        </div>
+
+        <h2 id="yeast">Chapter 6. Specifics for Different Yeast Types</h2>
+
+        <div class="yeast-grid">
+            <div class="yeast-card yc-turbo">
+                <div class="yc-header">
+                    <h4>🚀 Turbo Yeast</h4>
+                    <span class="yc-abv">20–23%</span>
+                </div>
+                <div class="yc-body">
+                    <p>Ideal choice for stepwise addition. Turbo strains are selected for high alcohol and osmotic tolerance. They withstand the brief spikes in osmotic pressure when sugar is added.</p>
+                    <p class="yc-rec"><strong>Recommendation:</strong> 3–4 additions, target strength 20–22% ABV.</p>
+                </div>
+            </div>
+            <div class="yeast-card yc-alco">
+                <div class="yc-header">
+                    <h4>⚗️ Alcohol Yeast</h4>
+                    <span class="yc-abv">14–18%</span>
+                </div>
+                <div class="yc-body">
+                    <p>Stepwise addition lets you "squeeze out" 16–18% ABV from alcohol yeast instead of the usual 14–16%. But they will not go above 18%, regardless of method.</p>
+                    <p class="yc-rec"><strong>Recommendation:</strong> 2–3 additions, target strength 16–18% ABV.</p>
+                </div>
+            </div>
+            <div class="yeast-card yc-wine">
+                <div class="yc-header">
+                    <h4>🍷 Wine Yeast</h4>
+                    <span class="yc-abv">12–16%</span>
+                </div>
+                <div class="yc-body">
+                    <p>Stepwise addition is not worthwhile. Wine yeast will not withstand strength above 15–16%, and the aromatic profile for which they are chosen will be lost at such strength.</p>
+                    <p class="yc-rec"><strong>Recommendation:</strong> not suitable for step feeding.</p>
+                </div>
+            </div>
+            <div class="yeast-card yc-baker">
+                <div class="yc-header">
+                    <h4>🍞 Baker's Yeast</h4>
+                    <span class="yc-abv">8–12%</span>
+                </div>
+                <div class="yc-body">
+                    <p>Stepwise addition is pointless. Baker's yeast stops at 10–12% ABV and does not adapt to higher strength.</p>
+                    <p class="yc-rec"><strong>Recommendation:</strong> the method does not work.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="risks">Chapter 7. Risks and Limitations of the Method</h2>
+
+        <h3>7.1. Extended Fermentation Time</h3>
+        <p>Stepwise addition increases the total fermentation time by 3–7 days compared to a single addition. For a 20% wash: <strong>12–18 days</strong> instead of 5–8 days for a 15% wash.</p>
+
+        <h3>7.2. Increased Infection Risk</h3>
+        <p>Each addition is an opening of the vessel, an introduction of new substrate, and a brief contact with air. The more additions, the higher the risk of infection with lactic acid or acetic acid bacteria.</p>
+        <p><strong>Prevention measures:</strong></p>
+        <ul>
+            <li>Work quickly, minimize the vessel opening time.</li>
+            <li>Prepare the syrup in clean utensils.</li>
+            <li>Do not add sugar to a wash showing signs of infection (sour smell, film).</li>
+            <li>Maintain temperature 28–30 °C: in an acidic environment and at high strength, cultured yeast has an advantage over bacteria.</li>
+        </ul>
+
+        <h3>7.3. Accumulation of By-Products</h3>
+        <p>The longer the fermentation and the higher the strength, the more by-products:</p>
+        <ul>
+            <li><strong>Higher alcohols (fusel oils):</strong> +20–40% compared to a quick 15% wash.</li>
+            <li><strong>Esters:</strong> elevated.</li>
+            <li><strong>Glycerol:</strong> 7–10 g/L (for a 15% wash: 4–6 g/L).</li>
+        </ul>
+        <div class="warning-note">
+            <strong>Consequence:</strong> distillate from a 20% wash requires more careful fractional distillation with increased heads and tails cuts.
+        </div>
+
+        <h3>7.4. Not Every Yeast Withstands Stepwise Mode</h3>
+        <p>Some strains, even those labeled turbo, tolerate multiple additions poorly. Fermentation may stop at the 2nd–3rd addition. If this happens:</p>
+        <ul>
+            <li>Check the temperature.</li>
+            <li>Add nutrient.</li>
+            <li>Pitch a fresh batch of yeast (starter).</li>
+            <li>If it does not help — distill as is.</li>
+        </ul>
+
+        <h3>7.5. Economic Viability</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Single Addition (15%)</th>
+                    <th>Stepwise (20%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sugar for 25 L</td>
+                    <td>3.75 kg</td>
+                    <td>8.5 kg</td>
+                </tr>
+                <tr>
+                    <td>Fermentation time</td>
+                    <td>5–8 days</td>
+                    <td>12–18 days</td>
+                </tr>
+                <tr>
+                    <td>Absolute alcohol yield</td>
+                    <td>~2.5 L</td>
+                    <td>~5.3 L</td>
+                </tr>
+                <tr>
+                    <td>Alcohol per 1 kg of sugar</td>
+                    <td>~670 mL/kg</td>
+                    <td>~625 mL/kg</td>
+                </tr>
+                <tr>
+                    <td>Infection risk</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Complexity</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p>Alcohol yield per kilogram of sugar decreases by 5–8% due to increased losses on yeast life activity under high-stress conditions. Savings on wash volume (less water, less volume to distill) partially compensate for the losses.</p>
+
+        <h2 id="alternatives">Chapter 8. Alternatives to Stepwise Addition</h2>
+
+        <div class="alt-grid">
+            <div class="alt-card">
+                <div class="alt-icon">🚀</div>
+                <h4>8.1. Turbo Yeast, Single Addition</h4>
+                <p>Modern turbo yeast (Alcotec 48, Bragman 24, Still Spirits Turbo Pure) can ferment 20–22% sugar in a single addition if: concentration ≤ 22–23%, temperature is stable (28–30 °C), nutrient is added in full, and aeration is done before start. This is simpler and faster. Stepwise is needed only to go above 22–23%.</p>
+            </div>
+            <div class="alt-card">
+                <div class="alt-icon">🛢️</div>
+                <h4>8.2. Increase the Wash Volume</h4>
+                <p>Instead of raising strength, raise the volume. 50 liters of 15% wash gives more alcohol than 25 liters of 22% wash, with less stress on the yeast and a better distillate profile.</p>
+            </div>
+            <div class="alt-card">
+                <div class="alt-icon">🏭</div>
+                <h4>8.3. Use Rectification</h4>
+                <p>If the goal is maximum yield of neutral alcohol, a rectification column extracts 95–96% ethanol from a wash of any strength. Raising wash strength from 15% to 20% increases yield by 25–30%, but does not double it.</p>
+            </div>
+        </div>
+
+        <h2 id="mistakes">Chapter 9. Typical Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adding dry sugar to the wash</td>
+                    <td>Local osmotic shock, yeast death</td>
+                    <td>Prepare syrup, add in liquid form</td>
+                </tr>
+                <tr>
+                    <td>Adding sugar at gravity above 8 °P</td>
+                    <td>Excess osmotic pressure, stoppage</td>
+                    <td>Wait for gravity to drop to 4–6 °P</td>
+                </tr>
+                <tr>
+                    <td>Adding without nutrient</td>
+                    <td>Nitrogen deficiency, hydrogen sulfide, stoppage</td>
+                    <td>Add DAP and vitamins at each addition</td>
+                </tr>
+                <tr>
+                    <td>Adding cold syrup (&lt; 20 °C)</td>
+                    <td>Temperature shock to yeast</td>
+                    <td>Cool syrup to 28–30 °C</td>
+                </tr>
+                <tr>
+                    <td>Too many additions (&gt; 4)</td>
+                    <td>Prolonged fermentation, accumulation of impurities</td>
+                    <td>Limit to 3–4 additions</td>
+                </tr>
+                <tr>
+                    <td>Using baker's yeast</td>
+                    <td>Stops at 10–12%, method does not work</td>
+                    <td>Use turbo yeast</td>
+                </tr>
+                <tr>
+                    <td>Ignoring temperature</td>
+                    <td>Fermentation slows or stops</td>
+                    <td>Maintain 28–30 °C</td>
+                </tr>
+                <tr>
+                    <td>Aerating at the 3rd–4th addition</td>
+                    <td>Oxidation of ethanol, sour smell</td>
+                    <td>Only light stirring, no aeration</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I add all the sugar at once, but in syrup form?</div>
+            <div class="faq-answer">
+                <p>No. The problem is not the form of addition (dry or syrup) but the total concentration. A 30% sugar solution creates osmotic pressure incompatible with yeast life, regardless of the method of addition.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How many times can I add sugar?</div>
+            <div class="faq-answer">
+                <p>The practical limit is 3–4 additions. After that, the yeast is so weakened by alcohol and stress that each new portion ferments more slowly, and the infection risk grows.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I incrementally add sugar to a grain or fruit wash?</div>
+            <div class="faq-answer">
+                <p>Technically possible, but not worthwhile. Grain and fruit washes are valued for their aroma, which is lost with prolonged fermentation and high strength. For aromatic distillates, the optimal strength is 8–14% ABV.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Does stepwise addition improve distillate quality?</div>
+            <div class="faq-answer">
+                <p>No, rather the opposite. Longer fermentation and high yeast stress increase the content of by-products. The distillate requires more careful distillation. Stepwise addition is a way to increase <em>yield</em>, not quality.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Is an airlock needed between additions?</div>
+            <div class="faq-answer">
+                <p>Yes. Install the airlock after each addition. It protects the wash from oxygen and infection between additions.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I add sugar if fermentation has already stopped?</div>
+            <div class="faq-answer">
+                <p>If fermentation stopped because the yeast reached its alcohol tolerance limit (18–20% strength), adding sugar will not help — the yeast cannot ferment it. If the stop is due to nutrient deficiency or temperature — first eliminate the cause, then add sugar.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How do I know the yeast is ready for the next addition?</div>
+            <div class="faq-answer">
+                <p>Measure the gravity. If it has been stable at 4–6 °P for 12–24 hours and fermentation has slowed (bubbles less frequent) — the yeast is ready. If gravity is actively dropping — wait.</p>
+            </div>
+        </div>
+
+        <h2>Conclusion: A Tool for Breaking Through the Limits</h2>
+        <p>Stepwise sugar addition is not magic and not a "secret method." It is a biologically grounded way to bypass the osmotic barrier and give the yeast time to adapt to rising strength. The method works, but it requires patience, control, and an understanding of the processes.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>📏 Add by Gravity, Not by Calendar</strong>
+                The reference point is 4–6 °P. Measure, don't guess. Fermentation speed varies, so the hydrometer — not the day count — tells you when to add the next portion.
+            </div>
+            <div class="principle-item">
+                <strong>🍯 Only Syrup, Only Warm, Only with Nutrient</strong>
+                Dry sugar, cold solution, and absence of nutrition are the three main killers of stepwise fermentation. Dissolve the sugar in warm water, cool to 28–30 °C, and add DAP and vitamins every time.
+            </div>
+            <div class="principle-item">
+                <strong>🎯 Don't Chase Records</strong>
+                20–22% ABV is the practical limit for home conditions. Above that — unjustified growth in time, risk, and impurities. For most tasks, a single addition of 18–20% sugar on turbo yeast is simpler, faster, and gives a cleaner product.
+            </div>
+        </div>
+
+        <p>Stepwise addition is a tool for the cases when you need maximum yield from a minimum volume of wash. Use the stepwise method consciously, when it is truly needed.</p>
+        <p><em>Happy fermentation and accurate measurements.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

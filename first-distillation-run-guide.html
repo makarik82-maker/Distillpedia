@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First Distillation Run: When to Stop and Start Distilling | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c06c3a;
+            --accent-dark: #9a4f22;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #fdf0e7;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            --success-bg: #eafaf1;
+            --success-text: #196f3d;
+            --gold: #c9a227;
+            /* Problem palette */
+            --p-scorch: #c0392b;
+            --p-foam: #2980b9;
+            --p-yield: #d68910;
+            --p-infection: #8e44ad;
+            /* Mash type palette */
+            --m-sugar: #16a085;
+            --m-grain: #b0771f;
+            --m-fruit: #c2185b;
+            --m-berry: #7b1fa2;
+            --m-potato: #6d4c41;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #9a4f22 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-dark);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        /* ===== Process chain ===== */
+        .process-chain {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 8px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .chain-step {
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            min-width: 140px;
+            flex: 1;
+        }
+        .chain-step .chain-num {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .chain-step .chain-label {
+            font-size: 0.85rem;
+            opacity: 0.95;
+            margin-top: 4px;
+        }
+        .chain-step .chain-sub {
+            font-size: 0.72rem;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        .cs-ferment { background: linear-gradient(135deg, #27ae60, #1e8449); }
+        .cs-mature { background: linear-gradient(135deg, #2980b9, #1a5276); }
+        .cs-first { background: linear-gradient(135deg, var(--accent-color), var(--accent-dark)); box-shadow: 0 4px 10px rgba(192,108,58,0.4); }
+        .cs-second { background: linear-gradient(135deg, #8e44ad, #5b2c6f); }
+        .cs-final { background: linear-gradient(135deg, #16a085, #0e6655); }
+        .chain-arrow {
+            display: flex;
+            align-items: center;
+            color: #adb5bd;
+            font-size: 1.3rem;
+        }
+        /* ===== Goal / Not-done cards ===== */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .goal-box {
+            border-radius: 8px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid;
+        }
+        .goal-box h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+        .goal-box ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.92rem;
+        }
+        .goal-box li { margin-bottom: 0.5rem; }
+        .goal-yes {
+            background: #eafaf1;
+            border-color: #a9dfbf;
+        }
+        .goal-yes h4 { color: #1e8449; }
+        .goal-no {
+            background: #fdedec;
+            border-color: #f5b7b1;
+        }
+        .goal-no h4 { color: #c0392b; }
+        /* ===== Problem cards ===== */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.5rem 0;
+        }
+        .problem-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .problem-header {
+            padding: 1rem 1.3rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .problem-header .p-icon { font-size: 1.5rem; }
+        .problem-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.05rem;
+        }
+        .problem-body {
+            padding: 1.1rem 1.3rem;
+        }
+        .problem-body p {
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        .problem-body ul {
+            margin-bottom: 0.5rem;
+            padding-left: 18px;
+            font-size: 0.88rem;
+        }
+        .problem-body li { margin-bottom: 0.4rem; }
+        .problem-solution {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 0.7rem 0.9rem;
+            font-size: 0.88rem;
+            margin-top: 0.6rem;
+        }
+        .problem-solution strong { color: #1e8449; }
+        .pc-scorch .problem-header { background: linear-gradient(135deg, var(--p-scorch), #922b21); }
+        .pc-foam .problem-header { background: linear-gradient(135deg, var(--p-foam), #1a5276); }
+        .pc-yield .problem-header { background: linear-gradient(135deg, var(--p-yield), #9c640c); }
+        .pc-infection .problem-header { background: linear-gradient(135deg, var(--p-infection), #5b2c6f); }
+        /* ===== Optimal window timeline ===== */
+        .window-timeline {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr 1fr;
+            gap: 12px;
+            margin: 2rem 0;
+        }
+        .window-seg {
+            border-radius: 8px;
+            padding: 1.2rem;
+            color: white;
+            text-align: center;
+        }
+        .window-seg .w-range {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .window-seg .w-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            opacity: 0.95;
+        }
+        .window-seg .w-desc {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .ws-min { background: linear-gradient(135deg, #f39c12, #d68910); }
+        .ws-opt { background: linear-gradient(135deg, #27ae60, #1e8449); box-shadow: 0 4px 10px rgba(39,174,96,0.4); }
+        .ws-risk { background: linear-gradient(135deg, #c0392b, #922b21); }
+        /* ===== Prep method cards ===== */
+        .prep-card {
+            border-radius: 10px;
+            margin: 1.8rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+        .prep-header {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .prep-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.15rem;
+        }
+        .prep-header .prep-tag {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .prep-body {
+            padding: 1.3rem 1.5rem;
+        }
+        .prep-body p:last-child { margin-bottom: 0; }
+        /* ===== Mash type cards ===== */
+        .mash-card {
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .mash-header {
+            padding: 0.9rem 1.4rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mash-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .mash-body {
+            padding: 1.1rem 1.4rem;
+        }
+        .mash-body ul {
+            margin-bottom: 0.5rem;
+            padding-left: 18px;
+            font-size: 0.92rem;
+        }
+        .mash-body li { margin-bottom: 0.4rem; }
+        .mash-body .tip {
+            background: #fdf5e6;
+            border-left: 3px solid var(--gold);
+            padding: 0.6rem 0.9rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+        }
+        .mc-sugar .mash-header { background: linear-gradient(135deg, var(--m-sugar), #0e6655); }
+        .mc-grain .mash-header { background: linear-gradient(135deg, var(--m-grain), #7e5109); }
+        .mc-fruit .mash-header { background: linear-gradient(135deg, var(--m-fruit), #880e4f); }
+        .mc-berry .mash-header { background: linear-gradient(135deg, var(--m-berry), #4a148c); }
+        .mc-potato .mash-header { background: linear-gradient(135deg, var(--m-potato), #3e2723); }
+        /* ===== Stop criteria cards ===== */
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 1.5rem 0;
+        }
+        .criteria-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.1rem;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+        .criteria-card .c-icon { font-size: 1.8rem; }
+        .criteria-card h5 {
+            margin: 0.6rem 0 0.5rem;
+            color: var(--primary-color);
+            font-size: 0.98rem;
+        }
+        .criteria-card p {
+            margin: 0;
+            font-size: 0.86rem;
+        }
+        .criteria-card .c-value {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-top: 4px;
+        }
+        /* ===== Algorithm steps ===== */
+        .algo-step {
+            display: flex;
+            gap: 16px;
+            margin: 1.2rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #e9ecef;
+        }
+        .algo-step .step-badge {
+            background: var(--accent-color);
+            color: white;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .algo-step .step-content { flex: 1; }
+        .algo-step h4 {
+            margin-top: 0;
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        .algo-step ul, .algo-step p { margin-bottom: 0; font-size: 0.93rem; }
+        /* ===== FAQ ===== */
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: #f8f9fa;
+            padding: 0.9rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-question .q-mark {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .faq-answer {
+            padding: 0.9rem 1.3rem 1rem;
+            font-size: 0.95rem;
+        }
+        /* ===== Storage table highlight ===== */
+        td.storage-ok { background: #d5f5e3; }
+        td.storage-caution { background: #fdebd0; }
+        td.storage-frozen { background: #d6eaf8; }
+        /* ===== Final principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #9a4f22 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 7px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.8rem; }
+            .toc ol { columns: 1; }
+            .problem-grid, .goal-grid, .criteria-grid { grid-template-columns: 1fr; }
+            .window-timeline { grid-template-columns: 1fr; }
+            .process-chain { flex-direction: column; }
+            .chain-arrow { transform: rotate(90deg); justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Distillation</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">The First Distillation Run: When to Stop and Start Distilling</h1>
+        <p class="subtitle">The optimal moment to stop fermentation for maximizing alcohol yield and minimizing losses.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Moment of Truth</a></li>
+                <li><a href="#what">Chapter 1. What Is the First Run and Its Goals</a></li>
+                <li><a href="#why">Chapter 2. Why Timing Is Critical</a></li>
+                <li><a href="#window">Chapter 3. The Optimal Window: 24–72 Hours</a></li>
+                <li><a href="#prep">Chapter 4. Preparing the Mash for the First Run</a></li>
+                <li><a href="#types">Chapter 5. Specifics for Different Mash Types</a></li>
+                <li><a href="#storage">Chapter 6. Storing Ready Mash Before the Run</a></li>
+                <li><a href="#technical">Chapter 7. Technical Aspects of the First Run</a></li>
+                <li><a href="#mistakes">Chapter 8. Typical Mistakes</a></li>
+                <li><a href="#algorithm">Chapter 9. Practical Algorithm</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Moment of Truth for the Distiller</h2>
+        <p>Fermentation is complete. The hydrometer reads 0–2 °P, the taste is dry, the airlock is silent. It seems you can pour the mash into the still immediately and start the first run. But experienced distillers know: between <em>"the mash is ready"</em> and <em>"the mash is optimal for the first run"</em> there is a gap of 24–72 hours, and this gap determines the quality of the low wines, the cleanliness of the equipment after distillation, and even the safety of the process.</p>
+        <p>The first run is not simply about obtaining an alcohol-containing liquid. It is about extracting the maximum amount of ethanol from the mash while transferring the minimum amount of by-products into the distillate. And the success of this operation begins not with turning on the still's heating, but with correctly choosing the moment when to stop fermentation and prepare the mash for distillation.</p>
+        <p>In this article we will examine why rushing the first run is costly, how to determine the optimal time window, and which preparatory steps turn a merely ready mash into the ideal raw material for distillation.</p>
+
+        <h2 id="what">Chapter 1. What Is the First Run and Its Goals</h2>
+
+        <h3>1.1. Definition and Place in the Process</h3>
+        <p>The first run (also called "stripping run" or "low wines run") is the distillation of the mash without fraction cuts. The entire distillate from start to finish is collected into a single container. The goal is to extract the maximum ethanol from the mash, producing low wines at 25–40% ABV.</p>
+
+        <div class="process-chain">
+            <div class="chain-step cs-ferment">
+                <div class="chain-num">1</div>
+                <div class="chain-label">Fermentation</div>
+                <div class="chain-sub">5–10 days</div>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step cs-mature">
+                <div class="chain-num">2</div>
+                <div class="chain-label">Maturation</div>
+                <div class="chain-sub">24–72 hours</div>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step cs-first">
+                <div class="chain-num">3</div>
+                <div class="chain-label">First Run</div>
+                <div class="chain-sub">Low wines 25–40%</div>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step cs-second">
+                <div class="chain-num">4</div>
+                <div class="chain-label">Second Run</div>
+                <div class="chain-sub">Fractional cuts</div>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step cs-final">
+                <div class="chain-num">5</div>
+                <div class="chain-label">Distillate</div>
+                <div class="chain-sub">Final product</div>
+            </div>
+        </div>
+
+        <h3>1.2. Goals of the First Run</h3>
+        <div class="goal-grid">
+            <div class="goal-box goal-yes">
+                <h4>✅ What the First Run Achieves</h4>
+                <ul>
+                    <li><strong>Maximum ethanol yield.</strong> Extract all the alcohol the yeast produced.</li>
+                    <li><strong>Concentration.</strong> Raise the strength from 8–18% ABV in the mash to 25–40% ABV in the low wines, reducing volume 3–5 fold.</li>
+                    <li><strong>Partial purification.</strong> Separate ethanol from non-volatile impurities (yeast, proteins, minerals), which remain in the boiler.</li>
+                    <li><strong>Preparation for the second run.</strong> Create a raw material with predictable strength and composition for precise fraction cuts.</li>
+                </ul>
+            </div>
+            <div class="goal-box goal-no">
+                <h4>❌ What Is NOT Done During the First Run</h4>
+                <ul>
+                    <li><strong>No fraction cuts.</strong> Heads and tails are not separated — that is the task of the second run.</li>
+                    <li><strong>No stream-strength control.</strong> Collection continues until the alcohol runs out (usually down to 5–10% ABV in the boiler, or 98–99 °C).</li>
+                    <li><strong>No final purification.</strong> Low wines are an intermediate product that require a second run.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="why">Chapter 2. Why the Timing of the First Run Is Critical</h2>
+
+        <div class="problem-grid">
+            <div class="problem-card pc-scorch">
+                <div class="problem-header">
+                    <span class="p-icon">🔥</span>
+                    <h4>2.1. Scorching of Sugar and Yeast</h4>
+                </div>
+                <div class="problem-body">
+                    <p><strong>What happens:</strong> Suspended yeast cells settle on the boiler bottom and heating element. Above 100 °C the yeast proteins denature and scorch. Residual sugar caramelizes even faster (160–180 °C).</p>
+                    <p><strong>Consequences:</strong></p>
+                    <ul>
+                        <li>Burnt taste — pyrolysis products (furfural, HMF, pyrazines) transfer into the low wines.</li>
+                        <li>Reduced heating efficiency — the scorched layer acts as insulation.</li>
+                        <li>Difficult equipment cleaning.</li>
+                        <li>Risk of local overheating and heater failure.</li>
+                    </ul>
+                    <div class="problem-solution"><strong>Solution:</strong> clarify the mash and decant it off the sediment before the run. Clarification takes time — those very 24–72 hours.</div>
+                </div>
+            </div>
+            <div class="problem-card pc-foam">
+                <div class="problem-header">
+                    <span class="p-icon">🫧</span>
+                    <h4>2.2. Foaming and Mash Eruption</h4>
+                </div>
+                <div class="problem-body">
+                    <p><strong>What happens:</strong> During active fermentation the mash is saturated with dissolved CO₂. On heating, gas solubility drops and CO₂ escapes, creating abundant foam that can climb into the condenser and collection vessel.</p>
+                    <p><strong>Consequences:</strong></p>
+                    <ul>
+                        <li>Contaminated distillate (yeast, proteins, raw-material particles).</li>
+                        <li>Clogged equipment (condenser, dephlegmator, column).</li>
+                        <li>Product loss.</li>
+                        <li><strong>Danger:</strong> hot mash can splash out, creating a burn hazard.</li>
+                    </ul>
+                    <div class="problem-solution"><strong>Solution:</strong> let the mash "rest" 24–72 hours after fermentation ends. Excess CO₂ escapes and foaming on heating becomes minimal.</div>
+                </div>
+            </div>
+            <div class="problem-card pc-yield">
+                <div class="problem-header">
+                    <span class="p-icon">📉</span>
+                    <h4>2.3. Yield Loss from Incomplete Fermentation</h4>
+                </div>
+                <div class="problem-body">
+                    <p><strong>What happens:</strong> if you start the first run while fermentation is not yet complete (gravity above 3–4 °P), some sugar remains unfermented.</p>
+                    <p><strong>Consequences:</strong></p>
+                    <ul>
+                        <li><strong>Direct ethanol loss.</strong> Each percent of residual sugar is potential alcohol not produced. At 5 °P in 20 L, roughly 100 g of sugar remains — about 50 ml of lost absolute alcohol.</li>
+                        <li><strong>Caramelization in the boiler.</strong> Unfermented sugar scorches, giving a burnt taste.</li>
+                        <li><strong>Risk of secondary fermentation.</strong> If low wines are stored, residual sugar can ferment in a sealed container, building pressure.</li>
+                    </ul>
+                    <div class="problem-solution"><strong>Solution:</strong> confirm fermentation is fully complete (gravity 0–2 °P) before the first run.</div>
+                </div>
+            </div>
+            <div class="problem-card pc-infection">
+                <div class="problem-header">
+                    <span class="p-icon">🦠</span>
+                    <h4>2.4. Infection from Over-Standing</h4>
+                </div>
+                <div class="problem-body">
+                    <p><strong>What happens:</strong> if the mash stands too long after fermentation (more than 7–10 days at room temperature), foreign microorganisms develop:</p>
+                    <ul>
+                        <li>Acetic acid bacteria oxidize ethanol into acetic acid.</li>
+                        <li>Lactic acid bacteria produce lactic and butyric acids.</li>
+                        <li>Molds grow on the surface, producing mycotoxins.</li>
+                    </ul>
+                    <p><strong>Consequences:</strong> reduced alcohol yield, sour unpleasant smell, toxicity (mycotoxins are heat-resistant). Severely infected mash cannot be saved — pour it out.</p>
+                    <div class="problem-solution"><strong>Solution:</strong> do not delay the first run. Optimal window — 24–72 hours. If storage is needed, cool the mash to 5–10 °C.</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="window">Chapter 3. The Optimal Window: 24–72 Hours After Fermentation Ends</h2>
+
+        <div class="window-timeline">
+            <div class="window-seg ws-min">
+                <div class="w-range">24 h</div>
+                <div class="w-label">Minimum</div>
+                <div class="w-desc">Yeast begins to settle, particles drop, dissolved CO₂ partially escapes. Acceptable compromise if you cannot wait longer.</div>
+            </div>
+            <div class="window-seg ws-opt">
+                <div class="w-range">48–72 h</div>
+                <div class="w-label">★ Optimum</div>
+                <div class="w-desc">Yeast forms a dense sediment, the mash clarifies, CO₂ almost fully escapes, volatile by-products react. Foaming risk is minimal.</div>
+            </div>
+            <div class="window-seg ws-risk">
+                <div class="w-range">&gt;72 h</div>
+                <div class="w-label">Risk</div>
+                <div class="w-desc">Yeast autolysis begins (sulfur, ammonia, fatty acids), bacterial infection risk rises. If you cannot run in time, cool to 5–10 °C.</div>
+            </div>
+        </div>
+
+        <h3>3.2. How to Confirm Fermentation Has Ended</h3>
+        <p>This was covered in detail in the previous article, but here is a quick reminder of the criteria:</p>
+        <ul>
+            <li><strong>Gravity:</strong> 0–2 °P (0.998–1.008 SG) by hydrometer, stable for 24–48 hours.</li>
+            <li><strong>Taste:</strong> dry, slightly bitter, without sweetness.</li>
+            <li><strong>Appearance:</strong> foam has dropped, the mash is clarifying (or stays cloudy due to the raw material), yeast is settling.</li>
+            <li><strong>Airlock:</strong> silent (but this is not the main criterion).</li>
+        </ul>
+        <div class="warning-note">
+            <strong>⚠ Important:</strong> measure gravity twice, 24 hours apart. If both readings are the same, fermentation is truly complete.
+        </div>
+
+        <h2 id="prep">Chapter 4. Preparing the Mash for the First Run</h2>
+
+        <div class="prep-card">
+            <div class="prep-header">
+                <h3>4.1. Clarification and Decanting</h3>
+                <span class="prep-tag">Primary</span>
+            </div>
+            <div class="prep-body">
+                <p><strong>Goal:</strong> separate the clarified mash from the yeast sediment to minimize scorching in the boiler.</p>
+                <p><strong>Procedure:</strong></p>
+                <ol style="margin-bottom:0;">
+                    <li>Confirm fermentation is complete and the mash has rested 24–72 hours.</li>
+                    <li>Prepare a clean vessel for decanting (a second fermenter or the still itself, if removable).</li>
+                    <li>Carefully siphon or tilt-pour the clarified mash off the sediment.</li>
+                    <li>Do not disturb the sediment. Better to leave 0.5–1 L with the sediment than to pour in turbidity.</li>
+                </ol>
+                <p style="margin-top:0.8rem;"><strong>The residue with sediment can be:</strong> poured out (small volume), distilled separately (lower quality), or added to the next sugar wash batch to reuse yeast (sugar wash only).</p>
+                <p><strong>Result:</strong> clarified mash with minimal suspended yeast. Scorching in the boiler is reduced 3–5 fold.</p>
+            </div>
+        </div>
+
+        <div class="prep-card">
+            <div class="prep-header">
+                <h3>4.2. Cold Crash (Optional)</h3>
+                <span class="prep-tag">Optional</span>
+            </div>
+            <div class="prep-body">
+                <p>For maximum clarification:</p>
+                <ol style="margin-bottom:0;">
+                    <li>After fermentation ends, move the vessel to a cool place (5–10 °C) for 24–48 hours.</li>
+                    <li>At low temperature, yeast and suspended particles settle faster and denser.</li>
+                    <li>Decant the clarified mash.</li>
+                </ol>
+                <p style="margin-top:0.8rem;"><strong>Especially useful for:</strong> fruit and berry mashes with pectins, grain mashes with proteins, and hard-water mashes with calcium salts.</p>
+            </div>
+        </div>
+
+        <div class="prep-card">
+            <div class="prep-header">
+                <h3>4.3. Bentonite Treatment (Optional)</h3>
+                <span class="prep-tag">Optional</span>
+            </div>
+            <div class="prep-body">
+                <p>Bentonite is a natural clay that adsorbs proteins and suspended particles, accelerating clarification.</p>
+                <p><strong>Procedure:</strong></p>
+                <ol style="margin-bottom:0;">
+                    <li>Dissolve 1–2 g of bentonite per 10 L of mash in a small amount of warm water (200–300 ml).</li>
+                    <li>Stir thoroughly to a uniform suspension.</li>
+                    <li>Pour into the mash and stir.</li>
+                    <li>Leave for 12–24 hours.</li>
+                    <li>Decant the clarified mash.</li>
+                </ol>
+                <p style="margin-top:0.8rem;"><strong>When to use:</strong> the mash remains cloudy after 72 hours; you plan rectification and want the cleanest low wines; grain or potato mash with high protein content.</p>
+                <p><strong>When NOT to use:</strong> fruit mashes for aromatic distillates (bentonite can adsorb some aromatic compounds); if you are in a hurry (bentonite takes 12–24 hours).</p>
+            </div>
+        </div>
+
+        <div class="prep-card">
+            <div class="prep-header">
+                <h3>4.4. Degassing (CO₂ Removal)</h3>
+                <span class="prep-tag">Helpful</span>
+            </div>
+            <div class="prep-body">
+                <p>Even after 24–72 hours the mash contains dissolved CO₂. On heating it escapes and creates foam.</p>
+                <p><strong>Methods:</strong></p>
+                <ul style="margin-bottom:0;">
+                    <li><strong>Natural:</strong> simply wait 24–72 hours. CO₂ escapes on its own.</li>
+                    <li><strong>Mechanical:</strong> stir the mash with a drill fitted with a food-grade mixer attachment for 2–3 minutes. Speeds up CO₂ release. Caution: foam may form — do not fill the vessel more than 70%.</li>
+                    <li><strong>Vacuum:</strong> apply vacuum above the mash with a pump (rarely used at home).</li>
+                </ul>
+                <p style="margin-top:0.8rem;"><strong>Recommendation:</strong> for most cases, natural degassing over 24–72 hours is sufficient.</p>
+            </div>
+        </div>
+
+        <h2 id="types">Chapter 5. Specifics for Different Mash Types</h2>
+
+        <div class="mash-card mc-sugar">
+            <div class="mash-header">
+                <span>🍬</span>
+                <h4>5.1. Sugar Mash</h4>
+            </div>
+            <div class="mash-body">
+                <ul>
+                    <li>Clarifies quickly (24–48 hours is enough).</li>
+                    <li>Yeast sediment is dense, easily decanted.</li>
+                    <li>Low protein and pectin content — minimal scorching.</li>
+                </ul>
+                <p style="margin-bottom:0;"><strong>Optimal timing:</strong> 24–48 hours. <strong>Preparation:</strong> decanting. Bentonite not needed.</p>
+            </div>
+        </div>
+
+        <div class="mash-card mc-grain">
+            <div class="mash-header">
+                <span>🌾</span>
+                <h4>5.2. Grain Mash (wheat, rye, corn)</h4>
+            </div>
+            <div class="mash-body">
+                <ul>
+                    <li>Stays cloudy even after clarification (proteins, grain particles).</li>
+                    <li>Yeast sediment is loose, mixed with spent grains.</li>
+                    <li>High protein content — scorching risk.</li>
+                </ul>
+                <p style="margin-bottom:0;"><strong>Optimal timing:</strong> 48–72 hours. <strong>Preparation:</strong> decanting; bentonite desirable; cold crash effective.</p>
+                <p class="tip"><strong>Tip:</strong> if the mash is very thick, dilute with water (10–20% of volume) before the run to reduce viscosity.</p>
+            </div>
+        </div>
+
+        <div class="mash-card mc-fruit">
+            <div class="mash-header">
+                <span>🍎</span>
+                <h4>5.3. Fruit Mash (apples, grapes, pears)</h4>
+            </div>
+            <div class="mash-body">
+                <ul>
+                    <li>Clarifies slowly (48–72 hours minimum).</li>
+                    <li>Contains pectins that do not fully settle.</li>
+                    <li>Yeast sediment is mixed with pulp particles.</li>
+                </ul>
+                <p style="margin-bottom:0;"><strong>Optimal timing:</strong> 48–72 hours. <strong>Preparation:</strong> decanting; bentonite NOT recommended (adsorbs aroma); cold crash effective.</p>
+            </div>
+        </div>
+
+        <div class="mash-card mc-berry">
+            <div class="mash-header">
+                <span>🍒</span>
+                <h4>5.4. Berry Mash (cherry, plum, raspberry)</h4>
+            </div>
+            <div class="mash-body">
+                <ul>
+                    <li>Very slow clarification (72 hours or more).</li>
+                    <li>High pectin content.</li>
+                    <li>Small berry particles do not settle.</li>
+                </ul>
+                <p style="margin-bottom:0;"><strong>Optimal timing:</strong> 72 hours. <strong>Preparation:</strong> decanting; bentonite NOT recommended; cold crash is essential.</p>
+                <p class="tip"><strong>Tip:</strong> do not aim for full transparency. Berry mash will remain slightly cloudy — this is normal.</p>
+            </div>
+        </div>
+
+        <div class="mash-card mc-potato">
+            <div class="mash-header">
+                <span>🥔</span>
+                <h4>5.5. Potato Mash</h4>
+            </div>
+            <div class="mash-body">
+                <ul>
+                    <li>Very thick and cloudy.</li>
+                    <li>Never clarifies completely (pectins, proteins, starch).</li>
+                    <li>High scorching risk.</li>
+                </ul>
+                <p style="margin-bottom:0;"><strong>Optimal timing:</strong> 48–72 hours. <strong>Preparation:</strong> decanting (as much as possible); bentonite desirable; dilute with water (20–30%) to reduce viscosity.</p>
+                <p class="tip"><strong>Tip:</strong> potato mash is best distilled in stills with a steam jacket or steam generator to avoid direct contact with the heater.</p>
+            </div>
+        </div>
+
+        <h2 id="storage">Chapter 6. Storing Ready Mash Before the Run</h2>
+
+        <h3>6.1. When Storage Is Needed</h3>
+        <p>Sometimes it is impossible to distill within the optimal window (24–72 hours). Reasons: lack of time, needing to accumulate several batches for one large run, or waiting for available equipment.</p>
+
+        <h3>6.2. Storage Conditions</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Temperature</th>
+                    <th>Max Duration</th>
+                    <th>Risk</th>
+                    <th>How to Ensure</th>
+                    <th>Requirements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="storage-caution"><strong>Room (18–22 °C)</strong></td>
+                    <td>3–5 days</td>
+                    <td>Yeast autolysis, bacterial infection</td>
+                    <td>Normal indoor conditions</td>
+                    <td>Airlock in place, minimal air contact</td>
+                </tr>
+                <tr>
+                    <td class="storage-ok"><strong>Cold (5–10 °C)</strong></td>
+                    <td>1–2 weeks</td>
+                    <td>Minimal — cold slows autolysis and bacteria</td>
+                    <td>Refrigerator, cellar, cold room</td>
+                    <td>Sealed container (airlock may not work without gas emission)</td>
+                </tr>
+                <tr>
+                    <td class="storage-frozen"><strong>Frozen (−18 °C and below)</strong></td>
+                    <td>Up to 3 months</td>
+                    <td>Minimal — metabolism fully stopped</td>
+                    <td>Freezer</td>
+                    <td>Stir before distilling (water crystallizes, alcohol concentrates)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>6.3. Signs of Spoilage During Storage</h3>
+        <p>If any of these appear during storage, it is better to pour the mash out:</p>
+        <ul>
+            <li>Mold on the surface (white, gray, green, black).</li>
+            <li>Sharp sour smell (vinegar).</li>
+            <li>Smell of rotten eggs, vomit, or mold.</li>
+            <li>Slippery film on the surface.</li>
+        </ul>
+        <div class="practical-note">
+            <strong>Light souring</strong> (mild acidity, no mold) is not a catastrophe. Distill immediately, with an increased heads cut during the second run.
+        </div>
+
+        <h2 id="technical">Chapter 7. Technical Aspects of the First Run</h2>
+
+        <h3>7.1. Filling the Boiler</h3>
+        <p><strong>Recommended volume: no more than 2/3 (65–70%) of the boiler's capacity.</strong></p>
+        <ul>
+            <li>On heating, the mash foams and expands.</li>
+            <li>Space is needed for steam formation.</li>
+            <li>Overfilling risks a mash eruption through the steam outlet.</li>
+        </ul>
+        <p><em>Example: for a 30 L boiler, pour no more than 20 L of mash.</em></p>
+
+        <h3>7.2. Heating Speed</h3>
+        <p>The first run is <strong>fast</strong>. Unlike the second (fractional) run, slow, precise distillation is not needed here. The goal is to extract the maximum alcohol in minimum time.</p>
+        <ul>
+            <li>Heat at maximum power until collection begins.</li>
+            <li>After collection starts, slightly reduce power for stability.</li>
+            <li>Total time for 20 L of mash: 2–4 hours (depends on heating power).</li>
+        </ul>
+
+        <h3>7.3. Collecting the Low Wines</h3>
+        <p><strong>No fraction cuts.</strong> The entire distillate from start to finish is collected into one container.</p>
+        <p><strong>When to stop collection — three criteria:</strong></p>
+
+        <div class="criteria-grid">
+            <div class="criteria-card">
+                <span class="c-icon">🌡️</span>
+                <h5>Stream Strength</h5>
+                <p>When the distillate strength drops below</p>
+                <span class="c-value">20–30% ABV</span>
+            </div>
+            <div class="criteria-card">
+                <span class="c-icon">🔥</span>
+                <h5>Boiler Temperature</h5>
+                <p>When the boiler temperature reaches</p>
+                <span class="c-value">98–99 °C</span>
+            </div>
+            <div class="criteria-card">
+                <span class="c-icon">📏</span>
+                <h5>Volume</h5>
+                <p>When you have collected about</p>
+                <span class="c-value">30–40% of mash volume</span>
+            </div>
+        </div>
+        <div class="practical-note">
+            <strong>Recommendation:</strong> use a combination of criteria. Stop collection when the boiler temperature is 98–99 °C AND the stream strength is below 20–30% ABV.
+        </div>
+
+        <h3>7.4. What Remains in the Boiler</h3>
+        <p>After the first run, <strong>spent wash (stillage)</strong> remains in the boiler, containing:</p>
+        <ul>
+            <li>Water.</li>
+            <li>Non-volatile substances (yeast, proteins, minerals).</li>
+            <li>Residual sugar (if fermentation was incomplete).</li>
+            <li>Heavy fusel oils (partially).</li>
+            <li>Glycerol.</li>
+        </ul>
+        <p><strong>Strength of the spent wash:</strong> 0.5–3% ABV (residual alcohol that is not economical to extract).</p>
+        <p><strong>Disposal:</strong> pour down the drain (small volumes); use as fertilizer (dilute 1:10 with water); add to compost.</p>
+
+        <h3>7.5. Result of the First Run</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Low Wines</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Strength</td>
+                    <td>25–40% ABV (depends on mash strength and stopping point)</td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td>~25–35% of the mash volume</td>
+                </tr>
+                <tr>
+                    <td>Composition</td>
+                    <td>Ethanol + water + volatile impurities (heads, tails, some fusel oils)</td>
+                </tr>
+                <tr>
+                    <td>Appearance</td>
+                    <td>Clear or slightly cloudy</td>
+                </tr>
+                <tr>
+                    <td>Smell</td>
+                    <td>Alcoholic, with impurities (normal for low wines)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>Next steps:</strong> dilute with water to 20–30% ABV (optimal for the second run), then perform the second run with fractional cuts.</p>
+
+        <h2 id="mistakes">Chapter 8. Typical Mistakes During the First Run</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Distilling immediately after fermentation ends (no 24–72 h wait)</td>
+                    <td>Foaming, mash eruption, distillate contamination</td>
+                    <td>Wait 24–72 hours for degassing and clarification</td>
+                </tr>
+                <tr>
+                    <td>Distilling without decanting (with sediment)</td>
+                    <td>Yeast scorching, burnt taste, difficult boiler cleaning</td>
+                    <td>Decant the mash off the sediment</td>
+                </tr>
+                <tr>
+                    <td>Distilling an incomplete fermentation (gravity &gt; 3–4 °P)</td>
+                    <td>Yield loss, sugar caramelization, burnt taste</td>
+                    <td>Confirm fermentation is complete (0–2 °P)</td>
+                </tr>
+                <tr>
+                    <td>Overfilling the boiler (more than 70%)</td>
+                    <td>Mash eruption, equipment contamination</td>
+                    <td>Fill no more than 2/3 of the boiler</td>
+                </tr>
+                <tr>
+                    <td>Stopping too early (temperature &lt; 95 °C)</td>
+                    <td>Yield loss, alcohol remains in the spent wash</td>
+                    <td>Collect up to 98–99 °C in the boiler</td>
+                </tr>
+                <tr>
+                    <td>Storing the mash more than 7 days at room temperature</td>
+                    <td>Infection, alcohol loss, sour smell</td>
+                    <td>Cool to 5–10 °C for long storage</td>
+                </tr>
+                <tr>
+                    <td>Using cloudy mash for rectification</td>
+                    <td>Column clogging, scorching</td>
+                    <td>Clarify the mash before the run</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="algorithm">Chapter 9. Practical Algorithm: From End of Fermentation to First Run</h2>
+
+        <div class="algo-step">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+                <h4>Confirm Fermentation Has Ended</h4>
+                <ul>
+                    <li>Measure gravity: 0–2 °P. Repeat after 24 hours — stable.</li>
+                    <li>Taste: dry, without sweetness.</li>
+                    <li>If gravity is above 3 °P, fermentation is not complete. Take action (see the stalled-fermentation article).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+                <h4>Maturation Period (24–72 Hours)</h4>
+                <ul>
+                    <li>Leave the mash in the fermenter at 18–22 °C with the airlock in place.</li>
+                    <li>Do not open unnecessarily.</li>
+                    <li>Optimal: 48 hours for sugar, 72 hours for grain and fruit mashes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+                <h4>Clarification (Optional)</h4>
+                <ul>
+                    <li>If the mash is cloudy, consider a cold crash (5–10 °C, 24 hours).</li>
+                    <li>For grain and potato mashes — bentonite treatment (1–2 g per 10 L, 12–24 hours).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+                <h4>Decanting</h4>
+                <ul>
+                    <li>Carefully siphon the clarified mash off the sediment.</li>
+                    <li>Leave 0.5–1 L with the sediment.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">5</div>
+            <div class="step-content">
+                <h4>Filling the Boiler</h4>
+                <ul>
+                    <li>Pour the mash into the boiler — no more than 2/3 of the volume.</li>
+                    <li>Confirm the boiler is clean and the seals are in good condition.</li>
+                    <li>Connect the condenser and supply water.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">6</div>
+            <div class="step-content">
+                <h4>The First Run</h4>
+                <ul>
+                    <li>Heat at maximum power until collection begins.</li>
+                    <li>Collect without separating fractions.</li>
+                    <li>Stop when the boiler reaches 98–99 °C or stream strength drops below 20%.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="algo-step">
+            <div class="step-badge">7</div>
+            <div class="step-content">
+                <h4>Result</h4>
+                <ul>
+                    <li>Collected low wines at 25–40% ABV.</li>
+                    <li>Spent wash in the boiler (dispose of it).</li>
+                    <li>Dilute the low wines to 20–30% ABV and prepare for the second run.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I distill the mash immediately after fermentation ends, without waiting 24–72 hours?</div>
+            <div class="faq-answer">Technically yes, but it is not recommended. Risk of foaming, scorching, and distillate contamination. If time is critical, at least wait 12–24 hours and decant thoroughly.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The mash has been sitting for 2 weeks. Can I still distill it?</div>
+            <div class="faq-answer">It depends on the storage conditions. If at 5–10 °C — yes, distill it. If at room temperature — evaluate the smell and appearance. If there are signs of infection (sour smell, mold), it is better to pour it out.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to dilute the mash before the first run?</div>
+            <div class="faq-answer">Usually no. But if the mash is very thick (grain, potato) or the strength is above 18% ABV, you can dilute with water by 10–20% to reduce viscosity and scorching risk.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I mix several batches of mash before distillation?</div>
+            <div class="faq-answer">Yes, if they are the same type and both are ready. Mixing increases volume and makes the run more efficient. Make sure all batches have fully fermented.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What should I do with the yeast sediment after decanting?</div>
+            <div class="faq-answer">Options: pour it out (simplest); distill it separately in a small vessel (lower quality); add it to the next sugar wash as a "starter" (sugar wash only, not fruit or grain).</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The low wines came out cloudy. Is this normal?</div>
+            <div class="faq-answer">Yes, this is normal. Cloudiness is caused by volatile substances that precipitated on cooling or dilution. After the second run, the distillate will be clear.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I store low wines before the second run?</div>
+            <div class="faq-answer">Yes, low wines are more stable than mash. Store them in a sealed container at room temperature for up to several months. Before the second run, dilute to 20–30% ABV.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The first run took 5 hours. Is this normal?</div>
+            <div class="faq-answer">It depends on volume and power. For 20 L of mash on a 2 kW still, 3–4 hours is normal. 5 hours is a bit long but acceptable. If it takes longer, check the heating power and boiler insulation.</div>
+        </div>
+
+        <h2>Conclusion: Patience Pays Off</h2>
+        <p>The first run is not a sprint but a marathon with a proper start. The moment you decide to begin distillation determines not only the alcohol yield, but also the quality of the low wines, the cleanliness of the equipment, and your enjoyment of the process.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>⏳ Don't Rush</strong>
+                24–72 hours after fermentation ends is not wasted time — it is an investment in quality. During this time, the mash clarifies, degasses, and stabilizes.
+            </div>
+            <div class="principle-item">
+                <strong>🍶 Decant</strong>
+                Separating the mash from the yeast sediment is the most effective way to prevent scorching and burnt taste. 5 minutes of work saves hours of boiler cleaning.
+            </div>
+            <div class="principle-item">
+                <strong>🚫 Don't Delay</strong>
+                The optimal readiness window is 24–72 hours. After that, infection and autolysis risk rise. If you cannot run on time — cool the mash.
+            </div>
+        </div>
+
+        <p>The first run is the foundation for the second, fractional run. The cleaner and higher-quality the low wines, the easier the fraction cuts and the smoother the final distillate. Understanding the optimal moment for the first run turns a distiller from someone who "just runs the still" into a master managing the process.</p>
+        <p><em>Happy first run and clean low wines.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

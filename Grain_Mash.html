@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grain Mash: Production Technology from Wheat, Rye, and Corn | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+            --warning-bg: #fdf2f2;
+            --warning-border: #f8d7da;
+            --warning-text: #721c24;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        .enzyme-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #dee2e6;
+        }
+        .enzyme-card h4 {
+            margin-top: 0;
+            color: var(--accent-color);
+            border-bottom: 1px dashed #adb5bd;
+            padding-bottom: 0.5rem;
+        }
+        .enzyme-card ul {
+            margin-bottom: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 10px 15px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-size: 1.05rem;
+        }
+        .step-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .step-card .step-number {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.95rem;
+        }
+        .step-card h4 {
+            display: inline-block;
+            margin: 0;
+            vertical-align: middle;
+        }
+        .rules-list {
+            background-color: #f9f9f9;
+            border: 2px solid #d1d1d1;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .rules-list h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .iodine-test {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .iodine-result {
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+        .iodine-fail {
+            background-color: #fff5f5;
+            border-color: #feb2b2;
+            color: #742a2a;
+        }
+        .iodine-pass {
+            background-color: #f0fff4;
+            border-color: #9ae6b4;
+            color: #22543d;
+        }
+        .iodine-result strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1.article-title {
+                font-size: 1.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 8px;
+            }
+            .iodine-test {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 0.5rem;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Grain Mash: Production Technology from Wheat, Rye, and Corn</h1>
+        <p class="subtitle">A comprehensive guide to producing wort from starchy raw materials: starch hydrolysis, mashing, and fermentation.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Why Grain Is Not Sugar</a></li>
+                <li><a href="#starch">Chapter 1. Starch: Structure and Properties</a></li>
+                <li><a href="#enzymes">Chapter 2. Saccharifying Enzymes: Malt and Commercial Preparations</a></li>
+                <li><a href="#grains">Chapter 3. Raw Materials: Wheat, Rye, Corn</a></li>
+                <li><a href="#mashing">Chapter 4. Mashing Technology: Step-by-Step Guide</a></li>
+                <li><a href="#enzyme-method">Chapter 5. Mashing with Commercial Enzymes (No-Malt Method)</a></li>
+                <li><a href="#mistakes">Chapter 6. Common Mistakes and Solutions</a></li>
+                <li><a href="#legal">Chapter 7. Legal Context</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Why Grain Is Not Sugar</h2>
+        <p>If a sugar wash is a direct highway from sucrose to ethanol, a grain mash is a journey with a mandatory transfer. <em>Saccharomyces cerevisiae</em> yeast cannot ferment starch. They feed on mono- and disaccharides: glucose, fructose, maltose. Starch, on the other hand, is a polysaccharide — a long chain of thousands of glucose molecules linked by glycosidic bonds. Until these bonds are broken, starch is useless to yeast.</p>
+        <p>Therefore, between the grain and the mash stands a key technological stage — <strong>saccharification</strong>, i.e., the enzymatic hydrolysis of starch into fermentable sugars. This stage is what distinguishes grain distilling from sugar distilling, and gives the distillate that very bready, malty, "whiskey-like" character that cannot be obtained from sugar.</p>
+        <p>In this article, we will break down the full cycle: from grain selection to a mash ready for distillation — with an emphasis on process chemistry, temperature regimes, and practical nuances for wheat, rye, and corn.</p>
+
+        <h2 id="starch">Chapter 1. Starch: Structure and Properties You Need to Know</h2>
+        
+        <h3>1.1. Two Components of Starch</h3>
+        <p>Starch is the reserve polysaccharide of plants. In grain, it is concentrated in the endosperm and consists of two fractions:</p>
+        <ul>
+            <li><strong>Amylose (20–30% of starch)</strong> — a linear chain of glucose residues linked by α-1,4-glycosidic bonds. The molecule is coiled into a helix. Amylose is relatively easily hydrolyzed by enzymes.</li>
+            <li><strong>Amylopectin (70–80% of starch)</strong> — a branched chain where, in addition to α-1,4 bonds, α-1,6 bonds are present at branching points. Amylopectin hydrolysis is more complex: enzymes must "bypass" each branching point.</li>
+        </ul>
+
+        <h3>1.2. Gelatinization: Why Grain Needs to Be Heated</h3>
+        <p>In its native state, starch granules are enclosed in a dense shell and are inaccessible to enzymes. When heated in water, <strong>gelatinization</strong> occurs: the granules swell, the shells break down, and the starch transforms into a soluble form, forming a viscous gel.</p>
+        <p>The gelatinization temperature varies by crop:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Crop</th>
+                    <th>Gelatinization Temperature, °C</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Wheat</td><td>52–62</td></tr>
+                <tr><td>Rye</td><td>55–65</td></tr>
+                <tr><td>Corn</td><td>62–71</td></tr>
+            </tbody>
+        </table>
+        <p>This means that to fully release the starch, the grain must be heated in water above these temperatures. For corn, which has the densest starch granules, a full boil at 90–100 °C is often required.</p>
+
+        <h3>1.3. What Is Hydrolysis and What Sugars Are Formed</h3>
+        <p>Starch hydrolysis is the breaking of glycosidic bonds with the attachment of a water molecule. As a result, the long chain is sequentially shortened:</p>
+        <div class="formula">Starch → Dextrins → Maltose → Glucose</div>
+        <ul>
+            <li><strong>Dextrins</strong> — short chains of 3–20 glucose residues. Not fermentable by yeast, but give the body of the beverage density.</li>
+            <li><strong>Maltose</strong> — a disaccharide of two glucose molecules. Easily fermentable.</li>
+            <li><strong>Glucose</strong> — a monosaccharide, the ideal substrate for yeast.</li>
+        </ul>
+        <div class="key-takeaway">
+            <strong>The goal of mashing</strong> is to obtain maximum maltose and glucose and minimum unfermentable dextrins. To achieve this, enzymes are needed.
+        </div>
+
+        <h2 id="enzymes">Chapter 2. Saccharifying Enzymes: Malt and Commercial Preparations</h2>
+        
+        <h3>2.1. Malt — Nature's Enzyme Factory</h3>
+        <p>Malt is grain (usually barley) that has been artificially germinated and then dried. During germination, the grain activates its own enzymes needed to break down the endosperm starch. These enzymes are preserved in the dried malt and work on saccharification during mashing.</p>
+        
+        <div class="enzyme-card">
+            <h4>α-Amylase (Alpha-Amylase)</h4>
+            <ul>
+                <li><strong>Type:</strong> Endoenzyme — attacks the starch chain at a random point inside the molecule.</li>
+                <li><strong>Action:</strong> Breaks long starch and dextrin chains into short fragments.</li>
+                <li><strong>Temperature optimum:</strong> 70–75 °C.</li>
+                <li><strong>pH optimum:</strong> 5.6–5.8.</li>
+                <li><strong>Result:</strong> Mash liquefaction, formation of dextrins and a small amount of maltose.</li>
+                <li><strong>Thermostable:</strong> withstands up to 80 °C.</li>
+            </ul>
+        </div>
+
+        <div class="enzyme-card">
+            <h4>β-Amylase (Beta-Amylase)</h4>
+            <ul>
+                <li><strong>Type:</strong> Exoenzyme — "bites off" maltose fragments (two glucose residues) from the non-reducing end of the chain.</li>
+                <li><strong>Temperature optimum:</strong> 60–65 °C.</li>
+                <li><strong>pH optimum:</strong> 5.2–5.5.</li>
+                <li><strong>Result:</strong> Formation of maltose — the main fermentable sugar.</li>
+                <li><strong>Thermosensitive:</strong> rapidly inactivated at temperatures above 70 °C.</li>
+            </ul>
+        </div>
+
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> For maximum yield of fermentable sugars, mashing should take place in the range of <strong>62–68 °C</strong>. At higher temperatures (70–72 °C), α-amylase dominates, the mash liquefies, but many unfermentable dextrins form. At lower temperatures (55–60 °C), β-amylase works effectively, but the process is slower.
+        </div>
+
+        <h3>2.2. Types of Malt</h3>
+        <p>For grain mash, the following are used:</p>
+        <ul>
+            <li><strong>Pale barley malt (base)</strong> — universal, with high enzymatic activity. The main choice for mashing any grain. Diastatic power (ability to saccharify starch) — 250–350 Windisch-Kolbach units (°WK).</li>
+            <li><strong>Rye malt</strong> — often used in traditional recipes for Russian and Eastern European vodka. Has its own high diastatic power (150–250 °WK), but less than barley.</li>
+            <li><strong>Wheat malt</strong> — less common, diastatic power 150–200 °WK. Used in specific recipes.</li>
+            <li><strong>Green malt</strong> — germinated grain that has not been dried. Has maximum enzymatic activity, but does not store. Used immediately after preparation.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>Important:</strong> Malt should make up 15–25% of the mass of the starchy raw material. This is enough for the enzymes to saccharify all the starch in the mash. For example, for 5 kg of wheat, take 1–1.25 kg of barley malt.
+        </div>
+
+        <h3>2.3. Commercial Enzyme Preparations</h3>
+        <p>An alternative to malt is concentrated enzyme preparations produced for the food and alcohol industries. In Europe, products from companies like Novozymes, DSM, AB Enzymes, and others are available.</p>
+        <p><strong>Main preparations:</strong></p>
+        <ul>
+            <li><strong>Termamyl / Amilosubtilin</strong> — an α-amylase preparation. Applied at the liquefaction stage at 85–95 °C. Dosage: 0.1–0.3 ml per 1 kg of starch.</li>
+            <li><strong>SAN Super / Glucavamorin</strong> — a glucoamylase (amyloglucosidase) preparation. Works at 60–65 °C, breaks down dextrins to glucose. Dosage: 0.3–0.5 ml per 1 kg of starch.</li>
+            <li><strong>Combined preparations (e.g., Distillam)</strong> — contain a mixture of α-amylase and glucoamylase, simplifying the process.</li>
+        </ul>
+        <p><strong>Advantages of enzymes over malt:</strong></p>
+        <ul>
+            <li>No need to buy and crush malt.</li>
+            <li>Precise dosage.</li>
+            <li>Glucoamylase breaks down dextrins to glucose, increasing alcohol yield by 3–5% compared to malt.</li>
+        </ul>
+        <p><strong>Disadvantages:</strong></p>
+        <ul>
+            <li>Less "traditional" distillate profile. Malt gives softness and bready tones that are not fully reproduced by enzymes.</li>
+            <li>Enzymes are more expensive when calculated for small volumes.</li>
+        </ul>
+
+        <h2 id="grains">Chapter 3. Raw Materials: Wheat, Rye, Corn</h2>
+        
+        <h3>3.1. Wheat</h3>
+        <p>The most popular grain crop for distilling in Europe, especially in France, Germany, and Eastern Europe.</p>
+        <ul>
+            <li><strong>Starch content:</strong> 60–70% (in dry grain).</li>
+            <li><strong>Theoretical alcohol yield:</strong> 340–380 ml of absolute alcohol from 1 kg of grain.</li>
+            <li><strong>Features:</strong> soft endosperm structure, gelatinization at a relatively low temperature. Wheat is easy to boil and saccharify.</li>
+            <li><strong>Distillate profile:</strong> soft, bready, slightly sweet. Wheat vodka is considered the benchmark of neutrality.</li>
+            <li><strong>Grinding recommendation:</strong> crushing into grits or coarse flour. Grinding into flour is undesirable — the mash will become too thick and will burn when heated.</li>
+        </ul>
+
+        <h3>3.2. Rye</h3>
+        <p>Traditional raw material for vodka and moonshine in Russia, Poland, Belarus, Ukraine, Germany, and Scandinavia.</p>
+        <ul>
+            <li><strong>Starch content:</strong> 55–65%.</li>
+            <li><strong>Theoretical alcohol yield:</strong> 310–350 ml of absolute alcohol from 1 kg of grain.</li>
+            <li><strong>Features:</strong> rye contains a significant amount of pentosans (water-soluble polysaccharides) — up to 6–8%. Pentosans make the mash very viscous, "jelly-like," making mixing and filtration difficult. In addition, pentosans are not fermented by yeast.</li>
+            <li><strong>Distillate profile:</strong> rich, spicy, with a characteristic rye bitterness and the aroma of black bread.</li>
+            <li><strong>Grinding recommendation:</strong> coarse grind. The finer the rye grind, the more viscous the mash. To reduce viscosity, you can add 5–10% barley malt above the norm or use enzyme preparations with xylanase activity.</li>
+        </ul>
+
+        <h3>3.3. Corn</h3>
+        <p>Widely used in American bourbon, but also applied in European distilling, especially in southern regions (Italy, Spain, the Balkans).</p>
+        <ul>
+            <li><strong>Starch content:</strong> 65–75% (the highest among the three crops considered).</li>
+            <li><strong>Theoretical alcohol yield:</strong> 370–410 ml of absolute alcohol from 1 kg of grain.</li>
+            <li><strong>Features:</strong> hard endosperm, high gelatinization temperature. Corn requires a full boil at 90–100 °C for 60–90 minutes. Without sufficient boiling, a significant part of the starch will remain inaccessible to enzymes.</li>
+            <li><strong>Distillate profile:</strong> sweetish, oily, with a characteristic "corn" tone.</li>
+            <li><strong>Grinding recommendation:</strong> crushing into fine grits. The finer the grind, the faster and more complete the boiling.</li>
+        </ul>
+
+        <h3>3.4. Summary Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Wheat</th>
+                    <th>Rye</th>
+                    <th>Corn</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Starch, %</td>
+                    <td>60–70</td>
+                    <td>55–65</td>
+                    <td>65–75</td>
+                </tr>
+                <tr>
+                    <td>Gelatinization, °C</td>
+                    <td>52–62</td>
+                    <td>55–65</td>
+                    <td>62–71</td>
+                </tr>
+                <tr>
+                    <td>Mash Viscosity</td>
+                    <td>Low / Medium</td>
+                    <td>High (pentosans)</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Mashing Difficulty</td>
+                    <td>Low</td>
+                    <td>Medium / High</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Distillate Profile</td>
+                    <td>Soft, bready</td>
+                    <td>Spicy, rye</td>
+                    <td>Sweet, oily</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="mashing">Chapter 4. Mashing Technology: Step-by-Step Guide</h2>
+        <p>Below is the classic mashing method with malt. The variant with commercial enzymes is given in Chapter 5.</p>
+
+        <div class="step-card">
+            <span class="step-number">1</span><h4>Raw Material Preparation</h4>
+            <p><strong>Measure the grain and malt.</strong> For example: 5 kg of wheat + 1 kg of barley malt (20%). Total weight of starchy raw material — 6 kg.</p>
+            <p><strong>Crushing.</strong> Pass the grain through a roller or hammer mill to the state of grits (fraction 0.5–1.5 mm). Malt is crushed immediately before mashing to avoid losing enzymatic activity. Do not grind into flour: fine grinding gives a thick, hard-to-mix mash and increases the risk of burning.</p>
+            <p><strong>Water.</strong> Use clean water without chlorine. Let tap water stand for 12–24 hours or pass it through a carbon filter. Water hardness should be moderate (5–10 °dH) — too soft water does not provide buffer capacity for the mash, too hard can inhibit enzymes.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">2</span><h4>Grain Boiling (mandatory for corn and rye, desirable for wheat)</h4>
+            <p><strong>Goal</strong> — to gelatinize the starch and make it accessible to enzymes.</p>
+            <ul>
+                <li><strong>Wheat:</strong> heat water to 60–65 °C, add crushed grain, hold for 30–40 minutes with stirring. This is usually enough.</li>
+                <li><strong>Rye:</strong> heat to 65–70 °C, add, stir. Due to pentosans, the mash will be thick; stir thoroughly to avoid lumps. Hold for 40–60 minutes.</li>
+                <li><strong>Corn:</strong> heat water to 90–95 °C, add crushed corn, boil at 90–100 °C for 60–90 minutes. Periodic stirring is mandatory. The corn should become soft, "porridge-like." After boiling, cool the mash to 63–65 °C before adding malt.</li>
+            </ul>
+            <div class="warning-note">
+                <strong>Important:</strong> Do not add malt to mash with a temperature above 70 °C — β-amylase enzymes will be irreversibly destroyed, and saccharification will not occur.
+            </div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">3</span><h4>Mashing (Saccharification)</h4>
+            <p>Cool the boiled grain to 63–65 °C. This can be done by adding cold water (part of the total volume) or simply by waiting, stirring periodically.</p>
+            <p>Add the crushed malt, distributing it evenly over the surface of the mash. Stir thoroughly. The malt should completely "dissolve" in the mash, without lumps or dry spots.</p>
+            <p>Maintain a temperature of 62–68 °C for 60–90 minutes. Wrap the container with thermal insulation material (blanket, foil insulation) or use a water bath. Stir every 15–20 minutes to equalize the temperature.</p>
+            
+            <h4>Iodine Test Check</h4>
+            <p>After 60 minutes, take a teaspoon of mash, drop it on a white plate, and add a drop of iodine (5% alcohol solution of iodine).</p>
+            <div class="iodine-test">
+                <div class="iodine-result iodine-fail">
+                    <strong>❌ Blue / Purple color</strong>
+                    Starch is not hydrolyzed, continue holding.
+                </div>
+                <div class="iodine-result iodine-pass">
+                    <strong>✓ Yellow-brown color (iodine color)</strong>
+                    Starch is completely saccharified. The mash is ready.
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">4</span><h4>Filtration or Sparging</h4>
+            <p>After saccharification, it is necessary to separate the liquid part (wort) from the spent grains (insoluble residues of grain and malt).</p>
+            <p>For mash for distillation, filtration is not strictly mandatory: you can distill the mash as a whole if your still allows working with thick worts (for example, a still with a steam-water jacket or steam generator). However, spent grains can burn on the heating element.</p>
+            <p>For cleanliness of the process, filtration through a fine sieve, cheesecloth, or a nylon bag is recommended. The spent grains are washed with warm water (60–65 °C) to extract residual sugars. The wash water is combined with the main wort.</p>
+            <p><strong>Hydro-module:</strong> the total volume of water (including wash water) should be 3–4 liters per 1 kg of grain. That is, for 6 kg of raw material — 18–24 liters of water.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">5</span><h4>Cooling and Yeast Pitching</h4>
+            <p>Cool the wort to 25–30 °C. Fast cooling is preferable: place the container in cold water or use a coil cooler.</p>
+            <p>Measure the density with a saccharometer. For grain mash, the density is usually 10–14 °Plato (specific gravity 1.040–1.056). If the density is above 16 °Plato, add water.</p>
+            <p>Add yeast. For grain mash, special alcohol yeast adapted to grain wort is recommended (for example, strains for whiskey, vodka, or universal turbo yeast). Dosage — according to the manufacturer's instructions, usually 2–3 g of dry yeast per 10 liters of wort.</p>
+            <p>Install an airlock and place the fermentation vessel in a dark place at a temperature of 25–28 °C.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">6</span><h4>Fermentation</h4>
+            <p>The active phase begins after 6–12 hours and lasts 3–7 days.</p>
+            <p>Grain mash usually ferments faster than sugar mash due to the presence of amino acids and vitamins that serve as additional nutrition for yeast.</p>
+            <p>Do not open the container unnecessarily. Oxygen at this stage is not needed and can provoke acetic acid souring.</p>
+            <p>The end of fermentation is determined by the cessation of bubbles from the airlock, clarification of the mash, and a density of 0–2 °Plato by saccharometer.</p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">7</span><h4>Distillation</h4>
+            <p>Grain mash is distilled twice:</p>
+            <ul>
+                <li><strong>First distillation</strong> — without fraction selection, down to 20–30% in the pot. The goal is to obtain low wines (raw spirit).</li>
+                <li><strong>Second distillation</strong> — fractional, with selection of heads (5–10% of absolute alcohol) and tails (when the strength in the stream drops below 40–45%). Hearts are collected up to a strength of 60–65% in the stream.</li>
+            </ul>
+        </div>
+
+        <h2 id="enzyme-method">Chapter 5. Mashing with Commercial Enzymes (No-Malt Method)</h2>
+        <p>If malt is unavailable or you want to simplify the process, use enzyme preparations.</p>
+        
+        <h4>Step-by-step scheme:</h4>
+        <ol>
+            <li><strong>Grain boiling</strong> — similar to step 2 from Chapter 4.</li>
+            <li><strong>Liquefaction.</strong> Cool the boiled mash to 85–90 °C. Add the α-amylase preparation (Termamyl, Amilosubtilin) at a rate of 0.1–0.3 ml per 1 kg of starch. Stir. Hold for 30–60 minutes. The mash should become noticeably thinner.</li>
+            <li><strong>Saccharification.</strong> Cool the mash to 60–63 °C. Add glucoamylase (SAN Super, Glucavamorin) at a rate of 0.3–0.5 ml per 1 kg of starch. Stir. Hold for 60–90 minutes at 60–63 °C.</li>
+            <li><strong>Iodine test check</strong> — similar to the malt method.</li>
+            <li>Next — filtration, cooling, yeast pitching, fermentation.</li>
+        </ol>
+        
+        <div class="practical-note">
+            <strong>Advantage:</strong> glucoamylase breaks down dextrins to glucose more completely than malt β-amylase, which gives 3–5% more alcohol.<br><br>
+            <strong>Feature:</strong> the distillate from an enzyme mash may be slightly more "empty" in taste compared to malt distillate. This is compensated by barrel aging or infusions.
+        </div>
+
+        <h2 id="mistakes">Chapter 6. Common Mistakes and Solutions</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adding malt to mash above 70 °C</td>
+                    <td>Inactivation of β-amylase, incomplete saccharification</td>
+                    <td>Cool mash to 63–65 °C before adding malt</td>
+                </tr>
+                <tr>
+                    <td>Too fine grain grinding</td>
+                    <td>Thick mash, burning, difficult filtration</td>
+                    <td>Crush into grits, not flour</td>
+                </tr>
+                <tr>
+                    <td>Insufficient corn boiling</td>
+                    <td>Incomplete gelatinization, low yield</td>
+                    <td>Boil corn 60–90 min at 90–100 °C</td>
+                </tr>
+                <tr>
+                    <td>Skipping iodine test</td>
+                    <td>Unsaccharified starch goes to waste</td>
+                    <td>Always check with iodine before fermentation</td>
+                </tr>
+                <tr>
+                    <td>Fermentation at temperature above 32 °C</td>
+                    <td>Increased formation of fusel oils</td>
+                    <td>Maintain 25–28 °C</td>
+                </tr>
+                <tr>
+                    <td>Using chlorinated water</td>
+                    <td>Yeast inhibition, chlorophenolic odors</td>
+                    <td>Let water stand or filter it</td>
+                </tr>
+                <tr>
+                    <td>Too little malt (&lt; 15%)</td>
+                    <td>Incomplete saccharification</td>
+                    <td>Maintain 15–25% malt proportion</td>
+                </tr>
+                <tr>
+                    <td>Mashing without stirring</td>
+                    <td>Uneven temperature, lumps</td>
+                    <td>Stir every 15–20 min</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="legal">Chapter 7. Legal Context</h2>
+        <p>Please remember that legislation on home distillation varies from country to country within the EU and beyond. In a number of countries (Germany, France, Austria), the production of strong alcohol by individuals is prohibited or requires a license and excise duty payment. In others (Italy, Spain, Portugal, Hungary), there are quotas for personal consumption. In Scandinavian countries, home distillation is generally prohibited.</p>
+        <p>The use of grain and malt for mash preparation is not regulated separately, but the very fact of distillation requires compliance with national regulations. Familiarize yourself with the current legislation of your country before starting the process.</p>
+
+        <h2>Conclusion: Grain Is a Craft</h2>
+        <p>Grain mash does not forgive haste and inattention, but rewards patience. Unlike sugar mash, where the result is largely determined by the purity of the starting raw material, grain mash is a process in which each stage affects the next. Grinding determines gelatinization. Gelatinization determines starch availability. Mashing temperature determines sugar balance. And sugar balance determines the yield and character of the distillate.</p>
+
+        <div class="rules-list">
+            <h3>Three Principles to Remember:</h3>
+            <ol>
+                <li><strong>Starch must be released and broken down.</strong> Without gelatinization and hydrolysis, the grain will not give sugar to the yeast.</li>
+                <li><strong>Temperature is everything.</strong> 63–65 °C for saccharification, no higher than 70 °C when adding malt, 25–28 °C for fermentation.</li>
+                <li><strong>The iodine test is your main control tool.</strong> Do not move to fermentation until the starch is completely hydrolyzed.</li>
+            </ol>
+        </div>
+        
+        <p>Having mastered these principles, you will be able to work with any starchy raw material — from wheat and rye to corn, barley, and even potatoes. Grain distilling is not just a recipe, it is a craft in which understanding the process is more important than blindly following instructions.</p>
+        <p><em>Happy mashing.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

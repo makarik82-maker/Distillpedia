@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of Fermentation: How to Properly Choose and Prepare Sugar for Mash | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 10px 15px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-size: 1.05rem;
+        }
+        .rules-list {
+            background-color: #f9f9f9;
+            border: 2px solid #d1d1d1;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .rules-list h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1.article-title {
+                font-size: 1.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Basics of Fermentation: How to Properly Choose and Prepare Sugar for Mash</h1>
+        <p class="subtitle">A practical guide to selecting the type of sugar and dissolving it to produce high-quality sugar wash.</p>
+
+        <h2>Introduction: Why Sugar is Not Just a "Sweet Powder"</h2>
+        <p>Sugar wash is the foundation of classic home distilling, practiced from Portugal to Poland, from Italy to Scandinavia. At first glance, the recipe is extremely simple: sugar, water, yeast. However, it is precisely in this apparent simplicity that the main trap for a beginner lies. Two distillers using the same equipment and the same yeast can get fundamentally different results—and this difference often starts with the bag of sugar bought at the nearest supermarket.</p>
+        <p>Sucrose is the only source of nutrition for yeast in a sugar wash. Its purity, concentration, and preparation method determine the fermentation speed, the amount of by-products, the alcohol yield, and ultimately, the taste and aroma of the distillate. This article is a detailed breakdown of which sugar to choose, how to dissolve it properly, and why these seemingly elementary steps determine the quality of the future beverage.</p>
+
+        <h2>Chapter 1. A Bit of Chemistry: What Happens to Sugar in the Wash</h2>
+        <p>Before talking about choosing sugar, it is important to understand exactly what yeast does with it.</p>
+        <p>Sucrose (C₁₂H₂₂O₁₁) is a disaccharide consisting of two monosaccharides: glucose and fructose. <em>Saccharomyces cerevisiae</em> yeast cannot absorb sucrose directly. First, the enzyme invertase, secreted by yeast cells, breaks down sucrose into glucose and fructose (this process is called inversion). Then the monosaccharides go through glycolysis and the fermentation cycle, turning into ethanol and carbon dioxide:</p>
+        <div class="formula">C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂</div>
+        <p>Theoretically, about 510 ml of absolute alcohol can be obtained from 1 kg of sucrose. In practice, the yield is 450–480 ml due to losses for yeast metabolism, the formation of glycerin, fusel oils, and incomplete fermentation.</p>
+        <div class="key-takeaway">
+            <strong>Key takeaway:</strong> Everything contained in the sugar besides sucrose will either not be processed by the yeast or will be processed with the formation of undesirable side compounds. This is why the purity of the raw material is of paramount importance.
+        </div>
+
+        <h2>Chapter 2. Types of Sugar: A Detailed Comparison</h2>
+        
+        <h3>2.1. Refined Sugar</h3>
+        <p>Refined sugar is a product of maximum purification. Its sucrose content is 99.9%. During the refining process, molasses, mineral salts, organic acids, coloring substances, and fiber residues are removed from the beet or cane raw material.</p>
+        <p><strong>Advantages for the wash:</strong></p>
+        <ul>
+            <li>Minimum impurities — minimum off-odors and off-flavors during fermentation.</li>
+            <li>Predictable and stable fermentation rate.</li>
+            <li>The distillate turns out to be as neutral as possible in terms of organoleptic properties, which is especially important if you plan to infuse it with herbs, fruits, or age it in a barrel.</li>
+            <li>Easy to dose: cubes or pressed pieces have an exact weight.</li>
+        </ul>
+        <p><strong>Disadvantages:</strong></p>
+        <ul>
+            <li>Higher price compared to granulated sugar.</li>
+            <li>In some regions of Europe, refined sugar is harder to find in large volumes (25 kg packages are less common).</li>
+        </ul>
+        <p><strong>When to choose:</strong> If your goal is pure, neutral alcohol for subsequent rectification or for making liqueurs, tinctures, and gins.</p>
+
+        <h3>2.2. Granulated Sugar (Crystalline)</h3>
+        <p>Standard white granulated sugar, sold in any European supermarket, contains 99.7–99.8% sucrose. The remaining 0.2–0.3% consists of traces of molasses, minerals (potassium, calcium, magnesium), and moisture.</p>
+        <p><strong>Advantages:</strong></p>
+        <ul>
+            <li>Availability and low price.</li>
+            <li>Convenient packaging (bags of 1, 5, 10, 25 kg).</li>
+            <li>Dissolves well in warm water.</li>
+        </ul>
+        <p><strong>Disadvantages:</strong></p>
+        <ul>
+            <li>An insignificant amount of impurities can give a slight "bready" or "caramel" nuance to the wash's taste. For most distillers, this is not a problem, but when rectifying up to 96%, the difference is practically eliminated.</li>
+        </ul>
+        <p><strong>When to choose:</strong> For everyday distilling, where process economy is important, and the distillate will undergo double distillation with the separation of heads and tails.</p>
+        <div class="practical-note">
+            <strong>Practical note:</strong> In EU countries (Germany, France, Italy, Spain), granulated sugar is produced predominantly from sugar beets. White cane sugar also undergoes refining and is not inferior to beet sugar in purity. Pay attention not to the origin of the raw material, but to the degree of purification indicated on the package.
+        </div>
+
+        <h3>2.3. Unrefined Cane Sugar (Demerara, Muscovado, Turbinado)</h3>
+        <p>Unrefined cane sugar contains from 85 to 97% sucrose. The rest is molasses, which contains mineral salts, amino acids, organic acids, coloring substances, and traces of pesticides used in growing the cane.</p>
+        <p><strong>Features during fermentation:</strong></p>
+        <ul>
+            <li>Molasses serves as an additional source of nutrition for yeast, but at the same time provokes the formation of a larger amount of fusel oils (isoamyl, isobutyl, propyl alcohols), esters, and aldehydes.</li>
+            <li>Fermentation is less predictable: due to the variable concentration of sucrose in different batches, it is difficult to accurately calculate the hydro-module (water-to-sugar ratio).</li>
+            <li>The wash acquires a pronounced smell, and the distillate gets a characteristic "rum" profile.</li>
+        </ul>
+        <p><strong>When to choose:</strong> If you purposefully want to get a distillate with character, resembling rum or cachaça. For neutral alcohol, unrefined cane sugar is the worst choice.</p>
+
+        <h3>2.4. Summary Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Refined Sugar</th>
+                    <th>Granulated Sugar</th>
+                    <th>Unrefined Cane Sugar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sucrose Content</td>
+                    <td>99.9%</td>
+                    <td>99.7–99.8%</td>
+                    <td>85–97%</td>
+                </tr>
+                <tr>
+                    <td>Impurities</td>
+                    <td>Minimum</td>
+                    <td>Traces</td>
+                    <td>Molasses, minerals, acids</td>
+                </tr>
+                <tr>
+                    <td>Predictability of Fermentation</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Medium / Low</td>
+                </tr>
+                <tr>
+                    <td>Neutrality of Distillate</td>
+                    <td>Maximum</td>
+                    <td>High</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>Higher</td>
+                    <td>Medium</td>
+                    <td>Higher (depends on variety)</td>
+                </tr>
+                <tr>
+                    <td>Recommended Use</td>
+                    <td>Rectification, tinctures</td>
+                    <td>Everyday distillation</td>
+                    <td>Rum profile</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Chapter 3. What to Look for When Buying</h2>
+        <h3>3.1. Purity and Certification</h3>
+        <p>In the European Union, sugar intended for food use is regulated by EU regulations and must meet purity standards (Directive 2001/111/EC and subsequent updates). Nevertheless, there is a difference between categories:</p>
+        <ul>
+            <li><strong>Category "Extra" / "Crystal clear"</strong> — minimum impurity content.</li>
+            <li><strong>Category 1 / standard white</strong> — trace amounts of coloring substances are permissible.</li>
+            <li><strong>Category 2 / yellow sugar</strong> — better not to use for wash: increased content of non-sugars.</li>
+        </ul>
+        <p>Look for the marking on the package: <em>EU Category 1</em> or <em>Extra fine / Extra white</em>. If the sugar is packed in large bags without detailed labeling (often found at wholesale bases in Eastern Europe), ask for a certificate or quality passport.</p>
+
+        <h3>3.2. Visual Inspection</h3>
+        <p>Before use, evaluate the sugar visually and by smell:</p>
+        <ul>
+            <li>Crystals should be dry, free-flowing, without lumps. Clumping indicates a violation of storage conditions and moisture absorption.</li>
+            <li>The color of white sugar should be uniform, without yellowish or grayish inclusions.</li>
+            <li>The smell should be neutral. Any foreign odor (musty, chemical, sour) is a reason to reject the batch.</li>
+            <li>Make sure there are no foreign inclusions in the package.</li>
+        </ul>
+
+        <h3>3.3. Storage</h3>
+        <p>Sugar is hygroscopic. Store it in a dry room at a temperature not exceeding 25 °C and a relative humidity of no more than 70%. It is better to pour opened bags into airtight plastic containers. Damp sugar dissolves worse and may contain developing microflora.</p>
+
+        <h2>Chapter 4. Preparing Sugar: Dissolving and Making Syrup</h2>
+        <p>This is the most important practical section. Mistakes at the sugar dissolving stage are one of the main reasons for sluggish, protracted, or incomplete fermentation.</p>
+
+        <h3>4.1. Why Make Syrup Instead of Just Dumping Sugar into Water</h3>
+        <p>Theoretically, you can pour sugar directly into the fermentation vessel and fill it with water. In practice, this is a bad idea for several reasons:</p>
+        <ul>
+            <li><strong>Uneven concentration.</strong> Sugar settled at the bottom creates local zones with extremely high concentration. Yeast falling into such a zone experiences osmotic shock: the cell membrane dehydrates, and part of the population dies.</li>
+            <li><strong>Incomplete dissolution.</strong> At room temperature, the solubility of sucrose is limited (~200 g per 100 ml of water at 20 °C). If you make a wash with a concentration of 18–20%, some sugar simply will not dissolve without heating.</li>
+            <li><strong>Contamination.</strong> Dry sugar dusts when poured, and foreign particles get into the vessel.</li>
+        </ul>
+        <p>Therefore, sugar is pre-dissolved in water, syrup is prepared, and only then is it introduced into the fermentation vessel.</p>
+
+        <h3>4.2. Proportions and Hydro-Module</h3>
+        <p>The classic hydro-module (water-to-sugar ratio) for sugar wash is <strong>1:4</strong> or <strong>1:5</strong> (1 kg of sugar per 4 or 5 liters of water).</p>
+        <ul>
+            <li><strong>1:4</strong> gives an initial sucrose concentration of about 20%. Fermentation proceeds slightly slower due to higher osmotic pressure, but the alcohol yield per unit of volume is higher. Suitable for experienced distillers using alcohol yeast designed for high concentrations.</li>
+            <li><strong>1:5</strong> gives a concentration of about 16–17%. Fermentation is smoother and faster. Recommended for beginners.</li>
+        </ul>
+        <p><em>Do not try to increase the sugar concentration above 22–23%: most yeast strains completely stop working at such concentrations, and some sugar will remain unfermented.</em></p>
+
+        <h3>4.3. Dissolving Temperature</h3>
+        <p>This is a critically important parameter.</p>
+        <ul>
+            <li><strong>Optimal water temperature for dissolving: 30–40 °C.</strong> At this temperature, sucrose dissolves quickly enough, and the yeast (if you add it to this same solution) does not receive thermal stress.</li>
+            <li><strong>Maximum allowable: 60 °C.</strong> Above this temperature, thermal destruction of sucrose begins with the formation of hydroxymethylfurfural (HMF) and caramelization products. HMF is toxic to yeast and gives the wash an unpleasant bitter taste.</li>
+            <li><strong>Boiling is not required and is even harmful.</strong> The common myth that sugar needs to be "boiled" for sterilization makes no practical sense: microflora is absent in refined sugar, and boiling only provokes caramelization and energy consumption.</li>
+        </ul>
+        <div class="practical-note">
+            <strong>Tip:</strong> If you use tap water and want to disinfect it, boil the water separately, cool it to 30–35 °C, and only then dissolve sugar in it.
+        </div>
+
+        <h3>4.4. Step-by-Step Instructions for Preparing Sugar Syrup</h3>
+        <ol>
+            <li><strong>Measure the water.</strong> For example, for 5 kg of sugar with a hydro-module of 1:4, you will need 20 liters of water. Use clean water. Tap water should preferably be left to stand for 12–24 hours to remove chlorine or passed through a carbon filter.</li>
+            <li><strong>Heat the water</strong> to 30–40 °C. Control the temperature with a food thermometer. Do not rely on the feeling of "the hand can tolerate it"—the sensitivity threshold of the skin is different for everyone.</li>
+            <li><strong>Add sugar gradually</strong>, in small portions, stirring continuously. Do not dump the entire volume at once: a lump will form, which will take a very long time to dissolve.</li>
+            <li><strong>Stir until completely dissolved.</strong> The sugar syrup should become transparent, without grains at the bottom. Stirring with a clean spatula or spoon made of stainless steel or food-grade plastic takes 5–10 minutes.</li>
+            <li><strong>Check the concentration (optional)</strong> with a saccharometer (hydrometer). For a 20% solution, the density is approximately 1.083 g/ml at 20 °C.</li>
+            <li><strong>Cool the syrup</strong> to 25–30 °C if the water was heated above this value, and only then add the yeast.</li>
+        </ol>
+
+        <h3>4.5. Inverting Sugar: Is It Necessary?</h3>
+        <p>Inversion is the hydrolysis of sucrose into glucose and fructose using an acid (usually citric acid) or the enzyme invertase. The procedure looks like this: the syrup is heated to 50–55 °C, citric acid is added (about 1–2 g per 1 kg of sugar), and it is kept for 30–60 minutes.</p>
+        <p><strong>What this gives:</strong></p>
+        <ul>
+            <li>Yeast does not need to spend time and resources on producing invertase, and fermentation starts 6–12 hours earlier.</li>
+            <li>Fermentation is more complete, residual sugar is minimal.</li>
+        </ul>
+        <p><strong>Is it strictly necessary?</strong> No. Healthy, active yeast copes perfectly with inversion on its own. Inversion is an optimization, not a necessity. For most home conditions, simply dissolving the sugar correctly is enough. Inversion makes sense if you use pressed baker's yeast (they are weaker than alcohol yeast) or want to minimize fermentation time as much as possible.</p>
+
+        <h2>Chapter 5. The Impact of Sugar Purity on the Fermentation Process and the Final Product</h2>
+        <h3>5.1. Speed and Stability of Fermentation</h3>
+        <p>Refined sugar and high-quality granulated sugar provide smooth, predictable fermentation. Yeast receives a pure substrate without inhibitors. The active phase (vigorous release of CO₂) begins 6–12 hours after adding yeast and lasts 3–7 days depending on temperature, strain, and concentration.</p>
+        <p>Unrefined sugar with a high molasses content can cause:</p>
+        <ul>
+            <li>delayed start (yeast needs to adapt to the complex composition);</li>
+            <li>uneven fermentation with periods of attenuation and resumption;</li>
+            <li>increased foaming due to protein and colloidal substances of molasses.</li>
+        </ul>
+
+        <h3>5.2. By-products of Fermentation</h3>
+        <p>Any non-sugars present in the raw material become a substrate for the side metabolic pathways of yeast:</p>
+        <ul>
+            <li><strong>Amino acids</strong> (contained in molasses) → higher alcohols (fusel oils): isoamyl, isobutyl, propyl. In small quantities, they form the "body" of the beverage; in excess, they give a sharp smell and a heavy hangover.</li>
+            <li><strong>Organic acids</strong> → complex esters (ethyl acetate, etc.), giving the wash the smell of acetone or glue.</li>
+            <li><strong>Mineral salts</strong> in excess inhibit yeast and can give a metallic taste.</li>
+        </ul>
+        <p>The purer the sugar, the fewer by-products and the easier they are to remove during fractional distillation.</p>
+
+        <h3>5.3. Impact on the Distillate</h3>
+        <p>When distilling sugar wash made from refined sugar or high-quality granulated sugar, after the proper separation of heads and tails, you get a distillate with a minimum amount of impurities. A rectification column allows you to bring the strength up to 96% and get practically pure ethanol.</p>
+        <p>Wash made from unrefined cane sugar, on the contrary, yields a distillate with a pronounced aromatic profile. This is not a flaw—it is a feature if you are striving for a rum character. But for neutral alcohol, such sugar is not suitable.</p>
+
+        <h3>5.4. Alcohol Yield</h3>
+        <p>The difference in yield between refined sugar and granulated sugar is negligibly small (less than 1%), since the sucrose content in both cases exceeds 99.5%. But unrefined cane sugar with 90% sucrose will yield 8–10% less alcohol per kilogram of product. Keep this in mind when calculating the economics of the process.</p>
+
+        <h2>Chapter 6. Common Mistakes and How to Avoid Them</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dumping dry sugar into the fermentation vessel</td>
+                    <td>Uneven fermentation, osmotic shock to yeast</td>
+                    <td>Prepare syrup separately</td>
+                </tr>
+                <tr>
+                    <td>Dissolving sugar in water above 60 °C</td>
+                    <td>Caramelization, formation of HMF, yeast death</td>
+                    <td>Control temperature with a thermometer, max 40 °C</td>
+                </tr>
+                <tr>
+                    <td>Using hot unboiled tap water</td>
+                    <td>Chlorine inhibits yeast</td>
+                    <td>Let water stand for 12–24 hours or filter it</td>
+                </tr>
+                <tr>
+                    <td>Exceeding sugar concentration above 22%</td>
+                    <td>Yeast stops fermentation</td>
+                    <td>Maintain a hydro-module of at least 1:4</td>
+                </tr>
+                <tr>
+                    <td>Buying sugar with a foreign odor or lumps</td>
+                    <td>Risk of wash infection, unpleasant taste</td>
+                    <td>Inspect the package before buying, store in a dry place</td>
+                </tr>
+                <tr>
+                    <td>Using unrefined sugar for neutral alcohol</td>
+                    <td>Excess fusel oils, complex profile</td>
+                    <td>For neutral alcohol—only refined or white granulated sugar</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Chapter 7. Legal Context in Europe</h2>
+        <p>Before starting home distilling, make sure you are acting within the framework of your country's legislation. There is no single law on home distillation in the EU:</p>
+        <ul>
+            <li>In <strong>Italy, Spain, and Portugal</strong>, home distillation for personal consumption in limited volumes is allowed provided the tax authorities are notified.</li>
+            <li>In <strong>Germany, Austria, and France</strong>, strict restrictions apply: registration, excise duty payment, and distillation volumes are limited.</li>
+            <li>In <strong>Hungary, Romania, and Bulgaria</strong>, there are historical traditions of home distilling (palinka, țuică, rakia), and legislation provides certain quotas for personal consumption.</li>
+            <li>In <strong>Scandinavian countries</strong>, home distillation is generally prohibited or strictly limited.</li>
+        </ul>
+        <p>The use of sugar for wash is not subject to a separate tax, but the very fact of distillation may require a license or registration. Clarify the current norms in national legislation before starting the process.</p>
+
+        <h2>Conclusion: Sugar is the Foundation</h2>
+        <p>High-quality sugar wash does not start with yeast or a distillation pot. It starts with the bag of sugar you put in your shopping cart at the store. The choice between refined sugar, granulated sugar, and cane sugar is not a question of taste in the literal sense, but a question of what final product you want to get.</p>
+        
+        <div class="rules-list">
+            <h3>Three rules to remember:</h3>
+            <ol>
+                <li><strong>The purer the sugar—the purer the distillate.</strong> For neutral alcohol, choose refined or white granulated sugar of the "Extra" category.</li>
+                <li><strong>Dissolve correctly.</strong> Warm water (30–40 °C), gradual addition, stirring until completely dissolved. No boiling.</li>
+                <li><strong>Observe proportions.</strong> Hydro-module 1:4 or 1:5, no more than 20–22% sucrose in the wort.</li>
+            </ol>
+        </div>
+        <p>These simple steps do not require special equipment or a lot of time. But it is precisely these steps that separate a carefully made, pure distillate from a cloudy, fusel-heavy wash that you will have to distill three times just to somehow fix the situation.</p>
+        <p><em>Happy fermenting.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

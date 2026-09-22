@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What to Do If Your Mash Stopped Fermenting | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            /* Status palette */
+            --active: #27ae60;
+            --done: #2980b9;
+            --stalled: #e74c3c;
+            /* Cause palette */
+            --c-cold: #3498db;
+            --c-hot: #e74c3c;
+            --c-osmotic: #e67e22;
+            --c-nutrient: #f39c12;
+            --c-yeast: #7f8c8d;
+            --c-alcohol: #8e44ad;
+            --c-infection: #c0392b;
+            --gold: #c9a227;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a4a5e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        /* Status cards — the three fermentation states */
+        .status-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 2rem 0;
+        }
+        .status-card {
+            border-radius: 8px;
+            padding: 1.3rem;
+            border: 1px solid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        .status-card h4 {
+            margin: 0 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+        .status-card ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.9rem;
+        }
+        .status-card li {
+            margin-bottom: 0.4rem;
+        }
+        .status-active {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+        }
+        .status-active h4 { color: var(--active); }
+        .status-done {
+            background: #ebf8ff;
+            border-color: #90cdf4;
+        }
+        .status-done h4 { color: var(--done); }
+        .status-stalled {
+            background: #fff5f5;
+            border-color: #feb2b2;
+        }
+        .status-stalled h4 { color: var(--stalled); }
+        /* Cause cards — the 7 causes */
+        .cause-card {
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .cause-header {
+            padding: 1rem 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cause-header .cause-num {
+            background: rgba(255,255,255,0.2);
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .cause-header .cause-icon {
+            font-size: 1.5rem;
+        }
+        .cause-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.25rem;
+        }
+        .cause-body {
+            padding: 1.3rem 1.5rem;
+        }
+        .cause-body h4 {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cause-body h4:first-child { margin-top: 0; }
+        .symptoms-label { color: #c0392b; }
+        .mechanism-label { color: #8e44ad; }
+        .solution-label { color: #27ae60; }
+        .mechanism-box {
+            background: #f8f9fa;
+            border-left: 3px solid #adb5bd;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 0.93rem;
+            margin: 0.5rem 0 1rem;
+        }
+        .cause-body ul, .cause-body ol {
+            margin-bottom: 0.5rem;
+        }
+        /* Cause header colors */
+        .cause-cold .cause-header { background: linear-gradient(135deg, var(--c-cold) 0%, #21618c 100%); }
+        .cause-hot .cause-header { background: linear-gradient(135deg, var(--c-hot) 0%, #922b21 100%); }
+        .cause-osmotic .cause-header { background: linear-gradient(135deg, var(--c-osmotic) 0%, #9c640c 100%); }
+        .cause-nutrient .cause-header { background: linear-gradient(135deg, var(--c-nutrient) 0%, #9a7d0a 100%); }
+        .cause-yeast .cause-header { background: linear-gradient(135deg, var(--c-yeast) 0%, #515a5a 100%); }
+        .cause-alcohol .cause-header { background: linear-gradient(135deg, var(--c-alcohol) 0%, #5b2c6f 100%); }
+        .cause-infection .cause-header { background: linear-gradient(135deg, var(--c-infection) 0%, #78281f 100%); }
+        /* Recovery algorithm steps */
+        .algo-step {
+            display: flex;
+            gap: 16px;
+            margin: 1.5rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #e9ecef;
+        }
+        .algo-step .step-badge {
+            background: var(--accent-color);
+            color: white;
+            min-width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        .algo-step .step-content {
+            flex: 1;
+        }
+        .algo-step h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        .algo-step ul {
+            margin-bottom: 0;
+        }
+        /* Prevention checklist */
+        .checklist {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0;
+        }
+        .checklist h4 {
+            margin-top: 0;
+            color: var(--active);
+        }
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 0.6rem;
+        }
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--active);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .faq-question {
+            background: #f8f9fa;
+            padding: 0.9rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-question .q-mark {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .faq-answer {
+            padding: 0.9rem 1.3rem 1rem;
+            font-size: 0.95rem;
+        }
+        /* Final principles */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a4a5e 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1.article-title {
+                font-size: 1.7rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 8px;
+            }
+            nav {
+                padding: 0.5rem;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            .toc ol {
+                columns: 1;
+            }
+            .status-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Troubleshooting</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">What to Do If Your Mash Stopped Fermenting?</h1>
+        <p class="subtitle">Common mistakes and their solutions — a step-by-step guide to diagnosing and fixing problems when fermentation stops prematurely.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Silence in the Airlock Is Not a Death Sentence</a></li>
+                <li><a href="#verify">Chapter 1. Step One: Verify That Fermentation Really Stopped</a></li>
+                <li><a href="#causes">Chapter 2. Diagnosis: Seven Causes of a Stalled Fermentation</a></li>
+                <li><a href="#table">Chapter 3. Summary Diagnostic Table</a></li>
+                <li><a href="#algorithm">Chapter 4. Step-by-Step Mash Recovery Algorithm</a></li>
+                <li><a href="#prevention">Chapter 5. Prevention: How to Avoid a Stalled Fermentation</a></li>
+                <li><a href="#faq">Chapter 6. Frequently Asked Questions</a></li>
+                <li><a href="#conclusion">Conclusion: Fermentation Is a Process, Not a Lottery</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Silence in the Airlock Is Not a Death Sentence</h2>
+        <p>The airlock has gone silent. The foam has dropped. The liquid in the fermenter looks motionless. The distiller who was expecting three more days of vigorous bubbling opens the lid and sees a calm, suspiciously quiet wash. The first thought: <em>"The yeast is dead. Everything is ruined."</em></p>
+        <p>In most cases, this is not true.</p>
+        <p>A stalled fermentation is one of the most common problems in home distilling, but in the overwhelming majority of cases it is reversible. Yeast are living organisms, and they do not simply "break down" for no reason. They react to specific environmental conditions: temperature, sugar concentration, nutrient availability, acidity, and the presence of toxins. If you understand exactly which factor caused the stop, you can restore the process within 12–48 hours.</p>
+        <p>This article is a practical algorithm: how to determine whether fermentation has truly stopped, how to find the cause, and how to get the process back on track. Without panic, without unnecessary steps — one move at a time.</p>
+
+        <h2 id="verify">Chapter 1. Step One: Verify That Fermentation Really Stopped</h2>
+        <p>Before taking any action, you need to rule out a false alarm. "Fermentation stopped" and "fermentation slowed down" are two different things.</p>
+
+        <div class="status-row">
+            <div class="status-card status-active">
+                <h4>🟢 Signs of Active Fermentation</h4>
+                <ul>
+                    <li>Bubbles in the airlock: 1–5 per second during the active phase.</li>
+                    <li>Foam on the surface (first 1–3 days).</li>
+                    <li>Cloudiness, liquid "movement," bubbles on the walls.</li>
+                    <li>Wash temperature 2–4 °C above room temperature.</li>
+                    <li>Characteristic yeasty, bready smell.</li>
+                </ul>
+            </div>
+            <div class="status-card status-done">
+                <h4>🔵 Signs of Completed Fermentation (Normal)</h4>
+                <ul>
+                    <li>No airlock bubbles, or fewer than 1 per minute.</li>
+                    <li>Wash has cleared; a dense yeast sediment is visible at the bottom.</li>
+                    <li>Hydrometer: 0–2 °Plato (SG 1.000–1.008).</li>
+                    <li>Taste: not sweet — bitter or neutral.</li>
+                    <li>ABV matches expectation (10–18% depending on starting gravity).</li>
+                </ul>
+            </div>
+            <div class="status-card status-stalled">
+                <h4>🔴 Signs of a Premature Stop (Problem)</h4>
+                <ul>
+                    <li>Bubbles stopped, but the wash is still cloudy and tastes sweet.</li>
+                    <li>Hydrometer above 4–5 °Plato (SG above 1.015).</li>
+                    <li>No dense yeast sediment, or sediment is loose and unnaturally colored.</li>
+                    <li>Fermentation stopped on day 2–3 when 4–7 more days were expected.</li>
+                    <li>Smell changed: sour, acetone, hydrogen sulfide, moldy.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>If all the signs of completed fermentation are present, the process has finished normally. No action is needed — proceed to distillation.</p>
+        <div class="warning-note">
+            <strong>⚠ If the gravity is above 4 °Plato and the wash has shown no signs of life for more than 48 hours — this is a problem.</strong> Move on to the diagnosis in Chapter 2.
+        </div>
+
+        <h3>1.4. Diagnostic Tools</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>What It Shows</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Hydrometer (saccharometer)</strong></td>
+                    <td>Residual gravity: whether unfermented sugar remains</td>
+                </tr>
+                <tr>
+                    <td><strong>Thermometer</strong></td>
+                    <td>Current wash temperature</td>
+                </tr>
+                <tr>
+                    <td><strong>Nose and eyes</strong></td>
+                    <td>Smell, color, presence of a film or mold</td>
+                </tr>
+                <tr>
+                    <td><strong>Taste (with a clean spoon)</strong></td>
+                    <td>Sweetness = unfermented sugar; sourness = bacterial infection</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="practical-note">
+            <strong>Important:</strong> Do not judge fermentation by the airlock alone. Bubbles can stop because the lid lost its seal, the temperature dropped, or the yeast entered the stationary phase. The airlock is an indicator, not a diagnostic instrument. The hydrometer and thermometer give objective data.
+        </div>
+
+        <h2 id="causes">Chapter 2. Diagnosis: Seven Causes of a Stalled Fermentation</h2>
+        <p>Below are all the main reasons a sugar wash stops fermenting prematurely. They are listed in order of decreasing frequency in home practice.</p>
+
+        <!-- Cause 1 -->
+        <div class="cause-card cause-cold">
+            <div class="cause-header">
+                <span class="cause-num">1</span>
+                <span class="cause-icon">❄️</span>
+                <h3>Temperature Too Low</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation slowed or stopped, but the smell is normal — yeasty.</li>
+                    <li>Wash temperature is below 20 °C.</li>
+                    <li>The wash is cloudy, yeast is in suspension, but there is no activity.</li>
+                    <li>Gravity is higher than expected.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">At temperatures below 18 °C, yeast metabolism slows dramatically. At 12–15 °C, the cells enter a dormant state: the enzymatic reactions of glycolysis proceed far too slowly, membranes lose fluidity, and glucose transport into the cell practically stops. The yeast is alive, but "asleep."</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Raise the wash temperature gradually to 26–28 °C — no more than 2 °C per hour. Sudden heating causes thermal shock.</li>
+                    <li>Use an aquarium heater, a heating belt, or move the vessel to a warmer place.</li>
+                    <li>Wait 12–24 hours. In most cases, fermentation resumes on its own.</li>
+                    <li>If there are still no signs of life after 24 hours, move on to Cause 5 (weak yeast).</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 2 -->
+        <div class="cause-card cause-hot">
+            <div class="cause-header">
+                <span class="cause-num">2</span>
+                <span class="cause-icon">🔥</span>
+                <h3>Temperature Too High (Overheating)</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation was active, then stopped abruptly.</li>
+                    <li>Wash temperature at the moment of stopping was above 35 °C.</li>
+                    <li>Smell: sharp, fusel, with notes of acetone or boiled yeast.</li>
+                    <li>A grayish foam may be present on the surface.</li>
+                    <li>The yeast sediment is loose and dark.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">At 36–40 °C, the proteins of the yeast cells denature. The glycolysis enzymes lose their activity, and the membranes break down. A significant part of the population dies. The surviving cells are weakened and unable to continue fermenting. At 45 °C, the yeast dies completely within minutes.</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Cool the wash to 28–30 °C.</li>
+                    <li>Assess the gravity. If the residual sugar is high (&gt;6 °Plato), the yeast population is most likely dead.</li>
+                    <li>Pitch a fresh batch of yeast. Rehydrate 2–3 g of dry distiller's yeast in 100 ml of warm water (30 °C) with a pinch of sugar, wait 15–20 minutes until foam appears, and pour it into the wash.</li>
+                    <li>Ensure a stable temperature of 28–30 °C.</li>
+                    <li>If the wash has a pronounced unpleasant smell, distill it as soon as possible after fermentation resumes: the accumulated fusel oils and aldehydes will not disappear, but at least they will not get worse.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 3 -->
+        <div class="cause-card cause-osmotic">
+            <div class="cause-header">
+                <span class="cause-num">3</span>
+                <span class="cause-icon">🍯</span>
+                <h3>Sugar Concentration Too High (Osmotic Stress)</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation started sluggishly or did not start at all.</li>
+                    <li>The initial gravity of the must was above 22–24 °Plato (sugar concentration &gt;22%).</li>
+                    <li>Yeast was pitched, but activity dropped to zero after 2–3 days.</li>
+                    <li>The wash tastes very sweet.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">A high sucrose concentration creates osmotic pressure that "pulls" water out of the yeast cells. The cell dehydrates, the membrane loses its functionality, and the transport of substances stops. The yeast spends all its energy synthesizing glycerol as an osmolyte instead of fermenting. At concentrations above 25%, most strains stop completely.</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Dilute the wash with warm water (30 °C). Add enough water to bring the gravity down to 18–20 °Plato. For example, if you have 10 liters of wash at 25 °Plato, add 3–4 liters of water to get about 13–14 liters at 18–19 °Plato.</li>
+                    <li>Stir for even distribution.</li>
+                    <li>Wait 12–24 hours. If fermentation does not resume, pitch an additional batch of yeast (2–3 g per 10 liters).</li>
+                    <li>In the future, do not exceed a sugar concentration of 20% at a hydro-module of 1:4.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 4 -->
+        <div class="cause-card cause-nutrient">
+            <div class="cause-header">
+                <span class="cause-num">4</span>
+                <span class="cause-icon">🌾</span>
+                <h3>Nutrient Deficiency (Nitrogen, Vitamins, Minerals)</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation started normally, but slowed down and stopped at a gravity of 6–10 °Plato.</li>
+                    <li>Temperature is normal, the yeast is alive, but activity falls day by day.</li>
+                    <li>Wash smell: hydrogen sulfide (rotten eggs), "rubbery," yeasty with an unpleasant undertone.</li>
+                    <li>Typical of a sugar wash prepared without nutrient additions.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">A sugar wash is a solution of sucrose in water. It contains no nitrogen, phosphorus, B vitamins, zinc, magnesium, or the other trace elements that yeast would obtain from fruit juice or grain wort. Without nitrogen, the yeast cannot synthesize amino acids and proteins. Without B vitamins (especially thiamine, biotin, and pantothenic acid), key enzymatic reactions are disrupted. Without zinc, the activity of alcohol dehydrogenase drops.<br><br>Yeast placed in a nutrient-deficient medium begins autolysis — self-digestion. The cells break down, releasing hydrogen sulfide, ammonia, and fatty acids. This is what produces the characteristic "rotten" smell.</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Add yeast nutrient. Options:
+                        <ul>
+                            <li><strong>Diammonium phosphate (DAP, urea):</strong> 1–2 g per 10 liters of wash. A source of nitrogen and phosphorus.</li>
+                            <li><strong>Vitamin B₁ (thiamine):</strong> 1–2 pharmacy thiamine tablets per 10 liters.</li>
+                            <li><strong>Specialized turbo-yeast nutrient</strong> (sold in home-distilling shops): follow the instructions.</li>
+                            <li><strong>As a last resort:</strong> a handful of raisins (30–50 g per 10 L) or 1–2 tablespoons of additive-free tomato paste. These are folk methods — less predictable, but they work.</li>
+                        </ul>
+                    </li>
+                    <li>Stir the wash to distribute the nutrient.</li>
+                    <li>Wait 12–24 hours. If fermentation does not resume, pitch a fresh batch of yeast.</li>
+                    <li>In the future: when setting up a sugar wash, always add nutrient at the same time as the yeast.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 5 -->
+        <div class="cause-card cause-yeast">
+            <div class="cause-header">
+                <span class="cause-num">5</span>
+                <span class="cause-icon">🦠</span>
+                <h3>Yeast Is Weak, Low-Quality, or Pitched Incorrectly</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation did not start at all, or started weakly and stopped after 1–2 days.</li>
+                    <li>Gravity has barely changed since pitching.</li>
+                    <li>Temperature is normal, sugar is normal, but there is no activity.</li>
+                </ul>
+                <h4 class="mechanism-label">Possible Sub-Causes</h4>
+                <ul>
+                    <li>The yeast is expired or was stored warm.</li>
+                    <li>Dry yeast was pitched without rehydration (poured straight into cold must).</li>
+                    <li>Yeast was pitched into must above 40 °C and died.</li>
+                    <li>The dosage is insufficient (less than 1 g per 10 liters for dry yeast).</li>
+                    <li>Baker's yeast was used instead of distiller's yeast: it cannot tolerate alcohol above 8–10% ABV.</li>
+                </ul>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Make a starter. Rehydrate 5–7 g of fresh dry distiller's yeast in 200 ml of warm water (30–32 °C) with 1 teaspoon of sugar. Cover and wait 20–30 minutes. Foam and a yeasty smell should appear. If there is no foam, the yeast is not viable — take a different package.</li>
+                    <li>Pour the active starter into the wash. Stir.</li>
+                    <li>Make sure the wash temperature is 26–30 °C.</li>
+                    <li>If fermentation has not started after 24 hours, the problem is not the yeast. Look for another cause.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 6 -->
+        <div class="cause-card cause-alcohol">
+            <div class="cause-header">
+                <span class="cause-num">6</span>
+                <span class="cause-icon">🍷</span>
+                <h3>High Wash Strength (Ethanol Toxicity)</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>Fermentation proceeded normally for 5–7 days, then gradually slowed and stopped.</li>
+                    <li>Gravity: 2–5 °Plato (there is residual sugar, but not much).</li>
+                    <li>Calculated wash strength: 14–16% ABV or higher.</li>
+                    <li>Temperature is normal, smell is normal.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">Ethanol is toxic to yeast. It embeds itself in the cell membranes, disrupting their structure and permeability. Every strain has a tolerance limit: wine yeast — 12–15%, distiller's yeast — 16–18%, turbo yeast — up to 20–23%. When the strength approaches the strain's limit, the yeast stops fermenting even if sugar remains.</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>This is partly normal. If the gravity is 2–4 °Plato and the strength is 14–16%, the yeast has done almost everything it can. The residual sugar is minimal.</li>
+                    <li>If you want to ferment it down to zero:
+                        <ul>
+                            <li>Pitch a yeast strain with higher alcohol tolerance (turbo yeast rated for 20–23%).</li>
+                            <li>Raise the temperature to 30–32 °C (within the limits tolerated by the strain).</li>
+                            <li>Add nutrient.</li>
+                        </ul>
+                    </li>
+                    <li>If the residual gravity does not exceed 2–3 °Plato, you can proceed to distillation. The losses are minimal.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Cause 7 -->
+        <div class="cause-card cause-infection">
+            <div class="cause-header">
+                <span class="cause-num">7</span>
+                <span class="cause-icon">🧫</span>
+                <h3>Contamination by Foreign Microflora</h3>
+            </div>
+            <div class="cause-body">
+                <h4 class="symptoms-label">Symptoms</h4>
+                <ul>
+                    <li>A film has appeared on the surface of the wash (white, gray, or pinkish).</li>
+                    <li>Smell: sharply sour (vinegar), acetone, putrid, or moldy.</li>
+                    <li>Taste: sour, unpleasant.</li>
+                    <li>Fermentation has stopped or is sluggish, but with uncharacteristic signs.</li>
+                    <li>Bubbles may still appear, but they are small, rare, and carry an unpleasant smell.</li>
+                </ul>
+                <h4 class="mechanism-label">Mechanism</h4>
+                <div class="mechanism-box">Lactic acid bacteria, acetic acid bacteria, wild yeasts, or molds compete with the cultured yeast for sugar. Acetic acid bacteria oxidize ethanol into acetic acid. Lactic acid bacteria ferment sugar into lactic acid. Molds can produce mycotoxins.</div>
+                <h4 class="solution-label">Solution</h4>
+                <ol>
+                    <li>Assess the degree of contamination. A light sourness and a thin film are not yet a catastrophe. Pronounced mold, a putrid smell, black or green spots — it is better to pour the wash out. Health comes first.</li>
+                    <li>If the contamination is mild:
+                        <ul>
+                            <li>Remove the film with a clean spoon.</li>
+                            <li>Rack the wash into a clean vessel without disturbing the sediment.</li>
+                            <li>Pitch a fresh batch of distiller's yeast and nutrient.</li>
+                            <li>Ensure a temperature of 28–30 °C: in an acidic environment and at high strength, the cultured yeast has the advantage.</li>
+                            <li>Distill immediately once fermentation finishes, before the infection can develop further.</li>
+                            <li>When distilling a contaminated wash, increase the heads cut by 20–30% and separate the tails carefully.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Prevention:</strong> sterilize vessels before use, use an airlock, and minimize contact with air.</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 id="table">Chapter 3. Summary Diagnostic Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Symptom</th>
+                    <th>Probable Cause</th>
+                    <th>First Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fermentation did not start, temperature 28 °C</td>
+                    <td>Dead yeast / incorrect pitching</td>
+                    <td>Make a starter, pitch fresh yeast</td>
+                </tr>
+                <tr>
+                    <td>Fermentation stopped, temperature &lt;20 °C</td>
+                    <td>Overcooling</td>
+                    <td>Heat gradually to 26–28 °C</td>
+                </tr>
+                <tr>
+                    <td>Fermentation stopped, temperature &gt;35 °C</td>
+                    <td>Overheating, yeast death</td>
+                    <td>Cool down, pitch fresh yeast</td>
+                </tr>
+                <tr>
+                    <td>Wash is sweet, gravity &gt;22 °Plato</td>
+                    <td>Osmotic stress</td>
+                    <td>Dilute with water to 18–20 °Plato</td>
+                </tr>
+                <tr>
+                    <td>Stopped at 6–10 °Plato, hydrogen sulfide smell</td>
+                    <td>Nutrient deficiency</td>
+                    <td>Add nutrient (DAP, vitamins)</td>
+                </tr>
+                <tr>
+                    <td>Stopped at 2–4 °Plato, strength 15%+</td>
+                    <td>Strain alcohol-tolerance limit</td>
+                    <td>Pitch turbo yeast or distill</td>
+                </tr>
+                <tr>
+                    <td>Sour smell, film on the surface</td>
+                    <td>Contamination</td>
+                    <td>Remove film, rack, pitch yeast</td>
+                </tr>
+                <tr>
+                    <td>Mold, putrid smell</td>
+                    <td>Severe contamination</td>
+                    <td>Pour out the wash, disinfect the vessel</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="algorithm">Chapter 4. Step-by-Step Mash Recovery Algorithm</h2>
+        <p>If you have identified the cause, act according to the following algorithm:</p>
+
+        <div class="algo-step">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+                <h4>Measure the Wash Temperature</h4>
+                <ul>
+                    <li>Below 22 °C → heat to 28 °C (gradually).</li>
+                    <li>Above 34 °C → cool to 28–30 °C.</li>
+                    <li>25–32 °C → temperature is not the cause. Move to step 2.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+                <h4>Measure the Gravity with a Hydrometer</h4>
+                <ul>
+                    <li>Gravity 0–2 °Plato → fermentation is complete. Proceed to distillation.</li>
+                    <li>Gravity 3–6 °Plato → fermentation stopped near the finish line. Probable causes: alcohol-tolerance limit, mild nutrient deficiency.</li>
+                    <li>Gravity above 8 °Plato → fermentation stopped halfway. Probable causes: osmotic stress, yeast death, nutrient deficiency.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+                <h4>Assess the Smell and Appearance</h4>
+                <ul>
+                    <li>Normal yeasty smell → the yeast is alive; the problem lies in the environmental conditions.</li>
+                    <li>Hydrogen sulfide smell → nutrient deficiency. Add nutrient.</li>
+                    <li>Sour smell → contamination. Assess the degree (see Cause 7).</li>
+                    <li>Mold → pour it out.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+                <h4>Take Corrective Action</h4>
+                <ul>
+                    <li>Dilute with water (for osmotic stress).</li>
+                    <li>Add nutrient (for nutrient deficiency).</li>
+                    <li>Pitch fresh yeast (if the population died or is weak).</li>
+                    <li>Correct the temperature.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">5</div>
+            <div class="step-content">
+                <h4>Wait and Observe</h4>
+                <p style="margin-bottom:0;">After taking corrective action, give the wash 12–24 hours. Do not make several changes at once: if you added nutrient, heated, and pitched yeast all at the same time, you will not understand which measure actually helped.</p>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">6</div>
+            <div class="step-content">
+                <h4>If Fermentation Resumed</h4>
+                <ul>
+                    <li>Maintain a stable temperature of 28–30 °C.</li>
+                    <li>Do not open the vessel unnecessarily.</li>
+                    <li>Wait for complete clarification and stabilization of the gravity.</li>
+                    <li>Distill.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="algo-step">
+            <div class="step-badge">7</div>
+            <div class="step-content">
+                <h4>If Fermentation Has Not Resumed After 48 Hours</h4>
+                <ul>
+                    <li>Re-check all the parameters.</li>
+                    <li>Try pitching yeast from a different manufacturer or a different strain.</li>
+                    <li>If nothing helps: distill the wash as it is. Even a partially fermented wash will yield alcohol during distillation, although the yield will be lower than calculated.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="prevention">Chapter 5. Prevention: How to Avoid a Stalled Fermentation</h2>
+        <p>The best treatment is prevention. Here is a checklist that will save you from most problems:</p>
+
+        <div class="checklist">
+            <h4>🧰 Before Setting Up the Wash</h4>
+            <ul>
+                <li>Check the yeast expiration date. Store dry yeast in the refrigerator.</li>
+                <li>Calculate the correct amount of sugar: no more than 20% concentration (hydro-module 1:4 or 1:5).</li>
+                <li>Prepare yeast nutrient (DAP, vitamins, or a specialized mix).</li>
+                <li>Make sure the vessel is clean. Rinse it with hot water or treat it with a baking-soda solution.</li>
+                <li>Use clean water without chlorine.</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h4>⚗️ When Setting Up the Wash</h4>
+            <ul>
+                <li>Dissolve the sugar completely in water at 30–40 °C.</li>
+                <li>Cool the must to 28–30 °C before pitching the yeast.</li>
+                <li>Rehydrate dry yeast in warm water (30 °C) with a pinch of sugar for 15–20 minutes.</li>
+                <li>Add nutrient at the same time as the yeast.</li>
+                <li>Install the airlock. Make sure the lid is sealed.</li>
+                <li>Place the vessel where the temperature is 24–27 °C (accounting for self-heating, the wash will reach 28–30 °C).</li>
+            </ul>
+        </div>
+
+        <div class="checklist">
+            <h4>👁️ During Fermentation</h4>
+            <ul>
+                <li>Check the temperature 1–2 times a day during the first 3 days.</li>
+                <li>Do not open the vessel unnecessarily.</li>
+                <li>Do not stir the wash after active fermentation has begun.</li>
+                <li>Avoid drafts, direct sunlight, and vibration.</li>
+                <li>If fermentation is too vigorous (foam pushing through the airlock), reduce the temperature by 1–2 °C.</li>
+            </ul>
+        </div>
+
+        <h2 id="faq">Chapter 6. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The wash stopped fermenting after 2 days. Is this normal?</div>
+            <div class="faq-answer">If you are using turbo yeast and the initial gravity is not high (16–18 °Plato), a fast fermentation finishing in 2–3 days is possible. Check the gravity: if it is 0–2 °Plato, fermentation is complete. If it is higher, look for the cause.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I save a wash that has been sitting for a week without fermenting?</div>
+            <div class="faq-answer">It depends on the cause. If the yeast died from overheating or osmotic shock, but the sugar has not become contaminated, pitching fresh yeast and nutrient may restart the process. If an infection developed over the week, the wash is most likely spoiled.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Should I stir the wash if fermentation has stopped?</div>
+            <div class="faq-answer">Stirring can help in one case: if the yeast has settled on the bottom and is no longer in contact with the sugar. Stir gently with a clean spatula, avoiding vigorous foaming and contact with air. If the cause is not yeast settling, stirring will not help.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I add sugar to a stalled wash?</div>
+            <div class="faq-answer">No. If fermentation has stopped, adding sugar will make the problem worse: it raises the osmotic pressure and makes it harder for the weakened yeast to work. First restore fermentation, then, if necessary, add sugar in small portions.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The airlock is not bubbling, but the wash is cloudy and smells yeasty. What should I do?</div>
+            <div class="faq-answer">Check the lid seal. Perhaps CO₂ is escaping through a gap instead of through the airlock. Measure the gravity. If it is dropping compared to the initial value, fermentation is still going — the gas is simply bypassing the airlock.</div>
+        </div>
+
+        <h2 id="conclusion">Conclusion: Fermentation Is a Process, Not a Lottery</h2>
+        <p>A stalled fermentation frightens a beginner, but for an experienced distiller it is a routine situation with a clear action algorithm. Yeast does not act on a whim: it responds to specific physical and chemical parameters of the environment. Change the parameters — and the result will change.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🔍 Diagnose Before You Act</strong>
+                Do not add yeast, sugar, and nutrient all at once. Measure the temperature and gravity, assess the smell, and find the cause.
+            </div>
+            <div class="principle-item">
+                <strong>🌡️ Eight Stops Out of Ten Are About Temperature or Nutrition</strong>
+                Check these two parameters first.
+            </div>
+            <div class="principle-item">
+                <strong>🛡️ Prevention Is Easier Than Treatment</strong>
+                A clean vessel, the correct sugar concentration, nutrient, and a stable 28–30 °C will save you from most problems before they ever appear.
+            </div>
+        </div>
+
+        <p>Fermentation is a biological process governed by the laws of biochemistry. Understanding these laws turns the distiller from an observer into an operator. And an operator does not panic when something goes wrong — he opens the manual and eliminates the fault.</p>
+        <p><em>Happy fermenting.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

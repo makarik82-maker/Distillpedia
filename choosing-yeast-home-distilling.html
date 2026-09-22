@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choosing Yeast for Home Distilling: A Comparative Analysis | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            /* Yeast type palette */
+            --y-baker: #d35400;
+            --y-baker-dark: #a04000;
+            --y-alcohol: #2980b9;
+            --y-alcohol-dark: #1a5276;
+            --y-turbo: #e74c3c;
+            --y-turbo-dark: #922b21;
+            --y-wine: #8e44ad;
+            --y-wine-dark: #5b2c6f;
+            --y-universal: #16a085;
+            --y-universal-dark: #0e6655;
+            --y-wild: #27ae60;
+            --y-wild-dark: #196f3d;
+            --gold: #c9a227;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a2c5e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        /* Yeast type cards — Chapters 2-7 */
+        .yeast-card {
+            border-radius: 10px;
+            margin: 2.5rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .yeast-header {
+            padding: 1.2rem 1.8rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .yeast-header .yeast-icon {
+            font-size: 2rem;
+        }
+        .yeast-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .yeast-header .yeast-tagline {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .yeast-body {
+            padding: 1.5rem 1.8rem;
+        }
+        .yeast-body h4 {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .yeast-body h4:first-child { margin-top: 0; }
+        .yeast-body ul, .yeast-body ol {
+            margin-bottom: 0.8rem;
+        }
+        /* Spec strip inside yeast cards */
+        .spec-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 1rem 0;
+        }
+        .spec-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        .spec-item .spec-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .spec-item .spec-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        /* Use / don't use boxes */
+        .use-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1rem 0;
+        }
+        .use-box {
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            border: 1px solid;
+        }
+        .use-box h5 {
+            margin: 0 0 0.6rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .use-box ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.92rem;
+        }
+        .use-box li {
+            margin-bottom: 0.4rem;
+        }
+        .use-yes {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+        }
+        .use-yes h5 { color: #27ae60; }
+        .use-no {
+            background: #fff5f5;
+            border-color: #feb2b2;
+        }
+        .use-no h5 { color: #c0392b; }
+        /* Yeast header colors */
+        .theme-baker .yeast-header { background: linear-gradient(135deg, var(--y-baker) 0%, var(--y-baker-dark) 100%); }
+        .theme-alcohol .yeast-header { background: linear-gradient(135deg, var(--y-alcohol) 0%, var(--y-alcohol-dark) 100%); }
+        .theme-turbo .yeast-header { background: linear-gradient(135deg, var(--y-turbo) 0%, var(--y-turbo-dark) 100%); }
+        .theme-wine .yeast-header { background: linear-gradient(135deg, var(--y-wine) 0%, var(--y-wine-dark) 100%); }
+        .theme-universal .yeast-header { background: linear-gradient(135deg, var(--y-universal) 0%, var(--y-universal-dark) 100%); }
+        .theme-wild .yeast-header { background: linear-gradient(135deg, var(--y-wild) 0%, var(--y-wild-dark) 100%); }
+        /* Mash type recommendation cards — Chapter 9 */
+        .mash-rec {
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.5rem 0;
+            background: #fcfdfe;
+        }
+        .mash-rec h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+        }
+        .mash-rec .rec-goal {
+            display: inline-block;
+            background: var(--takeaway-bg);
+            border-left: 3px solid var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.92rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+        .mash-rec ul {
+            margin-bottom: 0;
+        }
+        .mash-rec li {
+            font-size: 0.94rem;
+        }
+        /* Comparison example — Chapter 10 */
+        .compare-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .compare-item {
+            border-radius: 8px;
+            padding: 1.2rem;
+            border: 1px solid;
+        }
+        .compare-item h5 {
+            margin: 0 0 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        .compare-item ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+            font-size: 0.92rem;
+        }
+        .compare-a {
+            background: #fff8f0;
+            border-color: #f5cba7;
+        }
+        .compare-a h5 { color: var(--y-baker-dark); }
+        .compare-b {
+            background: #eaf4fc;
+            border-color: #a9cce3;
+        }
+        .compare-b h5 { color: var(--y-alcohol-dark); }
+        /* Rehydration steps — Chapter 11 */
+        .rehydration-steps {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0;
+        }
+        .rehydration-steps ol {
+            margin-bottom: 0;
+        }
+        /* Final principles */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a2c5e 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1.article-title {
+                font-size: 1.7rem;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 7px;
+            }
+            nav {
+                padding: 0.5rem;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            .toc ol {
+                columns: 1;
+            }
+            .use-grid, .compare-duo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Yeast</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Choosing Yeast for Home Distilling</h1>
+        <p class="subtitle">A comparative analysis of alcohol, wine, and universal yeasts — how the type of yeast affects fermentation speed, final strength, and the organoleptic properties of moonshine.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Yeast Is Not Just a "Starter"</a></li>
+                <li><a href="#metabolites">Chapter 1. What Yeast Produces Besides Ethanol</a></li>
+                <li><a href="#baker">Chapter 2. Baker's Yeast: Fast Start, Rough Finish</a></li>
+                <li><a href="#alcohol">Chapter 3. Alcohol Yeast: The Workhorse Standard</a></li>
+                <li><a href="#turbo">Chapter 4. Turbo Yeast: Speed at Any Cost</a></li>
+                <li><a href="#wine">Chapter 5. Wine Yeast: Guardians of Aroma</a></li>
+                <li><a href="#universal">Chapter 6. Universal Yeast: Compromise or Tool?</a></li>
+                <li><a href="#wild">Chapter 7. Wild Yeast: Romance and Risk</a></li>
+                <li><a href="#comparison">Chapter 8. Summary Comparison Table</a></li>
+                <li><a href="#recommendations">Chapter 9. Yeast and Mash Type: Practical Recommendations</a></li>
+                <li><a href="#distillate">Chapter 10. Yeast and Distillate Organoleptics</a></li>
+                <li><a href="#practical">Chapter 11. Practical Tips for Handling Yeast</a></li>
+                <li><a href="#mistakes">Chapter 12. Common Mistakes</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Yeast Is Not Just a "Starter"</h2>
+        <p>Among all the ingredients of a wash, yeast holds a special position. Sugar provides the substrate. Water creates the medium. But it is yeast that determines what comes out of that substrate: a clean spirit with minimal trace impurities, or an aromatic distillate with bready, fruity, or floral tones. Yeast is not a catalyst that simply converts sugar into ethanol. It is a living organism with its own metabolism, and every cell produces dozens of by-products during fermentation that shape the future bouquet of the drink.</p>
+        <p>Several fundamentally different categories of yeast are used in home distilling: baker's, alcohol, turbo, wine, and universal. Each type is created or selected for a specific task. Using baker's yeast for grape chacha, or wine yeast for a sugar wash, is not a mistake — but it is not the optimal choice either, leading to loss of time, reduced yield, or an impoverished aroma.</p>
+        <p>This article is a detailed comparative analysis of all the main types of yeast available to the European distiller, with an emphasis on how strain choice affects the organoleptics of the final product.</p>
+
+        <div class="key-takeaway">
+            <strong>Yeast is the first and most accessible tool</strong> for controlling the balance of by-products in your wash — and therefore the character of your distillate.
+        </div>
+
+        <h2 id="metabolites">Chapter 1. What Yeast Produces Besides Ethanol</h2>
+
+        <h3>1.1. Main Fermentation Metabolites</h3>
+        <p>Alcoholic fermentation is not the only reaction yeast carries out. In parallel with glycolysis, the cells synthesize a wide range of by-products:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Group</th>
+                    <th>Examples</th>
+                    <th>Effect on Organoleptics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Higher alcohols (fusel oils)</strong></td>
+                    <td>isoamyl, isobutyl, propanol</td>
+                    <td>Sharpness, "heaviness," fusel smell</td>
+                </tr>
+                <tr>
+                    <td><strong>Esters</strong></td>
+                    <td>ethyl acetate, isoamyl acetate, ethyl hexanoate</td>
+                    <td>Fruity, floral, "candy-like" tones</td>
+                </tr>
+                <tr>
+                    <td><strong>Aldehydes</strong></td>
+                    <td>acetaldehyde</td>
+                    <td>Green, "unripe," sharp notes</td>
+                </tr>
+                <tr>
+                    <td><strong>Organic acids</strong></td>
+                    <td>acetic, lactic, succinic</td>
+                    <td>Sourness, sharpness</td>
+                </tr>
+                <tr>
+                    <td><strong>Sulfur compounds</strong></td>
+                    <td>hydrogen sulfide, mercaptans</td>
+                    <td>Rotten egg, rubber, onion</td>
+                </tr>
+                <tr>
+                    <td><strong>Glycerol</strong></td>
+                    <td>glycerol</td>
+                    <td>Smoothness, "body," sweetness</td>
+                </tr>
+                <tr>
+                    <td><strong>Diacetyl</strong></td>
+                    <td>diacetyl</td>
+                    <td>Oily, buttery tones</td>
+                </tr>
+                <tr>
+                    <td><strong>Volatile phenols</strong></td>
+                    <td>4-vinylguaiacol</td>
+                    <td>Clove, smoky nuances</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The ratio of these compounds is determined by the yeast strain, fermentation temperature, wort composition, and the presence of nutrients. That is why two washes with identical sugar content but different yeasts will yield fundamentally different distillates.</p>
+
+        <h3>1.2. Why This Matters for the Distiller</h3>
+        <p>During distillation, volatile by-products are distributed across fractions: heads (ethyl acetate, acetaldehyde, part of the fusel oils), hearts (ethanol, most of the esters), and tails (heavy fusel oils, furfural, fatty acids). The more by-products in the wash, the harder and more demanding the fractional distillation. The cleaner the fermentation, the easier it is to obtain a smooth, neutral — or, conversely, aromatic — distillate.</p>
+        <p><strong>Choosing the yeast is the first and most accessible way to control this balance.</strong></p>
+
+        <h2 id="baker">Chapter 2. Baker's Yeast: Fast Start, Rough Finish</h2>
+
+        <div class="yeast-card theme-baker">
+            <div class="yeast-header">
+                <span class="yeast-icon">🍞</span>
+                <h3>Baker's Yeast <span class="yeast-tagline">Saccharomyces cerevisiae — bread strains</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>2.1. Characteristics</h4>
+                <p>Baker's yeast strains are selected for bread production. Their task is to rapidly emit CO₂ to raise the dough. Alcohol production and profile cleanliness are not priorities of this selection.</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Wash Strength</span>
+                        <span class="spec-value">8–12% ABV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fermentation Speed</span>
+                        <span class="spec-value">High (4–6 h start)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Temp Optimum</span>
+                        <span class="spec-value">25–30 °C</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span class="spec-value">Lowest</span>
+                    </div>
+                </div>
+                <p><strong>Forms:</strong> pressed blocks (shelf life 2–3 weeks in the refrigerator), dry granules (shelf life 1–2 years).</p>
+
+                <h4>2.2. Organoleptic Effect</h4>
+                <p>Baker's yeast produces increased amounts of higher alcohols and esters, because the strains were selected for gas-producing ability rather than fermentation cleanliness. As a result:</p>
+                <ul>
+                    <li>The wash has a pronounced yeasty, bready smell.</li>
+                    <li>The isoamyl alcohol content in a baker's-yeast wash is <strong>30–60% higher</strong> than in an alcohol-yeast wash.</li>
+                    <li>Formation of hydrogen sulfide and mercaptans is above average.</li>
+                    <li>The ester profile is rough, dominated by ethyl acetate.</li>
+                </ul>
+
+                <div class="use-grid">
+                    <div class="use-box use-yes">
+                        <h5>✅ 2.3. When to Use</h5>
+                        <ul>
+                            <li>For sugar washes when the goal is fast, cheap spirit for subsequent rectification to 96%. The rectification column removes most impurities.</li>
+                            <li>When you have no access to other types of yeast.</li>
+                            <li>For first experiments where getting any result is what matters.</li>
+                        </ul>
+                    </div>
+                    <div class="use-box use-no">
+                        <h5>❌ 2.4. When Not to Use</h5>
+                        <ul>
+                            <li>For fruit and grain mashes where the aroma of the raw material is valuable. Baker's yeast will "drown out" the delicate bouquet.</li>
+                            <li>If you plan to distill on a simple pot still without rectification. The rough profile will carry over into the distillate.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="alcohol">Chapter 3. Alcohol Yeast: The Workhorse Standard of Moonshining</h2>
+
+        <div class="yeast-card theme-alcohol">
+            <div class="yeast-header">
+                <span class="yeast-icon">⚗️</span>
+                <h3>Alcohol Yeast <span class="yeast-tagline">Spirits strains — the reliable default</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>3.1. Characteristics</h4>
+                <p>Alcohol yeasts are <em>S. cerevisiae</em> strains selected or bred for alcohol production. In Europe the main producers are Fermentis (France), Angel (China, widely available in the EU), Lallemand (Canada/France), Pathos (Germany), and Alcotec (UK/Poland).</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Wash Strength</span>
+                        <span class="spec-value">14–18% ABV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fermentation Speed</span>
+                        <span class="spec-value">Medium / High</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Temp Optimum</span>
+                        <span class="spec-value">26–32 °C</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span class="spec-value">Medium</span>
+                    </div>
+                </div>
+                <p><strong>Forms:</strong> dry granules, often bundled with a nutrient. Active phase begins in 6–12 hours; full fermentation of a sugar wash takes 5–8 days.</p>
+
+                <h4>3.2. Organoleptic Effect</h4>
+                <p>Alcohol yeasts are selected on two criteria: alcohol tolerance and fermentation cleanliness. Compared with baker's yeast:</p>
+                <ul>
+                    <li>Higher alcohol content is <strong>20–40% lower</strong>.</li>
+                    <li>Hydrogen sulfide formation is minimal (provided nutrient is present).</li>
+                    <li>The ester profile is more balanced.</li>
+                    <li>The wash has a less pronounced yeasty smell.</li>
+                </ul>
+
+                <h4>3.3. When to Use</h4>
+                <ul>
+                    <li>For sugar washes — the optimal price / quality / speed ratio.</li>
+                    <li>For grain mashes when the goal is a clean distillate without a pronounced varietal character.</li>
+                    <li>For fruit mashes from non-aromatic raw material (e.g., overripe apples, pears with a neutral smell).</li>
+                </ul>
+
+                <h4>3.4. Popular Strains</h4>
+                <ul>
+                    <li><strong>Alcotec 48</strong> — universal alcohol yeast, ferments up to 21% ABV in 5–7 days. Popular in the UK and Eastern Europe.</li>
+                    <li><strong>Pathos Classic</strong> — German alcohol yeast, 16–18% ABV, clean profile.</li>
+                    <li><strong>Angel Yeast</strong> — Chinese yeast, widely available in Europe, 16–18% ABV.</li>
+                    <li><strong>Safspirit M-1 (Fermentis)</strong> — a strain selected for rum and fruit brandy production. An interesting choice for aromatic mashes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="turbo">Chapter 4. Turbo Yeast: Speed at Any Cost</h2>
+
+        <div class="yeast-card theme-turbo">
+            <div class="yeast-header">
+                <span class="yeast-icon">🚀</span>
+                <h3>Turbo Yeast <span class="yeast-tagline">Maximum strength in minimum time</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>4.1. Characteristics</h4>
+                <p>Turbo yeasts are alcohol strains with increased thermotolerance and osmotolerance, often sold together with a nutrient mix (vitamins, minerals, DAP). The name "turbo" is marketing, but it reflects the essence: these yeasts are designed for the fastest possible fermentation.</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Wash Strength</span>
+                        <span class="spec-value">18–23% ABV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Stated / Real Time</span>
+                        <span class="spec-value">48–72 h / 4–7 days</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Temp Optimum</span>
+                        <span class="spec-value">28–35 °C</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span class="spec-value">Above medium</span>
+                    </div>
+                </div>
+
+                <h4>4.2. Organoleptic Effect</h4>
+                <p>The high speed and strength are achieved through intensive metabolism, which is inevitably accompanied by increased by-product formation:</p>
+                <ul>
+                    <li><strong>Higher alcohols:</strong> 15–30% higher than in standard alcohol yeast. Fast metabolism means accelerated amino acid catabolism.</li>
+                    <li><strong>Esters:</strong> elevated, with the profile shifted toward ethyl acetate and isoamyl acetate.</li>
+                    <li><strong>Glycerol:</strong> elevated (7–10 g/L) as an osmolyte at high sugar concentrations.</li>
+                    <li><strong>Hydrogen sulfide:</strong> possible if nutrient is insufficient, but the turbo kit usually contains enough nutrients.</li>
+                </ul>
+
+                <div class="use-grid">
+                    <div class="use-box use-yes">
+                        <h5>✅ 4.3. When to Use</h5>
+                        <ul>
+                            <li>When time is a priority — if you need a wash in 3–4 days.</li>
+                            <li>For sugar washes with subsequent rectification.</li>
+                            <li>If you want maximum wash strength without adding sugar repeatedly.</li>
+                        </ul>
+                    </div>
+                    <div class="use-box use-no">
+                        <h5>❌ 4.4. When Not to Use</h5>
+                        <ul>
+                            <li>For aromatic fruit and grain mashes. The rough turbo profile contradicts the goal of preserving the varietal bouquet.</li>
+                            <li>If you distill on a simple pot still without rectification and want a smooth product.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>4.5. Popular Products</h4>
+                <ul>
+                    <li><strong>Alcotec Turbo 48</strong> — up to 21% ABV, 48 hours (marketing) / 4–5 days (reality).</li>
+                    <li><strong>Bragman Turbo</strong> — up to 23% ABV.</li>
+                    <li><strong>Still Spirits Turbo Pure</strong> — up to 20% ABV, positioned as a "clean" turbo yeast.</li>
+                    <li><strong>Pathos Turbo</strong> — up to 20% ABV, German production.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="wine">Chapter 5. Wine Yeast: Guardians of Aroma</h2>
+
+        <div class="yeast-card theme-wine">
+            <div class="yeast-header">
+                <span class="yeast-icon">🍷</span>
+                <h3>Wine Yeast <span class="yeast-tagline">S. cerevisiae &amp; S. bayanus — aroma specialists</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>5.1. Characteristics</h4>
+                <p>Wine yeasts are strains of <em>S. cerevisiae</em> and <em>S. bayanus</em> selected for winemaking. Their key distinction is the ability to preserve and shape the aromatic profile of the wort at relatively low fermentation temperatures.</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Wash Strength</span>
+                        <span class="spec-value">12–16% ABV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fermentation Time</span>
+                        <span class="spec-value">10–25 days</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Temp Optimum</span>
+                        <span class="spec-value">15–24 °C</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span class="spec-value">Above alcohol</span>
+                    </div>
+                </div>
+
+                <h4>5.2. Organoleptic Effect</h4>
+                <p>Wine yeast is a tool for working with aroma. Its selection aims at:</p>
+                <ul>
+                    <li><strong>Minimal formation of rough higher alcohols.</strong> Isoamyl alcohol content is 30–50% lower than in baker's yeast.</li>
+                    <li><strong>Formation of a complex ester profile.</strong> Ethyl hexanoate, ethyl octanoate, and isoamyl acetate in moderate amounts create fruity and floral tones.</li>
+                    <li><strong>Preservation of terpenes and thiols</strong> — the key aromatic compounds of grapes, apples, and berries.</li>
+                    <li><strong>Low hydrogen sulfide formation.</strong></li>
+                    <li><strong>High flocculation</strong> (the ability to settle out), which gives a clear wash and a clean taste.</li>
+                </ul>
+
+                <h4>5.3. Strain Variety</h4>
+                <p>Wine yeasts are the most diverse category. Each strain has its own profile:</p>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strain</th>
+                            <th>Producer</th>
+                            <th>Features</th>
+                            <th>Use in Moonshining</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>EC-1118</strong></td>
+                            <td>Lallemand</td>
+                            <td><em>S. bayanus</em>, up to 18% ABV, neutral, fast</td>
+                            <td>Universal, for strong washes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>K1-V1116</strong></td>
+                            <td>Lallemand</td>
+                            <td>Resistant to difficult conditions, floral esters</td>
+                            <td>Fruit mashes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>QA23</strong></td>
+                            <td>Lallemand</td>
+                            <td>Terpene profile, passion fruit, citrus</td>
+                            <td>Aromatic berry mashes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>71B</strong></td>
+                            <td>Lallemand</td>
+                            <td>Reduces malic acid, soft profile</td>
+                            <td>Apple and pear mashes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>D47</strong></td>
+                            <td>Lallemand</td>
+                            <td>Creamy tones, glycerol</td>
+                            <td>Grape mashes for a soft profile</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Uvaferm CM</strong></td>
+                            <td>Lallemand</td>
+                            <td>Emphasizes red fruit tones</td>
+                            <td>Grape mashes from red varieties</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Safwine</strong></td>
+                            <td>Fermentis</td>
+                            <td>Universal, clean</td>
+                            <td>Neutral fruit mashes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="use-grid">
+                    <div class="use-box use-yes">
+                        <h5>✅ 5.4. When to Use</h5>
+                        <ul>
+                            <li>For all aromatic fruit and berry mashes. This is the primary choice.</li>
+                            <li>For grape chacha and grappa.</li>
+                            <li>For grain mashes when the goal is a smooth "whisky-like" profile with minimal roughness.</li>
+                            <li>When you are willing to sacrifice speed for quality.</li>
+                        </ul>
+                    </div>
+                    <div class="use-box use-no">
+                        <h5>❌ 5.5. When Not to Use</h5>
+                        <ul>
+                            <li>For sugar washes when the goal is fast, cheap spirit. Wine yeast is more expensive, slower, and does not exceed 15–16% ABV.</li>
+                            <li>If you cannot maintain 15–22 °C. Wine yeast still works at 28–30 °C, but its aromatic advantage is lost.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="universal">Chapter 6. Universal Yeast: Compromise or Tool?</h2>
+
+        <div class="yeast-card theme-universal">
+            <div class="yeast-header">
+                <span class="yeast-icon">🔄</span>
+                <h3>Universal Yeast <span class="yeast-tagline">One packet for every mash</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>6.1. Characteristics</h4>
+                <p>Universal yeasts are strains positioned as suitable for any type of mash: sugar, grain, or fruit. Usually these are alcohol strains with an extended temperature range and moderate alcohol tolerance.</p>
+                <div class="spec-strip">
+                    <div class="spec-item">
+                        <span class="spec-label">Wash Strength</span>
+                        <span class="spec-value">14–18% ABV</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Fermentation Speed</span>
+                        <span class="spec-value">Medium</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Temp Range</span>
+                        <span class="spec-value">18–32 °C</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Profile</span>
+                        <span class="spec-value">Intermediate</span>
+                    </div>
+                </div>
+
+                <h4>6.2. Organoleptic Effect</h4>
+                <p>Universal yeasts provide neither the maximum cleanliness of alcohol yeasts nor the aromatic depth of wine yeasts. They produce moderate amounts of higher alcohols and esters. For sugar washes the result is comparable to alcohol yeast. For fruit — noticeably poorer than with wine strains.</p>
+
+                <div class="use-grid">
+                    <div class="use-box use-yes">
+                        <h5>✅ 6.3. When to Use</h5>
+                        <ul>
+                            <li>If you work with different types of raw material and do not want to keep several kinds of yeast.</li>
+                            <li>For beginners: one packet for all occasions.</li>
+                            <li>If specialized yeast is unavailable.</li>
+                        </ul>
+                    </div>
+                    <div class="use-box use-no">
+                        <h5>❌ 6.4. When Not to Use</h5>
+                        <ul>
+                            <li>If you want to maximize the aroma of a fruit mash. Better to take a specific wine strain.</li>
+                            <li>If you need maximum strength. Better to choose turbo yeast.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="wild">Chapter 7. Wild Yeast: Romance and Risk</h2>
+
+        <div class="yeast-card theme-wild">
+            <div class="yeast-header">
+                <span class="yeast-icon">🌿</span>
+                <h3>Wild Yeast <span class="yeast-tagline">Spontaneous fermentation and terroir</span></h3>
+            </div>
+            <div class="yeast-body">
+                <h4>7.1. What Is It?</h4>
+                <p>Wild yeasts are microorganisms living on the surface of fruit, berries, and grapes, in the air, and on equipment. This is not one species but a mixture of dozens of strains: <em>Saccharomyces cerevisiae</em>, <em>S. bayanus</em>, <em>Kloeckera</em>, <em>Hanseniaspora</em>, <em>Candida</em>, <em>Brettanomyces</em>, and others.</p>
+
+                <h4>7.2. Characteristics</h4>
+                <ul>
+                    <li><strong>Unpredictability.</strong> Every batch of wild yeast is unique. The fermentation result cannot be reproduced exactly.</li>
+                    <li><strong>Complex profile.</strong> Wild yeasts produce a wide range of esters, phenols, and acids, creating a multifaceted, "rustic" bouquet.</li>
+                    <li><strong>Low alcohol tolerance.</strong> Most wild strains stop at 5–10% ABV. To ferment the sugars out fully, you often have to add cultured yeast.</li>
+                    <li><strong>Infection risk.</strong> Along with wild yeasts, acetic and lactic acid bacteria and molds can develop.</li>
+                </ul>
+
+                <div class="use-grid">
+                    <div class="use-box use-yes">
+                        <h5>✅ 7.3. When to Use</h5>
+                        <ul>
+                            <li>For traditional recipes: Georgian chacha on wild yeast, Normandy calvados from spontaneous fermentation.</li>
+                            <li>If you want to experiment and obtain a unique profile.</li>
+                            <li>For grape mashes where wild yeasts on the berry skin have historically been part of the terroir.</li>
+                        </ul>
+                    </div>
+                    <div class="use-box use-no">
+                        <h5>❌ 7.4. When Not to Use</h5>
+                        <ul>
+                            <li>For sugar washes: on pure sucrose, wild yeasts have no advantage and create infection risk.</li>
+                            <li>If you want a stable, reproducible result.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="comparison">Chapter 8. Summary Comparison Table</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Baker's</th>
+                    <th>Alcohol</th>
+                    <th>Turbo</th>
+                    <th>Wine</th>
+                    <th>Universal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Wash strength</strong></td>
+                    <td>8–12%</td>
+                    <td>14–18%</td>
+                    <td>18–23%</td>
+                    <td>12–16%</td>
+                    <td>14–18%</td>
+                </tr>
+                <tr>
+                    <td><strong>Fermentation speed</strong></td>
+                    <td>High</td>
+                    <td>Medium</td>
+                    <td>Very high</td>
+                    <td>Low / medium</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Temperature optimum</strong></td>
+                    <td>25–30 °C</td>
+                    <td>26–32 °C</td>
+                    <td>28–35 °C</td>
+                    <td>15–24 °C</td>
+                    <td>18–32 °C</td>
+                </tr>
+                <tr>
+                    <td><strong>Higher alcohols</strong></td>
+                    <td>High</td>
+                    <td>Moderate</td>
+                    <td>Moderate / high</td>
+                    <td>Low</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td><strong>Ester profile</strong></td>
+                    <td>Rough</td>
+                    <td>Neutral</td>
+                    <td>Neutral</td>
+                    <td>Rich, fruity</td>
+                    <td>Neutral</td>
+                </tr>
+                <tr>
+                    <td><strong>Hydrogen sulfide</strong></td>
+                    <td>Medium / high</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Very low</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td><strong>Raw material aroma retention</strong></td>
+                    <td>Poor</td>
+                    <td>Moderate</td>
+                    <td>Poor</td>
+                    <td>Excellent</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td><strong>Price</strong></td>
+                    <td>Lowest</td>
+                    <td>Medium</td>
+                    <td>Above medium</td>
+                    <td>Above medium</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td><strong>Best application</strong></td>
+                    <td>Sugar, rectification</td>
+                    <td>Sugar, grain</td>
+                    <td>Sugar, speed</td>
+                    <td>Fruit, berries, grapes</td>
+                    <td>Various, beginners</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="recommendations">Chapter 9. Yeast and Mash Type: Practical Recommendations</h2>
+
+        <div class="mash-rec">
+            <h4>🍬 9.1. Sugar Wash</h4>
+            <span class="rec-goal">Goal: maximum ethanol, minimum impurities, acceptable speed.</span>
+            <ul>
+                <li><strong>First choice:</strong> alcohol yeast (14–18%, 5–8 days).</li>
+                <li><strong>If speed matters:</strong> turbo yeast (18–23%, 3–5 days).</li>
+                <li><strong>If the budget is minimal:</strong> baker's — but be ready for a rougher profile.</li>
+                <li><strong>Wine yeast:</strong> impractical. There is no aroma to preserve, the speed is lower, and the price is higher.</li>
+            </ul>
+        </div>
+
+        <div class="mash-rec">
+            <h4>🌾 9.2. Grain Mash (wheat, rye, corn)</h4>
+            <span class="rec-goal">Goal: preserve the bready, malty character of the grain.</span>
+            <ul>
+                <li><strong>First choice:</strong> alcohol or universal yeast. They do not drown out the grain profile.</li>
+                <li><strong>For a soft "whisky-like" character:</strong> wine strains with low ester formation (e.g., EC-1118 or 71B). Ferment at 20–24 °C.</li>
+                <li><strong>Baker's:</strong> acceptable, but gives a rougher, more fusel profile.</li>
+            </ul>
+        </div>
+
+        <div class="mash-rec">
+            <h4>🍎 9.3. Fruit Mash (apples, pears, plums)</h4>
+            <span class="rec-goal">Goal: preserve and enhance the fruit aroma.</span>
+            <ul>
+                <li><strong>First choice:</strong> wine yeast. Specific strain per fruit:
+                    <ul>
+                        <li>Apples: 71B (reduces acidity), EC-1118 (neutral, strong).</li>
+                        <li>Plums: K1-V1116, QA23.</li>
+                        <li>Pears: 71B, D47.</li>
+                    </ul>
+                </li>
+                <li><strong>Temperature:</strong> 18–22 °C. No higher than 24 °C.</li>
+                <li><strong>Alcohol yeast:</strong> acceptable, but the profile will be poorer.</li>
+                <li><strong>Turbo and baker's:</strong> not recommended.</li>
+            </ul>
+        </div>
+
+        <div class="mash-rec">
+            <h4>🍇 9.4. Grape Mash (chacha, grappa)</h4>
+            <span class="rec-goal">Goal: preserve the varietal character of the grape.</span>
+            <ul>
+                <li><strong>First choice:</strong> wine yeast matched to the wine type.
+                    <ul>
+                        <li>White varieties: QA23, K1-V1116, D47.</li>
+                        <li>Red varieties: Uvaferm CM, RC212.</li>
+                        <li>Muscat varieties: strains that emphasize terpenes (e.g., VIN 13, ICV D-47).</li>
+                    </ul>
+                </li>
+                <li><strong>Wild yeast:</strong> acceptable for traditional chacha, but with unpredictability risk.</li>
+                <li><strong>Alcohol and turbo:</strong> not recommended.</li>
+            </ul>
+        </div>
+
+        <div class="mash-rec">
+            <h4>🍒 9.5. Berry Mash (cherry, raspberry, currant)</h4>
+            <span class="rec-goal">Goal: preserve the fragile berry aroma.</span>
+            <ul>
+                <li><strong>The only sensible choice:</strong> wine yeast with minimal ester formation.</li>
+                <li><strong>Temperature:</strong> 16–20 °C.</li>
+                <li><strong>Baker's, alcohol, turbo:</strong> categorically not recommended. The berry aroma is too delicate.</li>
+            </ul>
+        </div>
+
+        <h2 id="distillate">Chapter 10. Yeast and Distillate Organoleptics: What Remains After Distillation</h2>
+
+        <h3>10.1. What Carries Over into the Distillate</h3>
+        <p>Not all fermentation by-products carry over into the distillate. Volatile compounds (esters, aldehydes, part of the higher alcohols) carry over. Non-volatile ones (glycerol, succinic acid, most proteins) stay in the boiler.</p>
+        <p>However, the amount of volatile impurities in the wash directly determines the load on fractional distillation. The more fusel oils in the wash, the wider the "transition zone" between hearts and tails, the harder it is to cut the fractions cleanly, and the greater the losses during selection.</p>
+
+        <h3>10.2. A Practical Example</h3>
+        <p>Two washes: 20 liters of sugar wort, 4 kg of sugar.</p>
+        <div class="compare-duo">
+            <div class="compare-item compare-a">
+                <h5>🍞 Wash A — Baker's Yeast</h5>
+                <ul>
+                    <li>Fermentation at 30 °C, 6 days.</li>
+                    <li>Isoamyl alcohol content: <strong>~450 mg/L</strong>.</li>
+                </ul>
+            </div>
+            <div class="compare-item compare-b">
+                <h5>⚗️ Wash B — Alcohol Yeast</h5>
+                <ul>
+                    <li>Fermentation at 28 °C, 7 days.</li>
+                    <li>Isoamyl alcohol content: <strong>~280 mg/L</strong>.</li>
+                </ul>
+            </div>
+        </div>
+        <p>After double distillation with heads and tails cuts:</p>
+        <ul>
+            <li><strong>Distillate A</strong> will have a more pronounced fusel tone even after the tails cut.</li>
+            <li><strong>Distillate B</strong> will be softer and more neutral.</li>
+        </ul>
+        <p>The difference is not catastrophic but it is perceptible — especially if you drink the product without aging or infusions.</p>
+
+        <h3>10.3. Yeast and Barrel Aging</h3>
+        <p>If the distillate is planned for aging in an oak barrel (for whisky, calvados, grappa), the elevated content of esters and higher alcohols in the wash can be an advantage. During aging, esters hydrolyze, and higher alcohols oxidize into acids that then react with ethanol to form new, more complex esters. A rough young distillate turns into a soft, multifaceted drink after 1–3 years in the barrel.</p>
+        <div class="practical-note">
+            <strong>For drinks without aging</strong> (vodka, fruit brandy, chacha), fermentation cleanliness is more important.
+        </div>
+
+        <h2 id="practical">Chapter 11. Practical Tips for Handling Yeast</h2>
+
+        <h3>11.1. Storage</h3>
+        <ul>
+            <li>Store dry yeast in the refrigerator at 4–8 °C. Shelf life of a sealed packet is 2 years; once opened — 3–6 months.</li>
+            <li>Pressed baker's yeast — only in the refrigerator, for no more than 2–3 weeks.</li>
+            <li>Do not freeze dry yeast: ice crystals damage the cell walls.</li>
+        </ul>
+
+        <h3>11.2. Rehydration</h3>
+        <p>Before pitching, dry yeast must be rehydrated:</p>
+        <div class="rehydration-steps">
+            <ol>
+                <li>Boil water and cool it to 30–35 °C.</li>
+                <li>Sprinkle in the yeast at 2–3 g per 10 liters of wash.</li>
+                <li>Add a pinch of sugar (1/2 teaspoon per 100 ml of water).</li>
+                <li>Cover and wait 15–20 minutes.</li>
+                <li>Foam should appear on the surface, and the smell should be yeasty and pleasant.</li>
+                <li>Pour into the wort and stir.</li>
+            </ol>
+        </div>
+        <div class="warning-note">
+            <strong>⚠ Do not pitch dry yeast directly into cold wort.</strong> The cells are in a state of anabiosis, and sharp contact with cold liquid causes osmotic shock. Up to 30% of the population can die.
+        </div>
+
+        <h3>11.3. Dosage</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Yeast Type</th>
+                    <th>Dosage per 10 Liters of Wash</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pressed baker's</td>
+                    <td>20–30 g</td>
+                </tr>
+                <tr>
+                    <td>Dry baker's</td>
+                    <td>5–7 g</td>
+                </tr>
+                <tr>
+                    <td>Dry alcohol</td>
+                    <td>2–3 g</td>
+                </tr>
+                <tr>
+                    <td>Turbo yeast</td>
+                    <td>Per instructions (usually 5–8 g per 10 L)</td>
+                </tr>
+                <tr>
+                    <td>Dry wine</td>
+                    <td>2–3 g</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="practical-note">
+            <strong>Note:</strong> Increasing the dosage does not speed up fermentation proportionally, but it increases the amount of yeast sediment and can give a more pronounced yeasty aftertaste.
+        </div>
+
+        <h3>11.4. Nutrient Feeding</h3>
+        <ul>
+            <li><strong>For sugar wash:</strong> nutrient is mandatory. A sugar solution contains no nitrogen, vitamins, or minerals.</li>
+            <li><strong>For grain mash:</strong> nutrient is desirable but not mandatory — grain wort contains amino acids and vitamins.</li>
+            <li><strong>For fruit mash:</strong> nutrient is usually not needed. Fruit juice contains sufficient nutrition. The exception is heavily diluted juice.</li>
+        </ul>
+
+        <h2 id="mistakes">Chapter 12. Common Mistakes When Choosing and Using Yeast</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Baker's yeast for a fruit mash</td>
+                    <td>Rough profile, loss of aroma</td>
+                    <td>Wine yeast</td>
+                </tr>
+                <tr>
+                    <td>Turbo yeast for aromatic raw material</td>
+                    <td>Elevated fusel oils</td>
+                    <td>Alcohol or wine yeast</td>
+                </tr>
+                <tr>
+                    <td>Pitching yeast into wort above 40 °C</td>
+                    <td>Death of the population</td>
+                    <td>Cool to 28–30 °C</td>
+                </tr>
+                <tr>
+                    <td>Using expired yeast</td>
+                    <td>Fermentation does not start or is sluggish</td>
+                    <td>Check the expiry date, make a starter</td>
+                </tr>
+                <tr>
+                    <td>No nutrient for a sugar wash</td>
+                    <td>Hydrogen sulfide, fermentation arrest</td>
+                    <td>Add DAP or a complex nutrient</td>
+                </tr>
+                <tr>
+                    <td>Fermenting wine yeast at 30 °C</td>
+                    <td>Loss of aromatic advantage</td>
+                    <td>Lower the temperature to 18–22 °C</td>
+                </tr>
+                <tr>
+                    <td>Mixing two types of yeast</td>
+                    <td>Competition, unpredictable profile</td>
+                    <td>Use a single strain</td>
+                </tr>
+                <tr>
+                    <td>Pitching dry yeast without rehydration</td>
+                    <td>Loss of up to 30% of cells</td>
+                    <td>Rehydrate 15–20 min in warm water</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Conclusion: Yeast Is the Choice of the Drink's Character</h2>
+        <p>Choosing yeast is not a technical formality but a conscious decision about what your distillate will be. Baker's gives speed and cheapness but a rough profile. Alcohol gives reliability and cleanliness. Turbo gives strength and tempo. Wine gives aroma and depth. Universal is a compromise for those who do not want to choose.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🧬 Match the Yeast to the Mash and the Goal</strong>
+                Sugar — alcohol or turbo. Fruit and berries — wine. Grain — alcohol, or wine for softness.
+            </div>
+            <div class="principle-item">
+                <strong>🎯 The Higher the Aroma Demands, the More Important the Strain</strong>
+                For neutral spirit, yeast is secondary. For fruit brandy — primary.
+            </div>
+            <div class="principle-item">
+                <strong>🦠 Yeast Are Living Organisms</strong>
+                Rehydration, nutrient feeding, and the correct temperature are not formalities but the conditions under which the cells work efficiently and cleanly.
+            </div>
+        </div>
+
+        <p>Understanding how different strains affect metabolism and organoleptics turns the moonshiner from an operator of an apparatus into an author of the drink. And an author chooses their tools consciously.</p>
+        <p><em>Happy fermentation.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Mash: From Apples, Berries, and Grapes — How to Preserve Aroma | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --light-gray: #e0e0e0;
+            --note-bg: #fcf8e3;
+            --note-border: #faebcc;
+            --note-text: #8a6d3b;
+            --takeaway-bg: #eaf4fc;
+            --warning-bg: #fdf2f2;
+            --warning-text: #721c24;
+            /* Fruit palette */
+            --apple: #43a047;
+            --apple-dark: #2e7d32;
+            --grape: #7b1fa2;
+            --grape-dark: #4a148c;
+            --berry: #c2185b;
+            --berry-dark: #880e4f;
+            --gold: #c9a227;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a2c5e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.4rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #665322;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #5a1a20;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--light-gray);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+        /* Fruit section cards */
+        .fruit-section {
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .fruit-header {
+            padding: 1.2rem 1.8rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fruit-header .fruit-icon {
+            font-size: 1.8rem;
+        }
+        .fruit-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .fruit-header .fruit-sub {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .fruit-body {
+            padding: 1.5rem 1.8rem;
+        }
+        .apple-theme .fruit-header { background: linear-gradient(135deg, var(--apple) 0%, var(--apple-dark) 100%); }
+        .grape-theme .fruit-header { background: linear-gradient(135deg, var(--grape) 0%, var(--grape-dark) 100%); }
+        .berry-theme .fruit-header { background: linear-gradient(135deg, var(--berry) 0%, var(--berry-dark) 100%); }
+        .apple-theme { border-top: 4px solid var(--apple); }
+        .grape-theme { border-top: 4px solid var(--grape); }
+        .berry-theme { border-top: 4px solid var(--berry); }
+        /* Spec mini grid */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 1.2rem 0;
+        }
+        .spec-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+        .spec-item .spec-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .spec-item .spec-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        /* Berry sub-cards */
+        .berry-card {
+            background: #fdf6f9;
+            border: 1px solid #f3d1e0;
+            border-left: 4px solid var(--berry);
+            border-radius: 6px;
+            padding: 1rem 1.3rem;
+            margin: 1rem 0;
+        }
+        .berry-card h4 {
+            margin-top: 0;
+            color: var(--berry-dark);
+        }
+        .berry-card ul {
+            margin-bottom: 0;
+        }
+        /* Rule cards for Chapter 5 */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .rule-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-top: 4px solid var(--gold);
+        }
+        .rule-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        .rule-card ul {
+            margin-bottom: 0;
+            padding-left: 18px;
+        }
+        .rule-card li {
+            font-size: 0.92rem;
+            margin-bottom: 0.5rem;
+        }
+        /* European tradition badges */
+        .region-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        .region-badge {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a2c5e 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .region-badge .badge-name {
+            font-weight: 700;
+        }
+        .region-badge .badge-region {
+            opacity: 0.8;
+            font-size: 0.8rem;
+        }
+        /* Final principles */
+        .principles {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a2c5e 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #ffd700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1.article-title {
+                font-size: 1.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th, td {
+                padding: 8px;
+            }
+            nav {
+                padding: 0.5rem;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            .toc ol {
+                columns: 1;
+            }
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Recipes</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Fruit Mash: From Apples, Berries, and Grapes</h1>
+        <p class="subtitle">How to preserve the aroma of the raw material — an analysis of preparing mash from various fruits and berries, with emphasis on retaining the natural aroma and taste in the distillate.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Distillate as a Portrait of the Fruit</a></li>
+                <li><a href="#aroma">Chapter 1. The Aroma Profile of Fruit: What Exactly We Preserve</a></li>
+                <li><a href="#apple">Chapter 2. Apple Mash: The Basis of Calvados and Apple Brandy</a></li>
+                <li><a href="#grape">Chapter 3. Grape Mash: Grappa, Chacha, Marc</a></li>
+                <li><a href="#berry">Chapter 4. Berry Mash: Cherry, Plum, Raspberry, Blackcurrant</a></li>
+                <li><a href="#rules">Chapter 5. Key Techniques for Preserving Aroma: A Code of Rules</a></li>
+                <li><a href="#compare">Chapter 6. Comparison Table: Apples, Grapes, Berries</a></li>
+                <li><a href="#mistakes">Chapter 7. Common Mistakes</a></li>
+                <li><a href="#tradition">Chapter 8. European Tradition and Modern Context</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Distillate as a Portrait of the Fruit</h2>
+        <p>In the European tradition of strong spirits, fruit mash occupies a special place. Calvados in Normandy, grappa in Italy, slivovitz in the Balkans, kirschwasser in the Black Forest and Switzerland, pálinka in Hungary, rakia in Serbia and Bulgaria — all these drinks are united by one idea: <em>the distillate should smell of and evoke the fruit from which it was made</em>. Not neutral alcohol with a flavoring added, but a concentrated, purified essence of a specific apple, a specific plum, a specific cluster of grapes.</p>
+        <p>This fundamentally distinguishes fruit distilling from sugar distilling. If the goal of a sugar wash is to obtain the purest possible ethanol, then the goal of a fruit mash is to transfer the aromatic profile of the raw material into the distillate without destroying or losing it during fermentation and distillation.</p>
+        <p>This task is far from trivial. The aromatic compounds of fruit — esters, terpenes, aldehydes, volatile acids — are extremely sensitive to temperature, oxygen, pH, and aggressive handling. The wrong fermentation temperature, a poorly chosen yeast, or rough distillation can destroy what nature spent an entire season building inside the fruit.</p>
+        <p>This article is a detailed guide to preparing fruit mash from apples, berries, and grapes, with emphasis on aroma preservation.</p>
+
+        <div class="key-takeaway">
+            <strong>The goal of a fruit mash</strong> is not maximum ethanol, but the transfer of the raw material's aromatic profile into the distillate. Every decision — from yeast selection to distillation speed — must serve this goal.
+        </div>
+
+        <h2 id="aroma">Chapter 1. The Aroma Profile of Fruit: What Exactly We Preserve</h2>
+        <p>Before talking technology, we need to understand what fruit aroma actually is at the chemical level.</p>
+
+        <h3>1.1. Main Groups of Aroma Compounds</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Compound Group</th>
+                    <th>Examples</th>
+                    <th>Contribution to Aroma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Esters</strong></td>
+                    <td>ethyl acetate, isoamyl acetate, ethyl butyrate</td>
+                    <td>Fruity, floral tones</td>
+                </tr>
+                <tr>
+                    <td><strong>Terpenes and terpenoids</strong></td>
+                    <td>linalool, geraniol, nerol</td>
+                    <td>Floral, citrus, muscat notes</td>
+                </tr>
+                <tr>
+                    <td><strong>Higher alcohols</strong></td>
+                    <td>isoamyl, isobutyl, hexanol</td>
+                    <td>Herbaceous, green shades</td>
+                </tr>
+                <tr>
+                    <td><strong>Aldehydes</strong></td>
+                    <td>hexanal, benzaldehyde</td>
+                    <td>Green, almond tones</td>
+                </tr>
+                <tr>
+                    <td><strong>Lactones</strong></td>
+                    <td>γ- and δ-lactones</td>
+                    <td>Creamy, peach notes</td>
+                </tr>
+                <tr>
+                    <td><strong>Volatile phenols</strong></td>
+                    <td>eugenol, vanillin</td>
+                    <td>Spicy shades</td>
+                </tr>
+                <tr>
+                    <td><strong>Acids</strong></td>
+                    <td>acetic, hexanoic</td>
+                    <td>Sharpness, "body"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.2. Why Aroma Is Lost</h3>
+        <p>On the journey from fruit to distillate, aromatic compounds face several threats:</p>
+        <ul>
+            <li><strong>Oxidation.</strong> Contact with atmospheric oxygen destroys terpenes and unsaturated aldehydes. Fruit pulp darkens and loses its freshness.</li>
+            <li><strong>Thermal degradation.</strong> Heating above 60 °C destroys most volatile esters and terpenes.</li>
+            <li><strong>Yeast metabolism.</strong> During fermentation, yeast not only produces ethanol but also metabolizes some of the aroma precursors. Aggressive strains "sweep away" the delicate bouquet.</li>
+            <li><strong>High distillation proof.</strong> The higher the proof of the collected distillate, the fewer aroma impurities it contains. Rectification to 96 % kills any fruit character.</li>
+            <li><strong>Excessive heads and tails cuts.</strong> Many aromatic compounds sit in the boundary fractions.</li>
+        </ul>
+
+        <h3>1.3. The Core Principle</h3>
+        <div class="key-takeaway">
+            <strong>Minimal intervention at every stage.</strong> Fruit mash is not an industrial process. The more gently you handle the raw material, the richer the aroma will be in the glass.
+        </div>
+
+        <h2 id="apple">Chapter 2. Apple Mash: The Basis of Calvados and Apple Brandy</h2>
+
+        <div class="fruit-section apple-theme">
+            <div class="fruit-header">
+                <span class="fruit-icon">🍎</span>
+                <h3>The Apple <span class="fruit-sub">The most widely distilled fruit in Europe</span></h3>
+            </div>
+            <div class="fruit-body">
+
+                <h3 style="margin-top:0;">2.1. The Apple as a Raw Material</h3>
+                <p>The apple is the most common fruit crop for distillation in Europe. Normandy, Brittany, Asturias, southwestern Germany, Austria, Poland — everywhere there is a centuries-old tradition of apple brandy.</p>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Sugar Content</span>
+                        <span class="spec-value">10–14%</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Acidity</span>
+                        <span class="spec-value">0.4–0.8%</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Pectin</span>
+                        <span class="spec-value">0.5–1.5%</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">ABV After Ferment.</span>
+                        <span class="spec-value">5–7%</span>
+                    </div>
+                </div>
+                <p><em>Aromatic precursors:</em> hexanol esters, ethyl and methyl butyrates.</p>
+
+                <h3>2.2. Selecting and Preparing Apples</h3>
+                <p><strong>Varieties.</strong> For an aromatic distillate, fragrant varieties with a pronounced smell are preferable: Antonovka, Granny Smith, Golden Delicious, Calville, Reinette. In Normandy, four categories of varieties are traditionally blended for calvados: sweet, bittersweet, bitter, and acidic. For home practice, 2–3 aromatic varieties are sufficient.</p>
+                <p><strong>Ripeness.</strong> Apples should be fully ripe but not overripe. Overripe fruit yields elevated acetic acid and methanol; underripe fruit is poor in sugar and aroma.</p>
+                <p><strong>Preparation:</strong></p>
+                <ul>
+                    <li>Sort the apples. Remove rotten or moldy fruit. Small blemishes can be cut out.</li>
+                    <li>Wash them. Do not use soap or detergents.</li>
+                    <li>Remove the core with the seeds. Seeds contain amygdalin, which on hydrolysis releases hydrocyanic acid and benzaldehyde. In small quantities this is not critical, but for a clean aroma it is better to remove the core.</li>
+                    <li>Do not peel. The skin concentrates a significant share of the terpenes and esters that form the varietal aroma.</li>
+                </ul>
+
+                <h3>2.3. Extracting Juice and Fighting Pectin</h3>
+                <p>Apples are crushed into a pulp and the juice is pressed. For home use, suitable options are:</p>
+                <ul>
+                    <li>A manual or electric juicer (a masticating/auger type is preferable to centrifugal — less oxidation and heating).</li>
+                    <li>A crusher + press.</li>
+                    <li>As a last resort — a meat grinder and pressing through a polyester mesh bag.</li>
+                </ul>
+                <p><strong>The pectin problem.</strong> Apple juice contains significant pectin, which:</p>
+                <ul>
+                    <li>Makes the mash cloudy and viscous.</li>
+                    <li>Decomposes during distillation to form methanol (pectin → pectic acid → methyl alcohol).</li>
+                    <li>Worsens filtration.</li>
+                </ul>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li><strong>Pectinase enzyme preparation</strong> (Pectofetidin, Pectavamorin, or commercial equivalents). Dosage: 1–2 ml per 10 liters of juice. Add after pressing, hold for 2–4 hours at 30–40 °C. The pectin breaks down, the juice clarifies, and methanol yield during distillation drops 2–3 fold.</li>
+                    <li><strong>Clarification by settling.</strong> Let the juice settle 12–24 hours in the refrigerator, then carefully rack the clear portion off the sediment. Less effective than enzymes, but it works.</li>
+                </ul>
+                <div class="warning-note">
+                    <strong>⚠ Critical for aroma preservation:</strong> Do not heat the juice above 40 °C. Thermal pasteurization destroys the volatile esters. If you want to sanitize the juice, use a minimal dose of sulfur dioxide (potassium metabisulfite, 50–80 mg/L) — or simply work quickly, minimizing contact with air.
+                </div>
+
+                <h3>2.4. Fermenting Apple Mash</h3>
+                <p><strong>Should you add sugar?</strong> Apple juice contains 10–14 % sugars, which yields 5–7 % ABV after fermentation. That is not much, but for an aromatic distillate, extra sugar is undesirable. Each percent of added sugar dilutes the aromatic concentration of the juice. The exception is very acidic or underripe apples, where sugar may be added up to 15–16 °Brix — but no more.</p>
+                <p><strong>Yeast.</strong> For apple mash use:</p>
+                <ul>
+                    <li><strong>Wine yeast for white wines</strong> (<em>Saccharomyces cerevisiae</em> or <em>S. bayanus</em> strains), e.g. cider, chardonnay, or sauvignon strains. They work at lower temperature and preserve the ester profile.</li>
+                    <li><strong>Special calvados or fruit-brandy yeast</strong>, if available.</li>
+                </ul>
+                <div class="warning-note">
+                    <strong>⚠ Do not use baker's or turbo yeast:</strong> they work aggressively, at high temperature, and "sweep away" the delicate apple bouquet.
+                </div>
+                <p><strong>Fermentation temperature.</strong> This is critically important for aroma preservation:</p>
+                <ul>
+                    <li><strong>Optimum: 18–22 °C.</strong> At this temperature fermentation is slower (10–20 days), but the ester compounds and terpenes are preserved far better.</li>
+                    <li><strong>Not above 25 °C.</strong> At higher temperature, formation of higher alcohols increases and aromatic substances volatilize with the CO₂.</li>
+                </ul>
+                <p><strong>Vessel and air contact.</strong></p>
+                <ul>
+                    <li>Ferment under an airlock with minimal oxygen access.</li>
+                    <li>Do not fill the vessel more than 80 %: apple mash can foam.</li>
+                    <li>Avoid racking and stirring during fermentation — every contact with air oxidizes the aroma compounds.</li>
+                </ul>
+
+                <h3>2.5. Distilling Apple Mash</h3>
+                <ul>
+                    <li><strong>First distillation</strong> — down to 25–30 % ABV in the boiler. No fraction cuts.</li>
+                    <li><strong>Second distillation</strong> — fractional, but with a gentle heads cut (3–5 % of absolute alcohol instead of 10 % for a sugar wash). Many apple aroma esters pass into the early fractions.</li>
+                    <li><strong>Hearts collection proof: 60–65 % ABV.</strong> No higher. The higher the proof, the poorer the aroma.</li>
+                    <li><strong>Slow heating.</strong> Aggressive heating destroys heat-sensitive compounds.</li>
+                    <li><strong>Copper.</strong> A copper boiler or copper packing in the column helps bind sulfur compounds and softens the profile.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="grape">Chapter 3. Grape Mash: Grappa, Chacha, Marc</h2>
+
+        <div class="fruit-section grape-theme">
+            <div class="fruit-header">
+                <span class="fruit-icon">🍇</span>
+                <h3>The Grape <span class="fruit-sub">The only berry distilled at industrial scale</span></h3>
+            </div>
+            <div class="fruit-body">
+
+                <h3 style="margin-top:0;">3.1. The Specifics of Grapes</h3>
+                <p>The grape is the only berry from which mash is made at industrial scale for distillation. Italian grappa, Georgian chacha, French marc, Spanish orujo — all are based on grape raw material.</p>
+                <p><strong>Two types of grape mash:</strong></p>
+                <ul>
+                    <li><strong>From grape juice (must).</strong> Essentially the distillation of young wine. Yields a softer, more "wine-like" distillate.</li>
+                    <li><strong>From pomace (marc, skins).</strong> Classic grappa. The solid residues left after pressing juice for wine are distilled: skins, seeds, pulp remnants. The distillate is rougher, more astringent, but with a pronounced varietal character.</li>
+                </ul>
+
+                <h3>3.2. Preparing Grapes</h3>
+                <p><strong>Varieties.</strong> For an aromatic distillate, aromatic varieties are preferable: Muscat, Isabella, Traminer, Riesling, Sauvignon Blanc. Neutral varieties (Chardonnay, Pinot Blanc) give a cleaner but less expressive product.</p>
+                <p><strong>Ripeness.</strong> Grapes should be fully ripe. Optimal sugar content: 18–24 °Brix (180–240 g/L). Underripe grapes give an acidic, "green" distillate.</p>
+                <p><strong>Preparation:</strong></p>
+                <ul>
+                    <li>Sort the clusters. Remove moldy or rotten berries.</li>
+                    <li>Do not wash if the grapes have not been treated with pesticides. Wild yeasts live on the skin and can participate in spontaneous fermentation. However, for a predictable process it is better to use cultured yeast and wash the berries.</li>
+                    <li>Separate the berries from the stems. Stems contain tannins and methanol, which give roughness and bitterness to the distillate.</li>
+                    <li>Crush the berries. Do not use a high-speed blender — crushed seeds release bitter oils and hydrocyanic acid.</li>
+                </ul>
+
+                <h3>3.3. Fermenting Grape Mash</h3>
+                <p><strong>Yeast.</strong> Wine yeast is the only sensible choice. Strains for white or red wines depending on the variety's color. For muscat varieties — yeasts that emphasize the terpene profile.</p>
+                <p><strong>Temperature.</strong></p>
+                <ul>
+                    <li>For juice: 18–22 °C (same as apple mash).</li>
+                    <li>For pomace: up to 22–25 °C is acceptable, since the marc contains fewer volatile aroma substances than pure juice.</li>
+                </ul>
+                <p><strong>Sugar.</strong> Grape juice with 20–24 % sugars yields 10–13 % ABV after fermentation. Adding sugar is unnecessary and harmful to the aroma. The exception is underripe grapes with less than 16 °Brix.</p>
+                <p><strong>Duration.</strong> Grape mash ferments for 7–14 days. For aromatic varieties it is better not to prolong fermentation: the longer the contact with the yeast lees, the greater the risk of autolysis and the appearance of yeasty, sulfurous tones.</p>
+
+                <h3>3.4. Distillation Features</h3>
+                <ul>
+                    <li>Grappa from pomace is often distilled once over low heat to preserve the rough but authentic character. Collection proof: 65–75 % ABV.</li>
+                    <li>For a cleaner profile — double distillation with a 3–5 % heads cut.</li>
+                    <li>A copper boiler is preferable: copper binds the volatile sulfur compounds formed during fermentation on the skins.</li>
+                    <li>Do not distill the pomace below 20 % in the boiler: the tail fractions contain heavy fusel oils and furfural.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="berry">Chapter 4. Berry Mash: Cherry, Plum, Raspberry, Blackcurrant, and Others</h2>
+
+        <div class="fruit-section berry-theme">
+            <div class="fruit-header">
+                <span class="fruit-icon">🍒</span>
+                <h3>The Berries <span class="fruit-sub">The most fragile aromas of all</span></h3>
+            </div>
+            <div class="fruit-body">
+
+                <h3 style="margin-top:0;">4.1. Common Ground and Differences</h3>
+                <p>Berry distillates — kirschwasser (cherry), slivovitz, raspberry brandy, berry rakias — share one trait: berry aroma is more fragile than apple or grape. The volatile compounds of berries (esters, terpenes, ionones) are more easily destroyed by heat and oxidation. This demands an even gentler approach.</p>
+
+                <div class="berry-card">
+                    <h4>🍒 Cherry and Sweet Cherry (Kirschwasser)</h4>
+                    <ul>
+                        <li><strong>Preparation:</strong> remove the pits. Cherry pits contain amygdalin, which on hydrolysis yields benzaldehyde (almond smell) and hydrocyanic acid. A small amount of crushed pits (5–10 %) is acceptable for a light almond note, but this is a matter of taste.</li>
+                        <li><strong>Sugar content:</strong> 10–14 %. ABV after fermentation 5–7 %.</li>
+                        <li><strong>Yeast:</strong> wine, neutral strains.</li>
+                        <li><strong>Fermentation temperature:</strong> 18–20 °C.</li>
+                        <li><strong>Aroma signature:</strong> benzaldehyde, ethyl benzoate, linalool. Very volatile — destroyed by rough distillation.</li>
+                    </ul>
+                </div>
+
+                <div class="berry-card">
+                    <h4>🫐 Plum (Slivovitz, Rakia)</h4>
+                    <ul>
+                        <li><strong>Preparation:</strong> remove the pits, crush the pulp. Overripe plums give a more sugary and aromatic juice but increase the risk of acetic fermentation.</li>
+                        <li><strong>Sugar content:</strong> 12–18 % depending on variety and ripeness.</li>
+                        <li><strong>Yeast:</strong> wine or special fruit-brandy strains.</li>
+                        <li><strong>Fermentation temperature:</strong> 20–24 °C.</li>
+                        <li><strong>Note:</strong> plum mash is prone to elevated methanol formation due to high pectin. Enzyme treatment with pectinase is mandatory.</li>
+                        <li><strong>Aroma signature:</strong> ethyl hexanoate, hexanol, linalool.</li>
+                    </ul>
+                </div>
+
+                <div class="berry-card">
+                    <h4>🍓 Raspberry, Strawberry, Blackcurrant</h4>
+                    <p>These are the most delicate berries from an aroma standpoint.</p>
+                    <ul>
+                        <li><strong>Raspberry:</strong> aroma compounds (raspberry ketone, ionones, linalool) are extremely sensitive to heat and oxidation. Ferment at 16–20 °C. Distill as gently as possible.</li>
+                        <li><strong>Strawberry:</strong> complex ester profile (ethyl butyrate, hexanal, furaneol). Loses freshness quickly after picking. Process within 12–24 hours of harvest.</li>
+                        <li><strong>Blackcurrant:</strong> high content of terpenes and methoxypyrazines. Gives an intense, "catty" aroma in small doses, fruity at normal levels. Acidity is high (2–3 %) and partial dilution with water may be needed.</li>
+                    </ul>
+                </div>
+
+                <h3>4.5. General Recommendations for Berries</h3>
+                <ul>
+                    <li><strong>Process as quickly as possible.</strong> Berries do not keep. Every hour after picking is a loss of aromatic substances.</li>
+                    <li><strong>Minimal air contact.</strong> Crush the berries in a closed vessel and immediately fit an airlock.</li>
+                    <li><strong>Do not add sugar unless absolutely necessary.</strong> If sugar content is below 12 %, it is better to add the juice of sweeter berries than sugar syrup.</li>
+                    <li><strong>Pectinase.</strong> Raspberries, currants, and strawberries are rich in pectin. Treatment with a pectolytic enzyme reduces cloudiness and methanol yield.</li>
+                    <li><strong>Do not filter the mash to brilliance.</strong> Fine pulp particles carry aroma precursors. A coarse separation of large residues is sufficient.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="rules">Chapter 5. Key Techniques for Preserving Aroma: A Code of Rules</h2>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <h4>🧺 5.1. Raw Material Preparation</h4>
+                <ul>
+                    <li>Work quickly, minimize air contact.</li>
+                    <li>Do not heat fruit or berries above 40 °C before fermentation.</li>
+                    <li>Avoid aluminum or galvanized steel vessels — metal ions catalyze oxidation. Stainless steel, glass, food-grade plastic are acceptable.</li>
+                    <li>Remove pits (cherry, plum, peach, apricot) to reduce methanol and hydrocyanic acid.</li>
+                </ul>
+            </div>
+            <div class="rule-card">
+                <h4>🌡️ 5.2. Fermentation</h4>
+                <ul>
+                    <li><strong>18–22 °C</strong> — the gold standard for aromatic fruit mash. Below 16 °C fermentation may stall; above 25 °C aroma is lost.</li>
+                    <li>Wine yeast instead of baker's or turbo. Match the strain to the fruit type.</li>
+                    <li>Minimal added sugar. Every percent of added sugar dilutes the aroma.</li>
+                    <li>Airtight. An airlock is mandatory — oxygen oxidizes terpenes and esters.</li>
+                    <li>Do not prolong fermentation. After active CO₂ release stops, give the mash 2–3 days to clarify, then distill immediately. Long contact with dead yeast gives autolysis and sulfurous tones.</li>
+                </ul>
+            </div>
+            <div class="rule-card">
+                <h4>⚗️ 5.3. Distillation</h4>
+                <ul>
+                    <li><strong>Slow heating.</strong> No "full-power boiling." A smooth temperature ramp preserves volatile aroma compounds.</li>
+                    <li><strong>Gentle heads cut.</strong> For fruit mash: 3–5 % of absolute alcohol instead of 10 % for sugar. Early fractions contain ethyl acetate and acetaldehyde, but also carry some fruit esters.</li>
+                    <li><strong>Hearts proof no higher than 60–65 % ABV.</strong> For maximum aroma — 55–60 %. The higher the proof, the closer the product is to neutral spirit.</li>
+                    <li><strong>Do not rectify.</strong> Fruit distillate is run on a simple pot still or with minimal reflux. A rectification column with many theoretical plates destroys the aroma profile.</li>
+                    <li><strong>Copper.</strong> Copper contact binds hydrogen sulfide, mercaptans, and dimethyl sulfide that may form during fermentation.</li>
+                    <li><strong>One or two distillations.</strong> Three or more is pointless for a fruit distillate — you will lose the aroma.</li>
+                </ul>
+            </div>
+            <div class="rule-card">
+                <h4>🍶 5.4. After Distillation</h4>
+                <ul>
+                    <li><strong>Do not filter through carbon.</strong> Activated carbon adsorbs not only impurities but also aroma compounds. Carbon filtration suits sugar moonshine but is ruinous for fruit brandy.</li>
+                    <li>Dilute to drinking strength (40–45 %) with soft, clean water. Hard water causes cloudiness and distorts flavor.</li>
+                    <li><strong>Resting.</strong> Some fruit distillates benefit from resting in neutral vessels (glass, stainless steel) for 1–3 months to "round out" the flavor. Oak aging is possible for calvados and apple brandy, but for delicate berry distillates, oak may overpower the aroma.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="compare">Chapter 6. Comparison Table: Apples, Grapes, Berries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Apples</th>
+                    <th>Grapes</th>
+                    <th>Berries (cherry, plum, raspberry)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juice sugar content, %</td>
+                    <td>10–14</td>
+                    <td>18–24</td>
+                    <td>8–16</td>
+                </tr>
+                <tr>
+                    <td>Mash ABV, %</td>
+                    <td>5–7</td>
+                    <td>10–13</td>
+                    <td>4–8</td>
+                </tr>
+                <tr>
+                    <td>Fermentation temperature, °C</td>
+                    <td>18–22</td>
+                    <td>18–22</td>
+                    <td>16–20</td>
+                </tr>
+                <tr>
+                    <td>Fermentation duration</td>
+                    <td>10–20 days</td>
+                    <td>7–14 days</td>
+                    <td>7–15 days</td>
+                </tr>
+                <tr>
+                    <td>Need for pectinase</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Adding sugar</td>
+                    <td>Undesirable</td>
+                    <td>Not needed</td>
+                    <td>Undesirable</td>
+                </tr>
+                <tr>
+                    <td>Hearts collection proof</td>
+                    <td>60–65 %</td>
+                    <td>60–70 %</td>
+                    <td>55–65 %</td>
+                </tr>
+                <tr>
+                    <td>Key threat to aroma</td>
+                    <td>Oxidation, heat</td>
+                    <td>Sulfurous tones</td>
+                    <td>Thermal degradation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="mistakes">Chapter 7. Common Mistakes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fermenting at 28–30 °C</td>
+                    <td>Loss of esters and terpenes, coarse profile</td>
+                    <td>Maintain 18–22 °C</td>
+                </tr>
+                <tr>
+                    <td>Using baker's yeast</td>
+                    <td>Yeasty smell, suppression of fruit aroma</td>
+                    <td>Wine or special fruit strains</td>
+                </tr>
+                <tr>
+                    <td>Adding sugar "for strength"</td>
+                    <td>Diluted aroma, neutral profile</td>
+                    <td>Do not add; if needed, up to 1–2 %</td>
+                </tr>
+                <tr>
+                    <td>Distilling on a rectification column</td>
+                    <td>Neutral spirit with no fruit character</td>
+                    <td>Simple pot still or minimal reflux</td>
+                </tr>
+                <tr>
+                    <td>Collecting hearts above 70 % ABV</td>
+                    <td>Loss of aromatic compounds</td>
+                    <td>Stop collection at 60–65 %</td>
+                </tr>
+                <tr>
+                    <td>Carbon-filtering the distillate</td>
+                    <td>Adsorption of aromatic substances</td>
+                    <td>Do not carbon-filter fruit distillate</td>
+                </tr>
+                <tr>
+                    <td>Long contact with yeast lees</td>
+                    <td>Autolysis, sulfurous and yeasty tones</td>
+                    <td>Distill within 2–3 days after fermentation ends</td>
+                </tr>
+                <tr>
+                    <td>Using rotten fruit</td>
+                    <td>Acetic acid, mycotoxins</td>
+                    <td>Thorough sorting of raw material</td>
+                </tr>
+                <tr>
+                    <td>Heating the mash above 60 °C before distillation</td>
+                    <td>Destruction of volatile aroma compounds</td>
+                    <td>Smooth heating, no pre-heat treatment</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="tradition">Chapter 8. European Tradition and Modern Context</h2>
+        <p>Fruit distillation in Europe is not a hobby but a cultural heritage. These traditions set the benchmark: the quality of a fruit distillate is judged not by strength or volume, but by its fidelity to the aroma of the original fruit. A bottle of kirschwasser in which you can hear the cherry from a specific orchard is valued above a liter of impeccably pure but faceless spirit.</p>
+
+        <div class="region-badges">
+            <span class="region-badge"><span class="badge-name">🍎 Calvados</span><span class="badge-region">Normandy, France (AOC)</span></span>
+            <span class="region-badge"><span class="badge-name">🍇 Grappa</span><span class="badge-region">Italy (national drink)</span></span>
+            <span class="region-badge"><span class="badge-name">🍑 Pálinka</span><span class="badge-region">Hungary (EU PGI)</span></span>
+            <span class="region-badge"><span class="badge-name">🍒 Kirschwasser</span><span class="badge-region">Black Forest / Switzerland</span></span>
+            <span class="region-badge"><span class="badge-name">🫐 Slivovitz</span><span class="badge-region">Balkans</span></span>
+            <span class="region-badge"><span class="badge-name">🍐 Rakia</span><span class="badge-region">Serbia / Bulgaria</span></span>
+        </div>
+
+        <p>In recent years Europe has seen growing interest in craft distillation. Small producers in France, Germany, Italy, Spain, and Slovenia experiment with varieties, fermentation temperatures, and distillation regimes, proving that the aromatic potential of fruit mash is far from exhausted. A home distiller who has mastered the principles of gentle aroma handling can produce a product comparable to commercial examples.</p>
+
+        <h2>Conclusion: Listen to the Fruit</h2>
+        <p>Fruit mash is not a chemical reaction but a translation. You are translating the language of the apple, the cherry, or the grape into the language of the distillate. And like any translation, this process is better the fewer the distortions.</p>
+
+        <div class="principles">
+            <h3>Three Principles to Remember</h3>
+            <div class="principle-item">
+                <strong>❄️ Cold and Speed</strong>
+                Ferment at 18–22 °C, process the raw material immediately after harvest, minimize air contact.
+            </div>
+            <div class="principle-item">
+                <strong>✋ Minimal Intervention</strong>
+                No extra sugar, no aggressive yeast, no rectification, no carbon filtration.
+            </div>
+            <div class="principle-item">
+                <strong>🔥 Gentle Distillation</strong>
+                Slow heating, hearts proof no higher than 60–65 %, one or two distillations.
+            </div>
+        </div>
+
+        <p>If you follow these principles, what ends up in the glass will not be a neutral liquid smelling of alcohol, but a concentrated, transparent, living essence of that very apple, that very plum, that very cluster of grapes from which it all began.</p>
+        <p><em>Happy fermentation and smooth distillation.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>
