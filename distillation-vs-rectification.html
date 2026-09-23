@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distillation vs. Rectification: Choosing the Right Method | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #263238;
+            --accent-color: #455a64;
+            --copper: #b87333;
+            --copper-dark: #8d5524;
+            --steel: #2980b9;
+            --steel-dark: #1a5276;
+            --bg-color: #f5f7f8;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #eceff1;
+            --note-border: #b0bec5;
+            --note-text: #37474f;
+            --takeaway-bg: #e8f5e9;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --gold: #fbc02d;
+            /* Fraction colors */
+            --f-heads: #e53935;
+            --f-hearts: #43a047;
+            --f-tails: #6d4c41;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #8d5524 0%, #263238 50%, #1a5276 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        nav {
+            background-color: #263238;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #fbc02d;
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #f5f7f8;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.7rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #43a047;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #263238;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e53935;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #641e16;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f5f7f8;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+        .table-note {
+            font-size: 0.88rem;
+            color: #666;
+            font-style: italic;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+        /* ===== Two Paths Visual ===== */
+        .two-paths {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        .path-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .path-card h3 {
+            margin: 0 0 0.8rem;
+            color: white;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .path-card .path-icon { font-size: 1.8rem; }
+        .path-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+        .path-card .path-plats {
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .path-distill { background: linear-gradient(135deg, var(--copper) 0%, var(--copper-dark) 100%); }
+        .path-rectify { background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%); }
+        /* ===== Boiling Points Gradient ===== */
+        .bp-table td:first-child {
+            font-weight: 700;
+        }
+        .bp-low { background: #ffebee; color: #b71c1c; }
+        .bp-mid { background: #fff8e1; color: #f57f17; }
+        .bp-high { background: #e8f5e9; color: #1b5e20; }
+        /* ===== Azeotrope Banner ===== */
+        .azeotrope-banner {
+            background: linear-gradient(135deg, #b71c1c 0%, #7f0000 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .azeotrope-banner::after {
+            content: "95.6%";
+            position: absolute;
+            right: -10px;
+            bottom: -30px;
+            font-size: 7rem;
+            font-weight: 900;
+            opacity: 0.08;
+            line-height: 1;
+        }
+        .azeotrope-banner .az-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .azeotrope-banner p { margin-bottom: 0.5rem; text-align: left; }
+        /* ===== Theoretical Plates Visual ===== */
+        .plates-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        .plates-box {
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .plates-box h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+        .plates-box .plates-count {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0.8rem 0;
+        }
+        .plates-box .plates-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.85;
+        }
+        .plates-distill {
+            background: #fff3e0;
+            border: 2px solid var(--copper);
+        }
+        .plates-distill h4, .plates-distill .plates-count { color: var(--copper-dark); }
+        .plates-rectify {
+            background: #e3f2fd;
+            border: 2px solid var(--steel);
+        }
+        .plates-rectify h4, .plates-rectify .plates-count { color: var(--steel-dark); }
+        /* ===== Method Cards (Big) ===== */
+        .method-card-big {
+            border-radius: 12px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #cfd8dc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .method-header-big {
+            padding: 1.3rem 1.8rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .method-header-big .mh-icon { font-size: 2rem; }
+        .method-header-big h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .method-header-big .mh-sub {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .method-body-big {
+            padding: 1.5rem 1.8rem;
+        }
+        .method-body-big h4 { margin-top: 1.8rem; }
+        .method-body-big h4:first-child { margin-top: 0; }
+        .method-distill .method-header-big { background: linear-gradient(135deg, var(--copper) 0%, var(--copper-dark) 100%); }
+        .method-distill { border-top: 5px solid var(--copper); }
+        .method-rectify .method-header-big { background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%); }
+        .method-rectify { border-top: 5px solid var(--steel); }
+        /* ===== Pros/Cons Grid ===== */
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 1.2rem 0;
+        }
+        .pros-box, .cons-box {
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            border: 1px solid;
+        }
+        .pros-box {
+            background: #e8f5e9;
+            border-color: #a5d6a7;
+        }
+        .pros-box h5 { color: #1b5e20; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .cons-box {
+            background: #fdedec;
+            border-color: #f5b7b1;
+        }
+        .cons-box h5 { color: #922b21; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .pros-box ul, .cons-box ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.9rem;
+        }
+        .pros-box li, .cons-box li { margin-bottom: 0.4rem; }
+        /* ===== Reflux Ratio Cards ===== */
+        .reflux-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        .reflux-card {
+            background: #f5f7f8;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--steel);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .reflux-card .rr-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--steel-dark);
+        }
+        .reflux-card .rr-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #546e7a;
+            margin: 4px 0 8px;
+        }
+        .reflux-card .rr-desc {
+            font-size: 0.82rem;
+            line-height: 1.4;
+            color: #607d8b;
+        }
+        /* ===== Fraction Strip ===== */
+        .fraction-strip {
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .fraction-seg {
+            color: white;
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+        .fraction-seg .fs-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .fraction-seg .fs-pct {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+        .fraction-seg .fs-content {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+        .fs-heads { background: linear-gradient(135deg, var(--f-heads), #b71c1c); flex: 0 0 18%; }
+        .fs-hearts { background: linear-gradient(135deg, var(--f-hearts), #1b5e20); flex: 1; }
+        .fs-tails { background: linear-gradient(135deg, var(--f-tails), #3e2723); flex: 0 0 22%; }
+        /* ===== Choice Cards ===== */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .choice-card {
+            border-radius: 10px;
+            padding: 1.3rem;
+            border: 1px solid #cfd8dc;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .choice-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+        .choice-card .cc-goal {
+            font-size: 0.88rem;
+            color: #607d8b;
+            font-style: italic;
+            margin-bottom: 0.6rem;
+        }
+        .choice-card .cc-rec {
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-distill-rec { background: #fff3e0; color: var(--copper-dark); }
+        .cc-rectify-rec { background: #e3f2fd; color: var(--steel-dark); }
+        /* ===== FAQ ===== */
+        .faq-item {
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fcfdfe;
+        }
+        .faq-question {
+            background: #f5f7f8;
+            padding: 1rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #cfd8dc;
+        }
+        .faq-question .q-mark {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .faq-answer {
+            padding: 1rem 1.3rem;
+            font-size: 0.95rem;
+        }
+        .faq-answer p { margin-bottom: 0.5rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+        /* ===== Final Principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #8d5524 0%, #263238 50%, #1a5276 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+        }
+        .principles .principle-item strong {
+            color: #fff59d;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.8rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .two-paths, .plates-compare, .pros-cons-grid, .choice-grid { grid-template-columns: 1fr; }
+            .reflux-grid { grid-template-columns: 1fr 1fr; }
+            .fraction-strip { flex-direction: column; }
+            .fs-heads, .fs-tails { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Equipment</a>
+    <a href="#">Techniques</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Distillation vs. Rectification: Choosing the Right Method</h1>
+        <p class="subtitle">A comparative analysis of the two key methods of alcohol production: process physics, equipment, product quality, and the practice of choosing.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Two Paths to One Goal</a></li>
+                <li><a href="#physics">Chapter 1. The Physics: Why Alcohol Separates from Water</a></li>
+                <li><a href="#distillation">Chapter 2. Simple Distillation: One Step to Concentrate</a></li>
+                <li><a href="#rectification">Chapter 3. Rectification: Repeated Separation in a Column</a></li>
+                <li><a href="#comparison">Chapter 4. Comparison Table</a></li>
+                <li><a href="#choice">Chapter 5. Which Method to Choose</a></li>
+                <li><a href="#hybrid">Chapter 6. Hybrid Solutions</a></li>
+                <li><a href="#fractional">Chapter 7. Fractional Distillation: The Art of Separation</a></li>
+                <li><a href="#mistakes">Chapter 8. Typical Mistakes</a></li>
+                <li><a href="#economy">Chapter 9. Economics: Cost, Time, Yield</a></li>
+                <li><a href="#legal">Chapter 10. Legal Context</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Two Paths to One Goal</h2>
+        <p>At the very heart of every still lies the same physical principle: heat a liquid until the alcohol vaporizes, carry the vapor away, and condense it in a cooled state. But <em>how</em> that principle is implemented determines whether you get an aromatic calvados with the character of a Norman orchard or a crystal-clear neutral spirit for a tincture.</p>
+        <p>Distillation and rectification are not two different processes. They are two depths of the same process of separating liquids by boiling point. Distillation takes one step. Rectification takes dozens or hundreds of steps within a single apparatus. The difference between them is like sifting flour once through a sieve versus passing it through a cascade of forty sieves with progressively smaller mesh.</p>
+
+        <div class="two-paths">
+            <div class="path-card path-distill">
+                <h3><span class="path-icon">⚗️</span> Distillation</h3>
+                <p>One evaporation, one condensation. Preserves the aroma of the raw material. The method of cognac, calvados, grappa, slivovitz, and whiskey.</p>
+                <span class="path-plats">1 theoretical plate · 25–70% ABV</span>
+            </div>
+            <div class="path-card path-rectify">
+                <h3><span class="path-icon">🏭</span> Rectification</h3>
+                <p>Dozens of repeated evaporation-condensation cycles in a column. Produces pure neutral spirit. The method of vodka, tinctures, gin, and liqueurs.</p>
+                <span class="path-plats">20–60 theoretical plates · 92–96% ABV</span>
+            </div>
+        </div>
+
+        <p>For the distiller, the choice between these methods determines everything: the type of apparatus, the character of the product, the working style, the number of runs, and ultimately what ends up in the glass. This article is a detailed breakdown of both methods — from the physics of evaporation to practical equipment recommendations.</p>
+
+        <h2 id="physics">Chapter 1. The Physics: Why Alcohol Separates from Water</h2>
+
+        <h3>1.1. The Difference in Boiling Points</h3>
+        <p>At the core of any distillation lies the difference in boiling points of the components in the mixture:</p>
+        <div class="table-scroll">
+        <table class="bp-table">
+            <thead>
+                <tr>
+                    <th>Substance</th>
+                    <th>Boiling Point (at 760 mmHg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bp-low">Methanol</td>
+                    <td>64.7 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-low">Acetone</td>
+                    <td>56.1 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-mid">Ethyl acetate</td>
+                    <td>77.1 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-mid">Ethanol</td>
+                    <td>78.37 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-high">Water</td>
+                    <td>100.0 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-high">Isoamyl alcohol</td>
+                    <td>132.0 °C</td>
+                </tr>
+                <tr>
+                    <td class="bp-high">Furfural</td>
+                    <td>161.7 °C</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p>When the wash is heated, the component with the lowest boiling point evaporates first. Ethanol boils at 78.37 °C — significantly lower than water (100 °C). So when the wash is heated to 78–85 °C, the vapor becomes enriched with ethanol relative to the liquid in the boiler. By condensing this vapor, we obtain a liquid with a higher alcohol concentration than the original wash.</p>
+
+        <h3>1.2. The Problem: The Azeotrope</h3>
+        <p>If separation were perfect, we could obtain 100% ethanol. But this is impossible because of the azeotrope.</p>
+
+        <div class="azeotrope-banner">
+            <div class="az-title">⚠️ The Ethanol-Water Azeotrope</div>
+            <p>An <strong>azeotrope</strong> is a mixture of two liquids that boils at a constant temperature and evaporates without a change in composition. For ethanol and water, the azeotrope is:</p>
+            <ul style="margin-bottom:0.5rem;">
+                <li><strong>95.6% ethanol and 4.4% water</strong> by mass (95.57% ethanol).</li>
+                <li><strong>Boiling point: 78.15 °C</strong> — slightly below pure ethanol's boiling point (78.37 °C).</li>
+            </ul>
+            <p style="margin-bottom:0;">This means no distillation or rectification at atmospheric pressure can produce alcohol stronger than <strong>96% ABV</strong>. Obtaining absolute alcohol (99.5%+) requires special methods: azeotropic distillation with benzene, molecular sieves, or membrane separation.</p>
+        </div>
+
+        <h3>1.3. What Is a Theoretical Plate</h3>
+        <p>To understand the difference between distillation and rectification, we need the concept of the <strong>theoretical plate</strong> (theoretical separation stage).</p>
+        <p>A theoretical plate is an idealized element where the vapor and liquid reach full thermodynamic equilibrium. On each plate, the vapor becomes enriched with the more volatile component (ethanol), while the liquid becomes enriched with the less volatile component (water).</p>
+
+        <div class="plates-compare">
+            <div class="plates-box plates-distill">
+                <h4>⚗️ Simple Distillation</h4>
+                <div class="plates-count">1</div>
+                <div class="plates-label">theoretical plate</div>
+                <p style="font-size:0.88rem; margin-top:0.8rem; margin-bottom:0;">Vapor rises from the boiler, contacts the condensate once, and goes to the condenser.</p>
+            </div>
+            <div class="plates-box plates-rectify">
+                <h4>🏭 Rectification Column</h4>
+                <div class="plates-count">20–60</div>
+                <div class="plates-label">theoretical plates</div>
+                <p style="font-size:0.88rem; margin-top:0.8rem; margin-bottom:0;">Vapor contacts the liquid repeatedly, becoming richer in ethanol each time.</p>
+            </div>
+        </div>
+
+        <div class="key-takeaway">
+            <strong>The more theoretical plates, the purer the product at the output.</strong>
+        </div>
+
+        <h2 id="distillation">Chapter 2. Simple Distillation: One Step to Concentrate</h2>
+
+        <div class="method-card-big method-distill">
+            <div class="method-header-big">
+                <span class="mh-icon">⚗️</span>
+                <h3>Simple Distillation <span class="mh-sub">One evaporation, one condensation — the traditional method</span></h3>
+            </div>
+            <div class="method-body-big">
+
+                <h3>2.1. Operating Principle</h3>
+                <p>Simple distillation is a single evaporation and condensation. The wash is heated in the boiler, the vapor rises, passes through the vapor duct (and possibly a short dephlegmator), enters the condenser, and condenses into the receiving vessel.</p>
+                <p>There is no element of repeated vapor-liquid contact between the boiler and the condenser. The vapor formed above the surface of the wash immediately goes to condensation. The vapor composition is determined by the equilibrium between the liquid in the boiler and the vapor above it — one equilibrium, one theoretical plate.</p>
+
+                <h3>2.2. What You Get at the Output</h3>
+                <p>From a wash of 10–12% ABV, simple distillation yields a distillate of 25–40% ABV (depending on when collection stops). This is <strong>low wines</strong> — a concentrate containing:</p>
+                <ul>
+                    <li>Ethanol.</li>
+                    <li>Water.</li>
+                    <li>Head fractions (methanol, acetaldehyde, ethyl acetate, acetone).</li>
+                    <li>Tail fractions (fusel oils: isoamyl, isobutyl, propyl alcohols; furfural).</li>
+                    <li>Aromatic compounds of the raw material (esters, terpenes, aldehydes).</li>
+                </ul>
+                <div class="warning-note">
+                    <strong>Low wines cannot be drunk without a second distillation.</strong> They contain toxic head fractions and coarse tail impurities. But they are excellent raw material for fractional distillation.
+                </div>
+
+                <h3>2.3. Fractional Distillation: Two Steps Instead of One</h3>
+                <p>Fractional distillation is simple distillation in which the distillate is separated into fractions as it is collected:</p>
+
+                <div class="fraction-strip">
+                    <div class="fraction-seg fs-heads">
+                        <div class="fs-name">Heads</div>
+                        <div class="fs-pct">5–10% of abs. alcohol</div>
+                        <div class="fs-content">Methanol, acetaldehyde, ethyl acetate. Sharp, unpleasant smell. Not consumable.</div>
+                    </div>
+                    <div class="fraction-seg fs-hearts">
+                        <div class="fs-name">Hearts</div>
+                        <div class="fs-pct">Main portion</div>
+                        <div class="fs-content">Ethanol with a moderate amount of aromatic impurities. The target product.</div>
+                    </div>
+                    <div class="fraction-seg fs-tails">
+                        <div class="fs-name">Tails</div>
+                        <div class="fs-pct">Last 10–15%</div>
+                        <div class="fs-content">Fusel oils, furfural, fatty acids. Oily, unpleasant smell. Not consumable.</div>
+                    </div>
+                </div>
+
+                <p>Fractional distillation is still simple distillation (one theoretical plate), but with manual separation of the distillate into fractions as its composition changes. The separation happens not inside the apparatus, but <em>in time</em>: the distiller switches receiving vessels, guided by boiler temperature, stream strength, and smell.</p>
+
+                <h3>2.4. Equipment for Simple and Fractional Distillation</h3>
+                <p><strong>Minimal apparatus:</strong></p>
+                <ul>
+                    <li>Still boiler (10–50 liters) with lid and thermometer.</li>
+                    <li>Vapor duct or coil.</li>
+                    <li>Condenser (Liebig, Dimroth, or shell-and-tube).</li>
+                    <li>Receiving vessels.</li>
+                </ul>
+                <p><strong>Optional elements:</strong></p>
+                <ul>
+                    <li><strong>Thump keg (thumper):</strong> an intermediate vessel between the boiler and condenser. Retains splashes and part of the tail fractions. Increases distillate strength by 2–5%.</li>
+                    <li><strong>Dephlegmator (short column 10–20 cm):</strong> creates partial reflux, increasing strength and purity. Equivalent to 2–3 theoretical plates.</li>
+                    <li><strong>Copper elements:</strong> copper boiler, copper mesh in the vapor duct. Copper binds sulfur compounds, softening the profile.</li>
+                </ul>
+                <p><strong>Cost of a basic apparatus:</strong> €100–300.</p>
+
+                <div class="pros-cons-grid">
+                    <div class="pros-box">
+                        <h5>✅ 2.5. Advantages</h5>
+                        <ul>
+                            <li><strong>Preserves aroma.</strong> One theoretical plate does not separate the raw material's aromatic compounds. Terpenes, esters, and aldehydes carry over into the distillate, forming the characteristic bouquet. Critical for calvados, grappa, slivovitz, whiskey.</li>
+                            <li><strong>Simple equipment.</strong> No column, packing, or take-off node needed. Fewer elements, fewer points of failure.</li>
+                            <li><strong>Speed.</strong> One run takes 2–4 hours. Two runs (simple + fractional) — 4–8 hours. Rectification of one batch — 8–16 hours.</li>
+                            <li><strong>Flexibility.</strong> The same apparatus works with any raw material: sugar, grain, fruit, berries, honey.</li>
+                            <li><strong>Tradition.</strong> All classic European distillates (cognac, calvados, grappa, slivovitz, pálinka, whiskey) are produced by simple distillation.</li>
+                        </ul>
+                    </div>
+                    <div class="cons-box">
+                        <h5>❌ 2.6. Disadvantages</h5>
+                        <ul>
+                            <li><strong>Limited strength.</strong> Maximum 65–70% ABV in the hearts on the second fractional run. Impossible to obtain 90+% ABV.</li>
+                            <li><strong>Incomplete separation.</strong> Head and tail fractions partially overlap with the hearts. Complete removal of impurities is impossible.</li>
+                            <li><strong>Requires two runs.</strong> First (simple) to concentrate, second (fractional) to purify. Increases time and losses.</li>
+                            <li><strong>Skill-dependent.</strong> The quality of fraction separation is determined by the distiller's experience: when to switch vessels, how many heads to take, where the boundary between hearts and tails lies.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="rectification">Chapter 3. Rectification: Repeated Separation in a Column</h2>
+
+        <div class="method-card-big method-rectify">
+            <div class="method-header-big">
+                <span class="mh-icon">🏭</span>
+                <h3>Rectification <span class="mh-sub">Multi-stage separation for maximum purity</span></h3>
+            </div>
+            <div class="method-body-big">
+
+                <h3>3.1. Operating Principle</h3>
+                <p>Rectification is repeated evaporation and condensation inside a column. Vapor from the boiler rises up the column, contacting the descending liquid (<strong>reflux</strong>) on each theoretical plate. On each plate:</p>
+                <ol>
+                    <li>The vapor gives up heavy components (water, fusel oils) to the liquid.</li>
+                    <li>The liquid gives up light components (ethanol, methanol) to the vapor.</li>
+                    <li>The vapor, rising to the next plate, becomes richer in ethanol.</li>
+                    <li>The liquid, flowing down, becomes richer in water and heavy impurities.</li>
+                </ol>
+                <p>The key element is the <strong>reflux</strong>: part of the condensed vapor returns to the column and flows down, counter to the rising vapor. This counterflow creates repeated contact and ensures separation.</p>
+
+                <h3>3.2. The Reflux Ratio</h3>
+                <p>The <strong>reflux ratio (R)</strong> is the ratio of the amount of reflux returned to the column to the amount of distillate collected in the receiving vessel.</p>
+                <div class="reflux-grid">
+                    <div class="reflux-card">
+                        <div class="rr-value">R = 1</div>
+                        <div class="rr-name">Fast</div>
+                        <div class="rr-desc">Half the condensate returns, half is collected. Fast collection, low purity.</div>
+                    </div>
+                    <div class="reflux-card">
+                        <div class="rr-value">R = 3</div>
+                        <div class="rr-name">Moderate</div>
+                        <div class="rr-desc">75% returns, 25% collected. Moderate speed, good purity.</div>
+                    </div>
+                    <div class="reflux-card">
+                        <div class="rr-value">R = 5</div>
+                        <div class="rr-name">Slow</div>
+                        <div class="rr-desc">83% returns, 17% collected. Slow collection, high purity.</div>
+                    </div>
+                    <div class="reflux-card">
+                        <div class="rr-value">R = ∞</div>
+                        <div class="rr-name">Total Reflux</div>
+                        <div class="rr-desc">All condensate returns, no collection. Used to stabilize the column before collection.</div>
+                    </div>
+                </div>
+                <div class="practical-note">
+                    <strong>The higher the reflux ratio, the purer the product, but the slower the process.</strong> To obtain 96% alcohol requires R = 3–5 and 30–50 theoretical plates.
+                </div>
+
+                <h3>3.3. Column Types and Packing</h3>
+                <p>Column packing is the material filling the column pipe and creating the surface for vapor-liquid contact. Each unit of packing of a certain height is equivalent to one theoretical plate.</p>
+                <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Packing Type</th>
+                            <th>HETP* (cm)</th>
+                            <th>Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Spiral (springs)</td>
+                            <td>3–5 cm</td>
+                            <td>High efficiency, low resistance</td>
+                        </tr>
+                        <tr>
+                            <td>Raschig rings</td>
+                            <td>5–8 cm</td>
+                            <td>Classic, simple to manufacture</td>
+                        </tr>
+                        <tr>
+                            <td>Berl saddles</td>
+                            <td>4–6 cm</td>
+                            <td>Good contact, moderate resistance</td>
+                        </tr>
+                        <tr>
+                            <td>Panchenkov packing (RPN)</td>
+                            <td>4–7 cm</td>
+                            <td>Accessible, popular in CIS</td>
+                        </tr>
+                        <tr>
+                            <td>Copper mesh</td>
+                            <td>5–8 cm</td>
+                            <td>Binds sulfur compounds</td>
+                        </tr>
+                        <tr>
+                            <td>Plate column</td>
+                            <td>5–10 cm/plate</td>
+                            <td>Industrial standard, complex to build</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <p class="table-note">*HETP — Height Equivalent to a Theoretical Plate. The lower the HETP, the more efficient the packing.</p>
+                <p><strong>To obtain 96% alcohol:</strong></p>
+                <ul>
+                    <li>Packing with HETP of 4 cm.</li>
+                    <li>Column height: 120–200 cm.</li>
+                    <li>Theoretical plates: 30–50.</li>
+                </ul>
+
+                <h3>3.4. What You Get at the Output</h3>
+                <p>From a wash of 10–12% ABV, rectification yields a <strong>rectificate</strong> of 92–96% ABV. This is practically pure ethanol with impurity content:</p>
+                <ul>
+                    <li>Methanol: &lt; 0.01% (with proper heads collection).</li>
+                    <li>Fusel oils: &lt; 0.005%.</li>
+                    <li>Aldehydes: &lt; 0.003%.</li>
+                    <li>Esters: traces.</li>
+                </ul>
+                <p>The rectificate is a neutral spirit with no aroma or taste of the raw material. The ideal base for vodka, tinctures, liqueurs, and gin.</p>
+
+                <h3>3.5. Equipment for Rectification</h3>
+                <p><strong>Minimal rectification apparatus:</strong></p>
+                <ul>
+                    <li>Still boiler (20–50 liters) with thermometer and pressure gauge.</li>
+                    <li>Rectification column (pipe of 28–50 mm diameter, 120–200 cm height).</li>
+                    <li>Packing (spiral, RPN, Raschig rings).</li>
+                    <li>Dephlegmator (condenser at the top of the column).</li>
+                    <li>Take-off node (valve or needle valve for controlling collection).</li>
+                    <li>Condenser (Liebig or shell-and-tube).</li>
+                    <li>Thermometers: in the boiler and at the top of the column.</li>
+                    <li>Receiving vessels.</li>
+                </ul>
+                <p><strong>Cost of a rectification apparatus:</strong> €300–1,000 (depending on quality, column diameter, and configuration).</p>
+
+                <div class="pros-cons-grid">
+                    <div class="pros-box">
+                        <h5>✅ 3.6. Advantages</h5>
+                        <ul>
+                            <li><strong>Maximum purity.</strong> 96% ethanol with minimal impurities. Unattainable with simple distillation.</li>
+                            <li><strong>One run instead of two.</strong> Rectification from the wash directly yields clean spirit. No need for low wines and a second run.</li>
+                            <li><strong>Complete removal of toxic impurities.</strong> Methanol, acetaldehyde, and fusel oils are effectively separated and collected as heads and tails.</li>
+                            <li><strong>Reproducibility.</strong> The process is determined by physical parameters (reflux ratio, temperature, pressure), not the distiller's subjective intuition.</li>
+                            <li><strong>Time savings in the long run.</strong> One rectification (8–12 hours) replaces two simple distillations (6–8 hours + cleaning).</li>
+                        </ul>
+                    </div>
+                    <div class="cons-box">
+                        <h5>❌ 3.7. Disadvantages</h5>
+                        <ul>
+                            <li><strong>Loss of aroma.</strong> 30–50 theoretical plates separate not only impurities but also the raw material's aromatic compounds. A rectificate from grape wash does not smell of grapes. From apple — not of apples. The aroma is destroyed.</li>
+                            <li><strong>Complex equipment.</strong> Column, packing, dephlegmator, take-off node — more elements, more points of failure, more parameters to control.</li>
+                            <li><strong>Long process.</strong> Column stabilization (30–60 min) + collection (6–10 hours) = 8–12 hours per batch.</li>
+                            <li><strong>High cost.</strong> A quality rectification column costs 3–5 times more than a simple still boiler.</li>
+                            <li><strong>Demanding on the wash.</strong> A cloudy wash with suspended matter clogs the packing. Thorough clarification or filtration is required before rectification.</li>
+                            <li><strong>Limited applicability.</strong> For aromatic distillates (whiskey, calvados, grappa, slivovitz), rectification is unsuitable. It destroys the very reason for using aromatic raw material.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="comparison">Chapter 4. Comparison Table: Distillation vs. Rectification</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Simple Distillation</th>
+                    <th>Fractional Distillation</th>
+                    <th>Rectification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Theoretical plates</td>
+                    <td>1</td>
+                    <td>1 (with manual separation)</td>
+                    <td>20–60</td>
+                </tr>
+                <tr>
+                    <td>Product strength</td>
+                    <td>25–40% ABV</td>
+                    <td>55–70% ABV</td>
+                    <td>92–96% ABV</td>
+                </tr>
+                <tr>
+                    <td>Number of runs</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Time per batch (20 L)</td>
+                    <td>2–4 h</td>
+                    <td>4–8 h (two runs)</td>
+                    <td>8–14 h</td>
+                </tr>
+                <tr>
+                    <td>Aroma preservation</td>
+                    <td>High</td>
+                    <td>Moderate / high</td>
+                    <td>Minimal / none</td>
+                </tr>
+                <tr>
+                    <td>Purity from impurities</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Equipment cost</td>
+                    <td>€100–300</td>
+                    <td>€100–400</td>
+                    <td>€300–1,000</td>
+                </tr>
+                <tr>
+                    <td>Control complexity</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Suitable for aromatic distillates</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Suitable for neutral spirit</td>
+                    <td>Partially</td>
+                    <td>Partially</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Reproducibility</td>
+                    <td>Skill-dependent</td>
+                    <td>Skill-dependent</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Cooling water consumption</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>High</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="choice">Chapter 5. Which Method to Choose: Practical Recommendations</h2>
+
+        <div class="choice-grid">
+            <div class="choice-card">
+                <h4>🍬 Sugar Wash (Neutral Spirit)</h4>
+                <div class="cc-goal">Goal: clean ethanol with no smell or taste for tinctures, liqueurs, vodka.</div>
+                <p class="cc-rec cc-rectify-rec">🏭 Rectification. Sugar wash has no aromatic value. The goal is maximum clean spirit. Rectification yields 96% ethanol in one run. Alternative: two fractional runs on a simple apparatus (longer, but cheaper equipment).</p>
+            </div>
+            <div class="choice-card">
+                <h4>🌾 Grain Wash (Whiskey, Polugar, Bourbon)</h4>
+                <div class="cc-goal">Goal: preserve the bready, malty, grainy character.</div>
+                <p class="cc-rec cc-distill-rec">⚗️ Two fractional runs on a simple apparatus. Grain aroma is the main value. Rectification would destroy it. Classic scheme: first run to 25–30% without cuts, second fractional with heads and tails, hearts to 60–65% in the stream.</p>
+            </div>
+            <div class="choice-card">
+                <h4>🍎 Fruit Wash (Calvados, Grappa, Chacha, Slivovitz)</h4>
+                <div class="cc-goal">Goal: preserve and enhance the fruit aroma.</div>
+                <p class="cc-rec cc-distill-rec">⚗️ Two fractional runs on a simple apparatus. Fruit aromatic compounds (terpenes, esters, lactones) are extremely volatile and delicate. Rectification would separate them and destroy the bouquet. Only simple distillation with gentle heads collection (3–5%) and hearts to 60–65% ABV.</p>
+            </div>
+            <div class="choice-card">
+                <h4>🍒 Berry Wash (Kirschwasser, Raspberry Brandy)</h4>
+                <div class="cc-goal">Goal: preserve the fragile berry aroma.</div>
+                <p class="cc-rec cc-distill-rec">⚗️ Two fractional runs with copper elements. Berry aromas (raspberry ketone, ionones, benzaldehyde) are the most delicate. One extra theoretical plate can lose them. Only a simple boiler, minimal dephlegmation, hearts at 55–60%.</p>
+            </div>
+            <div class="choice-card">
+                <h4>🍯 Honey Wash</h4>
+                <div class="cc-goal">Goal: preserve the floral, waxy, spicy honey profile.</div>
+                <p class="cc-rec cc-distill-rec">⚗️ Two fractional runs on a simple apparatus. Similar to fruit wash. Honey aromas (phenylethanol, complex esters, waxy compounds) are lost during rectification.</p>
+            </div>
+            <div class="choice-card">
+                <h4>🧪 Neutral Spirit for Infusions</h4>
+                <div class="cc-goal">Goal: clean base for tinctures, gin, absinthe, liqueurs.</div>
+                <p class="cc-rec cc-rectify-rec">🏭 Rectification. If you plan to infuse spirit on herbs, berries, spices, or pass it through a gin basket, you need the cleanest possible base. A 96% rectificate is the ideal choice.</p>
+            </div>
+        </div>
+
+        <h3>5.7. Summary Choice Table</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Wash Type</th>
+                    <th>Goal</th>
+                    <th>Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sugar</td>
+                    <td>Neutral spirit</td>
+                    <td>Rectification</td>
+                </tr>
+                <tr>
+                    <td>Grain (whiskey)</td>
+                    <td>Bready, malty aroma</td>
+                    <td>Two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Fruit (calvados)</td>
+                    <td>Fruit bouquet</td>
+                    <td>Two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Grape (grappa, chacha)</td>
+                    <td>Varietal character</td>
+                    <td>One or two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Berry (kirschwasser)</td>
+                    <td>Fragile berry aroma</td>
+                    <td>Two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Honey</td>
+                    <td>Floral, waxy profile</td>
+                    <td>Two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Potato</td>
+                    <td>Neutral or soft profile</td>
+                    <td>Rectification or two fractional runs</td>
+                </tr>
+                <tr>
+                    <td>Tinctures, gin, liqueurs</td>
+                    <td>Clean base</td>
+                    <td>Rectification</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="hybrid">Chapter 6. Hybrid Solutions: Column with Reflux Control</h2>
+
+        <h3>6.1. The Concept</h3>
+        <p>Modern stills are often a hybrid between a simple boiler and a rectification column. A short column (30–60 cm) with packing and an adjustable dephlegmator allows you to:</p>
+        <ul>
+            <li><strong>At minimal reflux (R = 0–1):</strong> work like a simple boiler — aroma preserved, strength 55–65%.</li>
+            <li><strong>At maximal reflux (R = 4–6):</strong> work like a rectification column — purity 90–95%, aroma lost.</li>
+        </ul>
+
+        <h3>6.2. Practical Application</h3>
+        <p><strong>For aromatic distillates:</strong></p>
+        <ul>
+            <li>Column 30–40 cm, copper or stainless packing.</li>
+            <li>Dephlegmator off or at minimum.</li>
+            <li>Reflux ratio: 0–1.</li>
+            <li>Hearts strength: 55–65%.</li>
+            <li>Result: aromatic distillate with moderate purity.</li>
+        </ul>
+        <p><strong>For neutral spirit:</strong></p>
+        <ul>
+            <li>Column 100–150 cm, spiral or RPN packing.</li>
+            <li>Dephlegmator at maximum.</li>
+            <li>Reflux ratio: 3–5.</li>
+            <li>Strength: 92–96%.</li>
+            <li>Result: clean rectificate.</li>
+        </ul>
+
+        <div class="pros-cons-grid">
+            <div class="pros-box">
+                <h5>✅ 6.3. Hybrid Advantages</h5>
+                <ul>
+                    <li><strong>One apparatus for all tasks.</strong> No need to buy two separate apparatuses.</li>
+                    <li><strong>Flexibility.</strong> Switching between modes takes 5–10 minutes.</li>
+                    <li><strong>Economy.</strong> A hybrid apparatus (€200–600) is cheaper than two separate ones (boiler + column: €400–1,300).</li>
+                </ul>
+            </div>
+            <div class="cons-box">
+                <h5>❌ 6.4. Hybrid Limitations</h5>
+                <ul>
+                    <li><strong>Not ideal in any mode.</strong> As a simple boiler, it is inferior to a classic alembic for aroma preservation. As a rectification column, it is inferior to a full-size column for purity.</li>
+                    <li><strong>Compromise.</strong> For serious whiskey or neutral spirit production, a specialized apparatus is better.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="fractional">Chapter 7. Fractional Distillation: The Art of Separation</h2>
+
+        <h3>7.1. Why Fractional Distillation Is Not Just "Turn On and Collect"</h3>
+        <p>Fractional distillation requires active participation from the distiller: they determine when to switch receiving vessels, guided by:</p>
+        <ul>
+            <li><strong>Boiler temperature.</strong> Heads are collected at 78–82 °C, hearts at 82–92 °C, tails at 92–99 °C.</li>
+            <li><strong>Stream strength.</strong> Measured with an alcoholmeter in the receiving vessel. Heads: 80+%, hearts: 60–75%, tails: below 40%.</li>
+            <li><strong>Smell.</strong> Heads smell of acetone, solvent. Hearts — of alcohol and the raw material. Tails — of fusel oil, oiliness.</li>
+            <li><strong>Taste.</strong> Heads are burning, sharp. Hearts are soft. Tails are oily, bitter.</li>
+        </ul>
+
+        <h3>7.2. Fraction Volumes</h3>
+        <p>For 20 liters of wash at 10% ABV (2 liters of absolute alcohol):</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fraction</th>
+                    <th>Volume</th>
+                    <th>% of Abs. Alcohol</th>
+                    <th>Contains</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Heads</strong></td>
+                    <td>100–200 ml</td>
+                    <td>5–10%</td>
+                    <td>Methanol, acetaldehyde, ethyl acetate</td>
+                </tr>
+                <tr>
+                    <td><strong>Hearts</strong></td>
+                    <td>1,400–1,600 ml (at 65%)</td>
+                    <td>70–80%</td>
+                    <td>Ethanol + aromatic impurities</td>
+                </tr>
+                <tr>
+                    <td><strong>Tails</strong></td>
+                    <td>200–400 ml</td>
+                    <td>10–20%</td>
+                    <td>Fusel oils, furfural</td>
+                </tr>
+                <tr>
+                    <td>Boiler residue</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>Water, non-volatile substances</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>7.3. Effect of Raw Material Type on Fractional Distillation</h3>
+        <ul>
+            <li><strong>Sugar wash:</strong> heads and tails are clearly defined, the hearts boundary is obvious. Heads collection: 10%. Hearts to 65–70% in the stream.</li>
+            <li><strong>Grain wash:</strong> aromatic impurities are distributed more widely. The hearts boundary is blurred. Heads collection: 5–8%. Hearts to 60–65% in the stream. Don't rush the tails cut — some aromatic compounds fall into the transition zone.</li>
+            <li><strong>Fruit wash:</strong> aromatic compounds are in the early fractions. Heads collection: 3–5%. Hearts to 60–65%. An early heads cut is critical: too large a collection will lose the fruit esters.</li>
+        </ul>
+
+        <h2 id="mistakes">Chapter 8. Typical Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rectifying a fruit wash</td>
+                    <td>Loss of aroma, neutral spirit</td>
+                    <td>Use fractional distillation</td>
+                </tr>
+                <tr>
+                    <td>Simple distillation without fraction cuts</td>
+                    <td>Methanol and fusel oil in the product</td>
+                    <td>Always do fractional distillation</td>
+                </tr>
+                <tr>
+                    <td>Too large a heads collection for fruit wash</td>
+                    <td>Loss of aromatic esters</td>
+                    <td>For fruit: 3–5%, not 10%</td>
+                </tr>
+                <tr>
+                    <td>Rectification without clarifying the wash</td>
+                    <td>Clogged packing, scorching</td>
+                    <td>Clarify the wash before rectification</td>
+                </tr>
+                <tr>
+                    <td>Low reflux ratio during rectification</td>
+                    <td>Impure product, 80–85% instead of 96%</td>
+                    <td>Increase reflux ratio to 3–5</td>
+                </tr>
+                <tr>
+                    <td>Collecting hearts above 70% during fractional distillation</td>
+                    <td>Fusel oils in the distillate</td>
+                    <td>Stop collection at 60–65%</td>
+                </tr>
+                <tr>
+                    <td>Using rectificate for an herbal tincture expecting raw-material aroma</td>
+                    <td>Tincture on pure spirit without raw-material character</td>
+                    <td>This is normal: rectificate is the base; the raw material provides the aroma</td>
+                </tr>
+                <tr>
+                    <td>Simple distillation without a thermometer</td>
+                    <td>Inability to control fractions</td>
+                    <td>Install a thermometer in the boiler and at the top</td>
+                </tr>
+                <tr>
+                    <td>Rectification at atmospheric pressure in the mountains</td>
+                    <td>Azeotrope shifts, strength below 96%</td>
+                    <td>Account for altitude above sea level</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="economy">Chapter 9. Economics: Cost, Time, Yield</h2>
+
+        <h3>9.1. Cost Comparison per Batch (20 liters of wash, 10% ABV)</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Two Fractional Runs</th>
+                    <th>Rectification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Time</td>
+                    <td>6–8 hours</td>
+                    <td>8–14 hours</td>
+                </tr>
+                <tr>
+                    <td>Cooling water consumption</td>
+                    <td>60–100 L</td>
+                    <td>100–200 L</td>
+                </tr>
+                <tr>
+                    <td>Energy consumption</td>
+                    <td>3–5 kWh</td>
+                    <td>5–8 kWh</td>
+                </tr>
+                <tr>
+                    <td>Alcohol losses (heads + tails)</td>
+                    <td>15–25%</td>
+                    <td>10–20%</td>
+                </tr>
+                <tr>
+                    <td>Finished product yield</td>
+                    <td>1.2–1.5 L (60–65%)</td>
+                    <td>1.6–1.8 L (96%)</td>
+                </tr>
+                <tr>
+                    <td>Equipment cost</td>
+                    <td>€100–400</td>
+                    <td>€300–1,000</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>9.2. Per Liter of Finished Product</h3>
+        <p>With regular production (4–8 batches per month):</p>
+        <ul>
+            <li><strong>Two fractional runs:</strong> cost of 1 liter of distillate at 40–45% ABV — €1.5–3 (excluding raw materials).</li>
+            <li><strong>Rectification:</strong> cost of 1 liter of rectificate at 96% ABV — €2–4 (excluding raw materials).</li>
+        </ul>
+        <div class="practical-note">
+            <strong>Rectification is more expensive in energy and water, but yields more pure spirit per liter of wash.</strong> For neutral spirit, it is economically more advantageous. For aromatic distillates, it is not applicable.
+        </div>
+
+        <h2 id="legal">Chapter 10. Legal Context</h2>
+        <p>In EU countries and beyond, legislation on home distillation varies:</p>
+        <ul>
+            <li><strong>Germany, Austria, France:</strong> home distillation requires registration and excise duty payment. Rectification columns above a certain power threshold may be prohibited for private use.</li>
+            <li><strong>Italy, Spain, Portugal:</strong> limited volumes for personal consumption are permitted, subject to notification.</li>
+            <li><strong>Scandinavian countries:</strong> home distillation is generally prohibited.</li>
+            <li><strong>Hungary, Romania, Bulgaria:</strong> quotas and traditions exist, but volume and strength restrictions apply.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>In some countries, rectification columns are regulated separately from simple still boilers,</strong> because they allow production of alcohol above 90% ABV, which may be equated to industrial production. Check the current regulations of your country before purchasing equipment.
+        </div>
+
+        <h2>Conclusion: The Method Is Determined by the Goal</h2>
+        <p>The choice between distillation and rectification is not a question of "what is better." It is a question of <em>"what do you want to get?"</em></p>
+        <p>If your goal is an <strong>aromatic distillate</strong> with the character of the raw material (whiskey, calvados, grappa, slivovitz, chacha, honey brandy), your method is <strong>simple fractional distillation</strong>. One or two theoretical plates, gentle heads collection, hearts at 55–65%. Aroma is the main value, and rectification will destroy it.</p>
+        <p>If your goal is a <strong>clean neutral spirit</strong> for vodka, tinctures, liqueurs, gin, your method is <strong>rectification</strong>. Thirty to fifty theoretical plates, reflux ratio 3–5, strength 92–96%. Purity is the main value, and simple distillation will not provide it.</p>
+        <p>If your goal is <strong>versatility</strong>, your method is a <strong>hybrid apparatus with adjustable reflux</strong>. For aromatic washes — simple boiler mode. For sugar wash — rectification mode. One apparatus, two styles.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🍎 Aromatic Raw Material → Simple Distillation</strong>
+                Fruit, berries, grain, honey. Rectification will kill the bouquet.
+            </div>
+            <div class="principle-item">
+                <strong>🍬 Sugar and Neutrality → Rectification</strong>
+                Clean spirit for tinctures and vodka. Simple distillation will not give 96%.
+            </div>
+            <div class="principle-item">
+                <strong>⚠️ Fractional Distillation Is Mandatory in Both Cases</strong>
+                Never drink low wines without separating fractions. The heads are toxic. The tails are unpleasant. The hearts are what you are looking for.
+            </div>
+        </div>
+
+        <p>Understanding the physics of the process turns the choice of method from guessing into a conscious decision. And a conscious decision is the difference between "I'm making moonshine" and "I'm creating a drink."</p>
+        <p><em>Successful runs and a clean product.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>
