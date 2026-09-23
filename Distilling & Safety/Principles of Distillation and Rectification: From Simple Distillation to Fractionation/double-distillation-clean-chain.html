@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Distillation and the "Clean Chain" Strategy: Wash & Low Wines Purification | Distillpedia</title>
+<style>
+    :root {
+        --primary-color: #134e4a;
+        --accent-color: #0d9488;
+        --accent-light: #14b8a6;
+        --accent-dark: #0f766e;
+        --bg-color: #f5f9f9;
+        --text-color: #2c3e50;
+        --light-gray: #e0e0e0;
+        --note-bg: #e0f2f1;
+        --note-border: #80cbc4;
+        --note-text: #00695c;
+        --takeaway-bg: #e8f5e9;
+        --takeaway-text: #1b5e20;
+        --warning-bg: #fdf2f2;
+        --warning-text: #991b1b;
+        --danger-bg: #fdecea;
+        --danger-text: #78281f;
+        --gold: #fbbf24;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(135deg, #134e4a 0%, #0d9488 100%);
+        color: white;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.04) 30px 32px);
+        pointer-events: none;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+            text-transform: uppercase;
+        position: relative;
+    }
+    header .tagline {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+        font-style: italic;
+        position: relative;
+    }
+    nav {
+        background-color: #134e4a;
+        text-align: center;
+        padding: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav a {
+        color: #b2dfdb;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: #80cbc4; }
+    main {
+        max-width: 920px;
+        margin: 2.5rem auto;
+        background: white;
+        padding: 3rem 4rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 12px;
+    }
+    h1.article-title {
+        font-size: 2.3rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        border-bottom: 4px solid var(--accent-color);
+        padding-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 1.15rem;
+        color: #546e7a;
+        font-style: italic;
+        margin-bottom: 2.5rem;
+        border-left: 3px solid var(--accent-color);
+        padding-left: 15px;
+    }
+    .toc {
+        background-color: #f0faf9;
+        border: 1px solid #b2dfdb;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: var(--accent-dark);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+    .toc ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+    .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        margin-top: 3.5rem;
+        font-size: 1.6rem;
+        scroll-margin-top: 70px;
+    }
+    h3 {
+        color: var(--accent-dark);
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+    h4 {
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    p { margin-bottom: 1.2rem; text-align: justify; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+    li { margin-bottom: 0.6rem; }
+    .key-takeaway {
+        background-color: var(--takeaway-bg);
+        border-left: 4px solid #10b981;
+        padding: 15px 20px;
+        margin: 2rem 0;
+        font-weight: 500;
+        border-radius: 4px;
+        color: var(--takeaway-text);
+    }
+    .practical-note {
+        background-color: var(--note-bg);
+        border: 1px solid var(--note-border);
+        color: var(--note-text);
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+    }
+    .practical-note strong { color: #004d40; }
+    .warning-note {
+        background-color: var(--warning-bg);
+        border-left: 4px solid #ef4444;
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: var(--warning-text);
+    }
+    .warning-note strong { color: #7f1d1d; }
+    .danger-note {
+        background-color: var(--danger-bg);
+        border: 1px solid #f5b7b1;
+        border-left: 5px solid #c0392b;
+        padding: 1.4rem 1.6rem;
+        border-radius: 6px;
+        margin: 1.8rem 0;
+        color: var(--danger-text);
+    }
+    .danger-note strong { color: #78281f; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.93rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid #e0e8e0;
+        padding: 11px 14px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: #b2dfdb;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) { background-color: #f0faf9; }
+    .table-scroll { overflow-x: auto; border-radius: 8px; }
+    /* Clean chain visualization */
+    .chain-wrap {
+        margin: 2.5rem 0;
+        background: #f0faf9;
+        border-radius: 12px;
+        padding: 2rem 1.5rem 1.5rem;
+        border: 1px solid #b2dfdb;
+    }
+    .chain-wrap .chain-title {
+        text-align: center;
+        font-weight: 700;
+        color: var(--accent-dark);
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+    .chain-flow {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .chain-stage {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem 1rem;
+        text-align: center;
+        flex: 1;
+        min-width: 140px;
+        border-top: 4px solid var(--accent-color);
+        box-shadow: 0 2px 8px rgba(13,148,136,0.12);
+    }
+    .chain-stage .cs-num {
+        display: inline-block;
+        background: var(--accent-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .chain-stage .cs-name {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 0.95rem;
+        display: block;
+    }
+    .chain-stage .cs-desc {
+        font-size: 0.78rem;
+        color: #546e7a;
+        margin-top: 5px;
+        display: block;
+    }
+    .chain-arrow {
+        display: flex;
+        align-items: center;
+        color: var(--accent-color);
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+    /* Problem cards */
+    .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .problem-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .problem-card .pc-header {
+        background: linear-gradient(135deg, #b03a2e, #922b21);
+        color: white;
+        padding: 0.9rem 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .problem-card .pc-header .pc-icon { font-size: 1.5rem; }
+    .problem-card .pc-header h4 { margin: 0; color: white; font-size: 1.02rem; }
+    .problem-card .pc-body { padding: 1.1rem 1.2rem; font-size: 0.9rem; }
+    .problem-card .pc-body p { margin-bottom: 0.6rem; }
+    .problem-card .pc-body .pc-result {
+        background: #fdf2f2;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        color: #922b21;
+        margin-top: 0.5rem;
+    }
+    /* Method cards */
+    .method-card {
+        background: white;
+        border: 1px solid #b2dfdb;
+        border-left: 5px solid var(--accent-color);
+        border-radius: 10px;
+        padding: 1.3rem 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 8px rgba(13,148,136,0.08);
+    }
+    .method-card h4 {
+        margin-top: 0;
+        color: var(--accent-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .method-card .method-sub {
+        font-size: 0.88rem;
+        color: #546e7a;
+        font-style: italic;
+        margin-bottom: 0.8rem;
+    }
+    .method-card .step {
+        display: flex;
+        gap: 12px;
+        margin: 0.8rem 0;
+        align-items: flex-start;
+    }
+    .method-card .step-num {
+        background: var(--accent-color);
+        color: white;
+        min-width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+    .method-card .step p { margin: 0; font-size: 0.92rem; }
+    /* Fraction comparison (Chapter 6) */
+    .fraction-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .fraction-card {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        background: white;
+    }
+    .fraction-card .fc-header {
+        padding: 0.9rem 1.2rem;
+        color: white;
+    }
+    .fraction-card .fc-header h4 { margin: 0; color: white; font-size: 1.05rem; }
+    .fraction-card .fc-body { padding: 1.1rem 1.2rem; font-size: 0.88rem; }
+    .fraction-card .fc-body p { margin-bottom: 0.6rem; }
+    .fc-heads .fc-header { background: linear-gradient(135deg, #e53935, #b71c1c); }
+    .fc-body-heads { background: #fdf2f2; }
+    .fc-body-heads strong { color: #b71c1c; }
+    .fc-body-body { background: #e8f5e9; }
+    .fc-body-body strong { color: #1b5e20; }
+    .fc-body-tails { background: #fdecea; }
+    .fc-body-tails strong { color: #78281f; }
+    /* Purification method cards (Chapter 5) */
+    .purify-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 1.5rem 0;
+    }
+    .purify-card {
+        background: white;
+        border: 1px solid #b2dfdb;
+        border-radius: 10px;
+        padding: 1.2rem 1.4rem;
+        box-shadow: 0 2px 8px rgba(13,148,136,0.08);
+    }
+    .purify-card h4 {
+        margin-top: 0;
+        color: var(--accent-dark);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .purify-card .purify-sub {
+        font-size: 0.85rem;
+        color: #546e7a;
+        font-style: italic;
+        margin-bottom: 0.6rem;
+    }
+    .purify-card ul { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .purify-card .purify-effect {
+        background: #e0f2f1;
+        border-radius: 6px;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        color: var(--note-text);
+        margin-top: 0.5rem;
+    }
+    /* Golden rule box */
+    .golden-rule {
+        background: linear-gradient(135deg, #fef9e7, #fdebd0);
+        border: 1px solid #f9e79f;
+        border-left: 5px solid var(--gold);
+        border-radius: 8px;
+        padding: 1.4rem 1.6rem;
+        margin: 1.8rem 0;
+    }
+    .golden-rule h4 { margin-top: 0; color: #7d6608; display: flex; align-items: center; gap: 8px; }
+    .golden-rule p { margin-bottom: 0.6rem; font-size: 0.95rem; }
+    /* Raw material table highlights */
+    td.best-method { background: #e8f5e9 !important; font-weight: 600; }
+    /* Principles */
+    .principles {
+        background: linear-gradient(135deg, #134e4a 0%, #0d9488 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .principles::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.04) 30px 32px);
+        pointer-events: none;
+    }
+    .principles h3 {
+        color: #b2dfdb;
+        margin-top: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+    .principles .principle-item {
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.2rem 0;
+        border-left: 4px solid var(--gold);
+        position: relative;
+    }
+    .principles .principle-item strong {
+        color: #fde68a;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem;
+        color: #78909c;
+        font-size: 0.9rem;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+        main { padding: 1.5rem; margin: 1rem; }
+        h1.article-title { font-size: 1.7rem; }
+        table { font-size: 0.8rem; }
+        th, td { padding: 8px; }
+        nav { padding: 0.5rem; }
+        nav a { margin: 0 8px; font-size: 0.75rem; }
+        .toc ol { columns: 1; }
+        .problem-grid, .fraction-grid, .use-grid { grid-template-columns: 1fr; }
+        .use-grid { grid-template-columns: 1fr; }
+        .chain-flow { flex-direction: column; align-items: center; }
+        .chain-arrow { transform: rotate(90deg); }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Techniques</a>
+    <a href="#">Purification</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Double Distillation and the "Clean Chain" Strategy</h1>
+        <p class="subtitle">Why pre-clarifying the wash (with bentonite and other methods) and intermediate purification of low wines turn double distillation from a simple formality into the creation of a premium beverage.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Illusion of "Double Purification"</a></li>
+                <li><a href="#anatomy">Chapter 1. Anatomy of "Dirty" Wash: What Happens in the Pot</a></li>
+                <li><a href="#clarification">Chapter 2. Wash Clarification Before the First Run</a></li>
+                <li><a href="#warning">Chapter 3. Critical Warning: When Bentonite Is the Enemy</a></li>
+                <li><a href="#first-run">Chapter 4. First Run: How Clean Wash Changes Everything</a></li>
+                <li><a href="#intermediate">Chapter 5. Intermediate Purification of Low Wines</a></li>
+                <li><a href="#second-run">Chapter 6. Second Run: How Purification Makes Separation Easier</a></li>
+                <li><a href="#raw-materials">Chapter 7. Summary Table: Choosing Purification by Raw Material</a></li>
+                <li><a href="#mistakes">Chapter 8. Typical Mistakes During Intermediate Purification</a></li>
+                <li><a href="#conclusion">Conclusion: Distillation as Preventive Medicine</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Illusion of "Double Purification"</h2>
+        <p>Among beginner distillers there is a persistent myth: "If I distill the wash twice, I will get a clean product." In practice, this often leads to disappointment. Double distillation (obtaining low wines followed by fractional distillation) is not a magic filter. It is a physical separation process. And if "dirt" (dead yeast, suspended particles, pectins, proteins) enters the pot at the start, then even two distillations cannot fully eliminate the consequences of their thermal destruction.</p>
+        <p>Double distillation reveals its true potential only when it is built into a <strong>"clean chain" strategy</strong>. This strategy implies purification at three critical stages:</p>
+        <ul>
+            <li><strong>Before the first distillation:</strong> clarification and stabilization of the wash (removal of biological suspended particles).</li>
+            <li><strong>During the first distillation:</strong> obtaining clean low wines without burnt or boiled-yeast smells.</li>
+            <li><strong>Between distillations:</strong> intermediate physico-chemical purification of the low wines.</li>
+        </ul>
+        <p>This article is a deep dive into the first and third stages. We will examine why clarifying the wash with bentonite before the first distillation radically changes the distillate's profile, how to properly perform intermediate purification of low wines, and why these steps turn the final fraction separation (heads, body, tails) into a surgically precise operation.</p>
+
+        <div class="chain-wrap">
+            <div class="chain-title">The "Clean Chain" — Purification at Every Stage</div>
+            <div class="chain-flow">
+                <div class="chain-stage">
+                    <span class="cs-num">1</span>
+                    <span class="cs-name">Wash Clarification</span>
+                    <span class="cs-desc">Remove biological suspended particles</span>
+                </div>
+                <div class="chain-arrow">→</div>
+                <div class="chain-stage">
+                    <span class="cs-num">2</span>
+                    <span class="cs-name">First Run</span>
+                    <span class="cs-desc">Obtain clean low wines</span>
+                </div>
+                <div class="chain-arrow">→</div>
+                <div class="chain-stage">
+                    <span class="cs-num">3</span>
+                    <span class="cs-name">Intermediate Purification</span>
+                    <span class="cs-desc">Physico-chemical treatment of low wines</span>
+                </div>
+                <div class="chain-arrow">→</div>
+                <div class="chain-stage">
+                    <span class="cs-num">4</span>
+                    <span class="cs-name">Second Run</span>
+                    <span class="cs-desc">Surgical fraction separation</span>
+                </div>
+                <div class="chain-arrow">→</div>
+                <div class="chain-stage">
+                    <span class="cs-num">5</span>
+                    <span class="cs-name">Clean Spirit</span>
+                    <span class="cs-desc">Premium beverage</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="anatomy">Chapter 1. Anatomy of "Dirty" Wash: What Happens in the Pot?</h2>
+        <p>To understand the benefit of preliminary purification, you need to look inside the pot into which unclarified wash has been poured.</p>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="pc-header">
+                    <span class="pc-icon">🦠</span>
+                    <h4>1.1 Yeast Sediment and Autolysis</h4>
+                </div>
+                <div class="pc-body">
+                    <p>At the bottom of the fermentation vessel, a dense layer of sediment always accumulates: dead and weakened yeast cells, nutrient residue, protein flakes.</p>
+                    <p>When heated in the pot, <strong>thermal autolysis</strong> occurs — the destruction of yeast cell membranes. The following are released into the liquid:</p>
+                    <ul>
+                        <li><strong>Amino acids and peptides:</strong> at high temperatures they enter the Maillard reaction, giving the distillate a heavy "boiled meat" or "dog food" smell.</li>
+                        <li><strong>Lipids (fats):</strong> oxidize and give a rancid, fatty tone.</li>
+                        <li><strong>Sulfur compounds:</strong> released from intracellular structures, giving smells of rotten eggs and rubber.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="pc-header">
+                    <span class="pc-icon">🔥</span>
+                    <h4>1.2 The Scorching Effect</h4>
+                </div>
+                <div class="pc-body">
+                    <p>Suspended particles (especially in grain and fruit washes) settle on the bottom of the pot and on the heating elements. At temperatures above 100 °C they instantly caramelize and char.</p>
+                    <div class="pc-result"><strong>Result:</strong> A persistent burnt smell that penetrates the vapor and condenses into the low wines. This smell is practically impossible to remove with subsequent purifications — furfural and pyrazine molecules bind too strongly to ethanol.</div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="pc-header">
+                    <span class="pc-icon">🫧</span>
+                    <h4>1.3 Foam Formation and Entrainment</h4>
+                </div>
+                <div class="pc-body">
+                    <p>Proteins and sugar residues act as surfactants. When boiling, they form a thick, stable foam. The foam rises through the column or vapor line, carrying liquid droplets (entrainment). As a result, not only evaporated alcohol but also physically carried "dirt" from the pot enters the receiving vessel.</p>
+                    <div class="pc-result"><strong>Conclusion:</strong> The first distillation of unclarified wash is not distillation, but extraction of biomass decay products.</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="clarification">Chapter 2. Wash Clarification Before the First Run: Methods and Chemistry</h2>
+        <p>The goal of preliminary purification is to maximally remove solid particles, proteins, and dead yeast <em>before</em> the wash enters the pot.</p>
+
+        <div class="method-card">
+            <h4>🧱 2.1 Bentonite: The Gold Standard for Sugar and Fruit Washes</h4>
+            <p class="method-sub">Bentonite is a natural white clay (aluminosilicate) with unique absorbing properties.</p>
+            <p><strong>How it works (physics of the process):</strong></p>
+            <p>In aqueous solution, bentonite particles swell and acquire a strong negative electrical charge. Dead yeast cells, protein flakes, and most suspended particles in the wash have a positive charge.</p>
+            <p>When bentonite is added, <strong>electrostatic attraction</strong> occurs: the clay binds suspended particles into heavy flakes (flocs) and rapidly pulls them to the bottom.</p>
+            <p><strong>Application technology:</strong></p>
+            <div class="step">
+                <div class="step-num">1</div>
+                <p><strong>Dosage:</strong> 1–2 grams of dry bentonite per 1 liter of wash.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <p><strong>Hydration:</strong> Do not add bentonite dry! Mix it with warm water (about 50 °C) at a ratio of 10 g per 100 ml of water. Let it swell for 15–20 minutes until it reaches a liquid sour-cream consistency.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <p><strong>Addition:</strong> Pour the suspension into the wash in a thin stream while stirring actively.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <p><strong>Settling:</strong> Leave the wash undisturbed for 12–24 hours.</p>
+            </div>
+            <p><strong>Result:</strong> A dense, compressed sediment forms at the bottom. Above it is an absolutely transparent, amber liquid. Carefully decant the clean wash through a siphon.</p>
+        </div>
+
+        <div class="method-card">
+            <h4>❄️ 2.2 Cold Crash</h4>
+            <p class="method-sub">Clarification by cold.</p>
+            <p>The fermentation vessel is placed in a refrigerator or on a cold balcony (temperature +2 to +4 °C) for 48–72 hours.</p>
+            <p><strong>Mechanism:</strong> At low temperatures, yeast falls into a state of suspended animation and quickly settles. The solubility of proteins decreases, they coagulate and fall out as sediment.</p>
+            <p><strong>Advantage:</strong> Does not require the addition of any foreign substances. Ideal for grain washes (where bentonite is not applicable, see below).</p>
+        </div>
+
+        <div class="method-card">
+            <h4>🧪 2.3 Enzymatic Clarification (Pectinase and Flocculants)</h4>
+            <p><strong>Pectinase:</strong> Mandatory for fruit and berry washes. It breaks down pectin, which causes cloudiness and binds water. It reduces viscosity and the amount of methanol.</p>
+            <p><strong>Chitosan and Kieselsol:</strong> Professional winemaking fining agents. Chitosan (positive charge) attracts negatively charged suspended particles, and Kieselsol (negative charge) attracts positive ones. Working in pairs, they clarify the wash to crystal transparency in 12 hours.</p>
+        </div>
+
+        <h2 id="warning">Chapter 3. Critical Warning: When Bentonite Is the Enemy</h2>
+        <div class="danger-note">
+            <strong>⚠️ Bentonite is a powerful tool, but it is categorically NOT suitable for grain washes (whiskey, bourbon, polugar, rye moonshine).</strong>
+            <p style="margin-top:0.8rem;"><strong>Why?</strong> Grain mash contains an enormous amount of dextrins, beta-glucans, and insoluble starch. Bentonite binds with them, turning the liquid wash into a thick, viscous jelly or even something resembling concrete.</p>
+            <ul style="margin-top:0.8rem; margin-bottom:0;">
+                <li>Such wash cannot be decanted from the sediment.</li>
+                <li>When heated in the pot, this "jelly" instantly scorches to the bottom, even if a stirrer is used.</li>
+                <li>Bentonite can adsorb some of the aromatic precursors, impoverishing the malt profile.</li>
+            </ul>
+            <p style="margin-top:0.8rem; margin-bottom:0;"><strong>The rule:</strong><br>
+            Sugar, fruit, berry, honey wash → Bentonite, chitosan, kieselsol.<br>
+            Grain wash → Only filtration through a sieve/cheesecloth, settling, and cold crash.</p>
+        </div>
+
+        <h2 id="first-run">Chapter 4. First Run: How Clean Wash Changes Everything</h2>
+        <p>When you pour clarified wash into the pot, the first distillation (obtaining low wines) is transformed:</p>
+        <ul>
+            <li><strong>Speed:</strong> You can apply maximum heat without risk of scorching and entrainment. The first distillation takes 1.5–2 times less time.</li>
+            <li><strong>Aroma of the low wines:</strong> The low wines smell of clean alcohol and the base notes of the raw material (fruit, honey). There are no tones of "boiled porridge," autolyzed yeast, or burnt smell.</li>
+            <li><strong>Cleanliness of the equipment:</strong> The pot and heating elements after draining the stillage remain relatively clean, easy to rinse with water. There is no need for scrubbing (hard cleaning) after each distillation.</li>
+        </ul>
+
+        <h2 id="intermediate">Chapter 5. Intermediate Purification of Low Wines (Between First and Second Runs)</h2>
+        <p>Even from perfectly clarified wash, the low wines (25–35% ABV) contain a concentrate of impurities: fusel oils, aldehydes, complex esters (including ethyl acetate). Intermediate purification of low wines before the second fractional distillation is the secret to a perfectly smooth product that does not require years of barrel aging to mellow.</p>
+
+        <div class="golden-rule">
+            <h4>⭐ 5.1 The Golden Rule: Dilution</h4>
+            <p>Before any purification, the low wines must be diluted with clean water to a strength of <strong>15–20% ABV</strong> (maximum 25%).</p>
+            <p><strong>Physics of the process:</strong> In strong alcohol (30–40%), fusel oil and ester molecules are strongly bound to ethanol by hydrogen bonds. When diluted with water to 15–20%, these bonds break, the impurities "open up" and become accessible to adsorbents or chemical reagents. In addition, low strength before the second distillation provides maximum separating capacity of the column or thump keg.</p>
+        </div>
+
+        <div class="purify-grid">
+            <div class="purify-card">
+                <h4>🪵 5.2 Method 1: Charcoal Treatment (Activated Coconut Carbon)</h4>
+                <p class="purify-sub">The most popular and safe method.</p>
+                <ul>
+                    <li><strong>Material:</strong> Only specialized coconut carbon for spirits (e.g., BAU-A, BAU-LV). Pharmacy tablets and barbecue charcoal cannot be used (they contain resins and chemicals).</li>
+                    <li><strong>Dosage:</strong> 1–2 tablespoons (10–15 g) per 1 liter of diluted low wines.</li>
+                    <li><strong>Process:</strong> Pour the carbon into the low wines, stir. Leave for 12–24 hours, shaking periodically. Filter through a cotton pad or paper filter.</li>
+                </ul>
+                <div class="purify-effect"><strong>Effect:</strong> Carbon excellently adsorbs heavy fusel oils (isoamyl, isobutyl) and some aldehydes. The distillate becomes smoother. <em>Drawback:</em> Carbon can "flatten" the aroma of fruit and berry distillates. For them, this method is used with caution.</div>
+            </div>
+            <div class="purify-card">
+                <h4>🧂 5.3 Method 2: Alkaline Purification (Baking Soda or Sodium Hydroxide)</h4>
+                <p class="purify-sub">Aimed at removing ethyl acetate (solvent, glue smell) and acetic acid.</p>
+                <ul>
+                    <li><strong>Chemistry:</strong> Alkali enters the saponification reaction (alkaline hydrolysis) with ethyl acetate, converting it into sodium acetate (a salt) and ethyl alcohol. The salt is non-volatile and remains in the pot during the second distillation.</li>
+                    <li><strong>Recipe (soda):</strong> 10 g of baking soda per 1 liter of low wines (20% strength). Dissolve the soda in a small amount of water, pour into the low wines. Leave for 12 hours. Then add 10 ml of 9% vinegar per liter to neutralize the alkali. Filter.</li>
+                    <li><strong>Recipe (NaOH/KOH — for professionals only):</strong> 1–2 grams of caustic soda per liter. Requires precise scales and caution.</li>
+                </ul>
+                <div class="purify-effect"><strong>Effect:</strong> Completely removes the smell of "acetone" and solvent. Ideal for sugar and grain distillates.</div>
+            </div>
+            <div class="purify-card">
+                <h4>🥛 5.4 Method 3: Milk Purification (Casein Coagulation)</h4>
+                <p class="purify-sub">An old but scientifically sound method.</p>
+                <ul>
+                    <li><strong>Chemistry:</strong> Casein (milk protein), when interacting with alcohol and the acidic environment of the low wines, coagulates into flakes. During coagulation, casein captures and carries heavy fusel oils and aldehydes to the bottom.</li>
+                    <li><strong>Process:</strong> Pour 10–15 ml of skim milk (or dry milk diluted in water) per 1 liter of 20% low wines. Stir. The milk will coagulate. Leave for 2–3 days, shaking periodically. Filter through a dense cotton filter.</li>
+                </ul>
+                <div class="purify-effect"><strong>Effect:</strong> Makes the alcohol incredibly smooth, "rounded." Excellent for grain and sugar distillates.</div>
+            </div>
+            <div class="purify-card">
+                <h4>🧊 5.5 Method 4: Freeze Purification (For Fruit and Berry)</h4>
+                <p class="purify-sub">Physics: water and heavy fusel oils freeze at higher temperatures than ethanol.</p>
+                <ul>
+                    <li><strong>Process:</strong> The low wines are placed in a freezer (−18 °C). Water and fusel oils turn into ice, while ethanol with aromatic esters remains liquid. The liquid is drained, the ice is discarded.</li>
+                </ul>
+                <div class="purify-effect"><strong>Effect:</strong> Concentrates the aroma, removes wateriness and some of the heavy fusel oils, without affecting the volatile fruit esters.</div>
+            </div>
+        </div>
+
+        <h2 id="second-run">Chapter 6. Second Run: How Purification Makes Separation Easier</h2>
+        <p>If you have performed wash clarification and intermediate purification of low wines, the second (fractional) distillation becomes a pleasure. Here's how the process changes:</p>
+
+        <div class="fraction-grid">
+            <div class="fraction-card fc-heads">
+                <div class="fc-header">
+                    <h4>6.1 Heads (Ether-Aldehyde Fraction)</h4>
+                </div>
+                <div class="fc-body fc-body-heads">
+                    <p><strong>Before purification:</strong> Heads are stretched, smelling not only of acetone but also of boiled yeast. The transition boundary to the body is blurred; you have to take with a margin, losing drinkable alcohol.</p>
+                    <p><strong>After purification:</strong> Heads are concentrated, smelling sharply and cleanly (solvent, green apple). Their volume strictly corresponds to the mathematical calculation (5–8% of absolute alcohol). As soon as the sharpness disappears, the clean body begins immediately.</p>
+                </div>
+            </div>
+            <div class="fraction-card">
+                <div class="fc-header" style="background: linear-gradient(135deg, #43a047, #1b5e20);">
+                    <h4>6.2 Body (Drinkable Fraction)</h4>
+                </div>
+                <div class="fc-body fc-body-body">
+                    <p><strong>Before purification:</strong> The body contains "tail" shades (fusel oils, cardboard), which mask the aroma of the raw material. When diluted with water to 40%, the drink may become cloudy.</p>
+                    <p><strong>After purification:</strong> The body is crystal transparent, aromatic. The taste is smooth, without alcohol burn on the finish. When diluted with water, it remains transparent (if the raw material did not contain specific waxes).</p>
+                </div>
+            </div>
+            <div class="fraction-card">
+                <div class="fc-header" style="background: linear-gradient(135deg, #6d4c41, #3e2723);">
+                    <h4>6.3 Tails (Fusel Fraction)</h4>
+                </div>
+                <div class="fc-body fc-body-tails">
+                    <p><strong>Before purification:</strong> The transition from body to tails is smooth, "dirty." Fusel oils begin to be pulled up long before the critical temperature in the pot.</p>
+                    <p><strong>After purification:</strong> The transition is sharp and obvious. You clearly smell with your nose the moment when isoamyl appears (smell of wet cardboard/fusel oils). This allows you to "squeeze" the maximum quality alcohol from the body without fear of spoiling it with tails.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="raw-materials">Chapter 7. Summary Table: Choosing Purification Methods by Raw Material</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Raw Material Type</th>
+                    <th>Wash Clarification (before 1st run)</th>
+                    <th>Intermediate Purification of Low Wines (before 2nd run)</th>
+                    <th>Expected Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sugar</strong></td>
+                    <td class="best-method">Bentonite (mandatory)</td>
+                    <td>Soda + Carbon, or Milk</td>
+                    <td>Ideally neutral, smooth alcohol (base for vodka, tinctures)</td>
+                </tr>
+                <tr>
+                    <td><strong>Grain</strong></td>
+                    <td>Filtration, Cold crash (Bentonite FORBIDDEN)</td>
+                    <td>Carbon (moderate), or Milk</td>
+                    <td>Clean malt/bread profile without "boiled porridge" tone</td>
+                </tr>
+                <tr>
+                    <td><strong>Fruit</strong></td>
+                    <td>Pectinase, Kieselsol + Chitosan, Cold crash</td>
+                    <td>Freeze purification, or light charcoal treatment</td>
+                    <td>Bright, fresh fruit aroma without heavy fusel tones</td>
+                </tr>
+                <tr>
+                    <td><strong>Berry</strong></td>
+                    <td>Pectinase, Cold crash</td>
+                    <td class="best-method">Only freeze purification (carbon will kill the aroma)</td>
+                    <td>Delicate berry bouquet, preservation of volatile esters</td>
+                </tr>
+                <tr>
+                    <td><strong>Honey</strong></td>
+                    <td>Bentonite or Chitosol</td>
+                    <td>Minimal (cold only)</td>
+                    <td>Preservation of honey's waxy and floral notes</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="mistakes">Chapter 8. Typical Mistakes During Intermediate Purification</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Purification of undiluted low wines (30–40%)</td>
+                    <td>Carbon/soda does not work. Impurities are strongly bound to ethanol.</td>
+                    <td>Always dilute low wines with water to 15–20% before purification.</td>
+                </tr>
+                <tr>
+                    <td>Using bentonite on grain wash</td>
+                    <td>The wash turns into jelly, scorches in the pot, the apparatus is ruined.</td>
+                    <td>Grain should be cleaned only by filtration and cold.</td>
+                </tr>
+                <tr>
+                    <td>Overexposure on carbon (more than 48 hours)</td>
+                    <td>Desorption: carbon begins to release accumulated poisons back into the alcohol.</td>
+                    <td>Charcoal treatment no more than 12–24 hours, then mandatory filtration.</td>
+                </tr>
+                <tr>
+                    <td>Using pharmacy carbon</td>
+                    <td>The alcohol acquires a bitter taste and medicinal smell.</td>
+                    <td>Use only coconut carbon grades BAU-A, KAU-A.</td>
+                </tr>
+                <tr>
+                    <td>No filtration after milk/carbon</td>
+                    <td>Micro-particles of carbon or casein enter the pot, scorch during the 2nd run.</td>
+                    <td>Filter through dense cotton or paper filter before pouring into the pot.</td>
+                </tr>
+                <tr>
+                    <td>Using potassium permanganate</td>
+                    <td>Oxidizes ethanol to acetic aldehyde, spoils the product, toxic.</td>
+                    <td>Categorically forget this Soviet method.</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="conclusion">Conclusion: Distillation as Preventive Medicine</h2>
+        <p>Many distillers try to "cure" a bad product at the stage of the second distillation, making huge cuts of heads and tails, losing up to 30–40% of the precious body. But the professional approach states: <strong>the quality of the drink is formed not at the moment of fraction separation, but at the preparation stages.</strong></p>
+        <p>Wash clarification with bentonite removes biological "garbage" <em>before</em> it is thermally destroyed in the pot. Intermediate purification of low wines breaks the molecular bonds of impurities <em>before</em> they enter the second distillation.</p>
+        <p>As a result, you get not just "purified moonshine," but a noble distillate with a surgically precise profile, where heads and tails are cut off easily and confidently, and the body delights with crystal purity and smoothness.</p>
+
+        <div class="principles">
+            <h3>Three Golden Rules of the Clean Chain</h3>
+            <div class="principle-item">
+                <strong>1. Only transparent liquid should enter the pot.</strong>
+                Cloudy wash is a guarantee of burnt smell and autolysis. Use bentonite for sugar/fruit and cold for grain.
+            </div>
+            <div class="principle-item">
+                <strong>2. Dilution is the key to chemistry.</strong>
+                Intermediate purification of low wines works only at a strength of 15–20%. In strong alcohol, impurities "hide" from adsorbents.
+            </div>
+            <div class="principle-item">
+                <strong>3. Respect the raw material.</strong>
+                What is ideal for sugar wash (aggressive carbon, soda) will kill the delicate aroma of berry or honey. Choose the purification method to match the character of your raw material.
+            </div>
+        </div>
+
+        <p>Clean wash → clean low wines → clean body. This formula works flawlessly.</p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

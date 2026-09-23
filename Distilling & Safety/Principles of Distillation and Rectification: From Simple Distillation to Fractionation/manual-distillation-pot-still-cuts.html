@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Distillation: Mastering the Cuts by Hand | Distillpedia</title>
+    <style>
+        :root {
+            --bg-color: #F9F6F0;
+            --text-color: #2C1E16;
+            --wood-dark: #3E2723;
+            --wood-light: #5D4037;
+            --copper: #B87333;
+            --copper-dark: #8D5524;
+            --copper-light: #D49A6A;
+            --brass: #D4AF37;
+            --note-bg: #FDF8ED;
+            --note-border: #D49A6A;
+            --warning-bg: #FBE9E7;
+            --warning-text: #BF360C;
+            --takeaway-bg: #E8F5E9;
+            --takeaway-text: #1B5E20;
+            --serif: 'Georgia', 'Times New Roman', serif;
+            --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #3E2723 0%, #5D4037 50%, #3E2723 100%);
+            border-bottom: 4px solid var(--copper);
+            color: #F9F6F0;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(184, 115, 51, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        header h1 {
+            font-family: var(--serif);
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        header .tagline {
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            opacity: 0.85;
+            font-style: italic;
+            position: relative;
+            color: var(--copper-light);
+        }
+
+        nav {
+            background-color: var(--wood-dark);
+            text-align: center;
+            padding: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--copper-dark);
+        }
+        nav a {
+            color: #D7CCC8;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--brass); }
+
+        main {
+            max-width: 880px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3.5rem 4rem;
+            box-shadow: 0 15px 40px rgba(62, 39, 35, 0.1);
+            border-radius: 4px;
+            border: 1px solid #E0D8C8;
+        }
+
+        h1.article-title {
+            font-family: var(--serif);
+            font-size: 2.6rem;
+            color: var(--wood-dark);
+            margin-top: 0;
+            border-bottom: 3px double var(--copper);
+            padding-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--wood-light);
+            font-style: italic;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--copper);
+            padding-left: 18px;
+            background: var(--note-bg);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .toc {
+            background-color: #FDFBF7;
+            border: 1px solid #E0D8C8;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: inset 0 0 20px rgba(184, 115, 51, 0.03);
+        }
+        .toc h3 {
+            font-family: var(--serif);
+            margin-top: 0;
+            color: var(--copper-dark);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--copper-light);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2.5rem;
+        }
+        .toc li { margin-bottom: 0.6rem; break-inside: avoid; }
+        .toc a { color: var(--wood-light); text-decoration: none; font-weight: 500; }
+        .toc a:hover { color: var(--copper); text-decoration: underline; }
+
+        h2 {
+            font-family: var(--serif);
+            color: var(--wood-dark);
+            border-left: 6px solid var(--copper);
+            padding-left: 18px;
+            margin-top: 4rem;
+            font-size: 1.9rem;
+            scroll-margin-top: 80px;
+        }
+        h3 {
+            font-family: var(--serif);
+            color: var(--copper-dark);
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+            border-bottom: 1px dotted var(--copper-light);
+            padding-bottom: 5px;
+        }
+        h4 {
+            color: var(--wood-dark);
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        p { margin-bottom: 1.3rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.7rem; }
+
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 5px solid #43a047;
+            padding: 18px 24px;
+            margin: 2.5rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+            font-size: 1.05rem;
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--wood-dark);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 10px rgba(184, 115, 51, 0.05);
+        }
+        .practical-note strong { color: var(--copper-dark); }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 5px solid #D84315;
+            padding: 18px 24px;
+            border-radius: 4px;
+            margin: 2rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #8B0000; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(62, 39, 35, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #D7CCC8;
+        }
+        th, td {
+            border: 1px solid #EFEBE9;
+            padding: 14px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--wood-dark);
+            color: var(--brass);
+            font-family: var(--serif);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        tr:nth-child(even) { background-color: #FDFBF7; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+
+        /* 5 Senses / Methods Grid */
+        .senses-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin: 2.5rem 0;
+        }
+        .sense-card {
+            background: white;
+            border: 1px solid #D7CCC8;
+            border-top: 4px solid var(--copper);
+            border-radius: 8px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sense-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(62, 39, 35, 0.1);
+        }
+        .sense-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .sense-card h4 { margin: 0; font-size: 0.95rem; color: var(--wood-dark); font-family: var(--serif); }
+        .sense-card p { font-size: 0.8rem; color: var(--wood-light); margin: 0.5rem 0 0; line-height: 1.4; }
+
+        /* Timeline for Step-by-Step */
+        .timeline {
+            position: relative;
+            padding-left: 45px;
+            border-left: 3px solid var(--copper-light);
+            margin: 2.5rem 0;
+        }
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-step::before {
+            content: "";
+            position: absolute;
+            left: -54px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: var(--copper);
+            border-radius: 50%;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 0 0 2px var(--copper);
+        }
+        .timeline-step h4 {
+            margin-top: 0;
+            color: var(--copper-dark);
+            font-family: var(--serif);
+            font-size: 1.2rem;
+        }
+
+        /* Wash Specifics Cards */
+        .wash-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 2.5rem 0;
+        }
+        .wash-card {
+            background: #FDFBF7;
+            border: 1px solid #D7CCC8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .wash-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--serif);
+            color: var(--wood-dark);
+            border-bottom: 1px solid var(--copper-light);
+            padding-bottom: 8px;
+        }
+        .wash-card ul { font-size: 0.92rem; margin-bottom: 0; }
+        .wash-card li { margin-bottom: 0.4rem; }
+
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #D7CCC8;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            background: white;
+        }
+        .faq-question {
+            background: #FDFBF7;
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+            color: var(--wood-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #EFEBE9;
+            font-family: var(--serif);
+            font-size: 1.05rem;
+        }
+        .faq-question .q-mark { color: var(--copper); font-size: 1.5rem; font-weight: 800; }
+        .faq-answer { padding: 1.2rem 1.5rem; font-size: 0.95rem; }
+        .faq-answer p { margin-bottom: 0.8rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+
+        /* Final Principles */
+        .principles {
+            background: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+            color: #F9F6F0;
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--copper);
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: var(--brass);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 0.8rem;
+            position: relative;
+            font-family: var(--serif);
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--copper);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: var(--brass);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+            font-family: var(--serif);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--wood-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #D7CCC8;
+            margin-top: 4rem;
+            background: #FDFBF7;
+        }
+
+        @media (max-width: 768px) {
+            main { padding: 2rem 1.5rem; margin: 1.5rem 1rem; }
+            h1.article-title { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 10px; }
+            nav { padding: 0.6rem; }
+            nav a { margin: 0 10px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .senses-grid { grid-template-columns: 1fr 1fr; }
+            .wash-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of artisanal distillation</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Pot Stills</a>
+    <a href="#">Cuts</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Manual Distillation: Mastering the Cuts by Hand</h1>
+        <p class="subtitle">A guide for pot still users. Why proper fraction separation matters more than any automated equipment, and how to develop the sensory skill that no controller can replace.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Hands, Nose, and Thermometer</a></li>
+                <li><a href="#why">Chapter 1. Why Fraction Separation is Mandatory</a></li>
+                <li><a href="#equipment">Chapter 2. Equipment for Manual Cuts</a></li>
+                <li><a href="#senses">Chapter 3. The Five Methods of Determining Boundaries</a></li>
+                <li><a href="#algorithm">Chapter 4. Step-by-Step Distillation Algorithm</a></li>
+                <li><a href="#washes">Chapter 5. Specifics for Different Washes</a></li>
+                <li><a href="#second">Chapter 6. The Second Distillation</a></li>
+                <li><a href="#skill">Chapter 7. Developing the Skill</a></li>
+                <li><a href="#safety">Chapter 8. Safety: Methanol and Other Risks</a></li>
+                <li><a href="#faq">Chapter 9. Frequently Asked Questions</a></li>
+                <li><a href="#philosophy">Chapter 10. The Philosophy of Manual Distillation</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Hands, Nose, and Thermometer</h2>
+        <p>In a world where distillation rigs are equipped with automatic take-off valves, electronic thermometers, and reflux controllers, it is easy to believe that the quality of the spirit is determined by the hardware. That if you buy a €1,000 rig and press a button, the perfect product will flow out.</p>
+        <p>This is a misconception. All the great spirits of the world — Cognac, Armagnac, Calvados, Scotch whisky, Grappa, Slivovitz, Pálinka — are produced on simple copper pot stills without any automation. The master distiller determines the moment to switch fractions by temperature, ABV, smell, and even the sound of the dripping spirit. This skill is passed down through generations and valued above any equipment.</p>
+        <p>Manual fractional distillation is not a "budget option." It is the fundamental method that works on any rig, from a €50 copper pot to a €50,000 artisanal alambic. And it is precisely this method that yields aromatic spirits with the character of the raw material — something impossible to achieve on a rectification column.</p>
+
+        <h2 id="why">Chapter 1. Why Fraction Separation is Mandatory</h2>
+        <h3>1.1. What Happens in the Pot Still Upon Heating</h3>
+        <p>Wash is not just a mixture of ethanol and water. It is a complex solution containing dozens of volatile and non-volatile compounds. Upon heating, all volatile substances evaporate, but not simultaneously. The order of evaporation is determined by their boiling points:</p>
+        <ul>
+            <li><strong>Acetaldehyde (20.8 °C):</strong> Exits first.</li>
+            <li><strong>Methanol (64.7 °C):</strong> Exits early.</li>
+            <li><strong>Ethyl Acetate (77.1 °C):</strong> Early / middle.</li>
+            <li><strong>Ethanol (78.37 °C):</strong> The main body.</li>
+            <li><strong>Isoamyl Alcohol (132.0 °C):</strong> Exits late (tails).</li>
+        </ul>
+        
+        <h3>1.2. The Three Fractions</h3>
+        <ul>
+            <li><strong>Heads:</strong> Methanol, acetaldehyde, acetone, ethyl acetate. Smell: sharp, chemical, solvent, nail polish remover. Toxic and unpleasant.</li>
+            <li><strong>Hearts:</strong> Ethanol, water, moderate aromatic compounds of the raw material. Smell: soft, alcoholic, true to the wash. This is the target.</li>
+            <li><strong>Tails:</strong> Isoamyl alcohol, furfural, fatty acids. Smell: heavy, oily, "fusel", wet dog, burnt bread. Unpleasant and causes severe hangovers.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>⚠️ Never drink without separating fractions.</strong> Heads are toxic (methanol causes blindness and death). Tails are harsh and harmful to the liver. The Hearts are the only safe and enjoyable fraction.
+        </div>
+
+        <h2 id="equipment">Chapter 2. Equipment for Manual Cuts</h2>
+        <p>You do not need a rectification column, a dephlegmator, or automation. You only need:</p>
+        <ul>
+            <li><strong>Pot Still (10–50L):</strong> With a tight-fitting lid.</li>
+            <li><strong>Thermometer:</strong> In the pot lid (0–120 °C, ±1 °C accuracy).</li>
+            <li><strong>Condenser:</strong> Liebig, Dimroth, or traditional copper coil.</li>
+            <li><strong>Collection Vessels:</strong> At least 3 glass jars (Heads, Hearts, Tails).</li>
+            <li><strong>Alcoholmeter:</strong> 0–96% ABV, plus a 100ml graduated cylinder.</li>
+            <li><strong>Tasting Spoons:</strong> Clean silver or stainless steel spoons for the "rub and sniff" test.</li>
+        </ul>
+
+        <h2 id="senses">Chapter 3. The Five Methods of Determining Boundaries</h2>
+        <p>Boundaries are not determined by a timer, but by a combination of signs. An experienced distiller uses all five methods simultaneously and switches when the majority indicate a transition.</p>
+        
+        <div class="senses-grid">
+            <div class="sense-card">
+                <div class="sense-icon">🌡️</div>
+                <h4>1. Pot Temp</h4>
+                <p>78–82°C (Heads)<br>82–92°C (Hearts)<br>92–98°C (Tails)</p>
+            </div>
+            <div class="sense-card">
+                <div class="sense-icon">📊</div>
+                <h4>2. ABV</h4>
+                <p>80%+ (Heads)<br>60–75% (Hearts)<br>&lt;40% (Tails)</p>
+            </div>
+            <div class="sense-card">
+                <div class="sense-icon">👃</div>
+                <h4>3. Smell</h4>
+                <p>Solvent (Heads)<br>Raw material (Hearts)<br>Fusel/Oily (Tails)</p>
+            </div>
+            <div class="sense-card">
+                <div class="sense-icon">👅</div>
+                <h4>4. Taste</h4>
+                <p>Burning (Heads)<br>Soft/Warm (Hearts)<br>Bitter/Heavy (Tails)</p>
+            </div>
+            <div class="sense-card">
+                <div class="sense-icon">📏</div>
+                <h4>5. Volume</h4>
+                <p>5-10% (Heads)<br>70-80% (Hearts)<br>10-20% (Tails)</p>
+            </div>
+        </div>
+
+        <div class="practical-note">
+            <strong>The Golden Rule:</strong> The decision to switch fractions is made when at least <strong>three out of five</strong> methods indicate a phase change. Never rely on just one metric.
+        </div>
+
+        <h3>3.1. The "Rub and Sniff" Technique</h3>
+        <p>The most sensitive method for detecting tails is smell. However, smelling directly from a glass of high-proof spirit burns the olfactory receptors. Instead, dip a clean finger or the back of your hand into the distillate, rub it vigorously to evaporate the ethanol, and smell the remaining residue. The heavy fusel oils and fatty acids of the tails will become overwhelmingly apparent, while the pleasant esters of the hearts will smell sweet and clean.</p>
+
+        <h2 id="algorithm">Chapter 4. Step-by-Step Distillation Algorithm</h2>
+        <div class="timeline">
+            <div class="timeline-step">
+                <h4>Step 1: Preparation</h4>
+                <p>Ensure the wash is fully fermented (0–2 °P), cleared, and decanted off the lees. Fill the pot still to a maximum of 2/3 capacity to prevent boil-overs. Prepare your labeled collection jars.</p>
+            </div>
+            <div class="timeline-step">
+                <h4>Step 2: Heating & The Heads</h4>
+                <p>Apply maximum heat until the first drops appear, then reduce to a moderate simmer. Collect the <strong>Heads</strong> at a slow drip rate (2–4 drops/sec). Calculate 5–10% of the absolute alcohol in the wash. Stop when the sharp solvent smell fades into a clean, alcoholic aroma.</p>
+            </div>
+            <div class="timeline-step">
+                <h4>Step 3: The Hearts</h4>
+                <p>Switch to your main collection vessel. Increase the take-off rate slightly to a thin, steady stream. Monitor the pot temperature (82–92 °C) and ABV (60–75%). The spirit should smell pleasantly of the raw material (grain, fruit, or neutral).</p>
+            </div>
+            <div class="timeline-step">
+                <h4>Step 4: The Tails Cut</h4>
+                <p>As the pot temperature approaches 92–94 °C and the ABV drops below 45%, begin checking the "rub and sniff" test frequently. When the aroma shifts from pleasant to heavy, oily, or "wet cardboard", immediately switch to the Tails jar.</p>
+            </div>
+            <div class="timeline-step">
+                <h4>Step 5: Completion</h4>
+                <p>Stop the run entirely when the pot temperature reaches 98–99 °C or the ABV drops below 20%. Turn off the heat, but leave the cooling water running for 10 minutes to condense residual vapors.</p>
+            </div>
+        </div>
+
+        <h2 id="washes">Chapter 5. Specifics for Different Washes</h2>
+        <div class="wash-grid">
+            <div class="wash-card">
+                <h4>🍬 Sugar Wash</h4>
+                <ul>
+                    <li><strong>Heads:</strong> 10% (high acetaldehyde).</li>
+                    <li><strong>Hearts Cut:</strong> Down to 45–50% ABV.</li>
+                    <li><strong>Pace:</strong> Can be slightly faster (2-4 drops/sec).</li>
+                    <li><strong>Note:</strong> Boundaries are very sharp and easy to detect.</li>
+                </ul>
+            </div>
+            <div class="wash-card">
+                <h4>🌾 Grain Wash (Whisky)</h4>
+                <ul>
+                    <li><strong>Heads:</strong> 5–8%.</li>
+                    <li><strong>Hearts Cut:</strong> Down to 55–60% ABV.</li>
+                    <li><strong>Pace:</strong> Slow (1-2 drops/sec) to preserve bread/malt notes.</li>
+                    <li><strong>Note:</strong> Copper contact is highly recommended to strip sulfur.</li>
+                </ul>
+            </div>
+            <div class="wash-card">
+                <h4>🍎 Fruit Wash (Calvados)</h4>
+                <ul>
+                    <li><strong>Heads:</strong> 3–5% (esters are volatile!).</li>
+                    <li><strong>Hearts Cut:</strong> Down to 55–60% ABV.</li>
+                    <li><strong>Pace:</strong> Extremely slow (1 drop/sec).</li>
+                    <li><strong>Note:</strong> Don't over-cut the heads, or you'll lose the fruit aroma.</li>
+                </ul>
+            </div>
+            <div class="wash-card">
+                <h4>🍒 Berry Wash (Kirsch)</h4>
+                <ul>
+                    <li><strong>Heads:</strong> 3–5%.</li>
+                    <li><strong>Hearts Cut:</strong> Down to 50–55% ABV.</li>
+                    <li><strong>Pace:</strong> As slow as possible.</li>
+                    <li><strong>Note:</strong> Delicate aromas (benzaldehyde) are easily destroyed by heat.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="second">Chapter 6. The Second Distillation</h2>
+        <p>For most washes, a single run is not enough. The classic artisanal method involves two runs:</p>
+        <ol>
+            <li><strong>Stripping Run (First Distillation):</strong> Run the wash through the pot still as fast as possible without making any cuts. Collect everything until the output drops to 20% ABV. The result is "Low Wines" (25–40% ABV).</li>
+            <li><strong>Spirit Run (Second Distillation):</strong> Dilute the low wines with water to 20–30% ABV (this lowers the boiling point and improves separation). Run it through the pot still slowly, making precise manual cuts for Heads, Hearts, and Tails as described above.</li>
+        </ol>
+
+        <h2 id="skill">Chapter 7. Developing the Skill</h2>
+        <h3>7.1. Calibrating Your Nose</h3>
+        <p>Your olfactory system is your most valuable tool. You can train it:</p>
+        <ul>
+            <li>Smell pure acetone (from a hardware store). Memorize it. This is the ethyl acetate in the heads.</li>
+            <li>Smell pure ethanol (diluted to 40%). Memorize it. This is the hearts.</li>
+            <li>Smell the tails from your previous run. Memorize the heavy, oily fusel scent.</li>
+        </ul>
+        <p>After 5–10 runs, you will be able to identify the phase transitions in 1–2 seconds without even looking at the thermometer.</p>
+
+        <h3>7.2. The Distiller's Journal</h3>
+        <p>Keep a logbook. Record the wash type, volume, starting ABV, temperatures at which you switched fractions, and your sensory notes. After 10 runs, this journal will become your personal masterclass, allowing you to predict exactly how your specific rig behaves with your specific recipes.</p>
+
+        <h2 id="safety">Chapter 8. Safety: Methanol and Other Risks</h2>
+        <div class="warning-note">
+            <strong>⚠️ Methanol is lethal.</strong> 10 ml causes irreversible blindness; 30 ml is fatal. Methanol concentrates in the Heads. <strong>Never drink the "first 50ml"</strong> (the foreshots). Always discard or repurpose the heads for technical cleaning. Fruit and potato washes contain higher pectin levels and thus produce more methanol — increase your heads cut to 12–15% for these washes.
+        </div>
+
+        <h2 id="faq">Chapter 9. Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> I can't smell the difference between heads and hearts. What should I do?</div>
+            <div class="faq-answer"><p>This is normal for the first few runs. Rely on the calculated volume of heads (5-10% of absolute alcohol) and the ABV reading. Use the "rub and sniff" test on the back of your hand. Your nose will calibrate after a few attempts.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I drink the spirit after just one distillation?</div>
+            <div class="faq-answer"><p>Technically yes, if you carefully separated the heads and tails. However, two distillations (stripping + spirit run) yield a significantly cleaner and safer product. For aromatic fruit washes, a single very careful run is sometimes done traditionally, but double distillation is the gold standard.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> My hearts came out at 50% ABV. Is that too weak?</div>
+            <div class="faq-answer"><p>Not at all. On a simple pot still, hearts collected between 70% and 50% ABV are perfectly normal. In fact, collecting at a lower ABV preserves more of the water-soluble aromatic compounds that give the spirit its character. A rectification column would give 96%, but it would strip the flavor.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What do I do with the tails?</div>
+            <div class="faq-answer"><p>Do not pour them down the drain. They contain a significant amount of trapped ethanol. Save them in a dedicated "Tails" jar and add them to your next stripping run to recover the alcohol.</p></div>
+        </div>
+
+        <h2 id="philosophy">Chapter 10. The Philosophy of Manual Distillation</h2>
+        <p>Why do the great Cognac houses and Scotch distilleries still use simple copper pot stills without automation? Because aromatic spirits require a flexibility that algorithms cannot provide. Every batch of raw material is unique: different sugar content, different aromatic profile, different impurities. Automation follows a rigid program. The master distiller adapts to the specific wash in front of them.</p>
+        <p>Manual distillation is a dialogue with the wash. You hear it boil. You see the first drop fall. You feel the sharp scent of acetone give way to the soft aroma of bread or fruit. And at some point — not by a timer, not by a calculator, but by intuition and sensory feedback — you understand: <em>it's time. The heads are done. The hearts have begun.</em></p>
+
+        <div class="principles">
+            <h3>Three Rules of the Artisan</h3>
+            <div class="principle-item">
+                <strong>1. Trust the Nose, Confirm with Numbers</strong>
+                Temperature and ABV give you the data, but smell gives you the answer. If the calculated volume of heads is reached but it still smells like solvent, keep cutting. If it smells clean early, switch to hearts. The nose is the ultimate arbiter.
+            </div>
+            <div class="principle-item">
+                <strong>2. Slower is Better</strong>
+                Fast take-off yields more product in less time, but of lower quality. A slow, patient drip (1–3 drops/sec) ensures sharp fraction boundaries and the preservation of delicate esters. The 30 minutes you "lose" will be repaid in the smoothness of the final spirit.
+            </div>
+            <div class="principle-item">
+                <strong>3. The Rig is Just a Tool</strong>
+                The quality of the spirit is not determined by the price of the equipment, but by the precision of the cuts. Properly separated heads, clean hearts, and a timely tails cut are what turn raw wash into a fine beverage.
+            </div>
+        </div>
+
+        <p>This moment cannot be automated. It must be earned through practice. And it is exactly what transforms a home distiller into a master craftsman.</p>
+        <p><em>Clean runs and confident cuts.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only. Please respect your local laws regarding home distillation.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Separating Tail Fractions: The Art of Catching "Tails" & Maximizing Re-Distillation | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #1b3a2a;
+            --accent-color: #2e7d32;
+            --accent-dark: #1b5e20;
+            --gold: #c9a227;
+            --gold-dark: #a07d1a;
+            --bg-color: #f7f6f2;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #fdf8ec;
+            --note-border: #e6c97a;
+            --note-text: #7a5c1e;
+            --takeaway-bg: #e8f5e9;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #991b1b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #14291c 0%, #2e7d32 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(201,162,39,0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #14291c;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #d7e8d7;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--gold);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #f6faf7;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #2e7d32;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #6b4f10; }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e53935;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #7f1d1d; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e0e8e0;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #f6faf7; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+        /* Intro philosophy banner */
+        .philosophy-banner {
+            background: linear-gradient(135deg, #14291c 0%, #2e7d32 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-banner::before {
+            content: "🌉";
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 4rem;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        .philosophy-banner h3 {
+            color: var(--gold);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        .philosophy-banner p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 0.8rem;
+        }
+        .philosophy-banner .rule-quote {
+            background: rgba(255,255,255,0.12);
+            border-left: 4px solid var(--gold);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+        /* Compound cards for tail composition */
+        .compound-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 2rem 0;
+        }
+        .compound-card {
+            border: 1px solid #e0e8e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+        .compound-header {
+            padding: 1rem 1.4rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .compound-header .c-icon { font-size: 1.6rem; }
+        .compound-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.05rem;
+        }
+        .compound-body { padding: 1.2rem 1.4rem; }
+        .compound-body ul { margin-bottom: 0; padding-left: 18px; }
+        .compound-body li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+        .compound-body .bp {
+            display: inline-block;
+            background: #eef5ef;
+            color: var(--accent-dark);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .ch-fusel .compound-header { background: linear-gradient(135deg, #e67e22, #b9540c); }
+        .ch-acids .compound-header { background: linear-gradient(135deg, #c0392b, #922b21); }
+        .ch-furfural .compound-header { background: linear-gradient(135deg, #8d6e63, #5d4037); }
+        .ch-water .compound-header { background: linear-gradient(135deg, #0288d1, #01579b); }
+        /* Temperature threshold visual */
+        .temp-scale {
+            background: linear-gradient(90deg, #e8f5e9 0%, #fff8e1 55%, #fdedec 100%);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .temp-scale h4 { margin-top: 0; text-align: center; }
+        .temp-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .temp-marker {
+            flex: 1;
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .temp-body { background: #dcedc8; color: #33691e; border: 1px solid #aed581; }
+        .temp-transition { background: #ffecb3; color: #e65100; border: 1px solid #ffd54f; }
+        .temp-tails { background: #ffcdd2; color: #b71c1c; border: 1px solid #ef9a9a; }
+        .temp-marker .temp-val { display: block; font-size: 1.15rem; margin-bottom: 3px; }
+        /* Technique steps */
+        .technique-step {
+            display: flex;
+            gap: 16px;
+            margin: 1.5rem 0;
+            background: #f6faf7;
+            border: 1px solid #dcedc8;
+            border-radius: 10px;
+            padding: 1.2rem 1.4rem;
+        }
+        .technique-step .step-num {
+            background: var(--accent-color);
+            color: white;
+            min-width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .technique-step .step-content h4 { margin-top: 0; }
+        .technique-step .step-content p { margin-bottom: 0.5rem; }
+        .technique-step .step-content p:last-child { margin-bottom: 0; }
+        /* Method cards for re-distillation */
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 2rem 0;
+        }
+        .method-card {
+            border: 1px solid #e0e8e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .method-header {
+            padding: 1rem 1.4rem;
+            color: white;
+        }
+        .method-header h4 { margin: 0; color: white; }
+        .method-header .m-sub { display: block; font-size: 0.85rem; opacity: 0.9; font-weight: 400; margin-top: 3px; }
+        .method-body { padding: 1.2rem 1.4rem; }
+        .method-body ul { margin-bottom: 0; padding-left: 18px; }
+        .method-body li { font-size: 0.92rem; margin-bottom: 0.5rem; }
+        .method-1 .method-header { background: linear-gradient(135deg, #2e7d32, #1b5e20); }
+        .method-2 .method-header { background: linear-gradient(135deg, #558b2f, #33691e); }
+        .cycle-rule {
+            background: var(--note-bg);
+            border: 1px solid var(--note-border);
+            border-left: 5px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .cycle-rule h4 { margin-top: 0; color: var(--gold-dark); }
+        .cycle-rule p { margin-bottom: 0.7rem; }
+        .cycle-rule p:last-child { margin-bottom: 0; }
+        /* Conclusion principles */
+        .principles {
+            background: linear-gradient(135deg, #14291c 0%, #2e7d32 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        .principles h3 { color: var(--gold); margin-top: 0; }
+        .principles ul { margin-bottom: 0; }
+        .principles li { margin-bottom: 1rem; color: rgba(255,255,255,0.95); }
+        .principles li strong { color: var(--gold); display: block; margin-bottom: 4px; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e8e0;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .compound-grid, .method-grid { grid-template-columns: 1fr; }
+            .temp-bar { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Safety</a>
+    <a href="#">Techniques</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Separating Tail Fractions: The Art of Catching "Tails" and Maximizing Re-Distillation</h1>
+        <p class="subtitle">An in-depth breakdown of the composition of tail fractions, temperature thresholds (the 93 °C rule), and collection technique for profitable re-distillation.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Philosophy of the "Tail"</a></li>
+                <li><a href="#anatomy">Chapter 1. Anatomy of Tails: What Are We Catching?</a></li>
+                <li><a href="#threshold">Chapter 2. Temperature Threshold: Why Exactly 93 °C?</a></li>
+                <li><a href="#organoleptic">Chapter 3. Organoleptic Control: Trust Your Nose and Fingers</a></li>
+                <li><a href="#technique">Chapter 4. Technique for Collecting Tails for Re-Distillation</a></li>
+                <li><a href="#redistill">Chapter 5. Re-Distillation: How to Use Collected Tails</a></li>
+                <li><a href="#mistakes">Chapter 6. Common Mistakes When Working with Tails</a></li>
+                <li><a href="#conclusion">Conclusion: Tails Are the Bridge to Your Next Drink</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Philosophy of the "Tail"</h2>
+        <p>There is an unspoken rule in moonshining: "Heads are poison, the body is gold, and tails are a compromise." If we ruthlessly discard head fractions for the sake of safety, a completely different approach is needed for tails. Tail fractions are not an absolute evil. They are a valuable resource containing 15 to 30% of all the ethyl alcohol produced in the current batch.</p>
+
+        <div class="philosophy-banner">
+            <h3>The Tail Dilemma</h3>
+            <p>Discarding tails means losing a fifth of your product — and your money. Collecting them incorrectly means spoiling the taste of the current drink and contaminating the next batch with fusel oils.</p>
+            <p class="rule-quote">This article is a detailed guide to the chemistry of tails, the physics of their appearance in the vapor path, and the precise collection technique that turns waste into high-quality alcohol in your next distillation run.</p>
+        </div>
+
+        <h2 id="anatomy">Chapter 1. Anatomy of Tails: What Are We Catching?</h2>
+        <p>Tail fractions (in professional terminology — fusel oils and heavy fractions) are a mixture of substances whose boiling point is higher than that of ethyl alcohol (78.3 °C), but which, thanks to partial pressure and entrainment by water vapor, end up in the distillate at the final stage of distillation.</p>
+
+        <h3>1.1. Composition of Tail Fractions</h3>
+        <p>The "tails" contain more than 40 different compounds. The main groups:</p>
+
+        <div class="compound-grid">
+            <div class="compound-card ch-fusel">
+                <div class="compound-header">
+                    <span class="c-icon">🥃</span>
+                    <h4>Higher Monohydric Alcohols (Fusel Oils)</h4>
+                </div>
+                <div class="compound-body">
+                    <ul>
+                        <li><strong>Isoamyl alcohol</strong> <span class="bp">132 °C</span> — makes up 60–80% of all fusel oils. Has a sharp, suffocating smell reminiscent of a wet rag or burnt sugar.</li>
+                        <li><strong>Isobutyl alcohol</strong> <span class="bp">108 °C</span> and <strong>propanol</strong> <span class="bp">97 °C</span> — give a heavy fusel smell and bitter taste.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="compound-card ch-acids">
+                <div class="compound-header">
+                    <span class="c-icon">🧪</span>
+                    <h4>Acids and Esters</h4>
+                </div>
+                <div class="compound-body">
+                    <ul>
+                        <li>Acetic, butyric, and caproic acids.</li>
+                        <li>These are what produce the smell of rancid butter, dirty socks, and sour dough.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="compound-card ch-furfural">
+                <div class="compound-header">
+                    <span class="c-icon">🔥</span>
+                    <h4>Furfural <span class="bp" style="background:rgba(255,255,255,0.2); color:white;">162 °C</span></h4>
+                </div>
+                <div class="compound-body">
+                    <ul>
+                        <li>Formed by the breakdown of pentosans (found in grain, potatoes, fruit) under the influence of temperature.</li>
+                        <li>Has a smell of burnt bread or almonds.</li>
+                        <li>A potent toxin that irritates mucous membranes.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="compound-card ch-water">
+                <div class="compound-header">
+                    <span class="c-icon">💧</span>
+                    <h4>Water</h4>
+                </div>
+                <div class="compound-body">
+                    <ul>
+                        <li>By the end of distillation, the distillate contains more than 80–90% water.</li>
+                        <li>Water acts as a solvent that "pulls" the remaining volatile impurities out of the still.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>1.2. Why Do Tails Fly into the Collection?</h3>
+        <p>According to the laws of physics, isoamyl alcohol boils at 132 °C. It would seem that at 95 °C in the still it should not evaporate. But in the distillation still, a process of <strong>steam distillation</strong> takes place. Water vapor, passing through the boiling liquid, captures molecules of heavy alcohols and carries them upward. As long as there is plenty of strong alcohol in the still, it holds the fusel oils in the liquid phase. But as soon as the ethanol concentration in the still drops below a critical point, the heavy alcohols are released and rush en masse into the vapor path.</p>
+
+        <h2 id="threshold">Chapter 2. Temperature Threshold: Why Exactly 93 °C?</h2>
+        <p>The main tool of the distiller when collecting tails is a thermometer measuring the temperature <strong>in the liquid (in the still)</strong>, not the vapor temperature in the column.</p>
+
+        <h3>2.1. Temperature Dynamics in the Still</h3>
+        <ul>
+            <li><strong>Start of distillation:</strong> The liquid in the still boils at 78–82 °C (depending on the initial strength). There is plenty of alcohol in the still.</li>
+            <li><strong>Middle (body collection):</strong> Alcohol evaporates faster than water. The strength in the still drops. More energy is required to boil a mixture with less alcohol. The temperature in the still slowly creeps upward: 85 °C... 88 °C... 90 °C.</li>
+            <li><strong>Critical point (92–95 °C):</strong> When the temperature of the liquid in the still reaches 93 °C, this is a physical signal: the concentration of ethyl alcohol in the still has dropped to approximately 8–10% ABV.</li>
+        </ul>
+        <p>It is at this moment that the azeotropic behavior of the mixture changes. Ethanol stops "binding" the fusel oils. Isoamyl and isobutyl alcohols sharply change their volatility coefficient and begin to evaporate actively. What goes into the vapor path is no longer pure alcohol, but a dirty water-fusel mixture.</p>
+
+        <div class="temp-scale">
+            <h4>🌡️ The 93 °C Rule in Practice</h4>
+            <div class="temp-bar">
+                <div class="temp-marker temp-body">
+                    <span class="temp-val">78–90 °C</span>
+                    Collecting the "body" (drinkable alcohol)
+                </div>
+                <div class="temp-marker temp-transition">
+                    <span class="temp-val">92.5–93.0 °C</span>
+                    Stop body collection → switch to tails
+                </div>
+                <div class="temp-marker temp-tails">
+                    <span class="temp-val">93–98 °C</span>
+                    "Milking" remaining alcohol into tails jar
+                </div>
+            </div>
+        </div>
+
+        <h3>2.2. The 93 °C Rule in Practice</h3>
+        <p>As soon as the thermometer in the still reads <strong>92.5–93.0 °C</strong> (at sea-level atmospheric pressure), the distiller should:</p>
+        <ol>
+            <li><strong>Stop collecting the "body"</strong> (drinkable alcohol).</li>
+            <li><strong>Place a separate container</strong> for collecting "tails."</li>
+            <li><strong>Slightly increase the heat</strong> (if until now the body collection was running at minimum power) to "milk" the remaining alcohol out of the still faster.</li>
+        </ol>
+        <div class="practical-note">
+            <strong>Note:</strong> If you are high in the mountains (where pressure is lower and water boils at 95 °C), the temperature thresholds shift downward by 2–3 °C. Orient yourself to 90–91 °C.
+        </div>
+
+        <h2 id="organoleptic">Chapter 3. Organoleptic Control: Trust Your Nose and Fingers</h2>
+        <p>The thermometer is a navigator, but the final decision must be made by the distiller's nose. The temperature can lie due to sensor error or scale on it. Organoleptics never lie.</p>
+
+        <h3>3.1. How to Recognize the Transition to Tails?</h3>
+        <p>When the temperature in the still approaches 93 °C, start testing every 2–3 minutes:</p>
+
+        <div class="technique-step">
+            <div class="step-num">👃</div>
+            <div class="step-content">
+                <h4>The Rub Test</h4>
+                <p>Drip 2–3 drops of distillate onto a clean palm. Rub it in. If the smell is sharp, reminiscent of wet cardboard, old paper, a dirty rag, or burnt grain — the fusel oils have arrived.</p>
+            </div>
+        </div>
+        <div class="technique-step">
+            <div class="step-num">✋</div>
+            <div class="step-content">
+                <h4>The Oiliness Test</h4>
+                <p>Rub a drop between your index finger and thumb. Drinkable alcohol evaporates quickly and leaves the skin dry. Tails contain heavy oils — your fingers will become sticky, slippery, and will smell of fusel oils even after the alcohol has evaporated.</p>
+            </div>
+        </div>
+        <div class="technique-step">
+            <div class="step-num">👁️</div>
+            <div class="step-content">
+                <h4>The Visual Test</h4>
+                <p>Place a shot glass under the stream. If at the start of distillation the distillate was transparent as a tear, then in the tails, when water is added to it, it may begin to cloud (due to fusel oils falling out into an emulsion).</p>
+            </div>
+        </div>
+
+        <h3>3.2. The Smell of Tails by Raw Material</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Wash Type</th>
+                    <th>Characteristic Tail Smell</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sugar wash</td>
+                    <td>Wet cardboard, damp earth, sometimes acetone (but heavier than in the heads)</td>
+                </tr>
+                <tr>
+                    <td>Grain wash</td>
+                    <td>Boiled corn, wet bread, burnt rubber</td>
+                </tr>
+                <tr>
+                    <td>Fruit wash</td>
+                    <td>Compote left in the sun for a week, rotting fruit</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="technique">Chapter 4. Technique for Collecting Tails for Re-Distillation</h2>
+        <p>Collecting tails is the process of extracting residual ethanol from "dirty" water. Surgical precision is not needed here as it is for head collection, but speed and an understanding of when to stop are important.</p>
+
+        <div class="technique-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Step 1: Preparing the Container</h4>
+                <p>Use a separate glass jar or food-grade plastic container with a tight-fitting lid. Label it: <strong>"TAILS (Sugar/Grain/Fruit) — Date."</strong> Never mix tails from different types of raw material if you plan to make pure drinks (for example, don't pour plum tails into sugar tails, otherwise you'll get an indelible smell of dirt).</p>
+            </div>
+        </div>
+        <div class="technique-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Step 2: Collection Speed</h4>
+                <p>The body is distilled slowly (1–2 drops per second) so that the column or thump keg has time to separate impurities. Tails can be distilled faster (a thin stream or frequent drops). Our goal is to evaporate the residual ethanol out of the still as quickly as possible without letting the fusel oils concentrate too much.</p>
+            </div>
+        </div>
+        <div class="technique-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Step 3: When to Stop Distillation Completely?</h4>
+                <p>Tails should be drained as long as there is meaning in doing so. Distilling until pure water remains is a pointless waste of electricity and time.</p>
+            </div>
+        </div>
+
+        <div class="key-takeaway">
+            <strong>Criteria for stopping distillation:</strong>
+            <ul style="margin:10px 0 0 20px; padding-left:15px;">
+                <li>The temperature in the still has reached <strong>96–98 °C</strong>. Only water and non-volatile acids remain in the still.</li>
+                <li>The strength in the stream has dropped below <strong>10–15% ABV</strong> (if you are measuring with an alcoholmeter directly in the receiving container).</li>
+                <li>The smell from the condenser has become absolutely watery, with no hint of alcohol.</li>
+            </ul>
+            Turn off the heat, cool the still, and drain the spent wash (the residue of liquid in the still).
+        </div>
+
+        <h2 id="redistill">Chapter 5. Re-Distillation: How to Use Collected Tails</h2>
+        <p>Tails are not waste. They are second-grade raw spirit, usually 20–35% ABV. They contain a huge amount of ethyl alcohol, which needs to be purified from the accumulated oils.</p>
+
+        <div class="method-grid">
+            <div class="method-card method-1">
+                <div class="method-header">
+                    <h4>Method 1: Adding to the Next Wash</h4>
+                    <span class="m-sub">The most popular method</span>
+                </div>
+                <div class="method-body">
+                    <p>If you are distilling a sugar or grain wash, simply pour the collected tails into the next batch of wash before the first distillation.</p>
+                    <ul>
+                        <li><strong>Why it works:</strong> During the first distillation of a new wash (when we don't separate fractions but simply distill into raw spirit), the tails from the previous batch go through distillation again. The ethanol evaporates and goes into the raw spirit, while some of the fusel oils remain in the spent wash or are separated during the second fractional distillation.</li>
+                    </ul>
+                    <div class="warning-note" style="margin:1rem 0 0 0; padding:10px 12px; font-size:0.88rem;">
+                        <strong>Important:</strong> Add tails only to a wash of the same type or to a neutral sugar wash. Don't pour grape tails into a grain wash for whiskey — they will give an unpredictable and often unpleasant background.
+                    </div>
+                </div>
+            </div>
+            <div class="method-card method-2">
+                <div class="method-header">
+                    <h4>Method 2: Separate Distillation of Tails</h4>
+                    <span class="m-sub">For large accumulated volumes</span>
+                </div>
+                <div class="method-body">
+                    <p>If a lot of tails have accumulated (for example, 5–10 liters), they can be distilled separately.</p>
+                    <ul>
+                        <li>Dilute the tails with water to a strength of 15–20% ABV.</li>
+                        <li>Pour into the still.</li>
+                        <li>Perform fractional distillation:
+                            <ul style="margin-top:6px;">
+                                <li><strong>Heads:</strong> Be sure to collect the first 5–7% of the absolute alcohol, since light esters could have accumulated in the tails from previous batches.</li>
+                                <li><strong>Body:</strong> Collect pure alcohol until the temperature in the still reaches 93 °C.</li>
+                                <li><strong>Tails:</strong> Collect again in a separate jar for the next cycle.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cycle-rule">
+            <h4>🔁 The "Three Cycles" Rule</h4>
+            <p>Don't distill the same tails endlessly. With each cycle, heavy acids, furfural, and indelible resins accumulate in them. After 3–4 recycling cycles, the tail fraction becomes thick, dark, and smells of burnt rubber.</p>
+            <p><strong>What to do with spent tails?</strong> Use them as a technical solvent, a fire-starter, an additive to windshield washer fluid (in winter), or dispose of them.</p>
+        </div>
+
+        <h2 id="mistakes">Chapter 6. Common Mistakes When Working with Tails</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Switching to tails too early (at 88–90 °C)</td>
+                    <td>You lose up to 20–30% of quality drinkable alcohol, sending it into the "dirty" jar</td>
+                    <td>Wait for 93–94 °C in the still and check the smell with the rub test</td>
+                </tr>
+                <tr>
+                    <td>Mixing tails with the body</td>
+                    <td>The drink will have a fusel smell, cause a heavy hangover, and cloud when diluted with water</td>
+                    <td>At the first smell of wet cardboard, immediately change the receiving container</td>
+                </tr>
+                <tr>
+                    <td>Adding fruit tails to a sugar wash</td>
+                    <td>The sugar moonshine will acquire a persistent smell of rotting fruit or earth that cannot be removed with charcoal</td>
+                    <td>Store tails by raw material categories</td>
+                </tr>
+                <tr>
+                    <td>Endless recycling of tails</td>
+                    <td>Accumulation of furfural and heavy acids. The moonshine becomes bitter and dark</td>
+                    <td>Replace the tail fraction after 3–4 distillation cycles</td>
+                </tr>
+                <tr>
+                    <td>Collecting tails at minimum speed</td>
+                    <td>Distillation drags on for hours, energy is wasted boiling water</td>
+                    <td>When collecting tails, increase the heat by 20–30%</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="conclusion">Conclusion: Tails Are the Bridge to Your Next Drink</h2>
+        <p>Collecting tail fractions when the temperature in the still reaches 93 °C is not just a technical step, but a mark of the distiller's professionalism. Understanding the chemistry of the process (that isoamyl alcohol and furfural break free from the liquid at the very moment when ethanol has already left the still), you will be able to accurately determine the boundary between the golden "body" and the technical "tail."</p>
+        <p>Properly collected tails, sent for re-distillation, allow you to:</p>
+        <ul>
+            <li><strong>Save raw material</strong> (increasing the yield of finished product by 15–25%).</li>
+            <li><strong>Improve quality</strong> (removing fusel oils from the finished drink).</li>
+            <li><strong>Reduce the cost</strong> of every liter of distillate.</li>
+        </ul>
+        <p>Respect the physics of the process, trust your nose, and your moonshine will be pure, smooth, and safe.</p>
+
+        <div class="principles">
+            <h3>Three Golden Rules for Working with Tails</h3>
+            <ul>
+                <li>
+                    <strong>The 93 °C signal is physical, not arbitrary.</strong>
+                    At this temperature the ethanol concentration in the still drops to 8–10% ABV and fusel oils break free. Use a thermometer in the liquid, not in the vapor.
+                </li>
+                <li>
+                    <strong>Your nose is the final arbiter.</strong>
+                    The thermometer can lie, but the rub test never does. Wet cardboard, dirty rag, burnt grain — the tails have arrived. Switch containers immediately.
+                </li>
+                <li>
+                    <strong>Tails are a resource, not waste.</strong>
+                    They contain 15–30% of your alcohol. Collect them by raw material category, recycle them within 3–4 cycles, and never mix fruit tails into neutral washes.
+                </li>
+            </ul>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

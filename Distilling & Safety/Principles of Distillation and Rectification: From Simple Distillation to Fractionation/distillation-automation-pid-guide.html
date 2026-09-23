@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distillation Automation: PID Controllers and Thermocouples | Distillpedia</title>
+<style>
+    :root {
+        --primary-color: #0f1420;
+        --accent-color: #00d9c0;
+        --accent-dark: #00a896;
+        --accent-light: #4dd0e1;
+        --p-color: #e74c3c;
+        --i-color: #f39c12;
+        --d-color: #3498db;
+        --bg-color: #f4f6f8;
+        --text-color: #2c3e50;
+        --light-gray: #e2e8f0;
+        --note-bg: #e0f7fa;
+        --note-border: #80deea;
+        --note-text: #006064;
+        --takeaway-bg: #e8f5e9;
+        --takeaway-text: #1b5e20;
+        --warning-bg: #fef2f2;
+        --warning-text: #991b1b;
+        --gold: #fbbf24;
+        --mono: 'Courier New', Courier, monospace;
+        --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    body {
+        font-family: var(--sans);
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(135deg, #0f1420 0%, #1a2540 50%, #0f3a3a 100%);
+        color: white;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(0,217,192,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,217,192,0.03) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        text-shadow: 0 0 20px rgba(0,217,192,0.4);
+    }
+    header .tagline {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        opacity: 0.85;
+        font-style: italic;
+        position: relative;
+        color: var(--accent-light);
+    }
+    nav {
+        background-color: #0f1420;
+        text-align: center;
+        padding: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    nav a {
+        color: #b2dfdb;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: var(--accent-color); }
+    main {
+        max-width: 920px;
+        margin: 2.5rem auto;
+        background: white;
+        padding: 3rem 4rem;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+        border-radius: 10px;
+    }
+    h1.article-title {
+        font-size: 2.3rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        border-bottom: 4px solid var(--accent-color);
+        padding-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 1.15rem;
+        color: #546e7a;
+        font-style: italic;
+        margin-bottom: 2.5rem;
+        border-left: 3px solid var(--accent-color);
+        padding-left: 15px;
+    }
+    .toc {
+        background-color: #f0f9fa;
+        border: 1px solid #b2dfdb;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: var(--accent-dark);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+    .toc ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+    .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        margin-top: 3.5rem;
+        font-size: 1.6rem;
+        scroll-margin-top: 70px;
+    }
+    h3 {
+        color: var(--accent-dark);
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+    h4 {
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    p { margin-bottom: 1.2rem; text-align: justify; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+    li { margin-bottom: 0.6rem; }
+    .key-takeaway {
+        background-color: var(--takeaway-bg);
+        border-left: 4px solid #10b981;
+        padding: 15px 20px;
+        margin: 2rem 0;
+        font-weight: 500;
+        border-radius: 4px;
+        color: var(--takeaway-text);
+    }
+    .practical-note {
+        background-color: var(--note-bg);
+        border: 1px solid var(--note-border);
+        color: var(--note-text);
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+    }
+    .practical-note strong { color: #004d40; }
+    .warning-note {
+        background-color: var(--warning-bg);
+        border-left: 4px solid #ef4444;
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: var(--warning-text);
+    }
+    .warning-note strong { color: #7f1d1d; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.93rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid #e2e8f0;
+        padding: 11px 14px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #1a2540;
+        color: #4dd0e1;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) { background-color: #f4f6f8; }
+    .table-scroll { overflow-x: auto; border-radius: 8px; }
+    /* Feedback loop diagram */
+    .loop-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin: 2.5rem 0;
+        flex-wrap: wrap;
+        background: #f0f9fa;
+        border-radius: 10px;
+        padding: 2rem;
+        border: 1px solid #b2dfdb;
+    }
+    .loop-box {
+        background: white;
+        border: 2px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+        text-align: center;
+        min-width: 120px;
+        box-shadow: 0 2px 8px rgba(0,217,192,0.15);
+    }
+    .loop-box .lb-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+    .loop-box .lb-name { font-weight: 700; font-size: 0.9rem; color: var(--primary-color); }
+    .loop-arrow {
+        font-size: 1.8rem;
+        color: var(--accent-color);
+        padding: 0 0.5rem;
+    }
+    .loop-return {
+        width: 100%;
+        text-align: center;
+        color: var(--accent-dark);
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        font-style: italic;
+    }
+    /* PID cards */
+    .pid-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .pid-card {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        background: white;
+    }
+    .pid-card .pid-header {
+        padding: 1rem 1.2rem;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .pid-card .pid-letter {
+        font-size: 2rem;
+        font-weight: 900;
+        font-family: var(--mono);
+    }
+    .pid-card .pid-name { font-weight: 700; font-size: 1rem; }
+    .pid-card .pid-body { padding: 1.2rem; font-size: 0.9rem; }
+    .pid-card .pid-body .pid-formula {
+        font-family: var(--mono);
+        background: #f4f6f8;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin: 0.8rem 0;
+        display: inline-block;
+    }
+    .pid-p .pid-header { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+    .pid-i .pid-header { background: linear-gradient(135deg, #f39c12, #d68910); }
+    .pid-d .pid-header { background: linear-gradient(135deg, #3498db, #2980b9); }
+    /* Formula boxes */
+    .formula-box {
+        background: linear-gradient(135deg, #e0f7fa 0%, #e0f2f1 100%);
+        border: 1px solid var(--note-border);
+        border-left: 5px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .formula-box .formula-title {
+        font-weight: 700;
+        color: var(--accent-dark);
+        margin-bottom: 0.6rem;
+    }
+    .formula-box .formula-body {
+        font-family: var(--mono);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        background: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 5px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .formula-box .formula-example {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-top: 0.6rem;
+        margin-bottom: 0;
+    }
+    /* Tuning criteria */
+    .tuning-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 1.5rem 0;
+    }
+    .tuning-box {
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+        border: 1px solid;
+    }
+    .tuning-box h4 { margin-top: 0; display: flex; align-items: center; gap: 8px; }
+    .tuning-box ul { margin-bottom: 0; padding-left: 18px; font-size: 0.9rem; }
+    .tuning-good { background: #e8f5e9; border-color: #a5d6a7; }
+    .tuning-good h4 { color: #1b5e20; }
+    .tuning-bad { background: #fef2f2; border-color: #f5b7b1; }
+    .tuning-bad h4 { color: #991b1b; }
+    /* Step cards */
+    .step-card {
+        display: flex;
+        gap: 16px;
+        margin: 1.1rem 0;
+        background: #f4f6f8;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 1.1rem 1.3rem;
+    }
+    .step-card .step-num {
+        background: var(--accent-color);
+        color: #0f1420;
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.05rem;
+        flex-shrink: 0;
+    }
+    .step-card .step-content { flex: 1; }
+    .step-card .step-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.02rem;
+        margin-bottom: 0.4rem;
+    }
+    .step-card ul, .step-card ol { margin-bottom: 0; font-size: 0.93rem; }
+    .step-card p { margin-bottom: 0.4rem; font-size: 0.93rem; }
+    /* FAQ */
+    .faq-item {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin: 1rem 0;
+        overflow: hidden;
+        background: #fcfdfe;
+    }
+    .faq-question {
+        background: #f0f9fa;
+        padding: 0.9rem 1.3rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .faq-question .q-mark { color: var(--accent-color); font-size: 1.3rem; font-weight: 800; }
+    .faq-answer { padding: 0.9rem 1.3rem; font-size: 0.95rem; }
+    .faq-answer p { margin-bottom: 0.5rem; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    /* Future cards */
+    .future-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 1.8rem 0;
+    }
+    .future-card {
+        background: white;
+        border: 1px solid #b2dfdb;
+        border-top: 4px solid var(--accent-color);
+        border-radius: 10px;
+        padding: 1.3rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .future-card h4 { margin-top: 0; display: flex; align-items: center; gap: 8px; color: var(--primary-color); }
+    .future-card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .future-card ul { font-size: 0.85rem; margin-bottom: 0; padding-left: 18px; }
+    /* Principles */
+    .principles {
+        background: linear-gradient(135deg, #0f1420 0%, #0f3a3a 100%);
+        color: white;
+        border-radius: 10px;
+        padding: 2.5rem;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .principles::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(0,217,192,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,217,192,0.05) 1px, transparent 1px);
+        background-size: 25px 25px;
+        pointer-events: none;
+    }
+    .principles h3 {
+        color: var(--accent-color);
+        margin-top: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+    .principles .principle-item {
+        background: rgba(255,255,255,0.08);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.2rem 0;
+        border-left: 4px solid var(--accent-color);
+        position: relative;
+    }
+    .principles .principle-item strong {
+        color: var(--accent-light);
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem;
+        color: #9ca3af;
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+        main { padding: 1.5rem; margin: 1rem; }
+        h1.article-title { font-size: 1.7rem; }
+        table { font-size: 0.8rem; }
+        th, td { padding: 8px; }
+        nav { padding: 0.5rem; }
+        nav a { margin: 0 8px; font-size: 0.75rem; }
+        .toc ol { columns: 1; }
+        .pid-grid, .future-grid { grid-template-columns: 1fr; }
+        .tuning-grid { grid-template-columns: 1fr; }
+        .loop-diagram { flex-direction: column; }
+        .loop-arrow { transform: rotate(90deg); }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Automation</a>
+    <a href="#">Equipment</a>
+    <a href="#">Safety</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Distillation Automation: PID Controllers and Thermocouples</h1>
+        <p class="subtitle">A modern approach to distillation control: from automatic regulation theory to practical assembly and tuning of a stable temperature control system.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: From Manual Knob to Digital Precision</a></li>
+                <li><a href="#stability">Chapter 1. Why Temperature Must Be Stable</a></li>
+                <li><a href="#pid-theory">Chapter 2. Automatic Regulation Theory: What Is PID</a></li>
+                <li><a href="#sensors">Chapter 3. Temperature Sensors: Thermocouples and RTDs</a></li>
+                <li><a href="#equipment">Chapter 4. Selecting and Connecting Equipment</a></li>
+                <li><a href="#tuning">Chapter 5. Tuning the PID Controller</a></li>
+                <li><a href="#stages">Chapter 6. Automating Distillation Stages</a></li>
+                <li><a href="#assembly">Chapter 7. Practical Assembly: Step by Step</a></li>
+                <li><a href="#pros-cons">Chapter 8. Advantages and Limitations</a></li>
+                <li><a href="#errors">Chapter 9. Typical Automation Mistakes</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#future">Chapter 11. The Future: From Automation to Intelligent Control</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: From Manual Knob to Digital Precision</h2>
+        <p>For centuries, the distiller controlled heating manually. A wood-fired stove, coal, a gas burner with a valve — all these tools required constant presence, attention, and experience. The distiller watched the thermometer, turned the valve, waited, watched again. A distillation run took hours during which you couldn't step away for a minute.</p>
+        <p>Today, even a simple moonshine still costing €150 can be fitted with an electronic control system that maintains temperature within ±0.1 °C, adjusts heating power according to the process stage, and frees the distiller from monotonous observation. Industrial distilleries have long operated in fully automatic mode. Craft producers and serious enthusiasts are following suit.</p>
+        <p>But automation is not just "turn it on and forget it." It is understanding how the control system interacts with the physics of the process, how to choose the right sensor, how to tune the controller, and how to ensure safety. Poorly tuned automation can be more dangerous than its absence: overheating, mash eruption, equipment damage.</p>
+        <p>This article is a detailed guide to distillation automation. We'll cover automatic regulation theory, choose appropriate sensors and controllers, assemble the system, and tune it for stable operation on any apparatus — from a simple pot still to a rectification column.</p>
+
+        <h2 id="stability">Chapter 1. Why Temperature Must Be Stable</h2>
+
+        <h3>1.1. Temperature as a Composition Indicator</h3>
+        <p>In rectification and fractional distillation, the temperature in the pot and at the top of the column reflects the composition of the boiling liquid and vapor. Stable temperature means stable composition. Temperature fluctuations mean the composition is changing and fractions are mixing.</p>
+        <p><strong>Example:</strong> in ethanol rectification, the temperature at the top of the column should be 78.0–78.3 °C. If the temperature fluctuates by ±2 °C, water or heavy impurities periodically enter the vapor. Distillate strength drops and fraction separation worsens.</p>
+
+        <h3>1.2. What Causes Temperature Fluctuations</h3>
+        <p>Manually controlled heating is unstable for several reasons:</p>
+        <ul>
+            <li><strong>Heater inertia.</strong> A heating element or gas burner does not respond instantly to power changes. A 2 kW element heats up to operating temperature in 10–30 seconds and cools in 30–60 seconds.</li>
+            <li><strong>Pot inertia.</strong> The liquid in the pot heats and cools slowly. A change in heating power shows up in the temperature 2–5 minutes later.</li>
+            <li><strong>Mains voltage fluctuations.</strong> The 220 V in the socket fluctuates by ±10 %, which changes the element's power by ±20 %.</li>
+            <li><strong>Human factor.</strong> The distiller cannot constantly watch the thermometer and adjust heating with the required frequency.</li>
+        </ul>
+        <p><strong>Result of manual control:</strong> temperature fluctuates by ±3–5 °C, distillate strength is unstable, quality varies from batch to batch.</p>
+
+        <h3>1.3. What Automation Provides</h3>
+        <p>An automatic control system:</p>
+        <ul>
+            <li>Measures temperature continuously (1–10 times per second).</li>
+            <li>Compares the measured value with the setpoint.</li>
+            <li>Adjusts heating power to compensate for deviation.</li>
+            <li>Accounts for system inertia, preventing overheating and overshoot.</li>
+        </ul>
+        <p><strong>Result:</strong> temperature is stable within ±0.1–0.5 °C, distillate strength is reproducible from batch to batch, and the distiller is free to control other parameters.</p>
+
+        <h2 id="pid-theory">Chapter 2. Automatic Regulation Theory: What Is PID</h2>
+
+        <h3>2.1. The Feedback Principle</h3>
+        <p>Automatic control operates on the feedback principle:</p>
+        <ol>
+            <li>The sensor measures the current temperature.</li>
+            <li>The controller compares the measured value with the setpoint.</li>
+            <li>The actuator (heater) changes power according to the controller's decision.</li>
+            <li>The process responds to the power change, and the temperature changes.</li>
+            <li>The sensor measures the temperature again. The cycle repeats.</li>
+        </ol>
+        <p>This is a closed loop: sensor → controller → heater → process → sensor.</p>
+
+        <div class="loop-diagram">
+            <div class="loop-box">
+                <span class="lb-icon">🌡️</span>
+                <span class="lb-name">Sensor</span>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-box">
+                <span class="lb-icon">🎛️</span>
+                <span class="lb-name">Controller</span>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-box">
+                <span class="lb-icon">🔥</span>
+                <span class="lb-name">Heater</span>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-box">
+                <span class="lb-icon">⚗️</span>
+                <span class="lb-name">Process</span>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-box">
+                <span class="lb-icon">🌡️</span>
+                <span class="lb-name">Sensor</span>
+            </div>
+            <div class="loop-return">↻ The cycle repeats continuously (closed feedback loop)</div>
+        </div>
+
+        <h3>2.2. The Three Components of PID</h3>
+        <p>A PID controller (Proportional–Integral–Derivative) forms the control action from three components:</p>
+
+        <div class="pid-grid">
+            <div class="pid-card pid-p">
+                <div class="pid-header">
+                    <span class="pid-letter">P</span>
+                    <span class="pid-name">Proportional</span>
+                </div>
+                <div class="pid-body">
+                    <p>Responds to the current deviation of temperature from the setpoint. The larger the deviation, the stronger the action.</p>
+                    <span class="pid-formula">Output_P = Kp × (setpoint − current_temp)</span>
+                    <p><strong>Example:</strong> if temp is 75 °C, setpoint 78 °C, deviation 3 °C. With Kp = 10, Output_P = 30 % power. If temp is 77.5 °C, deviation 0.5 °C, Output_P = 5 % power.</p>
+                    <p><strong>Pure P problem:</strong> at small deviations, output power is too low, and temperature doesn't reach the setpoint. A static error occurs — temperature stabilizes at 77.5 °C instead of 78.0 °C.</p>
+                </div>
+            </div>
+            <div class="pid-card pid-i">
+                <div class="pid-header">
+                    <span class="pid-letter">I</span>
+                    <span class="pid-name">Integral</span>
+                </div>
+                <div class="pid-body">
+                    <p>Accumulates deviation over time and eliminates static error. If temperature is consistently below the setpoint, the integral component grows and adds power.</p>
+                    <span class="pid-formula">Output_I = Ki × Σ(deviation × Δt)</span>
+                    <p><strong>Example:</strong> if temp is 77.5 °C instead of 78.0 °C for 60 seconds, the integral component gradually increases, adding power until temperature reaches 78.0 °C.</p>
+                    <p><strong>Pure I problem:</strong> slow response, risk of overshoot (temperature "overshoots" the setpoint).</p>
+                </div>
+            </div>
+            <div class="pid-card pid-d">
+                <div class="pid-header">
+                    <span class="pid-letter">D</span>
+                    <span class="pid-name">Derivative</span>
+                </div>
+                <div class="pid-body">
+                    <p>Responds to the rate of temperature change. If temperature is rising rapidly, the derivative component reduces power, preventing overheating.</p>
+                    <span class="pid-formula">Output_D = Kd × (d_temp / dt)</span>
+                    <p><strong>Example:</strong> if temperature is rising at 0.5 °C/sec, the derivative component reduces power to prevent overshoot.</p>
+                    <p><strong>Pure D problem:</strong> amplifies sensor noise, can cause oscillations.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>2.3. Total Control Action</h3>
+        <div class="formula-box">
+            <div class="formula-title">Total Output Power</div>
+            <div class="formula-body">Output = Output_P + Output_I + Output_D</div>
+            <p class="formula-example">Each component contributes: P gives a fast response to deviation. I eliminates residual error. D prevents overshoot and oscillations.</p>
+        </div>
+        <p>A properly tuned PID controller maintains temperature within ±0.1–0.3 °C under any disturbances (voltage fluctuations, changes in mash composition, opening the lid).</p>
+
+        <h3>2.4. The Actuator: How to Regulate Power</h3>
+        <p>The controller decides how much power to supply to the heater. There are two main ways to implement this:</p>
+
+        <div class="tuning-grid">
+            <div class="tuning-box tuning-good">
+                <h4>⚡ PWM (Pulse Width Modulation)</h4>
+                <ul>
+                    <li>The heater is switched on and off at a certain frequency.</li>
+                    <li>If 60 % power is needed, the heater is on 60 % of the period and off 40 %.</li>
+                    <li>PWM period is usually 1–10 seconds for heating elements.</li>
+                    <li><strong>Pros:</strong> simple, doesn't heat the control elements.</li>
+                    <li><strong>Cons:</strong> switching the element on/off causes voltage spikes in the mains, lights flicker.</li>
+                </ul>
+            </div>
+            <div class="tuning-box tuning-good">
+                <h4>🎚️ Phase-Angle Control (Dimming)</h4>
+                <ul>
+                    <li>Voltage is supplied to the heater not fully but "cut" by phase.</li>
+                    <li>Power is regulated smoothly, without sharp on/off switching.</li>
+                    <li><strong>Pros:</strong> smoothness, no light flickering.</li>
+                    <li><strong>Cons:</strong> creates radio interference, requires a more complex circuit.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="practical-note">
+            <strong>Recommendation for a moonshine still:</strong> PWM with a 2–5 second period. Simple, reliable, effective.
+        </div>
+
+        <h2 id="sensors">Chapter 3. Temperature Sensors: Thermocouples and RTDs</h2>
+
+        <h3>3.1. Sensor Types</h3>
+        <p>Two main types of sensors are used for distillation automation:</p>
+
+        <h4>Thermocouples</h4>
+        <p>Two wires of different metals joined at the end. When the junction is heated, a voltage proportional to temperature is generated.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Type</th><th>Metals</th><th>Range</th><th>Accuracy</th><th>Application</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>K (Chromel–Alumel)</td><td>Chromel / Alumel</td><td>−200…+1300 °C</td><td>±1.5 °C</td><td>Universal, pot, column</td></tr>
+                <tr><td>J (Iron–Constantan)</td><td>Iron / Constantan</td><td>−40…+750 °C</td><td>±1.5 °C</td><td>Less oxidation-resistant</td></tr>
+                <tr><td>T (Copper–Constantan)</td><td>Copper / Constantan</td><td>−200…+350 °C</td><td>±0.5 °C</td><td>Precise, for low temperatures</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="practical-note">
+            <strong>Recommendation:</strong> Type K thermocouple is the standard for moonshine stills. The range covers all distillation temperatures (20–120 °C), and the cost is minimal.
+        </p>
+
+        <h4>RTDs (Resistance Temperature Detectors)</h4>
+        <p>A conductor (usually platinum) whose resistance changes with temperature. The most common types are PT100 (100 Ω at 0 °C) and PT1000 (1000 Ω at 0 °C).</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Type K Thermocouple</th><th>PT100</th><th>PT1000</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Range</td><td>−200…+1300 °C</td><td>−200…+850 °C</td><td>−200…+850 °C</td></tr>
+                <tr><td>Accuracy</td><td>±1.5 °C</td><td>±0.3 °C</td><td>±0.15 °C</td></tr>
+                <tr><td>Response speed</td><td>Fast</td><td>Medium</td><td>Medium</td></tr>
+                <tr><td>Cost</td><td>Low</td><td>Medium</td><td>Medium</td></tr>
+                <tr><td>Connection complexity</td><td>Simple</td><td>Requires 3- or 4-wire scheme</td><td>Requires 3- or 4-wire scheme</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="practical-note">
+            <strong>Recommendation:</strong> for precise column temperature control — PT100 or PT1000. For pot temperature control, where ±1 °C accuracy is sufficient — Type K thermocouple.
+        </p>
+
+        <h3>3.2. Sensor Placement</h3>
+        <p>For full automation, at least two sensors are needed:</p>
+        <ul>
+            <li><strong>Pot sensor:</strong> measures the boiling liquid temperature. Used to control heating power. Placement: in the liquid, not touching the bottom or walls, 2–5 cm below the liquid level.</li>
+            <li><strong>Column top sensor (below the dephlegmator):</strong> measures vapor temperature. Used to monitor vapor composition and determine the fraction switching moment. Placement: in the vapor zone, 1–2 cm below the dephlegmator.</li>
+            <li><strong>Additional sensors (optional):</strong> condenser outlet (distillate temperature control); dephlegmator water inlet and outlet (cooling efficiency control).</li>
+        </ul>
+
+        <h3>3.3. Sensor Protection</h3>
+        <p>Sensors in contact with alcohol vapors must be protected:</p>
+        <ul>
+            <li><strong>Stainless steel sleeve (thermowell):</strong> protects the sensor from mechanical damage and aggressive environment.</li>
+            <li><strong>Hermetic entry:</strong> the point where the sensor enters the pot or column must be sealed. Use heat-resistant silicone or PTFE gaskets.</li>
+            <li><strong>Splash protection:</strong> the pot sensor must not touch the liquid surface during violent boiling.</li>
+        </ul>
+
+        <h2 id="equipment">Chapter 4. Selecting and Connecting Equipment</h2>
+
+        <h3>4.1. Automation System Components</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Component</th><th>Purpose</th><th>Cost</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>PID controller</td><td>Heating control by algorithm</td><td>20–80 €</td></tr>
+                <tr><td>Solid-state relay (SSR)</td><td>Switching the heating element by controller signal</td><td>10–30 €</td></tr>
+                <tr><td>Type K thermocouple or PT100</td><td>Temperature measurement</td><td>5–20 €</td></tr>
+                <tr><td>SSR heatsink</td><td>Heat dissipation from the relay</td><td>5–15 €</td></tr>
+                <tr><td>Wires, connectors, terminals</td><td>Connection</td><td>5–10 €</td></tr>
+                <tr><td>Enclosure</td><td>Electronics protection</td><td>5–15 €</td></tr>
+                <tr><td><strong>Total</strong></td><td></td><td><strong>50–170 €</strong></td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>4.2. Choosing a PID Controller</h3>
+        <p>Industrial and semi-industrial PID controllers are suitable for a moonshine still:</p>
+        <p><strong>Budget (20–40 €):</strong> REX-C100, REX-C400, REX-C700 — Chinese controllers with basic functionality. PWM output, one sensor, setpoint. W1209, W3003 — modules with thermostat and relay. Simple but less precise.</p>
+        <p><strong>Mid-range (40–80 €):</strong> OMRON E5CC, E5EC — industrial controllers with autotuning, two outputs, high accuracy. Yudian AI-518, AI-708 — Chinese industrial controllers with advanced functionality.</p>
+        <p class="practical-note">
+            <strong>Recommendation:</strong> to start — REX-C400 or REX-C700 with a Type K thermocouple and PWM output. Cost 20–30 €, functionality sufficient for pot temperature stabilization. For advanced automation — OMRON E5CC with autotuning and two channels.
+        </p>
+
+        <h3>4.3. Choosing a Solid-State Relay (SSR)</h3>
+        <p>A solid-state relay switches the heating element by the controller's signal. Unlike a mechanical relay, an SSR has no contacts, doesn't spark, and doesn't wear out.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Value</th><th>Why</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Maximum current</td><td>25–40 A</td><td>With margin for a 2–3 kW element (at 220 V this is 9–14 A)</td></tr>
+                <tr><td>Control type</td><td>PWM (3–32 V DC)</td><td>Compatible with PID controller</td></tr>
+                <tr><td>Switching type</td><td>Alternating current (AC)</td><td>Heating element runs on 220 V mains</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="practical-note">
+            <strong>Recommendation:</strong> SSR-25DA or SSR-40DA (25 or 40 amps) with 3–32 V DC control. Cost 10–20 €. <strong>Always mount on an aluminum heatsink with thermal paste.</strong> Without a heatsink, the SSR will overheat and fail.
+        </p>
+
+        <h3>4.4. Wiring Diagram</h3>
+        <p><strong>Step-by-step assembly:</strong></p>
+        <ol>
+            <li>Install the heating element in the pot. Connect the phase wire through the SSR.</li>
+            <li>Install the temperature sensor in the pot (sleeve, hermetic entry).</li>
+            <li>Connect the sensor to the PID controller input (observe polarity for thermocouple: red wire is plus, blue is minus).</li>
+            <li>Connect the controller control output (PWM, 3–32 V) to the SSR control terminals (observe polarity).</li>
+            <li>Mount the SSR on the heatsink with thermal paste.</li>
+            <li>Place the controller and SSR in a ventilated enclosure.</li>
+            <li>Connect controller power (usually 220 V or 12 V, depending on model).</li>
+            <li>Check all connections before powering on.</li>
+        </ol>
+
+        <h3>4.5. Electrical Safety</h3>
+        <div class="warning-note">
+            <strong>⚠️ Mandatory electrical safety:</strong>
+            <ul style="margin-top: 0.5rem; margin-bottom: 0;">
+                <li><strong>Grounding</strong> of the apparatus body and control unit is mandatory.</li>
+                <li><strong>Circuit breaker</strong> on the element supply line: 16 A for an element up to 3 kW.</li>
+                <li><strong>RCD (Residual Current Device)</strong> on the supply line: 30 mA. Protection against electric shock in case of leakage.</li>
+                <li>Do <strong>not</strong> use extension cords and adapters. Connect directly to the socket through the breaker.</li>
+                <li><strong>Insulate all connections.</strong> Exposed terminals are a source of danger.</li>
+            </ul>
+        </div>
+
+        <h2 id="tuning">Chapter 5. Tuning the PID Controller</h2>
+
+        <h3>5.1. What Is the Setpoint</h3>
+        <p>The setpoint is the target temperature the controller maintains. For different distillation stages, the setpoint is different:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Stage</th><th>Setpoint (pot)</th><th>Setpoint (column)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Mash heating</td><td>80–85 °C</td><td>Not controlled</td></tr>
+                <tr><td>Column stabilization</td><td>Working power</td><td>78.0–78.3 °C</td></tr>
+                <tr><td>Heads collection</td><td>Working power</td><td>78.0–78.3 °C</td></tr>
+                <tr><td>Hearts collection</td><td>Working power</td><td>78.0–78.3 °C</td></tr>
+                <tr><td>Completion</td><td>95–99 °C</td><td>Not controlled</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>5.2. Autotuning</h3>
+        <p>Most industrial controllers (OMRON, Yudian) have an autotuning function. The controller itself performs a series of heater on/off cycles, measures the system response, and calculates the optimal Kp, Ki, Kd coefficients.</p>
+        <p><strong>How to run autotuning:</strong></p>
+        <ol>
+            <li>Fill the pot with water or mash (to 2/3 of volume).</li>
+            <li>Set the setpoint to the working temperature (e.g., 80 °C).</li>
+            <li>Start autotuning (usually hold the "AT" or "SET" button for 3–5 seconds).</li>
+            <li>Wait for completion (5–20 minutes). The controller blinks an indicator.</li>
+            <li>The coefficients are saved to memory.</li>
+        </ol>
+        <div class="practical-note">
+            <strong>Important:</strong> autotuning must be performed with the same load (liquid volume, element power) as the working distillation. If you change the pot volume or element — repeat autotuning.
+        </div>
+
+        <h3>5.3. Manual Tuning (for Controllers Without Autotuning)</h3>
+        <p>If autotuning is unavailable, tune the coefficients manually using the Ziegler–Nichols method:</p>
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <div class="step-title">Find Critical Gain</div>
+                <p>Set Ki = 0, Kd = 0. Increase Kp until the temperature starts oscillating around the setpoint with constant amplitude. Record this value as Kp_critical.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <div class="step-title">Measure Oscillation Period</div>
+                <p>Measure the oscillation period T_critical (time between two temperature peaks).</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <div class="step-title">Set Coefficients</div>
+                <div class="formula-box" style="margin: 0.5rem 0;">
+                    <div class="formula-body">Kp = 0.6 × Kp_critical<br>Ki = 2 × Kp / T_critical<br>Kd = Kp × T_critical / 8</div>
+                </div>
+                <p class="formula-example" style="margin-top: 0.5rem;">Example: if the system oscillates at Kp = 20 with a period of 120 seconds:<br>Kp = 0.6 × 20 = 12; Ki = 2 × 12 / 120 = 0.2; Kd = 12 × 120 / 8 = 180</p>
+            </div>
+        </div>
+
+        <h3>5.4. Verifying the Tuning</h3>
+        <p>After tuning, verify the control quality:</p>
+        <ol>
+            <li>Set the setpoint to 78 °C.</li>
+            <li>Wait for it to reach the mode.</li>
+            <li>Observe the temperature for 10–15 minutes.</li>
+        </ol>
+        <div class="tuning-grid">
+            <div class="tuning-box tuning-good">
+                <h4>✅ Good Tuning</h4>
+                <ul>
+                    <li>Temperature reaches setpoint in 5–10 minutes.</li>
+                    <li>Overshoot no more than 0.5–1 °C.</li>
+                    <li>After reaching setpoint, oscillations no more than ±0.2–0.3 °C.</li>
+                </ul>
+            </div>
+            <div class="tuning-box tuning-bad">
+                <h4>❌ Bad Tuning</h4>
+                <ul>
+                    <li>Temperature oscillates ±3–5 °C → Kp too high, reduce.</li>
+                    <li>Temperature slowly creeps to setpoint and doesn't reach it → Ki too low, increase.</li>
+                    <li>Temperature sharply overshoots setpoint and takes long to return → Kd too low, increase.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="stages">Chapter 6. Automating Distillation Stages</h2>
+
+        <h3>6.1. Pot Heating Control</h3>
+        <p><strong>Task:</strong> maintain stable heating power for even boiling.</p>
+        <p><strong>Implementation:</strong> the controller controls the pot element by the liquid temperature sensor. Setpoint — mash boiling temperature (85–95 °C depending on strength).</p>
+        <p><strong>Feature:</strong> the mash boiling temperature changes as distillation proceeds (alcohol leaves, strength drops, temperature rises). Therefore, control by pot temperature does not provide constant power. It's better to control by power, not temperature.</p>
+        <p><strong>Alternative:</strong> use the controller in PWM mode with fixed power. The setpoint is not temperature but power percentage (e.g., 60 %). This provides stable boiling without being tied to temperature.</p>
+
+        <h3>6.2. Dephlegmator Control</h3>
+        <p><strong>Task:</strong> maintain stable vapor temperature at the top of the column by controlling water supply to the dephlegmator.</p>
+        <p><strong>Implementation:</strong> the controller controls a solenoid valve or a variable-flow circulation pump supplying water to the dephlegmator, based on the column top temperature sensor.</p>
+        <p><strong>Algorithm:</strong></p>
+        <ul>
+            <li>If column top temperature is above setpoint (78.3 °C) → increase water supply → more reflux → temperature drops.</li>
+            <li>If temperature is below setpoint → reduce water supply → less reflux → temperature rises.</li>
+        </ul>
+        <p><strong>Equipment:</strong> 12 V or 220 V solenoid valve on the water supply line; variable-flow circulation pump; column top temperature sensor.</p>
+
+        <h3>6.3. Automatic Fraction Switching</h3>
+        <p><strong>Task:</strong> switch the receiving container when transitioning from heads to hearts and from hearts to tails.</p>
+        <p><strong>Implementation:</strong> the controller or controller monitors the column top temperature and controls a servo drive or solenoid valve at the take-off node.</p>
+        <p><strong>Algorithm:</strong></p>
+        <ul>
+            <li>Temperature 78.0–78.3 °C → collection into "Heads" container.</li>
+            <li>Temperature stable at 78.3 °C for more than 5 minutes → switch to "Hearts" container.</li>
+            <li>Temperature rising above 78.5 °C → switch to "Tails" container.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>Limitation:</strong> automatic temperature-based switching is less reliable than organoleptic control. Use automatic switching as insurance, but check fractions manually.
+        </div>
+
+        <h3>6.4. Fully Automatic Rectification</h3>
+        <p>Advanced systems use industrial controllers (PLCs, e.g., Siemens LOGO!, Arduino, Raspberry Pi) to control the entire process:</p>
+        <ul>
+            <li>Pot heating control.</li>
+            <li>Dephlegmator control.</li>
+            <li>Take-off node control.</li>
+            <li>Automatic fraction switching.</li>
+            <li>Logging of temperature, strength, volume.</li>
+            <li>Emergency shutdown on overheating or absence of water.</li>
+        </ul>
+        <p>This is the level of an industrial distillery. For home use, a PID controller for heating and, optionally, a separate controller for the dephlegmator are sufficient.</p>
+
+        <h2 id="assembly">Chapter 7. Practical Assembly: Step by Step</h2>
+
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <div class="step-title">Prepare Components</div>
+                <p>Acquire: PID controller with PWM output (e.g., REX-C400); solid-state relay 25–40 A; SSR heatsink; Type K thermocouple with stainless steel sleeve; wires, terminals, connectors; electronics enclosure; 16 A breaker, 30 mA RCD.</p>
+                <p>Check controller and SSR compatibility: controller output — PWM 3–32 V DC; SSR input — 3–32 V DC.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <div class="step-title">Mount the Sensor</div>
+                <p>Drill a hole in the pot lid or wall, 5–10 cm below the maximum liquid level. Install a hermetic entry (fitting with PTFE gasket). Insert the sensor sleeve into the entry. The sensor must be immersed in the liquid, not touching the bottom. Connect the thermocouple to the controller: red wire — plus, blue — minus.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <div class="step-title">Mount the SSR and Heatsink</div>
+                <p>Apply a thin layer of thermal paste to the SSR base. Screw the SSR to the heatsink with bolts. Connect the SSR power terminals in the break of the element phase wire. Connect the SSR control terminals to the controller output (observe polarity).</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <div class="step-title">Connect Power</div>
+                <p>Connect controller power (220 V or 12 V, depending on model). Connect the element through the SSR to the 220 V mains through the breaker and RCD. Ground the pot body and control unit.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <div class="step-title">First Start and Test</div>
+                <p>Fill the pot with water to 2/3 of volume. Power on the controller. Check that the sensor shows the water temperature. Set the setpoint to 60 °C. Turn on heating. Observe: temperature should smoothly rise toward the setpoint. When setpoint is reached, the SSR should turn off the element. Temperature stabilizes. Check: the SSR on the heatsink should not be hotter than 50–60 °C. If hotter — increase the heatsink or improve ventilation.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <div class="step-title">Autotuning</div>
+                <p>Set the setpoint to the working temperature (80 °C). Start autotuning. Wait for completion (10–20 minutes). Check stability: temperature should hold within ±0.5 °C.</p>
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">7</div>
+            <div class="step-content">
+                <div class="step-title">Working Distillation</div>
+                <p>Pour the mash into the pot. Set the setpoint to the boiling temperature. Start heating. Observe the process for the first 15–20 minutes, then the system operates autonomously. Periodically check the temperature and distillate strength.</p>
+            </div>
+        </div>
+
+        <h2 id="pros-cons">Chapter 8. Advantages and Limitations</h2>
+
+        <h3>8.1. Advantages</h3>
+        <ul>
+            <li><strong>Temperature stability ±0.1–0.5 °C</strong> instead of ±3–5 °C with manual control.</li>
+            <li><strong>Quality reproducibility:</strong> each batch is distilled under identical conditions.</li>
+            <li><strong>Operator freedom:</strong> no need to constantly watch the thermometer and turn the valve.</li>
+            <li><strong>Overheat protection:</strong> the controller will not allow the setpoint to be exceeded.</li>
+            <li><strong>Data logging:</strong> industrial controllers record temperature, allowing you to analyze the process and optimize recipes.</li>
+        </ul>
+
+        <h3>8.2. Limitations</h3>
+        <ul>
+            <li><strong>Automation does not replace organoleptics.</strong> The distiller's nose and tongue determine fraction boundaries more accurately than a thermometer. Automation maintains conditions, but the person decides about fraction switching.</li>
+            <li><strong>Automation does not protect against all accidents.</strong> In case of absence of water in the condenser, mash burning, or apparatus depressurization, automation may not have time to react. Visual control is necessary.</li>
+            <li><strong>Tuning requires understanding.</strong> A poorly tuned controller is worse than manual control: it can cause oscillations, overheating, or instability.</li>
+            <li><strong>Cost.</strong> A full automation system is 50–200 €. For a budget apparatus, this may be comparable to the cost of the apparatus itself.</li>
+        </ul>
+
+        <h3>8.3. When Automation Is Justified</h3>
+        <ul>
+            <li><strong>Rectification:</strong> temperature stability is critical for separation purity. Automation is mandatory.</li>
+            <li><strong>Long distillation runs:</strong> 4–8 hours without constant control. Automation frees up time.</li>
+            <li><strong>Serial production:</strong> reproducibility from batch to batch.</li>
+            <li><strong>Remote monitoring:</strong> ability to monitor the process via smartphone or computer.</li>
+        </ul>
+
+        <h2 id="errors">Chapter 9. Typical Automation Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Mistake</th><th>Consequence</th><th>Solution</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>SSR without heatsink</td><td>Overheating and failure in 5–10 minutes</td><td>Install heatsink with thermal paste</td></tr>
+                <tr><td>Wrong thermocouple polarity</td><td>Controller shows inverted temperature</td><td>Red — plus, blue — minus</td></tr>
+                <tr><td>Sensor touches pot bottom or wall</td><td>Measures metal temperature, not liquid</td><td>Install sensor in liquid, not touching walls</td></tr>
+                <tr><td>Autotuning on empty pot</td><td>Coefficients don't match working load</td><td>Run autotuning with liquid in pot</td></tr>
+                <tr><td>PWM period too short (1 sec)</td><td>Frequent on/off, element wear, light flickering</td><td>Set PWM period to 3–5 seconds</td></tr>
+                <tr><td>Controller without autotuning, default coefficients</td><td>Temperature oscillations ±3–5 °C</td><td>Manual tuning or buy controller with autotuning</td></tr>
+                <tr><td>No RCD and grounding</td><td>Risk of electric shock</td><td>Install 30 mA RCD, ground the body</td></tr>
+                <tr><td>Undersized wires</td><td>Wire overheating, fire</td><td>2.5 mm² cross-section for element up to 3 kW</td></tr>
+                <tr><td>Controller in same enclosure as SSR without ventilation</td><td>Electronics overheating</td><td>Provide ventilation or separate components</td></tr>
+                <tr><td>Trusting automation without visual control</td><td>Missing an accident (burning, absence of water)</td><td>Periodically check the process visually</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can gas heating be automated?</div>
+            <div class="faq-answer">
+                <p>Yes, but it's more complex. Instead of an SSR, a solenoid valve on the gas line or a servo drive on the burner valve is used. Control is less precise than electric. For gas heating, it's better to use phase-angle control or a proportional valve.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Which controller to choose for a rectification column?</div>
+            <div class="faq-answer">
+                <p>At least two loops: one for pot heating, the second for the dephlegmator. A two-channel controller (e.g., OMRON E5CC with two outputs) or two separate controllers will work. To control the dephlegmator by vapor temperature, a loop with feedback from the column top sensor is needed.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can Arduino be used instead of an industrial controller?</div>
+            <div class="faq-answer">
+                <p>Yes. Arduino with a PID library, MAX6675 thermocouple, and solid-state relay is a working circuit. Advantage: flexibility, data logging, smartphone connection. Disadvantage: you need to program, no autotuning out of the box, no industrial certification. For enthusiasts — an excellent option.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Will automation protect against mash eruption?</div>
+            <div class="faq-answer">
+                <p>Partially. If the controller limits heating power, violent boiling is unlikely. But in case of sudden foaming (e.g., due to proteins in grain mash), automation doesn't have time to react. Use a defoamer and fill the pot no more than 60–70 %.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Is a separate controller needed for the dephlegmator?</div>
+            <div class="faq-answer">
+                <p>For rectification — yes. The temperature at the top of the column must be stable, and controlling water supply to the dephlegmator provides this stability. Without a separate loop, the temperature at the top of the column fluctuates, and separation quality worsens.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How to understand that the controller is tuned correctly?</div>
+            <div class="faq-answer">
+                <p>Temperature reaches setpoint in 5–10 minutes, overshoot no more than 0.5–1 °C, after reaching setpoint oscillations no more than ±0.3 °C. If oscillations are larger or temperature doesn't reach setpoint — adjust the coefficients.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can one controller be used for pot and dephlegmator?</div>
+            <div class="faq-answer">
+                <p>No. These are two different loops with different tasks. The pot is controlled by liquid temperature, the dephlegmator — by vapor temperature. One controller cannot simultaneously control two independent processes.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What to do if the controller shows "Err" or "OL"?</div>
+            <div class="faq-answer">
+                <p>This is a sensor error. Check the thermocouple connection (polarity, contact), wire integrity, absence of breaks. If the sensor is working but the error persists — the controller is faulty.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Does automation increase electricity consumption?</div>
+            <div class="faq-answer">
+                <p>No. Automation doesn't increase consumption but optimizes it. The element runs exactly as much as needed to maintain temperature. With manual control, excess power is often supplied and wasted. Automation saves 5–15 % of electricity.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can a simple pot still without a column be automated?</div>
+            <div class="faq-answer">
+                <p>Yes. The controller controls the pot element by the temperature sensor. This provides stable boiling without power spikes. For simple distillation, one heating control loop is sufficient.</p>
+            </div>
+        </div>
+
+        <h2 id="future">Chapter 11. The Future: From Automation to Intelligent Control</h2>
+
+        <div class="future-grid">
+            <div class="future-card">
+                <h4>🤖 Machine Learning</h4>
+                <p>Modern research in distillation automation aims to create adaptive controllers that adjust coefficients in real time depending on mash composition, heating power, and process stage. Such systems use neural networks or fuzzy logic to optimize without operator involvement.</p>
+            </div>
+            <div class="future-card">
+                <h4>📱 Remote Monitoring</h4>
+                <p>Controllers based on Raspberry Pi or ESP32 allow you to:</p>
+                <ul>
+                    <li>Monitor temperature and strength via smartphone.</li>
+                    <li>Receive notifications about stage completion or accidents.</li>
+                    <li>Control heating and dephlegmator remotely.</li>
+                    <li>Log data for analysis and recipe optimization.</li>
+                </ul>
+            </div>
+            <div class="future-card">
+                <h4>🏭 Industrial Systems</h4>
+                <p>Large distilleries use Distributed Control Systems (DCS) with dozens of sensors, actuators, and controllers. Each column, each heat exchanger, each pump is controlled automatically. The operator monitors the process on a screen and intervenes only in abnormal situations.</p>
+            </div>
+        </div>
+
+        <h2>Conclusion: Automation as a Tool, Not a Replacement</h2>
+        <p>Distillation automation is not a "robot that makes moonshine instead of you." It's a tool that takes on the monotonous work of maintaining stable conditions, freeing the distiller to make decisions about fractions, quality control, and recipe improvement.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🎛️ Automation maintains conditions but doesn't make decisions.</strong>
+                Temperature and power are controlled by the controller. Fraction boundaries are determined by the distiller by smell, taste, and strength. Automation won't replace the nose.
+            </div>
+            <div class="principle-item">
+                <strong>⚙️ Tuning is half the success.</strong>
+                A poorly tuned controller is worse than manual control. Run autotuning with the working load, check stability, adjust coefficients if necessary.
+            </div>
+            <div class="principle-item">
+                <strong>⚡ Safety first.</strong>
+                Grounding, RCD, breaker, SSR heatsink, visual control. Automation doesn't relieve responsibility for process safety.
+            </div>
+        </div>
+
+        <p>A properly assembled and tuned automation system turns distillation from hours of sitting by the thermometer into a controlled, reproducible process. Temperature is stable, strength is predictable, quality doesn't depend on whether you got distracted by a phone call. The distiller becomes the operator of the process, not its hostage.</p>
+        <p><em>Stable temperatures and precise controllers.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

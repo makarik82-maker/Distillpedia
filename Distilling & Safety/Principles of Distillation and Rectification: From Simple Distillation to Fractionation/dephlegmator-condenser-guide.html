@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Working with the Dephlegmator and Condenser: Maximum Vapor Condensation | Distillpedia</title>
+<style>
+    :root {
+        --primary-color: #134e5e;
+        --accent-color: #0891b2;
+        --cool: #06b6d4;
+        --warm: #f97316;
+        --bg-color: #f4f7f6;
+        --text-color: #2c3e50;
+        --light-gray: #e2e8f0;
+        --note-bg: #ecfeff;
+        --note-border: #a5f3fc;
+        --note-text: #155e75;
+        --takeaway-bg: #e8f5e9;
+        --takeaway-text: #1b5e20;
+        --warning-bg: #fef2f2;
+        --warning-text: #991b1b;
+        --gold: #fbc02d;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(135deg, #134e5e 0%, #0891b2 100%);
+        color: white;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0%, transparent 40%),
+                          radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+        pointer-events: none;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+    }
+    header .tagline {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+        font-style: italic;
+        position: relative;
+    }
+    nav {
+        background-color: #134e5e;
+        text-align: center;
+        padding: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav a {
+        color: #e0f2fe;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: #7dd3fc; }
+    main {
+        max-width: 920px;
+        margin: 2.5rem auto;
+        background: white;
+        padding: 3rem 4rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 12px;
+    }
+    h1.article-title {
+        font-size: 2.3rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        border-bottom: 4px solid var(--accent-color);
+        padding-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 1.15rem;
+        color: #546e7a;
+        font-style: italic;
+        margin-bottom: 2.5rem;
+        border-left: 3px solid var(--accent-color);
+        padding-left: 15px;
+    }
+    .toc {
+        background-color: #f8fbfd;
+        border: 1px solid #cfe8f3;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+    .toc ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+    .toc a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        margin-top: 3.5rem;
+        font-size: 1.6rem;
+        scroll-margin-top: 70px;
+    }
+    h3 {
+        color: var(--accent-color);
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+    h4 {
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    p { margin-bottom: 1.2rem; text-align: justify; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+    li { margin-bottom: 0.6rem; }
+    .key-takeaway {
+        background-color: var(--takeaway-bg);
+        border-left: 4px solid #059669;
+        padding: 15px 20px;
+        margin: 2rem 0;
+        font-weight: 500;
+        border-radius: 4px;
+        color: var(--takeaway-text);
+    }
+    .practical-note {
+        background-color: var(--note-bg);
+        border: 1px solid var(--note-border);
+        color: var(--note-text);
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+    }
+    .practical-note strong { color: #0e7490; }
+    .warning-note {
+        background-color: var(--warning-bg);
+        border-left: 4px solid #dc2626;
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: var(--warning-text);
+    }
+    .warning-note strong { color: #7f1d1d; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.93rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid #e2e8f0;
+        padding: 11px 14px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) { background-color: #f8fbfd; }
+    .table-scroll { overflow-x: auto; border-radius: 8px; }
+    .formula-box {
+        background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+        border: 1px solid var(--note-border);
+        border-left: 5px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .formula-box .formula-title {
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 0.6rem;
+    }
+    .formula-box .formula-body {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        background: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 5px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .formula-box .formula-example {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-top: 0.6rem;
+        margin-bottom: 0;
+    }
+    /* Countercurrent principle visual */
+    .counter-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin: 2.5rem 0;
+        background: #f8fbfd;
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid #cfe8f3;
+    }
+    .counter-col {
+        text-align: center;
+        padding: 0 1.5rem;
+    }
+    .counter-col .flow-label {
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    .counter-col .flow-icon {
+        font-size: 2.2rem;
+        display: block;
+    }
+    .counter-col .flow-desc {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 0.4rem;
+    }
+    .counter-arrow {
+        font-size: 2rem;
+        color: var(--accent-color);
+        font-weight: 700;
+        padding: 0 0.5rem;
+    }
+    .steam-col .flow-label { color: var(--warm); }
+    .water-col .flow-label { color: var(--cool); }
+    /* Equipment type cards */
+    .equip-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 1.8rem 0;
+    }
+    .equip-card {
+        background: white;
+        border: 1px solid #cfe8f3;
+        border-top: 4px solid var(--accent-color);
+        border-radius: 10px;
+        padding: 1.3rem 1.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .equip-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(8,145,178,0.12);
+    }
+    .equip-card h4 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1.05rem;
+    }
+    .equip-card .equip-desc {
+        font-size: 0.88rem;
+        color: #546e7a;
+        margin-bottom: 0.8rem;
+    }
+    .equip-card ul {
+        font-size: 0.86rem;
+        margin-bottom: 0.8rem;
+        padding-left: 18px;
+    }
+    .equip-card .equip-params {
+        font-size: 0.82rem;
+        background: #f8fbfd;
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin-bottom: 0.8rem;
+    }
+    .equip-card .pros-cons {
+        font-size: 0.84rem;
+    }
+    .equip-card .pros-cons .pros { color: #059669; }
+    .equip-card .pros-cons .cons { color: #dc2626; }
+    /* Direction rule visual */
+    .direction-rule {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin: 2rem 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #cfe8f3;
+    }
+    .direction-half {
+        flex: 1;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .direction-half.correct {
+        background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        border-right: 2px solid #cfe8f3;
+    }
+    .direction-half.wrong {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    }
+    .direction-half .dir-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .direction-half .dir-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+    .direction-half.correct .dir-title { color: #059669; }
+    .direction-half.wrong .dir-title { color: #dc2626; }
+    .direction-half .dir-desc { font-size: 0.85rem; color: #475569; }
+    /* Principles */
+    .principles {
+        background: linear-gradient(135deg, #134e5e 0%, #0891b2 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .principles::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 45%);
+        pointer-events: none;
+    }
+    .principles h3 {
+        color: white;
+        margin-top: 0;
+        border-bottom: 2px solid rgba(255,255,255,0.3);
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+    .principles .principle-item {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.2rem 0;
+        border-left: 4px solid var(--gold);
+        position: relative;
+    }
+    .principles .principle-item strong {
+        color: #fde68a;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem;
+        color: #64748b;
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+        main { padding: 1.5rem; margin: 1rem; }
+        h1.article-title { font-size: 1.7rem; }
+        table { font-size: 0.8rem; }
+        th, td { padding: 8px; }
+        nav { padding: 0.5rem; }
+        nav a { margin: 0 8px; font-size: 0.75rem; }
+        .toc ol { columns: 1; }
+        .equip-grid { grid-template-columns: 1fr; }
+        .direction-rule { flex-direction: column; }
+        .direction-half.correct { border-right: none; border-bottom: 2px solid #cfe8f3; }
+        .counter-visual { flex-direction: column; gap: 1rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Equipment</a>
+    <a href="#">Tuning</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Working with the Dephlegmator and Condenser</h1>
+        <p class="subtitle">How to ensure maximum condensation of vapors. An overview of design features, operating principles, and their impact on the efficiency of a distillation setup.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: Where Steam Becomes Liquid</a></li>
+                <li><a href="#physics">Chapter 1. The Physics of Condensation</a></li>
+                <li><a href="#dephlegmator">Chapter 2. The Dephlegmator: Heart of Rectification</a></li>
+                <li><a href="#condenser">Chapter 3. The Condenser: Final Collection</a></li>
+                <li><a href="#cooling">Chapter 4. Water Cooling: Direction, Flow, Temperature</a></li>
+                <li><a href="#efficiency">Chapter 5. Impact on Setup Efficiency</a></li>
+                <li><a href="#materials">Chapter 6. Materials and Construction</a></li>
+                <li><a href="#tuning">Chapter 7. Practical Tuning and Balancing</a></li>
+                <li><a href="#errors">Chapter 8. Typical Errors and Solutions</a></li>
+                <li><a href="#maintenance">Chapter 9. Maintenance and Cleaning</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#scales">Chapter 11. Summary: Parameters by Scale</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: Where Steam Becomes Liquid</h2>
+        <p>In any moonshine still — from the simplest pot with a coil to a multi-meter rectification column — there are two units without which distillation is physically impossible. The first intercepts the vapor halfway, forcing part of it to return to the column or the pot. The second catches the remaining vapor and turns it into the finished product dripping into the collection vessel. The first is called the <strong>dephlegmator</strong>, the second — the <strong>condenser</strong> (cooler).</p>
+        <p>Both devices solve the same physical task: to take heat away from the vapor and force the molecules of alcohol and water to transition from a gaseous state to a liquid one. But they do this with different goals, under different conditions, and with different design requirements. The dephlegmator manages the separation process, forming the reflux — the liquid that flows down to meet the rising vapor and ensures heat and mass exchange. The condenser provides final condensation and collection of the product.</p>
+        <p>If the dephlegmator works inefficiently, the column loses reflux, the separation of fractions deteriorates, the strength drops, and everything goes flying into the collection vessel. If the condenser cannot cope, alcohol vapor escapes into the atmosphere — literally flying out the pipe — filling the room with flammable gas and depriving you of your product.</p>
+        <p>This article is a detailed breakdown of both units: from the physics of condensation to practical recommendations for selection, connection, and tuning. We will examine how different types of dephlegmators and condensers are built, why the direction of water supply is critically important, how to calculate sufficient heat exchange area, and which errors turn an expensive apparatus into a useless pile of metal.</p>
+
+        <h2 id="physics">Chapter 1. The Physics of Condensation: What Happens to Vapor</h2>
+
+        <h3>1.1. Heat of Vaporization and Heat of Condensation</h3>
+        <p>When a liquid evaporates, it absorbs energy. When vapor condenses, it releases that energy. For ethanol, the specific heat of vaporization is <strong>846 kJ/kg</strong> at its boiling point of 78.37 °C. For water — <strong>2260 kJ/kg</strong> at 100 °C.</p>
+        <p>This means that to condense 1 kg of ethanol vapor, you must remove 846 kJ of heat. For 1 kg of water vapor — 2260 kJ. This is precisely the heat that must be carried away by the cooling water flowing through the dephlegmator or condenser.</p>
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> a condenser handling vapor with high water content (the beginning of distillation, tail fractions) must dissipate significantly more heat than when working with vapor rich in ethanol.
+        </div>
+
+        <h3>1.2. Film and Dropwise Condensation</h3>
+        <p>Condensation of vapor on a cooled surface can occur in two ways:</p>
+        <ul>
+            <li><strong>Film condensation:</strong> the condensate forms a thin film that flows down the surface. Heat transfer through the film is hindered because the film itself acts as a thermal insulator.</li>
+            <li><strong>Dropwise condensation:</strong> the condensate collects into separate droplets that detach from the surface. Between the droplets the surface remains exposed, and heat transfer proceeds much more intensely.</li>
+        </ul>
+        <p>In moonshine stills, film condensation predominates because the surfaces are usually metallic and wet well. To increase efficiency, it is important that the film be as thin as possible. This is achieved by:</p>
+        <ul>
+            <li>Increasing vapor flow velocity (vapor "blows off" the film).</li>
+            <li>Reducing tube diameter (the film is thinner on small surfaces).</li>
+            <li>Using packing or turbulators inside the heat exchanger.</li>
+        </ul>
+
+        <h3>1.3. Temperature Difference — The Driving Force of Condensation</h3>
+        <p>The heat transfer rate is determined by the temperature difference between the vapor and the cooled surface:</p>
+        <div class="formula-box">
+            <div class="formula-title">Heat Transfer Equation</div>
+            <div class="formula-body">Q = k × A × ΔT</div>
+            <p class="formula-example">where:<br>
+            Q — heat flow (W)<br>
+            k — heat transfer coefficient (W/m²·°C)<br>
+            A — heat exchange area (m²)<br>
+            ΔT — temperature difference between vapor and wall (°C)</p>
+        </div>
+        <p>The larger ΔT, the more intense the condensation. If the vapor is at 78 °C and the condenser wall is cooled to 20 °C, the difference is 58 °C. If the water has heated up and the wall becomes 50 °C, the difference drops to 28 °C, and the condensation rate is roughly halved.</p>
+
+        <h2 id="dephlegmator">Chapter 2. The Dephlegmator: Heart of Rectification and Fractional Distillation</h2>
+
+        <h3>2.1. Purpose and Operating Principle</h3>
+        <p>A <strong>dephlegmator</strong> is a heat exchanger installed at the top of the column or on the vapor line that condenses part of the rising vapor and returns the condensate to the column or pot as reflux.</p>
+        <p>In a rectification column, the dephlegmator creates the <strong>reflux</strong> — the liquid that flows down the packing to meet the rising vapor. Without reflux there is no heat and mass exchange, no separation of fractions, and no rectification.</p>
+        <p>In simple fractional distillation, the dephlegmator works as a partial condenser: heavy fractions (water, fusel oils) condense and return to the pot, while light fractions (ethanol, methanol, acetaldehyde) pass on to the condenser. This increases the strength and purity of the distillate.</p>
+
+        <h3>2.2. Types of Dephlegmators</h3>
+        <div class="equip-grid">
+            <div class="equip-card">
+                <h4>Shell-and-Tube Dephlegmator</h4>
+                <div class="equip-desc">One or more tubes carrying vapor are placed inside an outer shell (jacket) through which cooling water flows.</div>
+                <div class="equip-params">
+                    Shell diameter: 30–50 mm<br>
+                    Number of tubes: 1–7<br>
+                    Tube diameter: 8–12 mm<br>
+                    Working zone length: 15–30 cm
+                </div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> large heat exchange area in compact dimensions; vapor flows through tubes and condensate drains down their walls — countercurrent flow; easy to adjust the degree of condensation by changing water flow.<br>
+                    <span class="cons">Cons:</span> harder to manufacture than a coil; requires precise fitting of tubes and shell.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>Dimroth Dephlegmator</h4>
+                <div class="equip-desc">A spiral made of thin tubing placed inside a wider pipe. Vapor flows around the outside of the spiral, water flows inside it.</div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> very large heat exchange area per unit length; vapor condenses on the outer surface of the spiral and condensate drains down; high efficiency in small dimensions.<br>
+                    <span class="cons">Cons:</span> complex to manufacture (the spiral must be wound); thin tubes can clog with deposits.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>"Liebig-in-Reverse" Dephlegmator</h4>
+                <div class="equip-desc">A straight tube carrying vapor with a water jacket around it. Installed vertically above the column.</div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> simple to manufacture; vapor condenses on the tube walls and reflux flows back.<br>
+                    <span class="cons">Cons:</span> smaller heat exchange area compared to shell-and-tube or Dimroth; less efficient at high throughput.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>Air-Cooled Dephlegmator (Passive)</h4>
+                <div class="equip-desc">An expanded pipe or finned radiator without forced water supply. Condensation occurs through natural air convection.</div>
+                <div class="pros-cons">
+                    <span class="pros">Application:</span> in pot-still columns (pot still with light rectification) to create minimal reflux return.<br>
+                    <span class="cons">Not suitable for full rectification.</span>
+                </div>
+            </div>
+        </div>
+
+        <h3>2.3. Key Parameters of the Dephlegmator</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Value</th><th>Influence</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Heat exchange area</td><td>0.05–0.3 m²</td><td>Determines the amount of vapor condensed</td></tr>
+                <tr><td>Working zone length</td><td>15–30 cm</td><td>Longer = more time for vapor to contact the cold wall</td></tr>
+                <tr><td>Vapor tube diameter</td><td>8–20 mm</td><td>Smaller = thinner film, better heat transfer</td></tr>
+                <tr><td>Water flow rate</td><td>0.5–2 L/min</td><td>Determines wall temperature</td></tr>
+                <tr><td>Inlet water temperature</td><td>10–20 °C</td><td>Colder = larger ΔT</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>2.4. Dephlegmator Operating Modes</h3>
+        <ul>
+            <li><strong>Full reflux mode:</strong> all dephlegmator power is directed at condensing vapor. Reflux returns completely to the column, no take-off. Used for stabilizing the column before starting take-off.</li>
+            <li><strong>Partial reflux mode:</strong> the dephlegmator condenses part of the vapor. The rest passes through the take-off node to the condenser. The ratio of returned reflux to collected distillate determines the reflux ratio.</li>
+            <li><strong>Minimum reflux mode (for fractional distillation):</strong> the dephlegmator works at minimum, returning only heavy fractions. The main goal is not to create reflux for rectification, but to knock water and fusel out of the light fractions.</li>
+        </ul>
+
+        <h2 id="condenser">Chapter 3. The Condenser: Final Condensation and Product Collection</h2>
+
+        <h3>3.1. Purpose and Difference from the Dephlegmator</h3>
+        <p>A <strong>condenser</strong> (cooler, coil) is a heat exchanger that condenses all the vapor that has passed through the dephlegmator or take-off node and turns it into liquid distillate flowing into the collection vessel.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Dephlegmator</th><th>Condenser</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Goal</td><td>Return part of the vapor to the column</td><td>Condense all vapor into product</td></tr>
+                <tr><td>Location</td><td>Above column / on vapor line</td><td>After dephlegmator / take-off node</td></tr>
+                <tr><td>Wall temperature</td><td>Above full-condensation point</td><td>Below full-condensation point</td></tr>
+                <tr><td>Reflux direction</td><td>Back into column</td><td>Into collection vessel</td></tr>
+                <tr><td>Adjustment</td><td>Controls reflux ratio</td><td>Ensures full condensation</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>3.2. Types of Condensers</h3>
+        <div class="equip-grid">
+            <div class="equip-card">
+                <h4>Coil (Spiral Condenser)</h4>
+                <div class="equip-desc">A tube wound into a spiral, immersed in a container of cold water.</div>
+                <div class="equip-params">
+                    Tube length: 1–3 m<br>
+                    Tube diameter: 8–12 mm<br>
+                    Spiral diameter: 50–100 mm
+                </div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> simple to manufacture; long tube in small dimensions; does not require running water (works in a container).<br>
+                    <span class="cons">Cons:</span> water in the container gradually heats up, reducing efficiency; condensate can accumulate in the turns, creating "liquid plugs"; uneven cooling — upper turns are colder than lower ones.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>Liebig Condenser (Straight-Flow)</h4>
+                <div class="equip-desc">A straight inner tube carrying vapor, and an outer jacket through which water flows. Vapor and water move in the same direction (co-current) or in opposite directions (countercurrent).</div>
+                <div class="equip-params">
+                    Length: 30–60 cm<br>
+                    Inner tube diameter: 10–16 mm<br>
+                    Jacket diameter: 20–30 mm
+                </div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> simple construction; easy to clean; condensate drains without delay (no turns).<br>
+                    <span class="cons">Cons:</span> relatively small heat exchange area for short length; sufficient length (30–60 cm) needed for full condensation.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>Shell-and-Tube Condenser</h4>
+                <div class="equip-desc">Several tubes inside a shell. Vapor flows through the tubes (or the shell), water through the other circuit.</div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> large heat exchange area; high throughput; suitable for apparatuses with high heating power.<br>
+                    <span class="cons">Cons:</span> harder to manufacture; more expensive.
+                </div>
+            </div>
+            <div class="equip-card">
+                <h4>Dimroth Condenser</h4>
+                <div class="equip-desc">Similar to the Dimroth dephlegmator but with greater length and more intense cooling. Vapor condenses on the outer surface of the spiral, and condensate flows into the collection vessel.</div>
+                <div class="pros-cons">
+                    <span class="pros">Pros:</span> very high efficiency; compact.<br>
+                    <span class="cons">Cons:</span> complex to manufacture; requires clean water without deposits.
+                </div>
+            </div>
+        </div>
+
+        <h3>3.3. Key Parameters of the Condenser</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Value</th><th>Influence</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Heat exchange area</td><td>0.1–0.5 m²</td><td>Determines throughput</td></tr>
+                <tr><td>Working zone length</td><td>30–80 cm</td><td>Longer = fuller condensation</td></tr>
+                <tr><td>Vapor channel diameter</td><td>10–20 mm</td><td>Smaller = thinner film</td></tr>
+                <tr><td>Water flow rate</td><td>1–4 L/min</td><td>Determines wall temperature</td></tr>
+                <tr><td>Outlet water temperature</td><td>Not above 50–60 °C</td><td>Otherwise the wall is too hot</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="cooling">Chapter 4. Water Cooling: Direction, Flow, Temperature</h2>
+
+        <h3>4.1. Countercurrent — A Mandatory Rule</h3>
+        <p>Water in the jacket of the dephlegmator or condenser must always be supplied <strong>from bottom to top</strong>, against the vapor flow (which moves from top to bottom during condensation).</p>
+        <div class="counter-visual">
+            <div class="counter-col steam-col">
+                <span class="flow-label">Vapor ↓</span>
+                <span class="flow-icon">♨️</span>
+                <div class="flow-desc">Hot vapor flows down<br>(78 °C)</div>
+            </div>
+            <div class="counter-arrow">⇄</div>
+            <div class="counter-col water-col">
+                <span class="flow-label">Water ↑</span>
+                <span class="flow-icon">💧</span>
+                <div class="flow-desc">Cold water flows up<br>(10–20 °C)</div>
+            </div>
+        </div>
+        <p><strong>Why this matters:</strong></p>
+        <ul>
+            <li><strong>Maximum temperature difference.</strong> At the bottom of the heat exchanger (where vapor is already partially condensed and at minimum temperature) it meets the coldest water. At the top (where vapor is hottest) — already warmed water, but the difference is still sufficient.</li>
+            <li><strong>Elimination of air locks.</strong> When water is supplied from bottom to top, it completely fills the jacket, displacing air through the upper fitting. When supplied from above, water can flow down the walls without filling the whole volume, leaving part of the jacket dry.</li>
+            <li><strong>Uniform cooling.</strong> Countercurrent provides a more uniform temperature distribution along the heat exchanger length.</li>
+        </ul>
+        <div class="direction-rule">
+            <div class="direction-half correct">
+                <span class="dir-icon">✅</span>
+                <div class="dir-title">Correct: Bottom → Up</div>
+                <div class="dir-desc">Water fully fills the jacket, no air locks, maximum ΔT, uniform cooling</div>
+            </div>
+            <div class="direction-half wrong">
+                <span class="dir-icon">❌</span>
+                <div class="dir-title">Wrong: Top → Down</div>
+                <div class="dir-desc">Air accumulates at top of jacket, uneven heat exchange, vapor may not condense at the bottom</div>
+            </div>
+        </div>
+
+        <h3>4.2. Water Flow Rate: How Much Is Needed</h3>
+        <p>The cooling water flow rate is determined by the amount of heat that must be removed. For a home setup of 1–3 kW:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Heating Power</th><th>Dephlegmator Water Flow</th><th>Condenser Water Flow</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1 kW</td><td>0.5–1 L/min</td><td>0.5–1 L/min</td></tr>
+                <tr><td>2 kW</td><td>1–1.5 L/min</td><td>1–2 L/min</td></tr>
+                <tr><td>3 kW</td><td>1.5–2 L/min</td><td>2–3 L/min</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>How to check that the flow is sufficient:</strong> the water exiting the heat exchanger should be warm (30–50 °C) but not hot. If the outlet water is hot (> 60 °C) — the flow is insufficient. If it's icy — the flow is excessive (water waste).</p>
+
+        <h3>4.3. Inlet Water Temperature</h3>
+        <p>The colder the inlet water, the greater the temperature difference and the more efficient the condensation. In summer, when tap water temperature rises to 20–25 °C, condenser efficiency drops. In this case:</p>
+        <ul>
+            <li>Increase water flow.</li>
+            <li>Use a container with ice and a submersible pump for recirculation.</li>
+            <li>Connect the condenser to a well or borehole (if available).</li>
+        </ul>
+
+        <h3>4.4. Pressure and Supply Stability</h3>
+        <p>For stable operation of the dephlegmator and condenser, water pressure must be constant. Pressure surges (for example, when someone opens a faucet in the kitchen) lead to flow changes and, consequently, to column instability.</p>
+        <p><strong>Recommendations:</strong></p>
+        <ul>
+            <li>Use a separate faucet for the apparatus.</li>
+            <li>Install a pressure regulator if the water pressure is unstable.</li>
+            <li>When using a submersible pump from a container, make sure the pump capacity is sufficient and independent of the water level.</li>
+        </ul>
+
+        <h2 id="efficiency">Chapter 5. Impact of Dephlegmator and Condenser on Setup Efficiency</h2>
+
+        <h3>5.1. Dephlegmator and Distillate Strength</h3>
+        <p>Dephlegmator efficiency directly determines the strength and purity of the product:</p>
+        <ul>
+            <li><strong>Weak dephlegmator</strong> (small area, insufficient cooling): reflux forms in insufficient quantities. The column works like simple distillation. Distillate strength is 50–70 % instead of the expected 90–96 %. Separation of fractions is unclear, heads and tails mix with the body.</li>
+            <li><strong>Powerful dephlegmator</strong> (large area, intense cooling): the column stably forms reflux. Body strength is 93–96 %. Clear separation of heads, body, and tails.</li>
+            <li><strong>Excessive dephlegmator:</strong> with too-intense cooling, the column "floods" — reflux fills the packing, and vapor cannot pass. The column stops.</li>
+        </ul>
+
+        <h3>5.2. Condenser and Product Loss</h3>
+        <p>If the condenser cannot cope with condensing the vapor:</p>
+        <ul>
+            <li>Alcohol vapor escapes into the atmosphere through the condenser outlet.</li>
+            <li>Flammable vapor accumulates in the room (a concentration above 3.5 % by volume is explosive).</li>
+            <li>You lose product: every gram of uncondensed vapor is lost alcohol.</li>
+        </ul>
+        <p><strong>Signs of insufficient condensation:</strong></p>
+        <ul>
+            <li>Visible vapor comes from the condenser outlet.</li>
+            <li>The distillate at the outlet is hot (> 40 °C).</li>
+            <li>Alcohol smell is felt in the room.</li>
+        </ul>
+
+        <h3>5.3. Heat Exchanger and Distillation Speed</h3>
+        <p>Setup throughput is limited by the weakest link. If the dephlegmator or condenser cannot handle a given vapor volume, you cannot increase heating power without losing quality or safety.</p>
+        <p><strong>Example:</strong> a 30-liter pot, 3 kW heating. Vapor generation at 3 kW is approximately 2–2.5 kg of vapor per hour. If the dephlegmator is rated for 1.5 kg of vapor per hour, it cannot provide full separation at full power. You will have to either reduce heating to 1.5–2 kW or increase the dephlegmator area.</p>
+
+        <h2 id="materials">Chapter 6. Materials and Construction: What Affects Heat Transfer</h2>
+
+        <h3>6.1. Heat Exchanger Material</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Material</th><th>Thermal Conductivity (W/m·°C)</th><th>Applicability</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Copper</td><td>401</td><td>Excellent heat transfer, binds sulfur compounds, but oxidizes</td></tr>
+                <tr><td>Stainless steel (AISI 304)</td><td>16</td><td>Poorer heat transfer, but durable and inert</td></tr>
+                <tr><td>Brass</td><td>109–120</td><td>Good heat transfer, but contains zinc (risk in acidic environments)</td></tr>
+                <tr><td>Glass</td><td>1</td><td>Very poor heat transfer, used only in laboratory applications</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> a copper dephlegmator or condenser with the same heat exchange area works 20–25 times more efficiently than a glass one and 2–3 times more efficiently than a stainless one. But stainless steel is more durable and does not require cleaning of oxides.
+        </div>
+
+        <h3>6.2. Wall Thickness</h3>
+        <p>Heat transfer through a tube wall is determined by its thickness: the thinner the wall, the lower the thermal resistance. For home apparatuses, the optimal tube wall thickness is <strong>0.5–1.0 mm</strong>. A thicker wall (1.5–2 mm) reduces efficiency by 10–20 %.</p>
+
+        <h3>6.3. Fins and Turbulators</h3>
+        <p>To increase heat exchange area, you can create on the tube surface:</p>
+        <ul>
+            <li><strong>Fins</strong> (longitudinal or annular protrusions). Increase the area by 2–3 times.</li>
+            <li><strong>Turbulators</strong> (spirals or mesh inside the tube). Break up laminar flow, improving vapor contact with the cold wall.</li>
+            <li><strong>Packing</strong> inside a shell-and-tube heat exchanger. Creates additional condensation surface.</li>
+        </ul>
+
+        <h2 id="tuning">Chapter 7. Practical Tuning and Balancing</h2>
+
+        <h3>7.1. Tuning the Dephlegmator for Rectification</h3>
+        <p><strong>Step 1.</strong> Set the dephlegmator water supply to maximum. Turn on the pot heating. Wait until vapor reaches the dephlegmator.</p>
+        <p><strong>Step 2.</strong> Ensure the dephlegmator fully condenses the vapor (full reflux mode). Nothing should drip from the take-off node. The temperature at the top of the column should stabilize at 78.0–78.3 °C.</p>
+        <p><strong>Step 3.</strong> Smoothly reduce the dephlegmator water supply until the first drops appear from the take-off node. Remember this faucet position — this is the minimum water supply at which the dephlegmator still works.</p>
+        <p><strong>Step 4.</strong> Increase the water supply by 10–20 % from the minimum. This is the working point: the dephlegmator condenses enough vapor to form reflux but does not "choke" the column.</p>
+        <p><strong>Step 5.</strong> Set the desired reflux ratio by adjusting the take-off at the take-off node. The dephlegmator operates stably, and the temperature at the top of the column does not change.</p>
+
+        <h3>7.2. Tuning the Dephlegmator for Fractional Distillation</h3>
+        <p>For fractional distillation on a simple pot, the dephlegmator works in minimum-reflux mode:</p>
+        <p><strong>Step 1.</strong> Supply water to the dephlegmator at minimum flow (0.3–0.5 L/min).</p>
+        <p><strong>Step 2.</strong> Observe the temperature at the dephlegmator outlet. If vapor passes on to the condenser, the temperature at the top of the vapor line will be 78–80 °C. If the dephlegmator is too powerful, the temperature drops below 78 °C — meaning it condenses too much and returns even light fractions to the pot.</p>
+        <p><strong>Step 3.</strong> Adjust the water supply so the dephlegmator returns only heavy fractions (water, fusel) but lets ethanol through. Reference: distillate strength at the condenser outlet should be 65–75 % for sugar wash.</p>
+
+        <h3>7.3. Tuning the Condenser</h3>
+        <p>The condenser must work with a margin:</p>
+        <p><strong>Step 1.</strong> Supply water to the condenser. Flow rate — 1–2 L/min for an apparatus of 1–2 kW.</p>
+        <p><strong>Step 2.</strong> Check the distillate temperature at the outlet. It should be below 30 °C, ideally 15–25 °C. If the distillate is hotter — increase water flow or add condenser length.</p>
+        <p><strong>Step 3.</strong> Ensure no vapor comes from the outlet. If vapor is visible — the condenser cannot cope.</p>
+
+        <h3>7.4. Balancing: Dephlegmator + Condenser</h3>
+        <p>The dephlegmator and condenser work as a pair. If the dephlegmator is tuned too aggressively, it condenses all the vapor and nothing reaches the condenser. If the dephlegmator is too weak, all the vapor flies to the condenser, and the condenser must handle the full volume.</p>
+        <div class="key-takeaway">
+            <strong>Rule:</strong> the dephlegmator takes 60–85 % of the heat load, the condenser — the remaining 15–40 %. If more than 50 % of the load falls on the condenser, the dephlegmator is tuned incorrectly.
+        </div>
+
+        <h2 id="errors">Chapter 8. Typical Errors and Their Solutions</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Error</th><th>Consequence</th><th>Solution</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Water supplied top → down</td><td>Air locks, uneven cooling, vapor does not condense</td><td>Supply water bottom → up</td></tr>
+                <tr><td>Insufficient water flow</td><td>Vapor escapes to atmosphere, product is hot</td><td>Increase flow to 1–3 L/min</td></tr>
+                <tr><td>Dephlegmator too powerful for the column</td><td>Flooding, column stops</td><td>Reduce water supply or reduce heating power</td></tr>
+                <tr><td>Dephlegmator too weak</td><td>Low strength, unclear fraction separation</td><td>Increase dephlegmator area or water flow</td></tr>
+                <tr><td>Condenser too short</td><td>Vapor has no time to condense, product loss</td><td>Increase length or add a second condenser in series</td></tr>
+                <tr><td>Coil with liquid plugs</td><td>Uneven condensation, splashing into collector</td><td>Install coil at an angle, ensure free drainage</td></tr>
+                <tr><td>Hot inlet water (summer)</td><td>Reduced ΔT, worse condensation</td><td>Use a container with ice, increase flow</td></tr>
+                <tr><td>No water flow adjustment</td><td>Cannot tune the dephlegmator</td><td>Install separate faucets for each heat exchanger</td></tr>
+                <tr><td>Thin water hoses</td><td>Limited flow, kinks</td><td>Use 8–10 mm diameter hoses</td></tr>
+                <tr><td>Dephlegmator installed at an angle</td><td>Condensate drains unevenly, reflux bypasses the column</td><td>Install strictly vertically</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="maintenance">Chapter 9. Maintenance and Cleaning</h2>
+
+        <h3>9.1. Why Heat Exchangers Get Fouled</h3>
+        <p>During prolonged use, deposits form on the inner surfaces of the dephlegmator and condenser:</p>
+        <ul>
+            <li><strong>Limescale</strong> (calcium and magnesium salts) from tap water. Limescale is a thermal insulator: a 1 mm layer reduces heat transfer by 10–15 %.</li>
+            <li><strong>Copper oxides</strong> (green or black coating) on copper elements.</li>
+            <li><strong>Organic deposits</strong> (wash residue, proteins, sugars) if vapor carries splashes.</li>
+        </ul>
+
+        <h3>9.2. Cleaning</h3>
+        <p><strong>Limescale in the water jacket:</strong></p>
+        <ol>
+            <li>Disconnect the water supply.</li>
+            <li>Fill the jacket with a citric acid solution (20–30 g per liter of water) or vinegar.</li>
+            <li>Leave for 2–4 hours.</li>
+            <li>Rinse with clean water under pressure.</li>
+        </ol>
+        <p><strong>Oxides on copper elements:</strong></p>
+        <ol>
+            <li>Prepare a citric acid solution (10–15 g per liter of water).</li>
+            <li>Soak the copper elements for 30–60 minutes.</li>
+            <li>Rinse and dry.</li>
+        </ol>
+        <p><strong>Organic deposits in the vapor circuit:</strong></p>
+        <ol>
+            <li>Rinse the vapor channel with hot water with baking soda (2 tablespoons per liter).</li>
+            <li>Pass clean water vapor through the apparatus for 15–20 minutes.</li>
+        </ol>
+        <p><strong>Cleaning frequency:</strong></p>
+        <ul>
+            <li>Water jacket: every 3–6 months (depends on water hardness).</li>
+            <li>Vapor circuit: after every 5–10 distillations.</li>
+            <li>Copper elements: after every distillation.</li>
+        </ul>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <h4>Can I do without a dephlegmator?</h4>
+        <p>For simple distillation (obtaining raw spirit) — yes. For fractional distillation, a dephlegmator is desirable but not mandatory: you can do without it, but the separation quality will be lower. For rectification, a dephlegmator is mandatory: without it there is no reflux, no separation, no rectification.</p>
+
+        <h4>Are the dephlegmator and condenser the same thing?</h4>
+        <p>Structurally they can be similar, but functionally they are different devices. The dephlegmator returns condensate back into the column. The condenser directs condensate into the collection vessel. The dephlegmator controls the separation process. The condenser ensures product collection. In some apparatuses they are combined into one unit, but this is a compromise.</p>
+
+        <h4>Which dephlegmator type is best for a home column?</h4>
+        <p>A shell-and-tube dephlegmator with 3–5 tubes of 8–10 mm diameter and a working zone length of 20–25 cm is the optimal choice in terms of efficiency/manufacturability ratio. The Dimroth dephlegmator is more compact and efficient but harder to manufacture.</p>
+
+        <h4>Can I use one heat exchanger as both dephlegmator and final condenser?</h4>
+        <p>In some designs (for example, pot-still columns with one dephlegmator) this is possible. But for full rectification it's better to have two separate heat exchangers: a dephlegmator to form reflux and a condenser to collect the product. This gives independent control of each process.</p>
+
+        <h4>What should I do if tap water is warm in summer and the condenser can't cope?</h4>
+        <p>Three options: (1) increase water flow; (2) use a container with ice and a submersible pump for recirculation; (3) connect the apparatus to a well or borehole. For a container with ice: 20–30 liters of water + 5–10 kg of ice, a pump with a capacity of 2–4 L/min.</p>
+
+        <h4>How do I know the dephlegmator is working correctly?</h4>
+        <p>For rectification: the temperature at the top of the column is stable (78.0–78.3 °C), and an even stream or drops of the desired strength (93–96 %) come from the take-off node. For fractional distillation: distillate strength at the outlet is 65–75 %, vapor line temperature is 78–80 °C.</p>
+
+        <h4>Do I need a thermometer on the dephlegmator?</h4>
+        <p>Desirable. A thermometer at the top of the column (below the dephlegmator) shows vapor temperature, by which you can judge the composition. A thermometer at the dephlegmator water outlet helps monitor the heat load.</p>
+
+        <h4>Can I make a dephlegmator from a car radiator?</h4>
+        <p>Technically possible, but not recommended. Car radiators contain lead- and zinc-based solder, aluminum, and antifreeze residue. For contact with food vapor you need a radiator made of stainless steel or copper, specifically made for distillation.</p>
+
+        <h4>Why does hot distillate drip from the condenser?</h4>
+        <p>The condenser cannot cope with condensation. Increase water flow, reduce heating power, or add condenser length. The distillate at the outlet should be below 30 °C.</p>
+
+        <h4>What should I do if the dephlegmator floods the column?</h4>
+        <p>Reduce the dephlegmator water supply or reduce the pot heating power. Flooding occurs when reflux fills the packing and vapor cannot pass. Reducing condensation reduces the reflux volume and restores balance.</p>
+
+        <h2 id="scales">Chapter 11. Summary: Parameters by Scale</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>Parameter</th><th>Pot 10–20 L, 1–1.5 kW</th><th>Pot 20–30 L, 1.5–2.5 kW</th><th>Pot 30–50 L, 2.5–4 kW</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Dephlegmator length</td><td>15–20 cm</td><td>20–25 cm</td><td>25–30 cm</td></tr>
+                <tr><td>Dephlegmator shell diameter</td><td>30–35 mm</td><td>35–45 mm</td><td>45–50 mm</td></tr>
+                <tr><td>Dephlegmator water flow</td><td>0.5–1 L/min</td><td>1–1.5 L/min</td><td>1.5–2 L/min</td></tr>
+                <tr><td>Condenser length</td><td>30–40 cm</td><td>40–50 cm</td><td>50–70 cm</td></tr>
+                <tr><td>Condenser diameter</td><td>20–25 mm</td><td>25–30 mm</td><td>30–40 mm</td></tr>
+                <tr><td>Condenser water flow</td><td>0.5–1 L/min</td><td>1–2 L/min</td><td>2–3 L/min</td></tr>
+                <tr><td>Outlet distillate temperature</td><td>&lt; 30 °C</td><td>&lt; 30 °C</td><td>&lt; 30 °C</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2>Conclusion: Two Heat Exchangers — Two Guardians of Quality</h2>
+        <p>The dephlegmator and condenser are not just "cold tubes through which water flows." These are two elements that determine whether you get a clean, strong, soft distillate or a cloudy, fusel liquid smelling of acetone. The dephlegmator controls the separation of fractions, forming reflux and determining which molecules return to the pot and which pass on. The condenser guarantees that not a single drop of alcohol evaporates into the atmosphere.</p>
+        <p>Three rules worth remembering:</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>Water bottom → up, against the vapor flow.</strong>
+                This is not a recommendation but a law. Supplying water from above creates air locks and uneven cooling. Countercurrent provides the maximum temperature difference and full condensation.
+            </div>
+            <div class="principle-item">
+                <strong>The dephlegmator and condenser are different tasks.</strong>
+                The dephlegmator returns reflux and controls separation. The condenser collects the product. Do not confuse their functions or try to get by with one heat exchanger where two are needed.
+            </div>
+            <div class="principle-item">
+                <strong>Outlet distillate temperature is your main indicator.</strong>
+                If the distillate is hotter than 30 °C or vapor comes from the condenser — the system cannot cope. Increase water flow, reduce heating, or add heat exchange area. Lost vapor is lost alcohol, a fire-hazard concentration in the room, and a signal that something is working incorrectly.
+            </div>
+        </div>
+
+        <p>Understanding how the dephlegmator and condenser affect the process turns a moonshiner from someone who "turned on the apparatus and waits" into an operator controlling heat exchange. And controlled heat exchange means predictable strength, clean fraction separation, and safe operation.</p>
+        <p><em>Cold water and full condensation.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

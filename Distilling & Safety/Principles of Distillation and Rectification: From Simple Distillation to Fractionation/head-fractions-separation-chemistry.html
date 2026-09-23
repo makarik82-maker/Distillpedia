@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale: 1.0">
+    <title>Separating Head Fractions: Chemistry, Toxicology & Safe Distillation | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #3d0a0a;
+            --accent-color: #dc2626;
+            --accent-dark: #b91c1c;
+            --accent-light: #f87171;
+            --bg-color: #fdf8f6;
+            --text-color: #2c2c2c;
+            --light-gray: #e0e0e0;
+            --note-bg: #fef3c7;
+            --note-border: #fbbf24;
+            --note-text: #92400e;
+            --takeaway-bg: #fef2f2;
+            --takeaway-text: #991b1b;
+            --danger-bg: #fef2f2;
+            --danger-text: #991b1b;
+            --safe-bg: #ecfdf5;
+            --safe-text: #065f46;
+            --gold: #fbbf24;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1a0505 0%, #7f1d1d 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "☠";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6rem;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #1a0505;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        nav a {
+            color: #fca5a5;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #fbbf24; }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #fdf8f6;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #78350f; }
+        .danger-note {
+            background-color: var(--danger-bg);
+            border-left: 5px solid #dc2626;
+            padding: 18px 22px;
+            border-radius: 6px;
+            margin: 1.8rem 0;
+            color: var(--danger-text);
+        }
+        .danger-note strong { color: #7f1d1d; }
+        .safe-note {
+            background-color: var(--safe-bg);
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--safe-text);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #fdf8f6; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+        /* Myth debunking box */
+        .myth-box {
+            background: linear-gradient(135deg, #7f1d1d 0%, #3d0a0a 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .myth-box::before {
+            content: "🚫";
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 4rem;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .myth-box h3 {
+            color: #fbbf24;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        .myth-box .myth-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .myth-box p { color: rgba(255,255,255,0.95); }
+        /* Chemical compound cards */
+        .compound-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 2rem 0;
+        }
+        .compound-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        }
+        .compound-header {
+            padding: 1rem 1.4rem;
+            color: white;
+        }
+        .compound-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .compound-header .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .compound-body {
+            padding: 1.2rem 1.4rem;
+        }
+        .compound-body .compound-prop {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 0.9rem;
+        }
+        .compound-body .compound-prop:last-child { border-bottom: none; }
+        .compound-body .prop-label { color: #6b7280; font-weight: 600; }
+        .compound-danger {
+            margin-top: 0.8rem;
+            padding: 10px 12px;
+            background: #fef2f2;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            color: #991b1b;
+        }
+        .ch-methanol .compound-header { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
+        .ch-acetaldehyde .compound-header { background: linear-gradient(135deg, #ea580c, #9a3412); }
+        .ch-acetate .compound-header { background: linear-gradient(135deg, #d97706, #92400e); }
+        .ch-acetone .compound-header { background: linear-gradient(135deg, #0891b2, #155e75); }
+        /* Calculation boxes */
+        .calc-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 1px solid #fbbf24;
+            border-left: 5px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0;
+        }
+        .calc-box h4 {
+            margin-top: 0;
+            color: #92400e;
+        }
+        .calc-box .calc-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 8px 0;
+            color: #78350f;
+        }
+        .calc-box .calc-example {
+            font-size: 0.9rem;
+            color: #78350f;
+            margin-top: 0.5rem;
+        }
+        /* Collection practice cards */
+        .practice-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .practice-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* First aid box */
+        .firstaid-box {
+            background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .firstaid-box h3 {
+            color: white;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .firstaid-box ol { color: rgba(255,255,255,0.95); }
+        .firstaid-box strong { color: #fbbf24; }
+        /* Conclusion principles */
+        .principles {
+            background: linear-gradient(135deg, #1a0505 0%, #7f1d1d 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "☠";
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 5rem;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: #fbbf24;
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 0.5rem;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #fbbf24;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .compound-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Safety</a>
+    <a href="#">Techniques</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Separating Head Fractions: Chemistry, Toxicology & Safe Distillation</h1>
+        <p class="subtitle">A detailed analysis of the composition of "heads," the physiology of their effects, and uncompromising rules for collection. Why the first drops of distillate are not "the strongest and tastiest alcohol" but a toxic chemical cocktail.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Vanguard of Distillate</a></li>
+                <li><a href="#chemistry">Chapter 1. Chemical Portrait of "Heads"</a></li>
+                <li><a href="#physiology">Chapter 2. Physiology: Why You Can't Drink Heads</a></li>
+                <li><a href="#math">Chapter 3. The Math of Distillation</a></li>
+                <li><a href="#practice">Chapter 4. Practice of Collection</a></li>
+                <li><a href="#strategy">Chapter 5. Strategy: First & Second Distillation</a></li>
+                <li><a href="#utilization">Chapter 6. Utilization & Storage</a></li>
+                <li><a href="#rawmaterials">Chapter 7. Raw Materials: Where Are the Most Heads?</a></li>
+                <li><a href="#hardware">Chapter 8. Hardware for Separating Heads</a></li>
+                <li><a href="#sugar">Chapter 9. First Distillation of Sugar Mash</a></li>
+                <li><a href="#grain">Chapter 10. First Distillation of Grain Mash</a></li>
+                <li><a href="#fruit">Chapter 11. First Distillation of Fruit & Berry Mash</a></li>
+                <li><a href="#mistakes">Chapter 12. Typical Mistakes</a></li>
+                <li><a href="#firstaid">Chapter 13. First Aid for Methanol Poisoning</a></li>
+                <li><a href="#legal">Chapter 14. Legal Context</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Vanguard of Distillate</h2>
+        <p>In the home distilling community, a dangerous myth still lives: "The first drops of moonshine are the strongest — you should drink them yourself or treat a respected guest." This tradition, rooted in village moonshining of the last century, is a direct road to severe poisoning, blindness, and in the worst case, death.</p>
+        <p>The first milliliters coming out of the still's condenser are called <strong>head fractions</strong> (or simply "heads"). This is not just "strong alcohol." This is a concentrate of the most volatile, aggressive, and toxic compounds formed during fermentation. The distiller's task is not just to separate them, but to do it surgically precisely — without losing the valuable "body" (drinkable ethanol) and without leaving poison in the final product.</p>
+        <p>In this article, we'll break heads down to molecules, understand where they come from, how to recognize them without complex laboratory equipment, and how to ensure the absolute safety of your drink.</p>
+
+        <h2 id="chemistry">Chapter 1. Chemical Portrait of "Heads": Who Is Who?</h2>
+        <p>Head fractions (in professional terminology — the ether-aldehyde fraction, EAF) are a complex mixture of low-boiling substances. Their boiling point is lower than or close to ethanol's boiling point (78.3 °C), so when the still is heated, they rush into the vapor line first.</p>
+        <p>Let's examine the main "characters" of this toxic cocktail.</p>
+
+        <div class="compound-grid">
+            <div class="compound-card ch-methanol">
+                <div class="compound-header">
+                    <h4>☠️ Methanol <span class="formula">CH₃OH</span></h4>
+                </div>
+                <div class="compound-body">
+                    <div class="compound-prop"><span class="prop-label">Boiling point</span><span>64.7 °C</span></div>
+                    <div class="compound-prop"><span class="prop-label">Smell & taste</span><span>Indistinguishable from ethanol</span></div>
+                    <div class="compound-prop"><span class="prop-label">Source</span><span>Pectin breakdown (not yeast metabolism)</span></div>
+                    <div class="compound-danger">
+                        <strong>Deadly poison.</strong> Metabolized into formaldehyde and formic acid, which destroy the optic nerve and cause severe metabolic acidosis. Lethal dose: 30–100 ml.
+                    </div>
+                </div>
+            </div>
+            <div class="compound-card ch-acetaldehyde">
+                <div class="compound-header">
+                    <h4>⚠️ Acetaldehyde <span class="formula">CH₃CHO</span></h4>
+                </div>
+                <div class="compound-body">
+                    <div class="compound-prop"><span class="prop-label">Boiling point</span><span>20.8 °C</span></div>
+                    <div class="compound-prop"><span class="prop-label">Smell</span><span>Green apples, cut grass, solvent</span></div>
+                    <div class="compound-prop"><span class="prop-label">Source</span><span>Yeast metabolism intermediate</span></div>
+                    <div class="compound-danger">
+                        <strong>Main culprit of severe hangover.</strong> 10–30× more toxic than ethanol. Binds to proteins and DNA, causes tachycardia, nausea, facial flushing. Proven carcinogen.
+                    </div>
+                </div>
+            </div>
+            <div class="compound-card ch-acetate">
+                <div class="compound-header">
+                    <h4>🧪 Ethyl Acetate <span class="formula">CH₃COOCH₂CH₃</span></h4>
+                </div>
+                <div class="compound-body">
+                    <div class="compound-prop"><span class="prop-label">Boiling point</span><span>77.1 °C</span></div>
+                    <div class="compound-prop"><span class="prop-label">Smell</span><span>Nail polish remover, glue</span></div>
+                    <div class="compound-prop"><span class="prop-label">Source</span><span>Ethanol + acetic acid reaction</span></div>
+                    <div class="compound-danger">
+                        Irritates respiratory mucous membranes and eyes. In large doses, causes CNS depression, nausea, dizziness.
+                    </div>
+                </div>
+            </div>
+            <div class="compound-card ch-acetone">
+                <div class="compound-header">
+                    <h4>💨 Acetone <span class="formula">CH₃COCH₃</span></h4>
+                </div>
+                <div class="compound-body">
+                    <div class="compound-prop"><span class="prop-label">Boiling point</span><span>56.0 °C</span></div>
+                    <div class="compound-prop"><span class="prop-label">Smell</span><span>Sweetish-chemical, paint solvent</span></div>
+                    <div class="compound-prop"><span class="prop-label">Source</span><span>Yeast stress (nitrogen deficit, high temp)</span></div>
+                    <div class="compound-danger">
+                        Toxic to liver and kidneys, causes mucous membrane irritation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myth-box">
+            <span class="myth-label">DEBUNKING THE MAIN MYTH</span>
+            <h3>"Methanol Boils First — Just Pour Out the First 50 ml"</h3>
+            <p>Many beginners think that since methanol boils at 64 °C and ethanol at 78 °C, it's enough to simply pour out the first 50 ml of distillate and the methanol will be gone. <strong>This is a fundamental error.</strong></p>
+            <p>Distillation is not just boiling of pure substances — it's evaporation of a complex multicomponent mixture where substances form azeotropes (inseparable mixtures) and carry each other along. Methanol dissolves excellently in water and ethanol, and its vapors exit the still throughout the entire distillation, not just in the first minutes.</p>
+            <p>However, at the very beginning of the process (in the heads) its concentration relative to liquid volume is maximal, and it comes out together with aldehydes and ethers. Therefore, heads must be collected not "by time" but <strong>by volume and organoleptics</strong>.</p>
+        </div>
+
+        <h2 id="physiology">Chapter 2. Physiology: Why You Can't Drink Heads</h2>
+        <p>If you accidentally didn't separate heads and drank such distillate, your body will face a cascade of toxic reactions:</p>
+        <ul>
+            <li><strong>Nervous system strike:</strong> Acetone and acetaldehyde quickly penetrate the blood-brain barrier, causing sharp constriction of brain vessels, spasms, and severe migraine.</li>
+            <li><strong>Liver collapse:</strong> The enzyme alcohol dehydrogenase (ADH) in the liver rushes to process the poisons. But methanol is processed by this same enzyme into formaldehyde, which instantly kills liver cells (hepatocytes).</li>
+            <li><strong>Blindness:</strong> Formic acid (methanol's breakdown product) selectively accumulates in the vitreous body of the eye and optic nerve, causing its edema and irreversible atrophy.</li>
+            <li><strong>Severe hangover:</strong> Even if there was little methanol, a shock dose of acetaldehyde and ethyl acetate guarantees tremor, tachycardia, panic attacks, and multi-day intoxication.</li>
+        </ul>
+        <div class="danger-note">
+            <strong>Conclusion:</strong> Separating heads is not a question of drink taste. It's a question of biological safety.
+        </div>
+
+        <h2 id="math">Chapter 3. The Math of Distillation: How Much to Collect?</h2>
+        <p>There is no universal figure of "pour out the first 100 ml." The volume of heads directly depends on the amount of absolute alcohol (AA) in your still and the type of raw material.</p>
+
+        <div class="calc-box">
+            <h4>3.1 Calculation by Absolute Alcohol (AA)</h4>
+            <p>This is the most precise and professional method.</p>
+            <div class="calc-formula">AA = Raw spirit volume (L) × Raw spirit strength (%) / 100</div>
+            <div class="calc-example">
+                <strong>Example:</strong> You have 10 liters of raw spirit at 30% strength in the still.<br>
+                AA = 10 × 30 / 100 = <strong>3 liters (3000 ml) of absolute alcohol.</strong>
+            </div>
+            <p><strong>Collection rules:</strong></p>
+            <ul>
+                <li><strong>For sugar mash:</strong> Collect 5–8% of AA. (3000 ml × 0.05 = 150 ml of heads).</li>
+                <li><strong>For grain mash:</strong> Collect 8–10% of AA (grain gives more aldehydes). (3000 ml × 0.10 = 300 ml).</li>
+                <li><strong>For fruit/berry/potato mash:</strong> Collect 10–15% of AA due to high methanol and complex ester risk. (3000 ml × 0.12 = 360 ml).</li>
+            </ul>
+        </div>
+
+        <div class="calc-box">
+            <h4>3.2 Calculation by Sugar (for First Distillation)</h4>
+            <p>If you're distilling mash for the first time and don't know the exact strength, you can calculate from the amount of sugar added to the mash.</p>
+            <div class="calc-formula">Collect 60–100 ml of heads per 1 kg of sugar added to the mash</div>
+            <div class="calc-example">
+                <strong>Example:</strong> The mash had 5 kg of sugar. Collect 300 to 500 ml of heads.
+            </div>
+        </div>
+
+        <h2 id="practice">Chapter 4. Practice of Collection: Surgery of Aroma</h2>
+        <p>Collecting heads does not tolerate haste. This is the slowest stage of distillation.</p>
+
+        <div class="practice-card">
+            <h4>⏱️ 4.1 Collection Speed</h4>
+            <p>Heads must be collected <strong>drop by drop (1–3 drops per second)</strong>.</p>
+            <p><strong>Why?</strong> If you open the tap strongly, vapor will fly through the column or thump keg too quickly, and heavy impurities won't have time to condense and return to the still (as phlegm). They'll fly into the receiving container together with good alcohol. Slow collection ensures maximum vapor-phlegm contact and clear fraction separation.</p>
+        </div>
+
+        <div class="practice-card">
+            <h4>👃 4.2 Organoleptic Control (Nose and Skin)</h4>
+            <p>Math gives a guideline, but the final decision is always made by the distiller's nose.</p>
+            <p><strong>Rub test (Gold standard):</strong></p>
+            <ol>
+                <li>Drop 2–3 drops of distillate on a clean palm.</li>
+                <li>Rub the drops with the second palm until completely dry (alcohol and water evaporate in seconds).</li>
+                <li>Smell the skin.</li>
+            </ol>
+            <ul>
+                <li>If it smells of acetone, solvent, chemicals, green apple — heads are still coming. Continue collecting.</li>
+                <li>If the smell became clean, alcoholic, sweetish or neutral — heads are finished, "body" has started.</li>
+            </ul>
+            <p><strong>Smell from the glass:</strong> Bring a glass with distillate to your nose, but don't inhale deeply (aldehyde vapors can cause respiratory spasm). Take short, careful breaths from the side of the glass. Sharpness, burning in the nose, and tearing are sure signs of heads.</p>
+        </div>
+
+        <div class="practice-card">
+            <h4>🥃 4.3 Fractional Collection (Small Containers Method)</h4>
+            <p>Experienced distillers never pour heads into one large jar. They substitute small glasses (30–50 ml each).</p>
+            <p><strong>Why?</strong> Because the boundary between heads and body is blurred. The second-to-last glass may already have clean alcohol, and the last "head" glass may have a transitional fraction. In the morning, with a fresh head, you can smell each glass and return clean alcohol to the "body," and pour out the dirty one. This saves up to 10–15% of product.</p>
+        </div>
+
+        <h2 id="strategy">Chapter 5. Strategy: First and Second Distillation</h2>
+        <p>How to work with heads at different stages?</p>
+
+        <h3>First Distillation (Obtaining Raw Spirit)</h3>
+        <p><strong>Goal:</strong> Extract all alcohol from the mash as quickly as possible.</p>
+        <p><strong>Action:</strong> Many professionals don't collect heads at all during the first distillation (especially for sugar mash) so as not to lose ethanol that is "smeared" throughout the entire run. They pour everything into one container.</p>
+        <p><strong>Exception:</strong> If the mash is fruit or grain, you can collect the first 50–100 ml (the so-called "pre-head" or foreshots) to remove the most aggressive acetone fraction and protect the copper parts of the still from corrosion.</p>
+
+        <h3>Second Distillation (Fractional Distillation of Raw Spirit)</h3>
+        <p><strong>Goal:</strong> Purification and obtaining a drinkable product.</p>
+        <p><strong>Preparation:</strong> Raw spirit must be diluted with water to 15–25%. In a low-alcohol environment, the rectification coefficient (separation) works much better, and heads separate much more clearly.</p>
+        <p><strong>Action:</strong> This is where strict mathematical calculation and slow drop-by-drop collection with organoleptic control are applied.</p>
+
+        <h2 id="utilization">Chapter 6. Utilization and Storage: Where to Put the Poison?</h2>
+        <p>Collected heads are toxic waste. They must be handled accordingly.</p>
+
+        <h3>6.1 What You CANNOT Do:</h3>
+        <ul>
+            <li><strong>Drink or use for tinctures.</strong> No "medicinal" rubs with heads. Toxins will penetrate through the skin and cause poisoning.</li>
+            <li><strong>Pour into sewage in large volumes.</strong> Methanol and acetaldehyde vapors are explosive and toxic to bacteria in septic tanks and treatment facilities.</li>
+            <li><strong>Store in plastic bottles from water/juice.</strong> Someone in the family may accidentally drink it. This is a frequent cause of tragedies.</li>
+            <li><strong>Add to the next mash.</strong> Some "thrifty" moonshiners pour heads into a new mash to "not lose alcohol." This leads to poison accumulation (cumulative effect) and spoilage of the next batch's taste.</li>
+        </ul>
+
+        <h3>6.2 How to Store Properly:</h3>
+        <ul>
+            <li><strong>Container:</strong> Only glass or special chemically resistant plastic (HDPE).</li>
+            <li><strong>Labeling:</strong> Large, bright inscription "POISON! HEADS! DO NOT DRINK!"</li>
+            <li><strong>Location:</strong> Closed cabinet, inaccessible to children and animals.</li>
+        </ul>
+
+        <h3>6.3 Useful Applications (Technical Needs):</h3>
+        <p>Heads are an excellent solvent and fuel. They can be used for:</p>
+        <ul>
+            <li>Degreasing surfaces before painting or gluing.</li>
+            <li>Cleaning tools (brushes, soldering irons, metal parts).</li>
+            <li>Kindling: Impregnating wood chips for lighting a grill or fireplace (they burn excellently, without soot).</li>
+            <li>Winter washer fluid: In extreme cases, diluted with water, can be used for wiping car headlights and windows (but don't pour into the washer reservoir regularly due to aggressiveness to rubber and toxicity of vapors in the cabin).</li>
+            <li>Fuel: For alcohol burners, tourist stoves, or biofireplaces.</li>
+        </ul>
+
+        <h2 id="rawmaterials">Chapter 7. Raw Materials Specifics: Where Are the Most Heads?</h2>
+        <p>Not all mashes are equally dangerous. Understanding the raw material helps adjust the collection volume.</p>
+
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Raw Material Type</th>
+                    <th>Head Fraction Level</th>
+                    <th>Specifics & Recommendations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sugar mash</strong></td>
+                    <td>Low / Medium</td>
+                    <td>Much acetaldehyde and ethyl acetate. Almost no methanol. Collect 5–7% of AA.</td>
+                </tr>
+                <tr>
+                    <td><strong>Grain (malt, flour)</strong></td>
+                    <td>Medium / High</td>
+                    <td>Much aldehydes and complex esters. Requires careful organoleptic control. Collect 8–10% of AA.</td>
+                </tr>
+                <tr>
+                    <td><strong>Fruit (apples, pears, plums)</strong></td>
+                    <td>Very high</td>
+                    <td>Maximum methanol risk due to pectins. Mandatory pectinase treatment of mash before fermentation! Collect 12–15% of AA.</td>
+                </tr>
+                <tr>
+                    <td><strong>Grape (pomace, chacha)</strong></td>
+                    <td>High</td>
+                    <td>Skin and seeds contain much methanol and esters. Collect 10–12% of AA.</td>
+                </tr>
+                <tr>
+                    <td><strong>Potato</strong></td>
+                    <td>Critically high</td>
+                    <td>Record holder for methanol. Requires double fractional distillation with increased head collection (15% of AA).</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="hardware">Chapter 8. Hardware: Help in Separating Heads</h2>
+        <p>The design of your still directly affects how easily you can separate the poisons.</p>
+        <ul>
+            <li><strong>Thump keg (Thumper):</strong> Works excellently as a barrier for heads. Heavy ethers and aldehydes partially condense in it and don't reach the condenser. <em>Tip: After collecting heads, be sure to drain the liquid from the thump keg, otherwise when heated it will evaporate and return to the "body."</em></li>
+            <li><strong>Rectification column / Packed column:</strong> Provides multiple heat-mass exchange. Heads concentrate at the very top of the column. Before collecting the body, the column needs to be "stabilized" (run on itself for 15–20 minutes) so that poisons accumulate in the dephlegmator.</li>
+            <li><strong>Copper elements:</strong> Copper catalytically binds sulfur compounds (which often come together with heads in grain mashes), converting them into insoluble copper sulfide (black coating). This doesn't remove methanol, but greatly purifies the aroma.</li>
+        </ul>
+
+        <h2 id="sugar">Chapter 9. First Distillation of Sugar Mash</h2>
+        <p>The first distillation of sugar mash is the stage where 10–14% ABV liquid turns into 25–40% ABV raw spirit. At this stage, the final product is not created. Raw spirit is a semi-finished product, a concentrate that will be purified and separated into fractions during the second, fractional distillation.</p>
+        <p><strong>Key specifics of sugar mash:</strong></p>
+        <ul>
+            <li>No aromatic value to preserve — the goal is maximum ethanol extraction.</li>
+            <li>Heads collection at first distillation is optional (many professionals skip it).</li>
+            <li>Fast distillation at maximum power is acceptable.</li>
+            <li>Collect all distillate into one container until strength in the stream drops to 20–25% ABV.</li>
+        </ul>
+
+        <h2 id="grain">Chapter 10. First Distillation of Grain Mash</h2>
+        <p>Grain mash requires a more careful approach than sugar mash:</p>
+        <ul>
+            <li>Grain contains much aldehydes and complex esters — head collection is more important.</li>
+            <li>Collect the first 50–100 ml ("pre-head") to remove aggressive acetone fraction.</li>
+            <li>Sulfur compounds are common — copper elements in the still are recommended.</li>
+            <li>At second distillation, collect 8–10% of AA as heads.</li>
+            <li>The goal is to preserve the bread, malt character while removing poisons.</li>
+        </ul>
+
+        <h2 id="fruit">Chapter 11. First Distillation of Fruit & Berry Mash</h2>
+        <p>Fruit and berry mashes are the most demanding in terms of head separation:</p>
+        <ul>
+            <li>Maximum methanol risk due to pectins — mandatory pectinase treatment before fermentation.</li>
+            <li>At first distillation, collect the first 50–100 ml to remove aggressive fractions.</li>
+            <li>At second distillation, collect 10–15% of AA as heads (more than for sugar or grain).</li>
+            <li>The goal is to preserve delicate fruit aromas while ensuring safety.</li>
+            <li>Slow collection speed is critical — fast distillation destroys aromatic compounds.</li>
+        </ul>
+
+        <h2 id="mistakes">Chapter 12. Typical Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Drinking "first drops" as a treat</td>
+                    <td>Methanol poisoning, blindness, death</td>
+                    <td>Never drink heads. Collect and discard.</td>
+                </tr>
+                <tr>
+                    <td>Collecting heads "by time" (first 5 minutes)</td>
+                    <td>Poison remains in the product</td>
+                    <td>Collect by volume (5–15% of AA) and organoleptics</td>
+                </tr>
+                <tr>
+                    <td>Fast collection of heads</td>
+                    <td>Heavy impurities fly into the body</td>
+                    <td>Collect drop by drop (1–3 drops/sec)</td>
+                </tr>
+                <tr>
+                    <td>Insufficient head collection for fruit/potato</td>
+                    <td>Methanol in the final product</td>
+                    <td>Collect 10–15% of AA for fruit/potato</td>
+                </tr>
+                <tr>
+                    <td>Storing heads in unlabeled containers</td>
+                    <td>Accidental poisoning of family members</td>
+                    <td>Label clearly: "POISON! DO NOT DRINK!"</td>
+                </tr>
+                <tr>
+                    <td>Adding heads back to next mash</td>
+                    <td>Cumulative poison accumulation</td>
+                    <td>Never reuse heads</td>
+                </tr>
+                <tr>
+                    <td>Skiping head collection at second distillation</td>
+                    <td>Toxic product</td>
+                    <td>Always collect heads at second distillation</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="firstaid">Chapter 13. First Aid for Methanol Poisoning</h2>
+        <div class="firstaid-box">
+            <h3>🚑 Emergency: Methanol Poisoning</h3>
+            <p><strong>Methanol poisoning is a medical emergency. Every minute counts.</strong></p>
+            <ol>
+                <li><strong>Call emergency services immediately</strong> (112 in EU, 911 in US). Tell them you suspect methanol poisoning.</li>
+                <li><strong>Administer ethanol as antidote</strong> (if conscious): 100 ml of 40% vodka or 50 ml of 96% ethanol diluted in water. Ethanol competes with methanol for the enzyme alcohol dehydrogenase, slowing methanol's conversion to toxic formaldehyde.</li>
+                <li><strong>Do NOT induce vomiting</strong> if the person is unconscious or having seizures.</li>
+                <li><strong>Keep the person warm</strong> and monitor breathing.</li>
+                <li><strong>At the hospital:</strong> Treatment includes fomepizole (4-methylpyrazole) — a specific antidote that blocks alcohol dehydrogenase, hemodialysis to remove methanol and formic acid, and supportive care.</li>
+            </ol>
+            <p><strong>Symptoms of methanol poisoning</strong> (appear 12–24 hours after ingestion): severe headache, nausea, vomiting, abdominal pain, visual disturbances (blurred vision, "snowstorm" before eyes), dilated pupils, difficulty breathing. In severe cases: blindness, coma, death.</p>
+        </div>
+
+        <h2 id="legal">Chapter 14. Legal Context</h2>
+        <p>Before starting distillation, make sure you are acting within the framework of your country's legislation. In the EU, there is no single law on home distillation:</p>
+        <ul>
+            <li>In <strong>Italy, Spain, Portugal</strong>, home distillation for personal consumption in limited volumes is allowed provided the tax authorities are notified.</li>
+            <li>In <strong>Germany, Austria, France</strong>, strict restrictions apply: registration, excise duty payment, and distillation volumes are limited.</li>
+            <li>In <strong>Hungary, Romania, Bulgaria</strong>, there are historical traditions of home distilling (palinka, țuică, rakia), and legislation provides certain quotas for personal consumption.</li>
+            <li>In <strong>Scandinavian countries</strong>, home distillation is generally prohibited or strictly limited.</li>
+        </ul>
+        <p>Methanol content in distillates is regulated by food safety standards in all EU countries. Proper head separation is not just a quality issue — it's a legal requirement for food safety.</p>
+
+        <h2>Conclusion: The Price of Impatience</h2>
+        <p>Separating head fractions is the foundation of drinking culture and distiller safety. This is the stage where a craftsman differs from a surrogate maker.</p>
+        <p>Losing 200–300 milliliters of raw spirit (equivalent to a bottle of vodka) from a 20-liter batch of mash is a negligible price for the guarantee that your product will bring joy, not resuscitation.</p>
+
+        <div class="principles">
+            <h3>Three Golden Rules for Working with Heads</h3>
+            <div class="principle-item">
+                <strong>1. Calculate AA.</strong>
+                Math gives the base from which you push off. Never collect heads "by eye" or "by time." Calculate absolute alcohol and collect 5–15% depending on raw material.
+            </div>
+            <div class="principle-item">
+                <strong>2. Drip, don't pour.</strong>
+                Head collection speed is 1–2 drops per second. Haste here costs health. Slow collection ensures maximum vapor-phlegm contact and clear fraction separation.
+            </div>
+            <div class="principle-item">
+                <strong>3. Trust your nose, not the thermometer.</strong>
+                Rub the distillate between your palms. If it smells of solvent — collection is not finished, even if the thermometer shows the "correct" temperature. Your nose is the final arbiter.
+            </div>
+        </div>
+
+        <p>Respect the chemistry of the process, and it will give you drinks of the highest quality.</p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

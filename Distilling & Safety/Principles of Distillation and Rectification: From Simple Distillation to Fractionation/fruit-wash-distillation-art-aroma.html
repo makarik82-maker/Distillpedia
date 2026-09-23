@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Wash Distillation: The Art of Preserving Aroma | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #431c2e;
+            --plum: #6d2246;
+            --accent-color: #c9a227;
+            --gold: #d4af37;
+            --gold-light: #f0d98c;
+            --bg-color: #faf6f0;
+            --text-color: #3c2430;
+            --light-gray: #e8ddd2;
+            --note-bg: #fdf6e3;
+            --note-border: #e6c97a;
+            --note-text: #7a5c1e;
+            --takeaway-bg: #f5ede1;
+            --takeaway-text: #5d3a1a;
+            --warning-bg: #fdecea;
+            --warning-text: #8e2f24;
+            --danger-bg: #fbe3e0;
+            --danger-text: #7f1d1d;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #2e0f1c 0%, #431c2e 45%, #6d2246 100%);
+            color: #f5ede1;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 18% 28%, rgba(212,175,55,0.10) 0%, transparent 42%),
+                              radial-gradient(circle at 82% 72%, rgba(240,217,140,0.08) 0%, transparent 42%);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.85rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--gold-light);
+        }
+        header .tagline {
+            margin-top: 0.6rem;
+            font-size: 0.98rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            color: #e9d9b8;
+        }
+        nav {
+            background-color: #2e0f1c;
+            text-align: center;
+            padding: 0.85rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        nav a {
+            color: #f0e2c8;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--gold-light); }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: #fffdf9;
+            padding: 3rem 4rem;
+            box-shadow: 0 12px 35px rgba(67,28,46,0.08);
+            border-radius: 10px;
+            border: 1px solid #efe4d4;
+        }
+        h1.article-title {
+            font-size: 2.35rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.25;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        .subtitle {
+            font-size: 1.14rem;
+            color: #7a5a44;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #faf3e6;
+            border: 1px solid #e6d4b0;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        .toc a:hover { color: var(--accent-color); text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.65rem;
+            scroll-margin-top: 70px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        h3 {
+            color: var(--plum);
+            margin-top: 2rem;
+            font-size: 1.28rem;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.08rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #5d440f; }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e74c3c;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #7f1d1d; }
+        .danger-note {
+            background-color: var(--danger-bg);
+            border: 1px solid #f5b7b1;
+            border-left: 5px solid #c0392b;
+            padding: 18px 22px;
+            border-radius: 6px;
+            margin: 1.8rem 0;
+            color: var(--danger-text);
+        }
+        .danger-note strong { color: #7f1d1d; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(67,28,46,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eee0cd;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: var(--gold-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #faf3e6; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+
+        /* ===== Aroma chemistry cards ===== */
+        .aroma-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 2rem 0;
+        }
+        .aroma-card {
+            border-radius: 10px;
+            padding: 1.4rem;
+            border: 1px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        .aroma-card h4 {
+            margin-top: 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .aroma-card .ex {
+            font-size: 0.82rem;
+            font-style: italic;
+            color: #8a6a52;
+            margin-bottom: 0.7rem;
+        }
+        .aroma-card ul { font-size: 0.88rem; margin-bottom: 0; }
+        .aroma-card li { margin-bottom: 0.4rem; }
+        .aroma-ester { background: #fdf3e4; border-color: #f0c98a; }
+        .aroma-ester h4 { color: #b06a10; }
+        .aroma-terpene { background: #eef7ec; border-color: #b5d9a8; }
+        .aroma-terpene h4 { color: #4a7a35; }
+        .aroma-lactone { background: #f5ecf6; border-color: #d7b7dd; }
+        .aroma-lactone h4 { color: #7c4a86; }
+
+        /* ===== Paradox banner ===== */
+        .paradox-banner {
+            background: linear-gradient(135deg, #431c2e 0%, #6d2246 100%);
+            color: #f5ede1;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .paradox-banner::before {
+            content: "⚖";
+            position: absolute;
+            right: -15px;
+            top: -25px;
+            font-size: 8rem;
+            opacity: 0.10;
+            pointer-events: none;
+        }
+        .paradox-banner h3 {
+            color: var(--gold-light);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border: none;
+        }
+        .paradox-banner p { margin-bottom: 0.8rem; position: relative; }
+        .paradox-banner .scale {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 1.2rem;
+            position: relative;
+        }
+        .paradox-banner .scale div {
+            background: rgba(255,255,255,0.10);
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-size: 0.92rem;
+        }
+        .paradox-banner .scale strong { color: var(--gold-light); display: block; margin-bottom: 4px; }
+
+        /* ===== Fraction strip ===== */
+        .fraction-strip {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr 1fr;
+            gap: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(67,28,46,0.08);
+        }
+        .fraction {
+            padding: 1.4rem 1.2rem;
+            color: #fff;
+        }
+        .fraction h4 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fraction .fr { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; display: block; margin-bottom: 6px; }
+        .fraction p { font-size: 0.86rem; margin-bottom: 0.6rem; text-align: left; }
+        .fraction .params { font-size: 0.8rem; opacity: 0.95; background: rgba(0,0,0,0.18); border-radius: 6px; padding: 8px 10px; }
+        .fr-heads { background: linear-gradient(135deg, #c0392b, #a93226); }
+        .fr-hearts { background: linear-gradient(135deg, #c9a227, #b8860b); }
+        .fr-tails { background: linear-gradient(135deg, #6b4a35, #4e3524); }
+
+        /* ===== French trick box ===== */
+        .french-trick {
+            background: #f5ede1;
+            border: 1px solid #e0c89a;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.4rem 1.6rem;
+            margin: 2rem 0;
+        }
+        .french-trick h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-family: Georgia, serif;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .french-trick p { margin-bottom: 0.8rem; font-size: 0.94rem; }
+        .french-trick p:last-child { margin-bottom: 0; }
+
+        /* ===== Fruit group cards ===== */
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 2rem 0;
+        }
+        .fruit-card {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #efe0c8;
+            box-shadow: 0 2px 8px rgba(67,28,46,0.05);
+        }
+        .fruit-head {
+            padding: 0.9rem 1.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .fruit-head .fh-icon { font-size: 1.6rem; }
+        .fruit-head h4 { margin: 0; color: #fff; font-size: 1.02rem; }
+        .fruit-head .fh-sub { display: block; font-size: 0.78rem; font-weight: 400; opacity: 0.9; font-style: italic; }
+        .fruit-body { padding: 1.1rem 1.3rem; }
+        .fruit-body ul { font-size: 0.88rem; margin-bottom: 0.7rem; }
+        .fruit-body li { margin-bottom: 0.4rem; }
+        .fruit-body .aroma-tag {
+            display: inline-block;
+            background: #faf3e6;
+            border: 1px solid #e6d4b0;
+            color: #7a5c1e;
+            font-size: 0.78rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin: 2px 3px 2px 0;
+        }
+        .fc-pome { background: linear-gradient(135deg, #a93226, #7f1d1d); }
+        .fc-stone { background: linear-gradient(135deg, #b0561f, #8a3d10); }
+        .fc-berry { background: linear-gradient(135deg, #a4327a, #7c1f57); }
+        .fc-grape { background: linear-gradient(135deg, #6d2246, #431c2e); }
+
+        /* ===== Post-distillation cards ===== */
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 2rem 0;
+        }
+        .post-card {
+            background: #fffdf9;
+            border: 1px solid #efe0c8;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+        .post-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.02rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .post-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+        .post-card ul { font-size: 0.86rem; margin-bottom: 0; }
+
+        /* ===== Copper note ===== */
+        .copper-box {
+            background: linear-gradient(135deg, #b87333, #a05a2c);
+            color: #fdf3e8;
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.5rem 0;
+        }
+        .copper-box h4 { margin-top: 0; color: #fff; display: flex; align-items: center; gap: 10px; }
+        .copper-box p { margin-bottom: 0.6rem; font-size: 0.92rem; }
+        .copper-box ul { margin-bottom: 0; font-size: 0.9rem; }
+
+        /* ===== Principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #2e0f1c 0%, #431c2e 55%, #6d2246 100%);
+            color: #f5ede1;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 80% 20%, rgba(212,175,55,0.12) 0%, transparent 45%);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: var(--gold-light);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(240,217,140,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.09);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: var(--gold-light);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+            font-family: Georgia, serif;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #a08465;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee0cd;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.75rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .aroma-grid, .post-grid { grid-template-columns: 1fr; }
+            .fruit-grid { grid-template-columns: 1fr; }
+            .fraction-strip { grid-template-columns: 1fr; }
+            .paradox-banner .scale { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Fruit Distillation</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Fruit Wash Distillation: The Art of Preserving Aroma</h1>
+        <p class="subtitle">A distillation guide focused on preserving essential oils and aromatic compounds to create premium fruit spirits — true eaux-de-vie.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Philosophy of the Fruit Distillate</a></li>
+                <li><a href="#chemistry">Chapter 1. Aroma Chemistry: What Exactly We Are Saving</a></li>
+                <li><a href="#prep">Chapter 2. Preparing for Distillation: Methanol and the Physics of the Mash</a></li>
+                <li><a href="#equipment">Chapter 3. Equipment: The Role of Copper and Still Design</a></li>
+                <li><a href="#first-run">Chapter 4. The First Run (Brouillis): Fast but Gentle</a></li>
+                <li><a href="#second-run">Chapter 5. The Second Run (Bonne Chauffe): Aroma Surgery</a></li>
+                <li><a href="#fruit-groups">Chapter 6. Working with Different Fruit Groups</a></li>
+                <li><a href="#post">Chapter 7. Post-Distillation: Resting and Water</a></li>
+                <li><a href="#mistakes">Chapter 8. Common Mistakes and Their Consequences</a></li>
+                <li><a href="#conclusion">Conclusion: The Distiller as a Perfumer</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Philosophy of the Fruit Distillate</h2>
+        <p>In professional circles, the term "fruit vodka" is considered incorrect. Vodka, by definition, is a neutral spirit devoid of the taste and smell of its raw material. What we create from apples, pears, plums, or cherries is called a <strong>fruit distillate</strong>, a <strong>fruit brandy</strong>, or, in the French manner, an <strong>eau-de-vie</strong> — "water of life."</p>
+        <p>If the goal of a sugar wash is to obtain pure ethanol, and the goal of a grain wash is to build a base for barrel aging, then the goal of a fruit wash is entirely different. A fruit distillate is an attempt to <em>preserve fleeting summer in a bottle</em>. The distiller's task is to carry the fragile, volatile aromas of fresh fruit into the bottle — without destroying them through thermal shock, without oxidizing them with oxygen, and without burying them beneath the weight of fusel oils.</p>
+        <p>The European tradition — Norman Calvados, Alsatian Framboise, Black Forest Kirschwasser, Balkan Slivovitz — imposes strict rules: a fruit spirit must smell precisely of the fruit from which it was made, not of alcohol or yeast. This article is a detailed guide to the fine tuning of the distillation process for preserving essential oils and creating a world-class beverage.</p>
+
+        <h2 id="chemistry">Chapter 1. Aroma Chemistry: What Exactly We Are Saving</h2>
+        <p>The aroma of fruit is a complex cocktail of hundreds of volatile compounds. When heated in the still, they behave differently. Understanding their nature is the key to managing the fractions.</p>
+
+        <div class="aroma-grid">
+            <div class="aroma-card aroma-ester">
+                <h4>🧪 Esters</h4>
+                <div class="ex">ethyl butyrate, ethyl hexanoate, isoamyl acetate</div>
+                <ul>
+                    <li>Very volatile, low boiling point</li>
+                    <li>Form the "top notes" — freshness and fruity brightness</li>
+                    <li>Threat: lost with aggressive heat and oxidation</li>
+                </ul>
+            </div>
+            <div class="aroma-card aroma-terpene">
+                <h4>🌿 Terpenes &amp; Terpenoids</h4>
+                <div class="ex">linalool, geraniol, nerol</div>
+                <ul>
+                    <li>Found in skin and seeds</li>
+                    <li>The "heart" of the aroma, varietal recognition</li>
+                    <li>Threat: overheat gives a heavy "boiled" tone</li>
+                </ul>
+            </div>
+            <div class="aroma-card aroma-lactone">
+                <h4>🍑 Lactones &amp; Higher Alcohols</h4>
+                <div class="ex">gamma-decalactone, phenylethyl alcohol</div>
+                <ul>
+                    <li>Less volatile, heavy</li>
+                    <li>Form the "base" and aftertaste, body and oiliness</li>
+                    <li>Threat: cross into tail fractions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="paradox-banner">
+            <h3>The Main Paradox of Fruit Distillation</h3>
+            <p>The most desired aromas (esters) boil off <em>first</em>, together with the toxic, solvent-smelling "heads." The heaviest aromas (lactones) come off <em>last</em>, together with the foul-smelling fusel "tails."</p>
+            <div class="scale">
+                <div>
+                    <strong>The Fragile Top</strong>
+                    Prized esters escape early — you must not over-cut the heads or you lose the fruit's freshness.
+                </div>
+                <div>
+                    <strong>The Heavy Bottom</strong>
+                    Body-giving lactones hide late — cut the tails too early and the distillate becomes empty and watery.
+                </div>
+            </div>
+            <p style="margin-top:1.2rem;">The art of the distiller lies in drawing the scalpel precisely along the boundary — cutting away the poison and the stench while preserving the soul of the fruit.</p>
+        </div>
+
+        <h2 id="prep">Chapter 2. Preparing for Distillation: Methanol and the Physics of the Mash</h2>
+        <p>Fruit wash differs radically from sugar or grain wash in both physical structure and chemical composition.</p>
+
+        <h3>2.1. The Pectin and Methanol Problem</h3>
+        <p>Fruits (especially apples, pears, plums, quince) are rich in <strong>pectin</strong>. During fermentation and subsequent heating, pectin breaks down to release <strong>methyl alcohol (methanol)</strong>. Methanol is toxic (causing blindness and CNS damage) and boils at 64.7 °C — meaning it comes off at the very start of distillation.</p>
+        <div class="danger-note">
+            <strong>Solution at the wash stage:</strong> mandatory use of the enzyme <strong>pectinase</strong> before fermentation. It breaks down pectin, reduces the wash's viscosity, and cuts methanol formation by 2–3×.<br><br>
+            <strong>Solution at the distillation stage:</strong> merciless yet precise separation of the head fractions.
+        </div>
+
+        <h3>2.2. Distilling on the Pomace or on the Juice?</h3>
+        <div class="fruit-grid">
+            <div class="fruit-card">
+                <div class="fruit-head" style="background:linear-gradient(135deg,#8a6a1e,#6b4f12);">
+                    <span class="fh-icon">🧃</span>
+                    <h4>From Juice <span class="fh-sub">cider-type wash</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <ul>
+                        <li>Liquid is easy to distill, minimal scorch risk</li>
+                        <li>Aroma turns out light and floral</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fruit-card">
+                <div class="fruit-head" style="background:linear-gradient(135deg,#7a4a2a,#5d381d);">
+                    <span class="fh-icon">🍇</span>
+                    <h4>From Pomace <span class="fh-sub">whole berries, purée, pressings</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <ul>
+                        <li>Skin and seeds hold ~80% of terpenes and esters → powerful, dense aroma</li>
+                        <li>But pomace is thick and easily scorches, giving a burnt smell that cannot be removed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="practical-note">
+            <strong>Solution:</strong> use stills with a steam-water jacket, a steam generator, or a false bottom. Direct heating by an element or gas burner is categorically not recommended for thick fruit washes.
+        </div>
+
+        <h2 id="equipment">Chapter 3. Equipment: The Role of Copper and Still Design</h2>
+        <p>For fruit distillates, the classic <strong>copper alembic (pot still)</strong> or its modern analogues remain the gold standard. Rectification columns are inapplicable here: 20–30 theoretical plates will mercilessly "shave off" the entire fruit aroma, leaving only neutral spirit.</p>
+
+        <h3>3.1. Why Copper Is Needed</h3>
+        <div class="copper-box">
+            <h4>🥉 Copper Plays a Dual Role</h4>
+            <p><strong>Sulfur cleanup:</strong> apples, pears, and grapes often release hydrogen sulfide and dimethyl sulfide (smells of rotten eggs and boiled cabbage) during fermentation. Copper binds them, forming insoluble copper sulfide.</p>
+            <p><strong>Catalysis of ester formation:</strong> contact of vapor with copper promotes the creation of new fruity esters right in the still's helmet.</p>
+            <p style="margin-top:0.8rem;"><strong>Nuance:</strong> for delicate berries (raspberry, strawberry), excess copper can "eat away" subtle thiols and terpenes. Therefore, hybrid stills are often used: a stainless pot with a copper helmet or a copper mesh in the vapor zone.</p>
+        </div>
+
+        <h3>3.2. The Dephlegmator (Bread Plate / Lens)</h3>
+        <p>A small dephlegmator on the thump keg or still helmet, providing reflux return (1–2 theoretical plates), is extremely useful. It slightly concentrates the vapors, knocking out heavy water and fusel oils, while still preserving the volatile fruit esters.</p>
+
+        <h2 id="first-run">Chapter 4. The First Run (Brouillis): Fast but Gentle</h2>
+        <p>The goal of the first run is to obtain <strong>low wines (brouillis)</strong> at 25–30% ABV. Fractions are not separated here, but there are rules.</p>
+        <ul>
+            <li><strong>Fill the still:</strong> no more than 70–75% (fruit wash is prone to foaming).</li>
+            <li><strong>Speed:</strong> heating should be fast to minimize the thermal exposure of fruit acids and yeast sediment. Prolonged "boiling" of the wash gives the smell of compote or jam instead of fresh fruit.</li>
+            <li><strong>Stopping point:</strong> stop collection when the strength in the stream falls to 20–25% ABV (still temperature ~95–96 °C).</li>
+        </ul>
+        <div class="warning-note">
+            <strong>Beginner's mistake:</strong> running down to 3–5% in the stream, as with sugar wash. Fruit tails from the first run contain many heavy, damp and earthy compounds. If you pull them into the low wines, removing them in the second run becomes extremely difficult.
+        </div>
+
+        <h2 id="second-run">Chapter 5. The Second Run (Bonne Chauffe): Aroma Surgery</h2>
+        <p>The low wines are diluted with soft water to 20–25% ABV and poured into a thoroughly washed still. The magic begins. Collection speed must be minimal (drip collection or the finest thread-like stream).</p>
+
+        <div class="fraction-strip">
+            <div class="fraction fr-heads">
+                <span class="fr">Les Têtes</span>
+                <h4>🔥 Heads</h4>
+                <p>Methanol, acetaldehyde, ethyl acetate. Smells of acetone, glue, chemistry.</p>
+                <div class="params">
+                    Volume: 1–3% of absolute alcohol.<br>
+                    Rub-and-sniff test. When sharpness gives way to clean, sweet fruit aroma — heads are done. Don't be greedy.
+                </div>
+            </div>
+            <div class="fraction fr-hearts">
+                <span class="fr">Le Cœur</span>
+                <h4>⭐ Hearts</h4>
+                <p>Your future premium distillate: ethanol, water, and the full complex of fruit aromatics.</p>
+                <div class="params">
+                    Start: 75–80% ABV.<br>
+                    Speed: slow, 1–2 drops/sec.<br>
+                    Collect into small fractions of 200–500 ml in separate jars.
+                </div>
+            </div>
+            <div class="fraction fr-tails">
+                <span class="fr">Les Queues</span>
+                <h4>🍂 Tails</h4>
+                <p>Cooked skin, damp cardboard, mycelium, bitter almond (stone fruits).</p>
+                <div class="params">
+                    Appear at 55–50% ABV (still temp 91–93 °C).<br>
+                    Switch the jar immediately. Fruit tails are dirty and harsh — they give dampness and a heavy hangover.
+                </div>
+            </div>
+        </div>
+
+        <h3>5.1. Heads (Les Têtes): The Fine Line</h3>
+        <p>Heads contain methanol, acetaldehyde (green, sharp smell), and ethyl acetate (nail polish remover, glue).</p>
+        <ul>
+            <li><strong>Volume:</strong> usually 1–3% of the absolute alcohol in the low wines.</li>
+            <li><strong>How to cut:</strong> drip the distillate onto the back of your palm, rub, and sniff. The alcohol evaporates quickly, leaving the aroma. While it smells of acetone, glue, chemistry — these are heads. The moment a clean, bright, sweetish fruit aroma appears — heads are finished.</li>
+        </ul>
+        <div class="warning-note">
+            <strong>Important:</strong> don't be greedy. An extra 50 ml of heads that gets into the hearts will forever spoil the drink with a sharp "solvent" smell on the exhale.
+        </div>
+
+        <h3>5.2. Hearts (Le Cœur): The Heart of the Fruit</h3>
+        <p>Professionals do not pour the hearts into one big container. They collect them in small fractions (200–500 ml) into separate jars. Why? Because the heart profile changes:</p>
+        <ul>
+            <li><strong>Start of hearts:</strong> bright, fresh, floral and citrus notes (esters).</li>
+            <li><strong>Middle of hearts:</strong> the deep, varietal aroma of the fruit itself (terpenes).</li>
+            <li><strong>End of hearts:</strong> heavy, honeyed, waxy, and almond notes (lactones and higher alcohols).</li>
+        </ul>
+        <p>After distillation, following a day of rest, you can taste each jar and assemble the ideal blend, discarding those where spirit-heat or heavy tones break through.</p>
+
+        <h3>5.3. Tails (Les Queues): When to Stop</h3>
+        <p>Fruit tails appear when the strength in the stream falls to 55–50% ABV (still temperature 91–93 °C).</p>
+        <ul>
+            <li><strong>Organoleptic marker:</strong> the aroma develops notes of cooked skin, damp cardboard, mycelium, or bitter almond (for stone fruits).</li>
+            <li><strong>Action:</strong> switch the jar immediately. Fruit tails are far "dirtier" and more aggressive than grain tails. They don't add body — they add a smell of dampness and a very heavy hangover.</li>
+        </ul>
+
+        <div class="french-trick">
+            <h4>🇫🇷 The French Trick: "Secondes" (Small Waters)</h4>
+            <p>In France, the heads and tails of the second run are neither poured out nor added to the current batch of hearts. They are collected in a separate container (<em>"Secondes"</em>) and added to the <strong>next first run</strong> (into the brouillis).</p>
+            <p>This allows you to extract residual ethanol and trapped esters from them — without contaminating the clean hearts of the current run.</p>
+        </div>
+
+        <h2 id="fruit-groups">Chapter 6. Working with Different Fruit Groups</h2>
+
+        <div class="fruit-grid">
+            <div class="fruit-card">
+                <div class="fruit-head fc-pome">
+                    <span class="fh-icon">🍎</span>
+                    <h4>Pome Fruits <span class="fh-sub">apples, pears, quince</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <p><strong>Feature:</strong> high pectin and methanol. Prone to sulfur compounds.</p>
+                    <p><strong>Equipment:</strong> copper contact is mandatory.</p>
+                    <p><strong>Aroma:</strong> baked apple, quince marmalade, blossoming orchard. Pear (Poiré Williams) has a bright duchesse tone appearing only mid-heart.</p>
+                    <span class="aroma-tag">baked apple</span><span class="aroma-tag">quince</span><span class="aroma-tag">duchesse</span>
+                </div>
+            </div>
+            <div class="fruit-card">
+                <div class="fruit-head fc-stone">
+                    <span class="fh-icon">🍒</span>
+                    <h4>Stone Fruits <span class="fh-sub">plum, cherry, apricot, peach</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <p><strong>Danger:</strong> pits contain amygdalin → prussic acid (cyanide) and benzaldehyde.</p>
+                    <p><strong>Rule:</strong> remove pits entirely, or crush no more than 5–10% of the mass. A light bitter-almond tone adorns slivovitz or kirschwasser, but excess makes the drink toxic and bitter.</p>
+                    <p><strong>Tails:</strong> cut earlier and harder than for pome fruits. Heavy bitterness and "wet wood" tone → stop.</p>
+                    <span class="aroma-tag">bitter almond</span><span class="aroma-tag">plum</span><span class="aroma-tag">benzaldehyde</span>
+                </div>
+            </div>
+            <div class="fruit-card">
+                <div class="fruit-head fc-berry">
+                    <span class="fh-icon">🍓</span>
+                    <h4>Berries <span class="fh-sub">raspberry, strawberry, blackberry, currant</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <p><strong>Feature:</strong> very low alcohol yield and incredibly fragile aromas (ionones, raspberry ketone).</p>
+                    <p><strong>Problem:</strong> classic distillation heat destroys berry aroma into "bath broom" or herbal tea.</p>
+                    <p><strong>Solutions:</strong> lowest-temperature distillation; the <em>Geist</em> maceration method (berries infused on neutral spirit, then distilled, preserving ~90% of fresh berry); if fermenting, collect hearts in a narrow range, cutting tails at 60% ABV.</p>
+                    <span class="aroma-tag">raspberry ketone</span><span class="aroma-tag">ionones</span>
+                </div>
+            </div>
+            <div class="fruit-card">
+                <div class="fruit-head fc-grape">
+                    <span class="fh-icon">🍇</span>
+                    <h4>Grapes <span class="fh-sub">pomace and must</span></h4>
+                </div>
+                <div class="fruit-body">
+                    <p><strong>Feature:</strong> Muscat varieties contain terpenes (linalool) that are easily destroyed.</p>
+                    <p><strong>Tip:</strong> for grappa or chacha from pomace, distillation is often done on a steam generator so that steam gently extracts aromas from the skin without burning it.</p>
+                    <span class="aroma-tag">linalool</span><span class="aroma-tag">muscat</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="post">Chapter 7. Post-Distillation: Resting and Water</h2>
+        <p>A fruit distillate fresh off the still is often "closed," harsh, and disjointed. It needs time and correct handling.</p>
+
+        <div class="post-grid">
+            <div class="post-card">
+                <h4>⏳ Aeration &amp; Resting</h4>
+                <p>Unlike grain spirits (often barrelled straight away), fruit eaux-de-vie need rest in an inert vessel (glass or stainless steel) at 55–65% ABV.</p>
+                <p><strong>Term:</strong> 3–12 months. Volatile aggressive compounds evaporate; esters and alcohols undergo esterification, rounding the flavor into a monolithic aroma.</p>
+            </div>
+            <div class="post-card">
+                <h4>💧 Dilution: The Critical Moment</h4>
+                <p>Use only <strong>soft</strong>, low-mineral water (reverse osmosis with remineralization, or good spring water). Hard water causes cloudiness and a soapy taste (saponification of esters).</p>
+                <p>Water and spirit must be the same temperature (18–20 °C). Add water to the spirit in a thin stream, stirring slowly. Sudden mixing causes thermal shock and "muddies" the aroma for weeks.</p>
+                <p><strong>Drinking strength:</strong> 40–45%. Going below 40% can lose "body" and drop essential oils into haze.</p>
+            </div>
+            <div class="post-card">
+                <h4>🛢️ Is a Barrel Needed?</h4>
+                <p>Classic European eaux-de-vie (Kirsch, Framboise, Poiré) are <strong>not</strong> aged in oak. Oak kills the delicate floral and berry aroma, masking it with vanilla and tannins.</p>
+                <p>Oak is appropriate only for apple (Calvados), pear, and grape (Cognac, Armagnac) distillates, whose aromatic base is powerful enough to enter symbiosis with the wood.</p>
+            </div>
+        </div>
+
+        <h2 id="mistakes">Chapter 8. Common Mistakes and Their Consequences</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Distilling thick pomace on a bare bottom</td>
+                    <td>Scorching, burnt-rubber smell, hopeless spoilage</td>
+                    <td>Filter the wash, or use a steam generator</td>
+                </tr>
+                <tr>
+                    <td>Ignoring foaming</td>
+                    <td>Mash eruption into the condenser, spoiled batch</td>
+                    <td>Use a defoamer, fill still to 60–70%</td>
+                </tr>
+                <tr>
+                    <td>No copper in the still</td>
+                    <td>Sulfur smell (rotten eggs, cabbage) that won't air out</td>
+                    <td>Install copper mesh in the vapor zone</td>
+                </tr>
+                <tr>
+                    <td>Cutting heads too wide (as for sugar)</td>
+                    <td>Distillate loses fruit and floral notes, turns flat</td>
+                    <td>Cut 1–3%, guided by the nose, not just the calculator</td>
+                </tr>
+                <tr>
+                    <td>Cutting tails too early (at 45–50%)</td>
+                    <td>Drink turns out "dry" and empty, matures poorly in barrel</td>
+                    <td>Cut at 55–60%, capturing early tails</td>
+                </tr>
+                <tr>
+                    <td>Charcoal filtration before barrel</td>
+                    <td>Charcoal adsorbs fatty acids and phenols, killing aging potential</td>
+                    <td>Do not use charcoal for fruit distillates meant for aging</td>
+                </tr>
+                <tr>
+                    <td>Mixing heads and tails with hearts</td>
+                    <td>Heavy hangover, fusel smell, need for rectification</td>
+                    <td>Use fractional tasting (into small jars)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="conclusion">Conclusion: The Distiller as a Perfumer</h2>
+        <p>Distilling fruit wash is balancing on an edge. On one side lie the toxic heads and the coarse, damp-smelling tails. On the other — the fragile esters, oily acids, and phenols that make whiskey whiskey, and bourbon bourbon.</p>
+        <p>Unlike sugar distilling, where the distiller acts as a filter cutting away everything extraneous, in fruit distilling the distiller is a <strong>sculptor</strong>. They do not merely remove the excess — they shape the profile, leaving exactly as many impurities as needed to create a complex, multifaceted drink capable of maturing in oak for years and delighting with depth of flavor.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>Protect the still from scorching and foam.</strong>
+                Filtering the wash, a defoamer, and heating control are the foundation without which a clean low wine is impossible.
+            </div>
+            <div class="principle-item">
+                <strong>Copper is mandatory.</strong>
+                Sulfur is an inevitable companion of fruit. Without copper contact in the vapor zone, you will get a distillate with defects that cannot be fixed after the fact.
+            </div>
+            <div class="principle-item">
+                <strong>Do not cut the tails too early.</strong>
+                The early tails are the soul of the fruit distillate. They provide oiliness and aging potential. Learn to find the boundary between "bread crust" and "wet cardboard" by nose — not by alcoholmeter alone.
+            </div>
+        </div>
+
+        <p>Fruit distillate does not forgive haste or template thinking. But it generously rewards those willing to understand its nature — turning ordinary fruit into liquid gold.</p>
+        <p><em>Successful runs and deep aromas.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

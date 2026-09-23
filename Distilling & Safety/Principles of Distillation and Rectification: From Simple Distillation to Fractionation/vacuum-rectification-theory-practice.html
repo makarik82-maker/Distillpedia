@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacuum Rectification: Theory and Practice for Low-Temperature Distillation | Distillpedia</title>
+<style>
+    :root {
+        --primary-color: #2e1065;
+        --accent-color: #7c3aed;
+        --accent-light: #a78bfa;
+        --accent-dark: #5b21b6;
+        --bg-color: #f7f5fb;
+        --text-color: #2c3e50;
+        --light-gray: #e2e8f0;
+        --note-bg: #f3e8ff;
+        --note-border: #d8b4fe;
+        --note-text: #6b21a8;
+        --takeaway-bg: #ecfdf5;
+        --takeaway-text: #065f46;
+        --warning-bg: #fef2f2;
+        --warning-text: #991b1b;
+        --gold: #fbbf24;
+        --hot: #f97316;
+        --cold: #3b82f6;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 50%, #5b21b6 100%);
+        color: white;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 20% 30%, rgba(167,139,250,0.15) 0%, transparent 40%),
+                          radial-gradient(circle at 80% 70%, rgba(167,139,250,0.1) 0%, transparent 40%);
+        pointer-events: none;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+    }
+    header .tagline {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+        font-style: italic;
+        position: relative;
+        color: #ddd6fe;
+    }
+    nav {
+        background-color: #1e1b4b;
+        text-align: center;
+        padding: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav a {
+        color: #e9d5ff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: #c4b5fd; }
+    main {
+        max-width: 920px;
+        margin: 2.5rem auto;
+        background: white;
+        padding: 3rem 4rem;
+        box-shadow: 0 12px 35px rgba(46,16,101,0.08);
+        border-radius: 12px;
+    }
+    h1.article-title {
+        font-size: 2.3rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        border-bottom: 4px solid var(--accent-color);
+        padding-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 1.15rem;
+        color: #6b7280;
+        font-style: italic;
+        margin-bottom: 2.5rem;
+        border-left: 3px solid var(--accent-color);
+        padding-left: 15px;
+    }
+    .toc {
+        background-color: #faf5ff;
+        border: 1px solid #e9d5ff;
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: var(--accent-dark);
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+    .toc ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+    .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+        color: var(--primary-color);
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        margin-top: 3.5rem;
+        font-size: 1.6rem;
+        scroll-margin-top: 70px;
+    }
+    h3 {
+        color: var(--accent-dark);
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+    h4 {
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    p { margin-bottom: 1.2rem; text-align: justify; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+    li { margin-bottom: 0.6rem; }
+    .key-takeaway {
+        background-color: var(--takeaway-bg);
+        border-left: 4px solid #10b981;
+        padding: 15px 20px;
+        margin: 2rem 0;
+        font-weight: 500;
+        border-radius: 4px;
+        color: var(--takeaway-text);
+    }
+    .practical-note {
+        background-color: var(--note-bg);
+        border: 1px solid var(--note-border);
+        color: var(--note-text);
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+    }
+    .practical-note strong { color: #581c87; }
+    .warning-note {
+        background-color: var(--warning-bg);
+        border-left: 4px solid #ef4444;
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: var(--warning-text);
+    }
+    .warning-note strong { color: #7f1d1d; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.93rem;
+        box-shadow: 0 2px 8px rgba(46,16,101,0.05);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid #ede9fe;
+        padding: 11px 14px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: #ddd6fe;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) { background-color: #faf5ff; }
+    .table-scroll { overflow-x: auto; border-radius: 8px; }
+    .table-note {
+        font-size: 0.88rem;
+        color: #6b7280;
+        font-style: italic;
+        margin-top: -1rem;
+        margin-bottom: 1.5rem;
+    }
+    .formula-box {
+        background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+        border: 1px solid var(--note-border);
+        border-left: 5px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .formula-box .formula-title {
+        font-weight: 700;
+        color: var(--accent-dark);
+        margin-bottom: 0.6rem;
+    }
+    .formula-box .formula-body {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        background: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 5px 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        overflow-x: auto;
+        max-width: 100%;
+    }
+    .formula-box .formula-example {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-top: 0.6rem;
+        margin-bottom: 0;
+    }
+    /* Boiling point spectrum */
+    .bp-spectrum {
+        margin: 3rem 0 4rem;
+    }
+    .bp-bar {
+        height: 50px;
+        border-radius: 25px;
+        background: linear-gradient(to right, #f97316 0%, #fbbf24 25%, #84cc16 50%, #22d3ee 75%, #6366f1 100%);
+        position: relative;
+        box-shadow: 0 3px 10px rgba(46,16,101,0.15);
+    }
+    .bp-marker {
+        position: absolute;
+        top: -8px;
+        width: 4px;
+        height: 66px;
+        background: #1e1b4b;
+        border-radius: 2px;
+    }
+    .bp-marker .bp-label {
+        position: absolute;
+        top: -42px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #1e1b4b;
+        background: white;
+        padding: 3px 8px;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        line-height: 1.3;
+    }
+    .bp-marker .bp-sub {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #6b7280;
+    }
+    .bp-axis {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 42px;
+        font-size: 0.78rem;
+        color: #9ca3af;
+        font-weight: 600;
+    }
+    /* Vacuum pump cards */
+    .pump-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .pump-card {
+        background: white;
+        border: 1px solid #ede9fe;
+        border-top: 4px solid var(--accent-color);
+        border-radius: 10px;
+        padding: 1.3rem;
+        box-shadow: 0 2px 8px rgba(46,16,101,0.05);
+    }
+    .pump-card h4 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1.02rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .pump-card .pump-specs {
+        font-size: 0.85rem;
+        margin: 0.8rem 0;
+    }
+    .pump-card .pump-specs div {
+        display: flex;
+        justify-content: space-between;
+        padding: 3px 0;
+        border-bottom: 1px dotted #ede9fe;
+    }
+    .pump-card .pump-specs span:last-child { font-weight: 600; color: var(--accent-dark); }
+    .pump-card .pump-pro { font-size: 0.82rem; color: #065f46; margin-top: 0.5rem; }
+    .pump-card .pump-con { font-size: 0.82rem; color: #991b1b; margin-top: 0.3rem; }
+    /* Application cards */
+    .app-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .app-card {
+        background: white;
+        border: 1px solid #ede9fe;
+        border-left: 4px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+        box-shadow: 0 2px 6px rgba(46,16,101,0.04);
+    }
+    .app-card h4 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .app-card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .app-card .app-use {
+        font-size: 0.82rem;
+        color: var(--accent-dark);
+        font-weight: 600;
+        background: #faf5ff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        display: inline-block;
+    }
+    /* Safety risk cards */
+    .risk-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .risk-card {
+        background: #fff;
+        border: 1px solid #fecaca;
+        border-left: 5px solid #ef4444;
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+    }
+    .risk-card h4 {
+        margin-top: 0;
+        color: #991b1b;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .risk-card p { font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .risk-card .risk-fix {
+        font-size: 0.88rem;
+        background: #fef2f2;
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    .risk-card .risk-fix strong { color: #7f1d1d; }
+    /* Example cards */
+    .example-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .example-card {
+        background: white;
+        border: 1px solid #ede9fe;
+        border-radius: 10px;
+        padding: 1.2rem;
+        box-shadow: 0 2px 8px rgba(46,16,101,0.05);
+    }
+    .example-card h4 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .example-card .ex-atm, .example-card .ex-vac {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+        border-radius: 6px;
+        margin-top: 0.6rem;
+    }
+    .example-card .ex-atm { background: #fff7ed; border-left: 3px solid #f97316; }
+    .example-card .ex-vac { background: #f5f3ff; border-left: 3px solid #7c3aed; }
+    /* Step procedure */
+    .phase-block {
+        border: 1px solid #ede9fe;
+        border-radius: 12px;
+        margin: 2rem 0;
+        overflow: hidden;
+    }
+    .phase-header {
+        padding: 0.9rem 1.4rem;
+        color: white;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .phase-header .ph-num {
+        background: rgba(255,255,255,0.25);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .phase-header h4 { margin: 0; color: white; font-size: 1.1rem; }
+    .phase-body { padding: 1.2rem 1.5rem; }
+    .phase-body ol { margin-bottom: 0; }
+    .phase-body li { margin-bottom: 0.7rem; font-size: 0.93rem; }
+    /* FAQ */
+    .faq-item {
+        border: 1px solid #ede9fe;
+        border-radius: 8px;
+        margin: 1rem 0;
+        overflow: hidden;
+        background: #fcfaff;
+    }
+    .faq-question {
+        background: #faf5ff;
+        padding: 0.9rem 1.3rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid #ede9fe;
+    }
+    .faq-question .q-mark { color: var(--accent-color); font-size: 1.3rem; font-weight: 800; }
+    .faq-answer { padding: 0.9rem 1.3rem; font-size: 0.95rem; }
+    .faq-answer p { margin-bottom: 0.5rem; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    /* Principles */
+    .principles {
+        background: linear-gradient(135deg, #1e1b4b 0%, #5b21b6 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .principles::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 80% 20%, rgba(196,181,253,0.12) 0%, transparent 45%);
+        pointer-events: none;
+    }
+    .principles h3 {
+        color: #ddd6fe;
+        margin-top: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 0.5rem;
+        position: relative;
+    }
+    .principles .principle-item {
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.2rem 0;
+        border-left: 4px solid var(--gold);
+        position: relative;
+    }
+    .principles .principle-item strong {
+        color: #fde68a;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem;
+        color: #9ca3af;
+        font-size: 0.9rem;
+        border-top: 1px solid #ede9fe;
+        margin-top: 3rem;
+    }
+    @media (max-width: 768px) {
+        main { padding: 1.5rem; margin: 1rem; }
+        h1.article-title { font-size: 1.7rem; }
+        table { font-size: 0.8rem; }
+        th, td { padding: 8px; }
+        nav { padding: 0.5rem; }
+        nav a { margin: 0 8px; font-size: 0.75rem; }
+        .toc ol { columns: 1; }
+        .pump-grid, .app-grid, .example-grid { grid-template-columns: 1fr; }
+        .bp-marker .bp-label { font-size: 0.6rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Vacuum</a>
+    <a href="#">Equipment</a>
+    <a href="#">Safety</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Vacuum Rectification: Theory and Practice</h1>
+        <p class="subtitle">A description of the principles of rectification under vacuum, preserving volatile aromatic compounds, and the practical aspects of implementation in laboratory and craft conditions.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Magic of Reduced Pressure</a></li>
+                <li><a href="#physics">Chapter 1. Physics: Why Pressure Changes Everything</a></li>
+                <li><a href="#aroma">Chapter 2. Preserving Aroma</a></li>
+                <li><a href="#equipment">Chapter 3. Equipment for Vacuum Rectification</a></li>
+                <li><a href="#setup">Chapter 4. Practical Setup</a></li>
+                <li><a href="#calc">Chapter 5. Calculating Parameters</a></li>
+                <li><a href="#applications">Chapter 6. Applications</a></li>
+                <li><a href="#safety">Chapter 7. Safety: Specific Risks</a></li>
+                <li><a href="#errors">Chapter 8. Typical Errors</a></li>
+                <li><a href="#comparison">Chapter 9. Vacuum vs. Atmospheric</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#economics">Chapter 11. Economic Feasibility</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Magic of Reduced Pressure</h2>
+        <p>In classical rectification at atmospheric pressure, ethanol boils at 78.37 °C and water at 100 °C. This is a temperature barrier through which every molecule present in the wash is forced to pass. For most tasks — producing neutral spirit, vodka, infused spirits — these temperatures are sufficient. But for creating delicate fruit, floral, and berry distillates, where the main value is fragile aromatic compounds, atmospheric rectification is a crude, destructive tool.</p>
+        <p>Lavender terpenes, rose essential oils, peach lactones, bergamot citrus aldehydes — all these molecules at 78 °C and above partially decompose, isomerize, oxidize, or produce undesirable thermal degradation products. The distillate loses freshness and acquires a "boiled," "jammy" character instead of the aroma of a fresh fruit or flower.</p>
+        <p>Vacuum rectification is a solution known to the perfume and pharmaceutical industries for over a hundred years. By reducing the pressure in the system, we lower the boiling point of all components in the mixture. Ethanol, which at atmospheric pressure boils at 78 °C, boils at just 34 °C at a pressure of 200 mbar. And at 50 mbar — just 12 °C. This opens the possibility of carrying out separation at temperatures comfortable for the most sensitive molecules.</p>
+        <p>In recent years, vacuum rectification units have appeared in the arsenal of craft distilleries creating premium eaux-de-vie, gins with botanical freshness, and aromatic concentrates for perfumery. This article is a detailed breakdown of the physics of the process, the equipment, and the practice of vacuum rectification.</p>
+
+        <h2 id="physics">Chapter 1. Physics of Vacuum Rectification: Why Pressure Changes Everything</h2>
+
+        <h3>1.1. The Clapeyron–Clausius Equation</h3>
+        <p>The boiling point of a liquid is the temperature at which its saturated vapor pressure equals the external pressure. At atmospheric pressure of 1013 mbar (760 mmHg), ethanol boils at 78.37 °C. But if the external pressure is reduced, ethanol molecules need less energy to leave the liquid phase.</p>
+        <p>The dependence of boiling point on pressure is described by the Clapeyron–Clausius equation:</p>
+        <div class="formula-box">
+            <div class="formula-body">ln(P₂/P₁) = (ΔH/R) × (1/T₁ – 1/T₂)</div>
+            <div class="formula-example">where: P₁, P₂ — pressures; T₁, T₂ — boiling points at the corresponding pressures (in Kelvin); ΔH — specific heat of vaporization; R — universal gas constant (8.314 J/(mol·K)).<br>For ethanol, ΔH = 38.56 kJ/mol. Substituting known values, you can calculate the boiling point at any pressure.</div>
+        </div>
+
+        <h3>1.2. Boiling Point of Ethanol at Different Pressures</h3>
+        <div class="bp-spectrum">
+            <div class="bp-bar">
+                <div class="bp-marker" style="left: 0%;">
+                    <div class="bp-label">1013 mbar<br>78.37 °C</div>
+                    <div class="bp-sub">atmospheric</div>
+                </div>
+                <div class="bp-marker" style="left: 55%;">
+                    <div class="bp-label">200 mbar<br>40.5 °C</div>
+                    <div class="bp-sub">warm bath</div>
+                </div>
+                <div class="bp-marker" style="left: 80%;">
+                    <div class="bp-label">50 mbar<br>13.5 °C</div>
+                    <div class="bp-sub">cellar</div>
+                </div>
+                <div class="bp-marker" style="left: 98%;">
+                    <div class="bp-label">10 mbar<br>–13.0 °C</div>
+                </div>
+            </div>
+            <div class="bp-axis">
+                <span>Higher pressure → higher boiling point</span>
+                <span>Deep vacuum → low boiling point</span>
+            </div>
+        </div>
+
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pressure (mbar)</th>
+                    <th>Pressure (mmHg)</th>
+                    <th>Ethanol Boiling Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1013 (atm)</td><td>760</td><td>78.37 °C</td></tr>
+                <tr><td>760</td><td>570</td><td>71.5 °C</td></tr>
+                <tr><td>500</td><td>375</td><td>61.8 °C</td></tr>
+                <tr><td>400</td><td>300</td><td>56.2 °C</td></tr>
+                <tr><td>300</td><td>225</td><td>49.4 °C</td></tr>
+                <tr><td>200</td><td>150</td><td>40.5 °C</td></tr>
+                <tr><td>150</td><td>112</td><td>34.2 °C</td></tr>
+                <tr><td>100</td><td>75</td><td>26.0 °C</td></tr>
+                <tr><td>50</td><td>37</td><td>13.5 °C</td></tr>
+                <tr><td>20</td><td>15</td><td>–1.5 °C</td></tr>
+                <tr><td>10</td><td>7.5</td><td>–13.0 °C</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> at a pressure of 200 mbar, ethanol boils at 40.5 °C — the temperature of a warm bath. At 50 mbar — at 13.5 °C, the temperature of a cellar. Thermal impact on aromatic compounds is minimal.
+        </div>
+
+        <h3>1.3. Relative Volatility and Separation</h3>
+        <p>Relative volatility (α) is the ratio of the concentrations of two components in the vapor phase to their ratio in the liquid phase. The higher α is, the easier it is to separate the components.</p>
+        <p>As pressure decreases, the relative volatility of most pairs increases. This means vacuum improves fraction separation, not just lowers temperature. For the ethanol–water mixture at 100 mbar, α increases by 5–10 % compared to atmospheric pressure.</p>
+        <p>Why this happens: at low pressure, the difference in boiling points of the components (in absolute degrees) becomes more significant relative to the absolute temperature. Ethanol and water at 30 °C "feel" the difference in volatility more strongly than at 78 °C.</p>
+
+        <h3>1.4. The Azeotrope Under Vacuum</h3>
+        <p>The ethanol–water azeotrope (95.6 % by volume) exists at atmospheric pressure. But at pressures below 70 mbar, the azeotrope disappears. This means that in a deep vacuum it is theoretically possible to obtain 100 % ethanol by simple rectification, without using molecular sieves or azeotropic additives.</p>
+        <p>In practice this is rarely used, because maintaining a pressure below 70 mbar requires a high-performance vacuum pump and flawless leak-tightness.</p>
+
+        <h2 id="aroma">Chapter 2. What Vacuum Rectification Provides: Preserving Aroma</h2>
+
+        <h3>2.1. Thermal Degradation of Aromatic Compounds</h3>
+        <p>At temperatures above 60–70 °C, many aromatic molecules undergo chemical changes:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Compound</th>
+                    <th>Aroma</th>
+                    <th>Thermal Stability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Linalool</td><td>Floral, lavender</td><td>Decomposes above 80 °C, produces α-terpineol (turpentine tone)</td></tr>
+                <tr><td>Geraniol</td><td>Rose</td><td>Oxidizes to geranial, isomerizes</td></tr>
+                <tr><td>Nerol</td><td>Citrus, flowers</td><td>Loses freshness above 70 °C</td></tr>
+                <tr><td>Citronellol</td><td>Rose, lemon</td><td>Thermally stable up to 90 °C</td></tr>
+                <tr><td>β-Damascenone</td><td>Rose, fruits</td><td>Very sensitive, decomposes at 60 °C</td></tr>
+                <tr><td>γ-Decalactone</td><td>Peach, apricot</td><td>Stable, but volatile</td></tr>
+                <tr><td>Raspberry ketone</td><td>Raspberry</td><td>Sensitive to heat</td></tr>
+                <tr><td>Limonene</td><td>Citrus</td><td>Isomerizes above 80 °C</td></tr>
+                <tr><td>Hexanal</td><td>Green grass</td><td>Volatile, oxidizes on heating</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p>During classical distillation (78 °C and above), these molecules partially decompose or isomerize, giving the distillate a "boiled," "jammy," "turpentine" character.</p>
+
+        <h3>2.2. The Effect of Vacuum on the Aromatic Profile</h3>
+        <p>During rectification under a vacuum of 150–250 mbar (ethanol boiling point 34–41 °C):</p>
+        <ul>
+            <li><strong>Preservation of "top notes."</strong> The volatile terpenes and esters that during atmospheric distillation fly off with the heads or are destroyed remain in the body of the distillate.</li>
+            <li><strong>Absence of thermal degradation.</strong> Delicate lactones and β-damascenone retain their original structure.</li>
+            <li><strong>Reduced formation of furfural.</strong> Furfural (the smell of burnt bread, caramel) forms when sugars are heated above 100 °C. At 40 °C its formation is minimal.</li>
+            <li><strong>Minimization of the Maillard reaction.</strong> In grain and honey washes at low temperatures, browning and the formation of heavy aromas do not occur.</li>
+        </ul>
+        <p><strong>Result:</strong> the distillate smells of fresh fruit or flower, not of jam or compote. This is a fundamental difference that distinguishes premium vacuum eaux-de-vie from traditional ones.</p>
+
+        <h3>2.3. Practical Examples</h3>
+        <div class="example-grid">
+            <div class="example-card">
+                <h4>🍓 Raspberry Distillate</h4>
+                <div class="ex-atm"><strong>Atmospheric:</strong> raspberry jam tone, light turpentine trail.</div>
+                <div class="ex-vac"><strong>Vacuum (150 mbar):</strong> fresh, just-picked raspberry, green notes, pure raspberry ketone.</div>
+            </div>
+            <div class="example-card">
+                <h4>🌿 Botanical Gin</h4>
+                <div class="ex-atm"><strong>Atmospheric:</strong> juniper dominates, citrus and floral botanicals get lost.</div>
+                <div class="ex-vac"><strong>Vacuum:</strong> balanced, multi-layered profile where each botanical is distinguishable.</div>
+            </div>
+            <div class="example-card">
+                <h4>💜 Lavender Absolute</h4>
+                <div class="ex-atm"><strong>Atmospheric:</strong> camphor, "apothecary" tone.</div>
+                <div class="ex-vac"><strong>Vacuum:</strong> fresh, green lavender with floral depth.</div>
+            </div>
+        </div>
+
+        <h2 id="equipment">Chapter 3. Equipment for Vacuum Rectification</h2>
+
+        <h3>3.1. Main Components of the System</h3>
+        <p>A vacuum rectification unit consists of:</p>
+        <ul>
+            <li><strong>Distillation pot</strong> — a leak-tight vessel able to withstand external pressure (internal rarefaction).</li>
+            <li><strong>Rectification column</strong> — with packing, operating under vacuum conditions.</li>
+            <li><strong>Dephlegmator</strong> — condenses part of the vapor and forms the reflux.</li>
+            <li><strong>Condenser</strong> — condenses the product into the receiving vessel.</li>
+            <li><strong>Vacuum pump</strong> — creates the rarefaction in the system.</li>
+            <li><strong>Vacuum gauge</strong> — measures the pressure.</li>
+            <li><strong>Pressure regulator</strong> — maintains the set rarefaction.</li>
+            <li><strong>Safety valves</strong> — protection against excess pressure and vacuum.</li>
+        </ul>
+
+        <h3>3.2. Leak-Tightness Requirements</h3>
+        <p>In a vacuum system, every connection must be absolutely leak-tight. An air leak into the system:</p>
+        <ul>
+            <li>Raises the pressure, increasing the boiling point.</li>
+            <li>Introduces oxygen, which oxidizes aromatic compounds.</li>
+            <li>Can create a flammable mixture of alcohol vapors with air.</li>
+        </ul>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Connection Type</th>
+                    <th>Leak-Tightness</th>
+                    <th>Applicability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Flanged with gaskets (PTFE, silicone)</td><td>High</td><td>Pot, column, dephlegmator</td></tr>
+                <tr><td>Tri-clamp with silicone gaskets</td><td>High</td><td>Modular connections</td></tr>
+                <tr><td>Threaded with PTFE tape</td><td>Medium</td><td>Only for fixed connections</td></tr>
+                <tr><td>Clamps with rubber seals</td><td>Medium</td><td>For hoses and small diameters</td></tr>
+                <tr><td>Soldering (copper, silver)</td><td>Very high</td><td>Permanent connections</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>Leak-tightness check:</strong> create a vacuum in the system, disconnect the pump, and observe the pressure for 10–15 minutes. If the pressure rises by more than 5 mbar, there is a leak that must be found and eliminated.</p>
+
+        <h3>3.3. The Vacuum Pump</h3>
+        <div class="pump-grid">
+            <div class="pump-card">
+                <h4>🛢️ Oil Rotary Pumps</h4>
+                <div class="pump-specs">
+                    <div><span>Capacity</span><span>5–50 m³/h</span></div>
+                    <div><span>Max rarefaction</span><span>1–10 mbar</span></div>
+                    <div><span>Cost</span><span>€200–1,500</span></div>
+                </div>
+                <p class="pump-pro">+ Deep vacuum, powerful.</p>
+                <p class="pump-con">− Alcohol vapors dissolve in the oil, reducing performance. Require frequent oil changes or a cold trap.</p>
+            </div>
+            <div class="pump-card">
+                <h4>🌀 Dry (Oil-Free) Membrane Pumps</h4>
+                <div class="pump-specs">
+                    <div><span>Capacity</span><span>1–10 m³/h</span></div>
+                    <div><span>Max rarefaction</span><span>10–50 mbar</span></div>
+                    <div><span>Cost</span><span>€500–3,000</span></div>
+                </div>
+                <p class="pump-pro">+ Not contaminated by alcohol vapors. Ideal for the food industry.</p>
+                <p class="pump-con">− Less deep vacuum than oil pumps.</p>
+            </div>
+            <div class="pump-card">
+                <h4>💧 Water-Ring Pumps</h4>
+                <div class="pump-specs">
+                    <div><span>Capacity</span><span>10–100 m³/h</span></div>
+                    <div><span>Max rarefaction</span><span>30–100 mbar</span></div>
+                    <div><span>Cost</span><span>€1,000–5,000</span></div>
+                </div>
+                <p class="pump-pro">+ Reliability, operation with wet vapors.</p>
+                <p class="pump-con">− Rarefaction limited by water vapor pressure.</p>
+            </div>
+        </div>
+        <div class="practical-note">
+            <strong>Recommendation for a home/craft unit:</strong> a membrane pump with a capacity of 2–5 m³/h and a maximum rarefaction of 20–50 mbar. Cost: €800–1,500.
+        </div>
+
+        <h3>3.4. The Cold Trap</h3>
+        <p>A cold trap is a device between the column and the vacuum pump, cooled to a low temperature (–20 °C and below). Purpose: to condense alcohol and aromatic compound vapors, preventing them from entering the pump.</p>
+        <p><strong>Design:</strong> a U-shaped or spiral tube immersed in a cooling mixture (dry ice + acetone, –78 °C) or connected to a chiller.</p>
+        <p><strong>Why it is needed:</strong></p>
+        <ul>
+            <li>Protects the oil pump from contamination.</li>
+            <li>Prevents loss of aromatic compounds.</li>
+            <li>Reduces the load on the pump.</li>
+        </ul>
+
+        <h3>3.5. Pressure Regulation</h3>
+        <p>To maintain stable pressure, the following are used:</p>
+        <ul>
+            <li><strong>Manual needle valve</strong> — lets a small amount of air (or inert gas) into the system to raise the pressure. Simple and cheap, but requires constant operator attention.</li>
+            <li><strong>Automatic pressure regulator</strong> — an electronic controller with a pressure sensor and a solenoid valve. Maintains the set pressure with an accuracy of ±1–2 mbar. Cost: €200–800.</li>
+        </ul>
+        <p><strong>Recommendation:</strong> for stable operation, an automatic regulator is preferable, especially during long distillations.</p>
+
+        <h3>3.6. Pressure Measurement</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Instrument Type</th>
+                    <th>Range</th>
+                    <th>Accuracy</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Mechanical vacuum gauge (Bourdon)</td><td>0–1000 mbar</td><td>±5 %</td><td>€20–50</td></tr>
+                <tr><td>Digital piezoresistive sensor</td><td>0–1000 mbar</td><td>±0.5 %</td><td>€50–150</td></tr>
+                <tr><td>Thermocouple vacuum gauge (Pirani)</td><td>0.001–1000 mbar</td><td>±2 %</td><td>€100–300</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>Recommendation:</strong> a digital piezoresistive sensor with a display output. Optimal price-to-accuracy ratio.</p>
+
+        <h2 id="setup">Chapter 4. Practical Setup of Vacuum Rectification</h2>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">A</div>
+                <h4>System Preparation</h4>
+            </div>
+            <div class="phase-body">
+                <ol>
+                    <li><strong>Assembly and leak-tightness check.</strong> Assemble the system: pot → column → dephlegmator → condenser → cold trap → vacuum pump. Close all valves and taps. Turn on the pump and bring the pressure down to the operating value (e.g., 200 mbar). Disconnect the pump and close the valve in front of it. Observe the pressure for 15 minutes. A rise of no more than 5 mbar means the system is leak-tight.</li>
+                    <li><strong>Loading the raw material.</strong> Pour in the low wines, diluted to 20–30 % by volume. Fill the pot to no more than 60 % of its volume (under vacuum the liquid can foam more strongly). Close the pot leak-tight.</li>
+                    <li><strong>Connecting cooling.</strong> Supply water to the dephlegmator and condenser. Make sure the cold trap is cooled to –20 °C and below.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">B</div>
+                <h4>Startup and Stabilization</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="4">
+                    <li><strong>Creating the vacuum.</strong> Turn on the vacuum pump. Smoothly reduce the pressure to the target value (e.g., 200 mbar). Turn on the automatic regulator to maintain the pressure.</li>
+                    <li><strong>Heating the pot.</strong> Turn on the heating to minimum power. At a pressure of 200 mbar, the ethanol in the pot (20–30 % by volume) will start to boil at 40–45 °C. Wait until the vapor reaches the dephlegmator (indicated by the temperature at the top of the column).</li>
+                    <li><strong>Stabilizing the column.</strong> Set full reflux (take-off tap closed). Let the column stabilize for 30–60 minutes. The temperature at the top of the column should settle at 34–35 °C (at 200 mbar this corresponds to the ethanol boiling point).</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">C</div>
+                <h4>Fraction Take-Off</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="7">
+                    <li><strong>Heads take-off.</strong> Calculate the heads volume (5–8 % of the absolute alcohol). Slightly open the take-off tap at a rate of 1–2 drops/second. Heads during vacuum rectification have a less pronounced solvent smell, but are determined organoleptically.</li>
+                    <li><strong>Body take-off.</strong> Change the receiving vessel. Take off the body at a rate of 2–4 drops/second. Monitor the temperature at the top of the column: stable 34–35 °C at 200 mbar. Distillate strength: 93–96 % by volume (the same as with atmospheric rectification).</li>
+                    <li><strong>Completing take-off.</strong> When the temperature at the top of the column rises above 36–37 °C, the body has ended. Stop take-off or switch to the tails vessel.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">D</div>
+                <h4>Completing the Process</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="10">
+                    <li><strong>Shutdown.</strong> Turn off the pot heating. Let the system cool for 10–15 minutes with cooling still running. Smoothly let air into the system through the needle valve. Never open the system under vacuum — this can lead to splashing of hot liquid and damage to equipment. Turn off the vacuum pump. Disconnect the water supply to the dephlegmator and condenser. Disassemble the system and collect the product.</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 id="calc">Chapter 5. Calculating Vacuum Rectification Parameters</h2>
+
+        <h3>5.1. Choosing the Operating Pressure</h3>
+        <p>The operating pressure is chosen based on:</p>
+        <ul>
+            <li><strong>Sensitivity of the raw material.</strong> For the most delicate aromas (berries, flowers) — 50–150 mbar. For moderately sensitive (fruits, citrus) — 150–300 mbar.</li>
+            <li><strong>Equipment capacity.</strong> The lower the pressure, the greater the pump capacity needed to maintain the vacuum at the given heating power.</li>
+            <li><strong>Boiling point.</strong> At 200 mbar, ethanol boils at 40 °C — a comfortable temperature for most aromatic compounds.</li>
+        </ul>
+
+        <h3>5.2. Calculating the Boiling Point</h3>
+        <p>For a quick estimate, use the simplified formula or table. Exact calculation:</p>
+        <div class="formula-box">
+            <div class="formula-body">T₂ = 1 / (1/T₁ – (R/ΔH) × ln(P₂/P₁))</div>
+            <div class="formula-example">where T is in Kelvin, P in mbar. For ethanol: T₁ = 351.52 K (78.37 °C), P₁ = 1013 mbar; ΔH = 38560 J/mol, R = 8.314 J/(mol·K).<br>Example: P₂ = 200 mbar → T₂ = 1/(1/351.52 – (8.314/38560) × ln(200/1013)) = 313 K = 39.9 °C.</div>
+        </div>
+
+        <h3>5.3. Vacuum Pump Capacity</h3>
+        <p>The pump capacity must exceed the amount of vapor formed in the pot; otherwise the pump cannot maintain the set pressure.</p>
+        <div class="formula-box">
+            <div class="formula-body">V_pump ≥ Q_heat / (ΔH × ρ_vapor) × (P_atm / P_operating)</div>
+            <div class="formula-example">where: Q_heat — heating power (W); ΔH — heat of vaporization (J/kg); ρ_vapor — vapor density at operating pressure (kg/m³); P_atm, P_operating — pressures (mbar).<br>Example: heating 1 kW (1000 W), pressure 200 mbar, ethanol. Vapor volume at 1013 mbar and 78 °C: 1000/846000 × (1/2.07) = 0.00057 m³/s = 2.05 m³/h. At 200 mbar the volume increases by 1013/200 = 5 times → 10.25 m³/h.<br>Conclusion: for a heating power of 1 kW at 200 mbar, you need a pump with a capacity of at least 12–15 m³/h.</div>
+        </div>
+
+        <h3>5.4. Summary Calculation Table</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pressure (mbar)</th>
+                    <th>Ethanol Boiling Point</th>
+                    <th>Vapor Volume (per 1 kW)</th>
+                    <th>Minimum Pump Capacity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1013</td><td>78 °C</td><td>2.1 m³/h</td><td>2.5 m³/h</td></tr>
+                <tr><td>500</td><td>62 °C</td><td>4.1 m³/h</td><td>5 m³/h</td></tr>
+                <tr><td>300</td><td>49 °C</td><td>6.7 m³/h</td><td>8 m³/h</td></tr>
+                <tr><td>200</td><td>41 °C</td><td>10.2 m³/h</td><td>12–15 m³/h</td></tr>
+                <tr><td>100</td><td>26 °C</td><td>20.5 m³/h</td><td>25 m³/h</td></tr>
+                <tr><td>50</td><td>14 °C</td><td>41 m³/h</td><td>50 m³/h</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> the lower the pressure, the more powerful the pump needed. For home use, the optimum is 150–250 mbar with a pump of 10–15 m³/h.
+        </div>
+
+        <h2 id="applications">Chapter 6. Applications: What Vacuum Rectification Is For</h2>
+
+        <div class="app-grid">
+            <div class="app-card">
+                <h4>🫐 Delicate Berry Distillates</h4>
+                <p>Raspberry, strawberry, blackberry, blueberry: aromatic compounds (raspberry ketone, ionones, lactones) are extremely sensitive to heat. Vacuum rectification at 100–150 mbar preserves the fresh, "living" berry aroma, unattainable with atmospheric distillation.</p>
+                <span class="app-use">Premium eaux-de-vie, craft gins, perfume concentrates</span>
+            </div>
+            <div class="app-card">
+                <h4>🌸 Flower Distillates</h4>
+                <p>Rose, jasmine, lavender, neroli: terpenes (linalool, geraniol, nerol) partially decompose at 78 °C. Vacuum rectification at 50–150 mbar allows obtaining distillates with the aroma of a fresh flower, not an "apothecary" tone.</p>
+                <span class="app-use">Perfumery, premium gins, aromatic waters</span>
+            </div>
+            <div class="app-card">
+                <h4>🍋 Citrus Distillates</h4>
+                <p>Bergamot, lime, yuzu, grapefruit: citrus aldehydes and terpenes (limonene, γ-terpinene) isomerize on heating, producing turpentine notes. Vacuum at 100–200 mbar preserves the fresh, green citrus profile.</p>
+                <span class="app-use">New-style gins, aperitifs, cocktail ingredients</span>
+            </div>
+            <div class="app-card">
+                <h4>🌿 Botanical Gins</h4>
+                <p>Modern craft gin distilleries use vacuum rectification to extract aromas from delicate botanicals: flowers, herbs, fresh leaves. This allows creating multi-layered, "fresh" gins in which each botanical ingredient is distinguishable.</p>
+                <span class="app-use">Examples: The Botanist (Scotland), Monkey 47 (Germany)</span>
+            </div>
+            <div class="app-card">
+                <h4>🧴 Perfume Absolutes</h4>
+                <p>In the perfume industry, vacuum distillation is used to obtain absolutes — highly concentrated aromatic extracts from flowers, resins, and spices. During atmospheric distillation many molecules are destroyed; during vacuum distillation they are preserved in their original form.</p>
+                <span class="app-use">High-end perfumery</span>
+            </div>
+            <div class="app-card">
+                <h4>⚡ Energy Savings</h4>
+                <p>During vacuum rectification, the pot is heated to 40–50 °C instead of 78–100 °C. This reduces energy consumption by 30–50 %. However, the savings are partially offset by the costs of running the vacuum pump and cooling the trap.</p>
+                <span class="app-use">Reduced heating costs</span>
+            </div>
+        </div>
+
+        <h2 id="safety">Chapter 7. Safety: Specific Risks of Vacuum Rectification</h2>
+
+        <div class="risk-grid">
+            <div class="risk-card">
+                <h4>💥 Implosion</h4>
+                <p>A system under vacuum is subjected to external atmospheric pressure (1013 mbar). The pot, column, and glass elements must withstand this pressure without deformation.</p>
+                <div class="risk-fix"><strong>Precautions:</strong> use equipment designed for operation under vacuum (vacuum flasks, thick-walled glass). Do not use thin-walled glass vessels. Protect glass elements with casings or nets. Wear safety glasses when working with vacuum.</div>
+            </div>
+            <div class="risk-card">
+                <h4>🔥 Vapor Explosion</h4>
+                <p>Alcohol vapors mixed with air are explosive at concentrations of 3.5–15 % by volume. In a vacuum system the oxygen concentration is reduced, but if air leaks in, a flammable mixture can form.</p>
+                <div class="risk-fix"><strong>Precautions:</strong> maintain leak-tightness. Use inert gas (nitrogen) to equalize pressure instead of air. Ensure ventilation of the room. Do not use open flames.</div>
+            </div>
+            <div class="risk-card">
+                <h4>🌬️ Letting Air In Under Vacuum</h4>
+                <p>When completing the process, never open the system abruptly. Rapid air intake can splash hot liquid, create a flammable mixture of vapors with oxygen, and damage fragile elements (glass, gaskets).</p>
+                <div class="risk-fix"><strong>Correct procedure:</strong> smoothly let air in through the needle valve over 2–5 minutes, until the pressure equalizes with atmospheric.</div>
+            </div>
+            <div class="risk-card">
+                <h4>↩️ Liquid Backflow</h4>
+                <p>When the vacuum pump is abruptly disconnected, liquid from the receiving vessel or cold trap can be sucked back into the system. This contaminates the product and can damage the pump.</p>
+                <div class="risk-fix"><strong>Precautions:</strong> install a check valve between the system and the pump. Before disconnecting the pump, smoothly let air in. Use a liquid trap in front of the pump.</div>
+            </div>
+            <div class="risk-card">
+                <h4>❄️ Moisture Freezing</h4>
+                <p>At low pressures (50–100 mbar) and boiling points of 13–26 °C, water vapor can condense in the cold trap and freeze on the walls, reducing throughput.</p>
+                <div class="risk-fix"><strong>Precaution:</strong> regularly defrost the trap.</div>
+            </div>
+        </div>
+
+        <h2 id="errors">Chapter 8. Typical Errors and Their Solutions</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Error</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Insufficient leak-tightness</td><td>Pressure rises, boiling point increases, aroma is destroyed</td><td>Check all connections, replace gaskets, use PTFE tape</td></tr>
+                <tr><td>Weak vacuum pump</td><td>The pump cannot maintain the set pressure, temperature rises</td><td>Increase pump capacity or reduce heating power</td></tr>
+                <tr><td>Absence of a cold trap</td><td>Alcohol vapors enter the pump, oil gets contaminated</td><td>Install a trap cooled to –20 °C</td></tr>
+                <tr><td>Abrupt air intake at completion</td><td>Splashing of liquid, fire risk</td><td>Let air in smoothly through the needle valve</td></tr>
+                <tr><td>Using thin-walled glass</td><td>Implosion, flying shards</td><td>Use thick-walled vacuum glass or stainless steel</td></tr>
+                <tr><td>Pot overheating under vacuum</td><td>The liquid foams violently, the column floods</td><td>Heating power 30–50 % lower than with atmospheric rectification</td></tr>
+                <tr><td>Ignoring freezing in the trap</td><td>Reduced throughput, pressure rise</td><td>Regularly defrost the trap</td></tr>
+                <tr><td>Absence of an automatic pressure regulator</td><td>Pressure jumps, column instability</td><td>Use an electronic regulator</td></tr>
+                <tr><td>Diluting low wines above 30 %</td><td>Increased vapor volume, pump overload</td><td>Dilute to 20–25 %</td></tr>
+                <tr><td>Mixing vacuum and atmospheric equipment</td><td>Leaks, unstable operation</td><td>All elements must be designed for vacuum</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="comparison">Chapter 9. Comparison: Vacuum vs. Atmospheric Rectification</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Atmospheric (1013 mbar)</th>
+                    <th>Vacuum (200 mbar)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ethanol boiling point</td><td>78 °C</td><td>41 °C</td></tr>
+                <tr><td>Temperature in the pot</td><td>85–95 °C</td><td>45–55 °C</td></tr>
+                <tr><td>Preservation of terpenes</td><td>Partial</td><td>Practically complete</td></tr>
+                <tr><td>Aromatic profile</td><td>"Boiled," "jammy"</td><td>"Fresh," "living"</td></tr>
+                <tr><td>Formation of furfural</td><td>Moderate</td><td>Minimal</td></tr>
+                <tr><td>Energy costs for heating</td><td>High</td><td>Low</td></tr>
+                <tr><td>Costs for the vacuum pump</td><td>Absent</td><td>100–300 W</td></tr>
+                <tr><td>Equipment cost</td><td>Basic</td><td>2–3 times higher</td></tr>
+                <tr><td>Setup complexity</td><td>Medium</td><td>High</td></tr>
+                <tr><td>Leak-tightness</td><td>Desirable</td><td>Mandatory</td></tr>
+                <tr><td>Distillation time</td><td>4–8 hours</td><td>6–12 hours (lower heating power)</td></tr>
+                <tr><td>Applicability</td><td>Neutral spirit, basic distillates</td><td>Premium eaux-de-vie, perfumery, gins</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use an ordinary moonshine still for vacuum rectification?</div>
+            <div class="faq-answer"><p>Only if it is designed for operation under vacuum (leak-tight flanged connections, thick-walled elements). Most household stills with clamps and threaded connections will not provide sufficient leak-tightness. Modernization is possible, but requires replacing seals and installing vacuum fittings.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I obtain 100 % ethanol under vacuum?</div>
+            <div class="faq-answer"><p>Theoretically — yes. At pressures below 70 mbar the ethanol–water azeotrope disappears, and the separation becomes complete. But in practice, maintaining such a deep vacuum for several hours requires a high-performance pump and ideal leak-tightness. For most tasks, 95–96 % is sufficient.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Is vacuum rectification slower than atmospheric?</div>
+            <div class="faq-answer"><p>Usually yes. At a lower boiling point, the heating power must be lower to avoid foaming. This increases distillation time by 30–50 %. However, the product quality is significantly higher.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can vacuum rectification be carried out without a dephlegmator?</div>
+            <div class="faq-answer"><p>No. A dephlegmator is necessary to form the reflux and ensure heat and mass transfer. Without it, the system operates like simple distillation, even under vacuum.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How difficult is it to maintain the vacuum for 6–8 hours?</div>
+            <div class="faq-answer"><p>With the correct setup of an automatic regulator — not difficult. The system automatically maintains the set pressure, compensating for leaks and fluctuations. The operator's main task is to monitor the temperature and fraction take-off.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can vacuum be used for fractional distillation of fruit wash (without rectification)?</div>
+            <div class="faq-answer"><p>Yes. Vacuum fractional distillation (without a column, with a simple pot and dephlegmator) is an excellent method for obtaining aromatic eaux-de-vie. The temperature in the pot of 40–50 °C instead of 78–90 °C significantly reduces thermal impact on aromatic compounds.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Which vacuum pump should I choose for a home unit?</div>
+            <div class="faq-answer"><p>A membrane (oil-free) pump with a capacity of 10–15 m³/h and a maximum rarefaction of 20–50 mbar. Cost €800–1,500. Avoid cheap oil pumps: alcohol vapors quickly contaminate the oil and put the pump out of action.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Is a cold trap needed?</div>
+            <div class="faq-answer"><p>Strongly recommended. Without it, alcohol vapors enter the pump, reducing its performance and service life. The simplest trap is a U-shaped tube in dry ice with acetone (–78 °C) or in a freezer (–20 °C).</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can vacuum rectification be used for sugar wash?</div>
+            <div class="faq-answer"><p>Technically possible, but not expedient. Sugar wash contains no delicate aromas that need to be preserved. The additional costs of vacuum equipment do not pay off through improved quality.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> At what pressure is it best to work?</div>
+            <div class="faq-answer"><p>For most tasks — 150–250 mbar. This gives an ethanol boiling point of 34–41 °C, sufficient to preserve most aromatic compounds. A deeper vacuum (50–100 mbar) is needed only for extremely sensitive flowers and berries.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Is vacuum rectification safer than atmospheric?</div>
+            <div class="faq-answer"><p>Not necessarily. The risks are different: implosion instead of vapor ejection, the need for leak-tightness, the danger of rapid air intake. Each system requires its own set of precautions.</p></div>
+        </div>
+
+        <h2 id="economics">Chapter 11. Economic Feasibility</h2>
+
+        <h3>11.1. Equipment Cost</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vacuum column (stainless steel, leak-tight connections)</td><td>€800–2,000</td></tr>
+                <tr><td>Membrane vacuum pump</td><td>€800–1,500</td></tr>
+                <tr><td>Automatic pressure regulator</td><td>€200–500</td></tr>
+                <tr><td>Cold trap</td><td>€100–300</td></tr>
+                <tr><td>Vacuum gauge and sensors</td><td>€100–300</td></tr>
+                <tr><td>Leak-tight connections and gaskets</td><td>€200–500</td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>€2,200–5,100</strong></td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p>For comparison: an atmospheric rectification unit of similar performance costs €800–1,500. A vacuum system is 2.5–4 times more expensive.</p>
+
+        <h3>11.2. When It Is Justified</h3>
+        <p>Vacuum rectification is economically justified if:</p>
+        <ul>
+            <li>You produce premium distillates with high added value (craft gins, eaux-de-vie, perfume concentrates).</li>
+            <li>The aroma of the raw material is the main value, and its loss during atmospheric distillation is critical.</li>
+            <li>Production volumes are sufficient to pay off the equipment (from 500 liters of distillate per year and more).</li>
+            <li>You work with extremely delicate botanicals (flowers, fresh leaves, rare berries).</li>
+        </ul>
+        <p>For home moonshining aimed at obtaining neutral spirit, infused spirits, and basic distillates, vacuum rectification is excessive.</p>
+
+        <h2>Conclusion: Vacuum as a Tool for Delicate Tasks</h2>
+        <p>Vacuum rectification is not a replacement for atmospheric rectification, but its complement for specific tasks. It solves one concrete problem: preserving fragile aromatic molecules that are destroyed at 78 °C. Lavender terpenes, peach lactones, bergamot citrus aldehydes, raspberry ketone — all of them preserve their structure and aroma only during low-temperature separation.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>Vacuum lowers the boiling point, not the strength.</strong>
+                At 200 mbar, ethanol boils at 41 °C, but the distillate strength remains 93–96 % by volume. The physics of separation does not change — only the temperature regime changes.
+            </div>
+            <div class="principle-item">
+                <strong>Leak-tightness is an absolute requirement.</strong>
+                An air leak raises the pressure, increases the boiling point, and destroys the aroma. Every connection must be vacuum-tight. A leak-tightness check before every distillation is mandatory.
+            </div>
+            <div class="principle-item">
+                <strong>Vacuum is a tool for premium products.</strong>
+                For neutral spirit and basic infused spirits, atmospheric rectification is sufficient and significantly cheaper. Vacuum is justified where the aroma of the raw material is the main value and its loss is unacceptable: craft gins, flower eaux-de-vie, perfume absolutes.
+            </div>
+        </div>
+
+        <p>Understanding the physics of vacuum rectification opens a new level of control for the distiller. This is a transition from "extracting alcohol" to "extracting aroma in its pristine form." Where atmospheric distillation gives a "boiled compote," vacuum distillation gives a "fresh fruit just picked from the branch." The difference is 30 degrees Celsius separating 78 °C from 48 °C, and the molecules that these 30 degrees destroy or preserve.</p>
+        <p><em>Clean vacuum and living aromas.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

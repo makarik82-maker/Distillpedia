@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuous Rectification: The Transition from Batch to Infinite Flow | Distillpedia</title>
+<style>
+    :root {
+        --primary-color: #0f172a;
+        --accent-color: #f59e0b;
+        --accent-dark: #d97706;
+        --accent-light: #fcd34d;
+        --steel: #64748b;
+        --bg-color: #f8fafc;
+        --text-color: #334155;
+        --light-gray: #e2e8f0;
+        --note-bg: #fffbeb;
+        --note-border: #fde68a;
+        --note-text: #92400e;
+        --takeaway-bg: #ecfdf5;
+        --takeaway-text: #065f46;
+        --warning-bg: #fef2f2;
+        --warning-text: #991b1b;
+        --mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
+        --sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    body {
+        font-family: var(--sans);
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        border-bottom: 4px solid var(--accent-color);
+        color: #f8fafc;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        font-weight: 800;
+    }
+    header .tagline {
+        margin-top: 0.6rem;
+        font-size: 0.95rem;
+        opacity: 0.8;
+        font-family: var(--mono);
+        position: relative;
+        color: var(--accent-light);
+    }
+    nav {
+        background-color: #1e293b;
+        text-align: center;
+        padding: 0.9rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+    }
+    nav a {
+        color: #cbd5e1;
+        text-decoration: none;
+        margin: 0 18px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: var(--accent-color); }
+    main {
+        max-width: 900px;
+        margin: 3rem auto;
+        background: #ffffff;
+        padding: 3.5rem 4rem;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        border-radius: 8px;
+        border: 1px solid var(--light-gray);
+    }
+    h1.article-title {
+        font-size: 2.3rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .subtitle {
+        font-size: 1.1rem;
+        color: var(--steel);
+        margin-bottom: 3rem;
+        border-left: 4px solid var(--accent-color);
+        padding: 12px 20px;
+        background: var(--note-bg);
+        border-radius: 0 6px 6px 0;
+        font-weight: 500;
+    }
+    .toc {
+        background-color: #f8fafc;
+        border: 1px solid var(--light-gray);
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 3rem;
+    }
+    .toc h3 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        border-bottom: 1px solid var(--light-gray);
+        padding-bottom: 0.5rem;
+        font-family: var(--mono);
+    }
+    .toc ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+        columns: 2;
+        column-gap: 2rem;
+    }
+    .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+    .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+    h2 {
+        color: var(--primary-color);
+        margin-top: 4rem;
+        font-size: 1.6rem;
+        scroll-margin-top: 80px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    h2::before {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 24px;
+        background: var(--accent-color);
+        border-radius: 2px;
+    }
+    h3 {
+        color: var(--primary-color);
+        margin-top: 2rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+    p { margin-bottom: 1.2rem; text-align: justify; }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+    li { margin-bottom: 0.6rem; }
+    
+    /* Callouts */
+    .key-takeaway {
+        background-color: var(--takeaway-bg);
+        border-left: 5px solid #059669;
+        padding: 15px 20px;
+        margin: 2rem 0;
+        font-weight: 500;
+        border-radius: 4px;
+        color: var(--takeaway-text);
+    }
+    .practical-note {
+        background-color: var(--note-bg);
+        border: 1px solid var(--note-border);
+        color: var(--note-text);
+        padding: 15px 20px;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+    }
+    .practical-note strong { color: #78350f; }
+    .warning-note {
+        background-color: var(--warning-bg);
+        border-left: 5px solid #dc2626;
+        padding: 15px 20px;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: var(--warning-text);
+    }
+    .warning-note strong { color: #7f1d1d; }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        font-size: 0.92rem;
+        border: 1px solid var(--light-gray);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    th, td {
+        border: 1px solid var(--light-gray);
+        padding: 12px 15px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #f1f5f9;
+        color: var(--primary-color);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        font-family: var(--mono);
+    }
+    tr:nth-child(even) { background-color: #f8fafc; }
+
+    /* Column Schematic Visual */
+    .column-schematic {
+        background: #f1f5f9;
+        border: 1px solid var(--light-gray);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2.5rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .schematic-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 120px 1fr;
+        gap: 10px;
+        align-items: center;
+        max-width: 600px;
+        width: 100%;
+    }
+    .sch-col {
+        grid-column: 2;
+        background: linear-gradient(90deg, #94a3b8, #cbd5e1, #94a3b8);
+        border: 2px solid #475569;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+    .sch-section {
+        padding: 1.2rem 0.5rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: #1e293b;
+        border-bottom: 2px dashed #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .sch-section:last-child { border-bottom: none; }
+    .sch-input, .sch-output {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .sch-input { justify-content: flex-end; text-align: right; }
+    .sch-output { justify-content: flex-start; text-align: left; }
+    .sch-arrow { color: var(--accent-dark); font-size: 1.2rem; font-weight: bold; }
+
+    /* Comparison Cards */
+    .compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 2.5rem 0;
+    }
+    .compare-card {
+        border-radius: 10px;
+        padding: 1.8rem;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .compare-card h4 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .compare-card ul { font-size: 0.9rem; margin-bottom: 0; }
+    .card-batch {
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        border-top: 5px solid #ea580c;
+    }
+    .card-batch h4 { color: #9a3412; }
+    .card-cont {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-top: 5px solid #0284c7;
+    }
+    .card-cont h4 { color: #075985; }
+
+    /* Troubleshooting Grid */
+    .ts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 2rem 0;
+    }
+    .ts-card {
+        background: #fff;
+        border: 1px solid var(--light-gray);
+        border-left: 5px solid #dc2626;
+        border-radius: 8px;
+        padding: 1.5rem;
+    }
+    .ts-card h4 {
+        color: #dc2626;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.05rem;
+    }
+    .ts-card .ts-symptom { font-size: 0.88rem; color: var(--steel); margin-bottom: 0.8rem; font-style: italic; }
+    .ts-card .ts-solution { font-size: 0.95rem; font-weight: 600; color: var(--primary-color); background: #f8fafc; padding: 10px; border-radius: 6px; }
+
+    /* Principles */
+    .principles {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: #f8fafc;
+        border-radius: 8px;
+        padding: 3rem;
+        margin-top: 4rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #334155;
+    }
+    .principles::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+    }
+    .principles h3 {
+        color: var(--accent-color);
+        margin-top: 0;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 0.8rem;
+        position: relative;
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .principles .principle-item {
+        background: rgba(255,255,255,0.03);
+        border-radius: 6px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.2rem 0;
+        border-left: 4px solid var(--accent-color);
+        position: relative;
+    }
+    .principles .principle-item strong {
+        color: #ffffff;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.1rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2.5rem;
+        color: var(--steel);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--light-gray);
+        margin-top: 4rem;
+        font-family: var(--mono);
+    }
+
+    @media (max-width: 768px) {
+        main { padding: 2rem 1.5rem; margin: 1.5rem 1rem; }
+        h1.article-title { font-size: 1.75rem; }
+        h2 { font-size: 1.3rem; }
+        nav { padding: 0.6rem; }
+        nav a { margin: 0 10px; font-size: 0.75rem; }
+        .toc ol { columns: 1; }
+        .compare-grid { grid-template-columns: 1fr; }
+        .schematic-wrapper { grid-template-columns: 1fr; gap: 20px; }
+        .sch-col { grid-column: 1; }
+        .sch-input, .sch-output { justify-content: center; text-align: center; grid-column: 1; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">// The encyclopedia of artisanal & industrial distillation //</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Continuous</a>
+    <a href="#">Engineering</a>
+    <a href="#">Safety</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Continuous Rectification: The Transition from Batch to Infinite Flow</h1>
+        <p class="subtitle">Engineering the endless distillation process: how continuous columns operate in a steady state, the critical secret of the side-draw (fusel plug), and why this industrial marvel is the ultimate tool for neutral spirits but not for whiskey.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Paradigm Shift</a></li>
+                <li><a href="#anatomy">Chapter 1. Anatomy of a Continuous Column</a></li>
+                <li><a href="#fusel-plug">Chapter 2. The Fusel Plug and the Side-Draw</a></li>
+                <li><a href="#diy">Chapter 3. The DIY Frontier: Engineering at Home</a></li>
+                <li><a href="#applications">Chapter 4. Continuous vs. Batch: Choosing the Tool</a></li>
+                <li><a href="#troubleshoot">Chapter 5. Troubleshooting: The Cold Feed Problem</a></li>
+                <li><a href="#conclusion">Conclusion: The Industrial Standard</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Paradigm Shift</h2>
+        <p>Batch distillation is the heartbeat of the artisan. You fill the pot, heat it, make precise cuts, empty it, and repeat. It is romantic, hands-on, and absolutely essential for crafting characterful spirits. But what if your goal is not a complex single-malt whiskey, but 1,000 liters of flawless, crystal-clear neutral spirit for vodka, gin, or bioethanol? In batch mode, this becomes a massive bottleneck of time, energy, and labor.</p>
+        <p>Enter <strong>continuous rectification</strong>. This is an engineering marvel where the mash flows in endlessly from one side, and pure ethanol flows out the other, without the system ever stopping, cooling down, or requiring a new "run." It transitions the physics of distillation from a dynamic, time-dependent process to a spatial, steady-state equilibrium.</p>
+
+        <h2 id="anatomy">Chapter 1. Anatomy of a Continuous Column</h2>
+        <p>Unlike a batch still where the composition in the boiler changes over time (starting rich in alcohol, ending in water), a continuous column operates in a <strong>steady state</strong>. Once equilibrium is reached, the temperature and composition at any given tray remain perfectly constant for days or weeks.</p>
+        
+        <div class="column-schematic">
+            <div class="schematic-wrapper">
+                <div class="sch-output" style="grid-column: 1; grid-row: 1;">
+                    <span class="sch-arrow">←</span> Pure Ethanol (Tops)
+                </div>
+                <div class="sch-col" style="grid-row: 1 / 6;">
+                    <div class="sch-section">Condenser</div>
+                    <div class="sch-section">Rectifying<br>Section</div>
+                    <div class="sch-section" style="background: rgba(245,158,11,0.2);">Feed &<br>Side-Draw</div>
+                    <div class="sch-section">Stripping<br>Section</div>
+                    <div class="sch-section">Reboiler</div>
+                </div>
+                <div class="sch-input" style="grid-column: 3; grid-row: 1;">
+                    Cooling Water <span class="sch-arrow">→</span>
+                </div>
+                
+                <div class="sch-input" style="grid-column: 3; grid-row: 3;">
+                    Pre-heated Mash <span class="sch-arrow">→</span>
+                </div>
+                
+                <div class="sch-output" style="grid-column: 1; grid-row: 3;">
+                    <span class="sch-arrow">←</span> Fusel Oils (Лютер)
+                </div>
+
+                <div class="sch-output" style="grid-column: 1; grid-row: 5;">
+                    <span class="sch-arrow">←</span> Stillage / Water (Bottoms)
+                </div>
+                <div class="sch-input" style="grid-column: 3; grid-row: 5;">
+                    Steam / Heat <span class="sch-arrow">→</span>
+                </div>
+            </div>
+        </div>
+
+        <ul>
+            <li><strong>Feed Input:</strong> The raw wash is continuously pumped into the middle of the column.</li>
+            <li><strong>Stripping Section (Bottom):</strong> Steam rises from the reboiler, stripping the alcohol from the downward-flowing liquid. Water and solids exit the bottom.</li>
+            <li><strong>Rectifying Section (Top):</strong> The vapor rises, enriching in ethanol, while reflux flows down to ensure purity. Pure spirit is drawn from the top.</li>
+        </ul>
+
+        <h2 id="fusel-plug">Chapter 2. The Fusel Plug and the Side-Draw (The Secret of Purity)</h2>
+        <p>In a simple batch pot still, you separate heads, hearts, and tails by time. In a continuous column, you separate them by <em>space</em> (height). But there is a hidden thermodynamic trap that ruins many poorly designed continuous systems: <strong>the fusel plug</strong>.</p>
+        
+        <div class="warning-note">
+            <strong>⚠️ The Fusel Plug Phenomenon:</strong> Higher alcohols (fusel oils like isoamyl and isobutyl alcohol) have boiling points between ethanol and water. They are too heavy to rise to the top condenser, but too light to fall to the bottom reboiler. They accumulate in the middle of the column, forming a concentrated "plug" of impurities.
+        </div>
+
+        <h3>The Side-Draw (Лютер)</h3>
+        <p>If you only draw product from the top and drain water from the bottom, this fusel plug will eventually grow, saturate the trays, and inevitably creep upward into your "pure" product, or downward into your waste, ruining the separation.</p>
+        <p>The engineering solution is a <strong>side-draw</strong> (often referred to in Eastern European engineering circles as a <em>лютер</em> or fusel trap). By continuously bleeding off a small, specific stream of liquid from the middle trays where higher alcohols concentrate, you extract the impurities from the system entirely. <strong>Without a side-draw, obtaining crystal-clear, flawlessly pure neutral spirit on a continuous system is physically impossible.</strong></p>
+
+        <h2 id="diy">Chapter 3. The DIY Frontier: Engineering at Home</h2>
+        <p>While continuous columns are the standard in massive industrial plants, they have also become the ultimate engineering "flex" in advanced home-distilling communities (such as the engineering-focused forums of HomeDistiller).</p>
+        
+        <div class="practical-note">
+            <strong>The DIY Continuous Build:</strong> Enthusiasts design and build their own continuous systems, typically utilizing <strong>2 to 3-inch copper pipes</strong>. Because commercial sieve trays are too large for these micro-columns, hobbyists manufacture custom <strong>sieve trays (perforated plates)</strong> using CNC machining or high-temperature 3D printing. 
+        </div>
+        <p>These DIY rigs are equipped with precise peristaltic pumps for feed input, PID-controlled heat exchangers to pre-heat the mash, and automated side-draw valves. They are used for the endless, 24/7 processing of sugar wash into perfect, 96% neutral spirit for crafting commercial-grade gin, vodka, and botanical tinctures.</p>
+
+        <h2 id="applications">Chapter 4. Continuous vs. Batch: Choosing the Right Tool</h2>
+        <p>Continuous rectification is not "better" than batch distillation; it is simply a different tool designed for a completely different objective.</p>
+
+        <div class="compare-grid">
+            <div class="compare-card card-cont">
+                <h4>🏭 Continuous Rectification</h4>
+                <ul>
+                    <li><strong>Goal:</strong> Absolute purity, maximum yield, endless throughput.</li>
+                    <li><strong>Ideal For:</strong> Vodka, gin base, bioethanol, stripping runs, neutral spirit for infusions.</li>
+                    <li><strong>Flavor Profile:</strong> Zero. It strips away all character to leave only pure ethanol and water.</li>
+                </ul>
+            </div>
+            <div class="compare-card card-batch">
+                <h4>🏺 Batch Distillation (Pot Still)</h4>
+                <ul>
+                    <li><strong>Goal:</strong> Flavor extraction, complexity, artisanal character.</li>
+                    <li><strong>Ideal For:</strong> Whiskey, rum, calvados, tequila, craft brandies.</li>
+                    <li><strong>Flavor Profile:</strong> Rich. Relies on Maillard reactions, copper catalysis, and precise manual cuts to build the soul of the drink.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="key-takeaway">
+            <strong>The Golden Rule:</strong> Continuous rectification is the ultimate tool for neutral spirits. But for creating characterful, complex beverages like single malt whiskey or aged rum, batch distillation in copper pots remains the unsurpassed, irreplaceable standard.
+        </div>
+
+        <h2 id="troubleshoot">Chapter 5. Troubleshooting: The Cold Feed Problem</h2>
+        <p>Operating a continuous column requires strict thermal management. The most common failure point for both industrial operators and DIY builders is improper feed temperature.</p>
+
+        <div class="ts-grid">
+            <div class="ts-card">
+                <h4>🌊 Column "Floods" Upon Feed Introduction</h4>
+                <p class="ts-symptom"><strong>Symptom:</strong> The moment the mash pump is turned on, the column pressure spikes, liquid backs up into the condenser, and the system "chokes" or floods.</p>
+                <p class="ts-solution"><strong>The Cause & Solution:</strong> The raw feed is being introduced too cold. Cold liquid hits the rising hot vapor, instantly condensing it inside the column and destroying the vapor-liquid equilibrium. <strong>Solution:</strong> You must pre-heat the feed. Use a heat exchanger to route the hot bottoms (waste water) or top vapor to pre-heat the incoming mash so it enters the column at or near its boiling point.</p>
+            </div>
+        </div>
+
+        <h2 id="conclusion">Conclusion: The Industrial Standard</h2>
+        <p>The transition from batch to continuous distillation is the transition from chemistry to chemical engineering. It requires abandoning the romance of the "cut" in exchange for the brutal efficiency of thermodynamics and fluid dynamics. It demands precision pumps, heat exchangers, and an understanding of spatial separation like the fusel side-draw.</p>
+        <p>For the artisan seeking the soul of a grain or a fruit, the copper pot still will always be home. But for the pursuit of absolute, mathematical purity—the blank canvas upon which modern gin and premium vodka are built—the continuous column stands as the pinnacle of distillation technology.</p>
+
+        <div class="principles">
+            <h3>Three Rules of Continuous Flow</h3>
+            <div class="principle-item">
+                <strong>1. Respect the Steady State</strong>
+                A continuous column takes time to reach equilibrium. Do not adjust feed rates or heat inputs constantly. Once the temperatures on the trays stabilize, let the physics do the work.
+            </div>
+            <div class="principle-item">
+                <strong>2. Bleed the Fusel Plug</strong>
+                Never attempt to run a continuous column with only a top and bottom output. Higher alcohols will trap themselves in the middle of the column. A calibrated side-draw (лютер) is mandatory for true purity.
+            </div>
+            <div class="principle-item">
+                <strong>3. Pre-Heat Your Feed</strong>
+                Never inject cold wash into a hot column. It will instantly condense the rising vapor, causing thermal shock and catastrophic flooding. Always use a heat exchanger to bring the feed to boiling temperature before it enters the column.
+            </div>
+        </div>
+
+        <p style="margin-top: 2.5rem; text-align: center; font-family: var(--mono); color: var(--steel); font-size: 0.9rem;">// End of Engineering Brief //</p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only. Please respect your local laws regarding home distillation.</p>
+</footer>
+
+</body>
+</html>

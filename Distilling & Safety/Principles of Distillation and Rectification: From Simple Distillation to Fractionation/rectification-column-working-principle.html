@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How a Rectification Column Works: Theory for Beginners | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #1c2833;
+            --accent-color: #2874a6;
+            --accent-light: #5dade2;
+            --steel: #5d6d7e;
+            --bg-color: #f4f6f7;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #eaf2f8;
+            --note-border: #a9cce3;
+            --note-text: #1a5276;
+            --takeaway-bg: #e8f5e9;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --gold: #fbc02d;
+            /* Temperature gradient */
+            --t-hot: #c0392b;
+            --t-warm: #e67e22;
+            --t-mid: #f1c40f;
+            --t-cool: #48c9b0;
+            --t-cold: #2980b9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1c2833 0%, #2874a6 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(0deg, transparent 0 28px, rgba(255,255,255,0.03) 28px 30px);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #1c2833;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-light);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #f4f6f7;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.7rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #43a047;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong {
+            color: #154360;
+        }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e74c3c;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong {
+            color: #641e16;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f4f6f7;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #f4f6f7 0%, #eaf2f8 100%);
+            border: 1px solid var(--note-border);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .formula-box .formula-title {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .formula-box .formula-body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .formula-box .formula-example {
+            font-size: 0.9rem;
+            color: #546e7a;
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+        }
+        /* ===== Countercurrent Visual ===== */
+        .counter-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8fbfd;
+            border-radius: 12px;
+            border: 1px solid #cfd8dc;
+        }
+        .cv-stream {
+            text-align: center;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            color: white;
+            min-width: 140px;
+        }
+        .cv-vapor { background: linear-gradient(180deg, #e74c3c, #c0392b); }
+        .cv-phlegm { background: linear-gradient(0deg, #3498db, #2980b9); }
+        .cv-stream .cv-icon { font-size: 2rem; }
+        .cv-stream .cv-name { font-size: 1.1rem; font-weight: 700; margin-top: 4px; }
+        .cv-stream .cv-dir { font-size: 0.85rem; opacity: 0.9; margin-top: 2px; }
+        .cv-exchange {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .cv-exchange .cv-ex-text {
+            display: block;
+            font-size: 0.8rem;
+            color: #546e7a;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        /* ===== Column Diagram ===== */
+        .column-diagram {
+            margin: 2.5rem auto;
+            max-width: 620px;
+        }
+        .cd-unit {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .cd-tag {
+            flex: 0 0 150px;
+            font-size: 0.8rem;
+            color: #546e7a;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            font-weight: 600;
+        }
+        .cd-block {
+            flex: 1;
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .cd-block .cd-name { font-weight: 700; font-size: 1rem; }
+        .cd-block .cd-info { font-size: 0.82rem; opacity: 0.92; margin-top: 2px; }
+        .cd-dephleg { background: linear-gradient(135deg, #2980b9, #1a5276); }
+        .cd-top { background: linear-gradient(135deg, #48c9b0, #16a085); }
+        .cd-mid { background: linear-gradient(135deg, #f5b041, #e67e22); }
+        .cd-low { background: linear-gradient(135deg, #ec7063, #d35400); }
+        .cd-boiler { background: linear-gradient(135deg, #c0392b, #922b21); }
+        .cd-arrow {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 3px 0;
+        }
+        .cd-arrow-up { color: var(--t-hot); }
+        .cd-arrow-down { color: var(--t-cold); }
+        /* ===== Equilibrium table highlighting ===== */
+        .eq-azeo { background: #fdebd0 !important; font-weight: 700; }
+        /* ===== Plate count cards ===== */
+        .plate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 1.8rem 0;
+        }
+        .plate-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 1.3rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .plate-card .pc-count { font-size: 2.2rem; font-weight: 900; color: var(--accent-color); line-height: 1; }
+        .plate-card .pc-strength { font-size: 1rem; font-weight: 700; color: var(--primary-color); margin-top: 6px; }
+        .plate-card .pc-note { font-size: 0.85rem; color: #546e7a; margin-top: 4px; }
+        /* ===== Reflux cards ===== */
+        .reflux-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        .reflux-card {
+            background: #f4f6f7;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .reflux-card .rr-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-color); }
+        .reflux-card .rr-name { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #546e7a; margin: 4px 0 8px; }
+        .reflux-card .rr-desc { font-size: 0.8rem; line-height: 1.4; color: #607d8b; }
+        /* ===== Packing cards ===== */
+        .packing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .packing-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-radius: 10px;
+            padding: 1.2rem 1.4rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .packing-card h4 { margin-top: 0; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+        .packing-card .pk-hetp {
+            display: inline-block;
+            background: var(--note-bg);
+            color: var(--note-text);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .packing-card ul { margin-bottom: 0; padding-left: 18px; font-size: 0.9rem; }
+        .packing-card li { margin-bottom: 0.3rem; }
+        /* ===== Fraction zones ===== */
+        .fraction-strip {
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .fraction-seg {
+            color: white;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .fraction-seg .fs-name { font-size: 1.1rem; font-weight: 700; min-width: 110px; }
+        .fraction-seg .fs-content { font-size: 0.85rem; opacity: 0.92; flex: 1; }
+        .fraction-seg .fs-pos { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85; min-width: 90px; text-align: right; }
+        .fs-heads { background: linear-gradient(135deg, #e53935, #b71c1c); }
+        .fs-hearts { background: linear-gradient(135deg, #43a047, #1b5e20); }
+        .fs-tails { background: linear-gradient(135deg, #6d4c41, #3e2723); }
+        /* ===== Myth cards ===== */
+        .myth-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .myth-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .myth-card .myth-head {
+            background: #fdedec;
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1px solid #f5b7b1;
+        }
+        .myth-card .myth-head .myth-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #c0392b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .myth-card .myth-head .myth-text { font-weight: 600; color: var(--primary-color); margin-top: 3px; font-size: 0.98rem; }
+        .myth-card .myth-body { padding: 0.9rem 1.2rem; font-size: 0.9rem; }
+        .myth-card .myth-body .reality-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1e8449;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 5px;
+        }
+        .myth-card .myth-body p { margin: 0; }
+        /* ===== Process steps ===== */
+        .process-step {
+            display: flex;
+            gap: 16px;
+            margin: 1rem 0;
+            background: #f4f6f7;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #cfd8dc;
+        }
+        .process-step .step-num {
+            background: var(--accent-color);
+            color: white;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .process-step .step-content { flex: 1; }
+        .process-step h4 { margin-top: 0; margin-bottom: 0.4rem; color: var(--primary-color); }
+        .process-step ul, .process-step p { margin-bottom: 0; font-size: 0.93rem; }
+        /* ===== Final principles ===== */
+        .principles {
+            background: linear-gradient(135deg, #1c2833 0%, #2874a6 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(0deg, transparent 0 28px, rgba(255,255,255,0.03) 28px 30px);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #fff59d;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.8rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .plate-grid, .packing-grid, .myth-grid { grid-template-columns: 1fr; }
+            .reflux-grid { grid-template-columns: 1fr 1fr; }
+            .cd-tag { display: none; }
+            .counter-visual { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Equipment</a>
+    <a href="#">Techniques</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">How a Rectification Column Works: Theory for Beginners</h1>
+        <p class="subtitle">An introduction to the physics of heat and mass transfer between rising vapor and descending reflux. How repeated evaporation and condensation turn wash into pure spirit.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Question Every Beginner Asks</a></li>
+                <li><a href="#why">Chapter 1. From Simple Distillation to Rectification</a></li>
+                <li><a href="#physics">Chapter 2. The Physics of Evaporation and Condensation</a></li>
+                <li><a href="#plates">Chapter 3. The Theoretical Plate</a></li>
+                <li><a href="#anatomy">Chapter 4. Anatomy of a Column: Boiler to Receiver</a></li>
+                <li><a href="#heatmass">Chapter 5. Heat and Mass Transfer: The Heart of Rectification</a></li>
+                <li><a href="#reflux">Chapter 6. Reflux Ratio: The Main Control Lever</a></li>
+                <li><a href="#packing">Chapter 7. Column Packing: Where Separation Happens</a></li>
+                <li><a href="#fractions">Chapter 8. Separating Impurities: Heads, Hearts, Tails</a></li>
+                <li><a href="#myths">Chapter 9. Typical Beginner Misconceptions</a></li>
+                <li><a href="#practice">Chapter 10. Practical Tips for Beginners</a></li>
+                <li><a href="#summary">Chapter 11. Summary Table of Key Parameters</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Question Every Beginner Asks</h2>
+        <p>You have bought or assembled a rectification column. It is a tall steel pipe stuffed with strange springs or rings, with a valve on the side and a thermometer on top. You pour wash into the boiler, turn on the heat, and an hour later a clear liquid at 95% strength flows from the valve. Magic? No. Physics.</p>
+        <p>But what physics, exactly? How does the column, from a 10% wash where alcohol is mixed with water, fusel oils, methanol, and dozens of other compounds, manage to isolate nearly pure ethanol? Why does one column produce 96% while another produces only 85%? What are "reflux", "theoretical plate", "reflux ratio", and what are they all for?</p>
+        <p>This article is a theoretical introduction to the physics of rectification. We will walk through the process from the molecular level up to the practical operation of the column, step by step, without higher mathematics, but with a real understanding of what happens inside the pipe. After reading, you will know not only <em>how</em> the column works, but <em>why</em> it works exactly the way it does.</p>
+
+        <h2 id="why">Chapter 1. From Simple Distillation to Rectification: Why a Column Is Needed</h2>
+
+        <h3>1.1. The Limitation of a Single Distillation</h3>
+        <p>In simple distillation, the wash is heated in the boiler, the vapor rises and goes straight to the condenser. The composition of that vapor is determined by a single act of equilibrium between the liquid in the boiler and the vapor above it.</p>
+        <p>From a 10% ABV wash, a single distillation yields a distillate of roughly 30–40% ABV. That is significant concentration, but far from pure spirit. The reason: the vapor formed above the liquid contains not only ethanol but also water and volatile impurities. One evaporation is not enough to separate them.</p>
+        <p>To raise the strength, you can distill the distillate again. And again. Each distillation adds a few percentage points of strength. But this is slow, inefficient, and comes with losses.</p>
+
+        <h3>1.2. The Idea of Repeated Evaporation</h3>
+        <p>What if you could perform many distillations simultaneously, inside a single apparatus? Evaporate the vapor, condense it, evaporate it again, condense it again — dozens of times, in a single pass?</p>
+        <p>That is exactly what a rectification column does. Inside it, vapor rises, repeatedly contacting the liquid that flows down. At each contact, the vapor becomes a little richer in ethanol, and the liquid a little richer in water. Dozens of such contacts add up to repeated separation.</p>
+        <div class="key-takeaway">
+            <strong>A rectification column is dozens of simple distillations packed into a single pipe.</strong>
+        </div>
+
+        <h3>1.3. The Key Principle: Countercurrent Flow</h3>
+        <p>The heart of rectification is <strong>countercurrent flow</strong>: vapor moves upward, liquid (reflux) flows downward. They meet, exchange heat and matter, and part ways, each slightly changed. The vapor became richer in alcohol. The liquid became richer in water.</p>
+
+        <div class="counter-visual">
+            <div class="cv-stream cv-vapor">
+                <div class="cv-icon">💨</div>
+                <div class="cv-name">Vapor</div>
+                <div class="cv-dir">Rises ▲ · gets richer in ethanol</div>
+            </div>
+            <div class="cv-exchange">
+                ⇄
+                <span class="cv-ex-text">Heat &amp; mass exchange</span>
+            </div>
+            <div class="cv-stream cv-phlegm">
+                <div class="cv-icon">💧</div>
+                <div class="cv-name">Reflux</div>
+                <div class="cv-dir">Flows ▼ · gets richer in water</div>
+            </div>
+        </div>
+
+        <p>Without countercurrent flow there is no rectification. If vapor simply passes through the pipe and leaves into the condenser — that is simple distillation, even if the pipe is tall. If vapor and liquid never meet — no separation happens.</p>
+
+        <h2 id="physics">Chapter 2. The Physics of Evaporation and Condensation: What Happens at the Molecular Level</h2>
+
+        <h3>2.1. Volatility and Boiling Point</h3>
+        <p>Every liquid has its own boiling point — the temperature at which its saturated vapor pressure equals atmospheric pressure. At that temperature the liquid begins to evaporate intensively.</p>
+        <p>For the components of wash:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Substance</th>
+                    <th>Boiling Point</th>
+                    <th>Volatility Relative to Water</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Acetone</td>
+                    <td>56.1 °C</td>
+                    <td>Higher than water</td>
+                </tr>
+                <tr>
+                    <td>Methanol</td>
+                    <td>64.7 °C</td>
+                    <td>Higher than water</td>
+                </tr>
+                <tr>
+                    <td>Ethanol</td>
+                    <td>78.37 °C</td>
+                    <td>Higher than water</td>
+                </tr>
+                <tr>
+                    <td>Water</td>
+                    <td>100.0 °C</td>
+                    <td>Reference</td>
+                </tr>
+                <tr>
+                    <td>Isoamyl alcohol</td>
+                    <td>132.0 °C</td>
+                    <td>Lower than water</td>
+                </tr>
+                <tr>
+                    <td>Furfural</td>
+                    <td>161.7 °C</td>
+                    <td>Lower than water</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p>Ethanol boils at 78.37 °C — lower than water. This means that when a mixture of ethanol and water is heated, ethanol evaporates more intensively. The vapor above the mixture is richer in ethanol than the mixture itself. This is the foundation of separation.</p>
+
+        <h3>2.2. Vapor–Liquid Equilibrium</h3>
+        <p>When vapor is in contact with liquid, thermodynamic equilibrium is established between them: molecules evaporate from the liquid and condense from the vapor at the same rate. The composition of vapor and liquid in equilibrium are linked.</p>
+        <p>For the ethanol–water mixture at atmospheric pressure:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Liquid Composition (ethanol, % mol)</th>
+                    <th>Vapor Composition (ethanol, % mol)</th>
+                    <th>Equilibrium Temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0 (pure water)</td>
+                    <td>0</td>
+                    <td>100.0 °C</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>44</td>
+                    <td>92.0 °C</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>58</td>
+                    <td>88.0 °C</td>
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>66</td>
+                    <td>85.5 °C</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>77</td>
+                    <td>82.0 °C</td>
+                </tr>
+                <tr>
+                    <td>70</td>
+                    <td>85</td>
+                    <td>79.5 °C</td>
+                </tr>
+                <tr class="eq-azeo">
+                    <td>89.4 (azeotrope)</td>
+                    <td>89.4</td>
+                    <td>78.15 °C</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p>Note: the vapor is always richer in ethanol than the liquid it is in equilibrium with. But as the ethanol concentration grows, the difference between vapor and liquid composition shrinks. At the azeotrope (89.4% mol ethanol ≈ 95.6% by mass), the composition of vapor and liquid becomes identical — separation becomes impossible.</p>
+
+        <h3>2.3. What Is Reflux (Phlegm)</h3>
+        <p><strong>Reflux (phlegm)</strong> is the liquid that flows down the column. It forms by partial condensation of vapor in the upper part of the column (in the dephlegmator) and on the surface of the packing.</p>
+        <p>Reflux is not just "water". It is a liquid containing ethanol, water, and impurities, and its composition changes along the height of the column:</p>
+        <ul>
+            <li><strong>At the bottom of the column</strong> (near the boiler): reflux is rich in water and heavy impurities, poor in ethanol.</li>
+            <li><strong>At the top of the column</strong> (near the dephlegmator): reflux is rich in ethanol, poor in water.</li>
+        </ul>
+
+        <h3>2.4. What Happens When Vapor Meets Reflux</h3>
+        <p>When hot vapor meets colder reflux, two processes happen simultaneously:</p>
+        <ul>
+            <li><strong>Heat exchange:</strong> vapor gives heat to the reflux (vapor is hotter, reflux is colder). Part of the vapor condenses, releasing latent heat of vaporization. Part of the reflux evaporates, absorbing heat.</li>
+            <li><strong>Mass exchange:</strong> more volatile components (ethanol, methanol, acetaldehyde) transfer from the reflux into the vapor. Less volatile components (water, fusel oils) transfer from the vapor into the reflux.</li>
+        </ul>
+        <p><strong>The result of the contact:</strong></p>
+        <ul>
+            <li>The vapor that passed the contact becomes richer in ethanol and poorer in water.</li>
+            <li>The reflux that passed the contact becomes richer in water and poorer in ethanol.</li>
+        </ul>
+        <div class="key-takeaway">
+            Each such contact is one stage of separation. The more contacts, the purer the product.
+        </div>
+
+        <h2 id="plates">Chapter 3. The Theoretical Plate: The Unit of Separation</h2>
+
+        <h3>3.1. Definition</h3>
+        <p>A <strong>theoretical plate</strong> (theoretical separation stage) is an idealized element of the column on which vapor and liquid reach full thermodynamic equilibrium. After contact on a theoretical plate, the composition of vapor and liquid exactly matches the equilibrium table.</p>
+        <p>In a real column, full equilibrium is not reached on a single stage. So the concept of <strong>HETP</strong> is introduced — Height Equivalent to a Theoretical Plate. This is the height of packing on which separation equivalent to one theoretical plate is achieved.</p>
+
+        <h3>3.2. HETP and Packing Efficiency</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Packing Type</th>
+                    <th>HETP (cm)</th>
+                    <th>Plates per 1 Meter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Spiral (springs 3–4 mm)</td>
+                    <td>3–4</td>
+                    <td>25–33</td>
+                </tr>
+                <tr>
+                    <td>Raschig rings (6–8 mm)</td>
+                    <td>5–8</td>
+                    <td>12–20</td>
+                </tr>
+                <tr>
+                    <td>Berl saddles</td>
+                    <td>4–6</td>
+                    <td>17–25</td>
+                </tr>
+                <tr>
+                    <td>Panchenkov packing (RPN)</td>
+                    <td>5–8</td>
+                    <td>12–20</td>
+                </tr>
+                <tr>
+                    <td>Plate column</td>
+                    <td>5–10 per plate</td>
+                    <td>10–20</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Example:</strong> a column 150 cm tall, filled with spiral packing with an HETP of 3.5 cm:<br>
+            Number of theoretical plates = 150 / 3.5 ≈ <strong>43 plates</strong>.
+        </div>
+
+        <h3>3.3. How Many Plates Are Needed</h3>
+        <p>To produce a rectificate of 95–96% ABV from a 10% ABV wash, you need 25–50 theoretical plates at a reflux ratio of 3–5.</p>
+        <div class="plate-grid">
+            <div class="plate-card">
+                <div class="pc-count">20</div>
+                <div class="pc-strength">90–93%</div>
+                <div class="pc-note">Basic separation</div>
+            </div>
+            <div class="plate-card">
+                <div class="pc-count">30</div>
+                <div class="pc-strength">93–95%</div>
+                <div class="pc-note">Good quality</div>
+            </div>
+            <div class="plate-card">
+                <div class="pc-count">40–50</div>
+                <div class="pc-strength">95–96%</div>
+                <div class="pc-note">Approaches the azeotrope</div>
+            </div>
+        </div>
+        <div class="warning-note">
+            <strong>More than 50 plates:</strong> further increase yields no significant gain because the mixture approaches the azeotrope.
+        </div>
+
+        <h2 id="anatomy">Chapter 4. Anatomy of a Column: From Boiler to Receiver</h2>
+
+        <div class="column-diagram">
+            <div class="cd-unit">
+                <div class="cd-tag">Cooling water → Condenses vapor</div>
+                <div class="cd-block cd-dephleg">
+                    <div class="cd-name">❄️ Dephlegmator</div>
+                    <div class="cd-info">78–78.2 °C · Creates reflux</div>
+                </div>
+            </div>
+            <div class="cd-arrow cd-arrow-down">▼ Reflux flows down · Vapor passes to take-off ▼</div>
+            <div class="cd-unit">
+                <div class="cd-tag">90–96% ethanol</div>
+                <div class="cd-block cd-top">
+                    <div class="cd-name">Upper third</div>
+                    <div class="cd-info">78–78.5 °C · 85–96% ethanol</div>
+                </div>
+            </div>
+            <div class="cd-unit">
+                <div class="cd-tag">Take-off node → Receiver</div>
+                <div class="cd-block cd-mid">
+                    <div class="cd-name">Middle third</div>
+                    <div class="cd-info">78.5–80 °C · 65–80% ethanol · Main separation</div>
+                </div>
+            </div>
+            <div class="cd-unit">
+                <div class="cd-tag">Vapor from boiler enters</div>
+                <div class="cd-block cd-low">
+                    <div class="cd-name">Lower third</div>
+                    <div class="cd-info">80–85 °C · 50–65% ethanol</div>
+                </div>
+            </div>
+            <div class="cd-arrow cd-arrow-up">▲ Vapor rises · Meets descending reflux ▲</div>
+            <div class="cd-unit">
+                <div class="cd-tag">Heat source · Primary evaporation</div>
+                <div class="cd-block cd-boiler">
+                    <div class="cd-name">🔥 Boiler</div>
+                    <div class="cd-info">78–100 °C · Wash or low wines</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>4.1. The Boiler</h3>
+        <p>The boiler is the vessel where the wash or low wines are heated. Primary evaporation happens in the boiler. The vapor formed above the liquid surface enters the lower part of the column.</p>
+        <p><strong>Temperature in the boiler:</strong> 78–100 °C (depends on the liquid's composition). At the start of distillation, when the wash contains a lot of ethanol, the temperature is closer to 78 °C. As ethanol is depleted, the temperature rises toward 100 °C.</p>
+
+        <h3>4.2. The Rectification Column</h3>
+        <p>A vertical pipe 28–50 mm in diameter (for home use), 100–200 cm tall. Inside is the packing, which creates the contact surface between vapor and liquid.</p>
+        <ul>
+            <li><strong>Lower part:</strong> vapor from the boiler enters. Temperature 78–85 °C. Vapor composition 40–60% ethanol. Reflux flowing from above meets the vapor and begins to enrich with heavy components.</li>
+            <li><strong>Middle part:</strong> vapor rises, repeatedly contacting the reflux. Temperature 78–82 °C. Vapor composition 70–85% ethanol. Here the main separation occurs: ethanol concentrates in the vapor, water leaves into the reflux.</li>
+            <li><strong>Upper part:</strong> vapor reaches the dephlegmator. Temperature 78–78.5 °C. Vapor composition 89–96% ethanol. The vapor is almost pure. Residual impurities (methanol, acetaldehyde) are still present and must be removed.</li>
+        </ul>
+
+        <h3>4.3. The Dephlegmator</h3>
+        <p>The dephlegmator is a condenser located at the top of the column. Its task is:</p>
+        <ul>
+            <li>To condense part of the vapor and direct the condensate back into the column as reflux.</li>
+            <li>To let the uncondensed vapor pass to the take-off node or an additional condenser.</li>
+        </ul>
+        <div class="key-takeaway">
+            The dephlegmator creates the reflux — the liquid that flows down the column to meet the vapor. Without a dephlegmator there is no reflux. Without reflux there is no rectification.
+        </div>
+
+        <h3>4.4. The Take-Off Node</h3>
+        <p>The take-off node is a valve or needle valve through which part of the condensate is diverted to the receiving vessel. By adjusting how open the valve is, the distiller controls the reflux ratio:</p>
+        <ul>
+            <li><strong>Valve closed</strong> → all condensate returns to the column → reflux ratio ∞ (total reflux).</li>
+            <li><strong>Valve slightly open</strong> → most condensate returns, a little is collected → high reflux ratio (3–5).</li>
+            <li><strong>Valve wide open</strong> → most condensate is collected → low reflux ratio (1–2).</li>
+        </ul>
+
+        <h3>4.5. The Final Condenser</h3>
+        <p>The vapor or liquid that passed the take-off node enters the final condenser, where it fully condenses and flows into the receiving vessel.</p>
+
+        <h2 id="heatmass">Chapter 5. Heat and Mass Transfer: The Heart of Rectification</h2>
+
+        <h3>5.1. What Is Heat and Mass Transfer</h3>
+        <p><strong>Heat and mass transfer</strong> is the simultaneous transfer of heat and matter between two phases (vapor and liquid). In a rectification column, heat and mass transfer occur at every stage of contact between vapor and reflux.</p>
+        <ul>
+            <li><strong>Heat exchange:</strong> hot vapor heats the cold reflux. Part of the vapor condenses (releasing heat), part of the reflux evaporates (absorbing heat).</li>
+            <li><strong>Mass exchange:</strong> more volatile molecules (ethanol) transfer from liquid to vapor. Less volatile molecules (water) transfer from vapor to liquid.</li>
+        </ul>
+        <p>These two processes are inseparable: evaporation requires heat, condensation releases heat. Without heat exchange there is no mass exchange, and vice versa.</p>
+
+        <h3>5.2. What Happens on a Single Stage</h3>
+        <p>Imagine one theoretical plate. It receives:</p>
+        <ul>
+            <li><strong>Vapor from below:</strong> temperature 79 °C, composition 70% ethanol.</li>
+            <li><strong>Reflux from above:</strong> temperature 78 °C, composition 80% ethanol.</li>
+        </ul>
+        <p>On contact:</p>
+        <ol>
+            <li>The vapor gives heat to the reflux.</li>
+            <li>Part of the reflux evaporates. Predominantly ethanol molecules (more volatile) transfer into the vapor.</li>
+            <li>Part of the vapor condenses. Predominantly water molecules (less volatile) transfer into the liquid.</li>
+            <li>After contact, equilibrium is established.</li>
+        </ol>
+        <p><strong>The result:</strong></p>
+        <ul>
+            <li>Vapor leaving upward: <strong>75% ethanol</strong> (enriched).</li>
+            <li>Reflux leaving downward: <strong>72% ethanol</strong> (depleted in ethanol, enriched in water).</li>
+        </ul>
+        <p>On the next plate the process repeats. Vapor at 75% ethanol meets reflux containing slightly less ethanol. The vapor is enriched again. And so on — dozens of times.</p>
+
+        <h3>5.3. The Temperature Gradient in the Column</h3>
+        <p>In a working column there is a temperature gradient: <strong>hotter at the bottom, colder at the top</strong>.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Column Level</th>
+                    <th>Temperature</th>
+                    <th>Vapor Composition</th>
+                    <th>Reflux Composition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Input from boiler</td>
+                    <td>85–95 °C</td>
+                    <td>30–50% ethanol</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>Lower third</td>
+                    <td>80–85 °C</td>
+                    <td>50–65% ethanol</td>
+                    <td>20–35% ethanol</td>
+                </tr>
+                <tr>
+                    <td>Middle third</td>
+                    <td>78.5–80 °C</td>
+                    <td>65–80% ethanol</td>
+                    <td>40–60% ethanol</td>
+                </tr>
+                <tr>
+                    <td>Upper third</td>
+                    <td>78–78.5 °C</td>
+                    <td>85–96% ethanol</td>
+                    <td>70–90% ethanol</td>
+                </tr>
+                <tr>
+                    <td>Dephlegmator</td>
+                    <td>78–78.2 °C</td>
+                    <td>90–96% ethanol</td>
+                    <td>90–96% ethanol</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            The temperature gradient is an indicator of the column's operation. If the temperature at the top of the column begins to rise (above 78.5 °C), it means the ethanol in the boiler is running out and the share of water in the vapor is increasing. It is time to stop collection.
+        </div>
+
+        <h3>5.4. Why Countercurrent Is More Efficient Than Cocurrent</h3>
+        <p>You could imagine an alternative: vapor and liquid moving in the same direction (cocurrent flow). But countercurrent flow is significantly more efficient for two reasons:</p>
+        <ul>
+            <li><strong>Maximum driving force.</strong> In countercurrent flow, the hottest and most ethanol-rich vapor (at the top) meets the coldest and most ethanol-poor reflux (at the top). The difference in temperature and concentration is maximal, which ensures the maximum rate of mass transfer.</li>
+            <li><strong>Repeated contact.</strong> In countercurrent flow, each portion of vapor contacts each portion of reflux along the entire column. In cocurrent flow the contact is one-time.</li>
+        </ul>
+        <div class="practical-note">
+            <strong>Analogy:</strong> imagine washing dishes. In cocurrent flow, you dip the plate into a basin of water once. In countercurrent flow, you hold the plate under a stream of clean water flowing against the dirt. The result is obviously better.
+        </div>
+
+        <h2 id="reflux">Chapter 6. Reflux Ratio: The Main Control Lever</h2>
+
+        <h3>6.1. Definition</h3>
+        <p>The <strong>reflux ratio (R)</strong> is the ratio of the amount of liquid returned to the column (reflux) to the amount of liquid collected in the receiving vessel (distillate).</p>
+        <div class="formula-box">
+            <div class="formula-title">➗ Reflux Ratio</div>
+            <div class="formula-body">R = Reflux / Distillate</div>
+        </div>
+        <div class="reflux-grid">
+            <div class="reflux-card">
+                <div class="rr-value">R = 1</div>
+                <div class="rr-name">Fast</div>
+                <div class="rr-desc">For each drop of distillate, one drop of reflux returns. 50% of condensate is collected.</div>
+            </div>
+            <div class="reflux-card">
+                <div class="rr-value">R = 3</div>
+                <div class="rr-name">Moderate</div>
+                <div class="rr-desc">Three drops of reflux return per drop of distillate. 25% collected.</div>
+            </div>
+            <div class="reflux-card">
+                <div class="rr-value">R = 5</div>
+                <div class="rr-name">Slow</div>
+                <div class="rr-desc">Five drops of reflux return per drop of distillate. 17% collected.</div>
+            </div>
+            <div class="reflux-card">
+                <div class="rr-value">R = ∞</div>
+                <div class="rr-name">Total Reflux</div>
+                <div class="rr-desc">All condensate returns. No collection. Used to stabilize the column.</div>
+            </div>
+        </div>
+
+        <h3>6.2. Effect on Quality and Speed</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Reflux Ratio</th>
+                    <th>Product Strength</th>
+                    <th>Collection Speed</th>
+                    <th>Purity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>80–88%</td>
+                    <td>High</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>88–92%</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>92–95%</td>
+                    <td>Moderate</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>95–96%</td>
+                    <td>Low</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>∞ (total reflux)</td>
+                    <td>—</td>
+                    <td>Zero</td>
+                    <td>Maximum (in column)</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="key-takeaway">
+            The higher the reflux ratio, the purer the product but the slower the process. This is the fundamental compromise of rectification.
+        </div>
+
+        <h3>6.3. Practical Recommendations</h3>
+        <ol>
+            <li><strong>Column stabilization:</strong> start with R = ∞ (total reflux). Let the column run 30–60 minutes without collection. During this time a temperature gradient and component distribution are established in the column.</li>
+            <li><strong>Collecting heads:</strong> reduce R to 3–5. Collect the heads fraction (methanol, acetaldehyde, ethyl acetate). Usually 5–8% of the absolute alcohol.</li>
+            <li><strong>Collecting hearts:</strong> maintain R = 3–5. Collect the rectificate while the temperature at the top of the column does not begin to rise above 78.5 °C.</li>
+            <li><strong>Stopping collection:</strong> when the temperature at the top exceeds 79 °C, the ethanol in the boiler is running out. Stop collecting hearts.</li>
+        </ol>
+
+        <h3>6.4. Controlling the Reflux Ratio</h3>
+        <p>The reflux ratio is adjusted by:</p>
+        <ul>
+            <li><strong>The take-off node valve:</strong> how open it is determines how much condensate goes to the receiver and how much returns to the column.</li>
+            <li><strong>The dephlegmator power:</strong> the stronger the cooling, the more vapor condenses and returns to the column.</li>
+            <li><strong>The boiler heating power:</strong> the more intense the heating, the more vapor rises through the column. With a fixed dephlegmator, this lowers the reflux ratio.</li>
+        </ul>
+
+        <h2 id="packing">Chapter 7. Column Packing: Where Separation Happens</h2>
+
+        <h3>7.1. The Role of Packing</h3>
+        <p>Packing is the material filling the column and creating the contact surface between vapor and reflux. Without packing, vapor would simply fly through the pipe without contacting liquid. No separation would happen.</p>
+        <p>Packing must:</p>
+        <ul>
+            <li>Provide a large contact area between vapor and liquid.</li>
+            <li>Allow reflux to flow down evenly.</li>
+            <li>Allow vapor to rise evenly.</li>
+            <li>Not create excessive resistance to vapor flow.</li>
+            <li>Be chemically inert (not react with wash or spirit).</li>
+        </ul>
+
+        <h3>7.2. Types of Packing</h3>
+        <div class="packing-grid">
+            <div class="packing-card">
+                <h4>🌀 Spiral Packing (springs)</h4>
+                <span class="pk-hetp">HETP: 3–4 cm</span>
+                <ul>
+                    <li>Wire 0.3–0.5 mm, coiled into springs 3–5 mm.</li>
+                    <li>High efficiency, low resistance.</li>
+                    <li>Popular in home columns.</li>
+                </ul>
+            </div>
+            <div class="packing-card">
+                <h4>⭕ Raschig Rings</h4>
+                <span class="pk-hetp">HETP: 5–8 cm</span>
+                <ul>
+                    <li>Ceramic, glass, or metal rings 4–10 mm.</li>
+                    <li>Classic packing, simple to make.</li>
+                    <li>Moderate efficiency.</li>
+                </ul>
+            </div>
+            <div class="packing-card">
+                <h4>🪑 Berl Saddles</h4>
+                <span class="pk-hetp">HETP: 4–6 cm</span>
+                <ul>
+                    <li>Ceramic elements shaped like a saddle.</li>
+                    <li>Good contact, moderate resistance.</li>
+                    <li>Rare in home use.</li>
+                </ul>
+            </div>
+            <div class="packing-card">
+                <h4>🧺 Panchenkov (RPN)</h4>
+                <span class="pk-hetp">HETP: 5–8 cm</span>
+                <ul>
+                    <li>Woven stainless wire mesh, rolled up.</li>
+                    <li>Accessible, popular in the CIS.</li>
+                    <li>Moderate efficiency.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="practical-note">
+            <strong>Plate columns</strong> use horizontal plates with overflow devices instead of packing. HETP: 5–10 cm per plate. They are the industrial standard but complex to build for home use.
+        </div>
+
+        <h3>7.3. Copper Packing</h3>
+        <p>Copper elements (spirals, mesh, rings) perform a dual function:</p>
+        <ul>
+            <li><strong>Contact surface</strong> for heat and mass transfer (like any packing).</li>
+            <li><strong>Chemical cleaning:</strong> copper binds sulfur compounds (hydrogen sulfide, mercaptans, dimethyl sulfide), forming insoluble copper sulfide. This eliminates the unpleasant sulfur odors characteristic of grain and potato washes.</li>
+        </ul>
+        <p>Copper packing is especially useful for grain and fruit washes, but is not recommended for sugar washes, where sulfur compounds are minimal.</p>
+
+        <h3>7.4. Packing Height</h3>
+        <p>To produce a 96% rectificate:</p>
+        <ul>
+            <li>Packing with HETP 3.5 cm → column height 120–175 cm (35–50 plates).</li>
+            <li>Packing with HETP 5 cm → column height 150–250 cm (30–50 plates).</li>
+            <li>Packing with HETP 8 cm → column height 240–400 cm (30–50 plates).</li>
+        </ul>
+        <div class="key-takeaway">
+            <strong>Practical conclusion:</strong> the more efficient the packing (the lower the HETP), the shorter the column can be.
+        </div>
+
+        <h2 id="fractions">Chapter 8. Separating Impurities: Heads, Hearts, Tails</h2>
+
+        <h3>8.1. How the Column Separates Impurities</h3>
+        <p>Different substances have different volatility. In the column they distribute by height:</p>
+
+        <div class="fraction-strip">
+            <div class="fraction-seg fs-heads">
+                <div class="fs-name">Heads</div>
+                <div class="fs-content">Methanol (64.7 °C), acetone (56.1 °C), acetaldehyde, ethyl acetate. More volatile than ethanol. Collected first.</div>
+                <div class="fs-pos">Top of column</div>
+            </div>
+            <div class="fraction-seg fs-hearts">
+                <div class="fs-name">Hearts</div>
+                <div class="fs-content">Ethanol (78.37 °C). Concentrates in the upper part after heads removal. Collected as the main product.</div>
+                <div class="fs-pos">Upper / middle</div>
+            </div>
+            <div class="fraction-seg fs-tails">
+                <div class="fs-name">Tails</div>
+                <div class="fs-content">Isoamyl alcohol (132 °C), isobutyl alcohol (108 °C), furfural (162 °C), water. Less volatile than ethanol. Stay in the boiler.</div>
+                <div class="fs-pos">Bottom / boiler</div>
+            </div>
+        </div>
+
+        <h3>8.2. Practical Fraction Collection</h3>
+        <p>For 20 liters of 10% ABV wash (2 liters of absolute alcohol):</p>
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Stabilization</h4>
+                <p>Total reflux (R = ∞), 30–60 minutes. The temperature at the top stabilizes at 78–78.2 °C.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Heads</h4>
+                <p>Reduce R to 3–5. Collect 100–200 ml (5–10% of absolute alcohol). Temperature at top: 78–78.5 °C. Smell: sharp, acetone, solvent.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Hearts</h4>
+                <p>Maintain R = 3–5. Collect the rectificate while the top temperature does not begin to rise. Usually 1.4–1.6 liters (70–80% of absolute alcohol). Temperature: 78–78.5 °C. Strength: 92–96%.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Tails</h4>
+                <p>Top temperature rises above 78.5 °C. Strength drops. Stop collecting hearts. You can collect tails separately to add to the next batch.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h4>Boiler Residue</h4>
+                <p>Water, non-volatile impurities, part of the tails. Dispose of it.</p>
+            </div>
+        </div>
+
+        <h2 id="myths">Chapter 9. Typical Beginner Misconceptions</h2>
+
+        <div class="myth-grid">
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"The taller the column, the better"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>Not necessarily. After 40–50 theoretical plates, further height gives no significant strength gain due to approaching the azeotrope (96% ABV). A 3-meter column with 80 plates yields the same 96% as a 1.5-meter column with 40 plates, but runs slower and needs more energy.</p>
+                </div>
+            </div>
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"Rectification removes all impurities"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>No. Rectification separates impurities by volatility. Methanol and acetaldehyde go to heads. Fusel oils go to tails. But some impurities (e.g., isoamyl alcohol) have boiling points close to ethanol and partly end up in the hearts. Complete removal of all impurities in one rectification is impossible.</p>
+                </div>
+            </div>
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"96% rectificate is absolute alcohol"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>No. 96% ABV is the ethanol-water azeotrope. Raising the strength further at atmospheric pressure is impossible. To get absolute alcohol (99.5%+) you need special methods: molecular sieves, azeotropic distillation with benzene or cyclohexane, or membrane separation.</p>
+                </div>
+            </div>
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"Rectification suits any wash"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>No. Rectification yields a neutral spirit without the aroma of the raw material. For aromatic distillates (whiskey, calvados, grappa, slivovitz), rectification destroys the bouquet. For those drinks you need simple fractional distillation.</p>
+                </div>
+            </div>
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"You can do without a dephlegmator"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>No. The dephlegmator creates the reflux. Without reflux there is no countercurrent flow, no heat and mass transfer, no rectification. A column without a dephlegmator is just a pipe that vapor flies through.</p>
+                </div>
+            </div>
+            <div class="myth-card">
+                <div class="myth-head">
+                    <span class="myth-label">❌ Myth</span>
+                    <div class="myth-text">"Reflux ratio can be judged by smell"</div>
+                </div>
+                <div class="myth-body">
+                    <span class="reality-label">✅ Reality</span>
+                    <p>No. Reflux ratio is a quantitative parameter defined by the ratio of flows. By smell you can assess distillate quality, but not reflux ratio. For precise control, use the take-off node valve and a thermometer at the top of the column.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="practice">Chapter 10. Practical Tips for Beginners</h2>
+
+        <h3>10.1. First Column Start-Up</h3>
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content"><p>Assemble the apparatus. Make sure all connections are airtight.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content"><p>Fill the boiler with <strong>water</strong> (not wash) to 2/3 of its volume.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content"><p>Turn the heating to maximum.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content"><p>Turn on the water supply to the dephlegmator and condenser.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content"><p>Wait until the water boils and vapor goes through the column.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">6</div>
+            <div class="step-content"><p>Watch the temperature at the top of the column. It should stabilize at 100 °C (for water).</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">7</div>
+            <div class="step-content"><p>Verify that reflux flows back into the column (visible through a sight glass or by sound).</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">8</div>
+            <div class="step-content"><p>Verify that condensate flows from the take-off node when the valve is open.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">9</div>
+            <div class="step-content"><p>Turn off the heating. The apparatus works.</p></div>
+        </div>
+
+        <h3>10.2. Working with Wash</h3>
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content"><p><strong>Clarify the wash.</strong> Cloudy wash clogs the packing. Decant or filter before rectification.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content"><p>Fill the boiler with wash to no more than 2/3 of its volume.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content"><p>Turn on heating. Bring to a boil.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content"><p>Turn on water supply to the dephlegmator and condenser.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content"><p>Set total reflux (take-off valve closed).</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">6</div>
+            <div class="step-content"><p>Let the column stabilize 30–60 minutes. The top temperature should stabilize at 78–78.5 °C.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">7</div>
+            <div class="step-content"><p>Open the take-off valve. Set reflux ratio 3–5.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">8</div>
+            <div class="step-content"><p>Collect heads (5–10% of absolute alcohol).</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">9</div>
+            <div class="step-content"><p>Switch to the receiving vessel for hearts. Collect the rectificate.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">10</div>
+            <div class="step-content"><p>Watch the top temperature. When it begins to rise above 78.5 °C, stop collecting hearts.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">11</div>
+            <div class="step-content"><p>Turn off the heating. Let the column cool.</p></div>
+        </div>
+
+        <h3>10.3. Process Control</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Where to Measure</th>
+                    <th>Normal</th>
+                    <th>What Deviation Means</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Boiler temperature</td>
+                    <td>Thermometer in boiler lid</td>
+                    <td>78–100 °C</td>
+                    <td>Rising → ethanol running out</td>
+                </tr>
+                <tr>
+                    <td>Top of column temperature</td>
+                    <td>Thermometer at top point</td>
+                    <td>78–78.5 °C</td>
+                    <td>Above 78.5 → ethanol running out</td>
+                </tr>
+                <tr>
+                    <td>Collection speed</td>
+                    <td>Visually</td>
+                    <td>1–3 drops/sec</td>
+                    <td>Too fast → lower purity</td>
+                </tr>
+                <tr>
+                    <td>Strength in receiver</td>
+                    <td>Alcoholmeter</td>
+                    <td>92–96%</td>
+                    <td>Below 90 → column problems</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>10.4. Cleaning the Column</h3>
+        <p>After each distillation:</p>
+        <ul>
+            <li>Rinse the column with hot water (pass steam through it, or fill it with water and heat).</li>
+            <li>If the packing is clogged (wash residue or foam visible), disassemble the column and wash the packing.</li>
+            <li>Wash copper packing with a citric acid solution (10 g per liter of water) to remove oxides and sulfides.</li>
+            <li>Stainless steel packing only needs a hot water rinse.</li>
+        </ul>
+
+        <h2 id="summary">Chapter 11. Summary Table: Key Rectification Parameters</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ethanol boiling point</td>
+                    <td>78.37 °C</td>
+                    <td>Determines the temperature at the top of the column</td>
+                </tr>
+                <tr>
+                    <td>Ethanol-water azeotrope</td>
+                    <td>95.6% by mass</td>
+                    <td>Maximum strength at atmospheric pressure</td>
+                </tr>
+                <tr>
+                    <td>Column height</td>
+                    <td>100–200 cm</td>
+                    <td>Determines the number of theoretical plates</td>
+                </tr>
+                <tr>
+                    <td>Packing HETP</td>
+                    <td>3–8 cm</td>
+                    <td>Determines packing efficiency</td>
+                </tr>
+                <tr>
+                    <td>Number of plates</td>
+                    <td>25–50</td>
+                    <td>Determines product purity</td>
+                </tr>
+                <tr>
+                    <td>Reflux ratio</td>
+                    <td>3–5</td>
+                    <td>Determines the balance of purity and speed</td>
+                </tr>
+                <tr>
+                    <td>Top of column temperature</td>
+                    <td>78–78.5 °C</td>
+                    <td>Indicator of column operation</td>
+                </tr>
+                <tr>
+                    <td>Collection speed</td>
+                    <td>1–3 drops/sec</td>
+                    <td>Determines the actual reflux ratio</td>
+                </tr>
+                <tr>
+                    <td>Heads volume</td>
+                    <td>5–10% of abs. alcohol</td>
+                    <td>Removes methanol, acetaldehyde</td>
+                </tr>
+                <tr>
+                    <td>Rectificate strength</td>
+                    <td>92–96% ABV</td>
+                    <td>Target product</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2>Conclusion: Physics You Can Touch</h2>
+        <p>A rectification column is not magic and not a black box. It is an engineering device whose operation is fully explained by the laws of thermodynamics and mass transfer. Vapor rises, reflux flows down, and at each contact stage the vapor is enriched with ethanol while the liquid is enriched with water. Dozens of stages add up to repeated separation. The result — 96% ethanol from 10% wash.</p>
+        <p>Understanding this process turns the distiller from a button operator into a process engineer. You know why the temperature at the top of the column must be 78 °C, why a reflux ratio of 3–5 gives the optimal balance, why a 150 cm packing is better than 50 cm, and why rectification is not suitable for calvados.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>⬆️ Countercurrent flow is the foundation of rectification</strong>
+                Vapor up, reflux down. Without countercurrent flow there is no separation. Without a dephlegmator there is no reflux. Without reflux there is no rectification.
+            </div>
+            <div class="principle-item">
+                <strong>📐 Each theoretical plate is one step toward purity</strong>
+                The more plates (taller column, more efficient packing), the purer the product. But after 40–50 plates further growth yields no result because of the azeotrope.
+            </div>
+            <div class="principle-item">
+                <strong>🎚️ Reflux ratio is your main lever</strong>
+                High reflux ratio (3–5) — pure product, slow collection. Low (1–2) — fast collection, lower purity. Total reflux — stabilizing the column without collection.
+            </div>
+        </div>
+
+        <p>Rectification is physics you can touch, measure with a thermometer, and see in the receiving vessel. Understanding this physics makes the process predictable, reproducible, and controllable. And a controllable process is the difference between "something worked out" and "I know what I am doing and why."</p>
+        <p><em>Successful runs and stable 96 percent.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

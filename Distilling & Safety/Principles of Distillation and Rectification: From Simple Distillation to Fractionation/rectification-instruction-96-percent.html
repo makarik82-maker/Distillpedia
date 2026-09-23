@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technological Instruction: Home Rectification of Raw Spirit | Distillpedia</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #334155;
+            --primary-color: #0f172a;
+            --accent-color: #0ea5e9;
+            --accent-dark: #0369a1;
+            --accent-light: #e0f2fe;
+            --steel: #64748b;
+            --grid-line: #e2e8f0;
+            --note-bg: #f0f9ff;
+            --note-border: #bae6fd;
+            --warning-bg: #fef2f2;
+            --warning-text: #991b1b;
+            --warning-border: #fca5a5;
+            --success-bg: #f0fdf4;
+            --success-text: #166534;
+            --mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            --sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 3px solid var(--accent-color);
+            color: #f8fafc;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            font-weight: 800;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            font-family: var(--mono);
+            position: relative;
+            color: var(--accent-color);
+        }
+
+        nav {
+            background-color: #1e293b;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-color); }
+
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: #ffffff;
+            padding: 3.5rem 4rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            border: 1px solid var(--grid-line);
+        }
+
+        h1.article-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--steel);
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 20px;
+            background: var(--note-bg);
+            border-radius: 0 6px 6px 0;
+            font-weight: 500;
+        }
+
+        .toc {
+            background-color: #f8fafc;
+            border: 1px solid var(--grid-line);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid var(--grid-line);
+            padding-bottom: 0.5rem;
+            font-family: var(--mono);
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 4rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 80px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        h2::before {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+
+        /* Azeotrope Alert */
+        .azeotrope-alert {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .azeotrope-alert::before {
+            content: "⚠";
+            position: absolute;
+            right: 15px;
+            top: -10px;
+            font-size: 8rem;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .azeotrope-alert h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .azeotrope-alert p { color: #cbd5e1; position: relative; }
+        .azeotrope-alert strong { color: #ffffff; }
+
+        /* Technical Phases */
+        .tech-phase {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--grid-line);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+        .tech-phase::before {
+            content: attr(data-phase);
+            position: absolute;
+            top: -15px;
+            right: 10px;
+            font-size: 6rem;
+            font-weight: 800;
+            color: #f1f5f9;
+            font-family: var(--mono);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .tech-phase h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--grid-line);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .tech-phase .step-label {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: #0f172a;
+            color: #38bdf8;
+            font-family: var(--mono);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border: 1px solid #1e293b;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+        }
+        .formula-box .label {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .formula-box .eq {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #f8fafc;
+            margin-bottom: 0.5rem;
+        }
+        .formula-box .example {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            border-top: 1px dashed #334155;
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* Safety Warning */
+        .safety-warning {
+            background: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-left: 5px solid #dc2626;
+            padding: 1.2rem 1.5rem;
+            border-radius: 6px;
+            color: var(--warning-text);
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+        .safety-warning strong { color: #7f1d1d; }
+
+        /* Data Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.92rem;
+            border: 1px solid var(--grid-line);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid var(--grid-line);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            font-family: var(--mono);
+        }
+        tr:nth-child(even) { background-color: #f8fafc; }
+
+        /* Troubleshooting Grid */
+        .troubleshoot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 2.5rem 0;
+        }
+        .ts-card {
+            background: #fff;
+            border: 1px solid var(--grid-line);
+            border-top: 4px solid #dc2626;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .ts-card h4 {
+            color: #dc2626;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+        .ts-card .symptom { font-size: 0.88rem; color: var(--steel); margin-bottom: 0.8rem; }
+        .ts-card .solution { font-size: 0.92rem; font-weight: 600; color: var(--primary-color); }
+
+        /* Conclusion Principles */
+        .principles {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.8rem;
+            position: relative;
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--steel);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--grid-line);
+            margin-top: 4rem;
+            font-family: var(--mono);
+        }
+
+        @media (max-width: 768px) {
+            main { padding: 2rem 1.5rem; margin: 1.5rem 1rem; }
+            h1.article-title { font-size: 1.75rem; }
+            h2 { font-size: 1.3rem; }
+            .tech-phase::before { font-size: 4rem; }
+            nav { padding: 0.6rem; }
+            nav a { margin: 0 10px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .troubleshoot-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">// The encyclopedia of artisanal distillation //</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Rectification</a>
+    <a href="#">Equipment</a>
+    <a href="#">Safety</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Technological Instruction: Home Rectification of Raw Spirit</h1>
+        <p class="subtitle">Obtaining High-Purity Ethanol (96%) on a Rectification Column. A strict algorithm for achieving the physical limit of purity.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Azeotropic Limit</a></li>
+                <li><a href="#stage1">Stage 1. Preparation of Raw Spirit</a></li>
+                <li><a href="#stage2">Stage 2. Equipment Prep & Startup</a></li>
+                <li><a href="#stage3">Stage 3. Column Stabilization</a></li>
+                <li><a href="#stage4">Stage 4. Collecting Heads</a></li>
+                <li><a href="#stage5">Stage 5. Collecting Hearts</a></li>
+                <li><a href="#stage6">Stage 6. Ending Hearts & Working with Tails</a></li>
+                <li><a href="#stage7">Stage 7. Completion & Maintenance</a></li>
+                <li><a href="#troubleshoot">Troubleshooting & Safety</a></li>
+                <li><a href="#conclusion">Conclusion: The Physics of Purity</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Azeotropic Limit</h2>
+        <p>Rectification is the process of separating a liquid mixture into components based on multiple evaporation and condensation cycles. Unlike simple distillation, which preserves the aromatics of the raw material (grain, fruit), rectification aims to produce maximally pure, neutral ethanol.</p>
+        
+        <div class="azeotrope-alert">
+            <h3>⚠️ The Physical Limit</h3>
+            <p>At atmospheric pressure, it is physically impossible to obtain spirit stronger than <strong>95.6–96.2% ABV</strong>. This is the <strong>azeotropic point</strong>—a state where the vapor and liquid phases have the exact same composition. Therefore, the ultimate goal of home rectification is to reach exactly this physical limit, yielding drinking spirit of the highest purity class.</p>
+        </div>
+
+        <h2 id="stage1">Stage 1. Preparation of Raw Spirit</h2>
+        <p>Rectifying raw spirit (low wines) at 40% ABV or higher is inefficient and physically problematic. High alcohol concentration increases surface tension, worsens the wetting of the column packing, and increases the risk of impurity carryover.</p>
+        
+        <div class="tech-phase" data-phase="01">
+            <h3>Dilution, Settling, and Filling</h3>
+            <span class="step-label">Step 1: Dilution</span>
+            <p>Dilute the raw spirit obtained from your first stripping run with clean water to <strong>15–20% ABV</strong> (maximum 25%).</p>
+            
+            <span class="step-label">Step 2: Settling</span>
+            <p>Let the diluted spirit rest for 12–24 hours in a cool place. Micro-particles of yeast, proteins, and oils will settle or float. Carefully transfer the clarified liquid to the pot, avoiding the sediment.</p>
+            
+            <span class="step-label">Step 3: Filling the Pot</span>
+            <p>Fill the boiler to no more than <strong>70–80%</strong> of its working volume. The remaining 20–30% is critical to prevent boiling liquid from splashing into the column (bumping).</p>
+        </div>
+
+        <h2 id="stage2">Stage 2. Equipment Prep & Startup</h2>
+        <p>The success of rectification depends entirely on the stability of two parameters: heating power and cooling water flow rate.</p>
+
+        <div class="tech-phase" data-phase="02">
+            <h3>System Check and Heating</h3>
+            <span class="step-label">Leak Check & Water</span>
+            <p>Ensure all column connections and the take-off node are airtight. Connect water to the dephlegmator and condenser. Initially, set the dephlegmator water flow to minimum.</p>
+            
+            <div class="safety-warning">
+                <strong>⚠️ CRITICAL SAFETY WARNING:</strong> The rectification column must have an atmospheric vent or operate with an open take-off node during heating. Completely sealing the column while heating will lead to a catastrophic boiler explosion.
+            </div>
+
+            <span class="step-label">Heating</span>
+            <p>Turn on the heat at <strong>80–100% power</strong>. Wait for the boiler to boil (indicated by rising pot temperature and vapor reaching the upper column).</p>
+            
+            <span class="step-label">Reaching Working Mode</span>
+            <p>When vapor reaches the dephlegmator, reduce heating power to <strong>50–70%</strong> of maximum. Increase the dephlegmator water flow so that all vapor is completely condensed and returned to the column (total reflux).</p>
+        </div>
+
+        <h2 id="stage3">Stage 3. Column Stabilization</h2>
+        <p>This is the most crucial stage, often ignored by beginners. It is known as working "on itself" or total reflux.</p>
+
+        <div class="tech-phase" data-phase="03">
+            <h3>Establishing the Gradient</h3>
+            <span class="step-label">Total Reflux</span>
+            <p>The take-off valve must be <strong>completely closed</strong>. All condensed spirit flows back down the packing, countercurrent to the rising vapor.</p>
+            
+            <span class="step-label">Time Required</span>
+            <p>Maintain this mode for <strong>30 to 60 minutes</strong> (for columns 1–1.5m tall). During this time, a strict temperature gradient is established: hot at the bottom, exactly 78.2–78.3 °C at the top. Highly volatile impurities (heads) concentrate at the very top, while heavy fractions (tails) remain in the boiler. The packing becomes evenly wetted with reflux.</p>
+        </div>
+
+        <h2 id="stage4">Stage 4. Collecting Heads</h2>
+        <p>Heads contain methanol, acetaldehyde, acetone, and ethyl acetate. They are toxic and smell of solvent.</p>
+
+        <div class="tech-phase" data-phase="04">
+            <h3>Calculating and Extracting Heads</h3>
+            <span class="step-label">Volume Calculation</span>
+            <p>Heads are calculated based on the Absolute Alcohol (AA) in the boiler.</p>
+            
+            <div class="formula-box">
+                <span class="label">Absolute Alcohol Formula</span>
+                <div class="eq">AA = Volume (L) × ABV (%) / 100</div>
+                <div class="example">
+                    Example: 20L of raw spirit at 20% ABV = 4L of AA.<br>
+                    Sugar wash: Take 3–4% of AA (120–160 ml).<br>
+                    Grain/Fruit wash: Take 5–8% of AA (200–320 ml).
+                </div>
+            </div>
+
+            <span class="step-label">Speed and Control</span>
+            <p>Open the take-off valve to the minimum setting. The speed must be exactly <strong>1–2 drops per second</strong>. If opened faster, the column will "smear" the head fraction zone, mixing it with the hearts.</p>
+            
+            <span class="step-label">Organoleptic Check</span>
+            <p>Collect the calculated volume. Rub a drop between your fingers and sniff. If the sharp acetone smell persists, continue collecting. If the smell becomes neutral and purely alcoholic, switch to hearts.</p>
+        </div>
+
+        <h2 id="stage5">Stage 5. Collecting Hearts</h2>
+        <p>This is the main stage. Your task is to extract pure ethanol without disturbing the column's thermal equilibrium.</p>
+
+        <div class="tech-phase" data-phase="05">
+            <h3>The Pure Ethanol Phase</h3>
+            <span class="step-label">Take-off Speed</span>
+            <p>Open the valve to the working speed. For a standard home column (1.5–2 inch diameter), the optimal speed is <strong>300–500 ml per hour</strong>.</p>
+            <p><em>Golden Rule: It is always better to collect slower and cleaner. If you increase the speed, the column will flood, and purity will drop.</em></p>
+            
+            <span class="step-label">Temperature Monitoring</span>
+            <p>The temperature at the top of the column (under the dephlegmator) must remain perfectly stable at <strong>78.2 – 78.3 °C</strong> (at normal atmospheric pressure). The pot temperature will gradually rise from 85 °C to 92 °C as alcohol is depleted.</p>
+            
+            <span class="step-label">ABV Verification</span>
+            <p>Use an alcoholmeter. Readings must be <strong>95.5–96.2% ABV</strong> (at 20 °C). If it drops below 94% during a stable run, reduce the take-off speed.</p>
+        </div>
+
+        <h2 id="stage6">Stage 6. Ending Hearts & Working with Tails</h2>
+        <p>As alcohol depletes in the boiler, the concentration of water and heavy fusel oils (tails) rises.</p>
+
+        <div class="tech-phase" data-phase="06">
+            <h3>Identifying the Cut Point</h3>
+            <span class="step-label">Signs of Ending Hearts</span>
+            <ul>
+                <li>Pot temperature reaches <strong>92–93 °C</strong>.</li>
+                <li>Top column temperature becomes unstable and creeps above <strong>78.5 °C</strong>.</li>
+                <li>ABV in the stream drops below <strong>93–94%</strong>.</li>
+                <li>A smell of wet cardboard, fusel oil, or cooked grain emerges.</li>
+            </ul>
+            
+            <span class="step-label">Handling Tails</span>
+            <p><strong>Option A (Fast):</strong> Stop collecting hearts, turn off the heat, and discard the pot ale. Saves time at the cost of 3–5% alcohol loss.</p>
+            <p><strong>Option B (Economical):</strong> Switch collection vessels and gather "tail spirit" up to 98–99 °C in the pot. This 40–60% ABV liquid is undrinkable but should be saved and added to the next batch of raw spirit to extract the residual ethanol.</p>
+        </div>
+
+        <h2 id="stage7">Stage 7. Completion & Maintenance</h2>
+        <div class="tech-phase" data-phase="07">
+            <h3>Shutdown Protocol</h3>
+            <ol>
+                <li>Turn off the boiler heat.</li>
+                <li><strong>Do not turn off the water</strong> to the dephlegmator and condenser for another 10–15 minutes. Allow residual vapor to condense and the column to cool safely.</li>
+                <li>Shut off the water supply.</li>
+                <li>Drain the boiler and take-off node.</li>
+                <li>Clean the boiler. If the packing has accumulated odors or scale, disassemble the column and wash the packing with a hot citric acid or baking soda solution.</li>
+            </ol>
+        </div>
+
+        <h2 id="troubleshoot">Troubleshooting & Safety</h2>
+        
+        <div class="troubleshoot-grid">
+            <div class="ts-card">
+                <h4>🌊 Column Flooding</h4>
+                <p class="symptom"><strong>Symptoms:</strong> Humming, bubbling inside the column, liquid rising to the dephlegmator, pressure spikes, cloudy spirit from the take-off valve.</p>
+                <p class="solution"><strong>Solution:</strong> Immediately reduce heating power by 20–30%. Wait 5–10 minutes for the column to settle, then resume at a lower power setting.</p>
+            </div>
+            <div class="ts-card">
+                <h4>💨 Vacuum Loss / Leaks</h4>
+                <p class="symptom"><strong>Symptoms:</strong> Hissing sound, smell of alcohol in the room.</p>
+                <p class="solution"><strong>Solution:</strong> Immediately reduce heat and check clamps/O-rings. Ethanol vapors are heavier than air, accumulate near the floor, and are highly explosive.</p>
+            </div>
+        </div>
+
+        <div class="safety-warning">
+            <strong>🌬️ Ventilation Requirement:</strong> Rectification takes 4–8 hours. The room must have excellent natural or forced ventilation. Ethanol vapors are heavier than air and will pool in lower zones, creating a severe explosion hazard.
+        </div>
+
+        <h2 id="conclusion">Conclusion: The Physics of Purity</h2>
+        <p>Obtaining 96% ethanol at home is not magic; it is strict physics. If your column is assembled correctly (minimum 1.5-inch diameter, 80–100cm of quality packing, efficient dephlegmator), reaching pure spirit is guaranteed.</p>
+        <p><em>Remember: Rectification destroys the aromatics of the raw material. The resulting 96% spirit is the perfect blank canvas for tinctures, liqueurs, gin, and vodka. For whiskey, cognac, or calvados, you must use simple pot distillation to preserve the soul of the raw ingredients.</em></p>
+
+        <div class="principles">
+            <h3>Three Rules of Rectification</h3>
+            <div class="principle-item">
+                <strong>1. Stabilization is Non-Negotiable</strong>
+                Never begin taking hearts without a 30–60 minute total reflux period. The column needs time to push the heads to the very top and establish the thermal gradient.
+            </div>
+            <div class="principle-item">
+                <strong>2. Respect the Azeotrope</strong>
+                Do not chase 99%. It is physically impossible at atmospheric pressure. Stop collecting when the top temperature creeps past 78.5 °C, even if alcohol is still coming out.
+            </div>
+            <div class="principle-item">
+                <strong>3. Dilute Before You Rectify</strong>
+                Never pour 40% raw spirit into a rectification column. Dilute to 15–20% ABV to ensure proper wetting of the packing and safe, efficient separation of impurities.
+            </div>
+        </div>
+
+        <p style="margin-top: 2.5rem; text-align: center; font-family: var(--mono); color: var(--steel); font-size: 0.9rem;">// End of Instruction //</p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only. Please respect your local laws regarding home distillation.</p>
+</footer>
+
+</body>
+</html>

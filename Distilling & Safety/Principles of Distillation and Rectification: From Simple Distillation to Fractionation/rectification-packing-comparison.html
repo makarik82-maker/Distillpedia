@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Column Packings Compared: Efficiency and Final Spirit Strength | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #212a30;
+            --accent-color: #455a64;
+            --gold: #f9a825;
+            --gold-dark: #c17900;
+            --bg-color: #f5f6f7;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #fff8e1;
+            --note-border: #ffd54f;
+            --note-text: #7a5c00;
+            --takeaway-bg: #e8f5e9;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --steel: #546e7a;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #212a30 0%, #455a64 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.03) 30px 32px);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #212a30;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--gold);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--gold);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--gold);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.7rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 2rem;
+            font-size: 1.3rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #43a047;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #5d4400; }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e53935;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #641e16; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #f7f8f9; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+        .table-note {
+            font-size: 0.88rem;
+            color: #666;
+            font-style: italic;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stars { color: var(--gold); letter-spacing: 2px; font-size: 1rem; white-space: nowrap; }
+        .stars .dim { color: #cfd8dc; }
+        /* Condition cards */
+        .cond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .cond-card {
+            background: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--gold);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .cond-card .cc-icon { font-size: 1.8rem; }
+        .cond-card h4 { margin-top: 0.5rem; margin-bottom: 0.4rem; font-size: 1rem; }
+        .cond-card p { font-size: 0.88rem; margin: 0; text-align: center; }
+        /* Bad-packing problem strip */
+        .problem-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 1.5rem 0;
+        }
+        .problem-item {
+            background: var(--warning-bg);
+            border: 1px solid #f5b7b1;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .problem-item h5 {
+            margin: 0 0 0.4rem;
+            color: #922b21;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+        .problem-item p { margin: 0; font-size: 0.85rem; }
+        /* Characteristic cards */
+        .char-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .char-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.1rem 1.3rem;
+        }
+        .char-card h4 { margin-top: 0; color: var(--accent-color); font-size: 1rem; }
+        .char-card p { font-size: 0.9rem; margin-bottom: 0.4rem; }
+        .char-card .opt {
+            display: inline-block;
+            background: var(--note-bg);
+            color: var(--note-text);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        /* Packing cards */
+        .packing-card {
+            border-radius: 12px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #cfd8dc;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+        .packing-card.top-pick {
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 16px rgba(249,168,37,0.25);
+        }
+        .pk-header {
+            padding: 1.1rem 1.6rem;
+            color: white;
+            background: linear-gradient(135deg, var(--steel), #37474f);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .pk-header .pk-title { display: flex; align-items: center; gap: 12px; }
+        .pk-header .pk-icon { font-size: 1.8rem; }
+        .pk-header h3 { margin: 0; color: white; font-size: 1.25rem; }
+        .pk-header .pk-sub { display: block; font-size: 0.85rem; font-weight: 400; opacity: 0.9; font-style: italic; }
+        .pk-header .pk-stars { font-size: 1.1rem; }
+        .pk-header .pk-stars .dim { color: rgba(255,255,255,0.3); }
+        .top-pick-badge {
+            background: var(--gold);
+            color: #4e342e;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pk-body { padding: 1.4rem 1.6rem; }
+        .pk-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 1.2rem;
+        }
+        .pk-spec {
+            background: #f7f8f9;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        .pk-spec .ps-label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #78909c;
+            margin-bottom: 3px;
+        }
+        .pk-spec .ps-value { font-size: 0.95rem; font-weight: 700; color: var(--primary-color); }
+        .pk-desc { font-size: 0.93rem; margin-bottom: 1rem; }
+        .pk-proscons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 1rem 0;
+        }
+        .pk-pros, .pk-cons { border-radius: 8px; padding: 0.9rem 1.1rem; border: 1px solid; }
+        .pk-pros { background: #e8f5e9; border-color: #a5d6a7; }
+        .pk-pros h5 { color: #1b5e20; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .pk-cons { background: #fdedec; border-color: #f5b7b1; }
+        .pk-cons h5 { color: #922b21; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .pk-pros ul, .pk-cons ul { margin: 0; padding-left: 18px; font-size: 0.87rem; }
+        .pk-pros li, .pk-cons li { margin-bottom: 0.4rem; }
+        .pk-strength {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 0.92rem;
+            margin: 1rem 0 0.8rem;
+        }
+        .pk-strength strong { color: #0d47a1; }
+        .pk-verdict {
+            background: #fafafa;
+            border: 1px dashed #90a4ae;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-size: 0.92rem;
+            margin-top: 0.8rem;
+        }
+        .pk-verdict strong { color: var(--accent-color); }
+        /* Highlight rows */
+        .row-best { background: #e8f5e9 !important; font-weight: 700; }
+        .row-worst { background: #fdedec !important; color: #922b21; }
+        /* Size ratio cards */
+        .ratio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin: 1.5rem 0;
+        }
+        .ratio-card {
+            background: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-radius: 10px;
+            padding: 1.1rem;
+            text-align: center;
+        }
+        .ratio-card .rc-col { font-size: 1.4rem; font-weight: 800; color: var(--accent-color); }
+        .ratio-card .rc-col-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #78909c;
+            margin-bottom: 8px;
+        }
+        .ratio-card .rc-max, .ratio-card .rc-rec { font-size: 0.85rem; margin-top: 4px; }
+        .ratio-card .rc-max strong { color: #c0392b; }
+        .ratio-card .rc-rec strong { color: #1b5e20; }
+        /* Recommendation cards */
+        .rec-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-left: 5px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.3rem 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .rec-card h4 { margin-top: 0; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .rec-card .rec-goal { font-size: 0.88rem; color: #607d8b; font-style: italic; margin-bottom: 0.6rem; }
+        .rec-card .rec-body { font-size: 0.92rem; }
+        .rec-card .rec-body strong { color: var(--accent-color); }
+        /* Steps */
+        .process-step {
+            display: flex;
+            gap: 16px;
+            margin: 1rem 0;
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 1rem 1.3rem;
+            border: 1px solid #cfd8dc;
+        }
+        .process-step .step-num {
+            background: var(--gold);
+            color: #4e342e;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .process-step .step-content { flex: 1; }
+        .process-step h4 { margin-top: 0; margin-bottom: 0.4rem; color: var(--primary-color); }
+        .process-step ul, .process-step p { margin-bottom: 0; font-size: 0.93rem; }
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fcfdfe;
+        }
+        .faq-question {
+            background: #fafafa;
+            padding: 1rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #cfd8dc;
+        }
+        .faq-question .q-mark { color: var(--gold); font-size: 1.4rem; font-weight: 800; }
+        .faq-answer { padding: 1rem 1.3rem; font-size: 0.95rem; }
+        .faq-answer p { margin-bottom: 0.5rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+        /* Principles */
+        .principles {
+            background: linear-gradient(135deg, #212a30 0%, #455a64 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.03) 30px 32px);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong { color: #ffd54f; display: block; margin-bottom: 6px; font-size: 1.1rem; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.8rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .cond-grid, .problem-strip, .char-grid, .pk-proscons { grid-template-columns: 1fr; }
+            .ratio-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Equipment</a>
+    <a href="#">Packings</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Column Packings Compared: Efficiency and Final Spirit Strength</h1>
+        <p class="subtitle">An analysis and comparison of packing types for rectification columns — SPN, Raschig rings, Berl saddles, RPN, copper scrubbers, pebbles, and more. How packing properties determine contact area, separation quality, and the final purity of the product.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The Packing Is the Heart of the Column</a></li>
+                <li><a href="#physics">Chapter 1. What the Packing Does</a></li>
+                <li><a href="#characteristics">Chapter 2. Key Characteristics to Measure</a></li>
+                <li><a href="#types">Chapter 3. Packing Types: A Detailed Review</a></li>
+                <li><a href="#master-table">Chapter 4. Master Comparison Table</a></li>
+                <li><a href="#size">Chapter 5. How Packing Size Affects Efficiency</a></li>
+                <li><a href="#material">Chapter 6. How the Material Matters</a></li>
+                <li><a href="#filling">Chapter 7. How to Fill the Column Correctly</a></li>
+                <li><a href="#recommendations">Chapter 8. Practical Selection Recommendations</a></li>
+                <li><a href="#mistakes">Chapter 9. Typical Mistakes</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#purity">Chapter 11. Packing and Product Purity: Beyond Strength</a></li>
+                <li><a href="#care">Chapter 12. Packing Care and Maintenance</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The Packing Is the Heart of the Column</h2>
+        <p>A rectification column without packing is just a pipe. Vapor flies through it, meeting no resistance, never contacting liquid, never separating into components. At the outlet you will get the same low wines at 30–40% ABV as with simple distillation. All the magic of repeated evaporation and condensation that turns a 10% wash into a 96% rectificate happens on the surface of the packing.</p>
+        <p>The packing is the material that fills the column and creates the surface where rising vapor meets descending reflux. The larger this surface, the better it is wetted by liquid, and the more evenly the flow is distributed, the more efficient the separation. The same boiler, the same dephlegmator, the same wash — but with different packings you will get 85% or 96% strength. The difference is a few centimeters of wire, ceramic, or stone inside the pipe.</p>
+        <p>In home-distilling communities, arguments about packings never subside. SPN versus Raschig rings. Copper versus stainless steel. Springs versus scrubbers. Pebbles versus expanded clay. Everyone defends their choice, but rarely can anyone explain why one packing works better than another and exactly which properties determine efficiency.</p>
+        <p>This article is a systematic breakdown of all the main packing types available to the European home distiller. We will examine the physics of the process, the measurable characteristics, the practical results, and give specific selection recommendations.</p>
+
+        <h2 id="physics">Chapter 1. What the Packing Does: The Physics of Vapor–Liquid Contact</h2>
+
+        <h3>1.1. Three Conditions for Separation</h3>
+        <p>For rectification to work, the packing must provide three conditions:</p>
+        <div class="cond-grid">
+            <div class="cond-card">
+                <div class="cc-icon">📐</div>
+                <h4>1. Large Contact Area</h4>
+                <p>Vapor and reflux must meet on as large a surface as possible. The larger the area, the more molecules participate in mass transfer simultaneously.</p>
+            </div>
+            <div class="cond-card">
+                <div class="cc-icon">⚖️</div>
+                <h4>2. Even Flow Distribution</h4>
+                <p>Vapor must rise across the whole column cross-section, and reflux must flow down evenly, without forming streams and dry zones.</p>
+            </div>
+            <div class="cond-card">
+                <div class="cc-icon">⏱️</div>
+                <h4>3. Sufficient Contact Time</h4>
+                <p>Vapor and liquid must stay in contact long enough for equilibrium to be established. Too fast a vapor passage reduces the efficiency of each stage.</p>
+            </div>
+        </div>
+
+        <h3>1.2. How the Packing Creates Contact</h3>
+        <p>When reflux flows down the packing, it forms a thin film of liquid on the surface of each element. Vapor, rising from below, passes through the gaps between elements and contacts this film. Heat and mass transfer occur: ethanol moves from the liquid into the vapor, water moves from the vapor into the liquid.</p>
+        <p>The thinner the film and the larger the surface area over which it is distributed, the more efficient the contact. Therefore, the best packings are those that create the maximum surface area with the minimum resistance to vapor flow.</p>
+
+        <h3>1.3. What Happens If the Packing Is Poor</h3>
+        <div class="problem-strip">
+            <div class="problem-item">
+                <h5>🌊 Channeling</h5>
+                <p>Reflux flows down in a few streams; the rest of the surface is dry. Vapor–liquid contact happens only in these streams. Efficiency drops 2–3 times.</p>
+            </div>
+            <div class="problem-item">
+                <h5>🌊 Flooding</h5>
+                <p>With too dense a fill or small free cross-section, vapor cannot pass through. Liquid accumulates, the column "chokes," boiler pressure rises.</p>
+            </div>
+            <div class="problem-item">
+                <h5>📉 Low Surface Area</h5>
+                <p>Large elements (20 mm pebbles, brick pieces) give a small contact area. Separation is inefficient; outlet strength is 80–88% instead of 95–96%.</p>
+            </div>
+        </div>
+
+        <h2 id="characteristics">Chapter 2. Key Characteristics: What to Measure and Compare</h2>
+
+        <div class="char-grid">
+            <div class="char-card">
+                <h4>📏 HETP — Height Equivalent to a Theoretical Plate</h4>
+                <p>The main indicator of packing efficiency. It is the height of the packing layer at which separation equivalent to one theoretical plate is achieved.</p>
+                <p>The lower the HETP, the more efficient the packing. A packing with 3 cm HETP gives twice as many theoretical plates per meter of column as one with 6 cm HETP.</p>
+                <span class="opt">Optimum: 3–5 cm</span>
+            </div>
+            <div class="char-card">
+                <h4>🧮 Specific Surface Area</h4>
+                <p>The packing surface area per unit volume of the column (m²/m³). The larger it is, the larger the vapor–liquid contact area.</p>
+                <span class="opt">Optimum: 500–1200 m²/m³</span>
+            </div>
+            <div class="char-card">
+                <h4>🕳️ Void Fraction (Free Cross-Section)</h4>
+                <p>The percentage of column volume not occupied by packing material. It determines vapor flow resistance and flooding risk.</p>
+                <p>High void fraction (&gt;85%) — low resistance but less surface area. Low (&lt;60%) — high area but flooding risk and uneven distribution.</p>
+                <span class="opt">Optimum: 75–92%</span>
+            </div>
+            <div class="char-card">
+                <h4>💧 Wettability</h4>
+                <p>The ability of the packing surface to hold a liquid film. Hydrophilic surfaces (ceramic, glass, oxidized metal) are wetted better than hydrophobic ones (polished metal, plastic).</p>
+                <span class="opt">Optimum: High</span>
+            </div>
+            <div class="char-card">
+                <h4>🔩 Material</h4>
+                <p>Determines chemical inertness, durability, and additional properties (for example, copper binds sulfur compounds).</p>
+                <span class="opt">Stainless, copper, ceramic</span>
+            </div>
+            <div class="char-card">
+                <h4>➗ Number of Theoretical Plates</h4>
+                <p>The total separation stages in the column, calculated from packing height and HETP.</p>
+                <p><code>Plates = Packing height ÷ HETP</code></p>
+                <p><em>Example: a 150 cm column with 4 cm HETP packing → 150 ÷ 4 = 37.5 theoretical plates.</em></p>
+            </div>
+        </div>
+
+        <h2 id="types">Chapter 3. Packing Types: A Detailed Review</h2>
+
+        <!-- SPN -->
+        <div class="packing-card top-pick">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🌀</span>
+                    <h3>3.1. SPN — Spiral Prismatic Packing <span class="pk-sub">"Springs" / Selivanenko springs</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★★★</span>
+            </div>
+            <div class="pk-body">
+                <p style="margin-top:0;"><span class="top-pick-badge">🏆 Top Pick</span></p>
+                <p class="pk-desc"><strong>What it is:</strong> spirals of stainless wire 0.3–0.5 mm in diameter, coiled into springs 3–5 mm in diameter and 5–10 mm long.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">3–4 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">800–1100 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">85–92%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">AISI 304 / 316</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">Medium</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€10–25 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>One of the best HETP values among available packings.</li>
+                            <li>High void fraction — low vapor flow resistance.</li>
+                            <li>Even reflux distribution.</li>
+                            <li>Easy to fill and pour out of the column.</li>
+                            <li>Durable: stainless steel does not corrode.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Requires some skill to make (winding springs on a mandrel).</li>
+                            <li>Does not bind sulfur compounds (unlike copper).</li>
+                            <li>Corrosion possible with poor-quality wire (not AISI 304/316).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 94–96% ABV with a 120–150 cm column and reflux ratio 3–5.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> one of the best packings for home rectification. Optimal combination of efficiency, availability, and simplicity.</div>
+            </div>
+        </div>
+
+        <!-- Raschig Rings -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">⭕</span>
+                    <h3>3.2. Raschig Rings <span class="pk-sub">The classic, since 1914</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★★<span class="dim">★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> hollow cylinders (rings) of ceramic, glass, or metal. Diameter 4–10 mm, height equal to diameter, wall thickness 0.5–1.5 mm. Invented by Friedrich Raschig in 1914 — the oldest type of industrial packing.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">5–8 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">400–700 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">65–80%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Ceramic / glass / steel</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">High (ceramic)</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€8–20 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>A classic proven by a century of industrial use.</li>
+                            <li>Ceramic rings are wetted excellently; the liquid film is even.</li>
+                            <li>Available in chemical-equipment stores.</li>
+                            <li>Ceramic is chemically inert.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>HETP is higher than SPN — fewer theoretical plates per meter of column.</li>
+                            <li>Ceramic rings are fragile: some break when filling and pouring out.</li>
+                            <li>Metal rings have worse wettability than ceramic.</li>
+                            <li>In small-diameter columns (&lt;30 mm), 6–8 mm rings distribute unevenly.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 92–95% ABV with a 150 cm column and reflux ratio 3–5.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> a reliable, proven packing. Inferior to SPN in efficiency but easier to buy (no need to make it). A good choice for those who want ready-made packing.</div>
+            </div>
+        </div>
+
+        <!-- Berl Saddles -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🪑</span>
+                    <h3>3.3. Berl Saddles &amp; Intalox Saddles <span class="pk-sub">Ceramic saddle elements</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★★<span class="dim">★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> ceramic elements shaped like a saddle (a curved plate). Berl saddles are symmetrical; Intalox saddles are asymmetrical, which improves liquid distribution.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">4–6 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">500–800 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">70–85%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Ceramic</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">High</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€15–35 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>Better HETP than Raschig rings.</li>
+                            <li>Excellent ceramic wettability.</li>
+                            <li>The asymmetric Intalox shape reduces channeling.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Fragility of ceramic.</li>
+                            <li>High cost.</li>
+                            <li>Harder to find at retail in Europe.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 93–96% ABV with a 120–150 cm column.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> an excellent packing, but expensive and fragile. For home rectification — a good choice if available.</div>
+            </div>
+        </div>
+
+        <!-- RPN -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🧺</span>
+                    <h3>3.4. Panchenkov Packing (RPN) <span class="pk-sub">Regular wire packing / wire mesh</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★<span class="dim">★★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> a woven mesh of thin stainless or copper wire, rolled into a roll and inserted into the column. Widely used in the CIS countries.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">5–8 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">600–900 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">90–95%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Stainless / copper</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">Medium</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€5–15 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>Low cost and availability.</li>
+                            <li>Very high void fraction — minimal flow resistance.</li>
+                            <li>Easy to insert and remove from the column.</li>
+                            <li>Copper RPN binds sulfur compounds.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>HETP is higher than SPN — less efficient per unit height.</li>
+                            <li>Can crumple with dense filling, creating uneven distribution.</li>
+                            <li>The woven structure clogs with deposits over time.</li>
+                            <li>Less durable than springs or rings.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 90–94% ABV with a 150 cm column.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> a budget workhorse packing. Inferior to SPN in efficiency but cheaper and more available. A good choice for a first column or for slow rectification with a high reflux ratio.</div>
+            </div>
+        </div>
+
+        <!-- Copper -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🧽</span>
+                    <h3>3.5. Copper Mesh &amp; Copper Scrubbers <span class="pk-sub">Sulfur-binding supplement</span></h3>
+                </div>
+                <span class="pk-stars stars">★★<span class="dim">★★★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> a woven copper mesh or copper dish scrubbers. Used as a budget packing or as an addition to the main packing for binding sulfur compounds.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">6–10 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">400–600 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">85–93%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Copper</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">Medium</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€3–10 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li><strong>Binds sulfur compounds.</strong> Copper reacts with hydrogen sulfide, mercaptans, and dimethyl sulfide, forming insoluble copper sulfide (a black coating). This removes the unpleasant odors typical of grain and potato washes.</li>
+                            <li>Cheap and available (scrubbers are sold in any hardware store).</li>
+                            <li>Easy to replace.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Low efficiency as a standalone packing (HETP 6–10 cm).</li>
+                            <li>Copper oxidizes: the surface becomes coated with oxide and sulfide and needs regular cleaning.</li>
+                            <li>Hardware-store scrubbers may contain impurities (zinc, tin, coatings). Use only pure copper.</li>
+                            <li>Service life of 5–15 runs, after which the scrubbers need replacing.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 85–92% ABV as a standalone packing with a 150 cm column.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> not recommended as the main packing for rectification. Recommended as an addition: 10–20 cm of copper mesh or 1–2 scrubbers at the top of the column above the main stainless packing. This gives sulfur cleanup without losing efficiency.</div>
+            </div>
+        </div>
+
+        <!-- Pebbles / LECA -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🪨</span>
+                    <h3>3.6. Pebbles &amp; Expanded Clay (LECA) <span class="pk-sub">The budget beginner option</span></h3>
+                </div>
+                <span class="pk-stars stars">★★<span class="dim">★★★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> small stones (pebbles) or expanded clay granules (LECA) 5–20 mm in diameter. A budget option often used by beginners.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">8–15 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">200–400 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">40–55%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Stone / clay</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">Medium / high</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€1–5 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>Minimal cost.</li>
+                            <li>Availability: pebbles can be collected on a shore; LECA bought at a hardware store.</li>
+                            <li>Chemical inertness (LECA).</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Low efficiency. HETP 8–15 cm means you need a column 2.4–4.5 meters tall for 30 theoretical plates — unrealistic at home.</li>
+                            <li>Low void fraction. 40–55% free cross-section creates high vapor resistance and flooding risk.</li>
+                            <li>Non-uniformity. Pebbles have random shape and size, leading to uneven reflux distribution and channeling.</li>
+                            <li>Contamination. Street pebbles may contain organics, heavy-metal salts, microorganisms. LECA may contain firing residues.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 80–88% ABV with a 150 cm column. Further height increases are pointless due to high resistance.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> not recommended for rectification. Suitable only for experiments or as a temporary solution when nothing else is available. If you use pebbles — wash, boil, and bake them in the oven at 250 °C. LECA is preferable to pebbles but still inferior to specialized packings.</div>
+            </div>
+        </div>
+
+        <!-- Glass Beads -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🔮</span>
+                    <h3>3.7. Glass Beads <span class="pk-sub">Laboratory columns</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★<span class="dim">★★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> glass beads 3–8 mm in diameter. Used in laboratory columns.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">6–10 cm</span></div>
+                    <div class="pk-spec"><span class="ps-label">Specific Area</span><span class="ps-value">400–600 m²/m³</span></div>
+                    <div class="pk-spec"><span class="ps-label">Void Fraction</span><span class="ps-value">60–70%</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Glass</span></div>
+                    <div class="pk-spec"><span class="ps-label">Wettability</span><span class="ps-value">High</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€10–30 / L</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>Chemical inertness.</li>
+                            <li>Good wettability.</li>
+                            <li>Transparency (you can observe the process if the column is glass).</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Fragility.</li>
+                            <li>Moderate efficiency.</li>
+                            <li>High cost.</li>
+                            <li>Hard to find at retail.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 88–93% ABV with a 150 cm column.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> a workable packing but has no advantages over SPN or Raschig rings. Interesting for laboratory and demonstration purposes.</div>
+            </div>
+        </div>
+
+        <!-- Plate Column -->
+        <div class="packing-card">
+            <div class="pk-header">
+                <div class="pk-title">
+                    <span class="pk-icon">🏭</span>
+                    <h3>3.8. Plate Column (for comparison) <span class="pk-sub">Industrial standard</span></h3>
+                </div>
+                <span class="pk-stars stars">★★★<span class="dim">★★</span></span>
+            </div>
+            <div class="pk-body">
+                <p class="pk-desc"><strong>What it is:</strong> a column with horizontal plates on which vapor bubbles through a layer of liquid. The industrial standard for large installations.</p>
+                <div class="pk-specs">
+                    <div class="pk-spec"><span class="ps-label">HETP</span><span class="ps-value">5–10 cm / plate</span></div>
+                    <div class="pk-spec"><span class="ps-label">Plate Efficiency</span><span class="ps-value">60–80% of theoretical</span></div>
+                    <div class="pk-spec"><span class="ps-label">Material</span><span class="ps-value">Stainless / copper</span></div>
+                    <div class="pk-spec"><span class="ps-label">Cost</span><span class="ps-value">€200–1000 / column</span></div>
+                </div>
+                <div class="pk-proscons">
+                    <div class="pk-pros">
+                        <h5>✅ Advantages</h5>
+                        <ul>
+                            <li>Industrial standard, predictable operation.</li>
+                            <li>Each plate is a discrete separation stage.</li>
+                            <li>Easy to monitor each plate's operation.</li>
+                        </ul>
+                    </div>
+                    <div class="pk-cons">
+                        <h5>❌ Disadvantages</h5>
+                        <ul>
+                            <li>Complex to build for home use.</li>
+                            <li>High cost.</li>
+                            <li>Requires precise horizontal installation.</li>
+                            <li>Sensitive to throughput: at low vapor flow the plates are "dry," at high flow they flood.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pk-strength"><strong>Output strength:</strong> 92–96% ABV with 20–40 plates.</div>
+                <div class="pk-verdict"><strong>Verdict:</strong> plate columns are rarely used for home rectification. Packed columns are simpler, cheaper, and more efficient for small volumes.</div>
+            </div>
+        </div>
+
+        <h2 id="master-table">Chapter 4. Master Comparison Table</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Packing</th>
+                    <th>HETP (cm)</th>
+                    <th>Specific Area (m²/m³)</th>
+                    <th>Void Fraction (%)</th>
+                    <th>Strength (150 cm column)</th>
+                    <th>Cost (€/L)</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-best">
+                    <td>SPN (3 mm springs)</td>
+                    <td>3–4</td>
+                    <td>800–1100</td>
+                    <td>85–92</td>
+                    <td>94–96%</td>
+                    <td>10–25</td>
+                    <td><span class="stars">★★★★★</span></td>
+                </tr>
+                <tr>
+                    <td>Berl / Intalox saddles</td>
+                    <td>4–6</td>
+                    <td>500–800</td>
+                    <td>70–85</td>
+                    <td>93–96%</td>
+                    <td>15–35</td>
+                    <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                </tr>
+                <tr>
+                    <td>Raschig rings (ceramic, 4 mm)</td>
+                    <td>5–7</td>
+                    <td>500–700</td>
+                    <td>65–80</td>
+                    <td>92–95%</td>
+                    <td>8–20</td>
+                    <td><span class="stars">★★★★<span class="dim">★</span></span></td>
+                </tr>
+                <tr>
+                    <td>RPN (Panchenkov)</td>
+                    <td>5–8</td>
+                    <td>600–900</td>
+                    <td>90–95</td>
+                    <td>90–94%</td>
+                    <td>5–15</td>
+                    <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                </tr>
+                <tr>
+                    <td>Raschig rings (metal, 6 mm)</td>
+                    <td>5–8</td>
+                    <td>400–600</td>
+                    <td>70–80</td>
+                    <td>90–94%</td>
+                    <td>8–18</td>
+                    <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                </tr>
+                <tr>
+                    <td>Glass beads (4 mm)</td>
+                    <td>6–10</td>
+                    <td>400–600</td>
+                    <td>60–70</td>
+                    <td>88–93%</td>
+                    <td>10–30</td>
+                    <td><span class="stars">★★★<span class="dim">★★</span></span></td>
+                </tr>
+                <tr>
+                    <td>Copper mesh / scrubbers</td>
+                    <td>6–10</td>
+                    <td>400–600</td>
+                    <td>85–93</td>
+                    <td>85–92%</td>
+                    <td>3–10</td>
+                    <td><span class="stars">★★<span class="dim">★★★</span></span></td>
+                </tr>
+                <tr>
+                    <td>LECA (5–10 mm)</td>
+                    <td>8–12</td>
+                    <td>250–400</td>
+                    <td>45–55</td>
+                    <td>82–88%</td>
+                    <td>1–3</td>
+                    <td><span class="stars">★★<span class="dim">★★★</span></span></td>
+                </tr>
+                <tr class="row-worst">
+                    <td>Pebbles (10–20 mm)</td>
+                    <td>10–15</td>
+                    <td>200–350</td>
+                    <td>40–50</td>
+                    <td>80–87%</td>
+                    <td>1–2</td>
+                    <td><span class="stars">★<span class="dim">★★★★</span></span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="table-note">Strength is given for a reflux ratio of 3–5 and stable column operation. Actual values depend on column diameter, heating power, and wash quality.</p>
+
+        <h2 id="size">Chapter 5. How Packing Size Affects Efficiency</h2>
+
+        <h3>5.1. The Rule: Column Diameter ÷ Packing Size ≥ 8–10</h3>
+        <p>For even reflux distribution and to prevent channeling, the column diameter must be at least 8–10 times the size of the packing element.</p>
+        <div class="ratio-grid">
+            <div class="ratio-card">
+                <div class="rc-col-label">Column diameter</div>
+                <div class="rc-col">28 mm</div>
+                <div class="rc-max">Max packing: <strong>3.5 mm</strong></div>
+                <div class="rc-rec">Recommended: <strong>3 mm</strong></div>
+            </div>
+            <div class="ratio-card">
+                <div class="rc-col-label">Column diameter</div>
+                <div class="rc-col">38 mm</div>
+                <div class="rc-max">Max packing: <strong>4.7 mm</strong></div>
+                <div class="rc-rec">Recommended: <strong>3–4 mm</strong></div>
+            </div>
+            <div class="ratio-card">
+                <div class="rc-col-label">Column diameter</div>
+                <div class="rc-col">50 mm</div>
+                <div class="rc-max">Max packing: <strong>6.2 mm</strong></div>
+                <div class="rc-rec">Recommended: <strong>4–5 mm</strong></div>
+            </div>
+            <div class="ratio-card">
+                <div class="rc-col-label">Column diameter</div>
+                <div class="rc-col">63 mm</div>
+                <div class="rc-max">Max packing: <strong>7.8 mm</strong></div>
+                <div class="rc-rec">Recommended: <strong>5–6 mm</strong></div>
+            </div>
+        </div>
+        <div class="warning-note">
+            <strong>⚠️ If the packing size is too large for the column diameter,</strong> the elements pack unevenly, forming large gaps and channels. Reflux flows down the column walls, bypassing the packing. Efficiency drops.
+        </div>
+
+        <h3>5.2. Smaller Packing Is More Efficient but Creates Resistance</h3>
+        <p>Reducing packing size increases specific surface area and lowers HETP. But at the same time, void fraction decreases and vapor flow resistance grows.</p>
+        <div class="practical-note">
+            <strong>Practical optimum for a home column 38–50 mm in diameter:</strong>
+            <ul style="margin:0.5rem 0 0;">
+                <li><strong>SPN:</strong> spring diameter 3–4 mm.</li>
+                <li><strong>Raschig rings:</strong> diameter 4–6 mm.</li>
+                <li><strong>Berl saddles:</strong> size 4–6 mm.</li>
+            </ul>
+            <p style="margin:0.6rem 0 0;">Smaller packing (2 mm) gives a better HETP but creates flooding risk at high heating power. Larger (8–10 mm) reduces resistance but worsens separation.</p>
+        </div>
+
+        <h2 id="material">Chapter 6. How the Material Matters</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Inertness</th>
+                    <th>Wettability</th>
+                    <th>Durability</th>
+                    <th>Sulfur Binding</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Stainless 304/316</td><td>High</td><td>Medium</td><td>High</td><td>No</td><td>Medium</td></tr>
+                <tr><td>Copper</td><td>Medium</td><td>Medium</td><td>Low</td><td>Yes</td><td>Low</td></tr>
+                <tr><td>Ceramic</td><td>High</td><td>High</td><td>Medium (fragile)</td><td>No</td><td>Medium</td></tr>
+                <tr><td>Glass</td><td>High</td><td>High</td><td>Low (fragile)</td><td>No</td><td>Medium</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <ul>
+            <li><strong>Stainless steel (AISI 304, AISI 316):</strong> chemically inert, does not corrode, service life 10+ years. Wettability is medium — to improve it, degrease new stainless packing (wash with soda solution or alcohol) and run 1–2 blank distillations with water. Does not bind sulfur compounds.</li>
+            <li><strong>Copper:</strong> binds sulfur compounds (H₂S, mercaptans, DMS), forming insoluble copper sulfide. Also has a catalytic effect, helping decompose some aldehydes. Downsides: oxidizes, needs regular cleaning (citric acid solution 10 g/L), service life 5–20 runs. Recommendation: use copper as an addition to the main stainless packing, not a replacement.</li>
+            <li><strong>Ceramic:</strong> chemically inert, excellent wettability (the rough surface holds a liquid film well), but fragile. Withstands high temperatures but cracks at sharp temperature changes.</li>
+            <li><strong>Glass:</strong> chemically inert, good wettability, fragile, transparent (for laboratory purposes).</li>
+        </ul>
+
+        <h2 id="filling">Chapter 7. How to Fill the Column Correctly</h2>
+
+        <h3>7.1. Preparing the Packing</h3>
+        <div class="process-step">
+            <div class="step-num">A</div>
+            <div class="step-content">
+                <h4>SPN, Raschig Rings, Saddles</h4>
+                <ul>
+                    <li>Wash the packing with hot water and detergent.</li>
+                    <li>Degrease: soak in food-grade soda solution (2 tablespoons per liter of water) for 30 minutes.</li>
+                    <li>Rinse with clean water.</li>
+                    <li>For stainless steel: run 1–2 blank distillations with water to "break in" the surface.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">B</div>
+            <div class="step-content">
+                <h4>LECA, Pebbles</h4>
+                <ul>
+                    <li>Rinse under running water.</li>
+                    <li>Boil for 30 minutes.</li>
+                    <li>Bake in the oven at 250 °C for 1 hour (to remove organics).</li>
+                    <li>Cool and use.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">C</div>
+            <div class="step-content">
+                <h4>Copper Scrubbers</h4>
+                <ul>
+                    <li>Wash with hot water.</li>
+                    <li>Soak in citric acid solution (10 g/L) for 15 minutes to remove oxides.</li>
+                    <li>Rinse with clean water.</li>
+                    <li>Use immediately.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>7.2. Filling the Column</h3>
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content"><p>Install a support mesh at the bottom of the column (above the vapor inlet from the boiler). The mesh prevents the packing from falling into the boiler. Use a stainless mesh with 1–2 mm cells.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content"><p>Pour in the packing in small portions, periodically shaking the column for even distribution. Do not tamp — the packing should lie loosely.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content"><p>For SPN and Raschig rings: pour in a "rain," letting the elements fall freely. They will pack most evenly.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <div class="step-content"><p>For RPN: roll the mesh into a roll with a diameter slightly smaller than the column's inner diameter and insert it. The roll should fit snugly against the walls but not be crumpled.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">5</div>
+            <div class="step-content"><p>Install a top support mesh or limiter so the packing does not shift during operation.</p></div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">6</div>
+            <div class="step-content"><p>Leave 2–3 cm of free space at the top of the column (below the dephlegmator) for even reflux distribution.</p></div>
+        </div>
+
+        <h3>7.3. How Much Packing Is Needed</h3>
+        <p>To obtain a 96% rectificate:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Packing</th>
+                    <th>HETP (cm)</th>
+                    <th>Packing Height Needed for 40 Plates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-best"><td>SPN 3 mm</td><td>3.5</td><td>140 cm</td></tr>
+                <tr><td>Raschig rings 4 mm</td><td>5.5</td><td>220 cm</td></tr>
+                <tr><td>Berl saddles 5 mm</td><td>5.0</td><td>200 cm</td></tr>
+                <tr><td>RPN</td><td>6.5</td><td>260 cm</td></tr>
+                <tr><td>Copper scrubber</td><td>8.0</td><td>320 cm</td></tr>
+                <tr class="row-worst"><td>LECA 10 mm</td><td>10.0</td><td>400 cm</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Practical conclusion:</strong> for a home column 120–150 cm tall, SPN or small Raschig rings are optimal. Coarser packings (RPN, scrubbers, LECA) will not give 96% at that height.
+        </div>
+
+        <h2 id="recommendations">Chapter 8. Practical Selection Recommendations</h2>
+
+        <div class="rec-card">
+            <h4>🍬 8.1. For Sugar Wash (Neutral Spirit)</h4>
+            <div class="rec-goal">Goal: maximum strength and purity; sulfur compounds are minimal.</div>
+            <div class="rec-body"><strong>Recommendation:</strong> stainless SPN, spring diameter 3–4 mm. Column 120–150 cm. Reflux ratio 3–5.<br><strong>Alternative:</strong> Raschig rings 4 mm (ceramic or stainless). Column 150–200 cm.</div>
+        </div>
+        <div class="rec-card">
+            <h4>🌾 8.2. For Grain Wash (Whiskey, Bourbon)</h4>
+            <div class="rec-goal">Goal: high strength + removal of sulfur compounds.</div>
+            <div class="rec-body"><strong>Recommendation:</strong> stainless SPN (main packing, 100–130 cm) + copper mesh or 1–2 copper scrubbers at the top of the column (10–20 cm). Copper binds the hydrogen sulfide and mercaptans typical of grain wort.<br><strong>Important:</strong> if you are making an aromatic whiskey, rectification is not suitable. Use fractional distillation on a simple pot still. Rectification with packing is only for neutral grain spirit.</div>
+        </div>
+        <div class="rec-card">
+            <h4>🥔 8.3. For Potato Wash</h4>
+            <div class="rec-goal">Goal: removal of sulfur compounds and methanol.</div>
+            <div class="rec-body"><strong>Recommendation:</strong> stainless SPN + a copper section at the top of the column. Increased heads cut (12–15% of absolute alcohol) due to methanol.</div>
+        </div>
+        <div class="rec-card">
+            <h4>🍎 8.4. For Fruit Wash</h4>
+            <div class="rec-goal">Goal: if the aim is neutral spirit for later infusion.</div>
+            <div class="rec-body"><strong>Recommendation:</strong> stainless SPN. Copper is not needed (sulfur compounds in fruit washes are minimal).<br><strong>Important:</strong> if the aim is an aromatic fruit brandy (calvados, grappa, slivovitz), rectification is not suitable. Use fractional distillation.</div>
+        </div>
+        <div class="rec-card">
+            <h4>💰 8.5. For a First Column (Budget Option)</h4>
+            <div class="rec-goal">Goal: minimal cost with acceptable quality.</div>
+            <div class="rec-body"><strong>Recommendation:</strong> RPN (Panchenkov packing) in stainless steel. Column 150 cm. Reflux ratio 4–6 (compensates for the packing's low efficiency). Output strength: 90–94%.<br><strong>Alternative:</strong> ceramic Raschig rings 4–6 mm. Cheaper than SPN, easier to buy.</div>
+        </div>
+
+        <h3>8.6. Summary Recommendations Table</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Packing</th>
+                    <th>Column Height</th>
+                    <th>Reflux Ratio</th>
+                    <th>Expected Strength</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Neutral spirit (sugar)</td><td>SPN 3–4 mm</td><td>120–150 cm</td><td>3–5</td><td>94–96%</td></tr>
+                <tr><td>Grain neutral spirit</td><td>SPN + copper on top</td><td>120–150 cm</td><td>3–5</td><td>93–96%</td></tr>
+                <tr><td>Potato spirit</td><td>SPN + copper on top</td><td>130–160 cm</td><td>3–5</td><td>92–95%</td></tr>
+                <tr><td>Budget column</td><td>RPN or Raschig rings</td><td>150–200 cm</td><td>4–6</td><td>90–94%</td></tr>
+                <tr><td>Experiment / learning</td><td>LECA, pebbles</td><td>100–150 cm</td><td>5–8</td><td>80–88%</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="mistakes">Chapter 9. Typical Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Packing too large for the column diameter</td>
+                    <td>Channeling, uneven distribution, low strength</td>
+                    <td>Packing size ≤ 1/8–1/10 of column diameter</td>
+                </tr>
+                <tr>
+                    <td>Tamping the packing when filling</td>
+                    <td>Reduced void fraction, flooding, uneven flow</td>
+                    <td>Pour loosely, shake, do not tamp</td>
+                </tr>
+                <tr>
+                    <td>No support mesh at the bottom</td>
+                    <td>Packing falls into the boiler, clogs the vapor outlet</td>
+                    <td>Install a mesh with 1–2 mm cells</td>
+                </tr>
+                <tr>
+                    <td>Using street pebbles without treatment</td>
+                    <td>Organics, salts, microorganisms in the wash</td>
+                    <td>Wash, boil, bake at 250 °C</td>
+                </tr>
+                <tr>
+                    <td>Copper packing without regular cleaning</td>
+                    <td>Copper oxides and sulfides get into the product</td>
+                    <td>Clean with citric acid every 5–10 runs</td>
+                </tr>
+                <tr>
+                    <td>Packing made of unknown metal</td>
+                    <td>Corrosion, heavy-metal ions in the product</td>
+                    <td>Use only AISI 304/316, copper, ceramic, glass</td>
+                </tr>
+                <tr>
+                    <td>Column too short for the chosen packing</td>
+                    <td>Not enough theoretical plates; strength 85–90% instead of 96%</td>
+                    <td>Increase column height or choose packing with lower HETP</td>
+                </tr>
+                <tr>
+                    <td>Not degreasing new stainless packing</td>
+                    <td>Poor wettability, uneven film</td>
+                    <td>Degrease with soda, run 1–2 blank distillations</td>
+                </tr>
+                <tr>
+                    <td>Mixing different packing types in one column without a system</td>
+                    <td>Uneven distribution, unpredictable operation</td>
+                    <td>Use one packing or clear zoning</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I mix different packings in one column?</div>
+            <div class="faq-answer"><p>Yes, but consciously. A common scheme: bottom 2/3 of the column — SPN or Raschig rings (main separation), top 1/3 — copper mesh (binding sulfur compounds). Do not mix packings chaotically: this creates uneven flow distribution.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How long does the packing last?</div>
+            <div class="faq-answer"><p>SPN and stainless Raschig rings — 10+ years without replacement. Ceramic — 3–5 years (depends on careful handling). RPN — 2–4 years. Copper scrubbers — 5–15 runs. LECA and pebbles — 1–2 years (they clog with deposits).</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use packing made of plastic elements?</div>
+            <div class="faq-answer"><p>No. Plastic does not withstand temperatures of 78–100 °C, may deform, and can release toxic substances. Use only metal, ceramic, or glass.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What is better for a 38 mm column: SPN 3 mm or Raschig rings 4 mm?</div>
+            <div class="faq-answer"><p>SPN 3 mm gives HETP ~3.5 cm → 43 plates per 150 cm. Raschig rings 4 mm give HETP ~5 cm → 30 plates per 150 cm. SPN is more efficient. But if SPN is unavailable, Raschig rings are a worthy alternative.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Why does copper turn black in the column?</div>
+            <div class="faq-answer"><p>Copper reacts with sulfur compounds in the wash, forming copper sulfide (CuS) — a black coating. This is normal operation of copper as a sorbent. Blackened copper needs to be cleaned with citric acid solution (10 g/L, soak for 15–30 minutes).</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use pebbles from an aquarium store?</div>
+            <div class="faq-answer"><p>You can, but efficiency will be low (HETP 10–15 cm). Wash and boil them before use. Pebbles are suitable only for experiments or as a temporary solution.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How do I know the packing is clogged?</div>
+            <div class="faq-answer"><p>Signs of clogging: boiler pressure rises at the same heating power, output strength drops, uneven column operation (bubbling, flooding). Disassemble the column and wash the packing with hot water and soda.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to replace the packing after each run?</div>
+            <div class="faq-answer"><p>No. SPN, Raschig rings, and saddles last for years. Copper scrubbers are replaced every 5–15 runs. LECA and pebbles — once every 1–2 years. After each run, rinse the column with steam or hot water.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I make SPN myself?</div>
+            <div class="faq-answer"><p>Yes. Wind stainless wire 0.3–0.5 mm in diameter around a mandrel (nail, knitting needle) 3–4 mm in diameter. Cut into springs 5–10 mm long. The process is labor-intensive (1 liter of packing takes 2–4 hours of manual work), but the result is no worse than store-bought.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What packing is used in industrial rectification columns?</div>
+            <div class="faq-answer"><p>Industry uses plate columns (bubble-cap, sieve, valve plates) and structured packings (corrugated metal sheets). Random packings (Raschig rings, saddles) are used in small and medium installations. For home use, random packings are optimal for the efficiency/cost/simplicity ratio.</p></div>
+        </div>
+
+        <h2 id="purity">Chapter 11. Packing and Product Purity: Beyond Strength</h2>
+
+        <h3>11.1. Strength ≠ Purity</h3>
+        <p>A strength of 96% does not mean absolute purity. Even at maximum strength, the rectificate retains traces of impurities with boiling points close to ethanol. The packing affects not only strength but also the degree of impurity separation.</p>
+
+        <h3>11.2. Separation of Head Fractions</h3>
+        <p>Methanol (64.7 °C), acetaldehyde (20.8 °C), and ethyl acetate (77.1 °C) are more volatile than ethanol. They concentrate at the top of the column. An efficient packing (SPN, Berl saddles) provides clear separation: heads are collected in the first 5–10% of absolute alcohol, after which the collection is mostly ethanol.</p>
+        <p>A coarse packing (pebbles, LECA) does not provide sufficient separation. The head fractions are "smeared" across the whole collection, and some methanol and acetaldehyde get into the hearts.</p>
+
+        <h3>11.3. Separation of Tail Fractions</h3>
+        <p>Isoamyl alcohol (132 °C), furfural (162 °C), and water (100 °C) are less volatile than ethanol. They concentrate at the bottom of the column and in the boiler. An efficient packing holds them at the bottom, preventing them from rising to the take-off node.</p>
+
+        <h3>11.4. Practical Effect on Quality</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Packing</th>
+                    <th>Heads Separation</th>
+                    <th>Tails Separation</th>
+                    <th>Overall Rectificate Quality</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-best"><td>SPN 3 mm</td><td>Excellent</td><td>Excellent</td><td>96%, minimum impurities</td></tr>
+                <tr><td>Raschig rings 4 mm</td><td>Good</td><td>Good</td><td>94–95%, clean</td></tr>
+                <tr><td>Berl saddles</td><td>Good</td><td>Good</td><td>94–96%, clean</td></tr>
+                <tr><td>RPN</td><td>Moderate</td><td>Moderate</td><td>90–94%, trace impurities</td></tr>
+                <tr><td>Copper scrubber</td><td>Weak</td><td>Weak</td><td>85–92%, but no sulfur odors</td></tr>
+                <tr><td>LECA</td><td>Weak</td><td>Weak</td><td>82–88%, noticeable impurities</td></tr>
+                <tr class="row-worst"><td>Pebbles</td><td>Very weak</td><td>Very weak</td><td>80–87%, coarse profile</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="care">Chapter 12. Packing Care and Maintenance</h2>
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Regular Rinsing</h4>
+                <p>After each run, pass clean water steam through the column for 10–15 minutes. This removes wash residues, protein deposits, and yeast particles.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Deep Cleaning (every 5–10 runs)</h4>
+                <ul>
+                    <li>Disassemble the column.</li>
+                    <li>Pour the packing into a container.</li>
+                    <li>Soak in hot food-grade soda solution (2 tablespoons per liter of water) for 1–2 hours.</li>
+                    <li>Rinse under running water.</li>
+                    <li>For copper elements: soak in citric acid solution (10 g/L) for 30 minutes.</li>
+                    <li>Dry and refill.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>When to Replace the Packing</h4>
+                <ul>
+                    <li><strong>SPN, Raschig rings:</strong> no replacement needed. If damaged (deformation, corrosion), replace the damaged elements.</li>
+                    <li><strong>RPN:</strong> replace every 2–4 years or when visibly worn.</li>
+                    <li><strong>Copper scrubbers:</strong> replace every 5–15 runs.</li>
+                    <li><strong>LECA, pebbles:</strong> replace once every 1–2 years or when clogged.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Conclusion: The Packing Determines the Result</h2>
+        <p>A rectification column is not the boiler and not the dephlegmator. It is the packing. It is on the surface of the packing that the heat and mass transfer happens that turns the wash into a rectificate. Everything else — the boiler, the dephlegmator, the take-off node — merely provides the conditions for the packing to work.</p>
+        <p>Choosing a packing is a choice between 80% and 96% strength, between traces of methanol in the hearts and clean separation, between the smell of hydrogen sulfide and a neutral profile. The difference is determined by a few square meters of surface packed into a pipe a meter and a half tall.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🏆 SPN is the gold standard of home rectification</strong>
+                HETP 3–4 cm, high void fraction, durability. If you can use SPN — use it. For grain and potato washes, add a copper section at the top of the column.
+            </div>
+            <div class="principle-item">
+                <strong>📐 Packing size must match the column diameter</strong>
+                Column diameter ÷ packing size ≥ 8–10. Too-large packing creates channels. Too-small creates flooding.
+            </div>
+            <div class="principle-item">
+                <strong>🧼 The packing is not forever</strong>
+                Rinse after each run. Clean copper with citric acid. Replace scrubbers and RPN when worn. Clogged packing works worse than having none at all.
+            </div>
+        </div>
+
+        <p>Understanding how the packing affects separation turns rectification from "pour whatever you have into the pipe" into a conscious engineering process. And a conscious process gives a predictable, reproducible, and safe result.</p>
+        <p><em>Clean rectificate and a stable 96 percent.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Tune a Rectification Column: Pre-Flooding Operation and Reflux Ratio | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #263238;
+            --accent-color: #ef6c00;
+            --accent-dark: #e65100;
+            --accent-light: #ffb74d;
+            --bg-color: #f5f6f7;
+            --text-color: #2c3e50;
+            --light-gray: #e0e0e0;
+            --note-bg: #fff3e0;
+            --note-border: #ffcc80;
+            --note-text: #e65100;
+            --takeaway-bg: #e8f5e9;
+            --takeaway-text: #1b5e20;
+            --warning-bg: #fdedec;
+            --warning-text: #922b21;
+            --gold: #fbc02d;
+            /* Control knob colors */
+            --heat: #e53935;
+            --dephleg: #1e88e5;
+            --takeoff: #43a047;
+            --flood: #b71c1c;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #263238 0%, #e65100 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.04) 30px 32px);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #263238;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--accent-light);
+        }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        .toc {
+            background-color: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #43a047;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #bf360c; }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #e53935;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #641e16; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #eceff1;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #f7f8f9; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+        .formula-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 1px solid var(--note-border);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .formula-box .formula-title {
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 0.6rem;
+        }
+        .formula-box .formula-body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        /* Flooding comparison visual */
+        .flood-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 2rem 0;
+        }
+        .flood-card {
+            border-radius: 12px;
+            padding: 1.4rem;
+            border: 1px solid;
+        }
+        .flood-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        .flood-card ul { margin-bottom: 0; padding-left: 18px; font-size: 0.9rem; }
+        .flood-card li { margin-bottom: 0.4rem; }
+        .flood-normal {
+            background: #e8f5e9;
+            border-color: #a5d6a7;
+        }
+        .flood-normal h4 { color: #1b5e20; }
+        .flood-bad {
+            background: #fdedec;
+            border-color: #ef9a9a;
+        }
+        .flood-bad h4 { color: #b71c1c; }
+        /* Power dial visual (pre-flooding zone) */
+        .power-dial {
+            margin: 2.5rem 0;
+        }
+        .dial-bar {
+            height: 46px;
+            border-radius: 23px;
+            background: linear-gradient(to right, #ffcc80 0%, #ff9800 30%, #ef6c00 65%, #43a047 78%, #2e7d32 88%, #b71c1c 100%);
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        .dial-zone {
+            position: absolute;
+            top: -32px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            white-space: nowrap;
+            color: #37474f;
+        }
+        .dial-marker {
+            position: absolute;
+            top: -10px;
+            width: 4px;
+            height: 66px;
+            background: #263238;
+            border-radius: 2px;
+        }
+        .dial-marker-label {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #263238;
+            white-space: nowrap;
+        }
+        .dial-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            font-size: 0.78rem;
+            color: #78909c;
+        }
+        /* Three knobs (power balance) */
+        .knob-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 2rem 0;
+        }
+        .knob-card {
+            border-radius: 12px;
+            padding: 1.3rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+        .knob-card .knob-icon { font-size: 2.2rem; }
+        .knob-card h4 { margin-top: 0.5rem; margin-bottom: 0.3rem; color: white; font-size: 1.05rem; }
+        .knob-card p { font-size: 0.85rem; margin: 0; opacity: 0.95; text-align: center; }
+        .knob-heat { background: linear-gradient(135deg, #e53935, #b71c1c); }
+        .knob-dephleg { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+        .knob-takeoff { background: linear-gradient(135deg, #43a047, #2e7d32); }
+        /* Reflux ratio cards */
+        .reflux-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin: 1.8rem 0;
+        }
+        .reflux-item {
+            background: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 0.9rem 0.6rem;
+            text-align: center;
+        }
+        .reflux-item.optimal {
+            background: #fff8e1;
+            border-color: var(--gold);
+            border-top-color: var(--gold);
+            box-shadow: 0 3px 10px rgba(251,192,45,0.3);
+        }
+        .reflux-item .ri-value { font-size: 1.4rem; font-weight: 800; color: var(--accent-dark); }
+        .reflux-item.optimal .ri-value { color: #f57f17; }
+        .reflux-item .ri-strength { font-size: 0.8rem; font-weight: 700; color: #37474f; margin-top: 4px; }
+        .reflux-item .ri-note { font-size: 0.7rem; color: #78909c; margin-top: 4px; line-height: 1.3; }
+        .reflux-item .ri-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #4e342e;
+            font-size: 0.62rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+        /* Phase-grouped setup steps */
+        .phase-block {
+            border: 1px solid #cfd8dc;
+            border-radius: 12px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .phase-header {
+            padding: 0.9rem 1.4rem;
+            color: white;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .phase-header .ph-num {
+            background: rgba(255,255,255,0.25);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+        .phase-header h4 { margin: 0; color: white; font-size: 1.1rem; }
+        .phase-body { padding: 1.2rem 1.5rem; }
+        .phase-body ol { margin-bottom: 0; }
+        .phase-body li { margin-bottom: 0.7rem; font-size: 0.93rem; }
+        .phase-body .sub-note {
+            background: #fff3e0;
+            border-left: 3px solid var(--accent-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            margin-top: 8px;
+        }
+        /* Problem cards (Ch.7) */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .problem-card {
+            background: white;
+            border: 1px solid #cfd8dc;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.1rem 1.4rem;
+        }
+        .problem-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .problem-card .pc-symptom {
+            font-size: 0.88rem;
+            color: #546e7a;
+            font-style: italic;
+            margin-bottom: 0.6rem;
+        }
+        .problem-card .pc-cause {
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .problem-card .pc-solution {
+            background: #e8f5e9;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        .problem-card .pc-solution strong { color: #1b5e20; }
+        /* Advanced cards (Ch.10) */
+        .adv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .adv-card {
+            background: #fafafa;
+            border: 1px solid #cfd8dc;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+        .adv-card h4 { margin-top: 0; color: var(--primary-color); display: flex; align-items: center; gap: 8px; }
+        .adv-card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .adv-card ul { font-size: 0.88rem; margin-bottom: 0; }
+        /* Journal template */
+        .journal-template {
+            background: #fffde7;
+            border: 1px dashed #f9a825;
+            border-radius: 8px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .journal-template .jt-line { padding: 3px 0; border-bottom: 1px dotted #e0e0e0; }
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fcfdfe;
+        }
+        .faq-question {
+            background: #fff3e0;
+            padding: 0.9rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #ffe0b2;
+        }
+        .faq-question .q-mark { color: var(--accent-color); font-size: 1.3rem; font-weight: 800; }
+        .faq-answer { padding: 0.9rem 1.3rem; font-size: 0.95rem; }
+        .faq-answer p { margin-bottom: 0.5rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+        /* Final principles */
+        .principles {
+            background: linear-gradient(135deg, #263238 0%, #e65100 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,0.04) 30px 32px);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #ffe082;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #78909c;
+            font-size: 0.9rem;
+            border-top: 1px solid #eceff1;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .flood-compare, .knob-grid, .adv-grid { grid-template-columns: 1fr; }
+            .reflux-strip { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Equipment</a>
+    <a href="#">Tuning</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">How to Tune a Rectification Column</h1>
+        <p class="subtitle">Pre-flooding operation and reflux ratio — a practical guide to achieving stable and efficient column performance. The concept of the pre-flooding regime, reflux flow control, and how the reflux ratio affects spirit quality.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: A Column That Doesn't Run Itself</a></li>
+                <li><a href="#flooding">Chapter 1. Column Flooding: What It Is and Why It's Dangerous</a></li>
+                <li><a href="#preflood">Chapter 2. The Pre-Flooding Regime: The Optimal Operating Point</a></li>
+                <li><a href="#reflux">Chapter 3. Reflux Ratio: The Main Quality Lever</a></li>
+                <li><a href="#balance">Chapter 4. Power Balance: Heating, Dephlegmator, Take-Off</a></li>
+                <li><a href="#setup">Chapter 5. Step-by-Step Column Tuning: From First Start to Stable Take-Off</a></li>
+                <li><a href="#diagnostics">Chapter 6. Diagnosing Operating Regimes by Temperature</a></li>
+                <li><a href="#situations">Chapter 7. Specific Situations and Their Solutions</a></li>
+                <li><a href="#parameters">Chapter 8. Summary Tuning Parameter Table</a></li>
+                <li><a href="#mistakes">Chapter 9. Typical Tuning Mistakes</a></li>
+                <li><a href="#advanced">Chapter 10. Advanced Tuning Techniques</a></li>
+                <li><a href="#faq">Chapter 11. Frequently Asked Questions</a></li>
+                <li><a href="#journal">Chapter 12. The Column Tuning Journal</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: A Column That Doesn't Run Itself</h2>
+        <p>A rectification column is not an automatic appliance where you just pour in the wash and press a button. It is a dynamic system in which three flows interact continuously: the vapor rising from the boiler, the reflux flowing down from above, and the distillate being drawn off into the receiving vessel. The balance between these flows determines everything: product strength, separation purity, take-off speed, and process stability.</p>
+        <p>A beginner starting a column for the first time runs into a paradox: the apparatus is assembled correctly, the packing is loaded, water is flowing to the condenser, the heat is on — yet the result is unpredictable. Sometimes the column "floods" and liquid pours out of the dephlegmator. Sometimes the take-off runs too fast but the strength doesn't exceed 85%. Sometimes the temperature at the top of the column jumps around and it's unclear when to switch fractions.</p>
+        <p>The cause is almost always the same: <strong>the column is not tuned to its optimal operating regime.</strong> The heating power is not matched to the dephlegmator's capacity. The reflux ratio is too low or too high. The column is not stabilized before take-off begins.</p>
+        <p>This article is a practical guide to tuning a rectification column. We will cover what flooding is and why you should operate in the pre-flooding regime, how the reflux ratio affects spirit quality, and how to bring the column to stable operation step by step.</p>
+
+        <h2 id="flooding">Chapter 1. Column Flooding: What It Is and Why It's Dangerous</h2>
+
+        <h3>1.1. The Flooding Mechanism</h3>
+        <p>In a normally operating column, vapor rises through the gaps in the packing while reflux flows down over the packing surface. These two flows move toward each other but don't interfere: the vapor passes through the free cross-section while the reflux runs as a film over the surface of the elements.</p>
+        <p><strong>Flooding</strong> occurs when the amount of liquid in the column exceeds the vapor's ability to pass through the packing. The mechanism:</p>
+        <ol>
+            <li>Vapor rises through the column, carrying reflux droplets with it.</li>
+            <li>If the vapor velocity is too high or the reflux volume is excessive, the droplets don't have time to flow back down.</li>
+            <li>Liquid accumulates in the packing, filling the free cross-section.</li>
+            <li>Vapor cannot pass through gaps filled with liquid. Pressure builds up below the packing.</li>
+            <li>Liquid is thrown upward into the dephlegmator or downward into the boiler. The column "floods."</li>
+        </ol>
+
+        <div class="flood-compare">
+            <div class="flood-card flood-normal">
+                <h4>✅ Normal Countercurrent Flow</h4>
+                <ul>
+                    <li>Vapor rises freely through packing gaps.</li>
+                    <li>Reflux flows down as a thin, even film.</li>
+                    <li>Soft rustling sound inside the column.</li>
+                    <li>Stable temperature at the top (78.0–78.3 °C).</li>
+                    <li>Steady take-off as drops or a thin stream.</li>
+                </ul>
+            </div>
+            <div class="flood-card flood-bad">
+                <h4>❌ Flooding</h4>
+                <ul>
+                    <li>Liquid accumulates, blocking vapor passage.</li>
+                    <li>Pressure rises below the packing.</li>
+                    <li>Gurgling and rumbling inside the column.</li>
+                    <li>Temperature jumps erratically or drops sharply.</li>
+                    <li>Liquid pours out of the dephlegmator or take-off node.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>1.2. Signs of Flooding</h3>
+        <ul>
+            <li>Sharp rise in boiler pressure (if a pressure gauge is installed).</li>
+            <li>Gurgling and rumbling inside the column.</li>
+            <li>Liquid from the dephlegmator flows back into the column or spills out.</li>
+            <li>Temperature at the top of the column drops sharply (liquid cools the upper section) or jumps erratically.</li>
+            <li>A stream pours from the take-off node instead of a thin trickle.</li>
+            <li>Distillate strength drops sharply.</li>
+        </ul>
+
+        <h3>1.3. Consequences of Flooding</h3>
+        <ul>
+            <li><strong>Destruction of the temperature gradient.</strong> The column stops working as a rectification device. Component separation is disrupted.</li>
+            <li><strong>Wash ejected into the distillate.</strong> Liquid from the boiler can end up in the receiving vessel.</li>
+            <li><strong>Lost time.</strong> After flooding, the column must be re-stabilized (30–60 minutes).</li>
+            <li><strong>Risk of damage.</strong> With severe flooding and no safety valve, boiler pressure can rise to a dangerous level.</li>
+        </ul>
+
+        <h3>1.4. What Causes Flooding</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cause</th>
+                    <th>Mechanism</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Heating power too high</td>
+                    <td>Excess vapor exceeds the packing's throughput</td>
+                </tr>
+                <tr>
+                    <td>Dephlegmator cooling too strong</td>
+                    <td>Excess reflux fills the packing</td>
+                </tr>
+                <tr>
+                    <td>Packing too fine</td>
+                    <td>Low void fraction, small free cross-section</td>
+                </tr>
+                <tr>
+                    <td>Clogged packing</td>
+                    <td>Deposits reduce the free cross-section</td>
+                </tr>
+                <tr>
+                    <td>Take-off rate too high</td>
+                    <td>Disruption of flow balance</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="preflood">Chapter 2. The Pre-Flooding Regime: The Optimal Operating Point</h2>
+
+        <h3>2.1. The Concept of the Pre-Flooding Regime</h3>
+        <p>The <strong>pre-flooding regime</strong> is operation of the column at maximum throughput without crossing into flooding. The column works at the limit of its capability but has not yet flooded.</p>
+        <p><strong>Why this is optimal:</strong></p>
+        <ul>
+            <li><strong>Maximum mass-transfer rate.</strong> The higher the vapor velocity and the more reflux, the more intense the contact between phases. At each theoretical plate, vapor and liquid exchange material faster and more completely.</li>
+            <li><strong>Maximum packing efficiency.</strong> The packing's HETP reaches its minimum exactly in the pre-flooding regime. At lower load, the packing doesn't work at full capacity.</li>
+            <li><strong>Stability.</strong> The pre-flooding regime is a stable equilibrium. The column doesn't "rock," temperature is stable, and take-off is predictable.</li>
+        </ul>
+
+        <div class="power-dial">
+            <div class="dial-bar">
+                <div class="dial-zone" style="left: 8%;">Low<br>efficiency</div>
+                <div class="dial-zone" style="left: 40%;">Building up</div>
+                <div class="dial-zone" style="left: 72%; color: #1b5e20;">★ Pre-flood<br>optimum</div>
+                <div class="dial-zone" style="left: 94%; color: #b71c1c;">Flood</div>
+                <div class="dial-marker" style="left: 80%;">
+                    <div class="dial-marker-label">Working point<br>(flood point −10–15%)</div>
+                </div>
+            </div>
+            <div class="dial-scale">
+                <span>0% heating</span>
+                <span>50%</span>
+                <span>100% (flood point)</span>
+            </div>
+        </div>
+
+        <h3>2.2. How to Identify the Pre-Flooding Regime</h3>
+        <p>In practice, the pre-flooding regime is identified indirectly by a combination of signs:</p>
+        <ul>
+            <li>Temperature at the top of the column is stable (78.0–78.3 °C for ethanol).</li>
+            <li>The dephlegmator is working: part of the vapor condenses and flows back, part passes to the take-off node.</li>
+            <li>Take-off runs as an even stream or drops, without jerking or gurgling.</li>
+            <li>A soft rustling is heard in the column, not a rumble or gurgling.</li>
+            <li>Boiler pressure is stable (if there is a pressure gauge).</li>
+        </ul>
+        <p>If you increase heating power by another 5–10%, the column will cross into flooding. If you reduce it by 10–15%, packing efficiency will drop.</p>
+
+        <h3>2.3. Practical Method for Finding the Pre-Flooding Regime</h3>
+        <div class="process-steps">
+            <div class="phase-block">
+                <div class="phase-body">
+                    <ol>
+                        <li><strong>Step 1.</strong> Set heating power to 50% of maximum. Turn on water supply to the dephlegmator and condenser.</li>
+                        <li><strong>Step 2.</strong> Wait for the wash to boil and vapor to appear at the top of the column. Temperature at the top will start falling toward 78 °C.</li>
+                        <li><strong>Step 3.</strong> Set total reflux (take-off valve closed). Let the column stabilize for 15–20 minutes.</li>
+                        <li><strong>Step 4.</strong> Smoothly increase heating power by 5–10% every 5 minutes. Watch the column's behavior.</li>
+                        <li><strong>Step 5.</strong> When you hear a soft rumble or see reflux starting to rise higher than usual and the temperature at the top slightly waver — you have reached the flooding point.</li>
+                        <li><strong>Step 6.</strong> Reduce heating power by 10–15% from the flooding point. This is the pre-flooding regime.</li>
+                        <li><strong>Step 7.</strong> Let the column stabilize in this regime for 20–30 minutes. The top temperature should settle at 78.0–78.3 °C.</li>
+                        <li><strong>Step 8.</strong> Begin take-off, setting the desired reflux ratio.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h3>2.4. Why You Shouldn't Operate Below the Pre-Flooding Regime</h3>
+        <p>When operating at 50–60% of the pre-flooding regime:</p>
+        <ul>
+            <li>Vapor velocity is low; contact with reflux is inefficient.</li>
+            <li>The packing's HETP increases by 20–40% (efficiency drops).</li>
+            <li>To achieve the same strength you need a taller column or a higher reflux ratio.</li>
+            <li>Distillation time increases 1.5–2 times.</li>
+        </ul>
+        <div class="key-takeaway">
+            Operating in the pre-flooding regime gives maximum efficiency for a given column height.
+        </div>
+
+        <h2 id="reflux">Chapter 3. Reflux Ratio: The Main Quality Lever</h2>
+
+        <h3>3.1. Definition and Physical Meaning</h3>
+        <p>The <strong>reflux ratio (R)</strong> is the ratio of the amount of liquid returned to the column (reflux) to the amount of liquid drawn off into the receiving vessel (distillate):</p>
+        <div class="formula-box">
+            <div class="formula-title">Reflux Ratio</div>
+            <div class="formula-body">R = Reflux ÷ Distillate</div>
+            <p style="margin: 0.8rem 0 0; font-size: 0.9rem;"><strong>Physical meaning:</strong> the reflux ratio shows how many times each portion of vapor contacts liquid before being drawn off as distillate.</p>
+        </div>
+
+        <div class="reflux-strip">
+            <div class="reflux-item">
+                <div class="ri-value">R=1</div>
+                <div class="ri-strength">80–88%</div>
+                <div class="ri-note">1 contact per plate. Crude separation</div>
+            </div>
+            <div class="reflux-item">
+                <div class="ri-value">R=2</div>
+                <div class="ri-strength">88–92%</div>
+                <div class="ri-note">Acceptable for technical use</div>
+            </div>
+            <div class="reflux-item optimal">
+                <div class="ri-value">R=3</div>
+                <div class="ri-strength">92–95%</div>
+                <div class="ri-note">Good quality, moderate speed</div>
+                <span class="ri-badge">Optimum</span>
+            </div>
+            <div class="reflux-item optimal">
+                <div class="ri-value">R=4</div>
+                <div class="ri-strength">94–96%</div>
+                <div class="ri-note">Fine separation, fewer impurities</div>
+                <span class="ri-badge">Optimum</span>
+            </div>
+            <div class="reflux-item optimal">
+                <div class="ri-value">R=5</div>
+                <div class="ri-strength">95–96%</div>
+                <div class="ri-note">Maximum quality, very slow</div>
+                <span class="ri-badge">Optimum</span>
+            </div>
+            <div class="reflux-item">
+                <div class="ri-value">R=∞</div>
+                <div class="ri-strength">—</div>
+                <div class="ri-note">Total reflux. Stabilization mode</div>
+            </div>
+        </div>
+
+        <h3>3.2. Effect of Reflux Ratio on Strength and Purity</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Reflux Ratio</th>
+                    <th>Strength (% ABV)</th>
+                    <th>Purity</th>
+                    <th>Take-off Speed</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>80–88</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Crude separation, impurities in hearts</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>88–92</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Acceptable for technical purposes</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>92–95</td>
+                    <td>Good</td>
+                    <td>Moderate</td>
+                    <td>Optimum for home rectification</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>94–96</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Fine separation, minimal impurities</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>95–96</td>
+                    <td>Very high</td>
+                    <td>Very low</td>
+                    <td>Maximum quality</td>
+                </tr>
+                <tr>
+                    <td>∞ (total reflux)</td>
+                    <td>—</td>
+                    <td>Maximum (in column)</td>
+                    <td>Zero</td>
+                    <td>Stabilization regime</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>3.3. Reflux Ratio and Number of Theoretical Plates</h3>
+        <p>The effective number of theoretical plates depends not only on the packing but also on the reflux ratio. As R increases, each real plate works closer to an ideal theoretical plate.</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Packing HETP (cm)</th>
+                    <th>Plates at R=2</th>
+                    <th>Plates at R=3</th>
+                    <th>Plates at R=5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3.5 (SPN)</td>
+                    <td>30 per 150 cm</td>
+                    <td>38 per 150 cm</td>
+                    <td>42 per 150 cm</td>
+                </tr>
+                <tr>
+                    <td>5.0 (Raschig rings)</td>
+                    <td>24 per 150 cm</td>
+                    <td>28 per 150 cm</td>
+                    <td>30 per 150 cm</td>
+                </tr>
+                <tr>
+                    <td>7.0 (RPN)</td>
+                    <td>18 per 150 cm</td>
+                    <td>20 per 150 cm</td>
+                    <td>22 per 150 cm</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="practical-note">
+            <strong>Conclusion:</strong> increasing the reflux ratio from 2 to 5 is equivalent to adding 10–15 cm of packing. But the price is a 2–3× reduction in take-off speed.
+        </div>
+
+        <h3>3.4. Optimal Reflux Ratio for Home Rectification</h3>
+        <p><strong>R = 3–5</strong> is the optimal range for a home column.</p>
+        <ul>
+            <li><strong>R = 3:</strong> good balance of quality and speed. Strength 93–95%. Suitable for most tasks.</li>
+            <li><strong>R = 4:</strong> higher quality. Strength 95–96%. Recommended for grain and potato washes where removing sulfur compounds matters.</li>
+            <li><strong>R = 5:</strong> maximum quality. Strength 96%. Take-off speed is minimal. Use when time is not critical.</li>
+            <li><strong>R &lt; 2</strong> is not recommended: separation is inefficient, impurities end up in the hearts.</li>
+            <li><strong>R &gt; 6</strong> is impractical: further increase gives no noticeable strength gain (the 96% azeotrope) but sharply reduces speed.</li>
+        </ul>
+
+        <h3>3.5. How to Set the Reflux Ratio in Practice</h3>
+        <p>The reflux ratio is controlled by the take-off node valve and the dephlegmator power.</p>
+        <h4>Method 1: Adjusting with the take-off node valve</h4>
+        <ol>
+            <li>Set total reflux (valve closed).</li>
+            <li>Smoothly open the valve until a thin stream or drops appear.</li>
+            <li>Assess the take-off speed visually:
+                <ul>
+                    <li>Fast drops (3–5 drops/sec): R ≈ 1–2. Too fast.</li>
+                    <li>Moderate drops (1–2 drops/sec): R ≈ 3–4. Optimum.</li>
+                    <li>Rare drops (1 drop per 2–3 sec): R ≈ 5–6. Maximum quality.</li>
+                    <li>Thin continuous stream: R &lt; 1. Too fast for rectification.</li>
+                </ul>
+            </li>
+        </ol>
+        <h4>Method 2: Adjusting with dephlegmator power</h4>
+        <p>If the dephlegmator has adjustable water supply:</p>
+        <ul>
+            <li>Increase water supply → more vapor condenses → more reflux → R rises.</li>
+            <li>Decrease water supply → less vapor condenses → less reflux → R falls.</li>
+        </ul>
+        <h4>Method 3: Quantitative (for precise tuning)</h4>
+        <ol>
+            <li>Set total reflux.</li>
+            <li>Open the take-off valve for 30 seconds, collect distillate in a graduated cup.</li>
+            <li>Measure the distillate volume over 30 seconds (V_dist).</li>
+            <li>Close the valve, wait 1 minute.</li>
+            <li>Estimate the volume of reflux flowing back into the column (via a sight glass or by calculation).</li>
+            <li>R = Reflux ÷ Distillate.</li>
+        </ol>
+        <p>For home practice, the visual method (Method 1) is sufficient.</p>
+
+        <h2 id="balance">Chapter 4. Power Balance: Heating, Dephlegmator, Take-Off</h2>
+
+        <h3>4.1. Three Parameters That Must Be Coordinated</h3>
+        <p>Stable column operation is determined by the balance of three parameters:</p>
+        <div class="knob-grid">
+            <div class="knob-card knob-heat">
+                <div class="knob-icon">🔥</div>
+                <h4>Boiler Heating Power</h4>
+                <p>Determines the amount of vapor rising through the column</p>
+            </div>
+            <div class="knob-card knob-dephleg">
+                <div class="knob-icon">❄️</div>
+                <h4>Dephlegmator Power</h4>
+                <p>Determines how much vapor condenses and returns as reflux</p>
+            </div>
+            <div class="knob-card knob-takeoff">
+                <div class="knob-icon">💧</div>
+                <h4>Take-Off Rate</h4>
+                <p>Determines how much distillate goes to the receiving vessel</p>
+            </div>
+        </div>
+        <div class="formula-box">
+            <div class="formula-title">Balance Equation</div>
+            <div class="formula-body">Vapor from boiler = Reflux (return) + Distillate (take-off) + Losses</div>
+            <p style="margin: 0.8rem 0 0; font-size: 0.9rem;">If heating power exceeds the sum of reflux and distillate, vapor doesn't have time to condense and escapes through the dephlegmator. The column runs unstably. If dephlegmator power is excessive, reflux fills the packing. The column floods.</p>
+        </div>
+
+        <h3>4.2. Practical Balance Tuning</h3>
+        <h4>Step 1. Determine the maximum heating power</h4>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Boiler Volume</th>
+                    <th>Max Heating Power</th>
+                    <th>Power for Pre-Flooding Regime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20 L</td>
+                    <td>2.0–3.0 kW</td>
+                    <td>1.5–2.2 kW</td>
+                </tr>
+                <tr>
+                    <td>30 L</td>
+                    <td>2.5–4.0 kW</td>
+                    <td>1.8–2.8 kW</td>
+                </tr>
+                <tr>
+                    <td>50 L</td>
+                    <td>3.5–5.0 kW</td>
+                    <td>2.5–3.5 kW</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <h4>Step 2. Tune the dephlegmator</h4>
+        <p>Water supply to the dephlegmator should be sufficient to condense 70–85% of the vapor (the rest goes to take-off). Water exiting the dephlegmator should be warm (40–60 °C), not hot. If the water is cold (&lt;30 °C), the dephlegmator is running with excess and reflux is excessive. If it's hot (&gt;70 °C), the dephlegmator can't cope and vapor escapes to the condenser.</p>
+        <h4>Step 3. Set the take-off rate</h4>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Column Diameter</th>
+                    <th>Take-Off Rate (drops/sec)</th>
+                    <th>Take-Off Volume (mL/hour)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>28 mm</td>
+                    <td>1–2</td>
+                    <td>150–350</td>
+                </tr>
+                <tr>
+                    <td>38 mm</td>
+                    <td>1–3</td>
+                    <td>250–500</td>
+                </tr>
+                <tr>
+                    <td>50 mm</td>
+                    <td>2–4</td>
+                    <td>400–700</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>4.3. What Happens When the Balance Is Disrupted</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Disruption</th>
+                    <th>Sign</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Heating too strong</td>
+                    <td>Rumble in column, pressure rising, liquid from dephlegmator</td>
+                    <td>Flooding</td>
+                    <td>Reduce heating by 10–15%</td>
+                </tr>
+                <tr>
+                    <td>Heating too weak</td>
+                    <td>Top temperature above 78.5 °C, slow take-off</td>
+                    <td>Low strength, long time</td>
+                    <td>Increase heating</td>
+                </tr>
+                <tr>
+                    <td>Dephlegmator too powerful</td>
+                    <td>Excess reflux, column floods</td>
+                    <td>Flooding</td>
+                    <td>Reduce water supply to dephlegmator</td>
+                </tr>
+                <tr>
+                    <td>Dephlegmator too weak</td>
+                    <td>Vapor escapes to condenser, little reflux</td>
+                    <td>Low R, low strength</td>
+                    <td>Increase water supply</td>
+                </tr>
+                <tr>
+                    <td>Take-off too fast</td>
+                    <td>Strength drops below 90%</td>
+                    <td>Impurities in distillate</td>
+                    <td>Reduce take-off (increase R)</td>
+                </tr>
+                <tr>
+                    <td>Take-off too slow</td>
+                    <td>Very slow process</td>
+                    <td>Wasted time</td>
+                    <td>Increase take-off (reduce R), but not below R=2</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="setup">Chapter 5. Step-by-Step Column Tuning: From First Start to Stable Take-Off</h2>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">1</div>
+                <h4>Phase 1: Preparation</h4>
+            </div>
+            <div class="phase-body">
+                <ol>
+                    <li>Check all connections for tightness. Vapor should not escape anywhere except the take-off node and the condenser.</li>
+                    <li>Check water supply to the dephlegmator and condenser. Water should flow in a steady stream.</li>
+                    <li>Check the packing. Make sure the support meshes are in place and the packing is not clogged.</li>
+                    <li>Fill the boiler with wash to no more than 2/3 of its volume.</li>
+                    <li>Install thermometers: one in the boiler and one at the top of the column (below the dephlegmator).</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">2</div>
+                <h4>Phase 2: Start and Stabilization</h4>
+            </div>
+            <div class="phase-body">
+                <ol>
+                    <li><strong>Step 1.</strong> Turn on heating to 50–60% of maximum.</li>
+                    <li><strong>Step 2.</strong> Turn on water supply to the dephlegmator and condenser.</li>
+                    <li><strong>Step 3.</strong> Wait for boiling. Boiler temperature reaches 78–85 °C (depends on wash strength). Vapor starts rising through the column.</li>
+                    <li><strong>Step 4.</strong> Set total reflux. Close the take-off valve. All condensate returns to the column.</li>
+                    <li><strong>Step 5. Stabilization.</strong> Let the column run in total-reflux mode for 30–60 minutes. During this time:
+                        <ul>
+                            <li>A temperature gradient establishes in the column.</li>
+                            <li>The packing gets wetted with reflux.</li>
+                            <li>Volatile impurities (methanol, acetaldehyde) concentrate at the top.</li>
+                            <li>The top temperature stabilizes at 78.0–78.3 °C.</li>
+                        </ul>
+                        <div class="sub-note"><strong>Sign of stabilization:</strong> the top temperature doesn't change for more than 5 minutes. An even rustling of flowing reflux is heard from the dephlegmator.</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">3</div>
+                <h4>Phase 3: Reaching the Pre-Flooding Regime</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="6">
+                    <li><strong>Step 6.</strong> If the column is not yet in the pre-flooding regime (determined during testing), smoothly increase heating by 5–10%.</li>
+                    <li><strong>Step 7.</strong> Observe for 5–10 minutes. If the column is stable (no rumble, temperature even), increase by another 5%.</li>
+                    <li><strong>Step 8.</strong> Repeat until signs of approaching flooding appear (soft rumble, temperature waver). Reduce heating by 10–15%.</li>
+                    <li><strong>Step 9.</strong> Remember this heating power. This is your working regime for this column, this packing, and this boiler volume.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">4</div>
+                <h4>Phase 4: Heads Take-Off</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="10">
+                    <li><strong>Step 10.</strong> Open the take-off valve. Set reflux ratio R = 3–5 (moderate drops, 1–2 drops/sec).</li>
+                    <li><strong>Step 11. Draw off the heads fraction:</strong>
+                        <ul>
+                            <li>Volume: 5–10% of the absolute alcohol in the wash.</li>
+                            <li>For 20 liters of 10% wash (2 L absolute alcohol): heads = 100–200 mL.</li>
+                            <li>Top temperature: 78.0–78.3 °C.</li>
+                            <li>Smell: sharp, acetone, solvent.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Step 12.</strong> Collect the heads in a separate container. Do not pour down the drain (methanol is toxic). Dispose of as chemical waste or use for technical purposes (fire-starting, cleaning).</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">5</div>
+                <h4>Phase 5: Hearts Take-Off</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="13">
+                    <li><strong>Step 13.</strong> Switch the receiving vessel to hearts.</li>
+                    <li><strong>Step 14.</strong> Maintain reflux ratio R = 3–5. Take-off rate: 1–3 drops/sec.</li>
+                    <li><strong>Step 15.</strong> Watch the temperature at the top of the column:
+                        <ul>
+                            <li>78.0–78.3 °C: normal operation. Ethanol is being drawn off.</li>
+                            <li>78.3–78.5 °C: ethanol in the boiler is running out. Approaching the end of hearts take-off.</li>
+                            <li>Above 78.5 °C: the water fraction in the vapor is increasing. Strength is falling. Time to stop hearts take-off.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Step 16.</strong> Draw off hearts until the top temperature starts to rise steadily above 78.5 °C. Usually this is 70–80% of the absolute alcohol.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="phase-block">
+            <div class="phase-header">
+                <div class="ph-num">6</div>
+                <h4>Phase 6: Completion</h4>
+            </div>
+            <div class="phase-body">
+                <ol start="17">
+                    <li><strong>Step 17.</strong> Stop hearts take-off. Switch to a tails container (optional) or stop take-off.</li>
+                    <li><strong>Step 18.</strong> Turn off heating. Let the column cool for 10–15 minutes with water still flowing to the dephlegmator and condenser.</li>
+                    <li><strong>Step 19.</strong> Turn off water supply. Disassemble the take-off node and rinse it.</li>
+                    <li><strong>Step 20.</strong> Rinse the column with steam from clean water (pour 2–3 liters of water into the boiler, boil for 10–15 minutes).</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 id="diagnostics">Chapter 6. Diagnosing Operating Regimes by Temperature</h2>
+
+        <h3>6.1. Temperature at the Top of the Column — The Main Indicator</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Top Temperature</th>
+                    <th>What's Happening</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Below 77.5 °C</td>
+                    <td>Column not stabilized or excess volatile impurities</td>
+                    <td>Continue stabilization, draw off heads</td>
+                </tr>
+                <tr>
+                    <td>78.0–78.3 °C</td>
+                    <td>Normal operation. Ethanol in vapor</td>
+                    <td>Draw off hearts</td>
+                </tr>
+                <tr>
+                    <td>78.3–78.5 °C</td>
+                    <td>Ethanol running out. Water fraction rising</td>
+                    <td>Prepare to stop take-off</td>
+                </tr>
+                <tr>
+                    <td>78.5–79.5 °C</td>
+                    <td>Ethanol in boiler nearly exhausted</td>
+                    <td>Stop hearts take-off</td>
+                </tr>
+                <tr>
+                    <td>Above 80 °C</td>
+                    <td>Vapor is mostly water</td>
+                    <td>Stop take-off. Tails</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>6.2. Boiler Temperature — Auxiliary Indicator</h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Boiler Temperature</th>
+                    <th>What's Happening</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>78–82 °C</td>
+                    <td>Wash contains a significant amount of ethanol</td>
+                </tr>
+                <tr>
+                    <td>82–90 °C</td>
+                    <td>Ethanol being consumed. Wash strength falling</td>
+                </tr>
+                <tr>
+                    <td>90–97 °C</td>
+                    <td>Ethanol almost exhausted. Water and impurities in boiler</td>
+                </tr>
+                <tr>
+                    <td>98–100 °C</td>
+                    <td>Ethanol exhausted. Water is boiling</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>6.3. Temperature Difference Between Boiler and Column Top</h3>
+        <p>In a normally operating column, the temperature difference between the boiler and the top is 5–20 °C (depending on wash composition and distillation stage).</p>
+        <ul>
+            <li><strong>Difference &lt; 3 °C:</strong> the column is not separating. Possible causes: no reflux (dephlegmator not working), packing absent or clogged, heating power too low.</li>
+            <li><strong>Difference &gt; 25 °C:</strong> the column is overloaded. Possible causes: heating power too high, flooding.</li>
+        </ul>
+
+        <h2 id="situations">Chapter 7. Specific Situations and Their Solutions</h2>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h4>🌡️ 7.1. Column Won't Reach 78 °C</h4>
+                <div class="pc-symptom">Symptom: top temperature is 79–82 °C and won't drop.</div>
+                <div class="pc-cause"><strong>Causes:</strong> heating power too low (vapor doesn't reach the top); dephlegmator too powerful (all vapor condenses before reaching the thermometer); packing clogged; thermometer installed incorrectly (too high or in the dephlegmator zone).</div>
+                <div class="pc-solution"><strong>Solution:</strong> increase heating power; reduce water supply to the dephlegmator; check the packing; check thermometer position — it should be at the top of the column, below the dephlegmator, but not in direct contact with condensate.</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>🌊 7.2. Column Floods When Heating Is Increased</h4>
+                <div class="pc-symptom">Symptom: adding power makes the rumble stronger, liquid rises into the dephlegmator.</div>
+                <div class="pc-cause"><strong>Causes:</strong> packing too fine or tightly packed (low void fraction); dephlegmator too powerful (excess reflux); column diameter too small for this heating power.</div>
+                <div class="pc-solution"><strong>Solution:</strong> reduce heating power to stable operation; reduce water supply to the dephlegmator; if the problem is systemic, replace the packing with coarser material or increase the column diameter.</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>📉 7.3. Distillate Strength Below Expected</h4>
+                <div class="pc-symptom">Symptom: at a stable 78.0–78.3 °C, strength in the receiver is 85–90% instead of 95–96%.</div>
+                <div class="pc-cause"><strong>Causes:</strong> reflux ratio too low (take-off too fast); packing doesn't provide sufficient separation (HETP too high, column too short); dephlegmator unstable (water supply fluctuations); wash is cloudy, packing partially clogged.</div>
+                <div class="pc-solution"><strong>Solution:</strong> reduce take-off speed, increase R to 4–5; check packing height and type; stabilize dephlegmator water supply; clarify the wash before rectification.</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>📊 7.4. Temperature at Column Top Jumps</h4>
+                <div class="pc-symptom">Symptom: temperature oscillates by ±0.5–1.0 °C every few minutes.</div>
+                <div class="pc-cause"><strong>Causes:</strong> unstable heating power (voltage fluctuations, uneven gas combustion); unstable water supply to the dephlegmator; column operating near the flooding point.</div>
+                <div class="pc-solution"><strong>Solution:</strong> use a voltage stabilizer or power regulator for the heating element; stabilize water supply (smooth-adjustment valve, constant pressure); reduce heating power by 5–10% to move away from the flooding point.</div>
+            </div>
+
+            <div class="problem-card">
+                <h4>💨 7.5. Vapor Comes Out of the Condenser Instead of Liquid</h4>
+                <div class="pc-symptom">Symptom: vapor doesn't condense in the condenser and escapes outside.</div>
+                <div class="pc-cause"><strong>Causes:</strong> heating power exceeds the condenser's capacity; water supply to the condenser insufficient; condenser too small for this column.</div>
+                <div class="pc-solution"><strong>Solution:</strong> increase water supply to the condenser; reduce heating power; replace the condenser with a higher-capacity one.</div>
+            </div>
+        </div>
+
+        <h2 id="parameters">Chapter 8. Summary Tuning Parameter Table</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>How to Set</th>
+                    <th>How to Monitor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Heating power</td>
+                    <td>70–85% of flooding point</td>
+                    <td>Smoothly increase until rumble appears, then reduce by 10–15%</td>
+                    <td>Boiler temperature, stable operation</td>
+                </tr>
+                <tr>
+                    <td>Water supply to dephlegmator</td>
+                    <td>Outlet water 40–60 °C</td>
+                    <td>Smooth valve adjustment</td>
+                    <td>Outlet water temperature</td>
+                </tr>
+                <tr>
+                    <td>Reflux ratio (hearts take-off)</td>
+                    <td>3–5</td>
+                    <td>Take-off valve: 1–3 drops/sec</td>
+                    <td>Visually, by drop rate</td>
+                </tr>
+                <tr>
+                    <td>Reflux ratio (heads take-off)</td>
+                    <td>3–5</td>
+                    <td>Same as above</td>
+                    <td>Visually</td>
+                </tr>
+                <tr>
+                    <td>Total reflux (stabilization)</td>
+                    <td>∞</td>
+                    <td>Take-off valve closed</td>
+                    <td>Top temperature stable</td>
+                </tr>
+                <tr>
+                    <td>Top temperature (hearts)</td>
+                    <td>78.0–78.3 °C</td>
+                    <td>Automatic during stable operation</td>
+                    <td>Thermometer</td>
+                </tr>
+                <tr>
+                    <td>Top temperature (end of hearts)</td>
+                    <td>78.5 °C</td>
+                    <td>Stop take-off</td>
+                    <td>Thermometer</td>
+                </tr>
+                <tr>
+                    <td>Hearts take-off rate</td>
+                    <td>1–3 drops/sec</td>
+                    <td>Take-off valve</td>
+                    <td>Visually</td>
+                </tr>
+                <tr>
+                    <td>Stabilization time</td>
+                    <td>30–60 minutes</td>
+                    <td>Total reflux</td>
+                    <td>Temperature stable 5+ minutes</td>
+                </tr>
+                <tr>
+                    <td>Heads volume</td>
+                    <td>5–10% of absolute alcohol</td>
+                    <td>Calculation</td>
+                    <td>Graduated container</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="mistakes">Chapter 9. Typical Column Tuning Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Starting take-off without stabilization</td>
+                    <td>Heads fractions in hearts, impure product</td>
+                    <td>Stabilize 30–60 min at total reflux</td>
+                </tr>
+                <tr>
+                    <td>Take-off too fast (R &lt; 2)</td>
+                    <td>Strength 80–88%, impurities in distillate</td>
+                    <td>Reduce take-off, R = 3–5</td>
+                </tr>
+                <tr>
+                    <td>Operating in flooding regime</td>
+                    <td>Instability, wash ejection, low quality</td>
+                    <td>Reduce heating by 10–15%</td>
+                </tr>
+                <tr>
+                    <td>Operating far from pre-flooding regime</td>
+                    <td>Low packing efficiency, long time</td>
+                    <td>Increase heating to pre-flooding</td>
+                </tr>
+                <tr>
+                    <td>Ignoring the top temperature</td>
+                    <td>Missing the moment to stop hearts take-off</td>
+                    <td>Watch the thermometer, stop at 78.5 °C</td>
+                </tr>
+                <tr>
+                    <td>Unstable dephlegmator water supply</td>
+                    <td>Temperature jumps, unstable operation</td>
+                    <td>Stabilize water pressure</td>
+                </tr>
+                <tr>
+                    <td>Using cloudy wash</td>
+                    <td>Packing clogs, efficiency drops</td>
+                    <td>Clarify wash before rectification</td>
+                </tr>
+                <tr>
+                    <td>No thermometer at column top</td>
+                    <td>Cannot control the process</td>
+                    <td>Install a thermometer below the dephlegmator</td>
+                </tr>
+                <tr>
+                    <td>Stopping hearts take-off too early</td>
+                    <td>Loss of yield</td>
+                    <td>Take off until 78.5 °C at the top</td>
+                </tr>
+                <tr>
+                    <td>Stopping hearts take-off too late</td>
+                    <td>Tails fractions in hearts</td>
+                    <td>Stop at 78.5 °C</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="advanced">Chapter 10. Advanced Tuning Techniques</h2>
+
+        <div class="adv-grid">
+            <div class="adv-card">
+                <h4>⚙️ 10.1. Automated Take-Off</h4>
+                <p>For stable operation you can use an automatic take-off node with a needle valve and a timer. The valve opens for a set time, draws off a portion of distillate, then closes. The reflux ratio is determined by the ratio of open to closed time.</p>
+                <p><em>Example: valve open 2 seconds, closed 6 seconds. Reflux-to-distillate ratio ≈ 3. R = 3.</em></p>
+            </div>
+            <div class="adv-card">
+                <h4>🌡️ 10.2. Control by Temperature</h4>
+                <p>Advanced controllers use the top temperature as the control signal:</p>
+                <ul>
+                    <li>Temperature rises above 78.3 °C → reduce take-off (increase R).</li>
+                    <li>Temperature drops below 78.0 °C → increase take-off (reduce R).</li>
+                    <li>Temperature above 78.5 °C → stop hearts take-off.</li>
+                </ul>
+            </div>
+            <div class="adv-card">
+                <h4>🍶 10.3. Working with Different Wash Strengths</h4>
+                <ul>
+                    <li><strong>8–12% (sugar wash):</strong> standard power, stabilize 30–40 min.</li>
+                    <li><strong>15–20% (low wines):</strong> 10–15% lower power, stabilize 20–30 min. Less water, faster start.</li>
+                    <li><strong>5–8% (fruit wash):</strong> standard power, stabilize 40–50 min. More water, longer stabilization.</li>
+                </ul>
+            </div>
+            <div class="adv-card">
+                <h4>🌤️ 10.4. Working with Changing Atmospheric Pressure</h4>
+                <p>When atmospheric pressure changes (thunderstorm, weather change, altitude), ethanol's boiling point changes:</p>
+                <ul>
+                    <li>Normal pressure (760 mmHg): ethanol boils at 78.37 °C.</li>
+                    <li>Low pressure (thunderstorm, 740 mmHg): boiling point drops by 0.5–1.0 °C.</li>
+                    <li>High altitude (1000 m above sea level): boiling point drops by 3–4 °C.</li>
+                </ul>
+                <p>When working under changed pressure, rely not on the absolute temperature value but on stability and the moment it starts to rise.</p>
+            </div>
+        </div>
+
+        <h2 id="faq">Chapter 11. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How long can I operate in the pre-flooding regime without risk?</div>
+            <div class="faq-answer"><p>Indefinitely, as long as the regime is stable. The pre-flooding regime is the column's normal operating mode. Risk arises only when crossing the flooding point. If you've set power 10–15% below the flooding point, the column can run in this regime for the entire distillation.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I change the reflux ratio during hearts take-off?</div>
+            <div class="faq-answer"><p>Yes. Some distillers start hearts take-off at R = 3 (faster), and toward the end, when the top temperature starts rising, increase R to 5 for more careful tails separation. This is a reasonable practice.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What do I do if the column floods?</div>
+            <div class="faq-answer"><p>Immediately reduce heating power by 30–50%. Wait for the liquid to drain from the packing (5–10 minutes). Then smoothly increase heating to the working regime. Do not try to "push through" the flooding by increasing heating — this will make things worse.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need a pressure gauge on the boiler?</div>
+            <div class="faq-answer"><p>Desirable but not mandatory. A pressure gauge helps diagnose flooding (pressure rise) and monitor tightness. For a home column, a gauge with a 0–1 bar range is sufficient.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I use the same regime for columns of different diameters?</div>
+            <div class="faq-answer"><p>No. Column throughput depends on cross-sectional area. A 50 mm column passes 3 times more vapor than a 28 mm column. Heating power and take-off rate must be scaled proportionally to cross-sectional area.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How does column height affect tuning?</div>
+            <div class="faq-answer"><p>Column height determines the number of theoretical plates but doesn't affect tuning of the pre-flooding regime and reflux ratio. However, a taller column requires a more powerful dephlegmator (more vapor to condense) and a longer stabilization time.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to change settings when switching from sugar wash to grain wash?</div>
+            <div class="faq-answer"><p>The column operating regime (power, reflux ratio) stays the same. What changes is the heads volume (grain wash has more sulfur compounds — increase heads take-off by 2–3%) and stabilization time (grain wash is cloudier — stabilization takes 10–15 minutes longer).</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I rectify at R = 1?</div>
+            <div class="faq-answer"><p>Technically yes, but quality will be low. Strength 80–88%, noticeable impurities. R = 1 is suitable for rough concentration (obtaining low wines) but not for producing clean rectify.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Why does the column behave differently after replacing the packing?</div>
+            <div class="faq-answer"><p>New packing has a different HETP, different void fraction, and different flow resistance. The flooding point has shifted. Repeat the tuning procedure: find the new flooding point and set the working regime.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How do I know the dephlegmator is working correctly?</div>
+            <div class="faq-answer"><p>Water exiting the dephlegmator should be warm (40–60 °C). Vapor in the top of the column partially condenses (reflux flows back) and partially passes to the take-off node. If outlet water is cold (&lt;30 °C), the dephlegmator is excessive. If it's hot (&gt;70 °C) or vapor goes to the condenser, the dephlegmator can't cope.</p></div>
+        </div>
+
+        <h2 id="journal">Chapter 12. The Column Tuning Journal</h2>
+        <p>For reproducible results, keep a tuning journal recording the parameters of each distillation:</p>
+        <div class="journal-template">
+            <div class="jt-line">Date: _______________</div>
+            <div class="jt-line">Wash volume and strength: _______________</div>
+            <div class="jt-line">Packing type: _______________</div>
+            <div class="jt-line">Heating power (max): _______________</div>
+            <div class="jt-line">Heating power (working): _______________</div>
+            <div class="jt-line">Flooding point: _______________</div>
+            <div class="jt-line">Reflux ratio: _______________</div>
+            <div class="jt-line">Top temp (stabilization): _______________</div>
+            <div class="jt-line">Top temp (hearts start): _______________</div>
+            <div class="jt-line">Top temp (hearts end): _______________</div>
+            <div class="jt-line">Heads volume: _______________</div>
+            <div class="jt-line">Hearts volume: _______________</div>
+            <div class="jt-line">Hearts strength: _______________</div>
+            <div class="jt-line">Distillation time: _______________</div>
+            <div class="jt-line">Notes: _______________</div>
+        </div>
+        <p>After 5–10 distillations you will know exactly how your column behaves and will be able to tune it in 5 minutes.</p>
+
+        <h2>Conclusion: Tuning Is Understanding</h2>
+        <p>A rectification column is not a black box. It is a system of three flows — vapor, reflux, and distillate — in dynamic equilibrium. Tuning the column means finding the point where the equilibrium is optimal: vapor rises at maximum speed without flooding, reflux flows in sufficient quantity for efficient mass transfer, and distillate is drawn off at the right speed for the desired reflux ratio.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>🎚️ Operate in the Pre-Flooding Regime</strong>
+                Find the flooding point, then reduce heating by 10–15%. This is the maximum efficiency of your column. Below it — loss of performance. Above it — flooding and instability.
+            </div>
+            <div class="principle-item">
+                <strong>💧 Reflux Ratio 3–5 Is the Gold Standard of Home Rectification</strong>
+                Below it — impurities in the distillate. Above it — unjustified loss of time. Adjust with the take-off valve: 1–3 drops per second for a 38–50 mm column diameter.
+            </div>
+            <div class="principle-item">
+                <strong>⏱️ Stabilization Is Mandatory</strong>
+                30–60 minutes of total reflux before starting take-off. Without stabilization the temperature gradient isn't established, heads fractions aren't concentrated, and the first milliliters of hearts will contain methanol and acetaldehyde.
+            </div>
+        </div>
+
+        <p>Tuning a column is not a one-time procedure but a skill that develops with every distillation. The first tuning takes an hour. The fifth — twenty minutes. The tenth — five. After the twentieth you will hear the column and understand its state by sound, temperature, and drop rate without looking at the thermometer.</p>
+        <p><em>Stable regimes and clean rectify.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>

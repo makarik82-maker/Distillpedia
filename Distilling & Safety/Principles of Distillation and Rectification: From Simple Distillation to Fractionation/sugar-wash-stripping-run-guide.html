@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distilling Sugar Wash: Step-by-Step Guide to Raw Spirit | Distillpedia</title>
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #4f46e5;
+            --accent-dark: #4338ca;
+            --accent-light: #818cf8;
+            --bg-color: #f1f5f9;
+            --text-color: #2c3e50;
+            --light-gray: #e2e8f0;
+            --note-bg: #eef2ff;
+            --note-border: #c7d2fe;
+            --note-text: #4338ca;
+            --takeaway-bg: #ecfdf5;
+            --takeaway-text: #065f46;
+            --warning-bg: #fef2f2;
+            --warning-text: #991b1b;
+            --gold: #f59e0b;
+            /* Phase colors */
+            --ph-prep: #0891b2;
+            --ph-heat: #ea580c;
+            --ph-collect: #4f46e5;
+            --ph-finish: #7c3aed;
+            --ph-process: #059669;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #4f46e5 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 25% 30%, rgba(255,255,255,0.06) 0%, transparent 40%),
+                              radial-gradient(circle at 75% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        header .tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+        }
+        nav {
+            background-color: #1e293b;
+            text-align: center;
+            padding: 0.8rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-light); }
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto;
+            background: white;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-radius: 12px;
+        }
+        h1.article-title {
+            font-size: 2.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+        /* Process flow overview */
+        .flow-overview {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 8px;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+        .flow-phase {
+            flex: 1;
+            min-width: 150px;
+            border-radius: 10px;
+            padding: 1rem 0.8rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .flow-phase .fp-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            opacity: 0.5;
+        }
+        .flow-phase .fp-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .flow-phase .fp-steps {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+        .fp-1 { background: linear-gradient(135deg, #0891b2, #0e7490); }
+        .fp-2 { background: linear-gradient(135deg, #ea580c, #c2410c); }
+        .fp-3 { background: linear-gradient(135deg, #4f46e5, #4338ca); }
+        .fp-4 { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+        .fp-5 { background: linear-gradient(135deg, #059669, #047857); }
+        .toc {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: var(--accent-dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+        .toc ol {
+            margin-bottom: 0;
+            padding-left: 20px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.5rem; break-inside: avoid; }
+        .toc a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+        .toc a:hover { text-decoration: underline; }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 3.5rem;
+            font-size: 1.6rem;
+            scroll-margin-top: 70px;
+        }
+        h3 {
+            color: var(--accent-dark);
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        h4 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        p { margin-bottom: 1.2rem; text-align: justify; }
+        ul, ol { margin-bottom: 1.5rem; padding-left: 25px; }
+        li { margin-bottom: 0.6rem; }
+        .key-takeaway {
+            background-color: var(--takeaway-bg);
+            border-left: 4px solid #059669;
+            padding: 15px 20px;
+            margin: 2rem 0;
+            font-weight: 500;
+            border-radius: 4px;
+            color: var(--takeaway-text);
+        }
+        .practical-note {
+            background-color: var(--note-bg);
+            border: 1px solid var(--note-border);
+            color: var(--note-text);
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        .practical-note strong { color: #3730a3; }
+        .warning-note {
+            background-color: var(--warning-bg);
+            border-left: 4px solid #dc2626;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--warning-text);
+        }
+        .warning-note strong { color: #7f1d1d; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.93rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .table-scroll { overflow-x: auto; border-radius: 8px; }
+        /* Step cards */
+        .phase-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 3rem 0 1.5rem;
+        }
+        .phase-divider .pd-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .phase-divider .pd-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .phase-divider .pd-range {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .pd-1 .pd-badge { background: var(--ph-prep); }
+        .pd-2 .pd-badge { background: var(--ph-heat); }
+        .pd-3 .pd-badge { background: var(--ph-collect); }
+        .pd-4 .pd-badge { background: var(--ph-finish); }
+        .pd-5 .pd-badge { background: var(--ph-process); }
+        .step-card {
+            display: flex;
+            gap: 16px;
+            margin: 1.1rem 0;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.1rem 1.3rem;
+        }
+        .step-card .step-badge {
+            background: var(--accent-color);
+            color: white;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .step-card.phase-heat .step-badge { background: var(--ph-heat); }
+        .step-card.phase-collect .step-badge { background: var(--ph-collect); }
+        .step-card.phase-finish .step-badge { background: var(--ph-finish); }
+        .step-card.phase-process .step-badge { background: var(--ph-process); }
+        .step-card .step-content { flex: 1; }
+        .step-card .step-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.02rem;
+            margin-bottom: 0.4rem;
+        }
+        .step-card ul, .step-card ol { margin-bottom: 0; font-size: 0.93rem; }
+        .step-card p { margin-bottom: 0.4rem; font-size: 0.93rem; }
+        .step-card p:last-child { margin-bottom: 0; }
+        .step-card .sub-note {
+            background: #eef2ff;
+            border-left: 3px solid var(--accent-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            margin-top: 8px;
+        }
+        /* Apparatus cards */
+        .apparatus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.8rem 0;
+        }
+        .apparatus-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 1.2rem 1.4rem;
+        }
+        .apparatus-card h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+        }
+        .apparatus-card ul { font-size: 0.9rem; margin-bottom: 0; }
+        .apparatus-card li { margin-bottom: 0.4rem; }
+        /* Formula boxes */
+        .formula-box {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 1px solid var(--note-border);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .formula-box .formula-title {
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 0.6rem;
+        }
+        .formula-box .formula-body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .formula-box .formula-example {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+        }
+        /* Checklist */
+        .checklist {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px dotted #cbd5e1;
+            font-size: 0.93rem;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .checklist-item .cb-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-color);
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .checklist-item .cb-num {
+            font-weight: 700;
+            color: var(--accent-dark);
+            min-width: 24px;
+        }
+        /* FAQ */
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background: #fcfdfe;
+        }
+        .faq-question {
+            background: #f8fafc;
+            padding: 0.9rem 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .faq-question .q-mark { color: var(--accent-color); font-size: 1.3rem; font-weight: 800; }
+        .faq-answer { padding: 0.9rem 1.3rem; font-size: 0.95rem; }
+        .faq-answer p { margin-bottom: 0.5rem; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+        /* Principles */
+        .principles {
+            background: linear-gradient(135deg, #1e293b 0%, #4f46e5 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .principles::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .principles h3 {
+            color: white;
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        .principles .principle-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        .principles .principle-item strong {
+            color: #fde68a;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            main { padding: 1.5rem; margin: 1rem; }
+            h1.article-title { font-size: 1.7rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+            nav { padding: 0.5rem; }
+            nav a { margin: 0 8px; font-size: 0.75rem; }
+            .toc ol { columns: 1; }
+            .apparatus-grid { grid-template-columns: 1fr; }
+            .flow-overview { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Distillpedia</h1>
+    <p class="tagline">The encyclopedia of home distilling</p>
+</header>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Theory</a>
+    <a href="#">Distillation</a>
+    <a href="#">Equipment</a>
+    <a href="#">Legal</a>
+</nav>
+
+<main>
+    <article>
+        <h1 class="article-title">Distilling Sugar Wash: A Step-by-Step Guide to Raw Spirit</h1>
+        <p class="subtitle">A detailed guide to the first distillation run: from equipment preparation to finished raw spirit. Heating, collection, completion, and post-run handling.</p>
+
+        <div class="flow-overview">
+            <div class="flow-phase fp-1">
+                <div class="fp-num">1</div>
+                <div class="fp-name">Preparation</div>
+                <div class="fp-steps">Steps 1–11</div>
+            </div>
+            <div class="flow-phase fp-2">
+                <div class="fp-num">2</div>
+                <div class="fp-name">Start &amp; Heat-Up</div>
+                <div class="fp-steps">Steps 12–17</div>
+            </div>
+            <div class="flow-phase fp-3">
+                <div class="fp-num">3</div>
+                <div class="fp-name">Collection</div>
+                <div class="fp-steps">Steps 18–21</div>
+            </div>
+            <div class="flow-phase fp-4">
+                <div class="fp-num">4</div>
+                <div class="fp-name">Completion</div>
+                <div class="fp-steps">Steps 22–26</div>
+            </div>
+            <div class="flow-phase fp-5">
+                <div class="fp-num">5</div>
+                <div class="fp-name">Processing &amp; Storage</div>
+                <div class="fp-steps">Steps 27–30</div>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#intro">Introduction: The First Run Is the Foundation</a></li>
+                <li><a href="#purpose">Chapter 1. The Purpose of the First Run</a></li>
+                <li><a href="#prep">Chapter 2. Preparation: Equipment, Wash, Safety</a></li>
+                <li><a href="#heatup">Chapter 3. Start-Up and Heating</a></li>
+                <li><a href="#collect">Chapter 4. Collecting the Distillate</a></li>
+                <li><a href="#finish">Chapter 5. Completing the Run</a></li>
+                <li><a href="#process">Chapter 6. Handling and Storing Raw Spirit</a></li>
+                <li><a href="#mistakes">Chapter 7. Typical First-Run Mistakes</a></li>
+                <li><a href="#apparatus">Chapter 8. Specifics for Different Apparatus Types</a></li>
+                <li><a href="#yield">Chapter 9. Yield Calculation and Loss Control</a></li>
+                <li><a href="#faq">Chapter 10. Frequently Asked Questions</a></li>
+                <li><a href="#checklist">Chapter 11. Summary First-Run Checklist</a></li>
+            </ol>
+        </div>
+
+        <h2 id="intro">Introduction: The First Run Is the Foundation of the Whole Process</h2>
+        <p>The first distillation of sugar wash is the stage where a 10–14% ABV liquid turns into a 25–40% ABV raw spirit. At this stage, no final product is created. Raw spirit is a semi-finished product, a concentrate that will be purified and separated into fractions during the second, fractional distillation.</p>
+        <p>But it is precisely the first run that determines <em>how much</em> alcohol you will get and in <em>what condition</em> it will enter the second stage. Stopping collection too early means losing yield. Stopping too late means fusel oils and furfural migrating into the raw spirit. Overheating means scorched yeast and a burnt off-taste. Skipping preparation means foaming and wash eruption.</p>
+        <p>Sugar wash is the simplest type of wash to distill. It contains no grain proteins, fruit pectins, or honey waxes. But the simplicity of the raw material does not mean the process can be done carelessly. Sugar wash contains yeast sediment, residual metabolic products, and volatile impurities that, with improper heating, migrate into the distillate and complicate the second distillation.</p>
+        <p>This article is a step-by-step guide to the first distillation of sugar wash. Every step is numbered, every parameter specified, every mistake explained. Follow the instructions — and you will get a clean, stable raw spirit ready for fractional distillation.</p>
+
+        <h2 id="purpose">Chapter 1. The Purpose of the First Run: What We Do and What We Don't</h2>
+
+        <h3>1.1. The Task of the First Run</h3>
+        <p>The first run solves one task: <strong>extract the maximum ethanol from the wash and concentrate it into a smaller volume.</strong></p>
+        <ul>
+            <li><strong>Input:</strong> 20 liters of wash at 12% ABV (2.4 liters of absolute alcohol).</li>
+            <li><strong>Output:</strong> ~5–6 liters of raw spirit at 35–40% ABV (the same 2.4 liters of absolute alcohol in a smaller volume).</li>
+            <li><strong>What remains in the still:</strong> water, dead yeast, proteins, minerals, non-volatile organic substances, glycerol, part of the heavy fusel oils.</li>
+        </ul>
+
+        <h3>1.2. What the First Run Does NOT Do</h3>
+        <ul>
+            <li><strong>Does not separate fractions.</strong> Heads, hearts, and tails are collected into a single container. Separation happens during the second run.</li>
+            <li><strong>Does not purify the spirit.</strong> Raw spirit contains methanol, acetaldehyde, and fusel oils. It must not be drunk.</li>
+            <li><strong>Does not create aroma.</strong> For sugar wash, aroma is not a goal. The goal is maximum yield of neutral spirit.</li>
+        </ul>
+
+        <h3>1.3. Why Not Collect Fractions During the First Run</h3>
+        <p>Some distillers collect heads during the first run too. This is permissible but not necessary. The reasons:</p>
+        <ul>
+            <li>During the second run, heads will be collected again. Double head collection leads to ethanol loss, since some ethanol leaves with the head fraction.</li>
+            <li>The first run is about <em>concentration</em>. The more distillate collected, the higher the overall yield.</li>
+            <li>Raw spirit is not the final product. All impurities will be removed during the second run.</li>
+        </ul>
+        <div class="practical-note">
+            <strong>Recommendation:</strong> during the first distillation of sugar wash, collect all distillate into a single container. The exception is if the wash has a pronounced off-odor (acetone, hydrogen sulfide): in that case, collect the first 50–100 ml separately.
+        </div>
+
+        <h2 id="prep">Chapter 2. Preparation: Equipment, Wash, Safety</h2>
+
+        <h3>2.1. Equipment</h3>
+        <p>For the first distillation of sugar wash you will need:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Purpose</th>
+                    <th>Pre-Use Check</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Distillation still (10–50 L)</td>
+                    <td>Heating the wash, evaporating alcohol</td>
+                    <td>Clean, no residue from previous runs</td>
+                </tr>
+                <tr>
+                    <td>Lid with seal</td>
+                    <td>Sealing the still</td>
+                    <td>Seal intact, no cracks</td>
+                </tr>
+                <tr>
+                    <td>Thermometer in the lid</td>
+                    <td>Monitoring still temperature</td>
+                    <td>Range 0–120 °C, working</td>
+                </tr>
+                <tr>
+                    <td>Vapor outlet tube</td>
+                    <td>Directing vapor out of the still</td>
+                    <td>Clean, no blockages</td>
+                </tr>
+                <tr>
+                    <td>Thump keg (optional)</td>
+                    <td>Catching splashes and part of the tails</td>
+                    <td>Clean, dry</td>
+                </tr>
+                <tr>
+                    <td>Condenser (Liebig, coil)</td>
+                    <td>Condensing vapor</td>
+                    <td>Water connection verified</td>
+                </tr>
+                <tr>
+                    <td>Water hoses</td>
+                    <td>Supplying and draining cooling water</td>
+                    <td>No kinks or leaks</td>
+                </tr>
+                <tr>
+                    <td>Receiving container</td>
+                    <td>Collecting raw spirit</td>
+                    <td>Glass or food-grade plastic, 5–10 L</td>
+                </tr>
+                <tr>
+                    <td>Alcoholmeter (0–96%)</td>
+                    <td>Measuring strength</td>
+                    <td>Clean, no cracks</td>
+                </tr>
+                <tr>
+                    <td>Graduated cylinder (100–250 ml)</td>
+                    <td>Taking samples for the alcoholmeter</td>
+                    <td>Clean</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="phase-divider pd-1">
+            <div class="pd-badge">A</div>
+            <div>
+                <div class="pd-title">Wash Preparation</div>
+                <div class="pd-range">Steps 1–3</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+                <div class="step-title">Confirm fermentation is complete</div>
+                <ul>
+                    <li>Hydrometer reading: 0–2 °P (0.998–1.008 SG).</li>
+                    <li>Taste: dry, slightly bitter, no sweetness.</li>
+                    <li>Two readings 24 hours apart give the same result.</li>
+                </ul>
+                <div class="sub-note">If the wash is under-fermented (gravity above 3 °P), the first run will lose yield: unfermented sugar will remain in the still and caramelize when heated.</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+                <div class="step-title">Clarify the wash</div>
+                <ul>
+                    <li>Let the wash settle for 24–48 hours at 10–15 °C. The yeast will sink to the bottom.</li>
+                    <li>Carefully decant the clarified wash off the sediment using a siphon or by tilting the container.</li>
+                    <li>Do not pour the residue with sediment (0.5–1 liter) into the still.</li>
+                </ul>
+                <div class="sub-note">Why: yeast sediment scorches on the bottom of the still when heated, creating a burnt smell and making cleanup difficult. Clarification also reduces foaming.</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+                <div class="step-title">Degas the wash (optional)</div>
+                <p>Stir the clarified wash with a clean paddle for 2–3 minutes, or pour it from one container to another in a thin stream. This removes dissolved CO₂ and reduces foaming during heating.</p>
+            </div>
+        </div>
+
+        <div class="phase-divider pd-1">
+            <div class="pd-badge">B</div>
+            <div>
+                <div class="pd-title">Apparatus Preparation</div>
+                <div class="pd-range">Steps 4–7</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">4</div>
+            <div class="step-content">
+                <div class="step-title">Rinse the apparatus</div>
+                <ul>
+                    <li>Run hot water (50–60 °C) through the still and vapor outlet for 5 minutes.</li>
+                    <li>Verify no residue from previous runs remains in the still.</li>
+                    <li>Rinse the condenser with water.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">5</div>
+            <div class="step-content">
+                <div class="step-title">Check for leaks</div>
+                <ul>
+                    <li>Assemble the apparatus completely.</li>
+                    <li>Close the condenser outlet (with a finger or a plug, for example).</li>
+                    <li>Blow gently into the vapor outlet or create slight pressure.</li>
+                    <li>If air escapes from the joints, tighten the clamps and replace the seal.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">6</div>
+            <div class="step-content">
+                <div class="step-title">Connect water to the condenser</div>
+                <ul>
+                    <li>Supply hose to the lower condenser fitting.</li>
+                    <li>Drain hose from the upper fitting.</li>
+                    <li>Water should flow bottom-to-top to fully fill the condenser jacket.</li>
+                    <li>Check the pressure: water should flow in a steady stream, without surges.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">7</div>
+            <div class="step-content">
+                <div class="step-title">Prepare the receiving container</div>
+                <ul>
+                    <li>Glass jar or bottle of 5–10 liters.</li>
+                    <li>Clean and dry.</li>
+                    <li>Place it under the condenser outlet.</li>
+                    <li>Make sure the distillate will drip/flow into the container, not past it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase-divider pd-1">
+            <div class="pd-badge">C</div>
+            <div>
+                <div class="pd-title">Safety</div>
+                <div class="pd-range">Steps 8–11</div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">8</div>
+            <div class="step-content">
+                <div class="step-title">Ensure ventilation</div>
+                <p>Ethanol vapors are flammable. Distill in a well-ventilated room. Do not use open flames near the apparatus (for gas heating, use a burner with a long hose and keep the cylinder at a distance).</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">9</div>
+            <div class="step-content">
+                <div class="step-title">Remove flammable items</div>
+                <p>Within a 1-meter radius of the apparatus there should be no paper, fabrics, or solvents.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">10</div>
+            <div class="step-content">
+                <div class="step-title">Prepare extinguishing means</div>
+                <p>Have a fire extinguisher (dry powder or CO₂) or a thick blanket within reach.</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-badge">11</div>
+            <div class="step-content">
+                <div class="step-title">Do not leave the apparatus unattended</div>
+                <p>The first run takes 2–4 hours. Stay in the room for the entire process.</p>
+            </div>
+        </div>
+
+        <h2 id="heatup">Chapter 3. Start-Up and Heating: Step by Step</h2>
+
+        <div class="phase-divider pd-2">
+            <div class="pd-badge">2</div>
+            <div>
+                <div class="pd-title">Start &amp; Heat-Up</div>
+                <div class="pd-range">Steps 12–17</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">12</div>
+            <div class="step-content">
+                <div class="step-title">Fill the still</div>
+                <ul>
+                    <li>Pour the clarified wash into the still.</li>
+                    <li>Fill no more than 2/3 of the still's volume. For a 30-liter still — maximum 20 liters of wash. For a 20-liter still — maximum 13 liters.</li>
+                </ul>
+                <div class="sub-note">Why not more: when heated, the wash foams and increases in volume. If overfilled, foam can enter the vapor outlet and condenser, contaminating the distillate.</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">13</div>
+            <div class="step-content">
+                <div class="step-title">Install the lid and connect</div>
+                <ul>
+                    <li>Place the lid on the still. Tighten the clamps or bolts evenly, diagonally (like a wheel rim).</li>
+                    <li>Verify the thermometer is installed and shows room temperature.</li>
+                    <li>Connect the vapor outlet tube to the lid and to the condenser.</li>
+                    <li>Make sure the receiving container sits under the condenser outlet.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">14</div>
+            <div class="step-content">
+                <div class="step-title">Turn on the heat</div>
+                <ul>
+                    <li>Turn the heat to maximum power.</li>
+                    <li>The goal of the first stage is to bring the wash to a boil as quickly as possible, to minimize the time the yeast spends in a warm environment.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">15</div>
+            <div class="step-content">
+                <div class="step-title">Wait for boiling</div>
+                <ul>
+                    <li>The still temperature will begin to rise: 20 → 40 → 60 → 70 °C.</li>
+                    <li>At 60–70 °C, weak vapor or condensate may come from the condenser. This is normal: highly volatile components (acetaldehyde, residual CO₂) are evaporating.</li>
+                    <li>Do not collect this condensate into the main container. If you wish, place a separate small container for the first 5–10 minutes. But for sugar wash this is not critical.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">16</div>
+            <div class="step-content">
+                <div class="step-title">Start of collection</div>
+                <ul>
+                    <li>When the still temperature reaches 78–82 °C, a steady stream of distillate will come from the condenser.</li>
+                    <li>Reduce the heat to moderate (60–70% of maximum). From this point, heating should be stable, without surges.</li>
+                    <li>Place the main receiving container under the stream.</li>
+                    <li>Record the time collection started and the still temperature.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-heat">
+            <div class="step-badge">17</div>
+            <div class="step-content">
+                <div class="step-title">Set the collection rate</div>
+                <ul>
+                    <li>For the first run, the collection rate can be higher than for fractional distillation: 3–5 drops per second, or a thin stream 1–2 mm thick.</li>
+                    <li>The goal is to extract the alcohol quickly, without spending time on fine separation.</li>
+                    <li>Do not allow collection too fast (thick stream, 10+ drops/sec): the vapor won't have time to condense, part will bypass the condenser, and the raw spirit strength will drop.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="collect">Chapter 4. Collecting the Distillate: The Main Phase</h2>
+
+        <div class="phase-divider pd-3">
+            <div class="pd-badge">3</div>
+            <div>
+                <div class="pd-title">Collection</div>
+                <div class="pd-range">Steps 18–21</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-collect">
+            <div class="step-badge">18</div>
+            <div class="step-content">
+                <div class="step-title">Monitor the process</div>
+                <p>During collection, monitor three parameters:</p>
+                <ul>
+                    <li><strong>Still temperature:</strong>
+                        <ul>
+                            <li>Start of collection: 78–82 °C.</li>
+                            <li>Middle of collection: 85–92 °C.</li>
+                            <li>End of collection: 95–99 °C.</li>
+                            <li>Temperature should rise smoothly, without surges.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Stream strength:</strong>
+                        <ul>
+                            <li>Measure with the alcoholmeter every 300–500 ml of collected distillate.</li>
+                            <li>Start of collection: 70–80% ABV.</li>
+                            <li>Middle of collection: 50–60% ABV.</li>
+                            <li>End of collection: 20–30% ABV.</li>
+                            <li>Strength should decrease as collection progresses.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Distillate appearance:</strong>
+                        <ul>
+                            <li>Clear, colorless.</li>
+                            <li>If the distillate is cloudy — wash splashes may be entering the vapor outlet. Reduce the heat.</li>
+                            <li>If the distillate has a yellow or brown tint — scorching in the still. Immediately reduce the heat.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-collect">
+            <div class="step-badge">19</div>
+            <div class="step-content">
+                <div class="step-title">Collect the raw spirit</div>
+                <ul>
+                    <li>All distillate is collected into a single receiving container.</li>
+                    <li>Do not separate into fractions during the first run (see Chapter 1).</li>
+                    <li>Periodically measure strength and volume. Record in the journal.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-collect">
+            <div class="step-badge">20</div>
+            <div class="step-content">
+                <div class="step-title">Control foaming</div>
+                <p>In the first 10–20 minutes of collection, foaming is possible. If foam rises toward the vapor outlet:</p>
+                <ul>
+                    <li>Reduce the heat by 20–30%.</li>
+                    <li>Wait for the foam to settle.</li>
+                    <li>Smoothly return the heat to the working level.</li>
+                </ul>
+                <p>If foam enters the vapor outlet and condenser:</p>
+                <ul>
+                    <li>Stop collection for 2–3 minutes.</li>
+                    <li>Reduce the heat.</li>
+                    <li>Rinse the receiving container if wash got into it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-collect">
+            <div class="step-badge">21</div>
+            <div class="step-content">
+                <div class="step-title">Interim measurements</div>
+                <p>Every 30 minutes or every 500 ml of distillate:</p>
+                <ul>
+                    <li>Measure the stream strength.</li>
+                    <li>Measure the still temperature.</li>
+                    <li>Record the data in the journal.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>Example first-run journal</h4>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Volume (ml)</th>
+                    <th>Stream Strength</th>
+                    <th>Still Temp</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>14:00</td><td>0</td><td>—</td><td>78 °C</td><td>Collection started</td></tr>
+                <tr><td>14:30</td><td>500</td><td>75%</td><td>80 °C</td><td>Steady collection</td></tr>
+                <tr><td>15:00</td><td>1000</td><td>62%</td><td>84 °C</td><td></td></tr>
+                <tr><td>15:30</td><td>1500</td><td>50%</td><td>88 °C</td><td></td></tr>
+                <tr><td>16:00</td><td>2000</td><td>38%</td><td>92 °C</td><td></td></tr>
+                <tr><td>16:30</td><td>2500</td><td>28%</td><td>95 °C</td><td></td></tr>
+                <tr><td>17:00</td><td>2800</td><td>22%</td><td>97 °C</td><td>Approaching the end</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="finish">Chapter 5. Completing the Run: When to Stop</h2>
+
+        <div class="phase-divider pd-4">
+            <div class="pd-badge">4</div>
+            <div>
+                <div class="pd-title">Completion</div>
+                <div class="pd-range">Steps 22–26</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-finish">
+            <div class="step-badge">22</div>
+            <div class="step-content">
+                <div class="step-title">Determine when to stop collection</div>
+                <p>Stop collection when any of the three criteria is reached:</p>
+                <ul>
+                    <li><strong>Criterion 1: stream strength.</strong> Strength has dropped to 20–25% ABV. Below this threshold the distillate is dominated by water and heavy impurities. Further collection is pointless: you are collecting water with impurities, not alcohol.</li>
+                    <li><strong>Criterion 2: still temperature.</strong> Temperature has reached 97–99 °C. This means there is almost no alcohol left in the still and water is boiling.</li>
+                    <li><strong>Criterion 3: collection rate.</strong> Distillate is dripping less than 1 drop every 5–10 seconds. Further heating yields negligible distillate at high energy cost.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-finish">
+            <div class="step-badge">23</div>
+            <div class="step-content">
+                <div class="step-title">Stop collection</div>
+                <ul>
+                    <li>Move the receiving container out from under the stream.</li>
+                    <li>Place a small container for the last drops (optional), or simply stop collecting.</li>
+                    <li>Record the final volume and end time.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-finish">
+            <div class="step-badge">24</div>
+            <div class="step-content">
+                <div class="step-title">Turn off the heat</div>
+                <ul>
+                    <li>Turn off the still heat.</li>
+                    <li>Do not turn off the condenser water supply for another 5–10 minutes. Hot vapor remains in the still and must condense.</li>
+                    <li>After 5–10 minutes, when dripping from the condenser stops, turn off the water supply.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-finish">
+            <div class="step-badge">25</div>
+            <div class="step-content">
+                <div class="step-title">Cool the still</div>
+                <ul>
+                    <li>Let the still cool naturally for 30–60 minutes.</li>
+                    <li>Do not open the lid of a hot still. Steam can burn your face and hands.</li>
+                    <li>Do not cool the still with cold water: a sudden temperature change can deform the metal or damage the enamel.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card phase-finish">
+            <div class="step-badge">26</div>
+            <div class="step-content">
+                <div class="step-title">Open and clean</div>
+                <ul>
+                    <li>When the still temperature has dropped below 50 °C, open the lid.</li>
+                    <li>Pour the spent wash (the residue in the still) into a disposal container.</li>
+                    <li>Wash the still with hot water and detergent.</li>
+                    <li>Rinse the vapor outlet and condenser with water.</li>
+                    <li>Wipe dry.</li>
+                </ul>
+                <div class="sub-note">Disposal of spent wash: sugar wash spent wash can be poured down the drain (for small volumes, up to 10 liters). For large volumes, dilute with water 1:10 and use as garden fertilizer. Do not pour hot spent wash onto plants or into water bodies.</div>
+            </div>
+        </div>
+
+        <h2 id="process">Chapter 6. Handling and Storing Raw Spirit</h2>
+
+        <div class="phase-divider pd-5">
+            <div class="pd-badge">5</div>
+            <div>
+                <div class="pd-title">Processing &amp; Storage</div>
+                <div class="pd-range">Steps 27–30</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-process">
+            <div class="step-badge">27</div>
+            <div class="step-content">
+                <div class="step-title">Measure strength and volume</div>
+                <ul>
+                    <li>Stir the raw spirit in the receiving container.</li>
+                    <li>Take 100–250 ml in a graduated cylinder.</li>
+                    <li>Measure strength with the alcoholmeter at 20 °C (or with temperature correction).</li>
+                    <li>Measure the total volume of raw spirit.</li>
+                    <li>Calculate the amount of absolute alcohol:</li>
+                </ul>
+                <div class="formula-box">
+                    <div class="formula-title">Absolute Alcohol</div>
+                    <div class="formula-body">Absolute alcohol (ml) = Raw spirit volume (ml) × Strength (%) / 100</div>
+                    <p class="formula-example">Example: 5,500 ml of raw spirit × 38% / 100 = 2,090 ml of absolute alcohol.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card phase-process">
+            <div class="step-badge">28</div>
+            <div class="step-content">
+                <div class="step-title">Evaluate the yield</div>
+                <p>Compare the actual yield with the theoretical:</p>
+                <div class="formula-box">
+                    <div class="formula-title">Theoretical Yield</div>
+                    <div class="formula-body">Theoretical yield = Wash volume (L) × Wash strength (%) / 100 × 1000</div>
+                    <p class="formula-example">Example: 20 L × 12% / 100 × 1000 = 2,400 ml of absolute alcohol.</p>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-title">First-Run Efficiency</div>
+                    <div class="formula-body">Efficiency = Actual yield / Theoretical yield × 100%</div>
+                    <p class="formula-example">Example: 2,090 / 2,400 × 100% = 87%.<br>Standard: first-run efficiency is 80–90%. Below 75% indicates losses (incomplete collection, leaks, scorching).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card phase-process">
+            <div class="step-badge">29</div>
+            <div class="step-content">
+                <div class="step-title">Dilute before the second run</div>
+                <ul>
+                    <li>Dilute the raw spirit with clean water to 20–30% ABV.</li>
+                    <li>Why: below 30% strength, fraction separation during the second run is clearer. Heads and tails separate more easily.</li>
+                    <li>Use clean water (filtered, bottled, or settled).</li>
+                    <li>Pour water into the raw spirit, not the other way around (for even mixing).</li>
+                    <li>Stir.</li>
+                </ul>
+                <div class="sub-note">Example: 5,500 ml of raw spirit at 38% ABV → dilute to 25% ABV:<br>Water volume = 5,500 × (38/25 − 1) = 5,500 × 0.52 = 2,860 ml of water.<br>Total: 5,500 + 2,860 = 8,360 ml at 25% ABV.</div>
+            </div>
+        </div>
+
+        <div class="step-card phase-process">
+            <div class="step-badge">30</div>
+            <div class="step-content">
+                <div class="step-title">Store the raw spirit</div>
+                <p>If the second run is not done immediately:</p>
+                <ul>
+                    <li>Pour the diluted raw spirit into a glass container with a tight lid.</li>
+                    <li>Store at 5–20 °C in a dark place.</li>
+                    <li>Do not store in plastic containers longer than 2–3 days: ethanol dissolves plastic.</li>
+                    <li>Shelf life: up to 2–3 months without quality loss.</li>
+                    <li>Label the container: date, volume, strength, wash type.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="mistakes">Chapter 7. Typical First-Run Mistakes</h2>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mistake</th>
+                    <th>Consequence</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wash not clarified</td>
+                    <td>Yeast scorches, burnt smell, foam</td>
+                    <td>Clarify 24–48 hours, decant</td>
+                </tr>
+                <tr>
+                    <td>Still filled more than 2/3</td>
+                    <td>Wash eruption into vapor outlet, distillate contamination</td>
+                    <td>Fill no more than 2/3 of volume</td>
+                </tr>
+                <tr>
+                    <td>Maximum heat throughout the process</td>
+                    <td>Violent boiling, splashes, poor separation</td>
+                    <td>Maximum until boiling, then 60–70%</td>
+                </tr>
+                <tr>
+                    <td>Collection stopped at 30% strength</td>
+                    <td>Loss of 10–15% of alcohol</td>
+                    <td>Collect down to 20–25% in the stream</td>
+                </tr>
+                <tr>
+                    <td>Collection continued below 15%</td>
+                    <td>Collecting water with impurities, volume increase without yield</td>
+                    <td>Stop at 20–25%</td>
+                </tr>
+                <tr>
+                    <td>Condenser water turned off early</td>
+                    <td>Vapor doesn't condense, alcohol loss, burns</td>
+                    <td>Keep water running 5–10 min after heat off</td>
+                </tr>
+                <tr>
+                    <td>Opening the still while hot</td>
+                    <td>Steam burn</td>
+                    <td>Cool below 50 °C</td>
+                </tr>
+                <tr>
+                    <td>Raw spirit stored in plastic</td>
+                    <td>Plastic dissolves, toxic impurities</td>
+                    <td>Glass or stainless steel</td>
+                </tr>
+                <tr>
+                    <td>No journal kept</td>
+                    <td>Cannot reproduce result, analyze mistakes</td>
+                    <td>Record time, volume, strength, temperature</td>
+                </tr>
+                <tr>
+                    <td>Distilling under-fermented wash</td>
+                    <td>Sugar caramelization, yield loss, scorching</td>
+                    <td>Confirm gravity is 0–2 °P</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h2 id="apparatus">Chapter 8. Specifics for Different Apparatus Types</h2>
+
+        <div class="apparatus-grid">
+            <div class="apparatus-card">
+                <h4>🔥 8.1. Direct-Heat Apparatus (heating element, gas burner)</h4>
+                <ul>
+                    <li>Risk of yeast sediment scorching on the heating element.</li>
+                    <li>Wash clarification is critically important.</li>
+                    <li>Heat: maximum until boiling, then 60–70%.</li>
+                    <li>Stir the wash during the first 10 minutes of heating (if there is a stirrer) to prevent scorching.</li>
+                </ul>
+            </div>
+            <div class="apparatus-card">
+                <h4>♨️ 8.2. Steam-Jacket Apparatus (water bath)</h4>
+                <ul>
+                    <li>No scorching risk: the wash does not contact the heater.</li>
+                    <li>Heating is slower: time to boiling increases by 15–30 minutes.</li>
+                    <li>You can distill unclarified wash (but clarification is still desirable).</li>
+                </ul>
+            </div>
+            <div class="apparatus-card">
+                <h4>💨 8.3. Steam-Generator Apparatus</h4>
+                <ul>
+                    <li>Steam is fed into the wash from a separate generator.</li>
+                    <li>No scorching.</li>
+                    <li>Risk of diluting the wash with condensate: in the first minutes of collection the strength may be lower than expected.</li>
+                    <li>Clarification is not critical, but desirable.</li>
+                </ul>
+            </div>
+            <div class="apparatus-card">
+                <h4>🫙 8.4. Apparatus with a Thump Keg</h4>
+                <ul>
+                    <li>The thump keg catches splashes and part of the heavy fractions.</li>
+                    <li>Raw spirit strength is 3–5% higher than without a thump keg.</li>
+                    <li>Rinse the thump keg after each run.</li>
+                </ul>
+            </div>
+            <div class="apparatus-card" style="grid-column: 1 / -1;">
+                <h4>❄️ 8.5. Apparatus with a Dephlegmator</h4>
+                <ul>
+                    <li>The dephlegmator creates partial reflux return.</li>
+                    <li>Raw spirit strength is 5–10% higher than without a dephlegmator.</li>
+                    <li>For the first run, the dephlegmator can be turned off or set to minimum: the goal is maximum yield, not purity.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="yield">Chapter 9. Yield Calculation and Loss Control</h2>
+
+        <h3>9.1. Theoretical Yield</h3>
+        <p>From 1 kg of sugar, you theoretically get 510 ml of absolute alcohol. For wash with 4 kg of sugar per 20 liters of water:</p>
+        <div class="formula-box">
+            <div class="formula-body">Theoretical yield = 4 × 510 = 2,040 ml of absolute alcohol</div>
+        </div>
+
+        <h3>9.2. Practical Yield</h3>
+        <p>The practical yield is always lower than the theoretical due to:</p>
+        <ul>
+            <li>Incomplete fermentation (losses 2–5%).</li>
+            <li>Alcohol remaining in the spent wash (losses 5–10%).</li>
+            <li>Evaporation and leaks (losses 1–3%).</li>
+            <li>Absorption by yeast (losses 1–2%).</li>
+        </ul>
+        <div class="key-takeaway">
+            Normal practical yield: <strong>80–90% of theoretical.</strong>
+        </div>
+
+        <h3>9.3. Alcohol Balance</h3>
+        <p>After the first run, perform a balance:</p>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Theoretical yield (by sugar)</td>
+                    <td>2,040 ml abs.</td>
+                </tr>
+                <tr>
+                    <td>Actual yield in wash (by gravity)</td>
+                    <td>1,950 ml abs.</td>
+                </tr>
+                <tr>
+                    <td>Yield in raw spirit</td>
+                    <td>1,750 ml abs.</td>
+                </tr>
+                <tr>
+                    <td>Distillation losses</td>
+                    <td>200 ml abs. (10%)</td>
+                </tr>
+                <tr>
+                    <td>Efficiency</td>
+                    <td>86%</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="warning-note">
+            <strong>If efficiency is below 75%, look for the cause:</strong> leaks, incomplete collection, or scorching.
+        </div>
+
+        <h2 id="faq">Chapter 10. Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to collect heads during the first run?</div>
+            <div class="faq-answer"><p>For sugar wash — not necessary. Heads will be collected during the second, fractional run. If the wash has a pronounced off-odor (acetone, hydrogen sulfide), collect the first 50–100 ml into a separate container. In all other cases, collect all distillate into one container.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I distill wash without clarifying it?</div>
+            <div class="faq-answer"><p>Technically yes, but not recommended. Yeast sediment scorches on the bottom of the still, creates a burnt smell, and makes cleanup difficult. Clarification for 24–48 hours is a simple procedure that greatly improves the process.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The raw spirit came out cloudy. Is this normal?</div>
+            <div class="faq-answer"><p>Yes. Cloudiness is caused by tiny wash droplets entering the vapor (splashes) or by dissolved substances precipitating during cooling. During the second run the cloudiness will disappear. If the cloudiness is strong, reduce the heat on the next run.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> The raw spirit strength came out at 25%. Is that low?</div>
+            <div class="faq-answer"><p>Raw spirit strength on the first run depends on when you stop collection. If you collected down to 20–25% in the stream, average raw spirit strength will be 30–40%. If you stopped earlier (at 30–35% in the stream), strength will be higher (40–45%), but yield will be lower. A strength of 25% means you collected for a very long time. This is not a mistake, but on the second run you will have to work with a larger volume.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I drink the raw spirit?</div>
+            <div class="faq-answer"><p>No. Raw spirit contains methanol, acetaldehyde, fusel oils, and other toxic impurities. You can drink only after the second, fractional distillation with fraction separation.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How long does the first run of 20 liters of wash take?</div>
+            <div class="faq-answer"><p>2–4 hours depending on heating power and apparatus design. Heating to boiling: 20–40 minutes. Distillate collection: 1.5–3 hours. Cooling: 30–60 minutes.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Do I need to dilute raw spirit before the second run?</div>
+            <div class="faq-answer"><p>Recommended. Dilution to 20–30% ABV improves fraction separation during fractional distillation. If the raw spirit strength is below 30%, dilution is not required.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I collect the spent wash and distill it again?</div>
+            <div class="faq-answer"><p>No. The spent wash retains 0.5–3% alcohol and non-volatile impurities. Re-distillation is pointless: you will spend energy heating water and get a negligible amount of low-quality distillate.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What do I do if the wash scorched in the still?</div>
+            <div class="faq-answer"><p>Immediately turn off the heat. Let the still cool. Pour out the spent wash. Wash the still with hot water and baking soda (2 tablespoons per liter). If scorching is severe, soak for 2–3 hours. Distillate collected before the scorching can be used. Distillate with a burnt smell — re-distill or dispose of.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> Can I distill several batches of wash in a row?</div>
+            <div class="faq-answer"><p>Yes, but between batches wash the still with hot water. Residue from the previous wash can scorch when heating the new batch.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> How do I know the condenser is working properly?</div>
+            <div class="faq-answer"><p>The distillate at the condenser outlet should feel cold or cool (below 30 °C). If the distillate is warm or hot, increase the water supply. The water exiting the condenser should be warm (30–50 °C), but not hot.</p></div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question"><span class="q-mark">Q</span> What do I do if vapor, not liquid, comes from the condenser?</div>
+            <div class="faq-answer"><p>The heating power exceeds the condenser's capacity. Reduce the heat by 20–30%. Increase the water supply to the condenser. If the problem persists, replace the condenser with a higher-capacity one.</p></div>
+        </div>
+
+        <h2 id="checklist">Chapter 11. Summary First-Run Checklist</h2>
+        <div class="checklist">
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">1</span><span>Fermentation complete (gravity 0–2 °P)</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">2</span><span>Wash clarified (24–48 hours)</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">3</span><span>Wash decanted off the sediment</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">4</span><span>Apparatus rinsed</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">5</span><span>Leak check done</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">6</span><span>Condenser water connected</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">7</span><span>Receiving container prepared</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">8</span><span>Ventilation ensured</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">9</span><span>Still filled no more than 2/3</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">10</span><span>Heat turned to maximum</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">11</span><span>Boiling reached (78–82 °C)</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">12</span><span>Heat reduced to 60–70%</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">13</span><span>Collection started, strength 70–80%</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">14</span><span>Interim measurements every 30 min</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">15</span><span>Stream strength dropped to 20–25%</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">16</span><span>Collection stopped</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">17</span><span>Heat turned off</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">18</span><span>Condenser water runs another 5–10 min</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">19</span><span>Still cooled below 50 °C</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">20</span><span>Spent wash drained, still washed</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">21</span><span>Raw spirit strength and volume measured</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">22</span><span>Data recorded in the journal</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">23</span><span>Raw spirit diluted to 20–30%</span></div>
+            <div class="checklist-item"><span class="cb-box"></span><span class="cb-num">24</span><span>Raw spirit poured into a glass container</span></div>
+        </div>
+
+        <h2>Conclusion: The First Run Is Extraction</h2>
+        <p>The first distillation of sugar wash is not the creation of a beverage. It is the extraction of alcohol from a liquid. The task is simple: heat, evaporate, condense, collect. But the simplicity of the task does not mean it can be done carelessly. Every skipped step — clarification, temperature control, timely stopping of collection — turns into yield loss, distillate contamination, or a scorched still.</p>
+
+        <div class="principles">
+            <h3>Three Rules to Remember</h3>
+            <div class="principle-item">
+                <strong>Clarify the wash.</strong>
+                24–48 hours of settling and decanting off the sediment prevent scorching, foaming, and burnt smell. This is the simplest step that gives the biggest effect.
+            </div>
+            <div class="principle-item">
+                <strong>Collect down to 20–25% in the stream.</strong>
+                Don't stop early — you'll lose 10–15% of alcohol. Don't continue below 15% — you'll be collecting water with impurities. Stream strength and still temperature (97–99 °C) are the two stopping criteria.
+            </div>
+            <div class="principle-item">
+                <strong>Raw spirit is not the final product.</strong>
+                It must not be drunk. It must not be stored in plastic. Dilute to 20–30%, pour into glass, and prepare for the second, fractional distillation. That is where the quality is created.
+            </div>
+        </div>
+
+        <p>The first run is the foundation. Even, clean, complete. Everything built on top depends on how you lay it.</p>
+        <p><em>A successful first run and a full yield.</em></p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2026 Distillpedia. All rights reserved. | Educational purposes only.</p>
+</footer>
+
+</body>
+</html>
