@@ -155,6 +155,27 @@
         border-bottom: 2px solid transparent; transition: border-color 0.3s; margin-top: auto;
     }
     .card-link:hover { border-color: #97bc62; }
+    
+    /* Subsection links inside ds-safety card */
+    .subsection-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    .subsection-links .card-link {
+        display: block;
+        font-size: 14px;
+        padding: 6px 10px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 4px;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+        margin-top: 0;
+    }
+    .subsection-links .card-link:hover {
+        background: rgba(255,255,255,0.25);
+        border-color: #cde8a8;
+    }
 
     /* Guide cards with picture backgrounds */
     .guide-card, .eq-card, .ds-card, .recipe-card {
@@ -364,7 +385,23 @@
                         <span class="tag">Fermentation</span>
                         <h3>Wash Preparation and Fermentation Process Management</h3>
                         <p>Complete guide to preparing washes, yeast selection, nutrient management, temperature control and fermentation monitoring.</p>
-                        <a href="distillation-safety.html#fermentation" class="card-link">Open subsection →</a>
+                        <div class="subsection-links">
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/choosing-yeast-home-distilling.html" class="card-link">Choosing Yeast for Home Distilling →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/sugar-fermentation-basics.html" class="card-link">Sugar Fermentation Basics →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/fermentation-temperature-sugar-wash.html" class="card-link">Fermentation Temperature Control →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/wash-ph-control-guide.html" class="card-link">Wash pH Control Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/wash-density-hydrometer-guide.html" class="card-link">Wash Density & Hydrometer Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/wash-aeration-oxygen-fermentation.html" class="card-link">Wash Aeration & Oxygen →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/step-feeding-sugar-wash.html" class="card-link">Step Feeding Sugar Wash →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/troubleshooting-stalled-fermentation.html" class="card-link">Troubleshooting Stalled Fermentation →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/fermentation-readiness-guide.html" class="card-link">Fermentation Readiness Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/first-distillation-run-guide.html" class="card-link">First Distillation Run Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/fruit-mash-apples-berries-grapes.html" class="card-link">Fruit Mash Preparation →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/grain-mash.html" class="card-link">Grain Mash Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/honey-wash-distilling-guide.html" class="card-link">Honey Wash Guide →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/potato-bread-mash-alternatives.html" class="card-link">Potato & Bread Mash Alternatives →</a>
+                            <a href="Distilling & Safety/Wash Preparation and Fermentation Process Management/enzyme-mash-vs-malt-yeast.html" class="card-link">Enzyme Mash vs Malt Yeast →</a>
+                        </div>
                     </div>
                     <div class="card ds-card ds-double">
                         <span class="tag">Distillation Theory</span>
