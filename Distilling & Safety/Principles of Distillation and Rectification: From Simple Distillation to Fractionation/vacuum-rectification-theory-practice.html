@@ -536,6 +536,27 @@
         .pump-grid, .app-grid, .example-grid { grid-template-columns: 1fr; }
         .bp-marker .bp-label { font-size: 0.6rem; }
     }
+        /* Unified site navigation (same style across all section pages) */
+        nav {
+            background-color: #34495e !important;
+            text-align: center !important;
+            padding: 0.8rem !important;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+        }
+        nav a {
+            color: #ecf0f1 !important;
+            text-decoration: none !important;
+            margin: 0 15px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: normal !important;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #3498db !important; }
 </style>
 </head>
 <body>
@@ -544,13 +565,13 @@
     <h1>Distillpedia</h1>
     <p class="tagline">The encyclopedia of home distilling</p>
 </header>
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Theory</a>
-    <a href="#">Vacuum</a>
-    <a href="#">Equipment</a>
-    <a href="#">Safety</a>
-</nav>
+    <nav>
+      <a href="../../index.html#guides">Guides</a>
+      <a href="../../index.html#equipment">Equipment</a>
+      <a href="../../index.html#recipes">Recipes</a>
+      <a href="../../index.html#distilling">Distilling</a>
+      <a href="../../index.html#tools">Tools</a>
+    </nav>
 
 <main>
     <article>
