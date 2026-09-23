@@ -477,21 +477,36 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+/* New header styles matching the reference */
+header { background:#2c5f2d; color:#fff; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,.2); position:sticky; top:0; z-index:100; }
+header .container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; max-width:1600px; margin:0 auto; padding:0 24px; }
+.logo { font-size:32px; font-weight:bold; color:#fff; text-decoration:none; letter-spacing:.5px; }
+.logo span { color:#97bc62; }
+nav a { color:#fff; text-decoration:none; margin-left:15px; padding:8px 14px; border-radius:4px; transition:background .3s; font-weight:500; }
+nav a:hover { background:rgba(255,255,255,.15); }
+.breadcrumb { margin:20px 0 0; font-size:14px; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.6); }
+.breadcrumb a { color:#fff; }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>Distillpedia</h1>
-    <p class="tagline">The encyclopedia of home distilling</p>
+  <div class="container">
+    <a href="../../index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
+    <nav>
+      <a href="../../index.html#guides">Guides</a>
+      <a href="../../index.html#equipment">Equipment</a>
+      <a href="../../index.html#recipes">Recipes</a>
+      <a href="../../index.html#distilling">Distilling</a>
+      <a href="../../index.html#tools">Tools</a>
+    </nav>
+  </div>
 </header>
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Theory</a>
-    <a href="#">Yeast</a>
-    <a href="#">Equipment</a>
-    <a href="#">Legal</a>
-</nav>
+
+<div class="container">
+  <p class="breadcrumb"><a href="../../index.html">Home</a> → <a href="../../index.html#distilling">Distilling &amp; Safety</a> → <a href="../../index.html#wash-prep">Wash Preparation and Fermentation Process Management</a> → Choosing Yeast for Home Distilling: A Comparative Analysis</p>
+
 
 <main>
     <article>
