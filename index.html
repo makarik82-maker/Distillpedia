@@ -41,7 +41,21 @@
   .main-nav a:hover{border-bottom-color:var(--green-light)}
 
   /* ===== Hero ===== */
-  .hero{background:linear-gradient(160deg,var(--green-800),var(--green-900));color:#fff;padding:56px 0 48px;text-align:center}
+  .hero{
+    color:#fff;padding:56px 0 48px;text-align:center;
+    background-color:#24491f;
+    background-image:linear-gradient(160deg,rgba(45,106,45,.94),rgba(29,58,29,.97)),var(--hero-img,none);
+    background-size:cover;background-position:center;
+  }
+  /* ФОН-ФОТО HERO: сработает первый существующий файл; если имен нет — останется градиент */
+  .hero{
+    --hero-img:
+      url("images/hero.jpg"),
+      url("img/hero.jpg"),
+      url("assets/hero.jpg"),
+      url("images/distillery.jpg"),
+      url("img/distillery.jpg");
+  }
   .hero h1{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:14px}
   .hero p{max-width:720px;margin:0 auto 26px;color:#e4eedd;font-size:1.1rem}
   .btn{display:inline-block;background:var(--green-accent);color:#173017;font-weight:700;padding:12px 26px;border-radius:999px;text-decoration:none}
@@ -86,8 +100,54 @@
     background-size:cover;background-position:center;
     box-shadow:0 8px 24px rgba(20,40,18,.25);
   }
-  .card-fermentation{--card-img:url("images/fermentation.jpg")}
-  .card-theory{--card-img:url("images/distillation-theory.jpg")}
+
+  /* ================= ФОНОВЫЕ ФОТО (правьте пути ТОЛЬКО здесь) =================
+     Слои перечислены сверху вниз: отобразится ПЕРВЫЙ загрузившийся файл.
+     Если в репозитории другие имена/папки — измените только эти строки.       */
+  .card-fermentation{
+    --card-img:
+      url("images/fermentation.jpg"),
+      url("img/fermentation.jpg"),
+      url("assets/fermentation.jpg"),
+      url("images/fermentation.webp"),
+      url("images/fermentation.png"),
+      url("fermentation.jpg");
+  }
+  .card-theory{
+    --card-img:
+      url("images/distillation-theory.jpg"),
+      url("img/distillation-theory.jpg"),
+      url("assets/distillation-theory.jpg"),
+      url("images/distillation-theory.webp"),
+      url("images/distillation-theory.png"),
+      url("distillation-theory.jpg");
+  }
+  .mini-purification{
+    --card-img:
+      url("images/purification.jpg"),
+      url("img/purification.jpg"),
+      url("assets/purification.jpg"),
+      url("images/purification.webp"),
+      url("images/purification.png");
+  }
+  .mini-maturation{
+    --card-img:
+      url("images/maturation.jpg"),
+      url("img/maturation.jpg"),
+      url("assets/maturation.jpg"),
+      url("images/maturation.webp"),
+      url("images/maturation.png");
+  }
+  .mini-legal{
+    --card-img:
+      url("images/legal.jpg"),
+      url("img/legal.jpg"),
+      url("assets/legal.jpg"),
+      url("images/legal.webp"),
+      url("images/legal.png");
+  }
+  /* ============================================================================ */
+
   .badge-glass{
     display:inline-block;
     background:rgba(255,255,255,.16);
@@ -121,7 +181,12 @@
   .article-links a:hover{background:rgba(255,255,255,.24)}
 
   /* Мини-карточки подразделов */
-  .wiki-card.mini{background-image:linear-gradient(150deg,#2f4a2c,#22371f);padding:26px}
+  .wiki-card.mini{
+    padding:26px;
+    background-color:#2f4a2c;
+    background-image:linear-gradient(rgba(26,44,24,.82),rgba(26,44,24,.9)),var(--card-img,none);
+    background-size:cover;background-position:center;
+  }
   .wiki-card.mini h3{font-size:1.35rem;margin-bottom:10px}
   .wiki-card.mini p{margin-bottom:16px;font-size:1rem}
   .mini-link{color:var(--link-light);font-weight:600;text-decoration:none;text-align:left}
@@ -314,22 +379,4 @@
           <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/head-fractions-separation-chemistry.html">Separating Head Fractions: Chemistry &amp; Toxicology →</a>
           <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/tail-fractions-separation-redistillation.html">Separating Tail Fractions &amp; Re-Distillation →</a>
           <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/manual-distillation-pot-still-cuts.html">Manual Distillation: Mastering the Cuts by Hand →</a>
-          <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/double-distillation-clean-chain.html">Double Distillation and the &quot;Clean Chain&quot; Strategy →</a>
-          <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/rectification-instruction-96-percent.html">Technological Instruction: Home Rectification to 96% →</a>
-          <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/sugar-wash-stripping-run-guide.html">Distilling Sugar Wash: Step-by-Step Stripping Run →</a>
-          <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/grain-wash-distillation-features.html">Distilling Grain Wash: Features &amp; Quality →</a>
-          <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/fruit-wash-distillation-art-aroma.html">Fruit Wash Distillation: The Art of Preserving Aroma →</a>
-        </nav>
-      </article>
-
-      <article class="wiki-card mini">
-        <h3>Purification</h3>
-        <p>Methods of Purification, Refinement, and Quality Control of Distillates. Carbon filtration, polishing techniques, hydrometer and refractometer use, and quality assessment methods.</p>
-        <a class="mini-link" href="distillation-safety.html#purification">Open subsection →</a>
-      </article>
-
-      <article class="wiki-card mini">
-        <h3>Maturation</h3>
-        <p>Storage, Maturation, and Sensory Evaluation of the Finished Product. Aging in oak and other woods, storage conditions, blending techniques, and professional sensory evaluation methods.</p>
-        <a class="mini-link" href="distillation-safety.html#maturation">Open subsection →</a>
-      </article
+          
