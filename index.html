@@ -6,116 +6,119 @@
 <title>Distillpedia Club | The Distilling &amp; Brewing Wiki</title>
 <style>
   :root{
-    --green-dark:#2d6a2f;
-    --green-mid:#3a7d3c;
-    --green-light:#a8cf6e;
-    --green-pale:#d8f0a8;
+    --green-900:#1e4a20;
+    --green-700:#2d6a2f;
+    --lime:#8bc34a;
+    --lime-light:#d9f0b0;
     --bg:#f4f7f4;
     --card:#ffffff;
-    --text:#22301f;
-    --muted:#5c6b58;
-    --radius:16px;
+    --text:#22302a;
+    --muted:#5c6b60;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-  .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  .container{width:min(1100px,92%);margin:0 auto}
+  section{scroll-margin-top:110px}
 
   /* ===== Header ===== */
-  .site-header{background:var(--green-dark);color:#fff;padding:18px 0 16px;box-shadow:0 2px 10px rgba(0,0,0,.25);}
-  .header-inner{display:flex;flex-direction:column;align-items:center;gap:12px;}
-  .logo{font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none;}
-  .logo span{color:var(--green-light);}
-  .main-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 36px;}
-  .main-nav a{color:#fff;text-decoration:none;font-size:1.15rem;}
-  .main-nav a:hover{color:var(--green-pale);}
+  .site-header{position:sticky;top:0;z-index:50;background:var(--green-700);box-shadow:0 2px 10px rgba(0,0,0,.25);padding:14px 0 12px;text-align:center}
+  .logo{display:inline-block;font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:var(--lime)}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;margin-top:10px}
+  .nav a{color:#fff;text-decoration:none;font-size:1.05rem;padding:4px 2px}
+  .nav a:hover{color:var(--lime-light);text-decoration:underline}
 
   /* ===== Hero ===== */
-  .hero{padding:64px 0 40px;text-align:center;}
-  .hero h1{font-size:2.6rem;color:var(--green-dark);margin-bottom:16px;}
-  .hero p{max-width:720px;margin:0 auto 26px;color:var(--muted);font-size:1.1rem;}
-  .btn{display:inline-block;background:var(--green-dark);color:#fff;padding:12px 28px;border-radius:999px;text-decoration:none;font-weight:600;}
-  .btn:hover{background:var(--green-mid);}
-  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 44px;margin-top:34px;}
-  .stat b{display:block;font-size:1.7rem;color:var(--green-dark);}
-  .stat span{color:var(--muted);}
+  .hero{background:linear-gradient(135deg,var(--green-700),var(--green-900));color:#fff;padding:64px 0;text-align:center}
+  .hero h1{font-size:2.5rem;margin-bottom:16px}
+  .hero p{max-width:760px;margin:0 auto 26px;color:#e4efe2;font-size:1.1rem}
+  .btn{display:inline-block;background:var(--lime);color:#173317;font-weight:700;padding:12px 26px;border-radius:10px;text-decoration:none}
+  .btn:hover{filter:brightness(1.08)}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 48px;margin-top:36px}
+  .stat strong{display:block;font-size:1.9rem;color:var(--lime-light)}
+  .stat span{color:#cfe0cb;font-size:.95rem}
 
   /* ===== Sections & cards ===== */
-  section{padding:48px 0 10px;}
-  section h2{color:var(--green-dark);font-size:2rem;border-bottom:2px solid #dfe8d8;padding-bottom:14px;}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:26px;}
-  .card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:0 3px 12px rgba(30,50,25,.10);display:flex;flex-direction:column;}
-  .pill{display:inline-block;align-self:flex-start;background:#e6f2d9;color:var(--green-dark);border:1px solid #cfe3b4;border-radius:999px;padding:4px 14px;font-size:.85rem;font-weight:600;margin-bottom:12px;}
-  .card h3{font-size:1.25rem;margin-bottom:10px;color:var(--green-dark);}
-  .card p{color:var(--muted);font-size:.98rem;margin-bottom:16px;}
-  .card-link{margin-top:auto;font-weight:600;color:var(--green-dark);text-decoration:none;}
-  .card-link:hover{text-decoration:underline;}
+  .section{padding:48px 0 8px}
+  .section-title{color:var(--green-700);font-size:2rem;padding-bottom:14px;border-bottom:1px solid #d8e4d4;margin-bottom:34px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-bottom:40px}
+  .card{background:var(--card);border-radius:14px;box-shadow:0 4px 14px rgba(30,50,30,.10);padding:22px;display:flex;flex-direction:column}
+  .badge{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+  .badge.green{background:#e3f3dc;color:#2d6a2f}
+  .badge.blue{background:#e0ecf7;color:#28567c}
+  .badge.red{background:#f9e3e3;color:#a03434}
+  .badge.purple{background:#ece6f6;color:#5d3f8f}
+  .badge.count{background:#eef2ea;color:#5c6b60;text-transform:none}
+  .card h3{font-size:1.2rem;margin-bottom:10px;color:#243b2a}
+  .card p{color:var(--muted);font-size:.97rem;flex:1}
+  .card-link-plain{margin-top:16px;font-weight:700;text-decoration:none;color:var(--green-700)}
+  .card-link-plain:hover{text-decoration:underline}
+  .coming{margin-top:16px;color:#9aa89c;font-weight:600;text-decoration:none}
 
-  /* ===== Subsection cards (Distilling & Safety) ===== */
-  .subsection-card{
-    position:relative;
-    border-radius:var(--radius);
-    border-top:6px solid var(--green-light);
-    padding:36px 30px;
-    margin-top:28px;
-    color:#fff;
-    display:flex;flex-direction:column;
-    background-image:linear-gradient(rgba(22,42,20,.60),rgba(15,30,14,.80)),var(--img,linear-gradient(135deg,#41603a,#1e351b));
-    background-size:cover;background-position:center;
-    box-shadow:0 4px 16px rgba(20,40,15,.25);
-  }
-  .badge{display:inline-block;align-self:flex-start;padding:9px 22px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);font-weight:600;}
-  .subsection-card h3{font-size:1.65rem;margin:20px 0 14px;text-shadow:0 2px 6px rgba(0,0,0,.45);}
-  .subsection-card > p{color:#e9efe4;max-width:760px;text-shadow:0 1px 4px rgba(0,0,0,.45);}
+  /* ===== Subsections (Distilling & Safety) ===== */
+  .subsection-card{position:relative;border-radius:16px;border-top:6px solid var(--lime);padding:30px 28px;margin-bottom:30px;color:#fff;overflow:hidden;
+    background-image:linear-gradient(rgba(21,36,21,.82),rgba(21,36,21,.88));background-size:cover;background-position:center}
+  .sub-fermentation{background-color:#5a4632}
+  .sub-distillation{background-color:#2f4a50}
+  .sub-simple{background-color:#3c4a3c}
+  .tag{display:inline-block;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);padding:8px 20px;border-radius:999px;font-weight:600;margin-bottom:20px;backdrop-filter:blur(2px)}
+  .subsection-card h3{font-size:1.55rem;line-height:1.35;margin-bottom:16px;text-shadow:0 2px 6px rgba(0,0,0,.45)}
+  .subsection-card>p{color:#ececec;max-width:860px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 
   /* ==========================================================
-     ИСПРАВЛЕНО: единый формат блоков ссылок в подразделах
-     секции Distilling & Safety (Fermentation, Distillation
-     Theory и др.). Все ссылки — одинаковые полноширинные
-     блоки с текстом слева и одинаковыми отступами.
+     ЕДИНЫЙ ФОРМАТ БЛОКОВ ССЫЛОК
+     (подразделы Fermentation и Distillation Theory)
+     Все ссылки — одинаковые полноширинные блоки:
+     display:block; width:100%; текст слева; одинаковые
+     padding, gap, скругления, фон и hover.
      ========================================================== */
-  .sub-links{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:22px;
-    align-items:stretch;
-    text-align:left;
-  }
+  .sub-links{display:flex;flex-direction:column;gap:10px;margin-top:24px;max-width:860px}
   .sub-links a{
     display:block;
     width:100%;
+    box-sizing:border-box;
     padding:14px 18px;
-    border-radius:10px;
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);
-    color:var(--green-pale);
-    font-size:1.05rem;
-    font-weight:600;
+    border-radius:12px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.26);
+    color:var(--lime-light);
+    font-size:1.02rem;
     line-height:1.45;
     text-align:left;
     text-decoration:none;
+    backdrop-filter:blur(2px);
     transition:background .2s ease;
   }
-  .sub-links a:hover{background:rgba(255,255,255,.24);}
-  /* ===== конец исправленного блока ===== */
+  .sub-links a:hover{background:rgba(255,255,255,.26);color:#eaffc9}
+
+  /* одиночная ссылка подраздела (формат не менялся) */
+  .open-sub{display:inline-block;margin-top:20px;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);color:var(--lime-light);font-weight:600;text-decoration:none}
+  .open-sub:hover{background:rgba(255,255,255,.26)}
 
   /* ===== Footer ===== */
-  .site-footer{background:var(--green-dark);color:#e7efe0;margin-top:60px;padding:44px 0 0;}
-  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;padding-bottom:34px;}
-  .footer-grid h4{color:#fff;margin-bottom:12px;}
-  .footer-grid a{color:var(--green-pale);text-decoration:none;display:block;margin-bottom:8px;}
-  .footer-grid a:hover{text-decoration:underline;}
-  .footer-grid p{font-size:.95rem;color:#cfdcc8;}
-  .copyright{border-top:1px solid rgba(255,255,255,.2);padding:16px 0;text-align:center;font-size:.9rem;color:#cfdcc8;}
-  .disclaimer{background:#20301c;color:#e8efd8;text-align:center;padding:14px 20px;font-size:.95rem;}
+  footer{background:var(--green-900);color:#dce8da;margin-top:60px;padding:44px 0 0}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;padding-bottom:30px}
+  footer h3,footer h4{color:#fff;margin-bottom:12px}
+  footer a{color:var(--lime-light);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.18);padding:16px 0;text-align:center;font-size:.92rem;color:#bcd0b8}
+  .disclaimer{background:#3a2f14;color:#f7e6b5;padding:14px 0;text-align:center;font-size:.92rem}
+
+  @media(max-width:640px){
+    .hero h1{font-size:2rem}
+    .subsection-card{padding:22px 18px}
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container header-inner">
+  <div class="container">
     <a class="logo" href="index.html">⚗️ Distill<span>pedia</span> Club</a>
-    <nav class="main-nav">
+    <nav class="nav">
       <a href="#guides">Guides</a>
       <a href="#equipment">Equipment</a>
       <a href="#recipes">Recipes</a>
@@ -125,218 +128,195 @@
   </div>
 </header>
 
+<section id="tools" class="section">
+  <div class="container">
+    <h2 class="section-title">🧮 Distiller's Tools</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>ABV &amp; Dilution Calculator</h3>
+        <p>Pure alcohol volume, dilution ratios, temperature corrections for hydrometer readings.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Yeast Pitch Rate</h3>
+        <p>Exact yeast amount for your wash volume and sugar content.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Sugar Potential Table</h3>
+        <p>Theoretical alcohol yield from fruits, berries, grains and alternative sugars.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Saccharification Guide</h3>
+        <p>Temperature ranges for hot saccharification, iodine test, enzyme activity charts.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Heads / Hearts / Tails Calculator</h3>
+        <p>Fraction cut volumes from pure alcohol amount.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hero">
   <div class="container">
     <h1>The Distilling &amp; Brewing Wiki</h1>
     <p>Your comprehensive educational resource for fermentation science, distillation safety, and traditional spirit recipes. From beginner sugar washes to advanced grain saccharification.</p>
     <a class="btn" href="#recipes">Explore 50+ Recipes</a>
     <div class="stats">
-      <div class="stat"><b>53</b><span>Recipes</span></div>
-      <div class="stat"><b>5</b><span>Categories</span></div>
-      <div class="stat"><b>36</b><span>Wiki community</span></div>
-      <div class="stat"><b>100%</b><span>Free Access</span></div>
+      <div class="stat"><strong>53</strong><span>Recipes</span></div>
+      <div class="stat"><strong>5</strong><span>Categories</span></div>
+      <div class="stat"><strong>36</strong><span>Wiki community</span></div>
+      <div class="stat"><strong>100%</strong><span>Free Access</span></div>
     </div>
   </div>
 </section>
 
-<section id="guides">
+<section id="guides" class="section">
   <div class="container">
-    <h2>📚 Essential Guides</h2>
+    <h2 class="section-title">📚 Essential Guides</h2>
     <div class="cards">
       <div class="card">
-        <span class="pill">Beginner</span>
+        <span class="badge green">Beginner</span>
         <h3>What is Home Distilling?</h3>
         <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
-        <a class="card-link" href="what-is-home-distilling.html">Read the guide →</a>
+        <a class="card-link-plain" href="what-is-home-distilling.html">Read the guide →</a>
       </div>
       <div class="card">
-        <span class="pill">Checklist</span>
+        <span class="badge blue">Checklist</span>
         <h3>Equipment Checklist</h3>
         <p>Stills, fermenters, hydrometers, thermometers and safety gear — everything you need, prioritized by importance.</p>
-        <a class="card-link" href="equipment-checklist.html">View checklist →</a>
+        <a class="card-link-plain" href="equipment-checklist.html">View checklist →</a>
       </div>
       <div class="card">
-        <span class="pill">Safety</span>
+        <span class="badge red">Safety</span>
         <h3>Distillation Safety Guide</h3>
         <p>Methanol and heads, fraction cuts, fire and pressure hazards, safe materials — and when to stop a run.</p>
-        <a class="card-link" href="distillation-safety.html">Read safety guide →</a>
+        <a class="card-link-plain" href="distillation-safety.html">Read safety guide →</a>
       </div>
       <div class="card">
-        <span class="pill">Theory</span>
+        <span class="badge purple">Theory</span>
         <h3>Fermentation Science</h3>
         <p>Yeast types, temperature, pH, hydromodule, oxygen and troubleshooting stuck washes.</p>
-        <a class="card-link" href="fermentation-science.html">Learn the science →</a>
+        <a class="card-link-plain" href="fermentation-science.html">Learn the science →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="equipment">
+<section id="equipment" class="section">
   <div class="container">
-    <h2>🛠️ Equipment</h2>
+    <h2 class="section-title">🛠️ Equipment</h2>
     <div class="cards">
       <div class="card">
-        <span class="pill">Fermentation</span>
+        <span class="badge green">Fermentation</span>
         <h3>Fermenters &amp; Airlocks</h3>
         <p>Plastic vs glass vs stainless vessels, sizing, fill limits and airlock designs.</p>
-        <a class="card-link" href="equipment-checklist.html#fermenters">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#fermenters">Open subsection →</a>
       </div>
       <div class="card">
-        <span class="pill">Measuring</span>
+        <span class="badge blue">Measuring</span>
         <h3>Hydrometers &amp; Thermometers</h3>
         <p>Sugar and ABV measurement, temperature control for saccharification and distillation.</p>
-        <a class="card-link" href="equipment-checklist.html#measuring">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#measuring">Open subsection →</a>
       </div>
       <div class="card">
-        <span class="pill">Distilling</span>
+        <span class="badge purple">Distilling</span>
         <h3>Pot Still vs. Reflux Column</h3>
         <p>How each hardware type works and which one suits your spirit style.</p>
-        <a class="card-link" href="equipment-checklist.html#stills">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#stills">Open subsection →</a>
       </div>
       <div class="card">
-        <span class="pill">Safety</span>
+        <span class="badge red">Safety</span>
         <h3>Safety Equipment</h3>
         <p>Fire extinguisher, ventilation, gloves, glasses and first aid — the non-negotiable kit.</p>
-        <a class="card-link" href="equipment-checklist.html#safety">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#safety">Open subsection →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="recipes">
+<section id="recipes" class="section">
   <div class="container">
-    <h2>🍺 Community Recipes</h2>
+    <h2 class="section-title">🍺 Community Recipes</h2>
     <div class="cards">
       <div class="card">
-        <span class="pill">35 recipes</span>
+        <span class="badge count">35 recipes</span>
         <h3>🍑 Fruit Spirits</h3>
         <p>Apricot, plum, apple, pear, cherry, grape, berry, melon, watermelon and exotic fruit distillates. Includes schnapps, slivovitz, kirschwasser and tutovka.</p>
-        <a class="card-link" href="recipes-fruit.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-fruit.html">Browse category →</a>
       </div>
       <div class="card">
-        <span class="pill">13 recipes</span>
+        <span class="badge count">13 recipes</span>
         <h3>🌾 Grain Spirits</h3>
         <p>Barley, wheat, rye, oat, rice, corn, buckwheat, malt, potato, starch, flour and bread moonshine.</p>
-        <a class="card-link" href="recipes-grain.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-grain.html">Browse category →</a>
       </div>
       <div class="card">
-        <span class="pill">4 recipes</span>
+        <span class="badge count">4 recipes</span>
         <h3>🍬 Sugar &amp; Sweet Spirits</h3>
         <p>Sugar, fructose/dextrose, honey, candy and jam moonshine. Clean neutral bases.</p>
-        <a class="card-link" href="recipes-sugar.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-sugar.html">Browse category →</a>
       </div>
       <div class="card">
-        <span class="pill">1 recipe</span>
+        <span class="badge count">1 recipe</span>
         <h3>🍺 Beer Spirits</h3>
         <p>Moonshine from beer: proper degassing and hop oil removal technology.</p>
-        <a class="card-link" href="recipes-beer.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-beer.html">Browse category →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="distilling">
+<section id="distilling" class="section">
   <div class="container">
-    <h2>⚗️ Distilling &amp; Safety</h2>
+    <h2 class="section-title">⚗️ Distilling &amp; Safety</h2>
 
-    <div class="subsection-card" style="--img:url('images/fermentation.jpg')">
-      <span class="badge">Fermentation</span>
+    <!-- Подраздел: Fermentation -->
+    <div class="subsection-card sub-fermentation">
+      <span class="tag">Fermentation</span>
       <h3>Wash Preparation and Fermentation Process Management</h3>
       <p>Complete guide to preparing washes, yeast selection, nutrient management, temperature control and fermentation monitoring.</p>
       <div class="sub-links">
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/choosing-yeast-home-distilling.html">Choosing Yeast for Home Distilling →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/sugar-fermentation-basics.html">Sugar Fermentation Basics →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/fermentation-temperature-sugar-wash.html">Fermentation Temperature Control →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/wash-ph-control-guide.html">Wash pH Control Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/wash-density-hydrometer-guide.html">Wash Density &amp; Hydrometer Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/wash-aeration-oxygen-fermentation.html">Wash Aeration &amp; Oxygen →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/step-feeding-sugar-wash.html">Step Feeding Sugar Wash →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/troubleshooting-stalled-fermentation.html">Troubleshooting Stalled Fermentation →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/fermentation-readiness-guide.html">Fermentation Readiness Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/first-distillation-run-guide.html">First Distillation Run Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/fruit-mash-apples-berries-grapes.html">Fruit Mash Preparation →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/grain-mash.html">Grain Mash Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/honey-wash-distilling-guide.html">Honey Wash Guide →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/potato-bread-mash-alternatives.html">Potato &amp; Bread Mash Alternatives →</a>
-        <a href="Distilling &amp; Safety/Wash Preparation and Fermentation Process Management/enzyme-mash-vs-malt-yeast.html">Enzyme Mash vs Malt Yeast →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/choosing-yeast-home-distilling.html">Choosing Yeast for Home Distilling →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/sugar-fermentation-basics.html">Sugar Fermentation Basics →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/fermentation-temperature-sugar-wash.html">Fermentation Temperature Control →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/wash-ph-control-guide.html">Wash pH Control Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/wash-density-hydrometer-guide.html">Wash Density &amp; Hydrometer Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/wash-aeration-oxygen-fermentation.html">Wash Aeration &amp; Oxygen →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/step-feeding-sugar-wash.html">Step Feeding Sugar Wash →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/troubleshooting-stalled-fermentation.html">Troubleshooting Stalled Fermentation →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/fermentation-readiness-guide.html">Fermentation Readiness Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/first-distillation-run-guide.html">First Distillation Run Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/fruit-mash-apples-berries-grapes.html">Fruit Mash Preparation →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/grain-mash.html">Grain Mash Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/honey-wash-distilling-guide.html">Honey Wash Guide →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/potato-bread-mash-alternatives.html">Potato &amp; Bread Mash Alternatives →</a>
+        <a href="Distilling%20&amp;%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/enzyme-mash-vs-malt-yeast.html">Enzyme Mash vs Malt Yeast →</a>
       </div>
     </div>
 
-    <div class="subsection-card" style="--img:url('images/distillation-theory.jpg')">
-      <span class="badge">Distillation Theory</span>
+    <!-- Подраздел: Distillation Theory -->
+    <div class="subsection-card sub-distillation">
+      <span class="tag">Distillation Theory</span>
       <h3>Principles of Distillation and Rectification: From Simple Distillation to Fractionation</h3>
       <p>Understanding vapor-liquid equilibrium, reflux, theoretical plates, and the progression from pot still to column distillation.</p>
       <div class="sub-links">
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/distillation-vs-rectification.html">Distillation vs. Rectification — Choosing the Right Method →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/rectification-column-working-principle.html">How a Rectification Column Works (Beginner Theory) →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/rectification-column-tuning-guide.html">How to Tune a Rectification Column: Reflux Ratio →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/dephlegmator-condenser-guide.html">Working with the Dephlegmator and Condenser →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/column-packings-comparison-guide.html">Column Packings Compared: Efficiency &amp; Strength →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/rectification-packing-comparison.html">Packing Materials for Rectification: Detailed Comparison →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/continuous-rectification-column-guide.html">Continuous Rectification: Batch to Infinite Flow →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/vacuum-rectification-theory-practice.html">Vacuum Rectification: Theory and Practice →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/distillation-automation-pid-guide.html">Distillation Automation: PID Controllers &amp; Thermocouples →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/head-fractions-separation-chemistry.html">Separating Head Fractions: Chemistry &amp; Toxicology →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/tail-fractions-separation-redistillation.html">Separating Tail Fractions &amp; Re-Distillation →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/manual-distillation-pot-still-cuts.html">Manual Distillation: Mastering the Cuts by Hand →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/double-distillation-clean-chain.html">Double Distillation and the "Clean Chain" Strategy →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/rectification-instruction-96-percent.html">Technological Instruction: Home Rectification to 96% →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/sugar-wash-stripping-run-guide.html">Distilling Sugar Wash: Step-by-Step Stripping Run →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/grain-wash-distillation-features.html">Distilling Grain Wash: Features &amp; Quality →</a>
-        <a href="Distilling &amp; Safety/Principles of Distillation and Rectification: From Simple Distillation to Fractionation/fruit-wash-distillation-art-aroma.html">Fruit Wash Distillation: The Art of Preserving Aroma →</a>
-      </div>
-    </div>
-
-    <div class="subsection-card">
-      <span class="badge">Purification</span>
-      <h3>Methods of Purification, Refinement, and Quality Control of Distillates</h3>
-      <p>Carbon filtration, polishing techniques, hydrometer and refractometer use, and quality assessment methods.</p>
-      <div class="sub-links">
-        <a href="distillation-safety.html#purification">Open subsection →</a>
-      </div>
-    </div>
-
-    <div class="subsection-card">
-      <span class="badge">Maturation</span>
-      <h3>Storage, Maturation, and Sensory Evaluation of the Finished Product</h3>
-      <p>Aging in oak and other woods, storage conditions, blending techniques, and professional sensory evaluation methods.</p>
-      <div class="sub-links">
-        <a href="distillation-safety.html#maturation">Open subsection →</a>
-      </div>
-    </div>
-
-    <div class="subsection-card">
-      <span class="badge">Legal &amp; Infrastructure</span>
-      <h3>Regional Regulatory Frameworks and Infrastructure Aspects in Europe</h3>
-      <p>Overview of EU and national regulations, licensing requirements, tax considerations, and equipment sourcing in Europe.</p>
-      <div class="sub-links">
-        <a href="distillation-safety.html#regulations">Open subsection →</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="tools">
-  <div class="container">
-    <h2>🧮 Distiller's Tools</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>ABV &amp; Dilution Calculator</h3>
-        <p>Pure alcohol volume, dilution ratios, temperature corrections for hydrometer readings.</p>
-        <a class="card-link" href="#">Coming soon →</a>
-      </div>
-      <div class="card">
-        <h3>Yeast Pitch Rate</h3>
-        <p>Exact yeast amount for your wash volume and sugar content.</p>
-        <a class="card-link" href="#">Coming soon →</a>
-      </div>
-      <div class="card">
-        <h3>Sugar Potential Table</h3>
-        <p>Theoretical alcohol yield from fruits, berries, grains and alternative sugars.</p>
-        <a class="card-link" href="#">Coming soon →</a>
-      </div>
-      <div class="card">
-        <h3>Saccharification Guide</h3>
-        <p>Temperature ranges for hot saccharification, iodine test, enzyme activity charts.</p>
-        <a class
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/distillation-vs-rectification.html">Distillation vs. Rectification — Choosing the Right Method →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-column-working-principle.html">How a Rectification Column Works (Beginner Theory) →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-column-tuning-guide.html">How to Tune a Rectification Column: Reflux Ratio →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/dephlegmator-condenser-guide.html">Working with the Dephlegmator and Condenser →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/column-packings-comparison-guide.html">Column Packings Compared: Efficiency &amp; Strength →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-packing-comparison.html">Packing Materials for Rectification: Detailed Comparison →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/continuous-rectification-column-guide.html">Continuous Rectification: Batch to Infinite Flow →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/vacuum-rectification-theory-practice.html">Vacuum Rectification: Theory and Practice →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/distillation-automation-pid-guide.html">Distillation Automation: PID Controllers &amp; Thermocouples →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/head-fractions-separation-chemistry.html">Separating Head Fractions: Chemistry &amp; Toxicology →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/tail-fractions-separation-redistillation.html">Separating Tail Fractions &amp; Re-Distillation →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/manual-distillation-pot-still-cuts.html">Manual Distillation: Mastering the Cuts by Hand →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/double-distillation-clean-chain.html">Double Distillation and the "Clean Chain" Strategy →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-instruction-96-percent.html">Technological Instruction: Home Rectification to 96% →</a>
+        <a href="Distilling%20&amp;%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Di
