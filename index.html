@@ -66,6 +66,11 @@
   /* --- Community Recipes category cards: ALL text forced white (higher specificity than the plain .card rules above) --- */
   .card-bg,.card-bg h3,.card-bg p,.card-bg a,.card-bg .card-link-plain,.card-bg .coming{color:#fff !important;text-shadow:0 1px 5px rgba(0,0,0,.65)}
   .card-bg .badge.count{background:rgba(255,255,255,.24) !important;color:#fff !important}
+  /* --- Essential Guides cards: photo background + white text (same treatment as Community Recipes) --- */
+  .card-bg .badge{background:rgba(255,255,255,.24) !important;color:#fff !important;backdrop-filter:blur(2px)}
+  .card-bg .card-link-plain{color:#fff !important}
+  .card-bg .card-link-plain:hover{color:#f4ffe8 !important}
+  .card-bg .coming{color:#fff !important}
   .card-link-plain{margin-top:16px;font-weight:700;text-decoration:none;color:var(--green-700)}
   .card-link-plain:hover{text-decoration:underline}
   .coming{margin-top:16px;color:#9aa89c;font-weight:600;text-decoration:none}
@@ -193,25 +198,25 @@
   <div class="container">
     <h2 class="section-title">📚 Essential Guides</h2>
     <div class="cards">
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/What_is_Home_Distilling.png')">
         <span class="badge green">Beginner</span>
         <h3>What is Home Distilling?</h3>
         <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
         <a class="card-link-plain" href="what-is-home-distilling.html">Read the guide →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment_Checklist.png')">
         <span class="badge blue">Checklist</span>
         <h3>Equipment Checklist</h3>
         <p>Stills, fermenters, hydrometers, thermometers and safety gear — everything you need, prioritized by importance.</p>
         <a class="card-link-plain" href="equipment-checklist.html">View checklist →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distillation_Safety_Guide.png')">
         <span class="badge red">Safety</span>
         <h3>Distillation Safety Guide</h3>
         <p>Methanol and heads, fraction cuts, fire and pressure hazards, safe materials — and when to stop a run.</p>
         <a class="card-link-plain" href="distillation-safety.html">Read safety guide →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Fermentation_Science.png')">
         <span class="badge purple">Theory</span>
         <h3>Fermentation Science</h3>
         <p>Yeast types, temperature, pH, hydromodule, oxygen and troubleshooting stuck washes.</p>
