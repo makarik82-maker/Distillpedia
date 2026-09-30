@@ -17,7 +17,11 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);line-height:1.6;
+       background-color:#234d23;
+       background-image:linear-gradient(rgba(15,35,15,.72),rgba(15,35,15,.84)),url('background.png');
+       background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;
+       min-height:100vh}
   .container{width:min(1100px,92%);margin:0 auto}
   section{scroll-margin-top:110px}
 
@@ -236,25 +240,25 @@
   <div class="container">
     <h2 class="section-title">🛠️ Equipment</h2>
     <div class="cards">
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Fermenters%20%26%20Airlocks.png')">
         <span class="badge green">Fermentation</span>
         <h3>Fermenters &amp; Airlocks</h3>
         <p>Plastic vs glass vs stainless vessels, sizing, fill limits and airlock designs.</p>
         <a class="card-link-plain" href="equipment-checklist.html#fermenters">Open subsection →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Hydrometers%20%26%20Thermometers.png')">
         <span class="badge blue">Measuring</span>
         <h3>Hydrometers &amp; Thermometers</h3>
         <p>Sugar and ABV measurement, temperature control for saccharification and distillation.</p>
         <a class="card-link-plain" href="equipment-checklist.html#measuring">Open subsection →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Pot%20Still%20vs.%20Reflux%20Column.png')">
         <span class="badge purple">Distilling</span>
         <h3>Pot Still vs. Reflux Column</h3>
         <p>How each hardware type works and which one suits your spirit style.</p>
         <a class="card-link-plain" href="equipment-checklist.html#stills">Open subsection →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Safety%20Equipment.png')">
         <span class="badge red">Safety</span>
         <h3>Safety Equipment</h3>
         <p>Fire extinguisher, ventilation, gloves, glasses and first aid — the non-negotiable kit.</p>
