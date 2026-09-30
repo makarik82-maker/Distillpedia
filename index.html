@@ -59,6 +59,8 @@
   .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.55)}
   .card-bg .badge.count{background:rgba(255,255,255,.22);color:#f2f8ee;backdrop-filter:blur(2px)}
   .card-bg:hover{box-shadow:0 8px 22px rgba(30,50,30,.35)}
+  /* Dark background variant for cards that have no photo asset yet */
+  .card-dark{background-image:linear-gradient(145deg,#1c2e1c,#142414) !important}
   .badge{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:12px}
   .badge.green{background:#e3f3dc;color:#2d6a2f}
   .badge.blue{background:#e0ecf7;color:#28567c}
@@ -226,7 +228,7 @@
         <p>Yeast types, temperature, pH, hydromodule, oxygen and troubleshooting stuck washes.</p>
         <a class="card-link-plain" href="fermentation-science.html">Learn the science →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg card-dark">
         <span class="badge green">Beginner</span>
         <h3>What is Home Brewing?</h3>
         <p>Brewing vs. distilling: beer, cider and kvass basics, malt, hops, wort and conditioning without a still.</p>
