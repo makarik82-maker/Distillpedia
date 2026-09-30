@@ -63,6 +63,9 @@
   .badge.count{background:#eef2ea;color:#5c6b60;text-transform:none}
   .card h3{font-size:1.2rem;margin-bottom:10px;color:#243b2a}
   .card p{color:var(--muted);font-size:.97rem;flex:1}
+  /* --- Community Recipes category cards: ALL text forced white (higher specificity than the plain .card rules above) --- */
+  .card-bg,.card-bg h3,.card-bg p,.card-bg a,.card-bg .card-link-plain,.card-bg .coming{color:#fff !important;text-shadow:0 1px 5px rgba(0,0,0,.65)}
+  .card-bg .badge.count{background:rgba(255,255,255,.24) !important;color:#fff !important}
   .card-link-plain{margin-top:16px;font-weight:700;text-decoration:none;color:var(--green-700)}
   .card-link-plain:hover{text-decoration:underline}
   .coming{margin-top:16px;color:#9aa89c;font-weight:600;text-decoration:none}
