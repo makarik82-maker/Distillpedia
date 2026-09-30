@@ -46,6 +46,12 @@
   .section-title{color:var(--green-700);font-size:2rem;padding-bottom:14px;border-bottom:1px solid #d8e4d4;margin-bottom:34px}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-bottom:40px}
   .card{background:var(--card);border-radius:14px;box-shadow:0 4px 14px rgba(30,50,30,.10);padding:22px;display:flex;flex-direction:column}
+  /* Category cards with a photo background + dark overlay for text contrast */
+  .card-bg{position:relative;background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86));background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
+  .card-bg h3,.card-bg .card-link-plain{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+  .card-bg .badge.count{background:rgba(255,255,255,.22);color:#f2f8ee;backdrop-filter:blur(2px)}
+  .card-bg:hover{box-shadow:0 8px 22px rgba(30,50,30,.35)}
   .badge{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:12px}
   .badge.green{background:#e3f3dc;color:#2d6a2f}
   .badge.blue{background:#e0ecf7;color:#28567c}
@@ -251,31 +257,31 @@
   <div class="container">
     <h2 class="section-title">🍺 Community Recipes</h2>
     <div class="cards">
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Fruit_Spirits.png')">
         <span class="badge count">53 recipes</span>
         <h3>🍑 Fruit Spirits</h3>
         <p>Apricot, plum, apple, pear, cherry, grape, berry, melon, watermelon and exotic fruit distillates. Includes schnapps, slivovitz, kirschwasser and tutovka.</p>
         <a class="card-link-plain" href="recipes-fruit.html">Browse category →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Grain_Spirits.png')">
         <span class="badge count">14 recipes</span>
         <h3>🌾 Grain Spirits</h3>
         <p>Barley, wheat, rye, oat, rice, corn, buckwheat, malt, potato, flour, bean, kvass and bread moonshine.</p>
         <a class="card-link-plain" href="recipes-grain.html">Browse category →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Sugar_%26_Sweet_Spirits.png')">
         <span class="badge count">4 recipes</span>
         <h3>🍬 Sugar &amp; Sweet Spirits</h3>
         <p>Sugar, fructose/dextrose, honey, candy and molasses moonshine. Clean neutral bases.</p>
         <a class="card-link-plain" href="recipes-sugar.html">Browse category →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Beer_Spirits.png')">
         <span class="badge count">1 recipe</span>
         <h3>🍺 Beer Spirits</h3>
         <p>Moonshine from beer: proper degassing and hop oil removal technology.</p>
         <a class="card-link-plain" href="recipes-beer.html">Browse category →</a>
       </div>
-      <div class="card">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distilling%20%26%20Safety/The%20Art%20of%20Making%20Cuts.png')">
         <span class="badge count">Coming soon</span>
         <h3>🚫 Zero-Proof Spirits</h3>
         <p>Non-alcoholic distillates, aromatic waters and alcohol-free bases made with the same equipment.</p>
