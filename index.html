@@ -49,6 +49,9 @@
   /* Category cards with a photo background + dark overlay for text contrast */
   .card-bg{position:relative;background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86));background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
   .card-bg h3,.card-bg .card-link-plain{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  /* All text inside photo-backed category cards must be white for contrast */
+  .card-bg a{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  .card-bg a:hover{color:#f4ffe8}
   .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.55)}
   .card-bg .badge.count{background:rgba(255,255,255,.22);color:#f2f8ee;backdrop-filter:blur(2px)}
   .card-bg:hover{box-shadow:0 8px 22px rgba(30,50,30,.35)}
