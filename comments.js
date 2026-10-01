@@ -4,25 +4,20 @@
    Security notes: rendering uses textContent only (no innerHTML for user data) => XSS-safe;
    honeypot field + submission timestamp are forwarded to the backend for spam filtering. */
 (function () {
-  // ⚠️ TODO: replace with your deployed Google Apps Script Web App URL, e.g.
-  // https://script.google.com/macros/s/AKfycbXXXXXXXX/exec
+  // Backend: Google Apps Script Web App (deployed "Anyone" access).
+  // GET  ?page=<id> -> {ok:true, comments:[{name,date,text}]}
+  // POST JSON       -> {ok:true} | {ok:false, message}
   const API_URL = 'https://script.google.com/macros/s/AKfycbws1zGiiC1KW3xvD-zqdoYCit2bfv7pOoXjwJ5olbGc6FpJvc5DnyQUlcdBzEu76kmQcA/exec';
 
   document.querySelectorAll('.comments-widget').forEach(function (widget) {
-    const pageId    = widget.dataset.pageId;
-    const pageTitle = widget.dataset.pageTitle || document.title;
+    const pageId    = (widget.dataset.pageId || location.pathname).trim();
+    const pageTitle = (widget.dataset.pageTitle || document.title).trim();
     const list   = widget.querySelector('.cw-list');
     const form   = widget.querySelector('.cw-form');
     const status = widget.querySelector('.cw-status');
     let openedAt = Date.now();
 
     if (!form || !list) return;                       // markup guard
-    if (API_URL.indexOf('ВАШ_ID') !== -1) {           // backend not configured yet
-      list.textContent = 'Комментарии временно недоступны: не настроен сервер (API_URL).';
-      if (form) form.style.display = 'none';
-      return;
-    }
-
     loadComments();
 
     form.addEventListener('submit', async function (ev) {
@@ -37,6 +32,8 @@
         website: fd.get('website'),   // honeypot
         ts: openedAt                  // время открытия формы
       };
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
       status.textContent = 'Отправка…';
       try {
         const res = await fetch(API_URL, {
@@ -44,27 +41,46 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         const out = await res.json();
         if (out.ok) {
           form.reset();
           openedAt = Date.now();
           status.textContent = '✅ Комментарий отправлен! Появится после модерации.';
         } else {
-          status.textContent = '⚠️ Ошибка: ' + out.message;
+          status.textContent = '⚠️ Ошибка: ' + (out.message || 'сервер отклонил комментарий');
         }
       } catch (e) {
         status.textContent = '⚠️ Не удалось отправить. Попробуйте позже.';
+      } finally {
+        if (btn) btn.disabled = false;
       }
     });
 
     async function loadComments() {
+      list.textContent = 'Загрузка комментариев…';
+      let out;
       try {
-        const res = await fetch(API_URL + '?page=' + encodeURIComponent(pageId));
-        const out = await res.json();
-        render(out.comments || []);
+        const res = await fetch(API_URL + '?page=' + encodeURIComponent(pageId),
+                                { redirect: 'follow' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        out = await res.json();
       } catch (e) {
-        list.textContent = 'Не удалось загрузить комментарии.';
+        // Most likely a CORS/network failure: give the user a working fallback link.
+        list.innerHTML = '';
+        const p = document.createElement('p');
+        p.className = 'cw-text';
+        p.textContent = 'Не удалось загрузить комментарии. ';
+        const a = document.createElement('a');
+        a.href = API_URL + '?page=' + encodeURIComponent(pageId);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = 'Открыть данные';
+        p.append(a);
+        list.append(p);
+        return;
       }
+      render(out.comments || []);
     }
 
     function render(comments) {
