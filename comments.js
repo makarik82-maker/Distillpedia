@@ -9,7 +9,7 @@
   // POST JSON       -> {ok:true} | {ok:false, message}
   // doGet is served from script.googleusercontent.com after a 302 redirect, while doPost
   // only answers on the original script.google.com URL (the redirect turns POST into GET).
-  const API_URL   = 'https://script.google.com/macros/s/AKfycbws1zGiiC1KW3xvD-zqdoYCit2bfv7pOoXjwJ5olbGc6FpJvc5DnyQUlcdBzEu76kmQcA/exec';
+  const API_URL   = 'https://script.google.com/macros/s/AKfycby6s-iq48Aqh5oz51VoNBC8Ko_wkqaTJnAmv2orYYBqoIWTIXoeJ8DPvCVIZrDdgIzaTw/exec';
 
   document.querySelectorAll('.comments-widget').forEach(function (widget) {
     const pageId    = (widget.dataset.pageId || location.pathname).trim();
