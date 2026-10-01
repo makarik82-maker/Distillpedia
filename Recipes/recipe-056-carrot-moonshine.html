@@ -62,6 +62,39 @@
         .page-header h1 { font-size: 26px; }
         .article { padding: 22px; }
     }
+
+        /* ===== Comments widget ===== */
+        .comments-widget {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 0 0 40px;
+        }
+        .comments-widget h2 {
+            color: #2c5f2d; font-size: 24px; margin-bottom: 20px;
+            border-bottom: 2px solid #97bc62; padding-bottom: 6px;
+        }
+        .cw-form input, .cw-form textarea {
+            width: 100%; padding: 10px 12px; margin-bottom: 12px;
+            border: 1px solid #ccc; border-radius: 4px;
+            font-family: inherit; font-size: 15px; background: #fff; color: #333;
+        }
+        .cw-form textarea { min-height: 110px; resize: vertical; }
+        .cw-form input:focus, .cw-form textarea:focus { outline: 2px solid #97bc62; border-color: #2c5f2d; }
+        .cw-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+        .cw-form button {
+            background: #2c5f2d; color: #fff; border: 0; padding: 10px 24px;
+            border-radius: 4px; font-size: 15px; cursor: pointer; transition: background 0.3s;
+        }
+        .cw-form button:hover { background: #1e4520; }
+        .cw-status { min-height: 20px; font-size: 14px; color: #2c5f2d; margin-top: 8px; }
+        .cw-list { margin-top: 24px; color: #555; }
+        .cw-item { border-top: 1px solid #eee; padding: 14px 0; }
+        .cw-item:first-child { border-top: 0; }
+        .cw-meta { font-size: 13px; color: #888; margin-bottom: 4px; }
+        .cw-name { font-weight: bold; color: #2c5f2d; }
+        .cw-text { white-space: pre-wrap; word-wrap: break-word; }
 </style>
 </head>
 <body>
@@ -148,10 +181,29 @@
             <div class="next-card"><h3>🎃 Pumpkin Moonshine</h3><p>Banana, melon and honey-nut tones.</p><a href="recipe-072-pumpkin-moonshine.html">View recipe →</a></div>
             <div class="next-card"><h3>🥔 Potato Moonshine</h3><p>Classic malt saccharification of a starchy tuber.</p><a href="recipe-020-potato-moonshine.html">View recipe →</a></div>
         </div>
-    </article>
-</div>
+        </article>
 
-<footer>
+    <!-- ===== Community comments (widget markup per site spec) ===== -->
+    <section class="comments-widget"
+             data-page-id="carrot-moonshine"
+             data-page-title="Carrot Moonshine">
+      <h2>💬 Комментарии</h2>
+
+      <form class="cw-form" autocomplete="off">
+        <input name="name" placeholder="Ваше имя" required maxlength="60">
+        <input name="email" type="email" placeholder="Email (не публикуется)" maxlength="120">
+        <!-- honeypot: скрытое поле-ловушка для ботов -->
+        <input name="website" class="cw-hp" tabindex="-1" autocomplete="off">
+        <textarea name="text" placeholder="Ваш комментарий: опыт, вопросы, улучшения рецепта…" required maxlength="3000"></textarea>
+        <button type="submit">Отправить</button>
+        <p class="cw-status" role="status"></p>
+      </form>
+
+      <div class="cw-list">Загрузка комментариев…</div>
+    </section>
+    </div>
+
+    <footer>
     <div class="container">
         <div>
             <h3>Distillpedia Club</h3>
