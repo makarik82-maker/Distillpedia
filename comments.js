@@ -6,7 +6,7 @@
 (function () {
   // ⚠️ TODO: replace with your deployed Google Apps Script Web App URL, e.g.
   // https://script.google.com/macros/s/AKfycbXXXXXXXX/exec
-  const API_URL = 'https://script.google.com/macros/s/ВАШ_ID/exec';
+  const API_URL = 'https://script.google.com/macros/s/AKfycbws1zGiiC1KW3xvD-zqdoYCit2bfv7pOoXjwJ5olbGc6FpJvc5DnyQUlcdBzEu76kmQcA/exec';
 
   document.querySelectorAll('.comments-widget').forEach(function (widget) {
     const pageId    = widget.dataset.pageId;
