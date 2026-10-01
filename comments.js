@@ -7,7 +7,9 @@
   // Backend: Google Apps Script Web App (deployed "Anyone" access).
   // GET  ?page=<id> -> {ok:true, comments:[{name,date,text}]}
   // POST JSON       -> {ok:true} | {ok:false, message}
-  const API_URL = 'https://script.google.com/macros/s/AKfycbws1zGiiC1KW3xvD-zqdoYCit2bfv7pOoXjwJ5olbGc6FpJvc5DnyQUlcdBzEu76kmQcA/exec';
+  // doGet is served from script.googleusercontent.com after a 302 redirect, while doPost
+  // only answers on the original script.google.com URL (the redirect turns POST into GET).
+  const API_URL   = 'https://script.google.com/macros/s/AKfycbws1zGiiC1KW3xvD-zqdoYCit2bfv7pOoXjwJ5olbGc6FpJvc5DnyQUlcdBzEu76kmQcA/exec';
 
   document.querySelectorAll('.comments-widget').forEach(function (widget) {
     const pageId    = (widget.dataset.pageId || location.pathname).trim();
@@ -36,13 +38,17 @@
       if (btn) btn.disabled = true;
       status.textContent = 'Отправка…';
       try {
+        // Same-origin-ish simple request: no custom Content-Type => no CORS preflight,
+        // which Apps Script Web Apps (external users) do not answer reliably.
         const res = await fetch(API_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         });
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        const out = await res.json();
+        const txt = await res.text();
+        let out;
+        try { out = JSON.parse(txt); }
+        catch (e) { throw new Error('bad response from server'); }
         if (out.ok) {
           form.reset();
           openedAt = Date.now();
