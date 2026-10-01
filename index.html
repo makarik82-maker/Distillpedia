@@ -3,338 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distillpedia Club | The Distilling & Brewing Wiki</title>
+<title>Distillpedia Club | The Distilling &amp; Brewing Wiki</title>
 <style>
   :root{
-    --bg:#0f0f17; --panel:#14141f; --panel2:#1d1d2b; --border:#2a2a3a;
-    --text:#e8e8f0; --muted:#a0a0b8; --accent:#4a9eff; --green:#9ad1a5;
+    --green-900:#1e4a20;
+    --green-700:#2d6a2f;
+    --lime:#8bc34a;
+    --lime-light:#d9f0b0;
+    --bg:#f4f7f4;
+    --card:#ffffff;
+    --text:#22302a;
+    --muted:#5c6b60;
   }
-  *{box-sizing:border-box}
+  *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--text);
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.55;
-  }
-  a{color:var(--accent); text-decoration:none}
-  a:hover{text-decoration:underline}
-  h1,h2,h3{line-height:1.25}
+  body{font-family:'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);line-height:1.6;
+       background-color:#234d23;
+       background-image:linear-gradient(rgba(15,35,15,.72),rgba(15,35,15,.84)),url('background.png');
+       background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;
+       min-height:100vh}
+  .container{width:min(1100px,92%);margin:0 auto}
+  section{scroll-margin-top:110px}
 
-  /* ===== Шапка ===== */
-  .site-header{
-    position:sticky; top:0; z-index:100;
-    display:flex; align-items:center; gap:24px; flex-wrap:wrap;
-    padding:14px 28px; background:rgba(15,15,23,.95); backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
-  }
-  .logo{font-size:20px; font-weight:700; color:var(--text)}
-  .logo:hover{text-decoration:none}
-  .logo span{color:var(--accent)}
-  .site-header nav{display:flex; gap:18px; flex-wrap:wrap}
-  .site-header nav a{color:var(--muted); font-size:15px}
-  .site-header nav a:hover{color:var(--text)}
+  /* ===== Header ===== */
+  .site-header{position:sticky;top:0;z-index:50;background:var(--green-700);box-shadow:0 2px 10px rgba(0,0,0,.25);padding:14px 0 12px;text-align:center}
+  .logo{display:inline-block;font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:var(--lime)}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;margin-top:10px}
+  .nav a{color:#fff;text-decoration:none;font-size:1.05rem;padding:4px 2px}
+  .nav a:hover{color:var(--lime-light);text-decoration:underline}
 
-  /* =====================================================
-     DISTILLER'S TOOLS — горизонтальная панель у правого края экрана
-     ===================================================== */
-  .tools-panel{
-    position:fixed;                 /* прижата к правому краю экрана */
-    top:76px;                       /* под шапкой */
-    right:0;
-    z-index:90;
-    display:flex; flex-direction:column; gap:6px;
-    max-width:min(94vw, 1180px);
-    padding:10px 0 8px 16px;
-    background:rgba(20,20,31,.93);
-    backdrop-filter:blur(8px);
-    border:1px solid var(--border); border-right:none;
-    border-radius:14px 0 0 14px;
-    box-shadow:0 10px 30px rgba(0,0,0,.45);
-  }
-  .tools-panel h2{
-    margin:0; font-size:14px; letter-spacing:.4px;
-    text-transform:uppercase; color:var(--muted);
-  }
-  .tools-row{
-    display:flex; flex-direction:row;   /* горизонтальное расположение карточек */
-    gap:10px;
-    overflow-x:auto;                    /* прокрутка, если экран узкий */
-    padding:2px 16px 8px 2px;
-  }
-  .tool-card{
-    flex:0 0 auto; width:215px;
-    display:flex; flex-direction:column; gap:6px;
-    padding:12px 14px; background:var(--panel2);
-    border:1px solid var(--border); border-radius:10px;
-  }
-  .tool-card h3{margin:0; font-size:14px; color:var(--text)}
-  .tool-card p{margin:0; font-size:12px; color:var(--muted); flex:1}
-  .tool-card a{font-size:12px; font-weight:600}
+  /* ===== Hero ===== */
+  .hero{background-image:linear-gradient(rgba(15,35,15,.72),rgba(15,35,15,.84)),url('hero-bg.png');
+    background-color:var(--green-900);background-size:cover;background-position:center;
+    background-repeat:no-repeat;color:#fff;padding:64px 0;text-align:center}
+  .hero h1{font-size:2.5rem;margin-bottom:16px}
+  .hero p{max-width:760px;margin:0 auto 26px;color:#e4efe2;font-size:1.1rem}
+  .btn{display:inline-block;background:var(--lime);color:#173317;font-weight:700;padding:12px 26px;border-radius:10px;text-decoration:none}
+  .btn:hover{filter:brightness(1.08)}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 48px;margin-top:36px}
+  .stat strong{display:block;font-size:1.9rem;color:var(--lime-light)}
+  .stat span{color:#cfe0cb;font-size:.95rem}
 
-  /* ===== Основной контент ===== */
-  main{max-width:1180px; margin:0 auto; padding:32px 28px 60px}
-  section{margin-top:56px}
-  section > h2{font-size:26px; margin:0 0 20px}
+  /* ===== Sections & cards ===== */
+  .section{padding:48px 0 8px}
+  .section-title{color:var(--green-700);font-size:2rem;padding-bottom:14px;border-bottom:1px solid #d8e4d4;margin-bottom:34px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-bottom:40px}
+  .card{background:var(--card);border-radius:14px;box-shadow:0 4px 14px rgba(30,50,30,.10);padding:22px;display:flex;flex-direction:column}
+  /* Category cards with a photo background + dark overlay for text contrast */
+  .card-bg{position:relative;background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86));background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
+  .card-bg h3,.card-bg .card-link-plain{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  /* All text inside photo-backed category cards must be white for contrast */
+  .card-bg a{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  .card-bg a:hover{color:#f4ffe8}
+  .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+  .card-bg .badge.count{background:rgba(255,255,255,.22);color:#f2f8ee;backdrop-filter:blur(2px)}
+  .card-bg:hover{box-shadow:0 8px 22px rgba(30,50,30,.35)}
+  /* Dark background variant for cards that have no photo asset yet */
+  .card-dark{background-image:linear-gradient(145deg,#1c2e1c,#142414) !important}
+  .badge{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+  .badge.green{background:#e3f3dc;color:#2d6a2f}
+  .badge.blue{background:#e0ecf7;color:#28567c}
+  .badge.red{background:#f9e3e3;color:#a03434}
+  .badge.purple{background:#ece6f6;color:#5d3f8f}
+  .badge.count{background:#eef2ea;color:#5c6b60;text-transform:none}
+  .card h3{font-size:1.2rem;margin-bottom:10px;color:#243b2a}
+  .card p{color:var(--muted);font-size:.97rem;flex:1}
+  /* --- Community Recipes category cards: ALL text forced white (higher specificity than the plain .card rules above) --- */
+  .card-bg,.card-bg h3,.card-bg p,.card-bg a,.card-bg .card-link-plain,.card-bg .coming{color:#fff !important;text-shadow:0 1px 5px rgba(0,0,0,.65)}
+  .card-bg .badge.count{background:rgba(255,255,255,.24) !important;color:#fff !important}
+  /* --- Essential Guides cards: photo background + white text (same treatment as Community Recipes) --- */
+  .card-bg .badge{background:rgba(255,255,255,.24) !important;color:#fff !important;backdrop-filter:blur(2px)}
+  .card-bg .card-link-plain{color:#fff !important}
+  .card-bg .card-link-plain:hover{color:#f4ffe8 !important}
+  .card-bg .coming{color:#fff !important}
+  .card-link-plain{margin-top:16px;font-weight:700;text-decoration:none;color:var(--green-700)}
+  .card-link-plain:hover{text-decoration:underline}
+  .coming{margin-top:16px;color:#9aa89c;font-weight:600;text-decoration:none}
 
-  /* Герой */
-  .hero{margin-top:24px; text-align:center; padding:48px 16px}
-  .hero h1{font-size:40px; margin:0 0 16px}
-  .hero p{max-width:720px; margin:0 auto 26px; color:var(--muted); font-size:17px}
-  .btn{
-    display:inline-block; padding:12px 26px; border-radius:10px;
-    background:var(--accent); color:#fff; font-weight:600;
-  }
-  .btn:hover{text-decoration:none; background:#3b8de0}
-  .hero-stats{
-    display:flex; justify-content:center; gap:44px; flex-wrap:wrap;
-    margin-top:34px;
-  }
-  .hero-stats div{display:flex; flex-direction:column; align-items:center}
-  .hero-stats b{font-size:26px; color:var(--accent)}
-  .hero-stats span{font-size:13px; color:var(--muted)}
+  /* ===== Subsections (Distilling & Safety) ===== */
+  .subsection-card{position:relative;border-radius:16px;border-top:6px solid var(--lime);padding:30px 28px;margin-bottom:30px;color:#fff;overflow:hidden;
+    background-image:linear-gradient(rgba(21,36,21,.82),rgba(21,36,21,.88)),url('background.png');background-size:cover;background-position:center;background-repeat:no-repeat}
+  .sub-fermentation{background-color:#5a4632}
+  .sub-distillation{background-color:#2f4a50}
+  .sub-simple{background-color:#3c4a3c}
+  .tag{display:inline-block;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);padding:8px 20px;border-radius:999px;font-weight:600;margin-bottom:20px;backdrop-filter:blur(2px)}
+  .subsection-card h3{font-size:1.55rem;line-height:1.35;margin-bottom:16px;text-shadow:0 2px 6px rgba(0,0,0,.45)}
+  .subsection-card>p{color:#ececec;max-width:860px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 
-  /* Сетки карточек */
-  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .card{
-    display:flex; flex-direction:column; gap:10px;
-    padding:18px; background:var(--panel);
-    border:1px solid var(--border); border-radius:12px;
+  /* ==========================================================
+     ЕДИНЫЙ ФОРМАТ БЛОКОВ ССЫЛОК
+     (подразделы Fermentation и Distillation Theory)
+     Все ссылки — одинаковые полноширинные блоки:
+     display:block; width:100%; текст слева; одинаковые
+     padding, gap, скругления, фон и hover.
+     ========================================================== */
+  .sub-links{display:flex;flex-direction:column;gap:10px;margin-top:24px;max-width:860px}
+  .sub-links a{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    padding:14px 18px;
+    border-radius:12px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.26);
+    color:var(--lime-light);
+    font-size:1.02rem;
+    line-height:1.45;
+    text-align:left;
+    text-decoration:none;
+    backdrop-filter:blur(2px);
+    transition:background .2s ease;
   }
-  .badge{
-    align-self:flex-start; padding:3px 10px; border-radius:999px;
-    background:var(--panel2); border:1px solid var(--border);
-    font-size:12px; color:var(--muted);
-  }
-  .card h3{margin:0; font-size:17px}
-  .card p{margin:0; color:var(--muted); font-size:14px; flex:1}
-  .card a{font-size:14px; font-weight:600}
+  .sub-links a:hover{background:rgba(255,255,255,.26);color:#eaffc9}
 
-  /* Подразделы дистилляции */
-  .sub-block{
-    padding:20px; background:var(--panel);
-    border:1px solid var(--border); border-radius:12px; margin-bottom:18px;
-  }
-  .sub-block h4{margin:0 0 4px; font-size:13px; color:var(--accent); text-transform:uppercase; letter-spacing:.5px}
-  .sub-block h3{margin:0 0 8px; font-size:19px}
-  .sub-block > p{margin:0 0 14px; color:var(--muted); font-size:14px}
-  .link-list{display:flex; flex-wrap:wrap; gap:8px}
-  .link-list a{
-    padding:6px 12px; background:var(--panel2);
-    border:1px solid var(--border); border-radius:8px;
-    font-size:13px; color:var(--text);
-  }
-  .link-list a:hover{border-color:var(--accent); text-decoration:none}
+  /* одиночная ссылка подраздела (формат не менялся) */
+  .open-sub{display:inline-block;margin-top:20px;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);color:var(--lime-light);font-weight:600;text-decoration:none}
+  .open-sub:hover{background:rgba(255,255,255,.26)}
 
-  /* ===== Подвал ===== */
-  footer{border-top:1px solid var(--border); padding:40px 28px 28px; background:var(--panel)}
-  .footer-grid{
-    max-width:1180px; margin:0 auto; display:grid; gap:28px;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  }
-  .footer-grid h3{font-size:16px; margin:0 0 12px}
-  .footer-grid p, .footer-grid a{font-size:14px; color:var(--muted)}
-  .footer-grid ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
-  .footer-bottom{
-    max-width:1180px; margin:28px auto 0; padding-top:18px;
-    border-top:1px solid var(--border);
-    font-size:12.5px; color:var(--muted);
-  }
-  .footer-bottom .disclaimer{margin:0 0 12px}
+  /* ===== Footer ===== */
+  footer{background:var(--green-900);color:#dce8da;margin-top:60px;padding:44px 0 0}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;padding-bottom:30px}
+  footer h3,footer h4{color:#fff;margin-bottom:12px}
+  footer a{color:var(--lime-light);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.18);padding:16px 0;text-align:center;font-size:.92rem;color:#bcd0b8}
+  .disclaimer{background:#3a2f14;color:#f7e6b5;padding:14px 0;text-align:center;font-size:.92rem}
 
-  /* ===== Адаптив: на узких экранах панель возвращается в поток ===== */
-  @media (max-width:900px){
-    .tools-panel{
-      position:static; max-width:none; margin:16px 16px 0;
-      border-right:1px solid var(--border); border-radius:14px;
-    }
-    .tools-row{flex-wrap:wrap; overflow-x:visible}
-    .tool-card{width:auto; flex:1 1 220px}
+  @media(max-width:640px){
+    .hero h1{font-size:2rem}
+    .subsection-card{padding:22px 18px}
   }
 </style>
 </head>
 <body>
 
-<!-- ===== Шапка ===== -->
 <header class="site-header">
-  <a class="logo" href="index.html">⚗️ Distill<span>pedia</span> Club</a>
-  <nav>
-    <a href="#guides">Guides</a>
-    <a href="#equipment">Equipment</a>
-    <a href="#recipes">Recipes</a>
-    <a href="#distilling">Distilling</a>
-    <a href="#tools">Tools</a>
-  </nav>
+  <div class="container">
+    <a class="logo" href="index.html">⚗️ Distill<span>pedia</span> Club</a>
+    <nav class="nav">
+      <a href="#guides">Guides</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#distilling">Distilling</a>
+      <a href="#tools">Tools</a>
+    </nav>
+  </div>
 </header>
 
-<!-- =====================================================
-     DISTILLER'S TOOLS: горизонтальная панель вдоль правого края экрана
-     ===================================================== -->
-<aside class="tools-panel" id="tools">
-  <h2>🧮 Distiller's Tools</h2>
-  <div class="tools-row">
-
-    <div class="tool-card">
-      <h3>ABV &amp; Dilution Calculator</h3>
-      <p>Pure alcohol volume, dilution ratios, temperature corrections for hydrometer readings.</p>
-      <a href="#">Coming soon →</a>
-    </div>
-
-    <div class="tool-card">
-      <h3>Yeast Pitch Rate</h3>
-      <p>Exact yeast amount for your wash volume and sugar content.</p>
-      <a href="#">Coming soon →</a>
-    </div>
-
-    <div class="tool-card">
-      <h3>Sugar Potential Table</h3>
-      <p>Theoretical alcohol yield from fruits, berries, grains and alternative sugars.</p>
-      <a href="#">Coming soon →</a>
-    </div>
-
-    <div class="tool-card">
-      <h3>Saccharification Guide</h3>
-      <p>Temperature ranges for hot saccharification, iodine test, enzyme activity charts.</p>
-      <a href="#">Coming soon →</a>
-    </div>
-
-    <div class="tool-card">
-      <h3>Heads / Hearts / Tails Calculator</h3>
-      <p>Fraction cut volumes from pure alcohol amount.</p>
-      <a href="#">Coming soon →</a>
-    </div>
-
-  </div>
-</aside>
-
-<main>
-
-  <!-- ===== Герой ===== -->
-  <section class="hero">
-    <h1>The Distilling &amp; Brewing Wiki</h1>
-    <p>Your comprehensive educational resource for fermentation science, distillation safety,
-       and traditional spirit recipes. From beginner sugar washes to advanced grain saccharification.</p>
-    <a class="btn" href="#recipes">Explore 72 Recipes</a>
-    <div class="hero-stats">
-      <div><b>72</b><span>Recipes</span></div>
-      <div><b>5</b><span>Categories</span></div>
-      <div><b>36</b><span>Wiki community</span></div>
-      <div><b>100%</b><span>Free Access</span></div>
-    </div>
-  </section>
-
-  <!-- ===== Essential Guides ===== -->
-  <section id="guides">
-    <h2>📚 Essential Guides</h2>
-    <div class="grid">
+<section id="tools" class="section">
+  <div class="container">
+    <h2 class="section-title">🧮 Distiller's Tools</h2>
+    <div class="cards">
       <div class="card">
-        <span class="badge">Beginner</span>
+        <h3>ABV &amp; Dilution Calculator</h3>
+        <p>Pure alcohol volume, dilution ratios, temperature corrections for hydrometer readings.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Yeast Pitch Rate</h3>
+        <p>Exact yeast amount for your wash volume and sugar content.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Sugar Potential Table</h3>
+        <p>Theoretical alcohol yield from fruits, berries, grains and alternative sugars.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Saccharification Guide</h3>
+        <p>Temperature ranges for hot saccharification, iodine test, enzyme activity charts.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+      <div class="card">
+        <h3>Heads / Hearts / Tails Calculator</h3>
+        <p>Fraction cut volumes from pure alcohol amount.</p>
+        <a class="coming" href="#">Coming soon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container">
+    <h1>The Distilling &amp; Brewing Wiki</h1>
+    <p>Your comprehensive educational resource for fermentation science, distillation safety, and traditional spirit recipes. From beginner sugar washes to advanced grain saccharification.</p>
+    <a class="btn" href="#recipes">Explore 72 Recipes</a>
+    <div class="stats">
+      <div class="stat"><strong>72</strong><span>Recipes</span></div>
+      <div class="stat"><strong>5</strong><span>Categories</span></div>
+      <div class="stat"><strong>36</strong><span>Wiki community</span></div>
+      <div class="stat"><strong>100%</strong><span>Free Access</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="guides" class="section">
+  <div class="container">
+    <h2 class="section-title">📚 Essential Guides</h2>
+    <div class="cards">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/What_is_Home_Distilling.png')">
+        <span class="badge green">Beginner</span>
         <h3>What is Home Distilling?</h3>
         <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
-        <a href="what-is-home-distilling.html">Read the guide →</a>
+        <a class="card-link-plain" href="what-is-home-distilling.html">Read the guide →</a>
       </div>
-      <div class="card">
-        <span class="badge">Checklist</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment_Checklist.png')">
+        <span class="badge blue">Checklist</span>
         <h3>Equipment Checklist</h3>
         <p>Stills, fermenters, hydrometers, thermometers and safety gear — everything you need, prioritized by importance.</p>
-        <a href="equipment-checklist.html">View checklist →</a>
+        <a class="card-link-plain" href="equipment-checklist.html">View checklist →</a>
       </div>
-      <div class="card">
-        <span class="badge">Safety</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distillation_Safety_Guide.png')">
+        <span class="badge red">Safety</span>
         <h3>Distillation Safety Guide</h3>
         <p>Methanol and heads, fraction cuts, fire and pressure hazards, safe materials — and when to stop a run.</p>
-        <a href="distillation-safety.html">Read safety guide →</a>
+        <a class="card-link-plain" href="distillation-safety.html">Read safety guide →</a>
       </div>
-      <div class="card">
-        <span class="badge">Theory</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Fermentation_Science.png')">
+        <span class="badge purple">Theory</span>
         <h3>Fermentation Science</h3>
         <p>Yeast types, temperature, pH, hydromodule, oxygen and troubleshooting stuck washes.</p>
-        <a href="fermentation-science.html">Learn the science →</a>
+        <a class="card-link-plain" href="fermentation-science.html">Learn the science →</a>
       </div>
-      <div class="card">
-        <span class="badge">Beginner</span>
+      <div class="card card-bg card-dark">
+        <span class="badge green">Beginner</span>
         <h3>What is Home Brewing?</h3>
         <p>Brewing vs. distilling: beer, cider and kvass basics, malt, hops, wort and conditioning without a still.</p>
-        <a href="what-is-home-brewing.html">Read the guide →</a>
+        <a class="card-link-plain" href="what-is-home-brewing.html">Read the guide →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== Equipment ===== -->
-  <section id="equipment">
-    <h2>🛠️ Equipment</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="badge">Fermentation</span>
+<section id="equipment" class="section">
+  <div class="container">
+    <h2 class="section-title">🛠️ Equipment</h2>
+    <div class="cards">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Fermenters%20%26%20Airlocks.png')">
+        <span class="badge green">Fermentation</span>
         <h3>Fermenters &amp; Airlocks</h3>
         <p>Plastic vs glass vs stainless vessels, sizing, fill limits and airlock designs.</p>
-        <a href="equipment-checklist.html#fermenters">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#fermenters">Open subsection →</a>
       </div>
-      <div class="card">
-        <span class="badge">Measuring</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Hydrometers%20%26%20Thermometers.png')">
+        <span class="badge blue">Measuring</span>
         <h3>Hydrometers &amp; Thermometers</h3>
         <p>Sugar and ABV measurement, temperature control for saccharification and distillation.</p>
-        <a href="equipment-checklist.html#measuring">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#measuring">Open subsection →</a>
       </div>
-      <div class="card">
-        <span class="badge">Distilling</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Pot%20Still%20vs.%20Reflux%20Column.png')">
+        <span class="badge purple">Distilling</span>
         <h3>Pot Still vs. Reflux Column</h3>
         <p>How each hardware type works and which one suits your spirit style.</p>
-        <a href="equipment-checklist.html#stills">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#stills">Open subsection →</a>
       </div>
-      <div class="card">
-        <span class="badge">Safety</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Safety%20Equipment.png')">
+        <span class="badge red">Safety</span>
         <h3>Safety Equipment</h3>
         <p>Fire extinguisher, ventilation, gloves, glasses and first aid — the non-negotiable kit.</p>
-        <a href="equipment-checklist.html#safety">Open subsection →</a>
+        <a class="card-link-plain" href="equipment-checklist.html#safety">Open subsection →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== Community Recipes ===== -->
-  <section id="recipes">
-    <h2>🍺 Community Recipes</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="badge">53 recipes</span>
+<section id="recipes" class="section">
+  <div class="container">
+    <h2 class="section-title">🍺 Community Recipes</h2>
+    <div class="cards">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Fruit_Spirits.png')">
+        <span class="badge count">53 recipes</span>
         <h3>🍑 Fruit Spirits</h3>
         <p>Apricot, plum, apple, pear, cherry, grape, berry, melon, watermelon and exotic fruit distillates. Includes schnapps, slivovitz, kirschwasser and tutovka.</p>
-        <a href="recipes-fruit.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-fruit.html">Browse category →</a>
       </div>
-      <div class="card">
-        <span class="badge">14 recipes</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Grain_Spirits.png')">
+        <span class="badge count">14 recipes</span>
         <h3>🌾 Grain Spirits</h3>
         <p>Barley, wheat, rye, oat, rice, corn, buckwheat, malt, potato, flour, bean, kvass and bread moonshine.</p>
-        <a href="recipes-grain.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-grain.html">Browse category →</a>
       </div>
-      <div class="card">
-        <span class="badge">4 recipes</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Sugar_%26_Sweet_Spirits.png')">
+        <span class="badge count">4 recipes</span>
         <h3>🍬 Sugar &amp; Sweet Spirits</h3>
         <p>Sugar, fructose/dextrose, honey, candy and molasses moonshine. Clean neutral bases.</p>
-        <a href="recipes-sugar.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-sugar.html">Browse category →</a>
       </div>
-      <div class="card">
-        <span class="badge">1 recipe</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Beer_Spirits.png')">
+        <span class="badge count">1 recipe</span>
         <h3>🍺 Beer Spirits</h3>
         <p>Moonshine from beer: proper degassing and hop oil removal technology.</p>
-        <a href="recipes-beer.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-beer.html">Browse category →</a>
       </div>
-      <div class="card">
-        <span class="badge">Coming soon</span>
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distilling%20%26%20Safety/The%20Art%20of%20Making%20Cuts.png')">
+        <span class="badge count">Coming soon</span>
         <h3>🚫 Zero-Proof Spirits</h3>
         <p>Non-alcoholic distillates, aromatic waters and alcohol-free bases made with the same equipment.</p>
-        <a href="recipes-zero-proof.html">Browse category →</a>
+        <a class="card-link-plain" href="recipes-zero-proof.html">Browse category →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== Distilling & Safety ===== -->
-  <section id="distilling">
-    <h2>⚗️ Distilling &amp; Safety</h2>
+<section id="distilling" class="section">
+  <div class="container">
+    <h2 class="section-title">⚗️ Distilling &amp; Safety</h2>
 
-    <div class="sub-block">
-      <h4>Fermentation</h4>
+    <!-- Подраздел: Fermentation -->
+    <div class="subsection-card sub-fermentation" id="wash-prep">
+      <span class="tag">Fermentation</span>
       <h3>Wash Preparation and Fermentation Process Management</h3>
       <p>Complete guide to preparing washes, yeast selection, nutrient management, temperature control and fermentation monitoring.</p>
-      <div class="link-list">
+      <div class="sub-links">
         <a href="Distilling%20%26%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/choosing-yeast-home-distilling.html">Choosing Yeast for Home Distilling →</a>
         <a href="Distilling%20%26%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/sugar-fermentation-basics.html">Sugar Fermentation Basics →</a>
         <a href="Distilling%20%26%20Safety/Wash%20Preparation%20and%20Fermentation%20Process%20Management/fermentation-temperature-sugar-wash.html">Fermentation Temperature Control →</a>
@@ -353,11 +336,12 @@
       </div>
     </div>
 
-    <div class="sub-block">
-      <h4>Distillation Theory</h4>
+    <!-- Подраздел: Distillation Theory -->
+    <div class="subsection-card sub-distillation" id="distillation-theory">
+      <span class="tag">Distillation Theory</span>
       <h3>Principles of Distillation and Rectification: From Simple Distillation to Fractionation</h3>
       <p>Understanding vapor-liquid equilibrium, reflux, theoretical plates, and the progression from pot still to column distillation.</p>
-      <div class="link-list">
+      <div class="sub-links">
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/distillation-vs-rectification.html">Distillation vs. Rectification — Choosing the Right Method →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-column-working-principle.html">How a Rectification Column Works (Beginner Theory) →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-column-tuning-guide.html">How to Tune a Rectification Column: Reflux Ratio →</a>
@@ -372,63 +356,65 @@
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/manual-distillation-pot-still-cuts.html">Manual Distillation: Mastering the Cuts by Hand →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/double-distillation-clean-chain.html">Double Distillation and the "Clean Chain" Strategy →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/rectification-instruction-96-percent.html">Technological Instruction: Home Rectification to 96% →</a>
-        <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/sugar-wash-stripping-run-guide.html">Sugar Wash Stripping Run Guide →</a>
+                <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/sugar-wash-stripping-run-guide.html">Sugar Wash Stripping Run Guide →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/grain-wash-distillation-features.html">Grain Wash Distillation Features →</a>
         <a href="Distilling%20%26%20Safety/Principles%20of%20Distillation%20and%20Rectification:%20From%20Simple%20Distillation%20to%20Fractionation/fruit-wash-distillation-art-aroma.html">Fruit Wash Distillation: The Art of Aroma →</a>
       </div>
     </div>
 
-    <div class="sub-block">
-      <h4>Simple Distillation</h4>
+    <!-- Подраздел: Simple Distillation -->
+    <div class="subsection-card sub-simple" id="simple-distillation">
+      <span class="tag">Simple Distillation</span>
       <h3>Standalone Distillation Guides</h3>
       <p>Quick references that sit outside the two long-form subsections: safety basics, cut-making and hardware comparison.</p>
-      <div class="link-list">
+      <div class="sub-links">
         <a href="distillation-safety.html">Distillation Safety Guide →</a>
         <a href="the-art-of-making-cuts.html">The Art of Making Cuts →</a>
         <a href="distilling-double-fractional.html">Double (Fractional) Distillation →</a>
         <a href="distilling-pot-still-vs-column.html">Pot Still vs. Reflux Column →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
-
-<!-- ===== Подвал ===== -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <h3>⚗️ Distillpedia Club</h3>
-      <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
-    </div>
-    <div>
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#guides">Essential Guides</a></li>
-        <li><a href="#equipment">Equipment</a></li>
-        <li><a href="#recipes">Community Recipes</a></li>
-        <li><a href="#distilling">Distilling &amp; Safety</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Recipe Categories</h3>
-      <ul>
-        <li><a href="recipes-fruit.html">Fruit Spirits</a></li>
-        <li><a href="recipes-grain.html">Grain Spirits</a></li>
-        <li><a href="recipes-sugar.html">Sugar &amp; Sweet Spirits</a></li>
-        <li><a href="recipes-beer.html">Beer Spirits</a></li>
-        <li><a href="recipes-zero-proof.html">Zero-Proof Spirits</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Contact</h3>
-      <p>Have a recipe to add or found an error?<br>
-      <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>⚗️ Distillpedia Club</h3>
+        <p>An open educational resource dedicated to the science, history and safe practices of home fermentation and distillation.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#guides">Essential Guides</a></li>
+          <li><a href="#equipment">Equipment</a></li>
+          <li><a href="#recipes">Community Recipes</a></li>
+          <li><a href="#distilling">Distilling &amp; Safety</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Recipe Categories</h4>
+        <ul>
+          <li><a href="recipes-fruit.html">Fruit Spirits</a></li>
+          <li><a href="recipes-grain.html">Grain Spirits</a></li>
+          <li><a href="recipes-sugar.html">Sugar &amp; Sweet Spirits</a></li>
+          <li><a href="recipes-beer.html">Beer Spirits</a></li>
+          <li><a href="recipes-zero-proof.html">Zero-Proof Spirits</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Have a recipe to add or found an error?<br><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+      </div>
     </div>
   </div>
+  <div class="disclaimer">
+    <div class="container">Home distillation is illegal in many jurisdictions. All content on this site is published for
+      educational and informational purposes only. Consuming improperly distilled spirits can cause serious harm to health.</div>
+  </div>
   <div class="footer-bottom">
-    <p class="disclaimer">Home distillation is illegal in many jurisdictions. All content on this site is published for
-       educational and informational purposes only. Consuming improperly distilled spirits can cause serious harm to health.</p>
-    © 2026 Distillpedia Club. All rights reserved. · <a href="index.html">Back to top ↑</a>
+    <div class="container">© 2026 Distillpedia Club. All rights reserved. · <a href="index.html">Back to top ↑</a></div>
   </div>
 </footer>
 
