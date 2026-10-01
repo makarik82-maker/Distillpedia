@@ -95,7 +95,12 @@
         .cw-item:first-child { border-top: 0; }
         .cw-meta { font-size: 13px; color: #888; margin-bottom: 4px; }
         .cw-name { font-weight: bold; color: #2c5f2d; }
-        .cw-text { white-space: pre-wrap; word-wrap: break-word; }
+        /* ===== Comments widget: render classes used by comments.js (.cw-comment/.cw-head) ===== */
+        .cw-list { display: flex; flex-direction: column; gap: 14px; }
+        .cw-comment { padding: 14px 16px; border-radius: 8px; background: #f7f9f5; border: 1px solid #e2e8dc; }
+        .cw-head { margin: 0 0 6px; font-size: 14px; color: #666; }
+        .cw-head strong { color: #2c5f2d; }
+.cw-text { white-space: pre-wrap; word-wrap: break-word; }
 </style>
 </head>
 <body>
@@ -131,7 +136,7 @@
 
         <div class="legal-box">⚠️ <strong>Educational purposes only.</strong> Home distillation is illegal in many countries without a licence. Check your local laws first.</div>
 
-        <h2>Choosing the Ingredients</h3>
+        <h2>Choosing the Ingredients</h2>
         <h3>Bird cherry</h3>
         <p>Only ripe berries: evenly coloured, without light spots, easily crushed between fingers. Unripe fruit is rich in pectin, which yeast converts into methanol — the moonshine stays safe but the hangover gets heavier. Black and red varieties may be mixed in one wash.</p>
         <p>The pits contain amygdalin, which gives a light almond aftertaste. If the hard shell is cracked, the bitterness becomes excessive, so crush the fruit gently. High distillation temperature deactivates the enzymes that could convert amygdalin into hydrocyanic acid, so the final spirit is safe anyway.</p>
@@ -218,5 +223,6 @@
         </div>
     </div>
 </footer>
+    <script src="comments.js" defer></script>
 </body>
 </html>

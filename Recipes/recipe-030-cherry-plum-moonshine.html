@@ -79,7 +79,12 @@
         .cw-item:first-child { border-top: 0; }
         .cw-meta { font-size: 13px; color: #888; margin-bottom: 4px; }
         .cw-name { font-weight: bold; color: #2c5f2d; }
-        .cw-text { white-space: pre-wrap; word-wrap: break-word; }
+        /* ===== Comments widget: render classes used by comments.js (.cw-comment/.cw-head) ===== */
+        .cw-list { display: flex; flex-direction: column; gap: 14px; }
+        .cw-comment { padding: 14px 16px; border-radius: 8px; background: #f7f9f5; border: 1px solid #e2e8dc; }
+        .cw-head { margin: 0 0 6px; font-size: 14px; color: #666; }
+        .cw-head strong { color: #2c5f2d; }
+.cw-text { white-space: pre-wrap; word-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -265,5 +270,6 @@
             <div><p>© 2026 Distillpedia Club. All rights reserved.</p></div>
         </div>
     </footer>
+    <script src="comments.js" defer></script>
 </body>
 </html>
