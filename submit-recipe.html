@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit Recipe | Distillpedia Club</title>
+  <link rel="stylesheet" href="assets/user-recipes.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="index.html">⚗️ Distillpedia Club</a>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html#guides">Guides</a>
+      <a href="index.html#equipment">Equipment</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#distilling">Distilling</a>
+      <a href="user-recipes.html">User Recipes</a>
+      <a href="submit-recipe.html">Submit Recipe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Submit Your Recipe</h1>
+
+  <p class="page-intro">
+    Fill in the form below. Your recipe will be reviewed before publication.
+    Approved recipes will appear in the
+    <a href="user-recipes.html">User Recipes</a> section.
+  </p>
+
+  <div class="notice">
+    ⚠️ Legal &amp; Safety Disclaimer: All submitted content must be educational.
+    Distilling alcohol at home is illegal in many countries without a licence.
+    Recipes must not encourage unsafe or unlawful activity.
+  </div>
+
+  <form id="recipe-form" class="form-card" novalidate>
+    <fieldset>
+      <legend>Recipe Basics</legend>
+
+      <div class="form-grid">
+        <div class="full-width">
+          <label>
+            Recipe title *
+            <input type="text" name="title" maxlength="120" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Category *
+            <select name="category" required>
+              <option value="">Select category</option>
+              <option value="fruit">Fruit Spirits</option>
+              <option value="grain">Grain Spirits</option>
+              <option value="sugar">Sugar &amp; Sweet Spirits</option>
+              <option value="beer">Beer Spirits</option>
+              <option value="zero_proof">Zero-Proof Spirits</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Difficulty
+            <select name="difficulty">
+              <option value="beginner">Beginner</option>
+              <option value="medium" selected>Medium</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="full-width">
+          <label>
+            Short description *
+            <textarea name="description" rows="4" maxlength="1200" required></textarea>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            ABV min, %
+            <input type="number" name="abv_min" min="0" max="100" step="0.1">
+          </label>
+        </div>
+
+        <div>
+          <label>
+            ABV max, %
+            <input type="number" name="abv_max" min="0" max="100" step="0.1">
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Fermentation time
+            <input type="text" name="fermentation_time" maxlength="80" placeholder="20–45 days">
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Yield
+            <input type="text" name="yield" maxlength="80" placeholder="~10 L mash">
+          </label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ingredients *</legend>
+      <div id="ingredients-list"></div>
+      <button type="button" id="add-ingredient" class="secondary">+ Add ingredient</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Steps *</legend>
+      <div id="steps-list"></div>
+      <button type="button" id="add-step" class="secondary">+ Add step</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Optional Details</legend>
+
+      <div class="form-grid">
+        <div class="full-width">
+          <label>
+            Serving notes
+            <textarea name="serving_notes" rows="3" maxlength="2000"></textarea>
+          </label>
+        </div>
+
+        <div class="full-width">
+          <label>
+            Tips
+            <textarea name="tips" rows="3" maxlength="2000"></textarea>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Your name
+            <input type="text" name="author_name" maxlength="80" placeholder="Community user">
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Email for moderation contact
+            <input type="email" name="author_email" maxlength="120">
+          </label>
+        </div>
+      </div>
+    </fieldset>
+
+    <label>
+      <input type="checkbox" name="legal" required>
+      I understand that this content is for educational purposes only and that local
+      laws and safety rules must be followed.
+    </label>
+
+    <div class="hp" aria-hidden="true">
+      <label>
+        Do not fill this field
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+
+    <p style="margin-top:18px;">
+      <button type="submit">Submit for moderation</button>
+    </p>
+
+    <p id="form-status" class="status"></p>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>
+      Home distillation is illegal in many jurisdictions. All content on this site is published for
+      educational and informational purposes only.
+    </p>
+    <p>
+      © 2026 Distillpedia Club. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/user-recipes-config.js"></script>
+<script>
+  const form = document.getElementById("recipe-form");
+  const statusBox = document.getElementById("form-status");
+  const ingredientsList = document.getElementById("ingredients-list");
+  const stepsList = document.getElementById("steps-list");
+  const addIngredientBtn = document.getElementById("add-ingredient");
+  const addStepBtn = document.getElementById("add-step");
+
+  function getConfig() {
+    if (
+      !window.USER_RECIPES_CONFIG ||
+      !window.USER_RECIPES_CONFIG.appsScriptUrl ||
+      window.USER_RECIPES_CONFIG.appsScriptUrl.indexOf("ВАШ_DEPLOYMENT_ID") !== -1
+    ) {
+      throw new Error("Set appsScriptUrl in assets/user-recipes-config.js");
+    }
+
+    return window.USER_RECIPES_CONFIG;
+  }
+
+  function addIngredientRow() {
+    const row = document.createElement("div");
+    row.className = "dynamic-row ingredient-row";
+    row.innerHTML = `
+      <input type="text" name="ingredient_quantity" placeholder="Qty" maxlength="40">
+      <input type="text" name="ingredient_unit" placeholder="Unit" maxlength="40">
+      <input type="text" name="ingredient_name" placeholder="Ingredient *" maxlength="140">
+      <input type="text" name="ingredient_note" placeholder="Note" maxlength="220">
+      <button type="button" class="remove-btn">✕</button>
+    `;
+
+    row.querySelector(".remove-btn").addEventListener("click", () => {
+      row.remove();
+    });
+
+    ingredientsList.appendChild(row);
+  }
+
+  function addStepRow() {
+    const row = document.createElement("div");
+    row.className = "step-row";
+    row.innerHTML = `
+      <label>
+        Step title
+        <input type="text" name="step_title" maxlength="140" placeholder="Prepare the fruit">
+      </label>
+
+      <label>
+        Step description *
+        <textarea name="step_text" rows="4" maxlength="3000"></textarea>
+      </label>
+
+      <button type="button" class="remove-btn">Remove step</button>
+    `;
+
+    row.querySelector(".remove-btn").addEventListener("click", () => {
+      row.remove();
+    });
+
+    stepsList.appendChild(row);
+  }
+
+  addIngredientBtn.addEventListener("click", addIngredientRow);
+  addStepBtn.addEventListener("click", addStepRow);
+
+  addIngredientRow();
+  addIngredientRow();
+  addStepRow();
+
+  function collectFormData() {
+    const fd = new FormData(form);
+
+    const ingredients = Array.from(document.querySelectorAll(".ingredient-row"))
+      .map((row) => {
+        return {
+          quantity: row.querySelector('[name="ingredient_quantity"]').value.trim(),
+          unit: row.querySelector('[name="ingredient_unit"]').value.trim(),
+          name: row.querySelector('[name="ingredient_name"]').value.trim(),
+          note: row.querySelector('[name="ingredient_note"]').value.trim()
+        };
+      })
+      .filter((item) => item.name.length > 0);
+
+    const steps = Array.from(document.querySelectorAll(".step-row"))
+      .map((row, index) => {
+        return {
+          title: row.querySelector('[name="step_title"]').value.trim() || ("Step " + (index + 1)),
+          text: row.querySelector('[name="step_text"]').value.trim()
+        };
+      })
+      .filter((item) => item.text.length > 0);
+
+    return {
+      title: String(fd.get("title") || "").trim(),
+      category: String(fd.get("category") || ""),
+      description: String(fd.get("description") || "").trim(),
+      abv_min: String(fd.get("abv_min") || "").trim(),
+      abv_max: String(fd.get("abv_max") || "").trim(),
+      difficulty: String(fd.get("difficulty") || "medium"),
+      fermentation_time: String(fd.get("fermentation_time") || "").trim(),
+      yield: String(fd.get("yield") || "").trim(),
+      serving_notes: String(fd.get("serving_notes") || "").trim(),
+      tips: String(fd.get("tips") || "").trim(),
+      author_name: String(fd.get("author_name") || "").trim(),
+      author_email: String(fd.get("author_email") || "").trim(),
+      legal: form.elements["legal"].checked,
+      website: String(fd.get("website") || "").trim(),
+      ingredients: ingredients,
+      steps: steps
+    };
+  }
+
+  function validateClient(data) {
+    const errors = [];
+
+    if (!data.title) {
+      errors.push("Recipe title is required.");
+    }
+
+    if (!data.category) {
+      errors.push("Category is required.");
+    }
+
+    if (!data.description) {
+      errors.push("Short description is required.");
+    }
+
+    if (!data.ingredients.length) {
+      errors.push("Add at least one ingredient.");
+    }
+
+    if (!data.steps.length) {
+      errors.push("Add at least one step.");
+    }
+
+    if (!data.legal) {
+      errors.push("You must confirm the educational and safety disclaimer.");
+    }
+
+    if (data.abv_min !== "" && isNaN(Number(data.abv_min))) {
+      errors.push("ABV min must be a number.");
+    }
+
+    if (data.abv_max !== "" && isNaN(Number(data.abv_max))) {
+      errors.push("ABV max must be a number.");
+    }
+
+    if (data.abv_min !== "" && data.abv_max !== "") {
+      const min = Number(data.abv_min);
+      const max = Number(data.abv_max);
+
+      if (min > max) {
+        errors.push("ABV min cannot be greater than ABV max.");
+      }
+    }
+
+    return errors;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    statusBox.className = "status";
+    statusBox.textContent = "";
+
+    try {
+      const config = getConfig();
+      const data = collectFormData();
+
+      if (data.website !== "") {
+        statusBox.textContent = "Invalid submission.";
+        statusBox.classList.add("error");
+        return;
+      }
+
+      const errors = validateClient(data);
+
+      if (errors.length > 0) {
+        statusBox.textContent = errors.join(" ");
+        statusBox.classList.add("error");
+        return;
+      }
+
+      const response = await fetch(config.appsScriptUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          action: "submitRecipe",
+          recipe: data
+        })
+      });
+
+      let result = {};
+
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        throw new Error("Apps Script returned non-JSON response.");
+      }
+
+      if (result.ok) {
+        form.reset();
+        ingredientsList.innerHTML = "";
+        stepsList.innerHTML = "";
+        addIngredientRow();
+        addIngredientRow();
+        addStepRow();
+
+        statusBox.textContent =
+          "Recipe submitted successfully. It will appear after moderation.";
+        statusBox.classList.add("ok");
+      } else {
+        statusBox.textContent = result.error || "Submission failed.";
+        statusBox.classList.add("error");
+      }
+    } catch (error) {
+      statusBox.textContent = error.message || "Network error. Please try again.";
+      statusBox.classList.add("error");
+    }
+  });
+</script>
+
+</body>
+</html>
