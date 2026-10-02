@@ -1,1 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Recipes | Distillpedia Club</title>
+  <link rel="stylesheet" href="assets/user-recipes.css">
+</head>
+<body>
 
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="index.html">⚗️ Distillpedia Club</a>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html#guides">Guides</a>
+      <a href="index.html#equipment">Equipment</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#distilling">Distilling</a>
+      <a href="user-recipes.html">User Recipes</a>
+      <a href="submit-recipe.html">Submit Recipe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>User Recipes</h1>
+
+  <p class="page-intro">
+    Community-submitted recipes approved by moderators.
+    If you want to share your own recipe, use the
+    <a href="submit-recipe.html">Submit Recipe</a> form.
+  </p>
+
+  <div class="notice">
+    ⚠️ All recipes are published for educational purposes only.
+    Always follow local laws and safety rules.
+  </div>
+
+  <p id="status" class="status"></p>
+
+  <div id="recipes-list" class="cards"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>
+      Home distillation is illegal in many jurisdictions. All content on this site is published for
+      educational and informational purposes only.
+    </p>
+    <p>
+      © 2026 Distillpedia Club. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/user-recipes-config.js"></script>
+<script>
+  const recipesList = document.getElementById("recipes-list");
+  const statusBox = document.getElementById("status");
+
+  const categoryLabels = {
+    fruit: "Fruit Spirits",
+    grain: "Grain Spirits",
+    sugar: "Sugar & Sweet Spirits",
+    beer: "Beer Spirits",
+    zero_proof: "Zero-Proof Spirits"
+  };
+
+  function getConfig() {
+    if (
+      !window.USER_RECIPES_CONFIG ||
+      !window.USER_RECIPES_CONFIG.appsScriptUrl ||
+      window.USER_RECIPES_CONFIG.appsScriptUrl.indexOf("ВАШ_DEPLOYMENT_ID") !== -1
+    ) {
+      throw new Error("Set appsScriptUrl in assets/user-recipes-config.js");
+    }
+
+    return window.USER_RECIPES_CONFIG;
+  }
+
+  function formatAbv(recipe) {
+    if (recipe.abv_min != null && recipe.abv_max != null) {
+      return recipe.abv_min + "–" + recipe.abv_max + "%";
+    }
+
+    if (recipe.abv_min != null) {
+      return recipe.abv_min + "%";
+    }
+
+    if (recipe.abv_max != null) {
+      return recipe.abv_max + "%";
+    }
+
+    return "Not specified";
+  }
+
+  function createCard(recipe) {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const title = document.createElement("h3");
+    title.textContent = recipe.title;
+
+    const description = document.createElement("p");
+    description.textContent = recipe.description;
+
+    const category = document.createElement("p");
+    category.className = "meta-line";
+    category.textContent = "Category: " + (categoryLabels[recipe.category] || "User recipe");
+
+    const abv = document.createElement("p");
+    abv.className = "meta-line";
+    abv.textContent = "ABV: " + formatAbv(recipe);
+
+    const author = document.createElement("p");
+    author.className = "meta-line";
+    author.textContent = "Author: " + (recipe.author_name || "Community user");
+
+    const link = document.createElement("a");
+    link.href = recipe.url;
+    link.textContent = "View recipe →";
+
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(category);
+    card.appendChild(abv);
+    card.appendChild(author);
+    card.appendChild(link);
+
+    return card;
+  }
+
+  async function loadRecipes() {
+    statusBox.className = "status";
+    statusBox.textContent = "Loading recipes…";
+
+    try {
+      const config = getConfig();
+      const url = config.appsScriptUrl +
+        "?action=getPublicRecipes" +
+        "&ts=" + Date.now();
+
+      const response = await fetch(url);
+
+      let result = {};
+
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        throw new Error("Apps Script returned non-JSON response.");
+      }
+
+      if (!result.ok) {
+        throw new Error(result.error || "Failed to load recipes.");
+      }
+
+      recipesList.innerHTML = "";
+
+      if (!result.recipes.length) {
+        statusBox.textContent = "No approved user recipes yet.";
+        return;
+      }
+
+      statusBox.textContent = "";
+
+      result.recipes.forEach((recipe) => {
+        recipesList.appendChild(createCard(recipe));
+      });
+    } catch (error) {
+      statusBox.textContent = error.message || "Could not load recipes.";
+      statusBox.classList.add("error");
+    }
+  }
+
+  loadRecipes();
+</script>
+
+</body>
+</html>
