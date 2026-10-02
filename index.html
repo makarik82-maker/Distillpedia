@@ -19,7 +19,7 @@
   html{scroll-behavior:smooth}
   body{font-family:'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);line-height:1.6;
        background-color:#234d23;
-       background-image:linear-gradient(rgba(15,35,15,.72),rgba(15,35,15,.84)),url('background.png');
+       background-image:linear-gradient(rgba(15,35,15,.40),rgba(15,35,15,.55)),url('background.png');
        background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;
        min-height:100vh}
   .container{width:min(1100px,92%);margin:0 auto}
@@ -34,7 +34,7 @@
   .nav a:hover{color:var(--lime-light);text-decoration:underline}
 
   /* ===== Hero ===== */
-  .hero{background-image:linear-gradient(rgba(15,35,15,.72),rgba(15,35,15,.84)),url('hero-bg.png');
+  .hero{background-image:linear-gradient(rgba(15,35,15,.40),rgba(15,35,15,.55)),url('hero-bg.png');
     background-color:var(--green-900);background-size:cover;background-position:center;
     background-repeat:no-repeat;color:#fff;padding:64px 0;text-align:center}
   .hero h1{font-size:2.5rem;margin-bottom:16px}
@@ -52,11 +52,11 @@
   .card{background:var(--card);border-radius:14px;box-shadow:0 4px 14px rgba(30,50,30,.10);padding:22px;display:flex;flex-direction:column}
   /* Category cards with a photo background + dark overlay for text contrast */
   .card-bg{position:relative;background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86));background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
-  .card-bg h3,.card-bg .card-link-plain{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  .card-bg h3,.card-bg .card-link-plain{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.9)}
   /* All text inside photo-backed category cards must be white for contrast */
-  .card-bg a{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+  .card-bg a{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.9)}
   .card-bg a:hover{color:#f4ffe8}
-  .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+  .card-bg p{color:#eaf2e6;text-shadow:0 1px 4px rgba(0,0,0,.85)}
   .card-bg .badge.count{background:rgba(255,255,255,.22);color:#f2f8ee;backdrop-filter:blur(2px)}
   .card-bg:hover{box-shadow:0 8px 22px rgba(30,50,30,.35)}
   /* Dark background variant for cards that have no photo asset yet */
@@ -70,7 +70,7 @@
   .card h3{font-size:1.2rem;margin-bottom:10px;color:#243b2a}
   .card p{color:var(--muted);font-size:.97rem;flex:1}
   /* --- Community Recipes category cards: ALL text forced white (higher specificity than the plain .card rules above) --- */
-  .card-bg,.card-bg h3,.card-bg p,.card-bg a,.card-bg .card-link-plain,.card-bg .coming{color:#fff !important;text-shadow:0 1px 5px rgba(0,0,0,.65)}
+  .card-bg,.card-bg h3,.card-bg p,.card-bg a,.card-bg .card-link-plain,.card-bg .coming{color:#fff !important;text-shadow:0 1px 5px rgba(0,0,0,.95)}
   .card-bg .badge.count{background:rgba(255,255,255,.24) !important;color:#fff !important}
   /* --- Essential Guides cards: photo background + white text (same treatment as Community Recipes) --- */
   .card-bg .badge{background:rgba(255,255,255,.24) !important;color:#fff !important;backdrop-filter:blur(2px)}
@@ -83,13 +83,13 @@
 
   /* ===== Subsections (Distilling & Safety) ===== */
   .subsection-card{position:relative;border-radius:16px;border-top:6px solid var(--lime);padding:30px 28px;margin-bottom:30px;color:#fff;overflow:hidden;
-    background-image:linear-gradient(rgba(21,36,21,.82),rgba(21,36,21,.88)),url('background.png');background-size:cover;background-position:center;background-repeat:no-repeat}
+    background-image:linear-gradient(rgba(21,36,21,.50),rgba(21,36,21,.65)),url('background.png');background-size:cover;background-position:center;background-repeat:no-repeat}
   .sub-fermentation{background-color:#5a4632}
   .sub-distillation{background-color:#2f4a50}
   .sub-simple{background-color:#3c4a3c}
   .tag{display:inline-block;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);padding:8px 20px;border-radius:999px;font-weight:600;margin-bottom:20px;backdrop-filter:blur(2px)}
-  .subsection-card h3{font-size:1.55rem;line-height:1.35;margin-bottom:16px;text-shadow:0 2px 6px rgba(0,0,0,.45)}
-  .subsection-card>p{color:#ececec;max-width:860px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+  .subsection-card h3{font-size:1.55rem;line-height:1.35;margin-bottom:16px;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+  .subsection-card>p{color:#ececec;max-width:860px;text-shadow:0 1px 4px rgba(0,0,0,.75)}
 
   /* ==========================================================
      ЕДИНЫЙ ФОРМАТ БЛОКОВ ССЫЛОК
@@ -207,25 +207,25 @@
   <div class="container">
     <h2 class="section-title">📚 Essential Guides</h2>
     <div class="cards">
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/What_is_Home_Distilling.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/What_is_Home_Distilling.png')">
         <span class="badge green">Beginner</span>
         <h3>What is Home Distilling?</h3>
         <p>Introduction to the craft: distillation first, brewing second. Terminology, still types, fractions and the beginner path.</p>
         <a class="card-link-plain" href="what-is-home-distilling.html">Read the guide →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment_Checklist.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Equipment_Checklist.png')">
         <span class="badge blue">Checklist</span>
         <h3>Equipment Checklist</h3>
         <p>Stills, fermenters, hydrometers, thermometers and safety gear — everything you need, prioritized by importance.</p>
         <a class="card-link-plain" href="equipment-checklist.html">View checklist →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distillation_Safety_Guide.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Distillation_Safety_Guide.png')">
         <span class="badge red">Safety</span>
         <h3>Distillation Safety Guide</h3>
         <p>Methanol and heads, fraction cuts, fire and pressure hazards, safe materials — and when to stop a run.</p>
         <a class="card-link-plain" href="distillation-safety.html">Read safety guide →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Fermentation_Science.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Fermentation_Science.png')">
         <span class="badge purple">Theory</span>
         <h3>Fermentation Science</h3>
         <p>Yeast types, temperature, pH, hydromodule, oxygen and troubleshooting stuck washes.</p>
@@ -245,25 +245,25 @@
   <div class="container">
     <h2 class="section-title">🛠️ Equipment</h2>
     <div class="cards">
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Fermenters%20%26%20Airlocks.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Equipment/Fermenters%20%26%20Airlocks.png')">
         <span class="badge green">Fermentation</span>
         <h3>Fermenters &amp; Airlocks</h3>
         <p>Plastic vs glass vs stainless vessels, sizing, fill limits and airlock designs.</p>
         <a class="card-link-plain" href="equipment-checklist.html#fermenters">Open subsection →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Hydrometers%20%26%20Thermometers.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Equipment/Hydrometers%20%26%20Thermometers.png')">
         <span class="badge blue">Measuring</span>
         <h3>Hydrometers &amp; Thermometers</h3>
         <p>Sugar and ABV measurement, temperature control for saccharification and distillation.</p>
         <a class="card-link-plain" href="equipment-checklist.html#measuring">Open subsection →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Pot%20Still%20vs.%20Reflux%20Column.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Equipment/Pot%20Still%20vs.%20Reflux%20Column.png')">
         <span class="badge purple">Distilling</span>
         <h3>Pot Still vs. Reflux Column</h3>
         <p>How each hardware type works and which one suits your spirit style.</p>
         <a class="card-link-plain" href="equipment-checklist.html#stills">Open subsection →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Equipment/Safety%20Equipment.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Equipment/Safety%20Equipment.png')">
         <span class="badge red">Safety</span>
         <h3>Safety Equipment</h3>
         <p>Fire extinguisher, ventilation, gloves, glasses and first aid — the non-negotiable kit.</p>
@@ -277,31 +277,31 @@
   <div class="container">
     <h2 class="section-title">🍺 Community Recipes</h2>
     <div class="cards">
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Fruit_Spirits.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Community_Recipes/Fruit_Spirits.png')">
         <span class="badge count">53 recipes</span>
         <h3>🍑 Fruit Spirits</h3>
         <p>Apricot, plum, apple, pear, cherry, grape, berry, melon, watermelon and exotic fruit distillates. Includes schnapps, slivovitz, kirschwasser and tutovka.</p>
         <a class="card-link-plain" href="recipes-fruit.html">Browse category →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Grain_Spirits.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Community_Recipes/Grain_Spirits.png')">
         <span class="badge count">14 recipes</span>
         <h3>🌾 Grain Spirits</h3>
         <p>Barley, wheat, rye, oat, rice, corn, buckwheat, malt, potato, flour, bean, kvass and bread moonshine.</p>
         <a class="card-link-plain" href="recipes-grain.html">Browse category →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Sugar_%26_Sweet_Spirits.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Community_Recipes/Sugar_%26_Sweet_Spirits.png')">
         <span class="badge count">4 recipes</span>
         <h3>🍬 Sugar &amp; Sweet Spirits</h3>
         <p>Sugar, fructose/dextrose, honey, candy and molasses moonshine. Clean neutral bases.</p>
         <a class="card-link-plain" href="recipes-sugar.html">Browse category →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Community_Recipes/Beer_Spirits.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Community_Recipes/Beer_Spirits.png')">
         <span class="badge count">1 recipe</span>
         <h3>🍺 Beer Spirits</h3>
         <p>Moonshine from beer: proper degassing and hop oil removal technology.</p>
         <a class="card-link-plain" href="recipes-beer.html">Browse category →</a>
       </div>
-      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.78),rgba(18,32,18,.86)),url('Pictures/Distilling%20%26%20Safety/The%20Art%20of%20Making%20Cuts.png')">
+      <div class="card card-bg" style="background-image:linear-gradient(rgba(18,32,18,.45),rgba(18,32,18,.60)),url('Pictures/Distilling%20%26%20Safety/The%20Art%20of%20Making%20Cuts.png')">
         <span class="badge count">Coming soon</span>
         <h3>🚫 Zero-Proof Spirits</h3>
         <p>Non-alcoholic distillates, aromatic waters and alcohol-free bases made with the same equipment.</p>
