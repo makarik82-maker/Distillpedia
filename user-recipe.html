@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Recipe | Distillpedia Club</title>
+  <link rel="stylesheet" href="assets/user-recipes.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <a href="index.html">⚗️ Distillpedia Club</a>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html#guides">Guides</a>
+      <a href="index.html#equipment">Equipment</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#distilling">Distilling</a>
+      <a href="user-recipes.html">User Recipes</a>
+      <a href="submit-recipe.html">Submit Recipe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div id="recipe-loading" class="status">Loading recipe…</div>
+  <div id="recipe-error" class="status error" style="display:none;"></div>
+  <div id="recipe-content"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>
+      Home distillation is illegal in many jurisdictions. All content on this site is published for
+      educational and informational purposes only.
+    </p>
+    <p>
+      © 2026 Distillpedia Club. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/user-recipes-config.js"></script>
+<script>
+  const loadingBox = document.getElementById("recipe-loading");
+  const errorBox = document.getElementById("recipe-error");
+  const contentBox = document.getElementById("recipe-content");
+
+  const categoryLabels = {
+    fruit: "Fruit Spirits",
+    grain: "Grain Spirits",
+    sugar: "Sugar & Sweet Spirits",
+    beer: "Beer Spirits",
+    zero_proof: "Zero-Proof Spirits"
+  };
+
+  const difficultyLabels = {
+    beginner: "Beginner",
+    medium: "Medium",
+    advanced: "Advanced"
+  };
+
+  function getConfig() {
+    if (
+      !window.USER_RECIPES_CONFIG ||
+      !window.USER_RECIPES_CONFIG.appsScriptUrl ||
+      window.USER_RECIPES_CONFIG.appsScriptUrl.indexOf("ВАШ_DEPLOYMENT_ID") !== -1
+    ) {
+      throw new Error("Set appsScriptUrl in assets/user-recipes-config.js");
+    }
+
+    return window.USER_RECIPES_CONFIG;
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatAbv(recipe) {
+    if (recipe.abv_min != null && recipe.abv_max != null) {
+      return recipe.abv_min + "–" + recipe.abv_max + "%";
+    }
+
+    if (recipe.abv_min != null) {
+      return recipe.abv_min + "%";
+    }
+
+    if (recipe.abv_max != null) {
+      return recipe.abv_max + "%";
+    }
+
+    return "Not specified";
+  }
+
+  function ingredientToHtml(item) {
+    const amountParts = [
+      escapeHtml(item.quantity || ""),
+      escapeHtml(item.unit || "")
+    ].filter(Boolean);
+
+    const amount = amountParts.join(" ");
+    const name = escapeHtml(item.name || "");
+    const note = escapeHtml(item.note || "");
+
+    return "<li>" +
+      (amount ? amount + " " : "") +
+      name +
+      (note ? " — " + note : "") +
+      "</li>";
+  }
+
+  function renderRecipe(recipe) {
+    document.title = recipe.title + " | User Recipes | Distillpedia Club";
+
+    const categoryLabel = escapeHtml(categoryLabels[recipe.category] || "User recipe");
+    const difficultyLabel = escapeHtml(difficultyLabels[recipe.difficulty] || "Medium");
+    const abv = escapeHtml(formatAbv(recipe));
+
+    const ingredientsHtml = (recipe.ingredients || [])
+      .map(ingredientToHtml)
+      .join("");
+
+    const stepsHtml = (recipe.steps || [])
+      .map((step, index) => {
+        return `
+          <section class="step">
+            <h3>${index + 1}. ${escapeHtml(step.title)}</h3>
+            <p>${escapeHtml(step.text)}</p>
+          </section>
+        `;
+      })
+      .join("");
+
+    const servingNotesHtml = recipe.serving_notes
+      ? `<h2>Serving Notes</h2><p>${escapeHtml(recipe.serving_notes)}</p>`
+      : "";
+
+    const tipsHtml = recipe.tips
+      ? `<p>💡 Editor's tip: ${escapeHtml(recipe.tips)}</p>`
+      : "";
+
+    contentBox.innerHTML = `
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> →
+        <a href="user-recipes.html">User Recipes</a> →
+        ${escapeHtml(recipe.title)}
+      </div>
+
+      <article class="recipe-article">
+        <h1>${escapeHtml(recipe.title)}</h1>
+
+        <p>${escapeHtml(recipe.description)}</p>
+
+        <table class="meta-table">
+          <tr>
+            <th>Category</th>
+            <td>${categoryLabel}</td>
+          </tr>
+          <tr>
+            <th>ABV</th>
+            <td>${abv}</td>
+          </tr>
+          <tr>
+            <th>Difficulty</th>
+            <td>${difficultyLabel}</td>
+          </tr>
+          <tr>
+            <th>Fermentation</th>
+            <td>${escapeHtml(recipe.fermentation_time || "Not specified")}</td>
+          </tr>
+          <tr>
+            <th>Yield</th>
+            <td>${escapeHtml(recipe.yield || "Not specified")}</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>${escapeHtml(recipe.author_name || "Community user")}</td>
+          </tr>
+        </table>
+
+        <div class="notice">
+          ⚠️ Legal &amp; Safety Disclaimer: This recipe is provided for educational
+          purposes only. Distilling alcohol at home is illegal in many countries
+          without a licence. Always check your local laws. Read our
+          <a href="distillation-safety.html">Distillation Safety Guide</a>
+          before attempting any distillation.
+        </div>
+
+        <h2>Ingredients</h2>
+        <ul>
+          ${ingredientsHtml}
+        </ul>
+
+        <div class="danger-notice">
+          🛑 Safety reminder: The first fraction of any distillation ("heads")
+          contains methanol and must be discarded. Never consume it. See
+          <a href="distillation-safety.html">Distillation Safety Guide</a>.
+        </div>
+
+        <h2>Step-by-Step Process</h2>
+        ${stepsHtml}
+
+        ${servingNotesHtml}
+        ${tipsHtml}
+
+        <h2>Related Guides</h2>
+        <ul>
+          <li><a href="distillation-safety.html">Distillation Safety Guide</a></li>
+          <li><a href="equipment-checklist.html">Equipment Checklist</a></li>
+          <li><a href="user-recipes.html">All User Recipes</a></li>
+        </ul>
+      </article>
+    `;
+  }
+
+  async function loadRecipe() {
+    try {
+      const config = getConfig();
+
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
+
+      if (!slug) {
+        throw new Error("Recipe slug is missing.");
+      }
+
+      const url = config.appsScriptUrl +
+        "?action=getRecipe" +
+        "&slug=" + encodeURIComponent(slug) +
+        "&ts=" + Date.now();
+
+      const response = await fetch(url);
+
+      let result = {};
+
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        throw new Error("Apps Script returned non-JSON response.");
+      }
+
+      loadingBox.style.display = "none";
+
+      if (!result.ok) {
+        throw new Error(result.error || "Recipe not found.");
+      }
+
+      renderRecipe(result.recipe);
+    } catch (error) {
+      loadingBox.style.display = "none";
+      errorBox.style.display = "block";
+      errorBox.textContent = error.message || "Could not load recipe.";
+    }
+  }
+
+  loadRecipe();
+</script>
+
+</body>
+</html>
