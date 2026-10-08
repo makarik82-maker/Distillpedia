@@ -14,8 +14,6 @@
     header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
     .logo { font-size: 32px; font-weight: bold; color: white; text-decoration: none; letter-spacing: 0.5px; }
     .logo span { color: #97bc62; }
-    nav a { color: white; text-decoration: none; margin-left: 15px; padding: 8px 14px; border-radius: 4px; transition: background 0.3s; font-weight: 500; }
-    nav a:hover { background: rgba(255,255,255,0.15); }
     .breadcrumb { margin: 20px 0 0; font-size: 14px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
     .breadcrumb a { color: #fff; }
     .page-header { padding: 30px 0 20px; border-bottom: 5px solid #97bc62; margin-bottom: 30px; }
@@ -55,9 +53,7 @@
         header { padding: 8px 0; }
         header .container { padding: 6px 10px; flex-direction: column; gap: 4px; }
         .logo { font-size: 20px; line-height: 1.2; }
-        nav { margin: 0; width: 100%; display: flex; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         nav::-webkit-scrollbar { display: none; }
-        nav a { margin: 0 2px; padding: 4px 10px; font-size: 13px; line-height: 1.2; white-space: nowrap; }
         .container { padding: 12px; }
         .page-header h1 { font-size: 26px; }
         .article { padding: 22px; }
@@ -101,20 +97,30 @@
         .cw-head { margin: 0 0 6px; font-size: 14px; color: #666; }
         .cw-head strong { color: #2c5f2d; }
 .cw-text { white-space: pre-wrap; word-wrap: break-word; }
-</style>
+
+  /* ===== Header ===== */
+  .site-header{position:sticky;top:0;z-index:50;background:#2d6a2f;box-shadow:0 2px 10px rgba(0,0,0,.25);padding:14px 0 12px;text-align:center}
+  .site-header .container{display:block}
+  .logo{display:inline-block;font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#8bc34a}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;margin-top:10px}
+  .nav a{color:#fff;text-decoration:none;font-size:1.05rem;padding:4px 2px}
+  .nav a:hover{color:#d9f0b0;text-decoration:underline}
+  </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <a href="../index.html" class="logo">⚗️ Distill<span>pedia</span> Club</a>
-        <nav>
-            <a href="../index.html#guides">Guides</a>
-            <a href="../index.html#equipment">Equipment</a>
-            <a href="../index.html#recipes">Recipes</a>
-            <a href="../index.html#distilling">Distilling</a>
-            <a href="../index.html#tools">Tools</a>
-        </nav>
-    </div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="../index.html">⚗️ Distill<span>pedia</span> Club</a>
+    <nav class="nav">
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#equipment">Equipment</a>
+      <a href="../index.html#recipes">Recipes</a>
+      <a href="../user-recipes.html">User Recipes</a>
+      <a href="../submit-recipe.html">Submit Recipe</a>
+      <a href="../index.html#distilling">Distilling</a>
+    </nav>
+  </div>
 </header>
 
 <div class="container">
@@ -193,19 +199,19 @@
     <section class="comments-widget"
              data-page-id="jerusalem-artichoke-moonshine"
              data-page-title="Jerusalem Artichoke Moonshine">
-      <h2>💬 Комментарии</h2>
+      <h2>💬 Comments</h2>
 
       <form class="cw-form" autocomplete="off">
-        <input name="name" placeholder="Ваше имя" required maxlength="60">
-        <input name="email" type="email" placeholder="Email (не публикуется)" maxlength="120">
-        <!-- honeypot: скрытое поле-ловушка для ботов -->
+        <input name="name" placeholder="Your name" required maxlength="60">
+        <input name="email" type="email" placeholder="Email (not published)" maxlength="120">
+        <!-- honeypot: hidden trap field for bots -->
         <input name="website" class="cw-hp" tabindex="-1" autocomplete="off">
-        <textarea name="text" placeholder="Ваш комментарий: опыт, вопросы, улучшения рецепта…" required maxlength="3000"></textarea>
-        <button type="submit">Отправить</button>
+        <textarea name="text" placeholder="Your comment: experience, questions, recipe improvements…" required maxlength="3000"></textarea>
+        <button type="submit">Submit</button>
         <p class="cw-status" role="status"></p>
       </form>
 
-      <div class="cw-list">Загрузка комментариев…</div>
+      <div class="cw-list">Loading comments…</div>
     </section>
     </div>
 

@@ -20,7 +20,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- НОВАЯ ШАПКА (по аналогии с index.html) --- */
+/* --- NEW HEADER (mirrors index.html) --- */
 .site-header {
     position: sticky;
     top: 0;
@@ -68,7 +68,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- ОСТАЛЬНЫЕ СТИЛИ СТРАНИЦЫ --- */
+/* --- REMAINING PAGE STYLES --- */
 main {
     max-width: 1100px;
     margin: 0 auto;
