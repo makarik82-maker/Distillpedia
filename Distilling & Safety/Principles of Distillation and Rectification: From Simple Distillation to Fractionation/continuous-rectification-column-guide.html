@@ -67,26 +67,6 @@
         position: relative;
         color: var(--accent-light);
     }
-    nav {
-        background-color: #1e293b;
-        text-align: center;
-        padding: 0.9rem;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
-    }
-    nav a {
-        color: #cbd5e1;
-        text-decoration: none;
-        margin: 0 18px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: color 0.3s;
-    }
-    nav a:hover { color: var(--accent-color); }
     main {
         max-width: 900px;
         margin: 3rem auto;
@@ -391,8 +371,6 @@
         main { padding: 2rem 1.5rem; margin: 1.5rem 1rem; }
         h1.article-title { font-size: 1.75rem; }
         h2 { font-size: 1.3rem; }
-        nav { padding: 0.6rem; }
-        nav a { margin: 0 10px; font-size: 0.75rem; }
         .toc ol { columns: 1; }
         .compare-grid { grid-template-columns: 1fr; }
         .schematic-wrapper { grid-template-columns: 1fr; gap: 20px; }
@@ -400,41 +378,36 @@
         .sch-input, .sch-output { justify-content: center; text-align: center; grid-column: 1; }
     }
         /* Unified site navigation (same style across all section pages) */
-        nav {
-            background-color: #34495e !important;
-            text-align: center !important;
-            padding: 0.8rem !important;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
-        }
-        nav a {
-            color: #ecf0f1 !important;
-            text-decoration: none !important;
-            margin: 0 15px !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: normal !important;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: #3498db !important; }
-</style>
+
+  /* ===== Header ===== */
+  .site-header{position:sticky;top:0;z-index:50;background:#2d6a2f;box-shadow:0 2px 10px rgba(0,0,0,.25);padding:14px 0 12px;text-align:center}
+  .site-header .container{display:block}
+  .logo{display:inline-block;font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#8bc34a}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;margin-top:10px}
+  .nav a{color:#fff;text-decoration:none;font-size:1.05rem;padding:4px 2px}
+  .nav a:hover{color:#d9f0b0;text-decoration:underline}
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Distillpedia</h1>
-    <p class="tagline">// The encyclopedia of artisanal & industrial distillation //</p>
-</header>
-    <nav>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="../../index.html">⚗️ Distill<span>pedia</span> Club</a>
+    <nav class="nav">
       <a href="../../index.html#guides">Guides</a>
       <a href="../../index.html#equipment">Equipment</a>
       <a href="../../index.html#recipes">Recipes</a>
+      <a href="../../user-recipes.html">User Recipes</a>
+      <a href="../../submit-recipe.html">Submit Recipe</a>
       <a href="../../index.html#distilling">Distilling</a>
-      <a href="../../index.html#tools">Tools</a>
     </nav>
+  </div>
+</header>
+<div class="page-title" style="background:#2d6a2f;color:#fff;text-align:center;padding:12px 16px;">
+<div style="font-size:1.5rem">Distillpedia</div>
+<div style="font-size:.95rem;font-weight:400;opacity:.9">// The encyclopedia of artisanal & industrial distillation //</div>
+</div>
 
 <main>
     <article>
@@ -482,7 +455,7 @@
                 </div>
                 
                 <div class="sch-output" style="grid-column: 1; grid-row: 3;">
-                    <span class="sch-arrow">←</span> Fusel Oils (Лютер)
+                    <span class="sch-arrow">←</span> Fusel Oils (Lyuter)
                 </div>
 
                 <div class="sch-output" style="grid-column: 1; grid-row: 5;">
@@ -507,9 +480,9 @@
             <strong>⚠️ The Fusel Plug Phenomenon:</strong> Higher alcohols (fusel oils like isoamyl and isobutyl alcohol) have boiling points between ethanol and water. They are too heavy to rise to the top condenser, but too light to fall to the bottom reboiler. They accumulate in the middle of the column, forming a concentrated "plug" of impurities.
         </div>
 
-        <h3>The Side-Draw (Лютер)</h3>
+        <h3>The Side-Draw (Lyuter)</h3>
         <p>If you only draw product from the top and drain water from the bottom, this fusel plug will eventually grow, saturate the trays, and inevitably creep upward into your "pure" product, or downward into your waste, ruining the separation.</p>
-        <p>The engineering solution is a <strong>side-draw</strong> (often referred to in Eastern European engineering circles as a <em>лютер</em> or fusel trap). By continuously bleeding off a small, specific stream of liquid from the middle trays where higher alcohols concentrate, you extract the impurities from the system entirely. <strong>Without a side-draw, obtaining crystal-clear, flawlessly pure neutral spirit on a continuous system is physically impossible.</strong></p>
+        <p>The engineering solution is a <strong>side-draw</strong> (often referred to in Eastern European engineering circles as a <em>lyuter</em> or fusel trap). By continuously bleeding off a small, specific stream of liquid from the middle trays where higher alcohols concentrate, you extract the impurities from the system entirely. <strong>Without a side-draw, obtaining crystal-clear, flawlessly pure neutral spirit on a continuous system is physically impossible.</strong></p>
 
         <h2 id="diy">Chapter 3. The DIY Frontier: Engineering at Home</h2>
         <p>While continuous columns are the standard in massive industrial plants, they have also become the ultimate engineering "flex" in advanced home-distilling communities (such as the engineering-focused forums of HomeDistiller).</p>
@@ -568,7 +541,7 @@
             </div>
             <div class="principle-item">
                 <strong>2. Bleed the Fusel Plug</strong>
-                Never attempt to run a continuous column with only a top and bottom output. Higher alcohols will trap themselves in the middle of the column. A calibrated side-draw (лютер) is mandatory for true purity.
+                Never attempt to run a continuous column with only a top and bottom output. Higher alcohols will trap themselves in the middle of the column. A calibrated side-draw (lyuter) is mandatory for true purity.
             </div>
             <div class="principle-item">
                 <strong>3. Pre-Heat Your Feed</strong>

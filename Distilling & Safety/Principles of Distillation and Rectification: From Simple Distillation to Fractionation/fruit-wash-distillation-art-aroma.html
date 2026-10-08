@@ -64,26 +64,6 @@
             position: relative;
             color: #e9d9b8;
         }
-        nav {
-            background-color: #2e0f1c;
-            text-align: center;
-            padding: 0.85rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-        }
-        nav a {
-            color: #f0e2c8;
-            text-decoration: none;
-            margin: 0 16px;
-            font-weight: 600;
-            font-size: 0.88rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: var(--gold-light); }
         main {
             max-width: 920px;
             margin: 2.5rem auto;
@@ -479,8 +459,6 @@
             h1.article-title { font-size: 1.75rem; }
             table { font-size: 0.8rem; }
             th, td { padding: 8px; }
-            nav { padding: 0.5rem; }
-            nav a { margin: 0 8px; font-size: 0.75rem; }
             .toc ol { columns: 1; }
             .aroma-grid, .post-grid { grid-template-columns: 1fr; }
             .fruit-grid { grid-template-columns: 1fr; }
@@ -488,41 +466,36 @@
             .paradox-banner .scale { grid-template-columns: 1fr; }
         }
             /* Unified site navigation (same style across all section pages) */
-        nav {
-            background-color: #34495e !important;
-            text-align: center !important;
-            padding: 0.8rem !important;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
-        }
-        nav a {
-            color: #ecf0f1 !important;
-            text-decoration: none !important;
-            margin: 0 15px !important;
-            font-weight: 600 !important;
-            font-size: 0.9rem !important;
-            text-transform: uppercase !important;
-            letter-spacing: normal !important;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: #3498db !important; }
-</style>
+
+  /* ===== Header ===== */
+  .site-header{position:sticky;top:0;z-index:50;background:#2d6a2f;box-shadow:0 2px 10px rgba(0,0,0,.25);padding:14px 0 12px;text-align:center}
+  .site-header .container{display:block}
+  .logo{display:inline-block;font-size:1.7rem;font-weight:700;color:#fff;text-decoration:none}
+  .logo span{color:#8bc34a}
+  .nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;margin-top:10px}
+  .nav a{color:#fff;text-decoration:none;font-size:1.05rem;padding:4px 2px}
+  .nav a:hover{color:#d9f0b0;text-decoration:underline}
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Distillpedia</h1>
-    <p class="tagline">The encyclopedia of home distilling</p>
-</header>
-    <nav>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="../../index.html">⚗️ Distill<span>pedia</span> Club</a>
+    <nav class="nav">
       <a href="../../index.html#guides">Guides</a>
       <a href="../../index.html#equipment">Equipment</a>
       <a href="../../index.html#recipes">Recipes</a>
+      <a href="../../user-recipes.html">User Recipes</a>
+      <a href="../../submit-recipe.html">Submit Recipe</a>
       <a href="../../index.html#distilling">Distilling</a>
-      <a href="../../index.html#tools">Tools</a>
     </nav>
+  </div>
+</header>
+<div class="page-title" style="background:#2d6a2f;color:#fff;text-align:center;padding:12px 16px;">
+<div style="font-size:1.5rem">Distillpedia</div>
+<div style="font-size:.95rem;font-weight:400;opacity:.9">The encyclopedia of home distilling</div>
+</div>
 
 <main>
     <article>

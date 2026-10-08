@@ -32,11 +32,11 @@
         email: fd.get('email'),
         text: fd.get('text'),
         website: fd.get('website'),   // honeypot
-        ts: openedAt                  // время открытия формы
+        ts: openedAt                  // form open time
       };
       const btn = form.querySelector('button[type="submit"]');
       if (btn) btn.disabled = true;
-      status.textContent = 'Отправка…';
+      status.textContent = 'Sending…';
       try {
         // Apps Script Web Apps answer POST only on the original script.google.com URL:
         // their 302 redirect to script.googleusercontent.com turns POST into GET (=> 405),
@@ -54,14 +54,14 @@
         openedAt = Date.now();
         status.textContent = '\u2705 \u041a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d! \u041f\u043e\u044f\u0432\u0438\u0442\u0441\u044f \u043f\u043e\u0441\u043b\u0435 \u043c\u043e\u0434\u0435\u0440\u0430\u0446\u0438\u0438.';
       } catch (e) {
-        status.textContent = '⚠️ Не удалось отправить. Попробуйте позже.';
+        status.textContent = '⚠️ Could not send. Please try again later.';
       } finally {
         if (btn) btn.disabled = false;
       }
     });
 
     async function loadComments() {
-      list.textContent = 'Загрузка комментариев…';
+      list.textContent = 'Loading comments…';
       let out;
       try {
         const res = await fetch(API_URL + '?page=' + encodeURIComponent(pageId),
@@ -73,12 +73,12 @@
         list.innerHTML = '';
         const p = document.createElement('p');
         p.className = 'cw-text';
-        p.textContent = 'Не удалось загрузить комментарии. ';
+        p.textContent = 'Could not load comments. ';
         const a = document.createElement('a');
         a.href = API_URL + '?page=' + encodeURIComponent(pageId);
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
-        a.textContent = 'Открыть данные';
+        a.textContent = 'Open data';
         p.append(a);
         list.append(p);
         return;
@@ -89,7 +89,7 @@
     function render(comments) {
       list.innerHTML = '';
       if (!comments.length) {
-        list.textContent = 'Комментариев пока нет — будьте первым!';
+        list.textContent = 'No comments yet — be the first!';
         return;
       }
       comments.forEach(function (c) {
@@ -107,7 +107,7 @@
 
         const body = document.createElement('p');
         body.className = 'cw-text';
-        body.textContent = c.text;   // textContent = защита от XSS
+        body.textContent = c.text;   // textContent = XSS protection
 
         art.append(head, body);
         list.append(art);
